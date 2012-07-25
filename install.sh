@@ -92,7 +92,7 @@ install_from_source() {
 }
 
 echo -e "\nSQLite with R*Tree support"
-install_from_source http://sqlite.org/ sqlite-amalgamation-3.6.23.1.tar.gz sqlite-3.6.23.1 "-DSQLITE_ENABLE_RTREE=1"
+install_from_source http://sqlite.org/ sqlite-autoconf-3071300.tar.gz sqlite-autoconf-3071300 "-DSQLITE_ENABLE_RTREE=1"
 
 echo -e "\nFreeXL library for reading MS Excel data files"
 install_from_source http://www.gaia-gis.it/gaia-sins/freexl-sources/ freexl-1.0.0d.tar.gz freexl-1.0.0d
@@ -104,7 +104,7 @@ echo -e "\nSpatiaLite Tools"
 install_from_source http://www.gaia-gis.it/gaia-sins/spatialite-tools-sources/ spatialite-tools-3.0.0-stable.tar.gz spatialite-tools-3.0.0-stable
 
 echo -e "\npysqlite"
-install_from_source http://pysqlite.googlecode.com/files/ pysqlite-2.6.0.tar.gz pysqlite-2.6.0 "" "" true
+install_from_source http://pysqlite.googlecode.com/files/ pysqlite-2.6.3.tar.gz pysqlite-2.6.3 "" "" true
 
 echo -e "\nRemoving development packages with 'apt'"
 apt-get remove -q -y build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &>> $LOG
