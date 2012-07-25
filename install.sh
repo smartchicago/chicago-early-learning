@@ -13,6 +13,23 @@ fi
 LOG=$PWD/install.log
 echo -n "" > $LOG
 
+echo -en "\nWhere should ECEP be installed?\n[$PWD] > "
+read INSTALL_DIR
+
+if [ "x$INSTALL_DIR" == "x" ]; then
+    INSTALL_DIR=$PWD
+fi
+
+echo -en "\nInstall to $INSTALL_DIR? [y/N] "
+read DIR_CONFIRM
+
+if [ "$DIR_CONFIRM" != "y" ]; then
+   echo -e "\nAborting install."
+   exit 1 
+fi
+
+mkdir -p $INSTALL_DIR
+
 # install requirements via apt-get
 echo -e "\nInstalling required packages with 'apt'"
 apt-get install -q -y screen openssh-server nginx gunicorn python-django build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &> $LOG
@@ -73,23 +90,6 @@ install_from_source() {
     rm $2
     rm -rf $3
 }
-
-echo -en "\nWhere should ECEP be installed?\n[$PWD] > "
-read INSTALL_DIR
-
-if [ "x$INSTALL_DIR" == "x" ]; then
-    INSTALL_DIR=$PWD
-fi
-
-echo -en "\nInstall to $INSTALL_DIR? [y/N] "
-read DIR_CONFIRM
-
-if [ "$DIR_CONFIRM" != "y" ]; then
-   echo -e "\nAborting install."
-   exit 1 
-fi
-
-mkdir -p $INSTALL_DIR
 
 echo -e "\nSQLite with R*Tree support"
 install_from_source http://sqlite.org/ sqlite-amalgamation-3.6.23.1.tar.gz sqlite-3.6.23.1 "-DSQLITE_ENABLE_RTREE=1"
