@@ -32,7 +32,7 @@ mkdir -p $INSTALL_DIR
 
 # install requirements via apt-get
 echo -e "\nInstalling required packages with 'apt'"
-apt-get install -q -y screen openssh-server nginx gunicorn python-django python-gdal build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &> $LOG
+apt-get install -q -y screen openssh-server nginx gunicorn python-django libgeos-c1 build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &> $LOG
 
 # build in R*Tree support to SQLite
 install_from_source() {
