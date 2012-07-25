@@ -82,7 +82,7 @@ install_from_source() {
         mv setup.cfg setup.cfg.orig
         sed -e "s/#include_/include_/" -e "s/#library/library/" -e "s/define=SQL/#define=SQL/" setup.cfg.orig > setup.cfg
         echo -e "\n##\n## Results from the command 'python setup.py install'\n##" >> $LOG
-        python setup.py install
+        python setup.py install &>> $LOG
     fi
     cd ..
 
