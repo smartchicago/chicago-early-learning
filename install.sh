@@ -15,7 +15,7 @@ echo -n "" > $LOG
 
 # install requirements via apt-get
 echo -e "\nInstalling required packages with 'apt'"
-apt-get install -q -y screen openssh-server gunicorn python-django build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &> $LOG
+apt-get install -q -y screen openssh-server nginx gunicorn python-django build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &> $LOG
 
 # build in R*Tree support to SQLite
 install_from_source() {
@@ -107,8 +107,8 @@ echo -e "\npysqlite"
 install_from_source http://pysqlite.googlecode.com/files/ pysqlite-2.6.0.tar.gz pysqlite-2.6.0 "" "" true
 
 echo -e "\nRemoving development packages with 'apt'"
-apt-get remove -q -y build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &> $LOG
-apt-get autoremove -q -y &> $LOG
+apt-get remove -q -y build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &>> $LOG
+apt-get autoremove -q -y &>> $LOG
 
 # configure nginx
 if [ -e /etc/nginx/sites-enabled/default ]; then
