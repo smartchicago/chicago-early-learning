@@ -15,7 +15,7 @@ echo -n "" > $LOG
 
 # install requirements via apt-get
 echo -e "\nInstalling required packages with 'apt'"
-apt-get install -q -y screen openssh-server gunicorn python-django git build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &> $LOG
+apt-get install -q -y screen openssh-server gunicorn python-django build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &> $LOG
 
 # build in R*Tree support to SQLite
 install_from_source() {
