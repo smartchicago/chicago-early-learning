@@ -135,11 +135,11 @@ configure_nginx() {
     echo "    server_name _;" >> $CFG
     echo "    root $1/python/ecep/;" >> $CFG
     echo "    location / {" >> $CFG
-    echo "        try_files $uri @proxy_to_app;" >> $CFG
+    echo "        try_files \$uri @proxy_to_app;" >> $CFG
     echo "    }" >> $CFG
     echo "    location @proxy_to_app {" >> $CFG
-    echo "        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;" >> $CFG
-    echo "        proxy_set_header Host $http_host;" >> $CFG
+    echo "        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;" >> $CFG
+    echo "        proxy_set_header Host \$http_host;" >> $CFG
     echo "        proxy_redirect off;" >> $CFG
     echo "        proxy_pass http://app_server;" >> $CFG
     echo "    }" >> $CFG
