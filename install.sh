@@ -108,7 +108,7 @@ install_from_source http://pysqlite.googlecode.com/files/ pysqlite-2.6.0.tar.gz 
 
 echo -e "\nRemoving development packages with 'apt'"
 apt-get remove -q -y build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &> $LOG
-apt-get autoremove &> $LOG
+apt-get autoremove -q -y &> $LOG
 
 # configure nginx
 if [ -e /etc/nginx/sites-enabled/default ]; then
