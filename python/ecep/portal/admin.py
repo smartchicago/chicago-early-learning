@@ -1,5 +1,5 @@
 from portal.models import Location
-from django.contrib import admin
+from django.contrib.gis import admin
 
-admin.site.register(Location)
+admin.site.register(Location, admin.OSMGeoAdmin)
 

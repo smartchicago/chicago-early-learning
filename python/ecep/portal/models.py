@@ -35,7 +35,7 @@ class Location(models.Model):
     prg_size = models.CharField('Program Size', max_length=100)
     n_classrooms = models.TextField('Number of Classrooms')
     waitlist = models.TextField('Waitlist Situation')
-    geom = models.PointField('Geometry')
+    geom = models.PointField('Geometry', null=True)
     objects = models.GeoManager()
 
     def __unicode__(self):

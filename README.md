@@ -13,13 +13,17 @@ After installation of Ubuntu Server 12.04, run the following commands from the t
 The installer will go through the process of:
 
 - Setting up the installation directory
-- Loading distribution software packages required for building and running
-- Download, build, and install packages required for running
-- Remove packages used during build only
 - Setup nginx (webserver)
 - Setup gunicorn (appserver)
 - Start nginx
 - Start gunicorn
+- Setup postgis
+- Create a django local_settings.py file
+
+After running ./install.sh, the database will need to be initialized for use by django with:
+
+    cd python/ecep
+    python manage.py syncdb
 
 ## Support
 

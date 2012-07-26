@@ -36,6 +36,9 @@ apt-get install -q -y screen openssh-server nginx gunicorn python-django postgre
 
 service postgresql start &>> $LOG
 
+easy_install pip &>> $LOG
+pip install -r requirements.txt &>> $LOG
+
 # configure postgis
 echo -e "\n##\n## Messages from setting up postgis:\n##" &>> $LOG
 su postgres -c "psql -f install.sql" &>> $LOG
