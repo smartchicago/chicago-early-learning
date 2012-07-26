@@ -118,7 +118,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'django.contrib.gis',
-    'ecep.portal',
+    'portal',
 )
 
 # A sample logging configuration. The only tangible logging
