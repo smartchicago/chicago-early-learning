@@ -32,83 +32,18 @@ mkdir -p $INSTALL_DIR
 
 # install requirements via apt-get
 echo -e "\nInstalling required packages with 'apt'"
-apt-get install -q -y screen openssh-server nginx gunicorn python-django libgeos-c1 proj-bin build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &> $LOG
+apt-get install -q -y screen openssh-server nginx gunicorn python-django postgresql-9.1-postgis gdal-bin libgdal1-1.7.0 libgeos-c1 psycopg2 &>> $LOG
 
-# build in R*Tree support to SQLite
-install_from_source() {
-    # URL
-    if [ -z "$1" ]; then
-        return 1
-    fi
+service postgresql start &>> $LOG
 
-    # Archive
-    if [ -z "$2" ]; then
-        return 2
-    fi
-
-    # Extracted dir
-    if [ -z "$3" ]; then
-        return 3
-    fi
-
-    # CFLAGS
-    if [ -z "$4" ]; then
-        CFLAGS=
-    else
-        CFLAGS=$4
-    fi
-
-    # Configure options
-    if [ -z "$5" ]; then
-        CFG_OPTS=
-    else
-        CFG_OPTS=$5
-    fi
-
-    echo -e "\nDownloading $1$2"
-    wget -q -T 30 $1$2
-
-    echo "Extracting $2"
-    tar zxf $2
-    cd $3
-
-    if [ -z "$6" ]; then
-        echo "Building $3"
-        echo -e "\n##\n## Results from the command 'CFLAGS=$CFLAGS ./configure $CFG_OPTS':\n##" >> $LOG
-        CFLAGS=$CFLAGS ./configure $CFG_OPTS &>> $LOG
-        echo -e "\n##\n## Results from the command 'make install'\n##" >> $LOG
-        make install &>> $LOG
-    else
-        mv setup.cfg setup.cfg.orig
-        sed -e "s/#include_/include_/" -e "s/#library/library/" -e "s/define=SQL/#define=SQL/" setup.cfg.orig > setup.cfg
-        echo -e "\n##\n## Results from the command 'python setup.py install'\n##" >> $LOG
-        python setup.py install &>> $LOG
-    fi
-    cd ..
-
-    echo "Cleaning up $3"
-    rm $2
-    rm -rf $3
-}
-
-echo -e "\nSQLite with R*Tree support"
-install_from_source http://sqlite.org/ sqlite-autoconf-3071300.tar.gz sqlite-autoconf-3071300 "-DSQLITE_ENABLE_RTREE=1"
-
-echo -e "\nFreeXL library for reading MS Excel data files"
-install_from_source http://www.gaia-gis.it/gaia-sins/freexl-sources/ freexl-1.0.0d.tar.gz freexl-1.0.0d
-
-echo -e "\nlibspatialite"
-install_from_source http://www.gaia-gis.it/gaia-sins/libspatialite-sources/ libspatialite-amalgamation-3.0.1.tar.gz libspatialite-amalgamation-3.0.1 "" "--disable-geosadvanced --without-freexl"
-
-echo -e "\nSpatiaLite Tools"
-install_from_source http://www.gaia-gis.it/gaia-sins/spatialite-tools-sources/ spatialite-tools-3.0.0-stable.tar.gz spatialite-tools-3.0.0-stable
-
-echo -e "\npysqlite"
-install_from_source http://pysqlite.googlecode.com/files/ pysqlite-2.6.3.tar.gz pysqlite-2.6.3 "" "" true
-
-echo -e "\nRemoving development packages with 'apt'"
-apt-get remove -q -y build-essential libgeos-dev libproj-dev libexpat1-dev pkg-config libiconv-hook-dev python-dev &>> $LOG
-apt-get autoremove -q -y &>> $LOG
+# configure postgis
+echo -e "\n##\n## Messages from setting up postgis:\n##" &>> $LOG
+su postgres -c "createdb -E UTF8 template_postgis" &>> $LOG
+su postgres -c "psql -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql -d template_postgis" &>> $LOG
+su postgres -c "psql -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql -d template_postgis" &>> $LOG
+su postgres -c "psql -c \"update pg_database set datistemplate='t', datallowconn='f' where datname='template_postgis'\"" &>> $LOG
+su postgres -c "psql -c \"create role ecep with login password 'ecep'\"" &>> $LOG
+su postgres -c "createdb -E UTF8 -O ecep -T template_postgis ecep" &>> $LOG
 
 # configure nginx
 if [ -e /etc/nginx/sites-enabled/default ]; then
