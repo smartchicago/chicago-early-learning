@@ -38,12 +38,7 @@ service postgresql start &>> $LOG
 
 # configure postgis
 echo -e "\n##\n## Messages from setting up postgis:\n##" &>> $LOG
-su postgres -c "createdb -E UTF8 template_postgis" &>> $LOG
-su postgres -c "psql -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql -d template_postgis" &>> $LOG
-su postgres -c "psql -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql -d template_postgis" &>> $LOG
-su postgres -c "psql -c \"update pg_database set datistemplate='t', datallowconn='f' where datname='template_postgis'\"" &>> $LOG
-su postgres -c "psql -c \"create role ecep with login password 'ecep'\"" &>> $LOG
-su postgres -c "createdb -E UTF8 -O ecep -T template_postgis ecep" &>> $LOG
+su postgres -c "psql -f install.sql" &>> $LOG
 
 # configure nginx
 if [ -e /etc/nginx/sites-enabled/default ]; then
