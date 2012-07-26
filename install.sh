@@ -121,3 +121,37 @@ popd &> /dev/null
 
 service gunicorn start
 service nginx start
+
+configure_django() {
+    if [ -z "$1" ]; then
+        return 1
+    fi
+
+    echo -en "\nPlease enter a username for the django admin: "
+    read USERNAME
+
+    echo -en "\nPlease enter an email address for the django admin: "
+    read EMAIL
+
+    LOCAL=$1/python/ecep/local_settings.py
+
+    echo "ADMINS = (" > $LOCAL
+    echo "    ('$USERNAME', '$EMAIL')," >> $LOCAL
+    echo ")" >> $LOCAL
+    echo "" >> $LOCAL
+    echo "MANAGERS = ADMINS" >> $LOCAL
+    echo "" >> $LOCAL
+    echo "MEDIA_ROOT = '$1/python/ecep/media/'" >> $LOCAL
+    echo "" >> $LOCAL
+    echo "STATIC_ROOT = '$1/python/ecep/static/'" >> $LOCAL
+    echo "" >> $LOCAL
+    echo "SECRET_KEY = 'vv=s7@tj%fbs#o=xfmb3xu-0m94g*ssxftm@u86j80xqc@kb^8'" >> $LOCAL
+    echo "" >> $LOCAL
+    echo "TEMPLATE_DIRS = (" >> $LOCAL
+    echo "    '$1/python/ecep/templates/'" >> $LOCAL
+    echo ")" >> $LOCAL
+
+    return 0
+}
+
+configure_django $INSTALL_DIR

@@ -1,2 +1,4 @@
 *.pyc
 *.log
+python/ecep/static/*
+python/ecep/local_settings.py
