@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+{% load portal_extras %}
 
 {% block title %}Early Childhood Education Portal{% endblock %}
 
 {% block otherhead %}
-<!-- custom head tags go here -->
+<link rel="stylesheet" type="text/css" href="{% static "css/locations.css" %}"/>
 {% endblock %}
 
 {% block content %}
-{% load portal_extras %}
 
 <div class="location">
     <h2>{{ model.site_name }}</h2>
@@ -65,18 +66,22 @@
     {% endif %}
 
     {% for simple in sfields %}
-    <h3>{{ simple.0 }}</h3>
+    <div class="loc_simplefield">
+        <h3>{{ simple.0 }}</h3>
 
-    <div>{{ simple.1 }}</div>
+        <div>{{ simple.1 }}</div>
+    </div>
     {% endfor %}
 
     {% if model.url or model.email %}
-    <h3>Contact</h3>
+    <div class="loc_contact">
+        <h3>Contact</h3>
 
-    <div>
-        {% if model.url %}<em>Website:</em> {{ model.url|urlize }}<br />{% endif %}
-        {% if model.email %}<em>Email:</em> <a href="mailto:{{ model.email }}">{{ model.email }}</a>{% endif %}
-    </div>
+        <div>
+            {% if model.url %}<em>Website:</em> {{ model.url|urlize }}<br />{% endif %}
+            {% if model.email %}<em>Email:</em> <a href="mailto:{{ model.email }}">{{ model.email }}</a>{% endif %}
+        </div>
+    </div>    
 
     {% endif %}
 </div>
