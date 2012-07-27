@@ -1,0 +1,30 @@
+.location {
+    width: 50%;
+}
+
+.location h2 {
+    margin-bottom: 1em;
+}
+
+.loc_address {
+    margin-bottom: 0.75em;
+}
+
+.loc_phone_table thead {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.loc_waitlist {
+    border: 1px solid black;
+    background-color: #eeeeee;
+    padding: 1em;
+    margin: 1em 0;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: bold;
+}
+
+.loc_simplefield {
+    margin-bottom: 0.75em;
+}
