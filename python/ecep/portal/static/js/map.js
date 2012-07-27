@@ -59,7 +59,7 @@ ecep.init = function() {
     // attach the geolocation handler to the geolocation button
     $('#geolocate').click(ecep.geolocate);
 
-    // attache the search handler to the search button
+    // attach the search handler to the search button
     $('#search').click(ecep.search);
     $('#start-button').click(ecep.addressClicked);
 

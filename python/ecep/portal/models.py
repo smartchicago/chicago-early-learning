@@ -43,8 +43,16 @@ class Location(models.Model):
 
     @staticmethod
     def get_boolean_fields():
+        """
+        Get all the fields of the model that are NullBooleanField types.
+
+        This method does not use a static list of names, but rather inspects
+        the meta class attached to the model to introspect on the field types.
+        This also has the benefit of providing the verbose name of the field.
+        """
         fields = []
         for field in Location._meta.fields:
             if field.get_internal_type() == 'NullBooleanField':
                 fields.append((field.get_attname(),field.verbose_name,))
+
         return fields
