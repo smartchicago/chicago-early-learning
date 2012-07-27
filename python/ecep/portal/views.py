@@ -71,3 +71,6 @@ def faq(request):
     return HttpResponse(t.render(c))
     #return simple_resonse('faq.html')
 
+def location(request, location_id):
+    loc = get_object_or_404(Location, id=location_id)
+    return render_to_response('location.html', {'model': loc})
