@@ -71,6 +71,9 @@ document, and loads the fields into the portal.Location models of the django app
         reader = csv.DictReader(filename)
 
         for row in reader:
+            if row['Site name'] is None or row['Site name'] == '':
+                continue
+
             l = Location(
                 site_name = row['Site name'],
                 address = row['Address'],
