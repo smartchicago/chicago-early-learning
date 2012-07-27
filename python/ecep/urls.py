@@ -1,14 +1,15 @@
 from django.conf.urls.defaults import patterns, include, url
 
-# Uncomment the next two lines to enable the admin:
 from django.contrib.gis import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    #url(r'^$', 'views.home', name='home'),
+    # Index page is in the 'portal' app
     url(r'^$', 'portal.views.index'),
 
-    # Uncomment the next line to enable the admin:
+    # Verbose details about a location
+    url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
+
+    # Admin interface
     url(r'^admin/', include(admin.site.urls)),
 )

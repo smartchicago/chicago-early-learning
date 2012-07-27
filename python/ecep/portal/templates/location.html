@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load portal_extras %}
+
+{% block title %}Early Childhood Education Portal{% endblock %}
+
+{% block otherhead %}
+<link rel="stylesheet" type="text/css" href="{% static "css/locations.css" %}"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="location">
+    <h2>{{ model.site_name }}</h2>
+
+    <div class="loc_address">{{ model.address }}</br>
+    {{ model.city }}, {{ model.state }} {{ model.zip }}</div>
+
+    {% if model.phone1 or model.phone2 or model.phone3 or model.fax %}
+    <table class="loc_phone_table">
+        <thead>
+            <tr>
+                {% if model.phone1 %}
+                <td>Main Phone</td>
+                {% if model.phone2 %}
+                <td>Alt. Phone</td>
+                {% if model.phone3 %}
+                <td>Alt. Phone</td>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+                {% if model.fax %}
+                <td>Fax</td>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% if model.phone1 %}
+                <td>{{ model.phone1|nicephone }}</td>
+                {% if model.phone2 %}
+                <td>{{ model.phone2|nicephone }}</td>
+                {% if model.phone3 %}
+                <td>{{ model.phone3|nicephone }}</td>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+                {% if model.fax %}
+                <td>{{ model.fax|nicephone }}</td>
+                {% endif %}
+            </tr>    
+        </tbody>
+    </table>
+    {% endif %}
+
+    <div class="loc_waitlist">
+        Waitlist Status: {{ model.waitlist }}
+    </div>
+
+    {% if bfields %}
+    <h3>Features</h3>
+
+    <ul>
+        {{ bfields|unordered_list }}
+    </ul>
+    {% endif %}
+
+    {% for simple in sfields %}
+    <div class="loc_simplefield">
+        <h3>{{ simple.0 }}</h3>
+
+        <div>{{ simple.1 }}</div>
+    </div>
+    {% endfor %}
+
+    {% if model.url or model.email %}
+    <div class="loc_contact">
+        <h3>Contact</h3>
+
+        <div>
+            {% if model.url %}<em>Website:</em> {{ model.url|urlize }}<br />{% endif %}
+            {% if model.email %}<em>Email:</em> <a href="mailto:{{ model.email }}">{{ model.email }}</a>{% endif %}
+        </div>
+    </div>    
+
+    {% endif %}
+</div>
+{% endblock %}
