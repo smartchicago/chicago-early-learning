@@ -1,11 +1,10 @@
-# Create your views here.
-
 from django.template import Context, loader
-from django.http import HttpResponse
+from django.shortcuts import render_to_response, get_object_or_404
+from models import Location
 
 def index(request):
-   t = loader.get_template('index.html')
-   c = Context({ })
-   return HttpResponse(t.render(c))
+    return render_to_response('index.html', {})
 
-
+def location(request, location_id):
+    loc = get_object_or_404(Location, id=location_id)
+    return render_to_response('location.html', {'model': loc})
