@@ -1,18 +1,14 @@
-.location {
+.container .location {
     width: 50%;
 }
 
-.location_popup {
-    width: 30em;
-}
-
-.location h2 {
+.container .location h2 {
     margin-top: 3em;
     margin-bottom: 1em;
 }
 
 .loc_directions {
-    float:right;
+    float: left;
     margin: 0.75em;
 }
 
@@ -22,22 +18,22 @@
 
 .loc_moreinfo {
     float:right;
-    margin: 0.5em;
+    margin: 0.75em;
+}
+
+.location_item {
+    width: 30em;
 }
 
 .loc_address {
     margin-bottom: 0.75em;
 }
 
-.location_popup .loc_address {
+.loc_address {
     color: #999999;
 }
 
-.location_popup label {
-    display: inline;
-}
-
-.location_popup .loc_phone_table {
+.loc_phone_table {
     margin: 1em 0;
 }
 
@@ -165,7 +161,7 @@
     bottom: 0;
     width: 300px;
     overflow-y: scroll;
-    display: none; 
+    display: none;
 }
 .visible-phone.directions {
     position: absolute;

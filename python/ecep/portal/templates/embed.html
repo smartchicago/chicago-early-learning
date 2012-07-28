@@ -1,0 +1,21 @@
+{% load portal_extras %}
+
+<div class="location_item">
+{% include "popup.html" %}
+
+{% if bfields %}
+<h3>Features</h3>
+
+<ul>
+    {{ bfields|unordered_list }}
+</ul>
+{% endif %}
+
+{% for simple in sfields %}
+<div class="loc_simplefield">
+    <h3>{{ simple.0 }}</h3>
+
+    <div>{{ simple.1 }}</div>
+</div>
+{% endfor %}
+</div>

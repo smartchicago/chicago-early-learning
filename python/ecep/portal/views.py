@@ -17,11 +17,12 @@ def location(request, location_id):
     """
     Render a detail page for a single location.
     """
-    loc = get_object_or_404(Location, id=location_id)
+    item = get_object_or_404(Location, id=location_id)
 
     simple_text = [
         'n_classrooms', 'prg_dur', 'prg_size', 'prg_sched', 'site_affil', 
-        'ctr_director', 'exec_director', 'q_stmt', 'e_info', 'as_proc', 'accred']
+        'ctr_director', 'exec_director', 'q_stmt', 'e_info', 'as_proc', 'accred',
+        'waitlist']
 
     # simple fields to present -- these are the attributes that have text content
     sfields = []
@@ -32,17 +33,22 @@ def location(request, location_id):
     for field in Location._meta.fields:
         # get boolean fields that are set, and set to True
         if field.get_internal_type() == 'NullBooleanField' and \
-            getattr(loc, field.get_attname()):
+            getattr(item, field.get_attname()):
                 bfields.append(field.verbose_name)
         # get char fields & values if they are listed above, and not empty
         elif field.get_internal_type() == 'CharField' or field.get_internal_type() == 'TextField':
             for simple in simple_text:
                 if field.get_attname() == simple and \
-                    getattr(loc, field.get_attname()) is not None and \
-                    getattr(loc, field.get_attname()) != '':
-                        sfields.append( (field.verbose_name, getattr(loc, field.get_attname()),) )
+                    getattr(item, field.get_attname()) is not None and \
+                    getattr(item, field.get_attname()) != '':
+                        sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
 
-    return render_to_response('location.html', {'model': loc, 'bfields': bfields, 'sfields': sfields })
+    if 'm' in request.GET and request.GET['m'] == 'html':
+        tpl = 'embed.html'
+    else:
+        tpl = 'location.html'
+
+    return render_to_response(tpl, {'item': item, 'bfields': bfields, 'sfields': sfields, 'is_popup':False })
 
 @cache_control(must_revalidate=False, max_age=30)
 def location_list(request):
@@ -69,7 +75,7 @@ def location_list(request):
 
     for i in range(0, len(items)):
         t = loader.get_template('popup.html')
-        c = Context({'item': items[i]})
+        c = Context({'item': items[i], 'is_popup':True})
         content = t.render(c)
         content = content.replace('\n', '\\n').replace('"', '\\"')
         setattr(items[i], 'content', content)
