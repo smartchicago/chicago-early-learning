@@ -50,6 +50,7 @@ def location(request, location_id):
 
     return render_to_response(tpl, {'item': item, 'bfields': bfields, 'sfields': sfields, 'is_popup':False })
 
+
 @cache_control(must_revalidate=False, max_age=30)
 def location_list(request):
     """
