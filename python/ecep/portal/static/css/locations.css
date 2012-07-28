@@ -16,7 +16,7 @@
     margin-left: -56px;
 }
 
-.loc_moreinfo {
+.loc_moreinfo, .loc_lessinfo {
     float:right;
     margin: 0.75em;
 }

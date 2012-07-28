@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
 from django.db.models import Q
 from models import Location
-import logging
+import logging, hashlib
 
 logger = logging.getLogger(__name__)
 
@@ -43,12 +43,20 @@ def location(request, location_id):
                     getattr(item, field.get_attname()) != '':
                         sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
 
-    if 'm' in request.GET and request.GET['m'] == 'html':
-        tpl = 'embed.html'
-    else:
-        tpl = 'location.html'
+    tpl = 'location.html'
+    if 'm' in request.GET:
+        if request.GET['m'] == 'html':
+            tpl = 'embed.html'
+        elif request.GET['m'] == 'popup':
+            tpl = 'popup.html'
 
-    return render_to_response(tpl, {'item': item, 'bfields': bfields, 'sfields': sfields, 'is_popup':False })
+    return render_to_response(tpl, {
+        'item': item, 
+        'bfields': bfields, 
+        'sfields': sfields, 
+        'is_popup': tpl == 'popup.html',
+        'is_embed': tpl == 'embed.html'
+    })
 
 
 @cache_control(must_revalidate=False, max_age=30)
@@ -56,7 +64,7 @@ def location_list(request):
     """
     Get a list of all the locations.
     """
-    
+    etag_hash = 'empty' 
     item_filter = None
     for f in request.GET:
         for field in Location._meta.fields:
@@ -64,9 +72,12 @@ def location_list(request):
                 logger.debug('Adding Filter: %s = %s' % (f, request.GET[f],))
                 kw = { f: request.GET[f]=='true' }
                 if item_filter is None:
+                    etag_hash = str(kw)
                     item_filter = Q(**kw)
                 else:
-                    item_filter = item_filter & Q(**kw)
+                    etag_hash += str(kw)
+                    item_filter = item_filter | Q(**kw)
+
     if item_filter is None:
         items = list(Location.objects.all())
     else:
@@ -74,15 +85,13 @@ def location_list(request):
 
     logger.debug('Retrieved %d items.' % len(items))
 
-    for i in range(0, len(items)):
-        t = loader.get_template('popup.html')
-        c = Context({'item': items[i], 'is_popup':True})
-        content = t.render(c)
-        content = content.replace('\n', '\\n').replace('"', '\\"')
-        setattr(items[i], 'content', content)
+    # compute this filter combination's hash
+    md5 = hashlib.md5()
+    md5.update(etag_hash)
+    etag_hash = md5.hexdigest()
 
     rsp = render_to_response('locations.json', {'items':items}, mimetype='application/json')
-    rsp['Etag'] = 'v1.0'
+    rsp['Etag'] = etag_hash
     return rsp
 
 

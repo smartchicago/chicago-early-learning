@@ -18,4 +18,10 @@
     <div>{{ simple.1 }}</div>
 </div>
 {% endfor %}
+
+{% if is_embed %}
+<div class="loc_lessinfo">
+    <a href="/location/{{ item.id }}" class="btn" data-id="{{ item.id }}"><i class="icon-arrow-down"></i> Less Info</a>
+</div>
+{% endif %}
 </div>
