@@ -2,6 +2,8 @@ from django.template import Context, loader
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
 from django.db.models import Q
+from django.contrib.gis.measure import Distance
+from django.contrib.gis.geos import GEOSGeometry
 from models import Location
 import logging, hashlib
 
@@ -77,6 +79,14 @@ def location_list(request):
                 else:
                     etag_hash += str(kw)
                     item_filter = item_filter | Q(**kw)
+
+    if 'pos' in request.GET and 'rad' in request.GET:
+        geom = GEOSGeometry('POINT(%s)' % request.GET['pos'])
+        rad_filter = Q(geom__distance_lte=(geom, Distance(mi=request.GET['rad'])))
+        if item_filter is None:
+            item_filter = rad_filter
+        else:
+            item_filter = item_filter & rad_filter
 
     if item_filter is None:
         items = list(Location.objects.all())

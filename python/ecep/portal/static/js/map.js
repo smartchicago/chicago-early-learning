@@ -39,7 +39,7 @@ ecep.init = function() {
     });
 
     var opts = {
-        center: new google.maps.LatLng(41.85003, -87.65005),
+        center: new google.maps.LatLng(41.83772262398233, -87.68798449999997),
         zoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -50,7 +50,6 @@ ecep.init = function() {
     ecep.geocoder = new google.maps.Geocoder();
     ecep.directions_service = new google.maps.DirectionsService();
     ecep.directions_display = new google.maps.DirectionsRenderer({draggable:true});
-    ecep.directions_display.setMap(ecep.map);
 
     // load directions text when directions are changed
     ecep.directionsListener = google.maps.event.addListener(ecep.directions_display, 'directions_changed', ecep.typeDirections);
@@ -159,6 +158,12 @@ ecep.loadLocations = function() {
         data[elem.id] = elem.value;
     });
 
+    if (ecep.geocoded_marker) {
+        var pos = ecep.geocoded_marker.getPosition()
+        data.pos = pos.lng() + ' ' + pos.lat();
+        data.rad = $('#search_radius').val();
+    }
+
     var load = $.ajax({
         url: ecep.getUrl('loadLocations'),
         dataType: 'json',
@@ -167,11 +172,21 @@ ecep.loadLocations = function() {
 
     load.done(function(data, textStatus, jqxhr) {
         var markers = [];
+        var bounds = new google.maps.LatLngBounds();
+
+        if (ecep.geocoded_marker) {
+            bounds.extend(ecep.geocoded_marker.getPosition());
+        }
+        if (ecep.geolocated_marker) {
+            bounds.extend(ecep.geolocated_marker.getPosition());
+        }
+
         for (var i = 0; i < data.length; i++) {
             if (!data[i].lng || !data[i].lat) {
                 continue;
             }
             var ll = new google.maps.LatLng(data[i].lat, data[i].lng);
+            bounds.extend(ll);
 
             var marker = new google.maps.Marker({
                 position: ll,
@@ -187,6 +202,8 @@ ecep.loadLocations = function() {
             ecep.clusterr.clearMarkers();
         }
         ecep.clusterr = new MarkerClusterer(ecep.map, markers, {maxZoom:18});
+
+        ecep.map.fitBounds(bounds);
 
         google.maps.event.removeListener(ecep.loadedListener);
     });
@@ -233,6 +250,9 @@ ecep.geocode = function(addr) {
             var ll = results[0].geometry.location;
             ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
             $('#search_address').val(addr);
+
+            // trigger the load event, and apply the radius filter
+            ecep.loadLocations();
         }
         else {
             alert('Sorry, Google cannot find that address.');
@@ -257,7 +277,9 @@ ecep.dropMarker = function(loc, title, color, reposition) {
             new google.maps.Point(12,37))
     });
     if (reposition) {
-        ecep.map.setCenter(loc);
+        if (!ecep.map.getBounds().contains(loc)) {
+            ecep.map.setCenter(loc);
+        }
     }
     return marker;
 };
@@ -301,9 +323,20 @@ ecep.directions = function(event) {
 
 ecep.typeDirections = function() {
     var result = ecep.directions_display.directions;
+    ecep.directions_display.setMap(ecep.map);
 
     var direlem = $('.directions');
     direlem.empty().show();
+    direlem.append($('<button id="clear_dir" class="btn"><i class="icon-remove"></i> Close</button>'));
+
+    $('#clear_dir').click(function(){
+        // clear any existing directions off the page
+        ecep.directions_display.setMap(null);
+        direlem.hide();
+        $('#map_container').css('right', '0');
+        google.maps.event.trigger(ecep.map, 'resize');
+    });
+
     direlem.append($('<h3>Driving Directions</h3>'));
 
     var warn = $('<div />');
