@@ -326,13 +326,21 @@ ecep.typeDirections = function() {
     ecep.directions_display.setMap(ecep.map);
 
     var direlem = $('.directions');
-    direlem.empty().show();
-    direlem.append($('<button id="clear_dir" class="btn"><i class="icon-remove"></i> Close</button>'));
+    if (direlem.length == 0) {
+        $('#map_container')
+            .after('<div class="visible-phone directions"/>')
+            .after('<div class="hidden-phone directions"/>');
+        direlem = $('.directions');
+    }
+    else {
+        direlem.empty();
+    }
+    direlem.append($('<button class="clear_dir btn"><i class="icon-remove"></i> Close</button>'));
 
-    $('#clear_dir').click(function(){
+    $('.clear_dir').click(function(){
         // clear any existing directions off the page
         ecep.directions_display.setMap(null);
-        direlem.hide();
+        direlem.remove();
         $('#map_container').css('right', '0');
         google.maps.event.trigger(ecep.map, 'resize');
     });

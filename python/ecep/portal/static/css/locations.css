@@ -161,7 +161,6 @@
     bottom: 0;
     width: 300px;
     overflow-y: scroll;
-    display: none;
 }
 .visible-phone.directions {
     position: absolute;
@@ -170,7 +169,6 @@
     top: 6em;
     bottom: 0;
     background-color: #ffffff;
-    display: none;
 }
 .d_step {
     margin: 1em auto;
