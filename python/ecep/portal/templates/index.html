@@ -4,11 +4,35 @@
 
 {% block otherhead %}
 <!-- custom head tags go here -->
+<style type="text/css">
+    #map_container { 
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 3.25em;
+        bottom: 0;
+    }
+    #map { height: 100%; }
+    #map img { max-width: none; }
+</style>
 {% endblock %}
 
 {% block content %}
-
-<div class="map">
-Map goes here!
+<div id="map_container">
+<div id="map"></div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc&sensor=false"></script>
+<script type="text/javascript">
+$(function(){
+    var opts = {
+        center: new google.maps.LatLng(41.85003, -87.65005),
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map($('#map')[0], opts);
+});
+</script>
 {% endblock %}
