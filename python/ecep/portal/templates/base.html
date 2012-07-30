@@ -1,18 +1,18 @@
+{% load staticfiles %}
 <!DOCTYPE html> 
 <html> 
     <head> 
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0"> 
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.css" %}">
         <style type="text/css">
             body {
                 padding-top: 60px;
                 padding-bottom: 40px;
             }    
         </style>
-        <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-responsive.css">
-
+        <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap-responsive.css" %}">
 
         <title>{% block title %}{% endblock %}</title> 
         {% block otherhead %}{% endblock %}
@@ -39,8 +39,8 @@
 		{% block content %}{% endblock %}
 		</div>
     </div>
-    <script src="/static/js/jquery-1.7.2.js"> </script>
-    <script src="/static/bootstrap/js/bootstrap.js"> </script>
+    <script src="{% static "js/jquery-1.7.2.js" %}"></script>
+    <script src="{% static "bootstrap/js/bootstrap.js" %}"></script>
     {% block scripts %}{% endblock %}
 
     </body> 
