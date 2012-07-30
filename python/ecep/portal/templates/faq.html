@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Early Childhood Education Portal - FAQ{% endblock %}
+
+{% block otherhead %}
+<!-- custom head tags go here -->
+{% endblock %}
+
+{% block content %}
+
+<div>
+FAQ page goes here.
+<br />
+TODO: load content from the /static directory, or just inline it in this template?
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+$(document).ready(function() { 
+    $('#faq-link').addClass('active');
+});
+</script>
+
+{% endblock %}
