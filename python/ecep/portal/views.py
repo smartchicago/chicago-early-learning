@@ -41,18 +41,6 @@ def location(request, location_id):
 
     return render_to_response('location.html', {'model': loc, 'bfields': bfields, 'sfields': sfields })
 
-#This doesn't work for some reason, will figure out later
-#def simple_response(template):
-    #"""
-    #Dead simple handler for rendering a template
-
-    #template: The path to the template to render
-    #"""
-
-    #t = loader.get_template(template)
-    #c = Context({ })
-    #return HttpResponse(t.render(c))
-
 def index(request):
     t = loader.get_template('index.html')
     c = Context({ })
@@ -71,6 +59,3 @@ def faq(request):
     return HttpResponse(t.render(c))
     #return simple_resonse('faq.html')
 
-def location(request, location_id):
-    loc = get_object_or_404(Location, id=location_id)
-    return render_to_response('location.html', {'model': loc})
