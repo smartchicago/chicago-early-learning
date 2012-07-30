@@ -3,7 +3,7 @@
 <html> 
     <head> 
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0;"> 
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0"> 
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.css" %}">
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap-responsive.css" %}">
@@ -20,9 +20,9 @@
                 </a>
                 <div class="hidden-phone">
                     <ul class="nav nav-pills pull-right">
-                        <li><a href="#">TEXT FOR INFO</a></li>
-                        <li><a href="#">ABOUT</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li id="text-link"><a href="#">TEXT FOR INFO</a></li>
+                        <li id="about-link"><a href="about.html">ABOUT</a></li>
+                        <li id="faq-link"><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="visible-phone">
