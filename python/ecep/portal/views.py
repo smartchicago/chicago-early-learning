@@ -15,25 +15,6 @@ from models import Location
     #c = Context({ })
     #return HttpResponse(t.render(c))
 
-def index(request):
-    t = loader.get_template('index.html')
-    c = Context({ })
-    return HttpResponse(t.render(c))
-    #return simple_resonse('index.html')
-
-def about(request):
-    t = loader.get_template('about.html')
-    c = Context({ })
-    return HttpResponse(t.render(c))
-    #return simple_resonse('about.html')
-
-def faq(request):
-    t = loader.get_template('faq.html')
-    c = Context({ })
-    return HttpResponse(t.render(c))
-    #return simple_resonse('faq.html')
-    return render_to_response('index.html', {})
-
 def location(request, location_id):
     loc = get_object_or_404(Location, id=location_id)
 
@@ -59,3 +40,22 @@ def location(request, location_id):
                         sfields.append( (field.verbose_name, getattr(loc, field.get_attname()),) )
 
     return render_to_response('location.html', {'model': loc, 'bfields': bfields, 'sfields': sfields })
+
+def index(request):
+    t = loader.get_template('index.html')
+    c = Context({ })
+    return HttpResponse(t.render(c))
+    #return simple_resonse('index.html')
+
+def about(request):
+    t = loader.get_template('about.html')
+    c = Context({ })
+    return HttpResponse(t.render(c))
+    #return simple_resonse('about.html')
+
+def faq(request):
+    t = loader.get_template('faq.html')
+    c = Context({ })
+    return HttpResponse(t.render(c))
+    #return simple_resonse('faq.html')
+
