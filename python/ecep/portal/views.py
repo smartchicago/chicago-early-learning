@@ -7,7 +7,11 @@ from models import Location
 def index(request):
     return render_to_response('index.html')
 
+
 def location(request, location_id):
+    """
+    Render a detail page for a single location.
+    """
     loc = get_object_or_404(Location, id=location_id)
 
     simple_text = [
@@ -33,8 +37,25 @@ def location(request, location_id):
 
     return render_to_response('location.html', {'model': loc, 'bfields': bfields, 'sfields': sfields })
 
+
+def location_list(request):
+    """
+    Get a list of all the locations.
+    """
+    items = list(Location.objects.all())
+    for i in range(0, len(items)):
+        t = loader.get_template('popup.html')
+        c = Context({'item': items[i]})
+        content = t.render(c)
+        content = content.replace('\n', '\\n').replace('"', '\\"')
+        setattr(items[i], 'content', content)
+
+    return render_to_response('locations.json', {'items':items}, mimetype='application/json')
+
+
 def about(request):
     return render_to_response('about.html')
+
 
 def faq(request):
     return render_to_response('faq.html')

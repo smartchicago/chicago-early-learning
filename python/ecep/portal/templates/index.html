@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block title %}Early Childhood Education Portal{% endblock %}
 
@@ -25,14 +26,6 @@
 
 {% block scripts %}
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc&sensor=false"></script>
-<script type="text/javascript">
-$(function(){
-    var opts = {
-        center: new google.maps.LatLng(41.85003, -87.65005),
-        zoom: 10,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map($('#map')[0], opts);
-});
-</script>
+<script type="text/javascript" src="{% static "js/map.js" %}"></script>
+<script type="text/javascript" src="{% static "js/markerclusterer.js" %}"></script>
 {% endblock %}
