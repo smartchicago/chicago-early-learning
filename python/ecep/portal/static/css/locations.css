@@ -2,12 +2,39 @@
     width: 50%;
 }
 
+.location_popup {
+    width: 30em;
+}
+
 .location h2 {
+    margin-top: 3em;
     margin-bottom: 1em;
+}
+
+.loc_directions {
+    float:right;
+    margin: 0.75em;
+}
+
+.loc_moreinfo {
+    float:right;
+    margin: 0.5em;
 }
 
 .loc_address {
     margin-bottom: 0.75em;
+}
+
+.location_popup .loc_address {
+    color: #999999;
+}
+
+.location_popup label {
+    display: inline;
+}
+
+.location_popup .loc_phone_table {
+    margin: 1em 0;
 }
 
 .loc_phone_table thead {
