@@ -46,7 +46,7 @@ function loadLocations() {
 
             markers.push(marker);
         }
-        new MarkerClusterer(map, markers);
+        new MarkerClusterer(map, markers, {maxZoom:18});
 
         google.maps.event.removeListener(loadedListener);
     });
