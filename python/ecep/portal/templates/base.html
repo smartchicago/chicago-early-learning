@@ -6,12 +6,6 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0"> 
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.css" %}">
-        <style type="text/css">
-            body {
-                padding-top: 60px;
-                padding-bottom: 40px;
-            }    
-        </style>
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap-responsive.css" %}">
 
         <title>{% block title %}{% endblock %}</title> 
@@ -24,11 +18,18 @@
                 <a class="brand" href="#">
                 EARLY CHILDHOOD EDUCATION PORTAL
                 </a>
-                <ul class="nav nav-pills pull-right">
-                    <li id="text-link"><a data-toggle="modal" href="#text-modal">TEXT FOR INFO</a></li>
-                    <li id="about-link"><a href="about.html">ABOUT</a></li>
-                    <li id="faq-link"><a href="faq.html">FAQ</a></li>
-                </ul>
+                <div class="hidden-phone">
+                    <ul class="nav nav-pills pull-right">
+                        <li id="text-link"><a data-toggle="modal" href="#text-modal">TEXT FOR INFO</a></li>
+                        <li id="about-link"><a href="about.html">ABOUT</a></li>
+                        <li id="faq-link"><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="visible-phone">
+                    <ul class="nav nav-pills pull-right">
+                        <li><a href="#">[X]</a></li>
+                    </ul> 
+                </div>
             </div>
         </div>
     </div>
@@ -58,11 +59,8 @@
         
 
 
-	<div>
-		<div class="container">
-		{% block content %}{% endblock %}
-		</div>
-    </div>
+    {% block content %}{% endblock %}
+    
     <script src="{% static "js/jquery-1.7.2.js" %}"></script>
     <script src="{% static "bootstrap/js/bootstrap.js" %}"></script>
     <script>
