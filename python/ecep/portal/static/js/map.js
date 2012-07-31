@@ -18,12 +18,15 @@ ecep.init = function() {
         zoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    map = new google.maps.Map($('#map')[0], opts);
+    ecep.map = new google.maps.Map($('#map')[0], opts);
 
-    infoWindow = new google.maps.InfoWindow();
+    // create one info window to re-use
+    ecep.infoWindow = new google.maps.InfoWindow();
 
     // load locations when the map is all done
-    loadedListener = google.maps.event.addListener(map, 'tilesloaded', ecep.loadLocations);
+    ecep.loadedListener = google.maps.event.addListener(ecep.map, 'tilesloaded', ecep.loadLocations);
+
+    $('#geolocate').click(ecep.geolocate);
 };
 
 ecep.loadLocations = function() {
@@ -46,9 +49,9 @@ ecep.loadLocations = function() {
 
             var showinfo = function(content, latlng, mkr) {
                 return function() {
-                    infoWindow.setContent(content);
-                    infoWindow.setPosition(latlng);
-                    infoWindow.open(map,mkr);
+                    ecep.infoWindow.setContent(content);
+                    ecep.infoWindow.setPosition(latlng);
+                    ecep.infoWindow.open(map,mkr);
                 };
             };
 
@@ -56,14 +59,53 @@ ecep.loadLocations = function() {
 
             markers.push(marker);
         }
-        new MarkerClusterer(map, markers, {maxZoom:18});
+        new MarkerClusterer(ecep.map, markers, {maxZoom:18});
 
-        google.maps.event.removeListener(loadedListener);
+        google.maps.event.removeListener(ecep.loadedListener);
     });
 
     load.fail(function(textStatus, jqxhr, message) {
         alert('Could not load locations: ' + message);
     });
+};
+
+ecep.geolocate = function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function(pos) {
+                var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                var mkr = new google.maps.Marker({
+                    map: ecep.map,
+                    position: ll,
+                    title: 'Your Location',
+                    icon: { 
+                        path: google.maps.SymbolPath.CIRCLE,
+                        fillColor: 'blue',
+                        fillOpacity: 1,
+                        scale: 5,
+                        strokeColor: 'black',
+                        strokeWeight: 1
+                    },
+                    shadow: {
+                        anchor: new google.maps.Point(-0.5, -0.25),
+                        path: google.maps.SymbolPath.CIRCLE,
+                        fillColor: 'black',
+                        fillOpacity: 0.5,
+                        scale: 5,
+                        strokeWeight: 0
+                    }
+                });
+
+                ecep.map.setCenter(ll);
+            },
+            function() {
+                alert('Could not determine your location, sorry!');
+            }
+        );
+    }
+    else {
+        alert('Your browser does not support automatic geolocation.\nPlease type your address into the search box, and click the "Search" button.');
+    }
 };
 
 google.maps.event.addDomListener(window, 'load', ecep.init);
