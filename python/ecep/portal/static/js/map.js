@@ -1,24 +1,34 @@
-var map = null;
-var loadedListener = null;
-var infoWindow = null
+ecep = ((typeof ecep == 'undefined') ? {} : ecep);
 
-function init(mapid) {
+ecep.map = null;
+ecep.loadedListener = null;
+ecep.infoWindow = null
+
+ecep.getUrl = function(name) {
+    if (name == 'loadLocations') {
+        return '/location/';
+    }
+
+    throw 'Unknown URL endpoint "' + name + '"';
+};
+
+ecep.init = function() {
     var opts = {
         center: new google.maps.LatLng(41.85003, -87.65005),
         zoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    map = new google.maps.Map($('#'+mapid)[0], opts);
+    map = new google.maps.Map($('#map')[0], opts);
 
     infoWindow = new google.maps.InfoWindow();
 
     // load locations when the map is all done
-    loadedListener = google.maps.event.addListener(map, 'tilesloaded', loadLocations);
+    loadedListener = google.maps.event.addListener(map, 'tilesloaded', ecep.loadLocations);
 };
 
-function loadLocations() {
+ecep.loadLocations = function() {
     var load = $.ajax({
-        url: '/location/',
+        url: ecep.getUrl('loadLocations'),
         dataType: 'json'
     });
 
@@ -56,6 +66,4 @@ function loadLocations() {
     });
 };
 
-$(function(){
-    init('map');
-});
+google.maps.event.addDomListener(window, 'load', ecep.init);
