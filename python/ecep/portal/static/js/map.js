@@ -24,6 +24,9 @@ ecep.init = function() {
 
     // load locations when the map is all done
     loadedListener = google.maps.event.addListener(map, 'tilesloaded', ecep.loadLocations);
+
+    //Show modal splash (see index.html)
+    $('#address-modal').modal('show');
 };
 
 ecep.loadLocations = function() {
@@ -61,9 +64,37 @@ ecep.loadLocations = function() {
         google.maps.event.removeListener(loadedListener);
     });
 
-    load.fail(function(textStatus, jqxhr, message) {
-        alert('Could not load locations: ' + message);
+    load.fail(function(jqxhr, textStatus, message) {
+        //TODO: this seems to fire for some reason if you click a link before the locations
+        //are done loading.
+        var msg = 'Could not load locations: ' + message;
+        console.error(msg);
+        //alert(msg);
     });
 };
 
 google.maps.event.addDomListener(window, 'load', ecep.init);
+
+
+//Modal splash setup
+$(document).ready(function() {
+    var inputNode = $(':input#address-input');
+    var startButtonNode = $('button#start-button');
+
+    ecep.addressClicked = function() {
+        var inputText = inputNode.val();
+        //Geocode address
+        //Pass control to map somehow
+        console.debug(inputText);
+        inputNode.val('');
+        $('#address-modal').modal('hide');
+    };
+
+    //Tie "enter" in text box to start button
+    inputNode.keyup(function(event) {
+        if(event.keyCode == 13) {
+            startButtonNode.click();
+        }
+    });
+});
+
