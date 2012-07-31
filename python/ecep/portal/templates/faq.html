@@ -3,23 +3,33 @@
 {% block title %}Early Childhood Education Portal - FAQ{% endblock %}
 
 {% block otherhead %}
-<!-- custom head tags go here -->
+<style type="text/css">
+    #faq-container { 
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 3.25em;
+        bottom: 0;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
 
-<div>
-FAQ page goes here.
-<br />
-TODO: load content from the /static directory, or just inline it in this template?
+<div class="container" id="faq-container">
+    FAQ page goes here.
+    <br />
+    TODO: load content from the /static directory, or just inline it in this template?
 </div>
+
 {% endblock %}
 
 {% block scripts %}
+
 <script type="text/javascript">
-$(document).ready(function() { 
-    $('#faq-link').addClass('active');
-});
+    $(document).ready(function() { 
+        $('#faq-link').addClass('active');
+    });
 </script>
 
 {% endblock %}
