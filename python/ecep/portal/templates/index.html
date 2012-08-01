@@ -123,8 +123,29 @@
 </div>
 
 <div id="map_container">
-<div id="map"></div>
+    <div id="map"></div>
 </div>
+
+<div id="address-modal" class="modal hide fade in">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">x</a>
+        <h3>EARLY CHILDHOOD EDUCATION PORTAL</h3>
+    </div>
+    <div class="modal-body">
+        <!-- <h4>Modal body text title</h4> -->
+        <div>Bacon ipsum dolor sit amet fatback tail ham hock bresaola, tenderloin bacon boudin pig rump spare ribs filet mignon shankle tri-tip ham. Bresaola jowl fatback meatball turducken filet mignon beef ribs capicola tri-tip spare ribs pork belly tongue t-bone.</div>
+        <div>Some sort of 4 boxes are supposed to go here, but I'm not sure what they're for</div>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <input type="text" id="address-input" class="span5"
+                placeholder="Enter an address to get started">
+            <button id="start-button" class="btn btn-success span1 pull-right"
+                onclick="ecep.addressClicked();">Start</a>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
 {% block scripts %}
