@@ -16,12 +16,12 @@
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="#">
+                <a class="brand" href="/">
                 EARLY CHILDHOOD EDUCATION PORTAL
                 </a>
                 <div class="hidden-phone">
                     <ul class="nav nav-pills pull-right">
-                        <li id="text-link"><a href="#">TEXT FOR INFO</a></li>
+                        <li id="text-link"><a data-toggle="modal" href="#text-info-modal">TEXT FOR INFO</a></li>
                         <li id="about-link"><a href="about.html">ABOUT</a></li>
                         <li id="faq-link"><a href="faq.html">FAQ</a></li>
                     </ul>
@@ -34,12 +34,32 @@
             </div>
         </div>
     </div>
-
+        
+    <div id="text-info-modal" class="modal hide fade in" style="display: none;">
+        <div class="modal-body">
+            <div class="row">
+                <a class="close" data-dismiss="modal">x</a>
+            </div>
+            <div class="row">
+                <div class="span2">
+                    <img src="http://placekitten.com/g/80/120" />
+                </div>
+                <div class="span4 pull-right">
+                    <h2>WANT INFO VIA TEXT?</h2>
+                    <h2>SEND ONE TO:</h2>
+                    <em><h2>(123) 456-7890</h2></em>
+                    <div>Just include your zip code and we'll do the rest</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {% block content %}{% endblock %}
     
     <script src="{% static "js/jquery-1.7.2.js" %}"></script>
     <script src="{% static "bootstrap/js/bootstrap.js" %}"></script>
+    <script>
+    </script>
     {% block scripts %}{% endblock %}
 
     </body> 

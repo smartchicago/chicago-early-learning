@@ -3,16 +3,25 @@
 {% block title %}Early Childhood Education Portal - About{% endblock %}
 
 {% block otherhead %}
-<!-- custom head tags go here -->
+<style type="text/css">
+    #about-container { 
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 3.25em;
+        bottom: 0;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
 
-<div>
-About page goes here.
-<br />
-TODO: load content from the /static directory, or just inline it in this template?
+<div class="container" id="about-container">
+    About page goes here.
+    <br />
+    TODO: load content from the /static directory, or just inline it in this template?
 </div>
+
 {% endblock %}
 
 {% block scripts %}
