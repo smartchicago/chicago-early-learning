@@ -2,7 +2,10 @@ ecep = ((typeof ecep == 'undefined') ? {} : ecep);
 
 ecep.map = null;
 ecep.loadedListener = null;
-ecep.infoWindow = null
+ecep.infoWindow = null;
+ecep.geocoder = null;
+ecep.geolocated_marker = null;
+ecep.geocoded_marker = null;
 
 ecep.getUrl = function(name) {
     if (name == 'loadLocations') {
@@ -13,21 +16,40 @@ ecep.getUrl = function(name) {
 };
 
 ecep.init = function() {
+    var inputNode = $(':input#address-input');
+    var startButtonNode = $('button#start-button');
+
+    // Tie "enter" in text box to start button
+    inputNode.keyup(function(event) {
+        if(event.keyCode == 13) {
+            startButtonNode.click();
+        }
+    });
+
     var opts = {
         center: new google.maps.LatLng(41.85003, -87.65005),
         zoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    map = new google.maps.Map($('#map')[0], opts);
+    ecep.map = new google.maps.Map($('#map')[0], opts);
 
-    infoWindow = new google.maps.InfoWindow();
+    // create one info window, geocoder to re-use
+    ecep.infoWindow = new google.maps.InfoWindow();
+    ecep.geocoder = new google.maps.Geocoder();
 
     // load locations when the map is all done
-    loadedListener = google.maps.event.addListener(map, 'tilesloaded', ecep.loadLocations);
+    ecep.loadedListener = google.maps.event.addListener(ecep.map, 'tilesloaded', ecep.loadLocations);
+
+    // attach the geolocation handler to the geolocation button
+    $('#geolocate').click(ecep.geolocate);
+
+    // attache the search handler to the search button
+    $('#search').click(ecep.search);
 
     //Show modal splash (see index.html)
     $('#address-modal').modal('show');
 };
+
 
 ecep.loadLocations = function() {
     var load = $.ajax({
@@ -49,9 +71,9 @@ ecep.loadLocations = function() {
 
             var showinfo = function(content, latlng, mkr) {
                 return function() {
-                    infoWindow.setContent(content);
-                    infoWindow.setPosition(latlng);
-                    infoWindow.open(map,mkr);
+                    ecep.infoWindow.setContent(content);
+                    ecep.infoWindow.setPosition(latlng);
+                    ecep.infoWindow.open(map,mkr);
                 };
             };
 
@@ -59,9 +81,9 @@ ecep.loadLocations = function() {
 
             markers.push(marker);
         }
-        new MarkerClusterer(map, markers, {maxZoom:18});
+        new MarkerClusterer(ecep.map, markers, {maxZoom:18});
 
-        google.maps.event.removeListener(loadedListener);
+        google.maps.event.removeListener(ecep.loadedListener);
     });
 
     load.fail(function(jqxhr, textStatus, message) {
@@ -73,28 +95,93 @@ ecep.loadLocations = function() {
     });
 };
 
-google.maps.event.addDomListener(window, 'load', ecep.init);
+ecep.geolocate = function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function(pos) {
+                var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                ecep.geolocated_marker = new google.maps.Marker({
+                    map: ecep.map,
+                    position: ll,
+                    title: 'Your Location',
+                    icon: { 
+                        path: google.maps.SymbolPath.CIRCLE,
+                        fillColor: 'blue',
+                        fillOpacity: 1,
+                        scale: 7,
+                        strokeColor: 'black',
+                        strokeWeight: 0.5
+                    },
+                    shadow: {
+                        anchor: new google.maps.Point(-0.5, -0.25),
+                        path: google.maps.SymbolPath.CIRCLE,
+                        fillColor: 'black',
+                        fillOpacity: 0.5,
+                        scale: 7,
+                        strokeWeight: 0
+                    }
+                });
 
+                ecep.map.setCenter(ll);
+            },
+            function() {
+                alert('Could not determine your location, sorry!');
+            }
+        );
+    }
+    else {
+        alert('Your browser does not support automatic geolocation.\nPlease type your address into the search box, and click the "Search" button.');
+    }
+};
 
-//Modal splash setup
-$(document).ready(function() {
-    var inputNode = $(':input#address-input');
-    var startButtonNode = $('button#start-button');
-
-    ecep.addressClicked = function() {
-        var inputText = inputNode.val();
-        //Geocode address
-        //Pass control to map somehow
-        console.debug(inputText);
-        inputNode.val('');
-        $('#address-modal').modal('hide');
-    };
-
-    //Tie "enter" in text box to start button
-    inputNode.keyup(function(event) {
-        if(event.keyCode == 13) {
-            startButtonNode.click();
+ecep.search = function() {
+    if (ecep.geocoded_marker != null) {
+        ecep.geocoded_marker.setMap(null);
+        ecep.geocoded_marker = null;
+    }
+    var addr = $('#search_address').val();
+    ecep.geocoder.geocode({'address': addr}, function(results, geocodeStatus) {
+        if (geocodeStatus == google.maps.GeocoderStatus.OK) {
+            var ll = results[0].geometry.location;
+            ecep.geocoded_marker = new google.maps.Marker({
+                map: ecep.map,
+                position: ll,
+                title: results[0].formatted_address,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: 'green',
+                    fillOpacity: 1,
+                    scale: 7,
+                    strokeColor: 'black',
+                    strokeWeight: 0.5
+                },
+                shadow: {
+                    anchor: new google.maps.Point(-0.5, -0.25),
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: 'black',
+                    fillOpacity: 0.5,
+                    scale: 7,
+                    strokeWeight: 0
+                }
+            });
+            ecep.map.setCenter(ll);
+        }
+        else {
+            alert('Sorry, Google cannot find that address.');
         }
     });
-});
+};
+
+ecep.addressClicked = function() {
+    var inputNode = $(':input#address-input');
+    var inputText = inputNode.val();
+    //Geocode address
+    //Pass control to map somehow
+    console.debug(inputText);
+    inputNode.val('');
+    $('#address-modal').modal('hide');
+};
+
+//Modal splash setup
+$(document).ready(ecep.init);
 
