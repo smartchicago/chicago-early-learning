@@ -16,6 +16,16 @@ ecep.getUrl = function(name) {
 };
 
 ecep.init = function() {
+    var inputNode = $(':input#address-input');
+    var startButtonNode = $('button#start-button');
+
+    // Tie "enter" in text box to start button
+    inputNode.keyup(function(event) {
+        if(event.keyCode == 13) {
+            startButtonNode.click();
+        }
+    });
+
     var opts = {
         center: new google.maps.LatLng(41.85003, -87.65005),
         zoom: 10,
@@ -39,6 +49,7 @@ ecep.init = function() {
     //Show modal splash (see index.html)
     $('#address-modal').modal('show');
 };
+
 
 ecep.loadLocations = function() {
     var load = $.ajax({
@@ -161,28 +172,16 @@ ecep.search = function() {
     });
 };
 
-google.maps.event.addDomListener(window, 'load', ecep.init);
-
+ecep.addressClicked = function() {
+    var inputNode = $(':input#address-input');
+    var inputText = inputNode.val();
+    //Geocode address
+    //Pass control to map somehow
+    console.debug(inputText);
+    inputNode.val('');
+    $('#address-modal').modal('hide');
+};
 
 //Modal splash setup
-$(document).ready(function() {
-    var inputNode = $(':input#address-input');
-    var startButtonNode = $('button#start-button');
-
-    ecep.addressClicked = function() {
-        var inputText = inputNode.val();
-        //Geocode address
-        //Pass control to map somehow
-        console.debug(inputText);
-        inputNode.val('');
-        $('#address-modal').modal('hide');
-    };
-
-    //Tie "enter" in text box to start button
-    inputNode.keyup(function(event) {
-        if(event.keyCode == 13) {
-            startButtonNode.click();
-        }
-    });
-});
+$(document).ready(ecep.init);
 
