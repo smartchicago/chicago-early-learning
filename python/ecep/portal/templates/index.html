@@ -5,91 +5,6 @@
 
 {% block otherhead %}
 <!-- custom head tags go here -->
-<style type="text/css">
-    .subnav {
-        background-color: #666666;
-        background-image: -moz-linear-gradient(center top , #666666 0%, #555555 100%);
-        background-repeat: repeat-x;
-        border: 1px solid #E5E5E5;
-        border-radius: 4px 4px 4px 4px;
-        height: 36px;
-        width: 100%;
-    }
-    .subnav-fixed {
-        border-color: #999999;
-        border-radius: 0 0 0 0;
-        border-width: 0 0 1px;
-        box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
-        left: 0;
-        position: fixed;
-        right: 0;
-        top: 42px;
-        z-index: 1020;
-    }
-    .subnav .container {
-        width: 940px;
-    }
-    .subnav .nav > li {
-        display: block;
-        float: left;
-    }
-    .subnav .nav > li > a {
-        border-radius: 0 0 0 0;
-        margin: 0;
-        padding-bottom: 11px;
-        padding-top: 11px;
-        line-height: 12px;
-        padding-left: 12px;
-        padding-right: 12px;
-        color: #dddddd;
-    }
-    .subnav .nav > li > a:hover {
-        color: #eeeeee;
-        background-color: #555555;
-    }
-    .subnav-fixed .nav {
-        margin: 0 auto;
-        padding: 0 1px;
-    }
-    .subnav .nav {
-        margin-bottom: 0;
-        display: block;
-        left: 0;
-        position: relative;
-    }
-    .subnav .nav.pull-right {
-        margin-left: 10px;
-        margin-right: 0;
-        float: right;
-    }
-    .subnav .navbar-search input.search-query {
-        padding: 2px 9px;
-        margin: 0 12px;
-        border-radius: 3px;
-    }
-    .subnav .navbar-search select.search-query {
-        padding: 2px 9px;
-        margin: 0 12px;
-        width: 7em;
-        height: 25px;
-        border-radius: 3px;
-    }
-    .subnav .navbar-search .search-query:focus {
-        background-color: #888888;
-        color: #ffffff;
-        text-shadow: 0 1px 0 #333333;
-        border: 1px solid;
-    }
-    #map_container { 
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 6em;
-        bottom: 0;
-    }
-    #map { height: 100%; }
-    #map img { max-width: none; }
-</style>
 {% endblock %}
 
 {% block content %}
@@ -102,7 +17,7 @@
         </ul>
         <form class="navbar-search pull-left">
             <input class="search-query span2" type="text" id="search_address" placeholder="Search"/>
-            <select class="search-query">
+            <select class="hidden-phone search-query">
                 <option value="0.5">&lt; 0.5 mi</option>
                 <option value="1">&lt; 1 mi</option>
                 <option value="2">&lt; 2 mi</option>
@@ -114,11 +29,13 @@
                 <a id="search" href="#"><i class="icon-search"></i> Search</a>
             </li>
         </ul>
-        <ul class="nav pull-right">
-            <li>
-                <a href="#"><i class="icon-print"></i> Print</a>
-            </li>
-        </ul>
+        <div class="hidden-phone">
+            <ul class="nav pull-right">
+                <li>
+                    <a href="#"><i class="icon-print"></i> Print</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 
@@ -137,12 +54,12 @@
         <div>Some sort of 4 boxes are supposed to go here, but I'm not sure what they're for</div>
     </div>
     <div class="modal-footer">
-        <div class="row">
-            <input type="text" id="address-input" class="span5"
-                placeholder="Enter an address to get started">
-            <button id="start-button" class="btn btn-success span1 pull-right"
-                onclick="ecep.addressClicked();">Start</a>
-        </div>
+        <input type="text" class="visible-phone address-input"
+            placeholder="Enter an address to get started" />
+        <input type="text" class="hidden-phone address-input"
+            placeholder="Enter an address to get started" />
+        <button id="start-button" class="btn btn-success pull-right"
+            onclick="ecep.addressClicked();">Start</a>
     </div>
 </div>
 

@@ -16,7 +16,7 @@ ecep.getUrl = function(name) {
 };
 
 ecep.init = function() {
-    var inputNode = $(':input#address-input');
+    var inputNode = $('input.address-input');
     var startButtonNode = $('button#start-button');
 
     // Tie "enter" in text box to start button
@@ -87,11 +87,12 @@ ecep.loadLocations = function() {
     });
 
     load.fail(function(jqxhr, textStatus, message) {
-        //TODO: this seems to fire for some reason if you click a link before the locations
-        //are done loading.
-        var msg = 'Could not load locations: ' + message;
-        console.error(msg);
-        //alert(msg);
+        // this fires when a request is aborted: i.e. if you click
+        // a link before the locations are done loading.
+        if (jqxhr.getAllResponseHeaders()) {
+            var msg = 'Could not load locations: ' + message;
+            console.error(msg);
+        }
     });
 };
 
@@ -100,29 +101,7 @@ ecep.geolocate = function() {
         navigator.geolocation.getCurrentPosition(
             function(pos) {
                 var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                ecep.geolocated_marker = new google.maps.Marker({
-                    map: ecep.map,
-                    position: ll,
-                    title: 'Your Location',
-                    icon: { 
-                        path: google.maps.SymbolPath.CIRCLE,
-                        fillColor: 'blue',
-                        fillOpacity: 1,
-                        scale: 7,
-                        strokeColor: 'black',
-                        strokeWeight: 0.5
-                    },
-                    shadow: {
-                        anchor: new google.maps.Point(-0.5, -0.25),
-                        path: google.maps.SymbolPath.CIRCLE,
-                        fillColor: 'black',
-                        fillOpacity: 0.5,
-                        scale: 7,
-                        strokeWeight: 0
-                    }
-                });
-
-                ecep.map.setCenter(ll);
+                ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'blue', true);
             },
             function() {
                 alert('Could not determine your location, sorry!');
@@ -140,31 +119,14 @@ ecep.search = function() {
         ecep.geocoded_marker = null;
     }
     var addr = $('#search_address').val();
+    ecep.geocode(addr);
+};
+
+ecep.geocode = function(addr) {
     ecep.geocoder.geocode({'address': addr}, function(results, geocodeStatus) {
         if (geocodeStatus == google.maps.GeocoderStatus.OK) {
             var ll = results[0].geometry.location;
-            ecep.geocoded_marker = new google.maps.Marker({
-                map: ecep.map,
-                position: ll,
-                title: results[0].formatted_address,
-                icon: {
-                    path: google.maps.SymbolPath.CIRCLE,
-                    fillColor: 'green',
-                    fillOpacity: 1,
-                    scale: 7,
-                    strokeColor: 'black',
-                    strokeWeight: 0.5
-                },
-                shadow: {
-                    anchor: new google.maps.Point(-0.5, -0.25),
-                    path: google.maps.SymbolPath.CIRCLE,
-                    fillColor: 'black',
-                    fillOpacity: 0.5,
-                    scale: 7,
-                    strokeWeight: 0
-                }
-            });
-            ecep.map.setCenter(ll);
+            ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
         }
         else {
             alert('Sorry, Google cannot find that address.');
@@ -172,12 +134,40 @@ ecep.search = function() {
     });
 };
 
+ecep.dropMarker = function(loc, title, color, reposition) {
+    var marker = new google.maps.Marker({
+        map: ecep.map,
+        position: loc,
+        title: title,
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: color,
+            fillOpacity: 1,
+            scale: 7,
+            strokeColor: 'black',
+            strokeWeight: 0.5
+        },
+        shadow: {
+            anchor: new google.maps.Point(-0.5, -0.25),
+            path: google.maps.SymbolPath.CIRCLE,
+            fillColor: 'black',
+            fillOpacity: 0.5,
+            scale: 7,
+            strokeWeight: 0
+        }
+    });
+    if (reposition) {
+        ecep.map.setCenter(loc);
+    }
+    return marker;
+};
+
 ecep.addressClicked = function() {
-    var inputNode = $(':input#address-input');
+    var inputNode = $('input.address-input:visible');
     var inputText = inputNode.val();
-    //Geocode address
-    //Pass control to map somehow
-    console.debug(inputText);
+
+    ecep.geocode(inputText);
+
     inputNode.val('');
     $('#address-modal').modal('hide');
 };
