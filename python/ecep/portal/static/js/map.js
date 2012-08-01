@@ -2,7 +2,10 @@ ecep = ((typeof ecep == 'undefined') ? {} : ecep);
 
 ecep.map = null;
 ecep.loadedListener = null;
-ecep.infoWindow = null
+ecep.infoWindow = null;
+ecep.geocoder = null;
+ecep.geolocated_marker = null;
+ecep.geocoded_marker = null;
 
 ecep.getUrl = function(name) {
     if (name == 'loadLocations') {
@@ -20,13 +23,18 @@ ecep.init = function() {
     };
     ecep.map = new google.maps.Map($('#map')[0], opts);
 
-    // create one info window to re-use
+    // create one info window, geocoder to re-use
     ecep.infoWindow = new google.maps.InfoWindow();
+    ecep.geocoder = new google.maps.Geocoder();
 
     // load locations when the map is all done
     ecep.loadedListener = google.maps.event.addListener(ecep.map, 'tilesloaded', ecep.loadLocations);
 
+    // attach the geolocation handler to the geolocation button
     $('#geolocate').click(ecep.geolocate);
+
+    // attache the search handler to the search button
+    $('#search').click(ecep.search);
 };
 
 ecep.loadLocations = function() {
@@ -74,7 +82,7 @@ ecep.geolocate = function() {
         navigator.geolocation.getCurrentPosition(
             function(pos) {
                 var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                var mkr = new google.maps.Marker({
+                ecep.geolocated_marker = new google.maps.Marker({
                     map: ecep.map,
                     position: ll,
                     title: 'Your Location',
@@ -82,16 +90,16 @@ ecep.geolocate = function() {
                         path: google.maps.SymbolPath.CIRCLE,
                         fillColor: 'blue',
                         fillOpacity: 1,
-                        scale: 5,
+                        scale: 7,
                         strokeColor: 'black',
-                        strokeWeight: 1
+                        strokeWeight: 0.5
                     },
                     shadow: {
                         anchor: new google.maps.Point(-0.5, -0.25),
                         path: google.maps.SymbolPath.CIRCLE,
                         fillColor: 'black',
                         fillOpacity: 0.5,
-                        scale: 5,
+                        scale: 7,
                         strokeWeight: 0
                     }
                 });
@@ -106,6 +114,44 @@ ecep.geolocate = function() {
     else {
         alert('Your browser does not support automatic geolocation.\nPlease type your address into the search box, and click the "Search" button.');
     }
+};
+
+ecep.search = function() {
+    if (ecep.geocoded_marker != null) {
+        ecep.geocoded_marker.setMap(null);
+        ecep.geocoded_marker = null;
+    }
+    var addr = $('#search_address').val();
+    ecep.geocoder.geocode({'address': addr}, function(results, geocodeStatus) {
+        if (geocodeStatus == google.maps.GeocoderStatus.OK) {
+            var ll = results[0].geometry.location;
+            ecep.geocoded_marker = new google.maps.Marker({
+                map: ecep.map,
+                position: ll,
+                title: results[0].formatted_address,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: 'green',
+                    fillOpacity: 1,
+                    scale: 7,
+                    strokeColor: 'black',
+                    strokeWeight: 0.5
+                },
+                shadow: {
+                    anchor: new google.maps.Point(-0.5, -0.25),
+                    path: google.maps.SymbolPath.CIRCLE,
+                    fillColor: 'black',
+                    fillOpacity: 0.5,
+                    scale: 7,
+                    strokeWeight: 0
+                }
+            });
+            ecep.map.setCenter(ll);
+        }
+        else {
+            alert('Sorry, Google cannot find that address.');
+        }
+    });
 };
 
 google.maps.event.addDomListener(window, 'load', ecep.init);
