@@ -16,6 +16,10 @@
     margin: 0.75em;
 }
 
+.loc_directions .dropdown-menu {
+    margin-left: -56px;
+}
+
 .loc_moreinfo {
     float:right;
     margin: 0.5em;
@@ -153,4 +157,30 @@
 }
 .filter-label {
     display: inline;
+}
+.hidden-phone.directions { 
+    position: absolute;
+    right: 0;
+    top: 7em;
+    bottom: 0;
+    width: 300px;
+    overflow-y: scroll;
+    display: none; 
+}
+.visible-phone.directions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6em;
+    bottom: 0;
+    background-color: #ffffff;
+    display: none;
+}
+.d_step {
+    margin: 1em auto;
+}
+.d_instr {
+}
+.d_dist {
+    padding-left: 1em;
 }
