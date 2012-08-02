@@ -40,3 +40,11 @@ class Location(models.Model):
 
     def __unicode__(self):
         return self.site_name
+
+    @staticmethod
+    def get_boolean_fields():
+        fields = []
+        for field in Location._meta.fields:
+            if field.get_internal_type() == 'NullBooleanField':
+                fields.append((field.get_attname(),field.verbose_name,))
+        return fields

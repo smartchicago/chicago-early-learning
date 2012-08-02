@@ -93,6 +93,7 @@
     padding-left: 12px;
     padding-right: 12px;
     color: #dddddd;
+    float: left;
 }
 .subnav .nav > li > a:hover {
     color: #eeeeee;
@@ -147,3 +148,9 @@
 }
 #map { height: 100%; }
 #map img { max-width: none; }
+#filter-selection {
+    display: none;
+}
+.filter-label {
+    display: inline;
+}

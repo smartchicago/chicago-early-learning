@@ -1,11 +1,16 @@
 from django.template import Context, loader
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
+from django.db.models import Q
 from models import Location
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
-    return render_to_response('index.html')
+    fields = Location.get_boolean_fields()
+    return render_to_response('index.html', { 'fields':fields })
 
 
 def location(request, location_id):
@@ -25,9 +30,11 @@ def location(request, location_id):
     bfields = [] 
 
     for field in Location._meta.fields:
+        # get boolean fields that are set, and set to True
         if field.get_internal_type() == 'NullBooleanField' and \
             getattr(loc, field.get_attname()):
                 bfields.append(field.verbose_name)
+        # get char fields & values if they are listed above, and not empty
         elif field.get_internal_type() == 'CharField' or field.get_internal_type() == 'TextField':
             for simple in simple_text:
                 if field.get_attname() == simple and \
@@ -42,7 +49,24 @@ def location_list(request):
     """
     Get a list of all the locations.
     """
-    items = list(Location.objects.all())
+    
+    item_filter = None
+    for f in request.GET:
+        for field in Location._meta.fields:
+            if field.get_attname() == f:
+                logger.debug('Adding Filter: %s = %s' % (f, request.GET[f],))
+                kw = { f: request.GET[f]=='true' }
+                if item_filter is None:
+                    item_filter = Q(**kw)
+                else:
+                    item_filter = item_filter & Q(**kw)
+    if item_filter is None:
+        items = list(Location.objects.all())
+    else:
+        items = list(Location.objects.filter(item_filter))
+
+    logger.debug('Retrieved %d items.' % len(items))
+
     for i in range(0, len(items)):
         t = loader.get_template('popup.html')
         c = Context({'item': items[i]})
