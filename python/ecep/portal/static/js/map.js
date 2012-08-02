@@ -10,11 +10,18 @@ ecep.directions_service = null;
 ecep.directions_display = null;
 
 ecep.getUrl = function(name) {
-    if (name == 'loadLocations') {
-        return '/location/';
+    switch (name) {
+        case 'loadLocations': 
+            return '/location/';
+        case 'blue-dot':
+            return 'http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png';
+        case 'green-dot':
+            return 'http://maps.gstatic.com/mapfiles/ms2/micons/green-dot.png';
+        case 'shadow-pin':
+            return 'https://www.google.com/chart?chst=d_map_pin_shadow'; 
+        default:
+            throw 'Unknown URL endpoint "' + name + '"';
     }
-
-    throw 'Unknown URL endpoint "' + name + '"';
 };
 
 ecep.init = function() {
@@ -163,16 +170,20 @@ ecep.geocode = function(addr) {
 };
 
 ecep.dropMarker = function(loc, title, color, reposition) {
-    var url = 'http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png';
+    var url = ecep.getUrl('blue-dot');
     if (color == 'green') {
-        url = 'http://maps.gstatic.com/mapfiles/ms2/micons/green-dot.png';
+        url = ecep.getUrl('green-dot');
     }
     var marker = new google.maps.Marker({
         map: ecep.map,
         position: loc,
         title: title,
         icon: new google.maps.MarkerImage(url),
-        shadow: new google.maps.MarkerImage('https://www.google.com/chart?chst=d_map_pin_shadow', new google.maps.Size(40, 37), new google.maps.Point(0,0), new google.maps.Point(12,37))
+        shadow: new google.maps.MarkerImage(
+            ecep.getUrl('shadow-pin'),
+            new google.maps.Size(40, 37), 
+            new google.maps.Point(0,0), 
+            new google.maps.Point(12,37))
     });
     if (reposition) {
         ecep.map.setCenter(loc);
