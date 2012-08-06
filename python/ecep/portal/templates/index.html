@@ -30,8 +30,9 @@
             </li>
         </ul>
         <div class="hidden-phone">
-            <ul class="nav pull-right">
+            <ul class="nav nav-pills pull-right">
                 <li>
+                    <a id="filter-toggle" href="#"><i class="icon-filter"></i> Filter</a>
                     <a href="#"><i class="icon-print"></i> Print</a>
                 </li>
             </ul>
@@ -60,9 +61,22 @@
             placeholder="Enter an address to get started" />
         <input type="text" class="hidden-phone address-input"
             placeholder="Enter an address to get started" />
-        <button id="start-button" class="btn btn-success pull-right"
-            onclick="ecep.addressClicked();">Start</a>
+        <button id="start-button" class="btn btn-success pull-right">Start</a>
     </div>
+</div>
+
+<div id="filter-selection">
+    <textarea>
+        {% for f in fields %}
+        <div>
+            <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" class="loc_filter_check"/>
+            <label for="{{ f.0 }}" class="filter-label">{{ f.1 }}</label>
+        {% if forloop.last %}
+            <button class="btn pull-right" id="update-filter"><i class="icon-search"></i> Update</button>
+        {% endif %}
+        </div>
+        {% endfor %}
+    </textarea>
 </div>
 
 {% endblock %}
