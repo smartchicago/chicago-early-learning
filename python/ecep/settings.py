@@ -1,3 +1,4 @@
+import sys
 try:
     from local_settings import *
 except ImportError:
@@ -112,7 +113,8 @@ LOGGING = {
     'handlers': {
         'logfile': {
             'level': 'DEBUG',
-            'class': 'logging.StreamHandler'
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': '/var/log/ecep/django.log',
         }
     },
     'loggers': {
@@ -121,6 +123,11 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'portal.views': {
+            'handlers': ['logfile'],
+            'level': 'DEBUG',
+            'propagate': True,
+        }
     }
 }
 

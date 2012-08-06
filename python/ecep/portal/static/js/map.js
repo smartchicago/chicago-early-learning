@@ -1,6 +1,7 @@
 ecep = ((typeof ecep == 'undefined') ? {} : ecep);
 
 ecep.map = null;
+ecep.clusterr = null;
 ecep.loadedListener = null;
 ecep.infoWindow = null;
 ecep.geocoder = null;
@@ -58,18 +59,42 @@ ecep.init = function() {
     // attach the geolocation handler to the geolocation button
     $('#geolocate').click(ecep.geolocate);
 
-    // attache the search handler to the search button
+    // attach the search handler to the search button
     $('#search').click(ecep.search);
+    $('#start-button').click(ecep.addressClicked);
 
     //Show modal splash (see index.html)
-    $('#address-modal').modal('show');
+    $('#address-modal').modal({ keyboard:false, show:true });
+
+    $('#filter-toggle').popover({
+        animation: false,
+        placement: 'bottom',
+        trigger: 'manual',
+        title: 'Filter Locations',
+        content: $('#filter-selection').text()
+    });
+
+    $('#filter-toggle').click(function() {
+        $('#filter-toggle').popover('toggle');
+        if ($('#update-filter:visible').length > 0) {
+            $('#update-filter').click(ecep.loadLocations);
+        }
+    });
+
 };
 
 
 ecep.loadLocations = function() {
+    var data = {};
+    var filters = $('.loc_filter_check:checked');
+    filters.each(function(idx, elem) {
+        data[elem.id] = elem.value;
+    });
+
     var load = $.ajax({
         url: ecep.getUrl('loadLocations'),
-        dataType: 'json'
+        dataType: 'json',
+        data: data
     });
 
     load.done(function(data, textStatus, jqxhr) {
@@ -115,7 +140,11 @@ ecep.loadLocations = function() {
 
             markers.push(marker);
         }
-        new MarkerClusterer(ecep.map, markers, {maxZoom:18});
+
+        if (ecep.clusterr != null) {
+            ecep.clusterr.clearMarkers();
+        }
+        ecep.clusterr = new MarkerClusterer(ecep.map, markers, {maxZoom:18});
 
         google.maps.event.removeListener(ecep.loadedListener);
     });
