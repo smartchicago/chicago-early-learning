@@ -1,6 +1,6 @@
 from django.template import Context, loader
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponse
+from django.views.decorators.cache import cache_control
 from django.db.models import Q
 from models import Location
 import logging
@@ -44,7 +44,7 @@ def location(request, location_id):
 
     return render_to_response('location.html', {'model': loc, 'bfields': bfields, 'sfields': sfields })
 
-
+@cache_control(must_revalidate=False, max_age=30)
 def location_list(request):
     """
     Get a list of all the locations.
@@ -74,7 +74,9 @@ def location_list(request):
         content = content.replace('\n', '\\n').replace('"', '\\"')
         setattr(items[i], 'content', content)
 
-    return render_to_response('locations.json', {'items':items}, mimetype='application/json')
+    rsp = render_to_response('locations.json', {'items':items}, mimetype='application/json')
+    rsp['Etag'] = 'v1.0'
+    return rsp
 
 
 def about(request):
