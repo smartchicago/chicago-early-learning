@@ -130,6 +130,13 @@ configure_django() {
         return 1
     fi
 
+    echo -e "\nEnter your Twilio credentials (you can leave these blank to use the test account)"
+    echo -en "\nPlease enter your Twilio Account SID: "
+    read ACCOUNT_SID
+
+    echo -en "\nPlease enter your Twilio Account Auth Token: "
+    read ACCOUNT_AUTH
+
     echo -en "\nPlease enter a username for the django admin: "
     read USERNAME
 
@@ -141,6 +148,9 @@ configure_django() {
     echo "ADMINS = (" > $LOCAL
     echo "    ('$USERNAME', '$EMAIL')," >> $LOCAL
     echo ")" >> $LOCAL
+    echo "" >> $LOCAL
+    echo "TWILIO_ACCOUNT_SID = '$ACCOUNT_SID'" >> $Local
+    echo "TWILIO_AUTH_TOKEN = '$ACCOUNT_AUTH'" >> $Local
     echo "" >> $LOCAL
     echo "MANAGERS = ADMINS" >> $LOCAL
     echo "" >> $LOCAL
