@@ -45,12 +45,19 @@ the Google Maps API via geopy."""
         for i, item in enumerate(qset):
             time.sleep(random.uniform(0.1,0.5))
 
+            found = '.'
+
             try:
-                stdaddr, (lat, lng) = self.geocoder.geocode("%(address)s, %(city)s, %(state)s %(zip)s\n" % { 
+                places = self.geocoder.geocode("%(address)s, %(city)s, %(state)s %(zip)s\n" % { 
                     'address': item.address, 
                     'city': item.city,
                     'state': item.state,
-                    'zip': item.zip })
+                    'zip': item.zip }, exactly_one=False)
+
+                if len(places) >= 1:
+                    stdaddr, (lat, lng) = places[0]
+                    if len(places) > 1:
+                        found = '?'
 
                 item.geom = GEOSGeometry('POINT(%f %f)' % (lng, lat,))
                 item.geom.srid = 4326
@@ -59,7 +66,7 @@ the Google Maps API via geopy."""
 
                 cols += 1
 
-                self.stdout.write('.')
+                self.stdout.write(found)
                 if cols % 80 == 0:
                     self.stdout.write('\n')
             except geopy.geocoders.google.GQueryError, gqe:
@@ -69,6 +76,8 @@ the Google Maps API via geopy."""
                 cols = 1
             except ValueError, ve:
                 self.stdout.write('\nMore than one location found for %s\n' % item.site_name)
+                if options['verbosity'] > 1:
+                    self.stdout.write('%s\n' % ve)
                 if options['failquick']:
                     return 2
                 cols = 1
