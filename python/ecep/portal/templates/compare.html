@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Chicago Early Learning{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="location">
+
+{% with item=location_a.item sfields=location_a.sfields bfields=location_a.bfields %}
+{% include "embed.html" %}
+{% endwith %}
+
+</div>
+<div class="location">
+
+{% with item=location_b.item sfields=location_b.sfields bfields=location_b.bfields %}
+{% include "embed.html" %}
+{% endwith %}
+
+</div>
+</div>
+{% endblock %}

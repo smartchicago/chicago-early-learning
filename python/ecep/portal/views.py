@@ -14,15 +14,16 @@ def index(request):
     fields = Location.get_boolean_fields()
     return render_to_response('index.html', { 'fields':fields })
 
-
-def location(request, location_id):
+def location_details(location_id):
     """
-    Render a detail page for a single location.
+    Helper method that gets all the fields for a specific location.
+
+    This is called by the detail page and the comparison page.
     """
     item = get_object_or_404(Location, id=location_id)
 
     simple_text = [
-        'n_classrooms', 'prg_dur', 'prg_size', 'prg_sched', 'site_affil', 
+        'ages', 'prg_dur', 'prg_size', 'prg_sched', 'site_affil', 
         'ctr_director', 'exec_director', 'q_stmt', 'e_info', 'as_proc', 'accred',
         'waitlist']
 
@@ -45,6 +46,14 @@ def location(request, location_id):
                     getattr(item, field.get_attname()) != '':
                         sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
 
+    return { 'item': item, 'sfields': sfields, 'bfields': bfields }
+
+def location(request, location_id):
+    """
+    Render a detail page for a single location.
+    """
+    context = location_details(location_id)
+
     tpl = 'location.html'
     if 'm' in request.GET:
         if request.GET['m'] == 'html':
@@ -52,13 +61,10 @@ def location(request, location_id):
         elif request.GET['m'] == 'popup':
             tpl = 'popup.html'
 
-    return render_to_response(tpl, {
-        'item': item, 
-        'bfields': bfields, 
-        'sfields': sfields, 
-        'is_popup': tpl == 'popup.html',
-        'is_embed': tpl == 'embed.html'
-    })
+    context.update('is_popup', tpl == 'popup.html')
+    context.update('is_embed', tpl == 'embed.html')
+
+    return render_to_response(tpl, context)
 
 
 @cache_control(must_revalidate=False, max_age=30)
@@ -104,6 +110,20 @@ def location_list(request):
     rsp = render_to_response('locations.json', {'items':items}, mimetype='application/json')
     rsp['Etag'] = etag_hash
     return rsp
+
+def compare(request, a, b):
+    loc_a = location_details(a)
+    loc_b = location_details(b)
+
+    is_embed = False
+    if 'm' in request.GET:
+        is_embed = (request.GET['m'] == 'embed')
+
+    return render_to_response('compare.html', { 
+        'location_a': loc_a,
+        'location_b': loc_b,
+        'is_embed': is_embed
+    })
 
 
 def about(request):

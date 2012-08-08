@@ -178,3 +178,10 @@
 .d_dist {
     padding-left: 1em;
 }
+/* fake star ratings */
+.loc_rating {
+    float: right;
+}
+.star-notice {
+    color: #999999;
+}
