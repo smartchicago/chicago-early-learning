@@ -10,6 +10,8 @@ from models import Location
 from twilio.twiml import Response
 from django_twilio.decorators import twilio_view
 
+logger = logging.getLogger(__name__)
+
 def enum(**enums):
     """Utility method for nice Enum syntax"""
     return type('Enum', (), enums)
@@ -62,7 +64,20 @@ class Conversation(object):
                 if the number doesn't make sense.  The number represents a 1-based index
                 into the numbered list returned by zipcode.
     """
+    # Constants
+    _re_zip = re.compile(r"^\s*(\d{5})\s*$")
+    _re_help = re.compile(r"^\s*help\s*$", re.IGNORECASE)
+    _re_num = re.compile(r"^\s*(\d{1,2})\s*$")
 
+    USAGE = """
+        To get this message text "help".
+        Text a 5 digit zipcode to get a list of nearby schools. 
+        Text a number on the list to get more information.
+        """
+    ERROR = 'Sorry, I didn\'t understand that. Please text "help" for instructions'
+    FATAL = 'We\'re sorry, something went wrong with your request! Please try again'
+
+    # Properties
     locations = None        # List of pks into models.Location, represents locations near this user
     zipcode = None          # type string
     current_state = None    # type Conversation.State 
@@ -81,10 +96,9 @@ class Conversation(object):
         try:
             self.last_msg = SmsMessage(request)
         except Exception as e:
-            logger.debug(
-                "Tried to create a Conversation from a request, " + 
-                "but couldn't get SmsMessage object.  " + 
-                "Request was: %s, Exception was: %s" % 
+            logger.debug("""
+                Tried to create a Conversation from a request, but couldn't get SmsMessage object.  
+                Request was: %s, Exception was: %s""" % 
                 (request.get_full_path(), e))
 
     def update_session(self, session):
@@ -106,9 +120,9 @@ class Conversation(object):
         msg = self.last_msg
 
         if msg is None:
-            return Sms.reply(Sms.FATAL)
+            return Sms.reply(self.FATAL)
             
-        matches = Sms._re_zip.match(msg.body)
+        matches = self._re_zip.match(msg.body)
         if matches is not None:
             # parse zipcodes
             zipcode = matches.groups()[0]
@@ -128,12 +142,12 @@ class Conversation(object):
                 self.update_session(request.session)
             else:
                 self.response = "Sorry, I couldn't find any schools near %s" % zipcode
-        if Sms._re_help.match(msg.body):
+        if self._re_help.match(msg.body):
             # parse "help" requests
-            self.response = Sms.USAGE
+            self.response = self.USAGE
         elif self.current_state == Conversation.State.GOT_ZIP:
             # parse location selection
-            matches = Sms._re_num.match(msg.body)
+            matches = self._re_num.match(msg.body)
             loc = self.locations or []
             length = len(loc)
             if matches is not None:
@@ -150,9 +164,7 @@ class Conversation(object):
                     "Please text a number between 1 and %d, or a 5 digit zipcode") % 
                     (self.zipcode, length))
         else:
-            err = "Illegal state in Conversation class. State was %s" % self.current_state
-            logger.debug(err)
-            raise ValueError(err)
+            self.response = self.ERROR
 
 # Enum representing the current state of the conversation
 Conversation.State = enum(INIT=1, GOT_ZIP=2)
@@ -162,17 +174,6 @@ class Sms(View):
     """
     View class for handling SMS messages from twilio
     """
-    _re_zip = re.compile(r"^\s*(\d{5})\s*$")
-    _re_help = re.compile(r"^\s*help\s*$", re.IGNORECASE)
-    _re_num = re.compile(r"^\s*(\d{1,2})\s*$")
-
-    USAGE = """
-        To get this message text "help".
-        Text a 5 digit zipcode to get a list of nearby schools. 
-        Text a number on the list to get more information.
-        """
-    ERROR = 'Sorry, I didn\'t understand that. Please text "help" for instructions'
-    FATAL = 'We\'re sorry, something went wrong with your request! Please try again'
 
     @classonlymethod
     def as_view(cls, **initkwargs):
