@@ -29,17 +29,17 @@ ecep.getUrl = function(name) {
 
 ecep.init = function() {
     var inputNode = $('input.address-input');
-    var startButtonNode = $('button#start-button');
 
     // Tie "enter" in text box to start button
     inputNode.keyup(function(event) {
         if(event.keyCode == 13) {
-            startButtonNode.click();
+            $($(this).data('button')).click();
+            return false;
         }
     });
 
     var opts = {
-        center: new google.maps.LatLng(41.85003, -87.65005),
+        center: new google.maps.LatLng(41.83772262398233, -87.68798449999997),
         zoom: 10,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -50,7 +50,6 @@ ecep.init = function() {
     ecep.geocoder = new google.maps.Geocoder();
     ecep.directions_service = new google.maps.DirectionsService();
     ecep.directions_display = new google.maps.DirectionsRenderer({draggable:true});
-    ecep.directions_display.setMap(ecep.map);
 
     // load directions text when directions are changed
     ecep.directionsListener = google.maps.event.addListener(ecep.directions_display, 'directions_changed', ecep.typeDirections);
@@ -61,9 +60,8 @@ ecep.init = function() {
     // attach the geolocation handler to the geolocation button
     $('#geolocate').click(ecep.geolocate);
 
-    // attach the search handler to the search button
-    $('#search').click(ecep.search);
-    $('#start-button').click(ecep.addressClicked);
+    // attach the search handler to the search button(s)
+    $('.search-button').click(ecep.search);
 
     //Show modal splash (see index.html)
     $('#address-modal').modal({ keyboard:false, show:true });
@@ -159,6 +157,12 @@ ecep.loadLocations = function() {
         data[elem.id] = elem.value;
     });
 
+    if (ecep.geocoded_marker) {
+        var pos = ecep.geocoded_marker.getPosition()
+        data.pos = pos.lng() + ' ' + pos.lat();
+        data.rad = $('#search-radius').val();
+    }
+
     var load = $.ajax({
         url: ecep.getUrl('loadLocations'),
         dataType: 'json',
@@ -167,11 +171,21 @@ ecep.loadLocations = function() {
 
     load.done(function(data, textStatus, jqxhr) {
         var markers = [];
+        var bounds = new google.maps.LatLngBounds();
+
+        if (ecep.geocoded_marker) {
+            bounds.extend(ecep.geocoded_marker.getPosition());
+        }
+        if (ecep.geolocated_marker) {
+            bounds.extend(ecep.geolocated_marker.getPosition());
+        }
+
         for (var i = 0; i < data.length; i++) {
             if (!data[i].lng || !data[i].lat) {
                 continue;
             }
             var ll = new google.maps.LatLng(data[i].lat, data[i].lng);
+            bounds.extend(ll);
 
             var marker = new google.maps.Marker({
                 position: ll,
@@ -187,6 +201,8 @@ ecep.loadLocations = function() {
             ecep.clusterr.clearMarkers();
         }
         ecep.clusterr = new MarkerClusterer(ecep.map, markers, {maxZoom:18});
+
+        ecep.map.fitBounds(bounds);
 
         google.maps.event.removeListener(ecep.loadedListener);
     });
@@ -219,12 +235,22 @@ ecep.geolocate = function() {
 };
 
 ecep.search = function() {
+    var addr = $($(this).data('address')).val();
+
+    if (addr == '') {
+        alert('Please type in an address.');
+        return;
+    }
+
     if (ecep.geocoded_marker != null) {
         ecep.geocoded_marker.setMap(null);
         ecep.geocoded_marker = null;
     }
-    var addr = $('#search_address').val();
+
     ecep.geocode(addr);
+
+    // we can always hide this, even if it's hidden
+    $('#address-modal').modal('hide');
 };
 
 ecep.geocode = function(addr) {
@@ -232,7 +258,10 @@ ecep.geocode = function(addr) {
         if (geocodeStatus == google.maps.GeocoderStatus.OK) {
             var ll = results[0].geometry.location;
             ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
-            $('#search_address').val(addr);
+            $('#search-address').val(addr);
+
+            // trigger the load event, and apply the radius filter
+            ecep.loadLocations();
         }
         else {
             alert('Sorry, Google cannot find that address.');
@@ -257,7 +286,9 @@ ecep.dropMarker = function(loc, title, color, reposition) {
             new google.maps.Point(12,37))
     });
     if (reposition) {
-        ecep.map.setCenter(loc);
+        if (!ecep.map.getBounds().contains(loc)) {
+            ecep.map.setCenter(loc);
+        }
     }
     return marker;
 };
@@ -301,9 +332,31 @@ ecep.directions = function(event) {
 
 ecep.typeDirections = function() {
     var result = ecep.directions_display.directions;
+    ecep.directions_display.setMap(ecep.map);
 
     var direlem = $('.directions');
-    direlem.empty().show();
+    if (direlem.length == 0) {
+        $('#map_container')
+            .after('<div class="visible-phone directions"/>')
+            .after('<div class="hidden-phone directions"/>');
+        direlem = $('.directions');
+    }
+    else {
+        direlem.empty();
+    }
+    direlem.append($('<button class="clear_dir btn"><i class="icon-remove"></i> Close</button>'));
+
+    $('.clear_dir').click(function(){
+        // clear any existing directions off the page
+        ecep.directions_display.setMap(null);
+        direlem.remove();
+
+        var loc = ecep.map.getCenter();
+        $('#map_container').css('right', '0');
+        google.maps.event.trigger(ecep.map, 'resize');
+        ecep.map.setCenter(loc);
+    });
+
     direlem.append($('<h3>Driving Directions</h3>'));
 
     var warn = $('<div />');
@@ -331,16 +384,6 @@ ecep.typeDirections = function() {
         }
     }
     direlem.append(list);
-};
-
-ecep.addressClicked = function() {
-    var inputNode = $('input.address-input:visible');
-    var inputText = inputNode.val();
-
-    ecep.geocode(inputText);
-
-    inputNode.val('');
-    $('#address-modal').modal('hide');
 };
 
 //Modal splash setup

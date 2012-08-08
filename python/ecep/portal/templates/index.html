@@ -15,18 +15,20 @@
                 <a id="geolocate" href="#"><i class="icon-screenshot"></i></a>
             </li>
         </ul>
-        <form class="navbar-search pull-left">
-            <input class="search-query span2" type="text" id="search_address" placeholder="Search"/>
-            <select class="hidden-phone search-query">
-                <option value="0.5">&lt; 0.5 mi</option>
+        <div class="navbar-search pull-left">
+            <input class="address-input search-query span2" type="text" id="search-address" data-button="#menu-search" placeholder="Search"/>
+            <select class="hidden-phone search-query" id="search-radius">
+                <option value="-1">Distance</option>
                 <option value="1">&lt; 1 mi</option>
                 <option value="2">&lt; 2 mi</option>
                 <option value="5">&lt; 5 mi</option>
+                <option value="10">&lt; 10 mi</option>
+                <option value="20">&lt; 20 mi</option>
             </select>
-        </form>
+        </div>
         <ul class="nav">
             <li>
-                <a id="search" href="#"><i class="icon-search"></i> Search</a>
+                <a id="menu-search" class="search-button" data-address="#search-address" href="#"><i class="icon-search"></i> Search</a>
             </li>
         </ul>
         <div class="hidden-phone">
@@ -43,8 +45,6 @@
 <div id="map_container">
     <div id="map"></div>
 </div>
-<div class="hidden-phone directions"></div>
-<div class="visible-phone directions"></div>
 
 <div id="address-modal" class="modal hide fade in">
     <div class="modal-header">
@@ -57,11 +57,11 @@
         <div>Some sort of 4 boxes are supposed to go here, but I'm not sure what they're for</div>
     </div>
     <div class="modal-footer">
-        <input type="text" class="visible-phone address-input"
+        <input type="text" class="visible-phone address-input" data-button="#splash-search"
             placeholder="Enter an address to get started" />
-        <input type="text" class="hidden-phone address-input"
+        <input type="text" class="hidden-phone address-input" data-button="#splash-search"
             placeholder="Enter an address to get started" />
-        <button id="start-button" class="btn btn-success pull-right">Start</a>
+        <button id="splash-search" class="search-button btn btn-success pull-right" data-address=".modal-footer .address-input:visible">Start</a>
     </div>
 </div>
 
