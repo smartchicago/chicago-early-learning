@@ -33,10 +33,10 @@ document, and loads the fields into the portal.Location models of the django app
             raise CommandError('No spreadsheet downloaded.')
             return
 
-        if not self.load(csv_file):
+        if not self.load(csv_file, **options):
             raise CommandError('Spreadsheet could not be imported completely.')
 
-        self.stdout.write('Google Doc data downloaded and imported successfully.')
+        self.stdout.write('Google Doc data downloaded and imported successfully.\n')
 
 
     def fetch(self, key, username, password):
@@ -64,56 +64,60 @@ document, and loads the fields into the portal.Location models of the django app
         except:
             return None
 
-    def load(self, filename):
+    def load(self, filename, **options):
         """
         Load a retrieved CSV into the data model.
         """
         reader = csv.DictReader(filename)
 
+        if options['verbosity'] > 1:
+            self.stdout.write('Found fields:\n')
+            for f in reader.fieldnames:
+                self.stdout.write('\t"%s"\n' % f)
+
         for row in reader:
-            if row['Site name'] is None or row['Site name'] == '':
+            if row['Site Name'] is None or row['Site Name'] == '':
                 continue
 
             l = Location(
-                site_name = row['Site name'],
+                site_name = row['Site Name'],
                 address = row['Address'],
-                city = row['City'],
+                city = row['City '], # yes, a space after "City"
                 state = row['State'],
                 zip = row['Zip'],
-                phone1 = row['Phone number'],
-                phone2 = row['Phone number 2'],
-                phone3 = row['Phone number 3'],
+                phone1 = row['Phone Number'],
+                phone2 = row['Phone Number 2'],
+                phone3 = row['Phone Number 3'],
                 fax = row['Fax'],
-                is_child_care = parse_maybe(row['Child Care']),
-                is_child_parent_center = parse_maybe(row['Child Parent Center']),
-                is_comm_partner = parse_maybe(row['Community Partnerships']),
-                is_ehs = parse_maybe(row['Early Head Start']),
-                is_hs = parse_maybe(row['Head Start']),
-                is_prek_all = parse_maybe(row['Prekindergarten For All']),
-                is_school_age = parse_maybe(row['School Age']),
-                is_st_prek = parse_maybe(row['State Pre-Kindergarten']),
-                is_tuition_based = parse_maybe(row['Tuition Based Preschool']),
-                is_montessori = parse_maybe(row['Montessori']),
-                is_special_ed = parse_maybe(row['Special Ed']),
-                exec_director = row['Executive director'],
-                ctr_director = row['Center director'],
-                site_affil = row['Site affiliation'],
+                is_child_care = parse_maybe(row['CC']),
+                is_hs = parse_maybe(row['HS']),
+                is_ehs = parse_maybe(row['EHS']),
+                is_pre4all = parse_maybe(row['PFA']),
+                is_tuition_based = parse_maybe(row['TB']),
+                is_special_ed = parse_maybe(row['SE']),
+                is_montessori = parse_maybe(row['MONT']),
+                is_child_parent_center = parse_maybe(row['CPC']),
+                exec_director = row['Executive Director'],
+                ctr_director = row['Director/Principal'],
+                site_affil = row['Site Affiliation'],
                 url = row['Website'],
-                email = row['Email'],
-                q_stmt = row['Quality statement'],
-                e_info = row['Eligibility information'],
-                as_proc = row['Application and selection process'],
+                email = row['email'],
+                q_stmt = row['Quality Statement'],
+                e_info = row['Eligibility Information'],
+                as_proc = row['Application and Selection Process'],
                 accred = row['Accreditation'],
-                prg_sched = row['Program schedule'],
-                prg_dur = row['Program duration'],
-                prg_size = row['Program size'],
-                n_classrooms = row['Number of classrooms and ages served in each classroom'],
-                waitlist = row['Waitlist situation']
+                prg_sched = row['Program Schedule'],
+                prg_dur = row['Program Duration'],
+                prg_size = row['Program Size'],
+                ages = row['Ages Served'],
+                waitlist = row['Waitlist']
             )
             try:
                 l.save()
             except Exception, ex:
-                self.stdout.write('Could not save "%s"\n' % row['Site name']) 
+                self.stdout.write('Could not save "%s"\n' % row['Site Name']) 
+                if options['verbosity'] > 1:
+                    self.stdout.write('%s\n' % ex)
                 return False
 
         return True
