@@ -81,12 +81,13 @@ def location_list(request):
                     item_filter = item_filter | Q(**kw)
 
     if 'pos' in request.GET and 'rad' in request.GET:
-        geom = GEOSGeometry('POINT(%s)' % request.GET['pos'])
-        rad_filter = Q(geom__distance_lte=(geom, Distance(mi=request.GET['rad'])))
-        if item_filter is None:
-            item_filter = rad_filter
-        else:
-            item_filter = item_filter & rad_filter
+        if request.GET['rad'] != '-1':
+            geom = GEOSGeometry('POINT(%s)' % request.GET['pos'])
+            rad_filter = Q(geom__distance_lte=(geom, Distance(mi=request.GET['rad'])))
+            if item_filter is None:
+                item_filter = rad_filter
+            else:
+                item_filter = item_filter & rad_filter
 
     if item_filter is None:
         items = list(Location.objects.all())
