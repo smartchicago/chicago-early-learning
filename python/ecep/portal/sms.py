@@ -51,15 +51,23 @@ class SmsMessage(object):
 
 class Conversation(object):
     """
-    Represents the state of an sms "Conversation"
+    Represents the state of an SMS "Conversation"
 
+    This is the language it recognizes:
+    'help'    - Returns usage (case insensitive)
+    '12345'   - 5 digit zipcode.  Returns a numbered list of "nearby" schools 
+                (TODO: what does "nearby" mean?)
+    '4'       - 1 or 2 digit number.  Only valid if the user has already sent a zipcode
+                Returns detailed information about the corresponding school, or an error
+                if the number doesn't make sense.  The number represents a 1-based index
+                into the numbered list returned by zipcode.
     """
 
-    # List of pks into models.Location, represents locations near this user
-    locations = None
-    zipcode = None
+    locations = None        # List of pks into models.Location, represents locations near this user
+    zipcode = None          # type string
     current_state = None    # type Conversation.State 
     last_msg = None         # type SmsMessage
+    response = None         # type twilio.twiml.Response
 
     def __init__(self, request):
         """
@@ -83,13 +91,71 @@ class Conversation(object):
         """
         Updates session with the info saved in this object
         Requires django.contrib.sessions.middleware.SessionMiddleware to be enabled
+        Twilio keeps track of sessions for us using cookies with a 2 hour expiration time
         session: a django HttpRequest.session object
         """
         session['state'] = self.current_state
         session['locations'] = self.locations
 
+    def process_request(self, request):
+        """
+        Handles the updating of the object's state, saving it to request.session, and
+        creating self.response.  This is the core logic of the SMS "language".
+        request: a django HttpRequest object
+        """
+        msg = self.last_msg
+
+        if msg is None:
+            return Sms.reply(Sms.FATAL)
+            
+        matches = Sms._re_zip.match(msg.body)
+        if matches is not None:
+            # parse zipcodes
+            zipcode = matches.groups()[0]
+            self.zipcode = zipcode
+            # TODO: get real nearby location pks
+            locations = [ 1, 2, 3 ] 
+            self.locations = locations
+
+            if len(locations) > 0:
+                self.current_state = Conversation.State.GOT_ZIP
+                # TODO: use real locations
+                response = """Schools near %s:
+                    1. Foo school
+                    2. Bar school
+                    3. Baz school
+                    """ % zipcode
+                self.update_session(request.session)
+            else:
+                self.response = "Sorry, I couldn't find any schools near %s" % zipcode
+        if Sms._re_help.match(msg.body):
+            # parse "help" requests
+            self.response = Sms.USAGE
+        elif self.current_state == Conversation.State.GOT_ZIP:
+            # parse location selection
+            matches = Sms._re_num.match(msg.body)
+            loc = self.locations or []
+            length = len(loc)
+            if matches is not None:
+                idx = int(matches.groups()[0]) - 1
+                if idx < 0 or idx >= length:
+                    self.response = (("Sorry, I don't know about that school near zipcode %s. " + 
+                        "Please text a number between 1 and %d or a 5 digit zipcode") % 
+                        (self.zipcode, idx))
+                else:
+                    # TODO: return real details
+                    self.response = "idx was %d, details for school go here" % idx
+            else:
+                self.response = (("Sorry, I didn't understand that number for zipcode %s. " + 
+                    "Please text a number between 1 and %d, or a 5 digit zipcode") % 
+                    (self.zipcode, length))
+        else:
+            err = "Illegal state in Conversation class. State was %s" % self.current_state
+            logger.debug(err)
+            raise ValueError(err)
+
 # Enum representing the current state of the conversation
-Conversation.State = Conversation.enum(INIT=1, GOT_ZIP=2)
+Conversation.State = enum(INIT=1, GOT_ZIP=2)
 
 
 class Sms(View):
@@ -101,7 +167,7 @@ class Sms(View):
     _re_num = re.compile(r"^\s*(\d{1,2})\s*$")
 
     USAGE = """
-        To get this message text "help"
+        To get this message text "help".
         Text a 5 digit zipcode to get a list of nearby schools. 
         Text a number on the list to get more information.
         """
@@ -133,53 +199,7 @@ class Sms(View):
     def handle_sms(self, request):
         """Main request handler for SMS messages"""
         conv = Conversation(request)
-        msg = conv.last_msg
-        response = None
+        conv.process_request(request)
+        return Sms.reply(conv.response)
 
-        if msg is None:
-            return Sms.reply(Sms.FATAL)
-            
-        matches = Sms._re_zip.match(msg.body)
-        if matches is not None:
-            # parse zipcodes
-            zipcode = matches.groups()[0]
-            conv.zipcode = zipcode
-            # TODO: get real nearby location pks
-            locations = [ 1, 2, 3 ] 
-            conv.locations = locations
-
-            if len(locations) > 0:
-                conv.current_state = Conversation.State.GOT_ZIP
-                # TODO: use real locations
-                response = """Schools near %s:
-                    1. Foo school
-                    2. Bar school
-                    3. Baz school
-                    """ % zipcode
-                conv.update_session(request.session)
-            else:
-                response = "Sorry, I couldn't find any schools near %s" % zipcode
-        if Sms._re_help.match(msg.body):
-            # parse "help" requests
-            response = Sms.USAGE
-        elif conv.current_state == Conversation.State.GOT_ZIP:
-            # parse location selection
-            matches = Sms._re_num.match(msg.body)
-            loc = conv.locations or []
-            length = len(loc)
-            if matches is not None:
-                idx = int(matches.groups()[0]) - 1
-                if idx < 0 or idx >= length:
-                    response = "Sorry, I don't know about that school near zipcode %s. Please text a number between 1 and %d or a 5 digit zipcode" % (conv.zipcode, idx)
-                else:
-                    # TODO: return real details
-                    response = "idx was %d, details for school go here"
-            else:
-                response = "Sorry, I didn't understand that number for zipcode %s. Please text a number between 1 and %d, or a 5 digit zipcode" % (conv.zipcode, length)
-        else:
-            err = "Illegal state in Conversation class. State was %s" % conv.current_state
-            logger.debug(err)
-            raise ValueError(err)
-            
-        return Sms.reply(response)
 
