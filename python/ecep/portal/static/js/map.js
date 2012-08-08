@@ -20,6 +20,8 @@ ecep.getUrl = function(name) {
             return 'http://maps.gstatic.com/mapfiles/ms2/micons/green-dot.png';
         case 'shadow-pin':
             return 'https://www.google.com/chart?chst=d_map_pin_shadow'; 
+        case 'location_info':
+            return '/location/' + arguments[1] + '/?m=' + arguments[2];
         default:
             throw 'Unknown URL endpoint "' + name + '"';
     }
@@ -78,9 +80,72 @@ ecep.init = function() {
         $('#filter-toggle').popover('toggle');
         if ($('#update-filter:visible').length > 0) {
             $('#update-filter').click(ecep.loadLocations);
+            $('#all').click(function(){
+                var filters = $('.loc_filter_check');
+                var all = this;
+                filters.each(function(idx, elem){
+                    this.checked = all.checked;
+                });
+            });
         }
     });
 
+};
+
+
+ecep.expandInfo = function(event) {
+    var type = (('data' in event) && event.data.type) ? event.data.type : 'popup';
+    var mkr = ('data' in event) ? event.data.marker : this;
+    var req = $.ajax({
+        url: ecep.getUrl('location_info', mkr.get('location_id'), type),
+        dataType: 'html'
+    });
+
+    req.done(function(data, txtStatus, jqxhr) {
+        ecep.infoWindow.close();
+        ecep.infoWindow.setContent(data);
+        ecep.infoWindow.setPosition(mkr.getPosition());
+        ecep.infoWindow.open(ecep.map, mkr);
+
+        // keep from attaching multiple domready callbacks
+        if (ecep.infoWindow.get('domready')) {
+            google.maps.event.removeListener(ecep.infoWindow.get('domready'));
+        }
+
+        ecep.infoWindow.set('domready', google.maps.event.addListener(ecep.infoWindow, 'domready', function() {
+            if (ecep.geocoded_marker == null && ecep.geolocated_marker == null) {
+                // neither location available, disable navigation
+                $('.loc_directions').hide();
+            }
+            else if (ecep.geocoded_marker == null || ecep.geolocated_marker == null) {
+                // only one location available, navigate to that
+                $('.nav_single').show();
+                $('.nav_multi').hide();
+                $('.nav_to_location').click(ecep.directions);
+            }
+            else {
+                // both locations available, ask user
+                $('.nav_multi').show();
+                $('.nav_single').hide();
+                $('.nav_to_location').click(ecep.directions);
+            }
+
+            // this ensures that only one event is attached to this button
+            $('.loc_moreinfo a')
+                .off('click', ecep.expandInfo)
+                .on('click', {marker: mkr, type: 'html'}, ecep.expandInfo);
+
+            $('.loc_lessinfo a')
+                .off('click', ecep.expandInfo)
+                .on('click', {marker: mkr, type: 'popup'}, ecep.expandInfo);
+        }));
+    });
+
+    req.fail(function(txtStatus, jqxhr, message) {
+        console.error('Error getting details: ' + message);
+    });
+    
+    return false;
 };
 
 
@@ -88,6 +153,9 @@ ecep.loadLocations = function() {
     var data = {};
     var filters = $('.loc_filter_check:checked');
     filters.each(function(idx, elem) {
+        if (elem.id == 'all')
+            return;
+
         data[elem.id] = elem.value;
     });
 
@@ -108,35 +176,9 @@ ecep.loadLocations = function() {
             var marker = new google.maps.Marker({
                 position: ll,
                 title: data[i].site_name});
+            marker.set('location_id', data[i].id);
 
-            var showinfo = function(content, latlng, mkr) {
-                return function() {
-                    ecep.infoWindow.setContent(content);
-                    ecep.infoWindow.setPosition(latlng);
-                    ecep.infoWindow.open(ecep.map,mkr);
-                    google.maps.event.addListener(ecep.infoWindow, 'domready', function() {
-                        if (ecep.geocoded_marker == null && ecep.geolocated_marker == null) {
-                            // neither location available, disable navigation
-                            $('.loc_directions').hide();
-                            return;
-                        }
-                        else if (ecep.geocoded_marker == null || ecep.geolocated_marker == null) {
-                            // only one location available, navigate to that
-                            $('.nav_single').show();
-                            $('.nav_multi').hide();
-                        }
-                        else {
-                            // both locations available, ask user
-                            $('.nav_multi').show();
-                            $('.nav_single').hide();
-                        }
-
-                        $('.nav_to_location').click(ecep.directions);
-                    });
-                };
-            };
-
-            google.maps.event.addListener(marker, 'click', showinfo(data[i].content, ll, marker));
+            google.maps.event.addListener(marker, 'click', ecep.expandInfo);
 
             markers.push(marker);
         }
@@ -252,6 +294,7 @@ ecep.directions = function(event) {
             // update text instructions
             // move over by the width of instructions + 5px gutter
             $('#map_container').css('right', '305px');
+            google.maps.event.trigger(ecep.map, 'resize');
         }
     });
 };

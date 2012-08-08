@@ -1,22 +1,5 @@
 {% load portal_extras %}
-<div class="location_popup">
-    <div class="loc_directions">
-        <div class="nav_single">
-            <a class="btn nav_to_location" href="#" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})"><i class="icon-map-marker"></i> Directions</a>
-        </div>
-        <div class="nav_multi btn-group">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="icon-map-marker"></i>
-                Directions
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geolocated">From: Your Location</a></li>
-                <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geocoded">From: Address</a></li>
-            </ul>
-        </div>
-    </div>
-
+{% if is_popup %}<div class="location_item">{% endif %}
     <h2>{{ item.site_name }}</h2>
 
     <div class="loc_address">
@@ -24,10 +7,11 @@
     </div>
 
     <div>
-      {{ item.url|urlize }} {{ item.email|urlize }}
+      {{ item.url|urlize }}<br />
+      {{ item.email|urlize }}
     </div>
 
-    {% if item.phone1 or model.phone2 or model.phone3 or model.fax %}
+    {% if item.phone1 or item.phone2 or item.phone3 or item.fax %}
     <table class="loc_phone_table">
         <thead>
             <tr>
@@ -64,12 +48,26 @@
     </table>
     {% endif %}
 
-    <div class="loc_moreinfo">
-        <a href="/location/{{ item.id }}" class="btn btn-large">More Info</a>
+{% if is_popup %}
+    <div class="loc_directions">
+        <div class="nav_single">
+            <a class="btn nav_to_location" href="#" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})"><i class="icon-map-marker"></i> Directions</a>
+        </div>
+        <div class="nav_multi btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-map-marker"></i>
+                Directions
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geolocated">From: Your Location</a></li>
+                <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geocoded">From: Address</a></li>
+            </ul>
+        </div>
     </div>
 
-    <div>
-        <input type="checkbox" name="loc_cmp" id="loc_cmp"/>
-        <label for="loc_cmp">Select for comparison</label>
+    <div class="loc_moreinfo">
+        <a href="/location/{{ item.id }}" class="btn" data-id="{{ item.id }}"><i class="icon-arrow-up"></i> More Info</a>
     </div>
 </div>
+{% endif %}

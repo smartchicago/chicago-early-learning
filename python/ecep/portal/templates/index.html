@@ -67,6 +67,12 @@
 
 <div id="filter-selection">
     <textarea>
+        <div>
+            <input type="checkbox" value="true" name="all" id="all" class="loc_filter_check"/>
+            <label for="all" class="filter-label">All</label>
+            <hr/>
+        </div>
+        </div>
         {% for f in fields %}
         <div>
             <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" class="loc_filter_check"/>
