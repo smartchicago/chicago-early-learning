@@ -154,6 +154,10 @@ configure_django() {
     echo "    '$1/python/ecep/templates/'" >> $LOCAL
     echo ")" >> $LOCAL
 
+    # create the logging dir, and chmod it for www-data
+    mkdir -p /var/log/ecep
+    chmod a+rw /var/log/ecep
+
     return 0
 }
 
