@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
-from portal.views import Sms
+from portal.sms import Sms
 
 from django.contrib.gis import admin
 admin.autodiscover()
