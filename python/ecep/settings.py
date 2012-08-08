@@ -9,6 +9,10 @@ except ImportError:
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+#Using my test account for now b/c i have access to Twilio web interface
+TWILIO_ACCOUNT_SID = 'AC7a652a7493f41d19851fc9f810c2a97a'
+TWILIO_AUTH_TOKEN = '7c5b5db30d48bae17dfa180b39ccbafd'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -100,6 +104,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.gis',
     'portal',
+    'django_twilio',
 )
 
 # A sample logging configuration. The only tangible logging
