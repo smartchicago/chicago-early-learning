@@ -9,6 +9,11 @@ except ImportError:
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+# Test account. We can't use the real credentials here b/c they would be public
+# See install.sh and local_settings.py
+TWILIO_ACCOUNT_SID = TWILIO_ACCOUNT_SID or 'AC7a652a7493f41d19851fc9f810c2a97a'
+TWILIO_AUTH_TOKEN = TWILIO_AUTH_TOKEN or '7c5b5db30d48bae17dfa180b39ccbafd'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -100,6 +105,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.gis',
     'portal',
+    'django_twilio',
 )
 
 # A sample logging configuration. The only tangible logging
