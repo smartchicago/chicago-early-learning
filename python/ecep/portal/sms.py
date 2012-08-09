@@ -111,6 +111,11 @@ class Conversation(object):
         session['state'] = self.current_state
         session['locations'] = self.locations
 
+    def nearby_locations(self, zipcode, count=None):
+        """Returns locations that fall inside zipcode"""
+        return Location.objects.filter(zip=zipcode)[:count]
+        
+
     def process_request(self, request):
         """
         Handles the updating of the object's state, saving it to request.session, and
@@ -127,22 +132,23 @@ class Conversation(object):
             # parse zipcodes
             zipcode = matches.groups()[0]
             self.zipcode = zipcode
-            # TODO: get real nearby location pks
-            locations = [ 1, 2, 3 ] 
-            self.locations = locations
+            locations = self.nearby_locations(zipcode)
+            self.locations = [l.pk for l in locations]
 
             if len(locations) > 0:
                 self.current_state = Conversation.State.GOT_ZIP
-                # TODO: use real locations
-                response = """Schools near %s:
-                    1. Foo school
-                    2. Bar school
-                    3. Baz school
-                    """ % zipcode
+                schools_list = []
+                for i in xrange(0, len(locations)):
+                    school = "%d: %s" % (i + 1, locations[i].site_name)
+                    schools_list.append(school)
+
+                response = "Schools in %s:" % zipcode
+                response += "\n".join(schools_list)
+                self.response = response
                 self.update_session(request.session)
             else:
-                self.response = "Sorry, I couldn't find any schools near %s" % zipcode
-        if self._re_help.match(msg.body):
+                self.response = "Sorry, I couldn't find any schools in %s" % zipcode
+        elif self._re_help.match(msg.body):
             # parse "help" requests
             self.response = self.USAGE
         elif self.current_state == Conversation.State.GOT_ZIP:
@@ -157,8 +163,8 @@ class Conversation(object):
                         "Please text a number between 1 and %d or a 5 digit zipcode") % 
                         (self.zipcode, idx))
                 else:
-                    # TODO: return real details
-                    self.response = "idx was %d, details for school go here" % idx
+                    l = Location.objects.get(pk=self.locations[idx])
+                    self.response = l.get_long_string()
             else:
                 self.response = (("Sorry, I didn't understand that number for zipcode %s. " + 
                     "Please text a number between 1 and %d, or a 5 digit zipcode") % 
