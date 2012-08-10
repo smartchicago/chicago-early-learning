@@ -9,7 +9,6 @@ import logging, hashlib
 
 logger = logging.getLogger(__name__)
 
-
 def index(request):
     fields = Location.get_boolean_fields()
     return render_to_response('index.html', { 'fields':fields })
@@ -131,4 +130,5 @@ def about(request):
 
 def faq(request):
     return render_to_response('faq.html')
+
 
