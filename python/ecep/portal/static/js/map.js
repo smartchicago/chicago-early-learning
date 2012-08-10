@@ -225,10 +225,33 @@ ecep.expandInfo = function(event) {
     });
 
     req.always(function() {
-        ecep.comparing.push({id:mkr.get('location_id'), name:mkr.get('location_site_name')});
+        if (ecep.comparing.length == 0) {
+            ecep.comparing.push({id:mkr.get('location_id'), name:mkr.get('location_site_name')});
+        }
+        else if (ecep.comparing[0].id == mkr.get('location_id')) {
+            if (ecep.comparing.length == 2) {
+                // swap their positions
+                ecep.comparing = [
+                    ecep.comparing[1],
+                    ecep.comparing[0]
+                ];
+            }
+        }
+        else {
+            if (ecep.comparing.length == 2 && ecep.comparing[1].id == mkr.get('location_id')) {
+                // swap their positions
+                ecep.comparing = [
+                    ecep.comparing[1],
+                    ecep.comparing[0]
+                ];
+            }
+            else {
+                ecep.comparing.push({id:mkr.get('location_id'), name:mkr.get('location_site_name')});
 
-        if (ecep.comparing.length > 2) {
-            ecep.comparing = ecep.comparing.slice(1);
+                if (ecep.comparing.length > 2) {
+                    ecep.comparing = ecep.comparing.slice(1);
+                }
+            }
         }
 
         ecep.comparingChanged();
@@ -436,7 +459,7 @@ ecep.typeDirections = function() {
     else {
         direlem.empty();
     }
-    direlem.append($('<button class="clear_dir btn"><i class="icon-remove"></i> Close</button>'));
+    direlem.append($('<button class="clear_dir btn pull-right"><i class="icon-remove"></i> Close</button>'));
 
     $('.clear_dir').click(function(){
         // clear any existing directions off the page
