@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     # Verbose details about a location
     url(r'^location/$', 'portal.views.location_list'),
     url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
+    url(r'^compare/(?P<a>\d+)/(?P<b>\d+)/$', 'portal.views.compare'),
 
     # Telephony
     url(r'^sms/?$', Sms.as_view()),
