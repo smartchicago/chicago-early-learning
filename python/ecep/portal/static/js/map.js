@@ -338,9 +338,11 @@ ecep.geolocate = function() {
             function(pos) {
                 var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
                 ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'blue', true);
+
+                ecep.clearDirections();
             },
             function() {
-                alert('Could not determine your location, sorry!');
+                alert('Could not determine your location, please try again.');
             }
         );
     }
@@ -377,6 +379,8 @@ ecep.geocode = function(addr) {
 
             // trigger the load event, and apply the radius filter
             ecep.loadLocations();
+
+            ecep.clearDirections();
         }
         else {
             alert('Sorry, Google cannot find that address.');
@@ -445,6 +449,17 @@ ecep.directions = function(event) {
     });
 };
 
+ecep.clearDirections = function() {
+    // clear any existing directions off the page
+    ecep.directions_display.setMap(null);
+    $('.directions').remove();
+
+    var loc = ecep.map.getCenter();
+    $('#map_container').css('right', '0');
+    google.maps.event.trigger(ecep.map, 'resize');
+    ecep.map.setCenter(loc);
+};
+
 ecep.typeDirections = function() {
     var result = ecep.directions_display.directions;
     ecep.directions_display.setMap(ecep.map);
@@ -461,16 +476,7 @@ ecep.typeDirections = function() {
     }
     direlem.append($('<button class="clear_dir btn pull-right"><i class="icon-remove"></i> Close</button>'));
 
-    $('.clear_dir').click(function(){
-        // clear any existing directions off the page
-        ecep.directions_display.setMap(null);
-        direlem.remove();
-
-        var loc = ecep.map.getCenter();
-        $('#map_container').css('right', '0');
-        google.maps.event.trigger(ecep.map, 'resize');
-        ecep.map.setCenter(loc);
-    });
+    $('.clear_dir').click(ecep.clearDirections);
 
     direlem.append($('<h3>Driving Directions</h3>'));
 
