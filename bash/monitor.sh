@@ -40,7 +40,7 @@ if [ -e '/tmp/please_deploy' ]; then
     echo "Deploy to production"
     cd /srv/early-childhood-portal
 
-    su ec2-user -c "git fetch --rebase origin master"
+    su ec2-user -c "git pull --rebase origin master"
     if [ $? != 0 ]; then
         echo "Error fetching code from 'origin'"
         rm /tmp/please_deploy
