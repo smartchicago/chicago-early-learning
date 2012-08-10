@@ -28,6 +28,9 @@ if [ -e '/tmp/please_staging' ]; then
         exit 2
     fi
 
+    cd python/ecep
+    su ec2-user -c "./manage.py collectstatic --noinput"
+
     RESTART=Y
 
     rm /tmp/please_staging
@@ -44,6 +47,9 @@ if [ -e '/tmp/please_deploy' ]; then
 
         exit 3
     fi
+
+    cd python/ecep
+    su ec2-user -c "./manage.py collectstatic --noinput"
 
     RESTART=Y
 
