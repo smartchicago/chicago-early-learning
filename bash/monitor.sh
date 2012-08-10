@@ -20,20 +20,12 @@ if [ -e '/tmp/please_staging' ]; then
     echo "Deploy to staging"
     cd /srv/early-childhood-learning.staging
 
-    git fetch origin
+    git pull --rebase origin ci
     if [ $? != 0 ]; then
-        echo "Error fetching code from 'origin'"
+        echo "Error fetching and rebasing code from 'origin'"
         rm /tmp/please_staging
 
         exit 2
-    fi
-
-    git rebase origin/staging
-    if [ $? != 0 ]; then
-        echo "Error rebasing code from 'staging' branch."
-        rm /tmp/please_staging
-
-        exit 3
     fi
 
     RESTART=Y
@@ -45,20 +37,12 @@ if [ -e '/tmp/please_deploy' ]; then
     echo "Deploy to production"
     cd /srv/early-childhood-learning
 
-    git fetch origin
+    git fetch --rebase origin master
     if [ $? != 0 ]; then
         echo "Error fetching code from 'origin'"
         rm /tmp/please_deploy
 
-        exit 4
-    fi
-
-    git rebase origin/master
-    if [ $? != 0 ]; then
-        echo "Error rebasing code from 'master' branch."
-        rm /tmp/please_deploy
-
-        exit 5
+        exit 3
     fi
 
     RESTART=Y
@@ -70,13 +54,13 @@ if [ $RESTART == 'Y' ]; then
     pkill gunicorn
     if [ $? != 0 ]; then
         echo "Could not kill all gunicorn processes."
-        exit 6
+        exit 4
     fi
 
     . /etc/rc.local
     if [ $? != 0 ]; then
         echo "Could not restart all gunicorn processes."
-        exit 7
+        exit 5
     fi
 fi
 
