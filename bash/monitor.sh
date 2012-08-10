@@ -9,7 +9,7 @@
 # port 80 and 8000, respectively
 #
 
-if [`whoami` != 'root' ]; then
+if [ `whoami` != 'root' ]; then
     echo "Must run this cron job as root."
     exit 1
 fi
