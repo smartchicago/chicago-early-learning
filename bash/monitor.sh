@@ -17,7 +17,7 @@ fi
 RESTART=N
 
 if [ -e '/tmp/please_staging' ]; then
-    # Deploy to staging
+    echo "Deploy to staging"
     cd /srv/early-childhood-learning.staging
 
     git fetch origin
@@ -42,7 +42,7 @@ if [ -e '/tmp/please_staging' ]; then
 fi
 
 if [ -e '/tmp/please_deploy' ]; then
-    # Deploy to production
+    echo "Deploy to production"
     cd /srv/early-childhood-learning
 
     git fetch origin
@@ -79,3 +79,5 @@ if [ $RESTART == 'Y' ]; then
         exit 7
     fi
 fi
+
+echo "Success"
