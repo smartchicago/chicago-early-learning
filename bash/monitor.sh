@@ -18,7 +18,7 @@ RESTART=N
 
 if [ -e '/tmp/please_staging' ]; then
     echo "Deploy to staging"
-    cd /srv/early-childhood-learning.staging
+    cd /srv/early-childhood-portal.staging
 
     git pull --rebase origin ci
     if [ $? != 0 ]; then
@@ -35,7 +35,7 @@ fi
 
 if [ -e '/tmp/please_deploy' ]; then
     echo "Deploy to production"
-    cd /srv/early-childhood-learning
+    cd /srv/early-childhood-portal
 
     git fetch --rebase origin master
     if [ $? != 0 ]; then
