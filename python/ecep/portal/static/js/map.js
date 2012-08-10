@@ -22,7 +22,9 @@ ecep.getUrl = function(name) {
         case 'shadow-pin':
             return 'https://www.google.com/chart?chst=d_map_pin_shadow'; 
         case 'location_info':
-            return '/location/' + arguments[1] + '/?m=' + arguments[2];
+            return '/location/' + arguments[1] + '/';
+        case 'compare':
+            return '/compare/' + arguments[1] + '/' + arguments[2] + '/';
         default:
             throw 'Unknown URL endpoint "' + name + '"';
     }
@@ -144,7 +146,28 @@ ecep.comparingChanged = function(event) {
 };
 
 ecep.showComparison = function(a, b) {
-    window.location.href = '/compare/' + a + '/' + b + '/';
+    $('#compare-toggle').popover('hide');
+
+    var test = $('<div class="hidden-phone" id="viztest"/>');
+    $(document.body).append(test);
+    var fullscreen = $('#viztest:visible').length == 0;
+    test.remove();
+
+    var req = $.ajax({
+        url: ecep.getUrl('compare', a, b),
+        dataType: 'html',
+        data: { m: 'embed' }
+    });
+
+    req.done(function(data, txtStatus, jqxhr) {
+        if(!fullscreen) {
+            $('#compare-modal .modal-body').html(data);
+            $('#compare-modal').modal();
+        }
+        else {
+            // add a fullscreen div
+        }
+    });
 };
 
 
@@ -152,8 +175,9 @@ ecep.expandInfo = function(event) {
     var type = (('data' in event) && event.data.type) ? event.data.type : 'popup';
     var mkr = ('data' in event) ? event.data.marker : this;
     var req = $.ajax({
-        url: ecep.getUrl('location_info', mkr.get('location_id'), type),
-        dataType: 'html'
+        url: ecep.getUrl('location_info', mkr.get('location_id')),
+        dataType: 'html',
+        data: { m:type }
     });
 
     req.done(function(data, txtStatus, jqxhr) {

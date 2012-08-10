@@ -61,8 +61,8 @@ def location(request, location_id):
         elif request.GET['m'] == 'popup':
             tpl = 'popup.html'
 
-    context.update('is_popup', tpl == 'popup.html')
-    context.update('is_embed', tpl == 'embed.html')
+    context.update(is_popup=(tpl == 'popup.html'))
+    context.update(is_embed=(tpl == 'embed.html'))
 
     return render_to_response(tpl, context)
 
@@ -115,14 +115,13 @@ def compare(request, a, b):
     loc_a = location_details(a)
     loc_b = location_details(b)
 
-    is_embed = False
-    if 'm' in request.GET:
-        is_embed = (request.GET['m'] == 'embed')
+    tpl = 'compare.html'
+    if 'm' in request.GET and request.GET['m'] == 'embed':
+        tpl = 'compare_content.html'
 
-    return render_to_response('compare.html', { 
+    return render_to_response(tpl, { 
         'location_a': loc_a,
-        'location_b': loc_b,
-        'is_embed': is_embed
+        'location_b': loc_b
     })
 
 

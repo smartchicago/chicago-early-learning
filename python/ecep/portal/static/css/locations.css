@@ -1,5 +1,13 @@
-.container .location {
+.container .location, .modal-body .location {
     width: 50%;
+    float: left;
+}
+
+#compare-modal {
+    width: 90%;
+    margin: 0 auto;
+    top: 10%;
+    left: 5%;
 }
 
 .container .location h2 {
