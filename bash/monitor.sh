@@ -20,7 +20,7 @@ if [ -e '/tmp/please_staging' ]; then
     echo "Deploy to staging"
     cd /srv/early-childhood-portal.staging
 
-    git pull --rebase origin ci
+    git pull --rebase origin staging
     if [ $? != 0 ]; then
         echo "Error fetching and rebasing code from 'origin'"
         rm /tmp/please_staging
