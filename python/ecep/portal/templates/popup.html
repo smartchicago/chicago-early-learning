@@ -2,6 +2,15 @@
 {% if is_popup %}<div class="location_item">{% endif %}
     <h2>{{ item.site_name }}</h2>
 
+    <div class="loc_rating" style="float:right;">
+        <i class="icon-star-empty"></i>
+        <i class="icon-star-empty"></i>
+        <i class="icon-star-empty"></i>
+        <i class="icon-star-empty"></i>
+        <i class="icon-star-empty"></i><br/>
+        <span class="star-notice">Coming Soon</span>
+    </div>
+
     <div class="loc_address">
       {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
     </div>
@@ -57,7 +66,7 @@
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="icon-map-marker"></i>
                 Directions
-                <span class="caret"></span>
+                <i class="icon-chevron-right"></i>
             </a>
             <ul class="dropdown-menu">
                 <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geolocated">From: Your Location</a></li>

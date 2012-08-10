@@ -12,7 +12,7 @@
     <div class="container">
         <ul class="nav">
             <li>
-                <a id="geolocate" href="#"><i class="icon-screenshot"></i></a>
+                <a id="geolocate" href="#"><i class="icon-globe icon-white"></i></a>
             </li>
         </ul>
         <div class="navbar-search pull-left">
@@ -28,14 +28,15 @@
         </div>
         <ul class="nav">
             <li>
-                <a id="menu-search" class="search-button" data-address="#search-address" href="#"><i class="icon-search"></i> Search</a>
+                <a id="menu-search" class="search-button" data-address="#search-address" href="#"><i class="icon-search icon-white"></i> Search</a>
             </li>
         </ul>
         <div class="hidden-phone">
             <ul class="nav nav-pills pull-right">
                 <li>
-                    <a id="filter-toggle" href="#"><i class="icon-filter"></i> Filter</a>
-                    <a href="#"><i class="icon-print"></i> Print</a>
+                    <a id="filter-toggle" href="#"><i class="icon-filter icon-white"></i> Filter</a>
+                    <a id="compare-toggle" href="#"><i class="icon-adjust icon-white"></i> Compare</a>
+                    <a id="print-toggle" href="#"><i class="icon-print icon-white"></i> Print</a>
                 </li>
             </ul>
         </div>
@@ -52,9 +53,10 @@
         <h3>Chicago Early Learning</h3>
     </div>
     <div class="modal-body">
-        <!-- <h4>Modal body text title</h4> -->
-        <div>Bacon ipsum dolor sit amet fatback tail ham hock bresaola, tenderloin bacon boudin pig rump spare ribs filet mignon shankle tri-tip ham. Bresaola jowl fatback meatball turducken filet mignon beef ribs capicola tri-tip spare ribs pork belly tongue t-bone.</div>
-        <div>Some sort of 4 boxes are supposed to go here, but I'm not sure what they're for</div>
+        <h4>Welcome to Chicago Early Learning.</h4>
+        <p>Please enter an address below to begin exploring locations in and around Chicago.</p>
+        <p>Bacon ipsum dolor sit amet fatback tail ham hock bresaola, tenderloin bacon boudin pig rump spare ribs filet mignon shankle tri-tip ham. Bresaola jowl fatback meatball turducken filet mignon beef ribs capicola tri-tip spare ribs pork belly tongue t-bone.</p>
+        <p>Example: 121 N Lasalle St, Chicago, IL</p>
     </div>
     <div class="modal-footer">
         <input type="text" class="visible-phone address-input" data-button="#splash-search"
@@ -62,6 +64,15 @@
         <input type="text" class="hidden-phone address-input" data-button="#splash-search"
             placeholder="Enter an address to get started" />
         <button id="splash-search" class="search-button btn btn-success pull-right" data-address=".modal-footer .address-input:visible">Start</a>
+    </div>
+</div>
+
+<div id="compare-modal" class="modal hide">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">x</a>
+        <h3>Comparing Locations</h3>
+    </div>
+    <div class="modal-body">
     </div>
 </div>
 

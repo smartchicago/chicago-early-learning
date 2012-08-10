@@ -1,5 +1,13 @@
-.container .location {
+.container .location, .modal-body .location {
     width: 50%;
+    float: left;
+}
+
+#compare-modal {
+    width: 90%;
+    margin: 0 auto;
+    top: 10%;
+    left: 5%;
 }
 
 .container .location h2 {
@@ -13,7 +21,8 @@
 }
 
 .loc_directions .dropdown-menu {
-    margin-left: -56px;
+    margin-left: 107px;
+    margin-top: -57px;
 }
 
 .loc_moreinfo, .loc_lessinfo {
@@ -177,4 +186,11 @@
 }
 .d_dist {
     padding-left: 1em;
+}
+/* fake star ratings */
+.loc_rating {
+    float: right;
+}
+.star-notice {
+    color: #999999;
 }

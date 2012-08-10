@@ -47,9 +47,12 @@ class Location(models.Model):
         the meta class attached to the model to introspect on the field types.
         This also has the benefit of providing the verbose name of the field.
         """
+        exclude = ['is_montessori']
+
         fields = []
         for field in Location._meta.fields:
-            if field.get_internal_type() == 'NullBooleanField':
-                fields.append((field.get_attname(),field.verbose_name,))
+            if field.get_internal_type() == 'NullBooleanField' and \
+                not field.get_attname() in exclude:
+                    fields.append((field.get_attname(),field.verbose_name,))
 
         return fields
