@@ -68,6 +68,6 @@ if [ $RESTART == 'Y' ]; then
         echo "Could not restart all gunicorn processes."
         exit 5
     fi
-fi
 
-echo "Success"
+    echo "Successfully restarted gunicorn."
+fi
