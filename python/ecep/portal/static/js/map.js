@@ -369,19 +369,21 @@ ecep.search = function() {
 };
 
 ecep.geocode = function(addr) {
-    ecep.geocoder.geocode({'address': addr}, function(results, geocodeStatus) {
-        if (geocodeStatus == google.maps.GeocoderStatus.OK) {
-            var ll = results[0].geometry.location;
-            ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
-            $('#search-address').val(addr);
+    ecep.geocoder.geocode({'address': addr, 'bounds': ecep.map.getBounds() },
+        function(results, geocodeStatus) {
+            if (geocodeStatus == google.maps.GeocoderStatus.OK) {
+                var ll = results[0].geometry.location;
+                ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
+                $('#search-address').val(addr);
 
-            // trigger the load event, and apply the radius filter
-            ecep.loadLocations();
+                // trigger the load event, and apply the radius filter
+                ecep.loadLocations();
+            }
+            else {
+                alert('Sorry, Google cannot find that address.');
+            }
         }
-        else {
-            alert('Sorry, Google cannot find that address.');
-        }
-    });
+    );
 };
 
 ecep.dropMarker = function(loc, title, color, reposition) {
