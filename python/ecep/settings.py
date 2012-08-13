@@ -9,8 +9,6 @@ except ImportError:
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-STAGING = True
-
 # Test account. We can't use the real credentials here b/c they would be public
 # See install.sh and local_settings.py
 TWILIO_ACCOUNT_SID = TWILIO_ACCOUNT_SID or 'AC7a652a7493f41d19851fc9f810c2a97a'
