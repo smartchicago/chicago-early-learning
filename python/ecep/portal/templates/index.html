@@ -16,19 +16,26 @@
             </li>
         </ul>
         <div class="navbar-search pull-left">
-            <input class="address-input search-query span2" type="text" id="search-address" data-button="#menu-search" placeholder="Search"/>
+            <input type="text" class="address-input search-query span2" id="search-address" 
+                data-button="#menu-search" placeholder="Search"/>
             <select class="hidden-phone search-query" id="search-radius">
-                <option class="uneditable-input" value="-1">Distance</option>
-                <option class="uneditable-input" value="1">&lt; 1 mi</option>
-                <option class="uneditable-input" value="2">&lt; 2 mi</option>
-                <option class="uneditable-input" value="5">&lt; 5 mi</option>
-                <option class="uneditable-input" value="10">&lt; 10 mi</option>
-                <option class="uneditable-input" value="20">&lt; 20 mi</option>
+                <!-- 
+                    Chrome's user-agent stylesheet has some bugs where it overrides the background
+                    text color specified by search-query unless we put it on these explicitly
+                -->
+                <option class="search-query" value="-1">Distance</option>
+                <option class="search-query" value="1">&lt; 1 mi</option>
+                <option class="search-query" value="2">&lt; 2 mi</option>
+                <option class="search-query" value="5">&lt; 5 mi</option>
+                <option class="search-query" value="10">&lt; 10 mi</option>
+                <option class="search-query" value="20">&lt; 20 mi</option>
             </select>
         </div>
         <ul class="nav">
             <li>
-                <a id="menu-search" class="search-button" data-address="#search-address" href="#"><i class="icon-search icon-white"></i> Search</a>
+                <a id="menu-search" class="search-button" data-address="#search-address" href="#">
+                    <i class="icon-search icon-white"></i> Search
+                </a>
             </li>
         </ul>
         <div class="hidden-phone">
