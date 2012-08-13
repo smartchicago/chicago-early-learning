@@ -106,6 +106,7 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     'portal',
     'django_twilio',
+    'gunicorn',
 )
 
 # A sample logging configuration. The only tangible logging
