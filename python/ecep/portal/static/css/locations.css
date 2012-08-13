@@ -10,6 +10,10 @@
     left: 5%;
 }
 
+#text-info-modal {
+    z-index: 9000;  /* .popover z-index is 2060, we want this in front of everything */
+}
+
 .container .location h2 {
     margin-top: 3em;
     margin-bottom: 1em;
@@ -131,7 +135,7 @@
 .subnav .navbar-search select.search-query {
     padding: 2px 9px;
     margin: 0 12px;
-    width: 7em;
+    width: 8em;
     height: 25px;
     border-radius: 3px;
 }
