@@ -4,6 +4,7 @@ This module contains classes and utilities for interacting with SMS messages
 
 import logging
 import re
+import math
 from django.views.generic import View
 from django.utils.decorators import classonlymethod
 from models import Location
@@ -192,6 +193,148 @@ class Sms(View):
         r = Response()
         r.sms(msg)
         return r
+
+    @staticmethod
+    def paginate(msg, length=160, min_percent_full=0.85, 
+        page_format="(page %d/%d)", ellipsis="..."):
+        """
+        Takes a message a breaks it into chunks with no more than than length characters and 
+        more than length * min_percent_full characters (except for the last one).
+        Automatically appends pagination information to the end of each page in form of 
+        'page_format % (current_page, n_pages)'.  It does its best to respect newlines and spaces,
+        but will split messages across either in order to obtain messages of minimum length.
+
+        This function should work pretty well for sane inputs, but might act strange
+        or explode for weird ones (e.g. length is only a few characters longer than
+        len(page_format), min_percent_full and length are both small, etc)
+
+        msg (string):       The message to paginate
+        length:             Maximum number of characters in a page
+        min_percent_full:   Each page except the last must have at least this 
+                            percent characters used, including the pagination string at the end
+        page_format:        Determines the pagination string appended to each page. It will
+                            be formatted with two integers. It always has "\n" prepended to it.
+        ellipsis:           This string is appended and prepended to words that are split
+                            across messages.  For example, if "foobar" is split across two 
+                            messages, the payload for the first will end in "foo..." and 
+                            the payload for the next will start with "...bar"
+        returns:            A list of strings representing the pages in order
+        """
+
+        msg_len = len(msg)
+        if msg_len < length:
+            return [ msg ]
+
+        ell_len = len(ellipsis)
+        min_percent_full = sorted((0.1, min_percent_full, 1.0))[1]
+        page_format = "\n" + page_format
+        pages_min = math.ceil(float(msg_len) / length)
+        digits_max = len(str(pages_min)) + 1
+        suffix_max = len(page_format % (digits_max, digits_max))
+        payload_min = math.floor(min_percent_full * length) - suffix_max
+        payload_max = length - suffix_max
+        pages_max = math.ceil(float(msg_len) / payload_min)
+
+        def add_word(pages, message, current):
+            """
+            Special case of paginate_internal for when separator == ""
+            See docstring for paginate_internal
+            """
+            remain_len = max(0, payload_max - len(current) - ell_len - 2)
+            message_len = len(message)
+            if remain_len > 0:
+                current += message[0:remain_len] + ellipsis
+            pages.append(current)
+            start = remain_len
+            while True:
+                end = start + payload_max - 2 * ell_len
+                if end > message_len:
+                    # we're on the last chunk
+                    return ellipsis + message[start:end]
+                elif end + ell_len > message_len:
+                    # our last chunk will just barely fit, add it and return empty
+                    pages.append(ellipsis + message[start:end + ell_len])
+                    return ""
+                else:
+                    pages.append(ellipsis + message[start:end] + ellipsis)
+                    start = end
+
+        def paginate_internal(pages, message, current="", separator="\n"):
+            """
+            This is the real function, declared as a lambda function because it is both
+            recursive and needs most of the variables defined above (passing them in as
+            arguments would be quite annoying).  This function takes message and reads 
+            through it, appending it to pages until it runs out of text.
+
+            pages:      An array holding the pages we've created so far. This funtion will
+                        append new pages to it as necessary. The pages are fully complete
+                        except they have not yet had page_format appended to them.
+            message:    The next block of text to add to pages.  Some substring of msg in
+                        the outer scope.
+            current:    The next page to add to pages, in some stage of completion.
+            separator:  This denotes how message should be split up.  There are only 
+                        three valid values: "\n", " ", and "".  "\n" means message is added
+                        to the current page in units of one line, " " means message is 
+                        added in units of one word, and "" means message is added to pages
+                        in increments of max payload length.
+            returns:    None if separator is "\n", otherwise the value of current once we 
+                        reach the end of message. This allows the calling function to pick
+                        up where we left off.
+            """
+            curr_len = len(current)
+
+            if curr_len + len(message) < payload_max:
+                pages.append(current + message)
+                return ""
+
+            if separator == "":
+                # message is one word
+                return add_word(pages, message, current)
+                
+            assert separator != ""
+            parts = message.split(separator)
+            n_parts = len(parts)
+            subsep = " " if separator == "\n" else ""
+            for i in xrange(0, n_parts):
+                next_part = parts[i]
+                curr_len = len(current)
+                next_len = len(next_part)
+
+                if curr_len + (1 + next_len) < payload_max:
+                    # We have room to add the next part, keep going
+                    current += next_part + separator
+                elif curr_len > payload_min:
+                    # No room to add next part, but we have our minimum, so start a new page
+                    result.append(current.rstrip(separator))
+                    if next_len < payload_max:
+                        # Next part can fit in single page
+                        current = next_part + separator
+                    else:
+                        # Next part is too big for single page, must split it
+                        current = paginate_internal(pages, next_part, current, subsep) + separator
+                else:
+                    current = paginate_internal(pages, next_part, current, subsep) + separator
+                    # No room to add next part and we haven't met our minimum
+
+            current = current.rstrip(separator)
+            if separator == "\n":
+                if len(current) > 0 and not current.isspace():
+                    # Don't bother making a page that's entirely whitespace
+                    pages.append(current)
+            else:
+                return current
+            
+        result = []
+        paginate_internal(result, msg)
+        n_pages = len(result)
+        assert n_pages <= pages_max
+
+        for i in xrange(0, len(result)):
+            result[i] += page_format % (i + 1, n_pages)
+            assert len(result[i]) <= length
+
+        return result
+
 
     def get(self, request):
         """Handler for GET requests, see View.dispatch"""
