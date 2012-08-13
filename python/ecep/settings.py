@@ -9,6 +9,8 @@ except ImportError:
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+STAGING = True
+
 # Test account. We can't use the real credentials here b/c they would be public
 # See install.sh and local_settings.py
 TWILIO_ACCOUNT_SID = TWILIO_ACCOUNT_SID or 'AC7a652a7493f41d19851fc9f810c2a97a'
@@ -109,11 +111,12 @@ INSTALLED_APPS = (
     'gunicorn',
 )
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
+# Staging log file or deployment log file?
+if STAGING:
+    logfile = '/var/log/ecep/django.staging.log'
+else:
+    logfile = '/var/log/ecep/django.deploy.log'
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -121,7 +124,7 @@ LOGGING = {
         'logfile': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': '/var/log/ecep/django.log',
+            'filename': logfile,
         }
     },
     'loggers': {
