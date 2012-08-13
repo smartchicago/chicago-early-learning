@@ -67,7 +67,13 @@ ecep.init = function() {
     $('.search-button').click(ecep.search);
 
     //Show modal splash (see index.html)
-    $('#address-modal').modal({ keyboard:false, show:true });
+    var cookies = document.cookie.split(';');
+    var cpos = $.inArray('show_splash=true', cookies)
+    if (cpos >= 0) {
+        $('#address-modal').modal({ keyboard:false, show:true });
+        cookies[cpos] = 'show_splash=false';
+        document.cookie = cookies.join(';');
+    }
 
     $('#filter-toggle').popover({
         animation: false,
