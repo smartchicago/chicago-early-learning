@@ -10,6 +10,7 @@ ecep.geocoded_marker = null;
 ecep.directions_service = null;
 ecep.directions_display = null;
 ecep.comparing = [];
+ecep.initialBounds = null;
 
 ecep.getUrl = function(name) {
     switch (name) {
@@ -61,7 +62,7 @@ ecep.init = function() {
     ecep.loadedListener = google.maps.event.addListener(ecep.map, 'tilesloaded', ecep.loadLocations);
 
     // attach the geolocation handler to the geolocation button
-    $('#geolocate').click(ecep.geolocate);
+    $('.geolocate').click(ecep.geolocate);
 
     // attach the search handler to the search button(s)
     $('.search-button').click(ecep.search);
@@ -277,6 +278,8 @@ ecep.loadLocations = function() {
         data.rad = $('#search-radius').val();
     }
 
+    ecep.initialBounds = ecep.map.getBounds();
+
     var load = $.ajax({
         url: ecep.getUrl('loadLocations'),
         dataType: 'json',
@@ -337,9 +340,11 @@ ecep.geolocate = function() {
         navigator.geolocation.getCurrentPosition(
             function(pos) {
                 var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'blue', true);
+                if (ecep.initialBounds.contains(ll)) {
+                    ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'blue', true);
 
-                ecep.clearDirections();
+                    ecep.clearDirections();
+                }
             },
             function() {
                 alert('Could not determine your location, please try again.');
@@ -375,13 +380,16 @@ ecep.geocode = function(addr) {
         function(results, geocodeStatus) {
             if (geocodeStatus == google.maps.GeocoderStatus.OK) {
                 var ll = results[0].geometry.location;
-                ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
-                $('#search-address').val(addr);
 
-                // trigger the load event, and apply the radius filter
-                ecep.loadLocations();
+                if (ecep.initialBounds.contains(ll)) {
+                    ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
+                    $('#search-address').val(addr);
 
-                ecep.clearDirections();
+                    // trigger the load event, and apply the radius filter
+                    ecep.loadLocations();
+
+                    ecep.clearDirections();
+                }
             }
             else {
                 alert('Sorry, Google cannot find that address.');
