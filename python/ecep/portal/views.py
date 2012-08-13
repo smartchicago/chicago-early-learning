@@ -6,12 +6,24 @@ from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import GEOSGeometry
 from models import Location
 import logging, hashlib
+from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
 
 def index(request):
     fields = Location.get_boolean_fields()
-    return render_to_response('index.html', { 'fields':fields })
+
+    response = render_to_response('index.html', { 'fields':fields })
+
+    # cookie for splash screen, defaults to true
+    try:
+        show_splash = request.COOKIES['show_splash']
+    except:
+        show_splash = 'true'
+    expires = datetime.utcnow() + timedelta(seconds=60 * 60)
+    response.set_cookie('show_splash', show_splash, expires=expires, httponly=False)
+
+    return response
 
 def location_details(location_id):
     """
