@@ -145,6 +145,10 @@
     text-shadow: 0 1px 0 #333333;
     border: 1px solid;
 }
+.subnav .navbar-search select.search-query option {
+    border-style: none;
+    border-radius: 0;
+}
 #map_container { 
     position: absolute;
     left: 0;
