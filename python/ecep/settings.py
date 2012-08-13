@@ -108,6 +108,7 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     'portal',
     'django_twilio',
+    'gunicorn',
 )
 
 # Staging log file or deployment log file?
