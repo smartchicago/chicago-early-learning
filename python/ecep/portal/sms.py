@@ -14,7 +14,6 @@ from models import Location
 from twilio.twiml import Response
 from twilio.rest import TwilioRestClient
 from django_twilio.decorators import twilio_view
-from threading import Thread
 
 logger = logging.getLogger(__name__)
 
@@ -268,9 +267,11 @@ class Sms(View):
             Special case of paginate_internal for when separator == ""
             See docstring for paginate_internal
             """
+            # remaining characters in current page (get at least 2 chars of our word in)
             remain_len = max(0, payload_max - len(current) - ell_len - 2)
             message_len = len(message)
             if remain_len > 0:
+                # There's still some space in curent, so add beginning of word to it
                 current += message[0:remain_len] + ellipsis
             pages.append(current)
             start = remain_len
@@ -284,6 +285,7 @@ class Sms(View):
                     pages.append(ellipsis + message[start:end + ell_len])
                     return ""
                 else:
+                    # Remainder won't all fit in one page, add next page and continue
                     pages.append(ellipsis + message[start:end] + ellipsis)
                     start = end
 
@@ -346,17 +348,21 @@ class Sms(View):
 
             current = current.rstrip(separator)
             if separator == "\n":
+                # We're the top of the stack, so add last page if necessary and don't return anything
+                # Don't bother making a page that's entirely whitespace
                 if len(current) > 0 and not current.isspace():
-                    # Don't bother making a page that's entirely whitespace
                     pages.append(current)
+                return
             else:
                 return current
             
+        # Actually call the above function
         result = []
         paginate_internal(result, msg)
         n_pages = len(result)
         assert n_pages <= pages_max
 
+        # Add page_format suffix to all the pages
         for i in xrange(0, len(result)):
             result[i] += page_format % (i + 1, n_pages)
             assert len(result[i]) <= length
