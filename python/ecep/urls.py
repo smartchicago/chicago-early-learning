@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
-from portal.sms import Sms, Conversation
+from portal.sms import Sms, Conversation, SmsCallback
 
 from django.contrib.gis import admin
 admin.autodiscover()
@@ -17,13 +17,14 @@ urlpatterns = patterns(
     url(r'^compare/(?P<a>\d+)/(?P<b>\d+)/$', 'portal.views.compare'),
 
     # Telephony
-    url(r'^sms/?$', Sms.as_view()),
-    url(r'^sms_error/?$', 'django_twilio.views.sms', {
+    url(r'^sms/handler/?$', Sms.as_view()),
+    url(r'^sms/error/?$', 'django_twilio.views.sms', {
         'message': Conversation.FATAL,
         'method': 'POST',
         # Due to a bug in django-twilio, method must be set to GET or POST
         # it works no matter what the request is
     }),
+    url(SmsCallback.URL_REGEX, SmsCallback.as_view()),
 
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),
