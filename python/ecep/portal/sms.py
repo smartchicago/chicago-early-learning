@@ -7,7 +7,9 @@ import re
 import math
 from django.conf import settings
 from django.views.generic import View
-from django.utils.decorators import classonlymethod
+from django.utils.decorators import classonlymethod, method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 from models import Location
 from twilio.twiml import Response
 from twilio.rest import TwilioRestClient
@@ -60,7 +62,7 @@ class Conversation(object):
     Represents the state of an SMS "Conversation"
 
     This is the language it recognizes:
-    'help'    - Returns usage (case insensitive)
+    'h'       - Returns usage (case insensitive)
     '12345'   - 5 digit zipcode.  Returns a numbered list of "nearby" schools 
                 (TODO: what does "nearby" mean?)
     '4'       - 1 or 2 digit number.  Only valid if the user has already sent a zipcode
@@ -70,13 +72,16 @@ class Conversation(object):
     """
     # Constants
     _re_zip = re.compile(r"^\s*(\d{5})\s*$")
-    _re_help = re.compile(r"^\s*help\s*$", re.IGNORECASE)
+    _re_help = re.compile(r"^\s*h\s*$", re.IGNORECASE)
     _re_num = re.compile(r"^\s*(\d{1,2})\s*$")
 
-    USAGE = 'To get this message text "help".\n' + \
+    # I wanted _re_help to recognize "help" instead of "h", but Twilio intercepts it :(
+    # http://www.twilio.com/help/faq/sms/does-twilio-support-stop-block-and-cancel-aka-sms-filtering
+
+    USAGE = 'To get this message text "h".\n' + \
             'Text a 5 digit zipcode to get a list of nearby schools.' + \
             'Text a number on the list to get more information.'
-    ERROR = 'Sorry, I didn\'t understand that. Please text "help" for instructions'
+    ERROR = 'Sorry, I didn\'t understand that. Please text "h" for instructions'
     FATAL = 'We\'re sorry, something went wrong with your request! Please try again'
 
     # Properties
@@ -112,6 +117,7 @@ class Conversation(object):
         """
         session['state'] = self.current_state
         session['locations'] = self.locations
+        session['zipcode'] = self.zipcode
 
     def nearby_locations(self, zipcode, count=None):
         """Returns locations that fall inside zipcode"""
@@ -127,7 +133,8 @@ class Conversation(object):
         msg = self.last_msg
 
         if msg is None:
-            return Sms.reply(self.FATAL, None, None)
+            self.response = self.FATAL
+            return
             
         matches = self._re_zip.match(msg.body)
         if matches is not None:
@@ -185,25 +192,22 @@ class Sms(View):
 
     _max_length = 160
     tc = TwilioRestClient(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+    request = None
 
     @classonlymethod
     def as_view(cls, **initkwargs):
         # twilio_view doesn't play nice with View classes, so we insert it manually here
         return twilio_view(super(Sms, cls).as_view(**initkwargs))
 
-    @staticmethod
-    def reply(msg, to_number, from_number):
+    def reply(self, msg):
         """Simple wrapper for returning a text message response"""
-        if len(msg) <= Sms._max_length:
-            print(msg)
-            r = Response()
-            r.sms(msg)
-        else:
-            r = Response()
-            pages = Sms.paginate(msg)
-            print(pages)
-            #t = Thread(target=Sms.send_messages, args=(pages, to_number, from_number))
-            #t.start()
+        r = Response()
+        pages = Sms.paginate(msg)
+        callback = self.request.build_absolute_uri(SmsCallback.URL)
+        print(callback)
+        print(pages)
+        for p in pages:
+            r.sms(p, statusCallback=callback)
 
         return r
 
@@ -372,9 +376,31 @@ class Sms(View):
 
     def handle_sms(self, request):
         """Main request handler for SMS messages"""
+        self.request = request
         conv = Conversation(request)
         conv.process_request(request)
         msg = conv.last_msg
-        return Sms.reply(conv.response, msg.from_phone, msg.to_phone)
+        return self.reply(conv.response)
 
+
+class SmsCallback(View):
+    """View class for handling twilio callbacks. Simply logs errors, ignores success"""
+    URL = '/sms/callback/'
+    URL_REGEX = r'^sms/callback/?$'
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, *args, **kwargs):
+        return super(SmsCallback, self).dispatch(*args, **kwargs)
+
+    def post(self, request):
+        """
+        Logs errors, always returns 200
+        See http://www.twilio.com/docs/api/twiml/sms#attributes-statusCallback
+        """
+        sid = request.POST['SmsSid']
+        status = request.POST['SmsStatus']
+        if status.lower() != 'sent':
+            logger.debug('SMS with id %s failed!' % sid)
+
+        return HttpResponse(status=200)
 
