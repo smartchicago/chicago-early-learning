@@ -4,6 +4,7 @@ from django.views.decorators.cache import cache_control
 from django.db.models import Q
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import GEOSGeometry
+from django.conf import settings
 from models import Location
 import logging, hashlib
 
@@ -11,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 def index(request):
     fields = Location.get_boolean_fields()
-    return render_to_response('index.html', { 'fields':fields })
+    return render_to_response('index.html', { 'fields':fields, 'ga_key':settings.GA_KEY })
 
 def location_details(location_id):
     """
@@ -59,6 +60,10 @@ def location(request, location_id):
             tpl = 'embed.html'
         elif request.GET['m'] == 'popup':
             tpl = 'popup.html'
+
+    # Attach GA key only if this is a bona fide page
+    if tpl == 'location.html':
+        context.update(ga_key=settings.GA_KEY)
 
     context.update(is_popup=(tpl == 'popup.html'))
     context.update(is_embed=(tpl == 'embed.html'))
@@ -118,17 +123,20 @@ def compare(request, a, b):
     if 'm' in request.GET and request.GET['m'] == 'embed':
         tpl = 'compare_content.html'
 
-    return render_to_response(tpl, { 
-        'location_a': loc_a,
-        'location_b': loc_b
-    })
+    context = { 'location_a': loc_a, 'location_b': loc_b }
+
+    # Attach GA key only if this is a bona fide page
+    if tpl == 'compare.html':
+        context.update(ga_key=settings.GA_KEY)
+
+    return render_to_response(tpl, context)
 
 
 def about(request):
-    return render_to_response('about.html')
+    return render_to_response('about.html', { 'ga_key': settings.GA_KEY })
 
 
 def faq(request):
-    return render_to_response('faq.html')
+    return render_to_response('faq.html', { 'ga_key': settings.GA_KEY })
 
 
