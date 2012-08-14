@@ -62,7 +62,12 @@ ecep.init = function() {
     ecep.loadedListener = google.maps.event.addListener(ecep.map, 'tilesloaded', ecep.loadLocations);
 
     // attach the geolocation handler to the geolocation button
-    $('.geolocate').click(ecep.geolocate);
+    if (navigator.geolocation) {
+        $('.geolocate').click(ecep.geolocate);
+    }
+    else {
+        $('.geolocate').hide();
+    }
 
     // attach the search handler to the search button(s)
     $('.search-button').click(ecep.search);
@@ -336,24 +341,22 @@ ecep.loadLocations = function() {
 };
 
 ecep.geolocate = function() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            function(pos) {
-                var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                if (ecep.initialBounds.contains(ll)) {
-                    ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'blue', true);
+    navigator.geolocation.getCurrentPosition(
+        function(pos) {
+            var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+            if (ecep.initialBounds.contains(ll)) {
+                ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'blue', true);
 
-                    ecep.clearDirections();
-                }
-            },
-            function() {
-                alert('Could not determine your location, please try again.');
+                ecep.clearDirections();
             }
-        );
-    }
-    else {
-        alert('Your browser does not support automatic geolocation.\nPlease type your address into the search box, and click the "Search" button.');
-    }
+            else {
+                console.warn('User location is outside the service area.');
+            }
+        },
+        function() {
+            console.warn('User location cannot be found.');
+        }
+    );
 };
 
 ecep.search = function() {
@@ -376,7 +379,7 @@ ecep.search = function() {
 };
 
 ecep.geocode = function(addr) {
-    ecep.geocoder.geocode({'address': addr, 'bounds': ecep.map.getBounds() },
+    ecep.geocoder.geocode({'address': addr, 'bounds': ecep.initialBounds },
         function(results, geocodeStatus) {
             if (geocodeStatus == google.maps.GeocoderStatus.OK) {
                 var ll = results[0].geometry.location;
@@ -389,11 +392,12 @@ ecep.geocode = function(addr) {
                     ecep.loadLocations();
 
                     ecep.clearDirections();
+
+                    return;
                 }
             }
-            else {
-                alert('Sorry, Google cannot find that address.');
-            }
+
+            alert('Sorry, the address:\n\n"' + addr + '"\n\nCan\'t be found in the service area.');
         }
     );
 };
