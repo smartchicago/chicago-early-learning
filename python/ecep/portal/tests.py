@@ -18,8 +18,11 @@ class SimpleTest(TestCase):
         self.assertEqual(1 + 1, 2)
 
 class SmsTests(TestCase):
+    """
+    Unit tests for portal.sms.Sms class
+    """
     test_cases = []
-    length = 100
+    length = 100    #Length of messages for pagination tests
 
     def __init__(self, dummy):
         self.test_cases = [
