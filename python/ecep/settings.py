@@ -139,6 +139,11 @@ INSTALLED_APPS = (
 )
 
 # Staging log file or deployment log file?
+try:
+    STAGING
+except NameError:
+    STAGING = False
+
 if STAGING:
     logfile = '/var/log/ecep/django.staging.log'
 else:
