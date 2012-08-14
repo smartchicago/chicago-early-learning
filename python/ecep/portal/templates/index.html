@@ -12,30 +12,39 @@
     <div class="container">
         <ul class="nav">
             <li>
-                <a id="geolocate" href="#"><i class="icon-screenshot"></i></a>
+                <a class="geolocate hidden-phone" href="#"><i class="icon-globe icon-white"></i> Find Me</a>
+                <a class="geolocate visible-phone" href="#"><i class="icon-globe icon-white"></i></a>
             </li>
         </ul>
         <div class="navbar-search pull-left">
-            <input class="address-input search-query span2" type="text" id="search-address" data-button="#menu-search" placeholder="Search"/>
+            <input type="text" class="address-input search-query span2" id="search-address" 
+                data-button="#menu-search" placeholder="Search"/>
             <select class="hidden-phone search-query" id="search-radius">
-                <option value="-1">Distance</option>
-                <option value="1">&lt; 1 mi</option>
-                <option value="2">&lt; 2 mi</option>
-                <option value="5">&lt; 5 mi</option>
-                <option value="10">&lt; 10 mi</option>
-                <option value="20">&lt; 20 mi</option>
+                <!-- 
+                    Chrome's user-agent stylesheet has some bugs where it overrides the background
+                    text color specified by search-query unless we put it on these explicitly
+                -->
+                <option class="search-query" value="-1">Distance</option>
+                <option class="search-query" value="1">&lt; 1 mi</option>
+                <option class="search-query" value="2" selected="true">&lt; 2 mi</option>
+                <option class="search-query" value="5">&lt; 5 mi</option>
+                <option class="search-query" value="10">&lt; 10 mi</option>
+                <option class="search-query" value="20">&lt; 20 mi</option>
             </select>
         </div>
         <ul class="nav">
             <li>
-                <a id="menu-search" class="search-button" data-address="#search-address" href="#"><i class="icon-search"></i> Search</a>
+                <a id="menu-search" class="search-button" data-address="#search-address" href="#">
+                    <i class="icon-search icon-white"></i> Search
+                </a>
             </li>
         </ul>
         <div class="hidden-phone">
             <ul class="nav nav-pills pull-right">
                 <li>
-                    <a id="filter-toggle" href="#"><i class="icon-filter"></i> Filter</a>
-                    <a href="#"><i class="icon-print"></i> Print</a>
+                    <a id="filter-toggle" href="#"><i class="icon-filter icon-white"></i> Filter</a>
+                    <a id="compare-toggle" href="#"><i class="icon-adjust icon-white"></i> Compare</a>
+                    <a id="print-toggle" href="#"><i class="icon-print icon-white"></i> Print</a>
                 </li>
             </ul>
         </div>
@@ -52,9 +61,9 @@
         <h3>Chicago Early Learning</h3>
     </div>
     <div class="modal-body">
-        <!-- <h4>Modal body text title</h4> -->
-        <div>Bacon ipsum dolor sit amet fatback tail ham hock bresaola, tenderloin bacon boudin pig rump spare ribs filet mignon shankle tri-tip ham. Bresaola jowl fatback meatball turducken filet mignon beef ribs capicola tri-tip spare ribs pork belly tongue t-bone.</div>
-        <div>Some sort of 4 boxes are supposed to go here, but I'm not sure what they're for</div>
+        <p>Welcome to the City of Chicago’s Early Learning Portal.  Here you can easily find early learning programs near your home or work.  You can also compare programs side-by-side to select the highest quality option for your child.  Browse the FAQ page to learn more about different alternatives and how to enroll your child in a quality early learning program.</p> 
+
+        <p>Enter an address to get started.</p>
     </div>
     <div class="modal-footer">
         <input type="text" class="visible-phone address-input" data-button="#splash-search"
@@ -62,6 +71,15 @@
         <input type="text" class="hidden-phone address-input" data-button="#splash-search"
             placeholder="Enter an address to get started" />
         <button id="splash-search" class="search-button btn btn-success pull-right" data-address=".modal-footer .address-input:visible">Start</a>
+    </div>
+</div>
+
+<div id="compare-modal" class="modal hide">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">x</a>
+        <h3>Comparing Locations</h3>
+    </div>
+    <div class="modal-body">
     </div>
 </div>
 
