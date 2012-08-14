@@ -5,11 +5,14 @@ This module contains classes and utilities for interacting with SMS messages
 import logging
 import re
 import math
+from django.conf import settings
 from django.views.generic import View
 from django.utils.decorators import classonlymethod
 from models import Location
 from twilio.twiml import Response
+from twilio.rest import TwilioRestClient
 from django_twilio.decorators import twilio_view
+from threading import Thread
 
 logger = logging.getLogger(__name__)
 
@@ -70,11 +73,9 @@ class Conversation(object):
     _re_help = re.compile(r"^\s*help\s*$", re.IGNORECASE)
     _re_num = re.compile(r"^\s*(\d{1,2})\s*$")
 
-    USAGE = """
-        To get this message text "help".
-        Text a 5 digit zipcode to get a list of nearby schools. 
-        Text a number on the list to get more information.
-        """
+    USAGE = 'To get this message text "help".\n' + \
+            'Text a 5 digit zipcode to get a list of nearby schools.' + \
+            'Text a number on the list to get more information.'
     ERROR = 'Sorry, I didn\'t understand that. Please text "help" for instructions'
     FATAL = 'We\'re sorry, something went wrong with your request! Please try again'
 
@@ -126,7 +127,7 @@ class Conversation(object):
         msg = self.last_msg
 
         if msg is None:
-            return Sms.reply(self.FATAL)
+            return Sms.reply(self.FATAL, None, None)
             
         matches = self._re_zip.match(msg.body)
         if matches is not None:
@@ -182,20 +183,43 @@ class Sms(View):
     View class for handling SMS messages from twilio
     """
 
+    _max_length = 160
+    tc = TwilioRestClient(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+
     @classonlymethod
     def as_view(cls, **initkwargs):
         # twilio_view doesn't play nice with View classes, so we insert it manually here
         return twilio_view(super(Sms, cls).as_view(**initkwargs))
 
     @staticmethod
-    def reply(msg):
+    def reply(msg, to_number, from_number):
         """Simple wrapper for returning a text message response"""
-        r = Response()
-        r.sms(msg)
+        if len(msg) <= Sms._max_length:
+            print(msg)
+            r = Response()
+            r.sms(msg)
+        else:
+            r = Response()
+            pages = Sms.paginate(msg)
+            print(pages)
+            #t = Thread(target=Sms.send_messages, args=(pages, to_number, from_number))
+            #t.start()
+
         return r
 
     @staticmethod
-    def paginate(msg, length=160, min_percent_full=0.85, 
+    def send_messages(messages, to_number, from_number):
+        """
+        Sends a list of messages to someone
+        messages:   List of messages to send
+        to_number:  Number to send messages to
+        from_number:Number to send messages from
+        """
+        for m in messages:
+            Sms.tc.sms.messages.create(to=to_number, from_=from_number, body=m)
+
+    @staticmethod
+    def paginate(msg, length=_max_length, min_percent_full=0.85, 
         page_format="(page %d/%d)", ellipsis="..."):
         """
         Takes a message a breaks it into chunks with no more than than length characters and 
@@ -350,6 +374,7 @@ class Sms(View):
         """Main request handler for SMS messages"""
         conv = Conversation(request)
         conv.process_request(request)
-        return Sms.reply(conv.response)
+        msg = conv.last_msg
+        return Sms.reply(conv.response, msg.from_phone, msg.to_phone)
 
 
