@@ -1,17 +1,19 @@
-from django.template import Context, loader
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
 from django.db.models import Q
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import GEOSGeometry
 from models import Location
-import logging, hashlib
+import logging
+import hashlib
 
 logger = logging.getLogger(__name__)
 
+
 def index(request):
     fields = Location.get_boolean_fields()
-    return render_to_response('index.html', { 'fields':fields })
+    return render_to_response('index.html', {'fields': fields})
+
 
 def location_details(location_id):
     """
@@ -22,7 +24,7 @@ def location_details(location_id):
     item = get_object_or_404(Location, id=location_id)
 
     simple_text = [
-        'ages', 'prg_dur', 'prg_size', 'prg_sched', 'site_affil', 
+        'ages', 'prg_dur', 'prg_size', 'prg_sched', 'site_affil',
         'ctr_director', 'exec_director', 'q_stmt', 'e_info', 'as_proc', 'accred',
         'waitlist']
 
@@ -30,22 +32,24 @@ def location_details(location_id):
     sfields = []
 
     # boolean fields to present -- these are the attributes that are set to True
-    bfields = [] 
+    bfields = []
 
     for field in Location._meta.fields:
         # get boolean fields that are set, and set to True
         if field.get_internal_type() == 'NullBooleanField' and \
-            getattr(item, field.get_attname()):
+                getattr(item, field.get_attname()):
                 bfields.append(field.verbose_name)
         # get char fields & values if they are listed above, and not empty
         elif field.get_internal_type() == 'CharField' or field.get_internal_type() == 'TextField':
             for simple in simple_text:
                 if field.get_attname() == simple and \
                     getattr(item, field.get_attname()) is not None and \
-                    getattr(item, field.get_attname()) != '':
-                        sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
+                        getattr(item, field.get_attname()) != '':
+                        sfields.append((field.verbose_name,
+                                       getattr(item, field.get_attname()),))
 
-    return { 'item': item, 'sfields': sfields, 'bfields': bfields }
+    return {'item': item, 'sfields': sfields, 'bfields': bfields}
+
 
 def location(request, location_id):
     """
@@ -71,13 +75,13 @@ def location_list(request):
     """
     Get a list of all the locations.
     """
-    etag_hash = 'empty' 
+    etag_hash = 'empty'
     item_filter = None
     for f in request.GET:
         for field in Location._meta.fields:
             if field.get_attname() == f:
                 logger.debug('Adding Filter: %s = %s' % (f, request.GET[f],))
-                kw = { f: request.GET[f]=='true' }
+                kw = {f: request.GET[f] == 'true'}
                 if item_filter is None:
                     etag_hash = str(kw)
                     item_filter = Q(**kw)
@@ -88,7 +92,8 @@ def location_list(request):
     if 'pos' in request.GET and 'rad' in request.GET:
         if request.GET['rad'] != '-1':
             geom = GEOSGeometry('POINT(%s)' % request.GET['pos'])
-            rad_filter = Q(geom__distance_lte=(geom, Distance(mi=request.GET['rad'])))
+            rad_filter = Q(
+                geom__distance_lte=(geom, Distance(mi=request.GET['rad'])))
             if item_filter is None:
                 item_filter = rad_filter
             else:
@@ -106,9 +111,11 @@ def location_list(request):
     md5.update(etag_hash)
     etag_hash = md5.hexdigest()
 
-    rsp = render_to_response('locations.json', {'items':items}, mimetype='application/json')
+    rsp = render_to_response(
+        'locations.json', {'items': items}, mimetype='application/json')
     rsp['Etag'] = etag_hash
     return rsp
+
 
 def compare(request, a, b):
     loc_a = location_details(a)
@@ -118,7 +125,7 @@ def compare(request, a, b):
     if 'm' in request.GET and request.GET['m'] == 'embed':
         tpl = 'compare_content.html'
 
-    return render_to_response(tpl, { 
+    return render_to_response(tpl, {
         'location_a': loc_a,
         'location_b': loc_b
     })
@@ -130,5 +137,3 @@ def about(request):
 
 def faq(request):
     return render_to_response('faq.html')
-
-
