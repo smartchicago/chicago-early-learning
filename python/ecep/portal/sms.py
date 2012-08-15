@@ -17,9 +17,31 @@ from django_twilio.decorators import twilio_view
 
 logger = logging.getLogger(__name__)
 
+
+def myassert(condition, msg=""):
+    """Same as assert, but doesn't pay attention to __debug__"""
+    if not condition:
+        raise AssertionError(msg)
+
+
 def enum(**enums):
     """Utility method for nice Enum syntax"""
     return type('Enum', (), enums)
+
+
+def flag_enum(*names):
+    """
+    Utility method for nice Enum syntax, where each value is a power of 2
+    Each name should be a string
+
+    Example:
+    t = flag_enum("foo", "bar")
+    t.foo & t.bar == 0
+    """
+    #flags = dict([(k, 1 << int(v)) for (k, v) in enums.items()])
+    flags = dict([(name, 1 << i) for (i, name) in enumerate(names)])
+    return type('Enum', (), flags)
+
 
 class SmsMessage(object):
     """
@@ -62,35 +84,45 @@ class Conversation(object):
 
     This is the language it recognizes:
     'h'       - Returns usage (case insensitive)
-    '12345'   - 5 digit zipcode.  Returns a numbered list of "nearby" schools 
+    '12345'   - 5 digit zipcode.  Returns a numbered list of "nearby" schools
                 (TODO: what does "nearby" mean?)
     '4'       - 1 or 2 digit number.  Only valid if the user has already sent a zipcode
                 Returns detailed information about the corresponding school, or an error
                 if the number doesn't make sense.  The number represents a 1-based index
                 into the numbered list returned by zipcode.
+    'm|more'  - Get next n pages of information for the current request.
     """
     # Constants
     _re_zip = re.compile(r"^\s*(\d{5})\s*$")
     _re_help = re.compile(r"^\s*h\s*$", re.IGNORECASE)
     _re_num = re.compile(r"^\s*(\d{1,2})\s*$")
+    _re_more = re.compile(r"^\s*(m|more)\s*$", re.IGNORECASE)
+
+    _max_responses = 3
 
     # I wanted _re_help to recognize "help" instead of "h", but Twilio intercepts it :(
     # http://www.twilio.com/help/faq/sms/does-twilio-support-stop-block-and-cancel-aka-sms-filtering
 
-    USAGE = 'To get this message text "h".\n' + \
-            'Text a 5 digit zipcode to get a list of nearby schools.' + \
-            'Text a number on the list to get more information.'
-    ERROR = 'Sorry, I didn\'t understand that. Please text "h" for instructions'
-    FATAL = 'We\'re sorry, something went wrong with your request! Please try again'
+    USAGE = ('To get this message text "h".\n' +
+             'Text a 5 digit zipcode to get a list of nearby schools.' +
+             'Text a number on the list to get more information.')
+    ERROR =  'Sorry, I didn\'t understand that. Please text "h" for instructions'
+    FATAL =  'We\'re sorry, something went wrong with your request! Please try again'
+    MORE =   'Reply "m" or "more" to receive more information'
 
     # Properties
     locations = None        # List of pks into models.Location, represents locations near this user
     zipcode = None          # type string
-    current_state = None    # type Conversation.State 
+    current_state = None    # type Conversation.State
     last_msg = None         # type SmsMessage
     response = None         # type twilio.twiml.Response
+    response_state = None   # tuple(list(string), int)
 
-    def __init__(self, request):
+    # response_state is only set if current_state = INTERRUPTED
+    # first element is the list of messages that make up the response
+    # second element is the index of the next message to send
+
+    def __init__(self, request, max_responses_=3):
         """
         Creates a new Converstation object, using data stored in request.session if available
         request: a Django HttpRequest object
@@ -99,12 +131,14 @@ class Conversation(object):
         self.current_state = s.get('state', Conversation.State.INIT)
         self.locations = s.get('locations', [])
         self.zipcode = s.get('zipcode', None)
+        self.response_state = s.get('response_state', None)
         try:
             self.last_msg = SmsMessage(request)
         except Exception as e:
-            logger.debug("""
-                Tried to create a Conversation from a request, but couldn't get SmsMessage object.  
-                Request was: %s, Exception was: %s""" % 
+            logger.debug(
+                ("Tried to create a Conversation from a request," +
+                    "but couldn't get SmsMessage object.  " +
+                    "Request was: %s, Exception was: %s") %
                 (request.get_full_path(), e))
 
     def update_session(self, session):
@@ -117,11 +151,45 @@ class Conversation(object):
         session['state'] = self.current_state
         session['locations'] = self.locations
         session['zipcode'] = self.zipcode
+        session['response_state'] = self.response_state
+
+    def update_response(self, *args):
+        """
+        Updates self.response, performs chunking logic and updates self.state and
+        self.response_state as necessary
+        one argument version:
+        argv[0]:    message for response
+
+        two argument version:
+        argv[0]:    index into pages
+        argv[1]:    list of all messages that are part of the total response
+        """
+        pages = None
+        i = None
+        if len(args) == 1:
+            pages = Sms.paginate(args[0])
+            i = 0
+        elif len(args) == 2:
+            pages = args[1]
+            i = args[0]
+        else:
+            raise TypeError("Conversation.update_response takes 2 or 3 arguments, %d given" %
+                            (len(args) + 1))
+
+        start = i
+        end = i + Conversation._max_responses
+        self.response = pages[start:end]
+        if end < len(pages):
+            self.response.append(Conversation.MORE)
+            self.response_state = (end, pages)
+            self.state |= Conversation.State.INTERRUPTED
+        else:
+            self.response_state = None
+            self.state &= ~Conversation.State.INTERRUPTED
 
     def nearby_locations(self, zipcode, count=None):
         """Returns locations that fall inside zipcode"""
         return Location.objects.filter(zip=zipcode)[:count]
-        
 
     def process_request(self, request):
         """
@@ -132,9 +200,9 @@ class Conversation(object):
         msg = self.last_msg
 
         if msg is None:
-            self.response = self.FATAL
+            self.update_response(Conversation.FATAL)
             return
-            
+
         matches = self._re_zip.match(msg.body)
         if matches is not None:
             # parse zipcodes
@@ -146,20 +214,24 @@ class Conversation(object):
             if len(locations) > 0:
                 self.current_state = Conversation.State.GOT_ZIP
                 schools_list = []
-                for i in xrange(0, len(locations)):
-                    school = "%d: %s" % (i + 1, locations[i].site_name)
+                for (i, l) in enumerate(locations):
+                    school = "%d: %s" % (i + 1, l.site_name)
                     schools_list.append(school)
 
                 response = "Schools in %s:" % zipcode
                 response += "\n".join(schools_list)
-                self.response = response
-                self.update_session(request.session)
+                self.update_response(response)
             else:
-                self.response = "Sorry, I couldn't find any schools in %s" % zipcode
+                self.update_response("Sorry, I couldn't find any schools in %s" % zipcode)
         elif self._re_help.match(msg.body):
             # parse "help" requests
-            self.response = self.USAGE
-        elif self.current_state == Conversation.State.GOT_ZIP:
+            self.update_response(self.USAGE)
+        elif (self._re_more.match(msg.body) and
+                (self.current_state & Conversation.State.INTERRUPTED) != 0):
+            rs = self.response_state
+            myassert(rs is not None, "Conversation.response_state was not set!")
+            self.update_response(rs[0], rs[1])
+        elif (self.current_state & Conversation.State.GOT_ZIP) != 0:
             # parse location selection
             matches = self._re_num.match(msg.body)
             loc = self.locations or []
@@ -167,21 +239,23 @@ class Conversation(object):
             if matches is not None:
                 idx = int(matches.groups()[0]) - 1
                 if idx < 0 or idx >= length:
-                    self.response = (("Sorry, I don't know about that school near zipcode %s. " + 
-                        "Please text a number between 1 and %d or a 5 digit zipcode") % 
+                    self.update_response(
+                        ("Sorry, I don't know about that school near zipcode %s. " +
+                            "Please text a number between 1 and %d or a 5 digit zipcode") %
                         (self.zipcode, idx))
                 else:
                     l = Location.objects.get(pk=self.locations[idx])
-                    self.response = l.get_long_string()
+                    self.update_response(l.get_long_string())
             else:
-                self.response = (("Sorry, I didn't understand that number for zipcode %s. " + 
-                    "Please text a number between 1 and %d, or a 5 digit zipcode") % 
+                self.update_response(
+                    ("Sorry, I didn't understand that number for zipcode %s. " +
+                        "Please text a number between 1 and %d, or a 5 digit zipcode") %
                     (self.zipcode, length))
         else:
-            self.response = self.ERROR
+            self.update_response(self.ERROR)
 
 # Enum representing the current state of the conversation
-Conversation.State = enum(INIT=1, GOT_ZIP=2)
+Conversation.State = flag_enum("INIT", "GOT_ZIP", "INTERRUPTED")
 
 
 class Sms(View):
@@ -190,7 +264,8 @@ class Sms(View):
     """
 
     _max_length = 160
-    tc = TwilioRestClient(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+    tc = TwilioRestClient(
+        settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
     request = None
 
     @classonlymethod
@@ -222,12 +297,12 @@ class Sms(View):
             Sms.tc.sms.messages.create(to=to_number, from_=from_number, body=m)
 
     @staticmethod
-    def paginate(msg, length=_max_length, min_percent_full=0.85, 
-        page_format="(page %d/%d)", ellipsis="..."):
+    def paginate(msg, length=_max_length, min_percent_full=0.85,
+                 page_format="(page %d/%d)", ellipsis="..."):
         """
-        Takes a message a breaks it into chunks with no more than than length characters and 
+        Takes a message a breaks it into chunks with no more than than length characters and
         more than length * min_percent_full characters (except for the last one).
-        Automatically appends pagination information to the end of each page in form of 
+        Automatically appends pagination information to the end of each page in form of
         'page_format % (current_page, n_pages)'.  It does its best to respect newlines and spaces,
         but will split messages across either in order to obtain messages of minimum length.
 
@@ -237,20 +312,20 @@ class Sms(View):
 
         msg (string):       The message to paginate
         length:             Maximum number of characters in a page
-        min_percent_full:   Each page except the last must have at least this 
+        min_percent_full:   Each page except the last must have at least this
                             percent characters used, including the pagination string at the end
         page_format:        Determines the pagination string appended to each page. It will
                             be formatted with two integers. It always has "\n" prepended to it.
         ellipsis:           This string is appended and prepended to words that are split
-                            across messages.  For example, if "foobar" is split across two 
-                            messages, the payload for the first will end in "foo..." and 
+                            across messages.  For example, if "foobar" is split across two
+                            messages, the payload for the first will end in "foo..." and
                             the payload for the next will start with "...bar"
         returns:            A list of strings representing the pages in order
         """
 
         msg_len = len(msg)
         if msg_len < length:
-            return [ msg ]
+            return [msg]
 
         ell_len = len(ellipsis)
         min_percent_full = sorted((0.1, min_percent_full, 1.0))[1]
@@ -260,7 +335,7 @@ class Sms(View):
         suffix_max = len(page_format % (digits_max, digits_max))
         payload_min = math.floor(min_percent_full * length) - suffix_max
         payload_max = length - suffix_max
-        pages_max = math.ceil(float(msg_len) / payload_min)
+        #pages_max = math.ceil(float(msg_len) / payload_min)
 
         def add_word(pages, message, current):
             """
@@ -293,7 +368,7 @@ class Sms(View):
             """
             This is the real function, declared as a lambda function because it is both
             recursive and needs most of the variables defined above (passing them in as
-            arguments would be quite annoying).  This function takes message and reads 
+            arguments would be quite annoying).  This function takes message and reads
             through it, appending it to pages until it runs out of text.
 
             pages:      An array holding the pages we've created so far. This funtion will
@@ -302,12 +377,12 @@ class Sms(View):
             message:    The next block of text to add to pages.  Some substring of msg in
                         the outer scope.
             current:    The next page to add to pages, in some stage of completion.
-            separator:  This denotes how message should be split up.  There are only 
+            separator:  This denotes how message should be split up.  There are only
                         three valid values: "\n", " ", and "".  "\n" means message is added
-                        to the current page in units of one line, " " means message is 
+                        to the current page in units of one line, " " means message is
                         added in units of one word, and "" means message is added to pages
                         in increments of max payload length.
-            returns:    None if separator is "\n", otherwise the value of current once we 
+            returns:    None if separator is "\n", otherwise the value of current once we
                         reach the end of message. This allows the calling function to pick
                         up where we left off.
             """
@@ -320,8 +395,9 @@ class Sms(View):
             if separator == "":
                 # message is one word
                 return add_word(pages, message, current)
-                
-            assert separator != ""
+
+            myassert(separator != "",
+                     "Illegal state in paginate_internal: separator was %s" % separator)
             parts = message.split(separator)
             n_parts = len(parts)
             subsep = " " if separator == "\n" else ""
@@ -341,9 +417,11 @@ class Sms(View):
                         current = next_part + separator
                     else:
                         # Next part is too big for single page, must split it
-                        current = paginate_internal(pages, next_part, current, subsep) + separator
+                        current = paginate_internal(
+                            pages, next_part, current, subsep) + separator
                 else:
-                    current = paginate_internal(pages, next_part, current, subsep) + separator
+                    current = paginate_internal(
+                        pages, next_part, current, subsep) + separator
                     # No room to add next part and we haven't met our minimum
 
             current = current.rstrip(separator)
@@ -355,37 +433,37 @@ class Sms(View):
                 return
             else:
                 return current
-            
+
         # Actually call the above function
         result = []
         paginate_internal(result, msg)
         n_pages = len(result)
-        assert n_pages <= pages_max
+        # assert n_pages <= pages_max
 
         # Add page_format suffix to all the pages
-        for i in xrange(0, len(result)):
+        for (i, page) in enumerate(result):
             result[i] += page_format % (i + 1, n_pages)
-            assert len(result[i]) <= length
+            myassert(len(result[i]) <= length,
+                     "length for one of the pages was too long!")
 
         return result
-
 
     def get(self, request):
         """Handler for GET requests, see View.dispatch"""
         result = self.handle_sms(request)
         return result
-                
+
     def post(self, request):
         """Handler for POST requests, see View.dispatch"""
-        result = sms(request)
-        return self.handle_sms(request)
+        result = self.handle_sms(request)
+        return result
 
     def handle_sms(self, request):
         """Main request handler for SMS messages"""
         self.request = request
         conv = Conversation(request)
         conv.process_request(request)
-        msg = conv.last_msg
+        conv.update_session(request.session)
         return self.reply(conv.response)
 
 
@@ -409,4 +487,3 @@ class SmsCallback(View):
             logger.debug('SMS with id %s failed!' % sid)
 
         return HttpResponse(status=200)
-
