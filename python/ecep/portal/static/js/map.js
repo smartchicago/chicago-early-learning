@@ -10,6 +10,7 @@ ecep.geocoded_marker = null;
 ecep.directions_service = null;
 ecep.directions_display = null;
 ecep.comparing = [];
+ecep.initialBounds = null;
 
 ecep.getUrl = function(name) {
     switch (name) {
@@ -61,7 +62,13 @@ ecep.init = function() {
     ecep.loadedListener = google.maps.event.addListener(ecep.map, 'tilesloaded', ecep.loadLocations);
 
     // attach the geolocation handler to the geolocation button
-    $('#geolocate').click(ecep.geolocate);
+    if (navigator.geolocation) {
+        $('.geolocate').click(ecep.geolocate);
+    }
+    else {
+        _gaq.push(['_trackEvent', 'Geolocate', 'Disabled', 'Browser does not support geolocation']);
+        $('.geolocate').hide();
+    }
 
     // attach the search handler to the search button(s)
     $('.search-button').click(ecep.search);
@@ -117,9 +124,13 @@ ecep.comparingChanged = function(event) {
     var cmp = $('#compare-content:visible');
     if (cmp.length > 0) {
         if (ecep.comparing.length == 0) {
+            _gaq.push(['_trackEvent', 'Comparison', 'Change', 'No locations']);
+
             cmp.text('Please select a location to get started comparing.');
         }
         else {
+            _gaq.push(['_trackEvent', 'Comparison', 'Change', 'Comparing: ' + ecep.comparing.join(', ')]);
+
             cmp.empty();
             var list = $('<ol/>');
             cmp.append(list);
@@ -143,7 +154,6 @@ ecep.comparingChanged = function(event) {
                 btn.click(function() {
                     var a = $(this).data('a'),
                         b = $(this).data('b');
-                    console.log('Comparing ' + a + ' to ' + b);
                     ecep.showComparison(a, b);
                 });
             }
@@ -152,6 +162,7 @@ ecep.comparingChanged = function(event) {
 };
 
 ecep.showComparison = function(a, b) {
+    _gaq.push(['_trackEvent', 'Comparison', 'Display', 'Comparing ' + a + ' to ' + b]);
     $('#compare-toggle').popover('hide');
 
     var test = $('<div class="hidden-phone" id="viztest"/>');
@@ -166,6 +177,7 @@ ecep.showComparison = function(a, b) {
     });
 
     req.done(function(data, txtStatus, jqxhr) {
+        _gaq.push(['_trackEvent', 'Comparison', 'AJAX success', data.length]);
         if(!fullscreen) {
             $('#compare-modal .modal-body').html(data);
             $('#compare-modal').modal();
@@ -174,12 +186,19 @@ ecep.showComparison = function(a, b) {
             // add a fullscreen div
         }
     });
+
+    req.fail(function(jqxhr, txtStatus, message) {
+        _gaq.push(['_trackEvent', 'Comparison', 'Error', 'Status: ' + txtStatus + ', Message: ' + message]);
+    });
 };
 
 
 ecep.expandInfo = function(event) {
     var type = (('data' in event) && event.data.type) ? event.data.type : 'popup';
     var mkr = ('data' in event) ? event.data.marker : this;
+
+    _gaq.push(['_trackEvent', 'Location', 'Display', 'Type: ' + type + ', Location: ' + mkr.get('location_id')]);
+
     var req = $.ajax({
         url: ecep.getUrl('location_info', mkr.get('location_id')),
         dataType: 'html',
@@ -187,6 +206,7 @@ ecep.expandInfo = function(event) {
     });
 
     req.done(function(data, txtStatus, jqxhr) {
+        _gaq.push(['_trackEvent', 'Location', 'AJAX success', data.length]);
         ecep.infoWindow.close();
         ecep.infoWindow.setContent(data);
         ecep.infoWindow.setPosition(mkr.getPosition());
@@ -226,8 +246,8 @@ ecep.expandInfo = function(event) {
         }));
     });
 
-    req.fail(function(txtStatus, jqxhr, message) {
-        console.error('Error getting details: ' + message);
+    req.fail(function(jqxhr, txtStatus, message) {
+        _gaq.push(['_trackEvent', 'Location', 'Error', 'Status: ' + txtStatus + ', Message: ' + message]);
     });
 
     req.always(function() {
@@ -269,19 +289,30 @@ ecep.expandInfo = function(event) {
 
 ecep.loadLocations = function() {
     var data = {};
+    var gaMsg = [];
     var filters = $('.loc_filter_check:checked');
     filters.each(function(idx, elem) {
         if (elem.id == 'all')
             return;
 
         data[elem.id] = elem.value;
+        gaMsg.push(elem.id + '=' + elem.value);
     });
 
     if (ecep.geocoded_marker) {
         var pos = ecep.geocoded_marker.getPosition()
         data.pos = pos.lng() + ' ' + pos.lat();
         data.rad = $('#search-radius').val();
+
+        gaMsg.push('pos='+data.pos);
+        gaMsg.push('rad='+data.rad);
     }
+
+    if (ecep.initialBounds == null) {
+        ecep.initialBounds = ecep.map.getBounds();
+    }
+
+    _gaq.push(['_trackEvent', 'Locations', 'Load', 'Filters: ' + gaMsg.join(';')]);
 
     var load = $.ajax({
         url: ecep.getUrl('loadLocations'),
@@ -290,6 +321,8 @@ ecep.loadLocations = function() {
     });
 
     load.done(function(data, textStatus, jqxhr) {
+        _gaq.push(['_trackEvent', 'Locations', 'AJAX success', data.length]);
+
         var markers = [];
         var bounds = new google.maps.LatLngBounds();
 
@@ -332,32 +365,39 @@ ecep.loadLocations = function() {
         // this fires when a request is aborted: i.e. if you click
         // a link before the locations are done loading.
         if (jqxhr.getAllResponseHeaders()) {
-            var msg = 'Could not load locations: ' + message;
-            console.error(msg);
+            _gaq.push(['_trackEvent', 'Locations', 'Canceled', 'Status: ' + txtStatus + ', Message: ' + message]);
+        }
+        else {
+            _gaq.push(['_trackEvent', 'Locations', 'Error', 'Status: ' + txtStatus + ', Message: ' + message]);
         }
     });
 };
 
 ecep.geolocate = function() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            function(pos) {
-                var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+    _gaq.push(['_trackEvent', 'Geolocate', 'Begin']);
+    navigator.geolocation.getCurrentPosition(
+        function(pos) {
+            var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+            if (ecep.initialBounds.contains(ll)) {
+                _gaq.push(['_trackEvent', 'Geolocate', 'Found']);
                 ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'blue', true);
 
                 ecep.clearDirections();
-            },
-            function() {
-                alert('Could not determine your location, please try again.');
             }
-        );
-    }
-    else {
-        alert('Your browser does not support automatic geolocation.\nPlease type your address into the search box, and click the "Search" button.');
-    }
+            else {
+                _gaq.push(['_trackEvent', 'Geolocate', 'Found', 'Out of area']);
+                console.warn('User location is outside the service area.');
+            }
+        },
+        function() {
+            _gaq.push(['_trackEvent', 'Geolocate', 'Error']);
+            console.warn('User location cannot be found.');
+        }
+    );
 };
 
 ecep.search = function() {
+    _gaq.push(['_trackEvent', 'Geocode', 'Begin', 'From: ' + this.id]);
     var addr = $($(this).data('address')).val();
 
     if (addr == '') {
@@ -377,21 +417,33 @@ ecep.search = function() {
 };
 
 ecep.geocode = function(addr) {
-    ecep.geocoder.geocode({'address': addr, 'bounds': ecep.map.getBounds() },
+    ecep.geocoder.geocode({'address': addr, 'bounds': ecep.initialBounds },
         function(results, geocodeStatus) {
             if (geocodeStatus == google.maps.GeocoderStatus.OK) {
                 var ll = results[0].geometry.location;
-                ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
-                $('#search-address').val(addr);
 
-                // trigger the load event, and apply the radius filter
-                ecep.loadLocations();
+                if (ecep.initialBounds.contains(ll)) {
+                    _gaq.push(['_trackEvent', 'Geocode', 'Found']);
 
-                ecep.clearDirections();
+                    ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
+                    $('#search-address').val(addr);
+
+                    // trigger the load event, and apply the radius filter
+                    ecep.loadLocations();
+
+                    ecep.clearDirections();
+
+                    return;
+                }
+                else {
+                    _gaq.push(['_trackEvent', 'Geocode', 'Found', 'Out of area']);
+                }
             }
             else {
-                alert('Sorry, Google cannot find that address.');
+                _gaq.push(['_trackEvent', 'Geocode', 'Not Found']);
             }
+
+            alert('Sorry, the address:\n\n"' + addr + '"\n\nCan\'t be found in the service area.');
         }
     );
 };
@@ -444,8 +496,10 @@ ecep.directions = function(event) {
         destination: dest,
         travelMode: google.maps.TravelMode.DRIVING
     };
+    _gaq.push(['_trackEvent', 'Directions', 'Begin', 'From "' + req.origin + '" to "' + req.destination + '"']);
     ecep.directions_service.route(req, function(result, rtestatus) {
         if (rtestatus == google.maps.DirectionsStatus.OK) {
+            _gaq.push(['_trackEvent', 'Directions', 'Found']);
             // update the map with line
             ecep.directions_display.setDirections(result);
 
@@ -453,6 +507,9 @@ ecep.directions = function(event) {
             // move over by the width of instructions + 5px gutter
             $('#map_container').css('right', '305px');
             google.maps.event.trigger(ecep.map, 'resize');
+        }
+        else {
+            _gaq.push(['_trackEvent', 'Directions', 'Error']);
         }
     });
 };
@@ -469,6 +526,7 @@ ecep.clearDirections = function() {
 };
 
 ecep.typeDirections = function() {
+    _gaq.push(['_trackEvent', 'Directions', 'Display']);
     var result = ecep.directions_display.directions;
     ecep.directions_display.setMap(ecep.map);
 
