@@ -1,4 +1,4 @@
-from django.template import Context, loader
+from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
 from django.db.models import Q
@@ -12,7 +12,12 @@ logger = logging.getLogger(__name__)
 
 def index(request):
     fields = Location.get_boolean_fields()
-    return render_to_response('index.html', { 'fields':fields, 'ga_key':settings.GA_KEY })
+
+    ctx = RequestContext(request, {
+        'fields':fields
+    })
+
+    return render_to_response('index.html', context_instance=ctx)
 
 def location_details(location_id):
     """
@@ -61,17 +66,15 @@ def location(request, location_id):
         elif request.GET['m'] == 'popup':
             tpl = 'popup.html'
 
-    # Attach GA key only if this is a bona fide page
-    if tpl == 'location.html':
-        context.update(ga_key=settings.GA_KEY)
-
     context.update(is_popup=(tpl == 'popup.html'))
     context.update(is_embed=(tpl == 'embed.html'))
 
-    return render_to_response(tpl, context)
+    context = RequestContext(request, context)
+
+    return render_to_response(tpl, context_instance=context)
 
 
-@cache_control(must_revalidate=False, max_age=30)
+@cache_control(must_revalidate=False, max_age=3600)
 def location_list(request):
     """
     Get a list of all the locations.
@@ -123,20 +126,18 @@ def compare(request, a, b):
     if 'm' in request.GET and request.GET['m'] == 'embed':
         tpl = 'compare_content.html'
 
-    context = { 'location_a': loc_a, 'location_b': loc_b }
+    ctx = RequestContext(request, { 
+        'location_a': loc_a, 'location_b': loc_b 
+        })
 
-    # Attach GA key only if this is a bona fide page
-    if tpl == 'compare.html':
-        context.update(ga_key=settings.GA_KEY)
-
-    return render_to_response(tpl, context)
+    return render_to_response(tpl, context_instance=ctx)
 
 
 def about(request):
-    return render_to_response('about.html', { 'ga_key': settings.GA_KEY })
+    return render_to_response('about.html', context_instance=RequestContext(request))
 
 
 def faq(request):
-    return render_to_response('faq.html', { 'ga_key': settings.GA_KEY })
+    return render_to_response('faq.html', context_instance=RequestContext(request))
 
 

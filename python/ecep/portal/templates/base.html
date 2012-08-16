@@ -18,6 +18,7 @@
         <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ ga_key }}']);
+        _gaq.push(['_trackPageview', '{{ request.path }}']);
         </script>
         {% block otherhead %}{% endblock %}
     </head> 
