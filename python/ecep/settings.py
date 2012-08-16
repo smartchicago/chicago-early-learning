@@ -93,7 +93,7 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = {
+TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
@@ -102,7 +102,7 @@ TEMPLATE_CONTEXT_PROCESSORS = {
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
     'portal.context_processors.analytics',
-}
+)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
