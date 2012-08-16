@@ -7,6 +7,7 @@ from django.contrib.gis.geos import GEOSGeometry
 from django.conf import settings
 from models import Location
 import logging, hashlib
+from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +18,18 @@ def index(request):
         'fields':fields
     })
 
-    return render_to_response('index.html', context_instance=ctx)
+    response = render_to_response('index.html', context_instance=ctx)
+
+    # cookie for splash screen, defaults to true
+    try:
+        show_splash = request.COOKIES['show_splash']
+    except:
+        show_splash = 'true'
+    expires = datetime.utcnow() + timedelta(seconds=60 * 60)
+
+    response.set_cookie('show_splash', show_splash, expires=expires, httponly=False)
+
+    return response
 
 def location_details(location_id):
     """
