@@ -72,6 +72,10 @@
 
 .subnav {
     background-color: #005182;
+    /*background-image: -moz-linear-gradient(center top , #666666 0%, #555555 100%);
+    background-repeat: repeat-x; */
+    border: 1px solid #E5E5E5;
+    border-radius: 4px 4px 4px 4px;
     height: 55px;
     width: 100%;
 }
