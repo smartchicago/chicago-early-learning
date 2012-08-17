@@ -40,9 +40,8 @@ def location_details(location_id):
     item = get_object_or_404(Location, id=location_id)
 
     simple_text = [
-        'ages', 'prg_dur', 'prg_size', 'prg_sched', 'site_affil', 
-        'ctr_director', 'exec_director', 'q_stmt', 'e_info', 'as_proc', 'accred',
-        'waitlist']
+        'ages', 'prg_dur', 'prg_sched', 'site_affil', 
+        'ctr_director', 'exec_director', 'accred']
 
     # simple fields to present -- these are the attributes that have text content
     sfields = []
