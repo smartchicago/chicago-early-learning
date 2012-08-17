@@ -76,8 +76,9 @@
     background-repeat: repeat-x;
     border: 1px solid #E5E5E5;
     border-radius: 4px 4px 4px 4px;
-    height: 36px;
+    height: 40px;
     width: 100%;
+    font-size: 14px;
 }
 .subnav-fixed {
     border-color: #999999;
@@ -102,7 +103,7 @@
     margin: 0;
     padding-bottom: 11px;
     padding-top: 11px;
-    line-height: 12px;
+    line-height: 14px;
     padding-left: 12px;
     padding-right: 12px;
     color: #dddddd;
@@ -111,6 +112,9 @@
 .subnav .nav > li > a:hover {
     color: #eeeeee;
     background-color: #555555;
+}
+.subnav .nav > li > a > i {
+    margin: 2px;
 }
 .subnav-fixed .nav {
     margin: 0 auto;
@@ -131,6 +135,7 @@
     padding: 2px 9px;
     margin: 0;
     border-radius: 3px;
+    font-size: 14px;
 }
 .subnav .navbar-search select.search-query {
     padding: 2px 9px;
@@ -138,6 +143,7 @@
     width: 8em;
     height: 25px;
     border-radius: 3px;
+    font-size: 14px;
 }
 .subnav .navbar-search .search-query:focus {
     background-color: #888888;
@@ -148,6 +154,7 @@
 .subnav .navbar-search select.search-query option {
     border-style: none;
     border-radius: 0;
+    font-size: 14px;
 }
 #map_container { 
     position: absolute;
