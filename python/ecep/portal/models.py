@@ -13,11 +13,11 @@ class Location(models.Model):
     is_child_care = models.NullBooleanField('Child Care')
     is_hs = models.NullBooleanField('Head Start')
     is_ehs = models.NullBooleanField('Early Head Start')
-    is_pre4all = models.NullBooleanField('Preschool For All')
-    is_tuition_based = models.NullBooleanField('Tuition Based Preschool')
+    is_pre4all = models.NullBooleanField('Preschool for All/Prevention Initiative')
+    is_tuition_based = models.NullBooleanField('Tuition-Based')
     is_special_ed = models.NullBooleanField('Special Ed')
     is_montessori = models.NullBooleanField('Montessori')
-    is_child_parent_center = models.NullBooleanField('Child Parent Center')
+    is_child_parent_center = models.NullBooleanField('Child-Parent Center')
     exec_director = models.CharField('Executive Director', max_length=100, blank=True)
     ctr_director = models.CharField('Center Director', max_length=100, blank=True)
     site_affil = models.CharField('Site Affiliation', max_length=50, blank=True)
@@ -31,6 +31,8 @@ class Location(models.Model):
     prg_dur = models.CharField('Program Duration', max_length=50, blank=True)
     prg_size = models.CharField('Program Size', max_length=100, blank=True)
     ages = models.CharField('Ages Served', max_length=50, blank=True)
+    is_age_lt_3 = models.NullBooleanField('Ages 0-3')
+    is_age_gt_3 = models.NullBooleanField('Ages 3-5')
     waitlist = models.TextField('Waitlist Situation', blank=True)
     geom = models.PointField('Geometry', srid=4326, null=True)
     objects = models.GeoManager()
@@ -47,7 +49,7 @@ class Location(models.Model):
         the meta class attached to the model to introspect on the field types.
         This also has the benefit of providing the verbose name of the field.
         """
-        exclude = ['is_montessori']
+        exclude = ['is_montessori', 'is_special_ed']
 
         fields = []
         for field in Location._meta.fields:
