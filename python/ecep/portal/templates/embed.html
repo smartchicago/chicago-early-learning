@@ -4,7 +4,7 @@
 {% include "popup.html" %}
 
 {% if bfields %}
-<h3>Features</h3>
+<h5>Features</h5>
 
 <ul>
     {{ bfields|unordered_list }}
@@ -13,7 +13,7 @@
 
 {% for simple in sfields %}
 <div class="loc_simplefield">
-    <h3>{{ simple.0 }}</h3>
+    <h5>{{ simple.0 }}</h5>
 
     <div>{{ simple.1 }}</div>
 </div>

@@ -36,6 +36,7 @@
 
 .location_item {
     width: 30em;
+    font-size: 90%;
 }
 
 .loc_address {
@@ -47,12 +48,14 @@
 }
 
 .loc_phone_table {
-    margin: 1em 0;
+    margin: 0.25em -0.5em;
 }
 
 .loc_phone_table thead {
     font-weight: bold;
-    text-transform: uppercase;
+}
+.loc_phone_table td {
+    padding: 0 0.5em;
 }
 
 .loc_waitlist {
@@ -66,7 +69,7 @@
 }
 
 .loc_simplefield {
-    margin-bottom: 0.75em;
+    margin-bottom: 0.25em;
 }
 
 
