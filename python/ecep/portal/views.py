@@ -57,12 +57,42 @@ def location_details(location_id):
         # get char fields & values if they are listed above, and not empty
         elif field.get_internal_type() == 'CharField' or field.get_internal_type() == 'TextField':
             for simple in simple_text:
-                if field.get_attname() == simple and \
-                    getattr(item, field.get_attname()) is not None and \
-                    getattr(item, field.get_attname()) != '':
-                        sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
+                if field.get_attname() == simple: 
+                    sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
 
     return { 'item': item, 'sfields': sfields, 'bfields': bfields }
+
+def segment_info(ldet1, ldet2):
+    """
+    Segment the detailed information into discrete chunks.
+
+    Parameters:
+        ldet1 - The results from location_details for one location
+        ldet2 - The results from location_details for the other location
+
+    Returns:
+        The segments of the display, with contents of ldet1 
+        interleaved with ldet2
+    """
+    segments = {}
+
+    segments.update({
+        'name': (ldet1['item'].site_name, ldet2['item'].site_name,),
+        'address': (ldet1['item'].address, ldet2['item'].address,),
+        'city': (ldet1['item'].city, ldet2['item'].city,),
+        'state': (ldet1['item'].state, ldet2['item'].state,),
+        'zip': (ldet1['item'].zip, ldet2['item'].zip,),
+        'url': (ldet1['item'].url, ldet2['item'].url,),
+        'email': (ldet1['item'].email, ldet2['item'].email,),
+        'phone1': (ldet1['item'].phone1, ldet2['item'].phone1,),
+        'phone2': (ldet1['item'].phone2, ldet2['item'].phone2,),
+        'phone3': (ldet1['item'].phone3, ldet2['item'].phone3,),
+        'fax': (ldet1['item'].fax, ldet2['item'].fax,)
+    })
+    segments.update({'bfields': (ldet1['bfields'], ldet2['bfields'],)})
+    segments.update({'sfields_zip': zip(ldet1['sfields'], ldet2['sfields'])})
+
+    return segments
 
 def location(request, location_id):
     """
@@ -137,9 +167,11 @@ def compare(request, a, b):
     if 'm' in request.GET and request.GET['m'] == 'embed':
         tpl = 'compare_content.html'
 
+    locs = segment_info(loc_a, loc_b)
+
     ctx = RequestContext(request, { 
-        'location_a': loc_a, 'location_b': loc_b 
-        })
+        'locations': locs
+    })
 
     return render_to_response(tpl, context_instance=ctx)
 

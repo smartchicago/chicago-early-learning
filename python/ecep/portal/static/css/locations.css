@@ -1,4 +1,4 @@
-.container .location, .modal-body .location {
+.container .location {
     width: 50%;
     float: left;
 }
@@ -8,6 +8,20 @@
     margin: 0 auto;
     top: 10%;
     left: 5%;
+}
+
+#compare-modal .modal-body {
+    max-height: 600px;
+}
+
+.container > table, #compare-modal .modal-body > table {
+    width: 100%;
+    padding: 0.5em;
+}
+
+.conainer > table > tbody > tr > td, #compare-modal .modal-body > table > tbody > tr > td {
+    padding: 0 0.5em;
+    width: 50%;
 }
 
 #text-info-modal {
@@ -69,7 +83,8 @@
 }
 
 .loc_simplefield {
-    margin-bottom: 0.25em;
+    padding-bottom: 0.25em;
+    vertical-align: top;
 }
 
 
@@ -208,7 +223,14 @@
 /* fake star ratings */
 .loc_rating {
     float: right;
+    margin-right: 1em;
 }
 .star-notice {
     color: #999999;
+}
+
+.textrow1 {
+    background-color: #f6f6f6;
+}
+.textrow2 {
 }
