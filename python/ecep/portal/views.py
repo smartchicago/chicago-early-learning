@@ -1,17 +1,35 @@
-from django.template import Context, loader
+from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
 from django.db.models import Q
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import GEOSGeometry
+from django.conf import settings
 from models import Location
 import logging, hashlib
+from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
 
 def index(request):
     fields = Location.get_boolean_fields()
-    return render_to_response('index.html', { 'fields':fields })
+
+    ctx = RequestContext(request, {
+        'fields':fields
+    })
+
+    response = render_to_response('index.html', context_instance=ctx)
+
+    # cookie for splash screen, defaults to true
+    try:
+        show_splash = request.COOKIES['show_splash']
+    except:
+        show_splash = 'true'
+    expires = datetime.utcnow() + timedelta(seconds=60 * 60)
+
+    response.set_cookie('show_splash', show_splash, expires=expires, httponly=False)
+
+    return response
 
 def location_details(location_id):
     """
@@ -22,9 +40,8 @@ def location_details(location_id):
     item = get_object_or_404(Location, id=location_id)
 
     simple_text = [
-        'ages', 'prg_dur', 'prg_size', 'prg_sched', 'site_affil', 
-        'ctr_director', 'exec_director', 'q_stmt', 'e_info', 'as_proc', 'accred',
-        'waitlist']
+        'ages', 'prg_dur', 'prg_sched', 'site_affil', 
+        'ctr_director', 'exec_director', 'accred']
 
     # simple fields to present -- these are the attributes that have text content
     sfields = []
@@ -63,10 +80,12 @@ def location(request, location_id):
     context.update(is_popup=(tpl == 'popup.html'))
     context.update(is_embed=(tpl == 'embed.html'))
 
-    return render_to_response(tpl, context)
+    context = RequestContext(request, context)
+
+    return render_to_response(tpl, context_instance=context)
 
 
-@cache_control(must_revalidate=False, max_age=30)
+@cache_control(must_revalidate=False, max_age=3600)
 def location_list(request):
     """
     Get a list of all the locations.
@@ -118,17 +137,18 @@ def compare(request, a, b):
     if 'm' in request.GET and request.GET['m'] == 'embed':
         tpl = 'compare_content.html'
 
-    return render_to_response(tpl, { 
-        'location_a': loc_a,
-        'location_b': loc_b
-    })
+    ctx = RequestContext(request, { 
+        'location_a': loc_a, 'location_b': loc_b 
+        })
+
+    return render_to_response(tpl, context_instance=ctx)
 
 
 def about(request):
-    return render_to_response('about.html')
+    return render_to_response('about.html', context_instance=RequestContext(request))
 
 
 def faq(request):
-    return render_to_response('faq.html')
+    return render_to_response('faq.html', context_instance=RequestContext(request))
 
 

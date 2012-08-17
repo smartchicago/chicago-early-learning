@@ -82,7 +82,7 @@ document, and loads the fields into the portal.Location models of the django app
             l = Location(
                 site_name = row['Site Name'],
                 address = row['Address'],
-                city = row['City '], # yes, a space after "City"
+                city = row['City '], # Yes, a space after city
                 state = row['State'],
                 zip = row['Zip'],
                 phone1 = row['Phone Number'],
@@ -97,6 +97,8 @@ document, and loads the fields into the portal.Location models of the django app
                 is_special_ed = parse_maybe(row['SE']),
                 is_montessori = parse_maybe(row['MONT']),
                 is_child_parent_center = parse_maybe(row['CPC']),
+                is_age_lt_3 = parse_maybe(row['Ages 0-3']),
+                is_age_gt_3 = parse_maybe(row['Ages 3-5']),
                 exec_director = row['Executive Director'],
                 ctr_director = row['Director/Principal'],
                 site_affil = row['Site Affiliation'],
