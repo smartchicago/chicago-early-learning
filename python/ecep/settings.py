@@ -11,8 +11,17 @@ TEMPLATE_DEBUG = DEBUG
 
 # Test account. We can't use the real credentials here b/c they would be public
 # See install.sh and local_settings.py
-TWILIO_ACCOUNT_SID = TWILIO_ACCOUNT_SID or 'AC7a652a7493f41d19851fc9f810c2a97a'
-TWILIO_AUTH_TOKEN = TWILIO_AUTH_TOKEN or '7c5b5db30d48bae17dfa180b39ccbafd'
+try:
+    TWILIO_ACCOUNT_SID 
+    TWILIO_AUTH_TOKEN 
+except NameError:
+    TWILIO_ACCOUNT_SID = 'AC7a652a7493f41d19851fc9f810c2a97a'
+    TWILIO_AUTH_TOKEN = '7c5b5db30d48bae17dfa180b39ccbafd'
+
+try:
+    GA_KEY
+except NameError:
+    GA_KEY = 'UA-34089447-1'
 
 DATABASES = {
     'default': {
@@ -32,7 +41,7 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/New_York'
+TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -82,6 +91,17 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+    'portal.context_processors.analytics',
 )
 
 MIDDLEWARE_CLASSES = (
