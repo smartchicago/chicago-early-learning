@@ -1,8 +1,8 @@
 {% load portal_extras %}
 {% if is_popup %}<div class="location_item">{% endif %}
-    <h2>{{ item.site_name }}</h2>
+    <h4>{{ item.site_name }}</h4>
 
-    <div class="loc_rating" style="float:right;">
+    <div class="loc_rating">
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>
@@ -21,6 +21,7 @@
     </div>
 
     {% if item.phone1 or item.phone2 or item.phone3 or item.fax %}
+    <div class="{% if not is_popup %}{% cycle 'textrow1' 'textrow2' as bgcolor %}{% endif %}">
     <table class="loc_phone_table">
         <thead>
             <tr>
@@ -55,6 +56,7 @@
             </tr>    
         </tbody>
     </table>
+    </div>
     {% endif %}
 
 {% if is_popup %}
