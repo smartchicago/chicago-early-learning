@@ -24,7 +24,7 @@ class TopicWrapper(object):
 
 class FaqView(View):
     def get(self, request):
-        tpl = 'faq.html'
+        tpl = 'faq-models.html'
         topics = Topic.objects.all()
         tw = [TopicWrapper(t, request) for t in topics]
         c = { 'topics': tw }
