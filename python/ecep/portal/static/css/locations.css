@@ -106,11 +106,13 @@
     z-index: 1020;
 }
 .subnav .container {
-    width: 940px;
+    width: 1170px;
+    margin-top: 12px;
 }
 .subnav .nav > li {
     display: block;
     float: left;
+    margin-top: 5px;
 }
 .subnav .nav > li > a {
     border-radius: 0 0 0 0;
@@ -147,30 +149,36 @@
     float: right;
 }
 .subnav .navbar-search input.search-query {
-    padding: 2px 9px;
-    margin: 0;
+    padding: 4px 9px;
+    margin: -2px;
     border-radius: 3px;
     font-size: 14px;
+    border: 1px solid #2C4489;
+    margin-top: -5px;
 }
 .subnav .navbar-search select.search-query {
     padding: 2px 9px;
     margin: 0 12px;
     width: 8em;
-    height: 25px;
+    height: 28px;
     border-radius: 3px;
     font-size: 14px;
 }
 .subnav .navbar-search .search-query:focus {
-    background-color: #888888;
-    color: #ffffff;
-    text-shadow: 0 1px 0 #333333;
-    border: 1px solid;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #F4C121;
 }
 .subnav .navbar-search select.search-query option {
     border-style: none;
     border-radius: 0;
     font-size: 14px;
 }
+
+.subnav .container .navbar-search input {
+  color: #000;
+}
+
 #map_container { 
     position: absolute;
     left: 0;
