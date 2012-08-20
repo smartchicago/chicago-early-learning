@@ -9,6 +9,7 @@ import logging, hashlib
 
 logger = logging.getLogger(__name__)
 
+
 def index(request):
     fields = Location.get_boolean_fields()
     return render_to_response('index.html', { 'fields':fields })
@@ -22,7 +23,7 @@ def location_details(location_id):
     item = get_object_or_404(Location, id=location_id)
 
     simple_text = [
-        'ages', 'prg_dur', 'prg_size', 'prg_sched', 'site_affil', 
+        'ages', 'prg_dur', 'prg_size', 'prg_sched', 'site_affil',
         'ctr_director', 'exec_director', 'q_stmt', 'e_info', 'as_proc', 'accred',
         'waitlist']
 
@@ -30,7 +31,7 @@ def location_details(location_id):
     sfields = []
 
     # boolean fields to present -- these are the attributes that are set to True
-    bfields = [] 
+    bfields = []
 
     for field in Location._meta.fields:
         # get boolean fields that are set, and set to True
@@ -71,7 +72,7 @@ def location_list(request):
     """
     Get a list of all the locations.
     """
-    etag_hash = 'empty' 
+    etag_hash = 'empty'
     item_filter = None
     for f in request.GET:
         for field in Location._meta.fields:
@@ -118,7 +119,7 @@ def compare(request, a, b):
     if 'm' in request.GET and request.GET['m'] == 'embed':
         tpl = 'compare_content.html'
 
-    return render_to_response(tpl, { 
+    return render_to_response(tpl, {
         'location_a': loc_a,
         'location_b': loc_b
     })
