@@ -1,14 +1,153 @@
-<div class="location">
-
-{% with item=location_a.item sfields=location_a.sfields bfields=location_a.bfields %}
-{% include "embed.html" %}
-{% endwith %}
-
-</div>
-<div class="location">
-
-{% with item=location_b.item sfields=location_b.sfields bfields=location_b.bfields %}
-{% include "embed.html" %}
-{% endwith %}
-
-</div>
+{% load portal_extras %}
+<table>
+    <tbody>
+        <tr><td>
+            <div class="location">
+                <h4>{{ locations.name.0 }}</h4>
+            </div>
+        </td><td>
+            <div class="location">
+                <h4>{{ locations.name.1 }}</h4>
+            </div>
+        </td></tr>
+        <tr><td>
+            <div class="loc_rating" style="float:right;">
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i><br/>
+                <span class="star-notice">What Is This?</span>
+            </div>
+            <div class="loc_address">
+              {{ locations.address.0 }}, {{ locations.city.0 }}, {{ locations.state.0 }} {{ locations.zip.0 }}
+            </div>
+        </td><td>
+            <div class="loc_rating" style="float:right;">
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i><br/>
+                <span class="star-notice">What Is This?</span>
+            </div>
+            <div class="loc_address">
+              {{ locations.address.1 }}, {{ locations.city.1 }}, {{ locations.state.1 }} {{ locations.zip.1 }}
+            </div>
+        </td></tr>
+        <tr><td>
+            <div>
+              {{ locations.url.0|urlize }}<br />
+              {{ locations.email.0|urlize }}
+            </div>
+        </td><td>
+            <div>
+              {{ locations.url.1|urlize }}<br />
+              {{ locations.email.1|urlize }}
+            </div>
+        </td></tr>
+        <tr><td class="{% cycle 'textrow1' 'textrow2' as bgcolor %}">
+            {% if locations.phone1.0 or locations.phone2.0 or locations.phone3.0 or locations.fax.0 %}
+            <table class="loc_phone_table">
+                <thead>
+                    <tr>
+                        {% if locations.phone1.0 %}
+                        <td>Main Phone</td>
+                        {% if locations.phone2.0 %}
+                        <td>Alt. Phone</td>
+                        {% if locations.phone3.0 %}
+                        <td>Alt. Phone</td>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% if locations.fax.0 %}
+                        <td>Fax</td>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% if locations.phone1.0 %}
+                        <td>{{ locations.phone1.0|nicephone }}</td>
+                        {% if locations.phone2.0 %}
+                        <td>{{ locations.phone2.0|nicephone }}</td>
+                        {% if locations.phone3.0 %}
+                        <td>{{ locations.phone3.0|nicephone }}</td>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% if locations.fax.0 %}
+                        <td>{{ locations.fax.0|nicephone }}</td>
+                        {% endif %}
+                    </tr>    
+                </tbody>
+            </table>
+            {% endif %}
+        </td><td class="{{ bgcolor }}">
+            {% if locations.phone1.1 or locations.phone2.1 or locations.phone3.1 or locations.fax.1 %}
+            <table class="loc_phone_table">
+                <thead>
+                    <tr>
+                        {% if locations.phone1.1 %}
+                        <td>Main Phone</td>
+                        {% if locations.phone2.1 %}
+                        <td>Alt. Phone</td>
+                        {% if locations.phone3.1 %}
+                        <td>Alt. Phone</td>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% if locations.fax.1 %}
+                        <td>Fax</td>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% if locations.phone1.1 %}
+                        <td>{{ locations.phone1.1|nicephone }}</td>
+                        {% if locations.phone2.1 %}
+                        <td>{{ locations.phone2.1|nicephone }}</td>
+                        {% if locations.phone3.1 %}
+                        <td>{{ locations.phone3.1|nicephone }}</td>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% if locations.fax.1 %}
+                        <td>{{ locations.fax.1|nicephone }}</td>
+                        {% endif %}
+                    </tr>    
+                </tbody>
+            </table>
+            {% endif %}
+        </td></tr>
+        <tr><td class="loc_simplefield {% cycle bgcolor %}">
+            <h5>Features</h5>
+            {% if locations.bfields.0 %}
+            <ul>
+            {{ locations.bfields.0|unordered_list }}
+            </ul>
+            {% endif %}
+        </td><td class="loc_simplefield {{ bgcolor }}">
+            <h5>Features</h5>
+            {% if locations.bfields.1 %}
+            <ul>
+            {{ locations.bfields.1|unordered_list }}
+            </ul>
+            {% endif %}
+        </td></tr>
+{% for simple_zip in locations.sfields_zip %}
+    {% if simple_zip.0.1 or simple_zip.1.1 %}
+        <tr><td class="loc_simplefield {% cycle bgcolor %}">
+            {% if simple_zip.0.1 %}<h5>{{ simple_zip.0.0 }}</h5>
+            <div>{{ simple_zip.0.1 }}</div>
+            {% else %}&nbsp;{% endif %}
+        </td><td class="loc_simplefield {{ bgcolor }}">
+            {% if simple_zip.1.1 %}<h5>{{ simple_zip.1.0 }}</h5>
+            <div>{{ simple_zip.1.1 }}</div>
+            {% else %}&nbsp;{% endif %}
+        </td></tr>
+    {% endif %}
+{% endfor %}
+    </tbody>
+</table>
