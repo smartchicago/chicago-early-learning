@@ -1,4 +1,4 @@
-.container .location, .modal-body .location {
+.container .location {
     width: 50%;
     float: left;
 }
@@ -8,6 +8,20 @@
     margin: 0 auto;
     top: 10%;
     left: 5%;
+}
+
+#compare-modal .modal-body {
+    max-height: 600px;
+}
+
+.container > table, #compare-modal .modal-body > table {
+    width: 100%;
+    padding: 0.5em;
+}
+
+.conainer > table > tbody > tr > td, #compare-modal .modal-body > table > tbody > tr > td {
+    padding: 0 0.5em;
+    width: 50%;
 }
 
 #text-info-modal {
@@ -36,6 +50,7 @@
 
 .location_item {
     width: 30em;
+    font-size: 90%;
 }
 
 .loc_address {
@@ -47,12 +62,14 @@
 }
 
 .loc_phone_table {
-    margin: 1em 0;
+    margin: 0.25em -0.5em;
 }
 
 .loc_phone_table thead {
     font-weight: bold;
-    text-transform: uppercase;
+}
+.loc_phone_table td {
+    padding: 0 0.5em;
 }
 
 .loc_waitlist {
@@ -66,14 +83,16 @@
 }
 
 .loc_simplefield {
-    margin-bottom: 0.75em;
+    padding-bottom: 0.25em;
+    vertical-align: top;
 }
 
 
 .subnav {
     background-color: #005182;
-    height: 55px;
+    height: 36px;
     width: 100%;
+    font-size: 14px;
 }
 .subnav-fixed {
     border-color: #999999;
@@ -83,7 +102,7 @@
     left: 0;
     position: fixed;
     right: 0;
-    top: 45px;
+    top: 50px;
     z-index: 1020;
 }
 .subnav .container {
@@ -100,15 +119,19 @@
     margin: 0;
     padding-bottom: 11px;
     padding-top: 11px;
-    line-height: 12px;
+    line-height: 14px;
     padding-left: 12px;
     padding-right: 12px;
     color: #dddddd;
     float: left;
+    height: 14px;
 }
 .subnav .nav > li > a:hover {
     color: #eeeeee;
-    background-color: #555555;
+    background-color: #0B5C8D;
+}
+.subnav .nav > li > a > i {
+    margin: 2px;
 }
 .subnav-fixed .nav {
     margin: 0 auto;
@@ -127,16 +150,22 @@
 }
 .subnav .navbar-search input.search-query {
     padding: 4px 9px;
-    margin: -1px;
+    margin: -2px;
     border-radius: 3px;
+<<<<<<< HEAD
     border: 1px solid #2C4489;
+    margin-top: -5px;
+=======
+    font-size: 14px;
+>>>>>>> upstream/staging
 }
 .subnav .navbar-search select.search-query {
     padding: 2px 9px;
     margin: 0 12px;
     width: 8em;
-    height: 27px;
+    height: 28px;
     border-radius: 3px;
+    font-size: 14px;
 }
 .subnav .navbar-search .search-query:focus {
     background-color: #fff;
@@ -146,6 +175,7 @@
 .subnav .navbar-search select.search-query option {
     border-style: none;
     border-radius: 0;
+    font-size: 14px;
 }
 
 .subnav .container .navbar-search input {
@@ -156,7 +186,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 7.8em;
+    top: 6.7em;
     bottom: 0;
 }
 .hidden-phone.address-input {
@@ -201,7 +231,14 @@
 /* fake star ratings */
 .loc_rating {
     float: right;
+    margin-right: 1em;
 }
 .star-notice {
     color: #999999;
+}
+
+.textrow1 {
+    background-color: #f6f6f6;
+}
+.textrow2 {
 }
