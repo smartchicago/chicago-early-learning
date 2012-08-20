@@ -94,7 +94,7 @@
     background-repeat: repeat-x;
     border: 1px solid #E5E5E5;
     border-radius: 4px 4px 4px 4px;
-    height: 40px;
+    height: 36;
     width: 100%;
     font-size: 14px;
 }
@@ -106,7 +106,7 @@
     left: 0;
     position: fixed;
     right: 0;
-    top: 42px;
+    top: 50px;
     z-index: 1020;
 }
 .subnav .container {
@@ -178,7 +178,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 6em;
+    top: 7em;
     bottom: 0;
 }
 .hidden-phone.address-input {
