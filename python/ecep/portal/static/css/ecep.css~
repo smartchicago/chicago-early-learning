@@ -164,6 +164,3 @@ h2.question {
   padding: 30px;
 }
 
-.container a:hover {
-  text-decoration: none;
-}
