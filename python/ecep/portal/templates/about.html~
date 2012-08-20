@@ -47,14 +47,14 @@
 
   <tr>
     <td><a href="http://www.smartchicagocollaborative.org" target="_blank"><img class="partner" src="{% static "images/partners/scc.jpg" %}" alt="Smart Chicago Collaborative"></a></td>
-    <td><a href="http://www.smartchicagocollaborative.org" target="_blank"><b>Smart Chicago Collaborative</b></a>
+    <td><a href="http://www.smartchicagocollaborative.org" target="_blank"><b>Smart Chicago Collaborative</a>
     <p>The Smart Chicago Collaborative is a civic organization devoted to using technology to make lives better in Chicago. We work to apply the transformative power of technology to solve problems for the people of Chicago.</p>
     </td>
   </tr>
 
   <tr>
     <td><a href="http://uel.uchicago.edu/" target="_blank"><img class="partner" src="{% static "images/partners/uel.jpg" %}" alt="Urban Education Lab"></a></td>
-    <td><a href="http://uel.uchicago.edu/" target="_blank"><b>University of Chicago Urban Education Lab</b></a>
+    <td><a href="http://uel.uchicago.edu/" target="_blank"><b>University of Chicago Urban Education Lab</b>
     <p>The University of Chicago Urban Education Lab, a project of the Urban Education Institute, seeks to improve education outcomes by providing scientific evidence about what strategies are the most effective and cost effective, for whom, and why. [link to: http://uel.uchicago.edu/]</p>
     </td>
   </tr>

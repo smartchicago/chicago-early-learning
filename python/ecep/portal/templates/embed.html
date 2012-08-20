@@ -4,7 +4,8 @@
 {% include "popup.html" %}
 
 {% if bfields %}
-<h3>Features</h3>
+<div class="{% cycle 'textrow2' 'textrow1' as bgcolor %}">
+<h5>Features</h5>
 
 <ul>
     {{ bfields|unordered_list }}
@@ -12,11 +13,11 @@
 {% endif %}
 
 {% for simple in sfields %}
-<div class="loc_simplefield">
-    <h3>{{ simple.0 }}</h3>
+{% if simple.1 %}<div class="loc_simplefield {% cycle bgcolor %}">
+    <h5>{{ simple.0 }}</h5>
 
     <div>{{ simple.1 }}</div>
-</div>
+</div>{% endif %}
 {% endfor %}
 
 {% if is_embed %}

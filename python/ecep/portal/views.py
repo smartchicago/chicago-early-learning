@@ -1,18 +1,36 @@
-from django.template import Context, loader
+from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
 from django.db.models import Q
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import GEOSGeometry
+from django.conf import settings
 from models import Location
 import logging, hashlib
+from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
 
 
 def index(request):
     fields = Location.get_boolean_fields()
-    return render_to_response('index.html', { 'fields':fields })
+
+    ctx = RequestContext(request, {
+        'fields':fields
+    })
+
+    response = render_to_response('index.html', context_instance=ctx)
+
+    # cookie for splash screen, defaults to true
+    try:
+        show_splash = request.COOKIES['show_splash']
+    except:
+        show_splash = 'true'
+    expires = datetime.utcnow() + timedelta(seconds=60 * 60)
+
+    response.set_cookie('show_splash', show_splash, expires=expires, httponly=False)
+
+    return response
 
 def location_details(location_id):
     """
@@ -23,9 +41,8 @@ def location_details(location_id):
     item = get_object_or_404(Location, id=location_id)
 
     simple_text = [
-        'ages', 'prg_dur', 'prg_size', 'prg_sched', 'site_affil',
-        'ctr_director', 'exec_director', 'q_stmt', 'e_info', 'as_proc', 'accred',
-        'waitlist']
+        'ages', 'prg_dur', 'prg_sched', 'site_affil',
+        'ctr_director', 'exec_director', 'accred']
 
     # simple fields to present -- these are the attributes that have text content
     sfields = []
@@ -41,12 +58,42 @@ def location_details(location_id):
         # get char fields & values if they are listed above, and not empty
         elif field.get_internal_type() == 'CharField' or field.get_internal_type() == 'TextField':
             for simple in simple_text:
-                if field.get_attname() == simple and \
-                    getattr(item, field.get_attname()) is not None and \
-                    getattr(item, field.get_attname()) != '':
-                        sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
+                if field.get_attname() == simple:
+                    sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
 
     return { 'item': item, 'sfields': sfields, 'bfields': bfields }
+
+def segment_info(ldet1, ldet2):
+    """
+    Segment the detailed information into discrete chunks.
+
+    Parameters:
+        ldet1 - The results from location_details for one location
+        ldet2 - The results from location_details for the other location
+
+    Returns:
+        The segments of the display, with contents of ldet1
+        interleaved with ldet2
+    """
+    segments = {}
+
+    segments.update({
+        'name': (ldet1['item'].site_name, ldet2['item'].site_name,),
+        'address': (ldet1['item'].address, ldet2['item'].address,),
+        'city': (ldet1['item'].city, ldet2['item'].city,),
+        'state': (ldet1['item'].state, ldet2['item'].state,),
+        'zip': (ldet1['item'].zip, ldet2['item'].zip,),
+        'url': (ldet1['item'].url, ldet2['item'].url,),
+        'email': (ldet1['item'].email, ldet2['item'].email,),
+        'phone1': (ldet1['item'].phone1, ldet2['item'].phone1,),
+        'phone2': (ldet1['item'].phone2, ldet2['item'].phone2,),
+        'phone3': (ldet1['item'].phone3, ldet2['item'].phone3,),
+        'fax': (ldet1['item'].fax, ldet2['item'].fax,)
+    })
+    segments.update({'bfields': (ldet1['bfields'], ldet2['bfields'],)})
+    segments.update({'sfields_zip': zip(ldet1['sfields'], ldet2['sfields'])})
+
+    return segments
 
 def location(request, location_id):
     """
@@ -64,10 +111,12 @@ def location(request, location_id):
     context.update(is_popup=(tpl == 'popup.html'))
     context.update(is_embed=(tpl == 'embed.html'))
 
-    return render_to_response(tpl, context)
+    context = RequestContext(request, context)
+
+    return render_to_response(tpl, context_instance=context)
 
 
-@cache_control(must_revalidate=False, max_age=30)
+@cache_control(must_revalidate=False, max_age=3600)
 def location_list(request):
     """
     Get a list of all the locations.
@@ -119,17 +168,20 @@ def compare(request, a, b):
     if 'm' in request.GET and request.GET['m'] == 'embed':
         tpl = 'compare_content.html'
 
-    return render_to_response(tpl, {
-        'location_a': loc_a,
-        'location_b': loc_b
+    locs = segment_info(loc_a, loc_b)
+
+    ctx = RequestContext(request, {
+        'locations': locs
     })
+
+    return render_to_response(tpl, context_instance=ctx)
 
 
 def about(request):
-    return render_to_response('about.html')
+    return render_to_response('about.html', context_instance=RequestContext(request))
 
 
 def faq(request):
-    return render_to_response('faq.html')
+    return render_to_response('faq.html', context_instance=RequestContext(request))
 
 

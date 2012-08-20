@@ -150,8 +150,8 @@ configure_django() {
     echo "    ('$USERNAME', '$EMAIL')," >> $LOCAL
     echo ")" >> $LOCAL
     echo "" >> $LOCAL
-    echo "TWILIO_ACCOUNT_SID = '$ACCOUNT_SID'" >> $Local
-    echo "TWILIO_AUTH_TOKEN = '$ACCOUNT_AUTH'" >> $Local
+    echo "TWILIO_ACCOUNT_SID = '$ACCOUNT_SID'" >> $LOCAL
+    echo "TWILIO_AUTH_TOKEN = '$ACCOUNT_AUTH'" >> $LOCAL
     echo "" >> $LOCAL
     echo "MANAGERS = ADMINS" >> $LOCAL
     echo "" >> $LOCAL

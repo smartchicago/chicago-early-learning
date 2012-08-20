@@ -42,6 +42,9 @@ the Google Maps API via geopy."""
         self.stdout.write('Processing %d records.\n' % qset.count())
         cols = 0
 
+        dupes = []
+        errs = []
+
         for i, item in enumerate(qset):
             time.sleep(random.uniform(0.1,0.5))
 
@@ -57,6 +60,7 @@ the Google Maps API via geopy."""
                 if len(places) >= 1:
                     stdaddr, (lat, lng) = places[0]
                     if len(places) > 1:
+                        dupes.append((item.id, item.site_name,))
                         found = '?'
 
                 item.geom = GEOSGeometry('POINT(%f %f)' % (lng, lat,))
@@ -64,20 +68,30 @@ the Google Maps API via geopy."""
            
                 item.save()
 
-                cols += 1
-
-                self.stdout.write(found)
-                if cols % 80 == 0:
-                    self.stdout.write('\n')
             except geopy.geocoders.google.GQueryError, gqe:
-                self.stdout.write('\nCould not find address for %s\n' % item.site_name)
+                #self.stdout.write('\nCould not find address for %s\n' % item.site_name)
+                errs.append((item.id, item.site_name,))
+                found = 'x'
                 if options['failquick']:
                     return 1
-                cols = 1
-            except ValueError, ve:
-                self.stdout.write('\nMore than one location found for %s\n' % item.site_name)
-                if options['verbosity'] > 1:
-                    self.stdout.write('%s\n' % ve)
-                if options['failquick']:
-                    return 2
-                cols = 1
+
+            cols += 1
+
+            self.stdout.write(found)
+            if cols % 80 == 0:
+                self.stdout.write('\n')
+            self.stdout.flush()
+
+        self.stdout.write('\n')
+
+        if len(dupes) > 0:
+            self.stdout.write('Duplicates:\n')
+
+        for dupe in dupes:
+            self.stdout.write('\t%d\t%s\n' % dupe)
+
+        if len(errs) > 0:
+            self.stdout.write('Errors:\n')
+
+        for err in errs:
+            self.stdout.write('\t%d\t%s\n' % err)
