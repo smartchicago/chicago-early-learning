@@ -197,7 +197,7 @@ def faq(request):
     tpl = 'faq-models.html'
     topics = Topic.objects.all()
     tw = [TopicWrapper(t, request) for t in topics]
-    c = { 'topics': tw }
-    return render_to_response(tpl, c)
+    ctx = RequestContext(request, { 'topics': tw })
+    return render_to_response(tpl, context_instance=ctx)
 
 
