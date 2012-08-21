@@ -9,7 +9,10 @@ from models import Location
 import logging, hashlib
 from datetime import datetime, timedelta
 
+from faq.models import Topic, Question
+
 logger = logging.getLogger(__name__)
+
 
 def index(request):
     fields = Location.get_boolean_fields()
@@ -40,14 +43,14 @@ def location_details(location_id):
     item = get_object_or_404(Location, id=location_id)
 
     simple_text = [
-        'ages', 'prg_dur', 'prg_sched', 'site_affil', 
+        'ages', 'prg_dur', 'prg_sched', 'site_affil',
         'ctr_director', 'exec_director', 'accred']
 
     # simple fields to present -- these are the attributes that have text content
     sfields = []
 
     # boolean fields to present -- these are the attributes that are set to True
-    bfields = [] 
+    bfields = []
 
     for field in Location._meta.fields:
         # get boolean fields that are set, and set to True
@@ -57,7 +60,7 @@ def location_details(location_id):
         # get char fields & values if they are listed above, and not empty
         elif field.get_internal_type() == 'CharField' or field.get_internal_type() == 'TextField':
             for simple in simple_text:
-                if field.get_attname() == simple: 
+                if field.get_attname() == simple:
                     sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
 
     return { 'item': item, 'sfields': sfields, 'bfields': bfields }
@@ -118,7 +121,7 @@ def location_list(request):
     """
     Get a list of all the locations.
     """
-    etag_hash = 'empty' 
+    etag_hash = 'empty'
     item_filter = None
     for f in request.GET:
         for field in Location._meta.fields:
@@ -167,7 +170,7 @@ def compare(request, a, b):
 
     locs = combine_details(loc_a, loc_b)
 
-    ctx = RequestContext(request, { 
+    ctx = RequestContext(request, {
         'locations': locs
     })
 
@@ -178,7 +181,23 @@ def about(request):
     return render_to_response('about.html', context_instance=RequestContext(request))
 
 
+class TopicWrapper(object):
+    topic = None
+    questions = None
+
+    def __init__(self, t, request):
+        self.topic = t
+        qs = Question.objects.filter(topic=t, status=Question.ACTIVE)
+        if request.user.is_anonymous():
+            qs = qs.exclude(protected=True)
+        self.questions = list(qs)
+
+
 def faq(request):
-    return render_to_response('faq.html', context_instance=RequestContext(request))
+    tpl = 'faq-models.html'
+    topics = Topic.objects.all()
+    tw = [TopicWrapper(t, request) for t in topics]
+    ctx = RequestContext(request, { 'topics': tw })
+    return render_to_response(tpl, context_instance=ctx)
 
 

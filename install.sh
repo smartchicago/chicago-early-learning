@@ -38,6 +38,7 @@ service postgresql start &>> $LOG
 
 easy_install pip &>> $LOG
 pip install -r requirements.txt &>> $LOG
+pip install git://github.com/bhuber/django-faq.git#egg=django_faq &>> $LOG
 
 # configure postgis
 echo -e "\n##\n## Messages from setting up postgis:\n##" &>> $LOG
@@ -194,8 +195,19 @@ configure_django() {
     echo "STAGING = False" >> $LOCAL
 
     # create the logging dir, and chmod it for www-data
-    mkdir -p /var/log/ecep
-    chmod a+rw /var/log/ecep
+    LOGDIR="/var/log/ecep/"
+    mkdir -p $LOGDIR
+    touch "$LOGDIR/django.log"
+    touch "$LOGDIR/django.deploy.log"
+    touch "$LOGDIR/django.staging.log"
+    chmod -R a+rw $LOGDIR
+
+    # Load initial data into db
+    pushd "$1/python/ecep/"
+    python manage.py loaddata topic
+    python manage.py loaddata question
+    popd
+
 
     return 0
 }

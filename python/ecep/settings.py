@@ -37,7 +37,7 @@ except NameError:
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'ecep',                      # Or path to database file if using sqlite3.
         'USER': 'ecep',                      # Not used with sqlite3.
         'PASSWORD': 'ecep',                  # Not used with sqlite3.
@@ -140,6 +140,7 @@ INSTALLED_APPS = (
     'portal',
     'django_twilio',
     'gunicorn',
+    'faq',
 )
 
 # Staging log file or deployment log file?
