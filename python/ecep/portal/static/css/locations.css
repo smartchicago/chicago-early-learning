@@ -91,7 +91,7 @@ table.compare-table td {
 
 .subnav {
     background-color: #005182;
-    height: 36px;
+    height: 50px;
     width: 100%;
     font-size: 14px;
 }
@@ -108,7 +108,7 @@ table.compare-table td {
 }
 .subnav .container {
     width: 1170px;
-    margin-top: 12px;
+    margin-top: 8px;
 }
 .subnav .nav > li {
     display: block;
@@ -156,6 +156,8 @@ table.compare-table td {
     border: 1px solid #2C4489;
     margin-top: -5px;
     font-size: 14px;
+    border: 1px solid #2C4489;
+    margin-top: -5px;
 }
 .subnav .navbar-search select.search-query {
     padding: 2px 9px;
@@ -184,7 +186,7 @@ table.compare-table td {
     position: absolute;
     left: 0;
     right: 0;
-    top: 6.7em;
+    top: 7.7em;
     bottom: 0;
 }
 .hidden-phone.address-input {
