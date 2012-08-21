@@ -19,7 +19,7 @@
     padding: 0.5em;
 }
 
-.conainer > table > tbody > tr > td, #compare-modal .modal-body > table > tbody > tr > td {
+table.compare-table td {
     padding: 0 0.5em;
     width: 50%;
 }
@@ -68,8 +68,9 @@
 .loc_phone_table thead {
     font-weight: bold;
 }
-.loc_phone_table td {
+.compare-table td .loc_phone_table td {
     padding: 0 0.5em;
+    width: auto
 }
 
 .loc_waitlist {
