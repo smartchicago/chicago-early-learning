@@ -126,17 +126,42 @@ popd &> /dev/null
 service gunicorn start
 service nginx start
 
+read_or_none() {
+    read A
+    if [ "x$A" == "x" ]; then
+        A="None"
+    else
+        A="'$A'"
+    fi
+    echo "$A"
+}
+
 configure_django() {
     if [ -z "$1" ]; then
         return 1
     fi
 
-    echo -e "\nEnter your Twilio credentials (you can leave these blank to use the test account)"
-    echo -en "\nPlease enter your Twilio Account SID: "
-    read ACCOUNT_SID
+    echo -e "\nEnable Twilio? (y/n)"
+    read ET
+    if [ "$ET" == "y" ]; then
+        TWILIO_ENABLED="True"
+        echo -e "\nEnter your Twilio credentials (you can leave these blank to use the test account)"
 
-    echo -en "\nPlease enter your Twilio Account Auth Token: "
-    read ACCOUNT_AUTH
+        echo -en "\nPlease enter your Twilio Account SID: "
+        ACCOUNT_SID=$(read_or_none)
+
+        echo -en "\nPlease enter your Twilio Account Auth Token: "
+        ACCOUNT_AUTH=$(read_or_none)
+
+        echo -en "\nPlease enter your Twilio SMS phone number in the form \"(ddd) ddd-dddd\": "
+        PHONE=$(read_or_none)
+    else
+        TWILIO_ENABLED="False"
+        ACCOUNT_SID="None"
+        ACCOUNT_AUTH="None"
+        PHONE="None"
+    fi
+
 
     echo -en "\nPlease enter a username for the django admin: "
     read USERNAME
@@ -144,14 +169,16 @@ configure_django() {
     echo -en "\nPlease enter an email address for the django admin: "
     read EMAIL
 
-    LOCAL=$1/python/ecep/local_settings.py
+    LOCAL="$1/python/ecep/local_settings.py"
 
     echo "ADMINS = (" > $LOCAL
     echo "    ('$USERNAME', '$EMAIL')," >> $LOCAL
     echo ")" >> $LOCAL
     echo "" >> $LOCAL
-    echo "TWILIO_ACCOUNT_SID = '$ACCOUNT_SID'" >> $LOCAL
-    echo "TWILIO_AUTH_TOKEN = '$ACCOUNT_AUTH'" >> $LOCAL
+    echo "TWILIO_ENABLED = $TWILIO_ENABLED" >> $LOCAL
+    echo "TWILIO_ACCOUNT_SID = $ACCOUNT_SID" >> $LOCAL
+    echo "TWILIO_AUTH_TOKEN = $ACCOUNT_AUTH" >> $LOCAL
+    echo "TWILIO_PHONE = $PHONE" >> $LOCAL
     echo "" >> $LOCAL
     echo "MANAGERS = ADMINS" >> $LOCAL
     echo "" >> $LOCAL
@@ -164,6 +191,8 @@ configure_django() {
     echo "TEMPLATE_DIRS = (" >> $LOCAL
     echo "    '$1/python/ecep/templates/'" >> $LOCAL
     echo ")" >> $LOCAL
+    echo "" >> $LOCAL
+    echo "STAGING = False" >> $LOCAL
 
     # create the logging dir, and chmod it for www-data
     LOGDIR="/var/log/ecep/"
