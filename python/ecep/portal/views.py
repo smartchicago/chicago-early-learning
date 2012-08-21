@@ -62,21 +62,19 @@ def location_details(location_id):
 
     return { 'item': item, 'sfields': sfields, 'bfields': bfields }
 
-def segment_info(ldet1, ldet2):
+def combine_details(ldet1, ldet2):
     """
-    Segment the detailed information into discrete chunks.
+    Combine the details of two locations
 
     Parameters:
         ldet1 - The results from location_details for one location
         ldet2 - The results from location_details for the other location
 
     Returns:
-        The segments of the display, with contents of ldet1 
-        interleaved with ldet2
+        The detailed information for both locations, combined in one
+        dictionary, where each value is a tuple instead of a literal value.
     """
-    segments = {}
-
-    segments.update({
+    segments = {
         'name': (ldet1['item'].site_name, ldet2['item'].site_name,),
         'address': (ldet1['item'].address, ldet2['item'].address,),
         'city': (ldet1['item'].city, ldet2['item'].city,),
@@ -87,10 +85,10 @@ def segment_info(ldet1, ldet2):
         'phone1': (ldet1['item'].phone1, ldet2['item'].phone1,),
         'phone2': (ldet1['item'].phone2, ldet2['item'].phone2,),
         'phone3': (ldet1['item'].phone3, ldet2['item'].phone3,),
-        'fax': (ldet1['item'].fax, ldet2['item'].fax,)
-    })
-    segments.update({'bfields': (ldet1['bfields'], ldet2['bfields'],)})
-    segments.update({'sfields_zip': zip(ldet1['sfields'], ldet2['sfields'])})
+        'fax': (ldet1['item'].fax, ldet2['item'].fax,),
+        'bfields': (ldet1['bfields'], ldet2['bfields'],),
+        'sfields_zip': zip(ldet1['sfields'], ldet2['sfields'])
+    }
 
     return segments
 
@@ -167,7 +165,7 @@ def compare(request, a, b):
     if 'm' in request.GET and request.GET['m'] == 'embed':
         tpl = 'compare_content.html'
 
-    locs = segment_info(loc_a, loc_b)
+    locs = combine_details(loc_a, loc_b)
 
     ctx = RequestContext(request, { 
         'locations': locs
