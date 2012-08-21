@@ -20,6 +20,9 @@
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ ga_key }}']);
         _gaq.push(['_trackPageview', '{{ request.path }}']);
+        _gaq.push(function() {
+            _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
+        });
         </script>
         {% block otherhead %}{% endblock %}
     </head> 
