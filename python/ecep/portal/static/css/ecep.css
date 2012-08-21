@@ -167,3 +167,11 @@ h2.question {
 .container a:hover {
   text-decoration: none;
 }
+
+#address-start {
+  float: left;
+  padding: 7px 0 10px 22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}

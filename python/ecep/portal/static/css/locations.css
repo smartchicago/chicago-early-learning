@@ -90,7 +90,7 @@
 
 .subnav {
     background-color: #005182;
-    height: 36px;
+    height: 50px;
     width: 100%;
     font-size: 14px;
 }
@@ -107,7 +107,7 @@
 }
 .subnav .container {
     width: 1170px;
-    margin-top: 12px;
+    margin-top: 8px;
 }
 .subnav .nav > li {
     display: block;
@@ -183,7 +183,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 6.7em;
+    top: 7.7em;
     bottom: 0;
 }
 .hidden-phone.address-input {
