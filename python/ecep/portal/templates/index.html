@@ -19,7 +19,7 @@
         <div class="navbar-search pull-left">
             <input type="text" class="address-input search-query span3" id="search-address" 
                 data-button="#menu-search" placeholder="Search"/>
-            <select id="radius" class="hidden-phone search-query" id="search-radius">
+            <select class="hidden-phone search-query" id="search-radius">
                 <!-- 
                     Chrome's user-agent stylesheet has some bugs where it overrides the background
                     text color specified by search-query unless we put it on these explicitly
@@ -34,7 +34,7 @@
         </div>
         <ul class="nav">
             <li>
-                <button id="menu-search" class="btn btn-warning" data-address="#search-address" href="#">Search</button>
+                <button id="menu-search" class="btn btn-warning search-button" data-address="#search-address" href="#">Search</button>
                 <!-- 
                 <a id="menu-search" class="btn btn-primary" data-address="#search-address" href="#">
                     <i class="icon-search icon-white"></i> Search
