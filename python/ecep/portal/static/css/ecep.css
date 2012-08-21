@@ -175,3 +175,32 @@ h2.question {
   font-weight: bold;
   font-size: 18px;
 }
+
+#filter-toggle {
+  position: fixed;
+  border: 1px solid #062F86;
+  margin: 12px 0 0 200px;
+}
+
+.popover-inner {
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  background: #fff;
+  border: 1px solid #c2c2c2;
+  margin-top: 18px;
+}
+
+.popover-title {
+  background: #fff;
+  border: none;
+}
+
+#compare-box {
+  position: fixed;
+  min-height: 150px;
+  width: 355px;
+  background: url(../images/compare-bg.png) repeat;
+  z-index: 9999;
+  right: 0;
+  top: 140px
+}

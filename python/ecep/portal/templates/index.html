@@ -8,6 +8,7 @@
 
 {% block content %}
 <div class="subnav subnav-fixed">
+<button class="btn btn-primary" id="filter-toggle">Filter</button>
     <div class="container">
         <ul class="nav">
             <li>
@@ -44,13 +45,16 @@
         <div class="hidden-phone">
             <ul class="nav nav-pills pull-right">
                 <li>
-                    <a id="filter-toggle" href="#"><i class="icon-filter icon-white"></i> Filter</a>
-                    <a id="compare-toggle" href="#"><i class="icon-adjust icon-white"></i> Compare</a>
-                    <a id="print-toggle" href="#"><i class="icon-print icon-white"></i> Print</a>
+                    <!-- <a id="compare-toggle" href="#"><i class="icon-adjust icon-white"></i> Compare</a> -->
+                    <button id="print-toggle" class="btn"><i class ="icon-print icon-black"></i> Print</button>
                 </li>
             </ul>
         </div>
     </div>
+</div>
+
+<div id="compare-box">
+  <div id="compare-content"> </div>
 </div>
 
 <div id="map_container">
