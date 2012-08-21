@@ -61,7 +61,7 @@ table.compare-table td {
     color: #999999;
 }
 
-.loc_phone_table {
+.compare-table .loc_phone_table {
     margin: 0.25em -0.5em;
 }
 
