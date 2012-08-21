@@ -1,6 +1,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
+from django.views.generic import View
 from django.db.models import Q
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import GEOSGeometry
@@ -8,6 +9,8 @@ from django.conf import settings
 from models import Location
 import logging, hashlib
 from datetime import datetime, timedelta
+
+from faq.models import Topic, Question
 
 logger = logging.getLogger(__name__)
 
@@ -181,7 +184,24 @@ def about(request):
     return render_to_response('about.html', context_instance=RequestContext(request))
 
 
-def faq(request):
-    return render_to_response('faq.html', context_instance=RequestContext(request))
+class TopicWrapper(object):
+    topic = None
+    questions = None
+
+    def __init__(self, t, request):
+        self.topic = t
+        qs = Question.objects.filter(topic=t, status=Question.ACTIVE)
+        if request.user.is_anonymous():
+            qs = qs.exclude(protected=True)
+        self.questions = list(qs)
+
+
+class FaqView(View):
+    def get(self, request):
+        tpl = 'faq-models.html'
+        topics = Topic.objects.all()
+        tw = [TopicWrapper(t, request) for t in topics]
+        c = { 'topics': tw }
+        return render_to_response(tpl, c)
 
 
