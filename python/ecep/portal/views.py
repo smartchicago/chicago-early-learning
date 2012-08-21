@@ -1,7 +1,6 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
-from django.views.generic import View
 from django.db.models import Q
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import GEOSGeometry
@@ -196,12 +195,11 @@ class TopicWrapper(object):
         self.questions = list(qs)
 
 
-class FaqView(View):
-    def get(self, request):
-        tpl = 'faq-models.html'
-        topics = Topic.objects.all()
-        tw = [TopicWrapper(t, request) for t in topics]
-        c = { 'topics': tw }
-        return render_to_response(tpl, c)
+def faq(request):
+    tpl = 'faq-models.html'
+    topics = Topic.objects.all()
+    tw = [TopicWrapper(t, request) for t in topics]
+    c = { 'topics': tw }
+    return render_to_response(tpl, c)
 
 

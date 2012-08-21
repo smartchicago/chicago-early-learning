@@ -1,17 +1,15 @@
 from django.conf.urls.defaults import patterns, include, url
 from portal.sms import Sms, Conversation
-from portal.views import FaqView
 
 from django.contrib.gis import admin
 admin.autodiscover()
-
 
 urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
     url(r'^$', 'portal.views.index'),
     url(r'^about.html$', 'portal.views.about'),
-    url(r'^faq.html$', FaqView.as_view()),
+    url(r'^faq.html$', 'portal.views.faq'),
 
     # Verbose details about a location
     url(r'^location/$', 'portal.views.location_list'),
