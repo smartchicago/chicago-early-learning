@@ -365,10 +365,10 @@ ecep.loadLocations = function() {
         // this fires when a request is aborted: i.e. if you click
         // a link before the locations are done loading.
         if (jqxhr.getAllResponseHeaders()) {
-            _gaq.push(['_trackEvent', 'Locations', 'Canceled', 'Status: ' + txtStatus + ', Message: ' + message]);
+            _gaq.push(['_trackEvent', 'Locations', 'Canceled', 'Status: ' + textStatus + ', Message: ' + message]);
         }
         else {
-            _gaq.push(['_trackEvent', 'Locations', 'Error', 'Status: ' + txtStatus + ', Message: ' + message]);
+            _gaq.push(['_trackEvent', 'Locations', 'Error', 'Status: ' + textStatus + ', Message: ' + message]);
         }
     });
 };
