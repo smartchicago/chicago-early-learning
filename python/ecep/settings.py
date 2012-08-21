@@ -1,4 +1,6 @@
 import sys
+
+
 try:
     from local_settings import *
 except ImportError:
@@ -9,14 +11,24 @@ except ImportError:
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-# Test account. We can't use the real credentials here b/c they would be public
-# See install.sh and local_settings.py
 try:
-    TWILIO_ACCOUNT_SID 
-    TWILIO_AUTH_TOKEN 
+    TWILIO_ENABLED
 except NameError:
-    TWILIO_ACCOUNT_SID = 'AC7a652a7493f41d19851fc9f810c2a97a'
-    TWILIO_AUTH_TOKEN = '7c5b5db30d48bae17dfa180b39ccbafd'
+    TWILIO_ENABLED = False
+
+if TWILIO_ENABLED:
+    try:
+        TWILIO_ACCOUNT_SID
+        TWILIO_AUTH_TOKEN
+        TWILIO_NUMBER
+    except NameError:
+        # Some defaults for debugging
+        # This is a test account. We can't use the real credentials here b/c they would be public
+        # See install.sh and local_settings.py
+        print "Warning: Twilio variables in local_settings.py weren't defined, using dev ones"
+        TWILIO_ACCOUNT_SID = 'AC7a652a7493f41d19851fc9f810c2a97a'
+        TWILIO_AUTH_TOKEN = '7c5b5db30d48bae17dfa180b39ccbafd'
+        TWILIO_NUMBER = '(484) 842-0284'
 
 try:
     GA_KEY
@@ -102,6 +114,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
     'portal.context_processors.analytics',
+    'portal.context_processors.settings',
 )
 
 MIDDLEWARE_CLASSES = (
