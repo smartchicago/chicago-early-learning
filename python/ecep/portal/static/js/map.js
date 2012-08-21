@@ -494,7 +494,7 @@ ecep.directions = function(event) {
     var req = {
         origin: marker.getPosition().toString(),
         destination: dest,
-        travelMode: google.maps.TravelMode.DRIVING
+        travelMode: google.maps.TravelMode.WALKING
     };
     _gaq.push(['_trackEvent', 'Directions', 'Begin', 'From "' + req.origin + '" to "' + req.destination + '"']);
     ecep.directions_service.route(req, function(result, rtestatus) {
@@ -506,6 +506,7 @@ ecep.directions = function(event) {
             // update text instructions
             // move over by the width of instructions + 5px gutter
             $('#map_container').css('right', '305px');
+            $('#compare-box').css('right', '305px');
             google.maps.event.trigger(ecep.map, 'resize');
         }
         else {
@@ -521,6 +522,7 @@ ecep.clearDirections = function() {
 
     var loc = ecep.map.getCenter();
     $('#map_container').css('right', '0');
+    $('#compare-box').css('right', '0');
     google.maps.event.trigger(ecep.map, 'resize');
     ecep.map.setCenter(loc);
 };
@@ -544,11 +546,28 @@ ecep.typeDirections = function() {
 
     $('.clear_dir').click(ecep.clearDirections);
 
-    direlem.append($('<h3>Driving Directions</h3>'));
+    direlem.append($('<h3>Walking Directions</h3>'));
+
+    var external_dir = $('<div />');
+    external_dir.addClass('external-directions');
+
+    var external_link = $('<a/>');
+    external_link.addClass('ext-dir');
+    external_link.text('Directions from Google');
+    var url = 'http://maps.google.com/?saddr=' + result.routes[0].legs[0].start_address +
+        '&daddr=' + result.routes[0].legs[result.routes[0].legs.length-1].end_address;
+    var tracker = _gat._getTrackerByName('outlinkTracker');
+    external_link.attr('href', tracker._getLinkerUrl(url));
+    external_dir.append(external_link);
+    direlem.append(external_dir);
 
     var warn = $('<div />');
     warn.addClass('d_warn');
-    warn.html(result.routes[0].warnings);
+    for (var i = 0; i < result.routes[0].warnings.length; i++) {
+        var p = $('<p/>');
+        p.html(result.routes[0].warnings[i]);
+        warn.append(p);
+    }
     direlem.append(warn);
 
     var list = $('<ol />');
