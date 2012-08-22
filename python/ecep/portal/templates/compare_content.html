@@ -35,6 +35,19 @@
               {{ locations.address.1 }}, {{ locations.city.1 }}, {{ locations.state.1 }} {{ locations.zip.1 }}
             </div>
         </td></tr>
+        {% if locations.accred.0 or locations.accred.1 %}
+        <tr><td>
+            <div>
+                {% if locations.accred.0 %}<i class="icon-ok"></i>&nbsp;Accreditation: {{ locations.accred.0 }}
+                {% else %}&nbsp;{% endif %}
+            </div>
+        </td><td>
+            <div>
+                {% if locations.accred.1 %}<i class="icon-ok"></i>&nbsp;Accreditation: {{ locations.accred.1 }}
+                {% else %}&nbsp;{% endif %}
+            </div>
+        </td></tr>
+        {% endif %}
         <tr><td>
             <div>
               {{ locations.url.0|urlize }}<br />

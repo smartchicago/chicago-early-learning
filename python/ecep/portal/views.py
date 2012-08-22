@@ -77,12 +77,13 @@ def combine_details(ldet1, ldet2):
         The detailed information for both locations, combined in one
         dictionary, where each value is a tuple instead of a literal value.
     """
-    segments = {
+    details = {
         'name': (ldet1['item'].site_name, ldet2['item'].site_name,),
         'address': (ldet1['item'].address, ldet2['item'].address,),
         'city': (ldet1['item'].city, ldet2['item'].city,),
         'state': (ldet1['item'].state, ldet2['item'].state,),
         'zip': (ldet1['item'].zip, ldet2['item'].zip,),
+        'accred': (ldet1['item'].accred, ldet2['item'].accred,),
         'url': (ldet1['item'].url, ldet2['item'].url,),
         'email': (ldet1['item'].email, ldet2['item'].email,),
         'phone1': (ldet1['item'].phone1, ldet2['item'].phone1,),
@@ -93,7 +94,7 @@ def combine_details(ldet1, ldet2):
         'sfields_zip': zip(ldet1['sfields'], ldet2['sfields'])
     }
 
-    return segments
+    return details
 
 def location(request, location_id):
     """
