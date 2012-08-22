@@ -207,7 +207,7 @@ table.compare-table td {
 .hidden-phone.directions { 
     position: absolute;
     right: 0;
-    top: 7em;
+    top: 7.7em;
     bottom: 0;
     width: 300px;
     overflow-y: scroll;
@@ -216,7 +216,7 @@ table.compare-table td {
     position: absolute;
     left: 0;
     right: 0;
-    top: 6em;
+    top: 6.7em;
     bottom: 0;
     background-color: #ffffff;
 }
@@ -241,4 +241,7 @@ table.compare-table td {
     background-color: #f6f6f6;
 }
 .textrow2 {
+}
+.clear_dir {
+    margin: 0.25em;
 }
