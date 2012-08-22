@@ -170,6 +170,7 @@ h2.question {
 
 .popover {
     left: 81px;
+    top: 138px;
 }
 .popover.bottom .arrow {
     left: 31px;
@@ -359,8 +360,6 @@ table.compare-table td {
     border-radius: 0 3px 3px 0;
     border: 1px solid #2C4489;
     margin-top: -5px;
-    border: 1px solid #2C4489;
-    margin-top: -5px;
 }
 .subnav .navbar-search select.search-query {
     padding: 2px 9px;
@@ -380,12 +379,18 @@ table.compare-table td {
     font-size: 14px;
 }
 
-#map_container { 
+#map-container { 
     position: absolute;
     left: 0;
     right: 0;
     top: 7.7em;
     bottom: 0;
+}
+#map-container.show-directions, #compare-box.show-directions {
+    right: 305px;
+}
+#map-container.hide-directions, #compare-box.hide-directions {
+    right: 0;
 }
 .hidden-phone.address-input {
     width: 450px;

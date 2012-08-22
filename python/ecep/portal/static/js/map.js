@@ -93,7 +93,11 @@ ecep.init = function() {
     $('#filter-toggle').click(function() {
         $('#filter-toggle').popover('toggle');
         if ($('#update-filter:visible').length > 0) {
-            $('.popover').css('left', '81px');
+
+            // reset the element's left positioning
+            $('.popover')[0].style.left = null;
+            $('.popover')[0].style.top = null;
+
             $('#update-filter').click(ecep.loadLocations);
             $('#all').click(function(){
                 var filters = $('.loc_filter_check');
@@ -117,6 +121,10 @@ ecep.init = function() {
                 }
             });
         }
+    });
+
+    $('#print-toggle').click(function(){
+        window.print();
     });
 };
 
@@ -145,6 +153,7 @@ ecep.comparingChanged = function(event) {
                 var btn = $('<a/>');
                 btn.attr('id', 'compare-locations');
                 btn.addClass('btn');
+                btn.addClass('gmnoprint');
                 btn.text('Compare');
                 btn.data('a', ecep.comparing[0].id);
                 btn.data('b', ecep.comparing[1].id);
@@ -356,7 +365,7 @@ ecep.loadLocations = function() {
         if (ecep.clusterr != null) {
             ecep.clusterr.clearMarkers();
         }
-        ecep.clusterr = new MarkerClusterer(ecep.map, markers, {maxZoom:18});
+        ecep.clusterr = new MarkerClusterer(ecep.map, markers, {maxZoom:18, printable:true});
 
         ecep.map.fitBounds(bounds);
 
@@ -507,8 +516,7 @@ ecep.directions = function(event) {
 
             // update text instructions
             // move over by the width of instructions + 5px gutter
-            $('#map_container').css('right', '305px');
-            $('#compare-box').css('right', '305px');
+            $('#map-container, #compare-box').addClass('show-directions').removeClass('hide-directions');
             google.maps.event.trigger(ecep.map, 'resize');
         }
         else {
@@ -523,8 +531,7 @@ ecep.clearDirections = function() {
     $('.directions').remove();
 
     var loc = ecep.map.getCenter();
-    $('#map_container').css('right', '0');
-    $('#compare-box').css('right', '0');
+    $('#map-container, #compare-box').addClass('hide-directions').removeClass('show-directions');
     google.maps.event.trigger(ecep.map, 'resize');
     ecep.map.setCenter(loc);
 };
@@ -536,7 +543,7 @@ ecep.typeDirections = function() {
 
     var direlem = $('.directions');
     if (direlem.length == 0) {
-        $('#map_container')
+        $('#map-container')
             .after('<div class="visible-phone directions"/>')
             .after('<div class="hidden-phone directions"/>');
         direlem = $('.directions');
@@ -544,7 +551,7 @@ ecep.typeDirections = function() {
     else {
         direlem.empty();
     }
-    direlem.append($('<button class="clear_dir btn pull-right"><i class="icon-remove"></i> Close</button>'));
+    direlem.append($('<button class="clear_dir btn pull-right gmnoprint"><i class="icon-remove"></i> Close</button>'));
 
     $('.clear_dir').click(ecep.clearDirections);
 
