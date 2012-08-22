@@ -74,12 +74,12 @@ ecep.init = function() {
     $('.search-button').click(ecep.search);
 
     //Show modal splash (see index.html)
-    var cookies = document.cookie.split(';');
+    var cookies = document.cookie.split('; ');
     var cpos = $.inArray('show_splash=true', cookies)
     if (cpos >= 0) {
         $('#address-modal').modal({ keyboard:false, show:true });
-        cookies[cpos] = 'show_splash=false';
-        document.cookie = cookies.join(';');
+        var ed = new Date(new Date().valueOf() + (1000 * 60 * 60));
+        document.cookie = 'show_splash=false; expires='+ed.toUTCString();
     }
 
     $('#filter-toggle').popover({
@@ -170,8 +170,10 @@ ecep.showComparison = function(a, b) {
     var fullscreen = $('#viztest:visible').length == 0;
     test.remove();
 
+    var url = ecep.getUrl('compare', a, b);
+
     var req = $.ajax({
-        url: ecep.getUrl('compare', a, b),
+        url: url,
         dataType: 'html',
         data: { m: 'embed' }
     });
@@ -181,6 +183,7 @@ ecep.showComparison = function(a, b) {
         if(!fullscreen) {
             $('#compare-modal .modal-body').html(data);
             $('#compare-modal').modal();
+            $('#compare-permalink').attr('href', url);
         }
         else {
             // add a fullscreen div
@@ -365,10 +368,10 @@ ecep.loadLocations = function() {
         // this fires when a request is aborted: i.e. if you click
         // a link before the locations are done loading.
         if (jqxhr.getAllResponseHeaders()) {
-            _gaq.push(['_trackEvent', 'Locations', 'Canceled', 'Status: ' + txtStatus + ', Message: ' + message]);
+            _gaq.push(['_trackEvent', 'Locations', 'Canceled', 'Status: ' + textStatus + ', Message: ' + message]);
         }
         else {
-            _gaq.push(['_trackEvent', 'Locations', 'Error', 'Status: ' + txtStatus + ', Message: ' + message]);
+            _gaq.push(['_trackEvent', 'Locations', 'Error', 'Status: ' + textStatus + ', Message: ' + message]);
         }
     });
 };
@@ -494,7 +497,7 @@ ecep.directions = function(event) {
     var req = {
         origin: marker.getPosition().toString(),
         destination: dest,
-        travelMode: google.maps.TravelMode.DRIVING
+        travelMode: google.maps.TravelMode.WALKING
     };
     _gaq.push(['_trackEvent', 'Directions', 'Begin', 'From "' + req.origin + '" to "' + req.destination + '"']);
     ecep.directions_service.route(req, function(result, rtestatus) {
@@ -506,6 +509,7 @@ ecep.directions = function(event) {
             // update text instructions
             // move over by the width of instructions + 5px gutter
             $('#map_container').css('right', '305px');
+            $('#compare-box').css('right', '305px');
             google.maps.event.trigger(ecep.map, 'resize');
         }
         else {
@@ -521,6 +525,7 @@ ecep.clearDirections = function() {
 
     var loc = ecep.map.getCenter();
     $('#map_container').css('right', '0');
+    $('#compare-box').css('right', '0');
     google.maps.event.trigger(ecep.map, 'resize');
     ecep.map.setCenter(loc);
 };
@@ -544,11 +549,28 @@ ecep.typeDirections = function() {
 
     $('.clear_dir').click(ecep.clearDirections);
 
-    direlem.append($('<h3>Driving Directions</h3>'));
+    direlem.append($('<h3>Walking Directions</h3>'));
+
+    var external_dir = $('<div />');
+    external_dir.addClass('external-directions');
+
+    var external_link = $('<a/>');
+    external_link.addClass('ext-dir');
+    external_link.text('Directions from Google');
+    var url = 'http://maps.google.com/?saddr=' + result.routes[0].legs[0].start_address +
+        '&daddr=' + result.routes[0].legs[result.routes[0].legs.length-1].end_address;
+    var tracker = _gat._getTrackerByName('outlinkTracker');
+    external_link.attr('href', tracker._getLinkerUrl(url));
+    external_dir.append(external_link);
+    direlem.append(external_dir);
 
     var warn = $('<div />');
     warn.addClass('d_warn');
-    warn.html(result.routes[0].warnings);
+    for (var i = 0; i < result.routes[0].warnings.length; i++) {
+        var p = $('<p/>');
+        p.html(result.routes[0].warnings[i]);
+        warn.append(p);
+    }
     direlem.append(warn);
 
     var list = $('<ol />');

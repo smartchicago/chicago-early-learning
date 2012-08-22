@@ -25,6 +25,11 @@ After running ./install.sh, the database will need to be initialized for use by 
     cd python/ecep
     python manage.py syncdb
 
+### To update the FAQs
+- Use the Django admin forms to modify/add questions as necessary
+- Run './manage.py dumpdata faq.Question > portal/fixtures/question.json'
+- Commit the modified json file
+
 ## Support
 
 Please log any bugs or errors with the issue tracker on [github][https://github.com/smartchicago/early-childhood-portal/issues].
