@@ -49,6 +49,7 @@
 </div>
 
 <div id="compare-box">
+      <h3 class="comparing">Comparing</h3>
   <div id="compare-content"> </div>
 </div>
 
@@ -59,7 +60,7 @@
 <div id="address-modal" class="modal hide fade in">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">x</a>
-        <h3>Chicago Early Learning</h3>
+        <h3><img src="{% static "images/logo-blue.png" %}" alt="CEL"> Chicago Early Learning</h3>
     </div>
     <div class="modal-body">
     <img class="intro" src="{% static "images/intro-photo.jpg" %}" alt="Chicago Early Learning Portal" />
@@ -87,19 +88,16 @@
 
 <div id="filter-selection" style="display:none;">
     <textarea>
+        <button class="btn pull-right update gmnoprint" id="update-filter"><i class="icon-search"></i> Update</button>
         <div class="gmnoprint">
             <input type="checkbox" value="true" name="all" id="all" checked="true" class="loc_filter_check"/>
             <label for="all" class="filter-label">All</label>
-            <hr/>
         </div>
         </div>
         {% for f in fields %}
         <div>
             <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" class="loc_filter_check" checked="true"/>
             <label for="{{ f.0 }}" class="filter-label">{{ f.1 }}</label>
-        {% if forloop.last %}
-            <button class="btn pull-right gmnoprint" id="update-filter"><i class="icon-search"></i> Update</button>
-        {% endif %}
         </div>
         {% endfor %}
     </textarea>

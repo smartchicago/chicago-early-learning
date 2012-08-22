@@ -189,8 +189,8 @@ h2.question {
 
 #compare-box {
   position: fixed;
-  min-height: 150px;
-  width: 355px;
+  min-height: 120px;
+  width: 20%;
   background: url(../images/compare-bg.png) repeat;
   z-index: 9999;
   right: 0;
@@ -203,7 +203,7 @@ h2.question {
 }
 
 #compare-modal {
-    width: 90%;
+    width: 70%;
     margin: 0 auto;
     top: 10%;
     left: 5%;
@@ -235,6 +235,20 @@ table.compare-table td {
 .loc_directions {
     float: left;
     margin: 0.75em;
+}
+
+.accordion-toggle {
+  font-size: 20px;
+  font-family: "Bariol Bold";
+  color: #666;
+}
+
+.accordion-inner ul {
+  padding-top: 10px;
+}
+
+.accordion-inner li {
+  padding: 2px 0 2px 0;
 }
 
 .loc_directions .dropdown-menu {
@@ -447,4 +461,106 @@ table.compare-table td {
 }
 .clear_dir {
     margin: 0.25em;
+}
+
+.text-popup-img {
+  margin-left: 21px;
+  padding-bottom: 25px;
+}
+
+h1.texting-info {
+  font-family: "Bariol Bold";
+  color: #29ABE2;
+  text-transform: none;
+  font-weight: normal;
+}
+
+h2.texting-info {
+  font-family: "Bariol";
+  color: #29ABE2;
+  text-transform: none;
+  font-weight: normal;
+}
+
+
+/* Map popover styling =============================================================== */
+
+.location_item h4 {
+  font-family: "Bariol";
+  color: #29ABE2;
+  font-size: 18px;
+}
+
+.loc_address {
+  text-transform: capitalize !important;
+}
+
+.loc_address {
+  text-transform: capitalize;
+}
+
+.loc_phone_table {
+  margin-top: 10px;
+}
+
+.textrow1 {
+    background-color: #f6f6f6;
+    margin-top: 15px
+}
+
+.loc_phone_table td {
+  padding: 2px 0 2px 10px;
+}
+
+.textrow2 {
+  padding-top: 10px;
+}
+
+.loc_simplefield {
+  padding-bottom: 0.25em;
+  vertical-align: top;
+  padding: 5px 0 5px 10px;
+}
+
+.popover-title {
+  font-family: "Bariol";
+  font-weight: normal;
+  color: #29ABE2;
+  font-size: 20px;
+}
+
+.update {
+  margin-top: -45px;
+}
+
+#compare-content {
+  color: #fff;
+}
+
+#compare-content ul {
+  padding: 15px 0 0 15px;
+  list-style-type: none;
+}
+
+#compare-content li {
+  padding: 3px 0 3px;
+}
+
+.comparing {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+  font-size: 20px;
+  padding: 7px 0 0 15px;
+  color: #fff;
+}
+
+.accredation {
+  margin-bottom: 10px;
+}
+
+.compare-btn {
+  float: right;
+  top: 9px;
+  position: absolute;
+  right: 5px;
 }
