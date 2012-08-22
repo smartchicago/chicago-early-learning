@@ -26,11 +26,11 @@ def index(request):
     # cookie for splash screen, defaults to true
     try:
         show_splash = request.COOKIES['show_splash']
+        if show_splash == 'true':
+            expires = datetime.utcnow() + timedelta(seconds=60 * 60)
+            response.set_cookie('show_splash', 'false', expires=expires, httponly=False)
     except:
-        show_splash = 'true'
-    expires = datetime.utcnow() + timedelta(seconds=60 * 60)
-
-    response.set_cookie('show_splash', show_splash, expires=expires, httponly=False)
+        response.set_cookie('show_splash', 'true')
 
     return response
 

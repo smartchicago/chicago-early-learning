@@ -11,7 +11,7 @@
                 padding-top: 60px;
             }
         </style>
-	<link rel="stylesheet" href="{% static "css/ecep.css" %}" />
+        <link rel="stylesheet" href="{% static "css/ecep.css" %}" />
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap-responsive.css" %}" />
         <link rel="stylesheet" href="{% static "css/locations.css" %}" />
 
@@ -20,6 +20,9 @@
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ ga_key }}']);
         _gaq.push(['_trackPageview', '{{ request.path }}']);
+        _gaq.push(function() {
+            _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
+        });
         </script>
         {% block otherhead %}{% endblock %}
     </head> 
