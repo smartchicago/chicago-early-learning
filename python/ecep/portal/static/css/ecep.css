@@ -164,14 +164,21 @@ h2.question {
   position: fixed;
   border: 1px solid #062F86;
   margin: 12px 0 0 200px;
+  top: 7em;
+  left: -8em;
 }
 
+.popover {
+    left: 81px;
+}
+.popover.bottom .arrow {
+    left: 31px;
+}
 .popover-inner {
   border-radius: 0px;
   -moz-border-radius: 0px;
   background: #fff;
   border: 1px solid #c2c2c2;
-  margin-top: 18px;
 }
 
 .popover-title {

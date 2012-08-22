@@ -92,31 +92,31 @@ ecep.init = function() {
 
     $('#filter-toggle').click(function() {
         $('#filter-toggle').popover('toggle');
-        $('#compare-toggle').popover('hide');
         if ($('#update-filter:visible').length > 0) {
+            $('.popover').css('left', '81px');
             $('#update-filter').click(ecep.loadLocations);
             $('#all').click(function(){
                 var filters = $('.loc_filter_check');
                 var all = this;
+                if (!all.checked) return false;
                 filters.each(function(idx, elem){
                     this.checked = all.checked;
                 });
             });
+            $('.loc_filter_check').click(function(){
+                if ($('.loc_filter_check[name!="all"]:checked').length == 
+                    $('.loc_filter_check[name!="all"]').length) {
+                    $('#all').attr('checked', 'checked');
+                }
+                else {
+                    $('#all').attr('checked', null);
+                }
+
+                if ($('.loc_filter_check:checked').length == 0) {
+                    return false;
+                }
+            });
         }
-    });
-
-    $('#compare-toggle').popover({
-        animation: false,
-        placement: 'bottom',
-        trigger: 'manual',
-        title: 'Compare Locations',
-        content: '<div id="compare-content" />'
-    });
-
-    $('#compare-toggle').click(function(event){
-        $('#compare-toggle').popover('toggle');
-        $('#filter-toggle').popover('hide');
-        ecep.comparingChanged(event);
     });
 };
 
@@ -163,7 +163,6 @@ ecep.comparingChanged = function(event) {
 
 ecep.showComparison = function(a, b) {
     _gaq.push(['_trackEvent', 'Comparison', 'Display', 'Comparing ' + a + ' to ' + b]);
-    $('#compare-toggle').popover('hide');
 
     var test = $('<div class="hidden-phone" id="viztest"/>');
     $(document.body).append(test);
