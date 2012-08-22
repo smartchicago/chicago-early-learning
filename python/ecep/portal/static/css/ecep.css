@@ -373,7 +373,7 @@ table.compare-table td {
     font-size: 14px;
 }
 
-#map_container { 
+#map-container { 
     position: absolute;
     left: 0;
     right: 0;
