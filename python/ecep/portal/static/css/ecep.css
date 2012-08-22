@@ -181,8 +181,8 @@ h2.question {
 
 #compare-box {
   position: fixed;
-  min-height: 150px;
-  width: 355px;
+  min-height: 120px;
+  width: 20%;
   background: url(../images/compare-bg.png) repeat;
   z-index: 9999;
   right: 0;
@@ -195,7 +195,7 @@ h2.question {
 }
 
 #compare-modal {
-    width: 90%;
+    width: 70%;
     margin: 0 auto;
     top: 10%;
     left: 5%;
@@ -525,6 +525,30 @@ h2.texting-info {
   color: #fff;
 }
 
+#compare-content ul {
+  padding: 15px 0 0 15px;
+  list-style-type: none;
+}
+
+#compare-content li {
+  padding: 3px 0 3px;
+}
+
+.comparing {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+  font-size: 20px;
+  padding: 7px 0 0 15px;
+  color: #fff;
+}
+
 .accredation {
   margin-bottom: 10px;
+}
+
+.compare-btn {
+  float: right;
+  top: 9px;
+  position: absolute;
+  right: 5px;
 }
