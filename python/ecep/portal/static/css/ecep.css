@@ -103,22 +103,6 @@ img.intro {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.navbar-search .search-query {
-  background-color: #fff;
-  border-color: #2C4489;
-}
-
-.subnav .navbar-search .search-query:focus {
-  background-color: #fff;
-  border-color: #F4C121;
-  color: #000;
-}
-
-.subnav .container #search-address {
-  border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
-}
-
 .geolocate {
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
@@ -197,10 +181,374 @@ h2.question {
 
 #compare-box {
   position: fixed;
-  min-height: 150px;
-  width: 355px;
+  min-height: 120px;
+  width: 20%;
   background: url(../images/compare-bg.png) repeat;
   z-index: 9999;
   right: 0;
   top: 140px
+}
+
+.container .location {
+    width: 50%;
+    float: left;
+}
+
+#compare-modal {
+    width: 70%;
+    margin: 0 auto;
+    top: 10%;
+    left: 5%;
+}
+
+#compare-modal .modal-body {
+    max-height: 600px;
+}
+
+.container > table, #compare-modal .modal-body > table {
+    width: 100%;
+    padding: 0.5em;
+}
+
+table.compare-table td {
+    padding: 0 0.5em;
+    width: 50%;
+}
+
+#text-info-modal {
+    z-index: 9000;  /* .popover z-index is 2060, we want this in front of everything */
+}
+
+.container .location h2 {
+    margin-top: 3em;
+    margin-bottom: 1em;
+}
+
+.loc_directions {
+    float: left;
+    margin: 0.75em;
+}
+
+.accordion-toggle {
+  font-size: 20px;
+  font-family: "Bariol Bold";
+  color: #666;
+}
+
+.accordion-inner ul {
+  padding-top: 10px;
+}
+
+.accordion-inner li {
+  padding: 2px 0 2px 0;
+}
+
+.loc_directions .dropdown-menu {
+    margin-left: 107px;
+    margin-top: -57px;
+}
+
+.loc_moreinfo, .loc_lessinfo {
+    float:right;
+    margin: 0.75em;
+}
+
+.location_item {
+    width: 30em;
+    font-size: 90%;
+}
+
+.loc_address {
+    margin-bottom: 0.75em;
+}
+
+.loc_address {
+    color: #999999;
+}
+
+.compare-table .loc_phone_table {
+    margin: 0.25em -0.5em;
+}
+
+.loc_phone_table thead {
+    font-weight: bold;
+}
+.compare-table td .loc_phone_table td {
+    padding: 0 0.5em;
+    width: auto
+}
+
+.loc_waitlist {
+    border: 1px solid black;
+    background-color: #eeeeee;
+    padding: 1em;
+    margin: 1em 0;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: bold;
+}
+
+.loc_simplefield {
+    padding-bottom: 0.25em;
+    vertical-align: top;
+}
+
+
+.subnav {
+    background-color: #005182;
+    height: 50px;
+    width: 100%;
+    font-size: 14px;
+}
+.subnav-fixed {
+    border-color: #999999;
+    border-radius: 0 0 0 0;
+    border-width: 0 0 1px;
+    box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    z-index: 1020;
+}
+.subnav .container {
+    width: 1170px;
+    margin-top: 8px;
+}
+.subnav .nav > li {
+    display: block;
+    float: left;
+    margin-top: 5px;
+}
+.subnav .nav > li > a {
+    border-radius: 0 0 0 0;
+    margin: 0;
+    padding-bottom: 11px;
+    padding-top: 11px;
+    line-height: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #dddddd;
+    float: left;
+    height: 14px;
+}
+.subnav .nav > li > a:hover {
+    color: #eeeeee;
+    background-color: #0B5C8D;
+}
+.subnav .nav > li > a > i {
+    margin: 2px;
+}
+.subnav-fixed .nav {
+    margin: 0 auto;
+    padding: 0 1px;
+}
+.subnav .nav {
+    margin-bottom: 0;
+    display: block;
+    left: 0;
+    position: relative;
+}
+.subnav .nav.pull-right {
+    margin-left: 10px;
+    margin-right: 0;
+    float: right;
+}
+.subnav .navbar-search .search-query {
+    color: #000;
+    background-color: #fff;
+    border-color: #2C4489;
+    font-size: 14px;
+}
+.subnav .navbar-search input.search-query {
+    padding: 4px 9px;
+    margin: -2px;
+    border-radius: 0 3px 3px 0;
+    border: 1px solid #2C4489;
+    margin-top: -5px;
+    border: 1px solid #2C4489;
+    margin-top: -5px;
+}
+.subnav .navbar-search select.search-query {
+    padding: 2px 9px;
+    margin: 0 12px;
+    width: 8em;
+    height: 28px;
+    border-radius: 3px;
+}
+.subnav .navbar-search .search-query:focus {
+  background-color: #fff;
+  border-color: #F4C121;
+  color: #000;
+}
+.subnav .navbar-search select.search-query option {
+    border-style: none;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+#map_container { 
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 7.7em;
+    bottom: 0;
+}
+.hidden-phone.address-input {
+    width: 450px;
+    margin-right: 12px;
+}
+.visible-phone.address-input {
+    width: 95%;
+}
+#map { height: 100%; }
+#map img { max-width: none; }
+#filter-selection {
+    display: none;
+}
+.filter-label {
+    display: inline;
+}
+.hidden-phone.directions { 
+    position: absolute;
+    right: 0;
+    top: 7.7em;
+    bottom: 0;
+    width: 300px;
+    overflow-y: scroll;
+}
+.visible-phone.directions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6.7em;
+    bottom: 0;
+    background-color: #ffffff;
+}
+.d_step {
+    margin: 1em auto;
+}
+.d_instr {
+}
+.d_dist {
+    padding-left: 1em;
+}
+/* fake star ratings */
+.loc_rating {
+    float: right;
+    margin-right: 1em;
+}
+.star-notice {
+    color: #999999;
+}
+
+.textrow1 {
+    background-color: #f6f6f6;
+}
+.textrow2 {
+}
+.clear_dir {
+    margin: 0.25em;
+}
+
+.text-popup-img {
+  margin-left: 21px;
+  padding-bottom: 25px;
+}
+
+h1.texting-info {
+  font-family: "Bariol Bold";
+  color: #29ABE2;
+  text-transform: none;
+  font-weight: normal;
+}
+
+h2.texting-info {
+  font-family: "Bariol";
+  color: #29ABE2;
+  text-transform: none;
+  font-weight: normal;
+}
+
+
+/* Map popover styling =============================================================== */
+
+.location_item h4 {
+  font-family: "Bariol";
+  color: #29ABE2;
+  font-size: 18px;
+}
+
+.loc_address {
+  text-transform: capitalize !important;
+}
+
+.loc_address {
+  text-transform: capitalize;
+}
+
+.loc_phone_table {
+  margin-top: 10px;
+}
+
+.textrow1 {
+    background-color: #f6f6f6;
+    margin-top: 15px
+}
+
+.loc_phone_table td {
+  padding: 2px 0 2px 10px;
+}
+
+.textrow2 {
+  padding-top: 10px;
+}
+
+.loc_simplefield {
+  padding-bottom: 0.25em;
+  vertical-align: top;
+  padding: 5px 0 5px 10px;
+}
+
+.popover-title {
+  font-family: "Bariol";
+  font-weight: normal;
+  color: #29ABE2;
+  font-size: 20px;
+}
+
+.update {
+  margin-top: -45px;
+}
+
+#compare-content {
+  color: #fff;
+}
+
+#compare-content ul {
+  padding: 15px 0 0 15px;
+  list-style-type: none;
+}
+
+#compare-content li {
+  padding: 3px 0 3px;
+}
+
+.comparing {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+  font-size: 20px;
+  padding: 7px 0 0 15px;
+  color: #fff;
+}
+
+.accredation {
+  margin-bottom: 10px;
+}
+
+.compare-btn {
+  float: right;
+  top: 9px;
+  position: absolute;
+  right: 5px;
 }
