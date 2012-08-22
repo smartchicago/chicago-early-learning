@@ -15,21 +15,24 @@ logger = logging.getLogger(__name__)
 
 
 def get_opts(selected_val='2'):
+    """
+    Gets option list for the distance dropdown (see base.html)
+    selected_val: string representing the value of the dropdown that should be selected
+    Default is '2'
+    """
     # Options for distance dropdown
     # option value => (option text, enabled)
     distance_opts = { '-1': ['Distance', False],
-                    '1': ['< 1 mi', False],
-                    '2': ['< 2 mi', False],
-                    '5': ['< 5 mi', False],
-                    '10': ['< 10 mi', False],
-                    '20': ['< 20 mi', False] }
+                      '1': ['< 1 mi', False],
+                      '2': ['< 2 mi', False],
+                      '5': ['< 5 mi', False],
+                      '10': ['< 10 mi', False],
+                      '20': ['< 20 mi', False] }
 
-    if selected_val in distance_opts:
-        distance_opts[selected_val][1] = True
-    else:
-        distance_opts['2'][1] = True
-
-    return sorted([[k] + v for k, v in distance_opts.items()], key=lambda a: int(a[0]))
+    key = selected_val if selected_val in distance_opts else '2'
+    distance_opts[key][1] = True
+    result = [[k] + v for k, v in distance_opts.items()]
+    return sorted(result, key=lambda a: int(a[0]))
 
 
 def index(request):
