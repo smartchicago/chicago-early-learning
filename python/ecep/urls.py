@@ -4,7 +4,8 @@ from portal.sms import Sms, Conversation
 from django.contrib.gis import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     # Index page is in the 'portal' app
     url(r'^$', 'portal.views.index'),
     url(r'^about.html$', 'portal.views.about'),
@@ -19,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^sms/?$', Sms.as_view()),
     url(r'^sms_error/?$', 'django_twilio.views.sms', {
         'message': Conversation.FATAL,
-        'method': 'POST',    
+        'method': 'POST',
         # Due to a bug in django-twilio, method must be set to GET or POST
         # it works no matter what the request is
     }),

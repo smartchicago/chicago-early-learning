@@ -2,6 +2,10 @@
 *.pyo
 *.log
 *.swp
+*~
 python/ecep/static/*
 python/ecep/local_settings.py
+
+.rope*/
+/src
 

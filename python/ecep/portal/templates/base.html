@@ -11,6 +11,7 @@
                 padding-top: 60px;
             }
         </style>
+        <link rel="stylesheet" href="{% static "css/ecep.css" %}" />
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap-responsive.css" %}" />
         <link rel="stylesheet" href="{% static "css/locations.css" %}" />
 
@@ -19,20 +20,28 @@
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ ga_key }}']);
         _gaq.push(['_trackPageview', '{{ request.path }}']);
+        _gaq.push(function() {
+            _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
+        });
         </script>
         {% block otherhead %}{% endblock %}
     </head> 
     <body>
+    <div id="top"> </div>
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
                 <a class="brand" href="/">
-                Chicago Early Learning
+                <img id="logoImage" src="{% static "images/cel-logo.png" %}" alt="Chicago Early Learning"> chicago early learning
                 </a>
                 <div class="hidden-phone">
                     <ul class="nav nav-pills pull-right">
-                        <li id="text-link"><a data-toggle="modal" href="#text-info-modal">TEXT FOR INFO</a></li>
-                        <li id="about-link"><a href="about.html">ABOUT</a></li>
+                        {% if settings.TWILIO_ENABLED %}
+                            <li id="text-link">
+                            <a data-toggle="modal" href="#text-info-modal">Text for Info</a>
+                            </li>
+                        {% endif %}
+                        <li id="about-link"><a href="about.html">About</a></li>
                         <li id="faq-link"><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
@@ -45,6 +54,7 @@
         </div>
     </div>
         
+    {% if settings.TWILIO_ENABLED %}
     <div id="text-info-modal" class="modal hide fade in" style="display: none;">
         <div class="modal-body">
             <div class="row">
@@ -57,12 +67,13 @@
                 <div class="span4 pull-right">
                     <h2>WANT INFO VIA TEXT?</h2>
                     <h2>SEND ONE TO:</h2>
-                    <em><h2>(123) 456-7890</h2></em>
-                    <div>Just include your zip code and we'll do the rest</div>
+                    <em><h2>{{ settings.TWILIO_NUMBER }}</h2></em>
+                    <div>Just include your zip code and we'll do the rest.</div>
                 </div>
             </div>
         </div>
     </div>
+    {% endif %}
 
     {% block content %}{% endblock %}
     

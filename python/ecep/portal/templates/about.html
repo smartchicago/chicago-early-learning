@@ -7,44 +7,61 @@
 
 {% block content %}
 
+{% load staticfiles %} 
 <div class="container" id="about-container">
-    <h1>About the Chicago Early Learning Portal</h1>
-
+  <div class="span7">
+    <h1 class="static-title">About the Chicago Early Learning Portal</h1>
     <p>The Chicago Early Learning Portal is a collaboration between the City of Chicago, the Chicago Public Schools, the Chicago Department of Family and Support Services, the Smart Chicago Collaborative, and the University of Chicago Urban Education Lab.</p>
 
     <p>Mayor Rahm Emanuel has made investment in early childhood education a cornerstone of his administration, with the goal of serving at-risk children and increasing the transparency and accountability of city programs.</p>
 
     <p>Announcing this initiative in September 2011, the Mayor remarked: “We must provide children in every neighborhood with the tools they need to excel in school and succeed in the workforce, and that includes providing excellent early childhood education . . . these reforms will help parents find opportunities for their children and better prepare our students for the rigors of elementary, middle and high school classrooms.”</p>
 
-    <p>For technical assistance or for more information about the Early Learning Portal, please contact info@chicagoearlylearning.org.</p>
+    <p>For technical assistance or for more information about the Early Learning Portal, please contact <a href="mailto:info@chicagoearlylearning.org">info@chicagoearlylearning.org</a>.</p>
 
     <p>For general questions about early learning options in Chicago, including information about enrollment, eligibility, and payment, please refer to our FAQ page.</p>
 
+<h1 class="static-title">Partners and Sponsors</h1>
 
-    <div>
-    <b>City of Chicago</b>
-    <p>[link to: http://www.cityofchicago.org/city/en.html]</p>
-    </div>
- 
-    <div>
-    <b>Chicago Public Schools</b>
-    <p>Chicago Public Schools works to ensure that every student in every community has access to a high quality education that prepares them for success in college and career. [link to: http://cps.edu/Pages/home.aspx]</p>
-    </div>
+<table class="table">
+  <tr>
+    <td><a href="http://www.cityofchicago.org/city/en.html" target="_blank"><img class="partner" src="{% static "images/partners/coc.jpg" %}" alt="COC"></a></td>
+    <td><a href="http://www.cityofchicago.org/city/en.html" target="_blank"><b>City of Chicago</b></a>
+    <p> </p>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><a href="http://cps.edu/Pages/home.aspx" target="_blank"><img class="partner" src="{% static "images/partners/cps.jpg" %}" alt="COC"></a></td>
+    <td><a href="http://cps.edu/Pages/home.aspx" target="_blank"><b>Chicago Public Schools</b></a>
+    <p>Chicago Public Schools works to ensure that every student in every community has access to a high quality education that prepares them for success in college and career.</p>
+    </td>
+  </tr>
 
-    <div>
-    <b>Chicago Department of Family and Support Services</b>
-    <p>The Chicago Department of Family &amp; Support Services (DFSS) is dedicated to supporting a continuum of coordinated services to enhance the lives of Chicago residents, particularly those most in need, from birth through the senior years.  [link to: http://www.cityofchicago.org/city/en/depts/fss.html]</p>
-    </div>
- 
-    <div>
-    <b>Smart Chicago Collaborative</b>
-    <p>The Smart Chicago Collaborative is a civic organization devoted to using technology to make lives better in Chicago. We work to apply the transformative power of technology to solve problems for the people of Chicago. [link to: http://www.smartchicagocollaborative.org/]</p>
-    </div>
- 
-    <div>
-    <b>University of Chicago Urban Education Lab</b>
+  <tr>
+    <td><a href="http://www.cityofchicago.org/city/en/depts/fss.html" target="_blank"><img class="partner" src="{% static "images/partners/dfss.jpg" %}" alt="Department of Family and Support Services"></a></td>
+    <td><a href="http://www.cityofchicago.org/city/en/depts/fss.html" target="_blank"><b>Chicago Department of Family and Support Services</b></a>
+    <p>The Chicago Department of Family &amp; Support Services (DFSS) is dedicated to supporting a continuum of coordinated services to enhance the lives of Chicago residents, particularly those most in need, from birth through the senior years.</p>
+    </td>
+  </tr>
+
+  <tr>
+    <td><a href="http://www.smartchicagocollaborative.org" target="_blank"><img class="partner" src="{% static "images/partners/scc.jpg" %}" alt="Smart Chicago Collaborative"></a></td>
+    <td><a href="http://www.smartchicagocollaborative.org" target="_blank"><b>Smart Chicago Collaborative</b></a>
+    <p>The Smart Chicago Collaborative is a civic organization devoted to using technology to make lives better in Chicago. We work to apply the transformative power of technology to solve problems for the people of Chicago.</p>
+    </td>
+  </tr>
+
+  <tr>
+    <td><a href="http://uel.uchicago.edu/" target="_blank"><img class="partner" src="{% static "images/partners/uel.jpg" %}" alt="Urban Education Lab"></a></td>
+    <td><a href="http://uel.uchicago.edu/" target="_blank"><b>University of Chicago Urban Education Lab</b></a>
     <p>The University of Chicago Urban Education Lab, a project of the Urban Education Institute, seeks to improve education outcomes by providing scientific evidence about what strategies are the most effective and cost effective, for whom, and why. [link to: http://uel.uchicago.edu/]</p>
-    </div>
+    </td>
+  </tr>
+
+</table>
+
+  </div>
  </div>
 
 {% endblock %}

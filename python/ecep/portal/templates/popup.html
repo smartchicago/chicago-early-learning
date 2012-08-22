@@ -1,8 +1,8 @@
 {% load portal_extras %}
 {% if is_popup %}<div class="location_item">{% endif %}
-    <h2>{{ item.site_name }}</h2>
+    <h4>{{ item.site_name }}{% if is_popup %} <a href="/location/{{ item.id }}/"><i class="icon-share"></i></a>{% endif %}</h4>
 
-    <div class="loc_rating" style="float:right;">
+    <div class="loc_rating">
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>
@@ -15,12 +15,19 @@
       {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
     </div>
 
+    {% if item.accred %}
+    <div>
+        <i class="icon-ok"></i>&nbsp;Accreditation: {{ item.accred }}
+    </div>
+    {% endif %}
+
     <div>
       {{ item.url|urlize }}<br />
       {{ item.email|urlize }}
     </div>
 
     {% if item.phone1 or item.phone2 or item.phone3 or item.fax %}
+    <div class="{% if not is_popup %}{% cycle 'textrow1' 'textrow2' as bgcolor %}{% endif %}">
     <table class="loc_phone_table">
         <thead>
             <tr>
@@ -55,6 +62,7 @@
             </tr>    
         </tbody>
     </table>
+    </div>
     {% endif %}
 
 {% if is_popup %}
