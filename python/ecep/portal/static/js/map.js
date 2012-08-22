@@ -170,8 +170,10 @@ ecep.showComparison = function(a, b) {
     var fullscreen = $('#viztest:visible').length == 0;
     test.remove();
 
+    var url = ecep.getUrl('compare', a, b);
+
     var req = $.ajax({
-        url: ecep.getUrl('compare', a, b),
+        url: url,
         dataType: 'html',
         data: { m: 'embed' }
     });
@@ -181,6 +183,7 @@ ecep.showComparison = function(a, b) {
         if(!fullscreen) {
             $('#compare-modal .modal-body').html(data);
             $('#compare-modal').modal();
+            $('#compare-permalink').attr('href', url);
         }
         else {
             // add a fullscreen div
