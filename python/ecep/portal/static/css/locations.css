@@ -182,7 +182,7 @@ table.compare-table td {
   color: #000;
 }
 
-#map_container { 
+#map-container, #faq-container, #about-container { 
     position: absolute;
     left: 0;
     right: 0;

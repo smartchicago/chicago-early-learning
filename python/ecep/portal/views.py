@@ -14,11 +14,38 @@ from faq.models import Topic, Question
 logger = logging.getLogger(__name__)
 
 
+def get_opts(selected_val='2'):
+    # Options for distance dropdown
+    # option value => (option text, enabled)
+    distance_opts = { '-1': ['Distance', False],
+                    '1': ['< 1 mi', False],
+                    '2': ['< 2 mi', False],
+                    '5': ['< 5 mi', False],
+                    '10': ['< 10 mi', False],
+                    '20': ['< 20 mi', False] }
+
+    if selected_val in distance_opts:
+        distance_opts[selected_val][1] = True
+    else:
+        distance_opts['2'][1] = True
+
+    return sorted([[k] + v for k, v in distance_opts.items()], key=lambda a: int(a[0]))
+
+
 def index(request):
     fields = Location.get_boolean_fields()
+    st = ''
+    selected = '2'
+
+    if request.POST and 'searchText' in request.POST:
+        st = request.POST['searchText']
+        selected = request.POST['searchRadius']
 
     ctx = RequestContext(request, {
-        'fields':fields
+        'fields': fields,
+        'searchText': st,
+        'options': get_opts(selected),
+        'mapbarEnabled': True
     })
 
     response = render_to_response('index.html', context_instance=ctx)
@@ -33,6 +60,7 @@ def index(request):
         response.set_cookie('show_splash', 'true')
 
     return response
+
 
 def location_details(location_id):
     """
@@ -179,7 +207,11 @@ def compare(request, a, b):
 
 
 def about(request):
-    return render_to_response('about.html', context_instance=RequestContext(request))
+    ctx = RequestContext(request, {
+        'options': get_opts(),
+        'mapbarEnabled': True
+    })
+    return render_to_response('about.html', context_instance=ctx)
 
 
 class TopicWrapper(object):
@@ -198,7 +230,10 @@ def faq(request):
     tpl = 'faq-models.html'
     topics = Topic.objects.all()
     tw = [TopicWrapper(t, request) for t in topics]
-    ctx = RequestContext(request, { 'topics': tw })
+    ctx = RequestContext(request, {
+        'topics': tw,
+        'options': get_opts(),
+        'mapbarEnabled': True
+    })
     return render_to_response(tpl, context_instance=ctx)
-
 

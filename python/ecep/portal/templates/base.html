@@ -23,6 +23,7 @@
         _gaq.push(function() {
             _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
         });
+
         </script>
         {% block otherhead %}{% endblock %}
     </head> 
@@ -75,6 +76,55 @@
     </div>
     {% endif %}
 
+    {% if mapbarEnabled %}
+    <div class="subnav subnav-fixed">
+        <button class="btn btn-primary" id="filter-toggle">Filter</button>
+        <div class="container">
+            <ul class="nav">
+                <li id="find-me-btn">
+                    <button class="geolocate hidden-phone btn btn-primary" href="#">Find Me</button>
+                    <a class="geolocate visible-phone" href="#"></a>
+                </li>
+            </ul>
+            <div class="navbar-search pull-left">
+                <input type="text" class="address-input search-query span3" id="search-address" 
+                data-button="#menu-search" placeholder="Search" value="{{ searchText }}"/>
+                <select class="hidden-phone search-query" id="search-radius">
+                    <!-- 
+                        Chrome's user-agent stylesheet has some bugs where it overrides the background
+                        text color specified by search-query unless we put it on these explicitly
+                    -->
+                    {% if options %}
+                        {% for o in options %}
+                            <option class="search-query" value="{{ o.0 }}" 
+                            {% if o.2 %}selected="true"{% endif %}>
+                            {{ o.1 }}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+            <ul class="nav">
+                <li>
+                    <button id="menu-search" class="btn btn-warning search-button" data-address="#search-address" href="#">Search</button>
+                    <!-- 
+                    <a id="menu-search" class="btn btn-primary" data-address="#search-address" href="#">
+                        <i class="icon-search icon-white"></i> Search
+                    </a>
+            -->
+                </li>
+            </ul>
+            <div class="hidden-phone">
+                <ul class="nav nav-pills pull-right">
+                    <li>
+                        <!-- <a id="compare-toggle" href="#"><i class="icon-adjust icon-white"></i> Compare</a> -->
+                        <button id="print-toggle" class="btn"><i class ="icon-print icon-black"></i> Print</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     {% block content %}{% endblock %}
     
     <script type="text/javascript" src="{% static "js/jquery-1.7.2.js" %}"></script>
@@ -86,6 +136,58 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(ga, s);
+
+        ecep = ((typeof ecep == 'undefined') ? {} : ecep);
+
+        var path = window.location.pathname;
+        if (path === '/' || path === '/index.html') {
+            ecep.onMapPage = true;
+        }
+        else {
+            // disable some mapbar stuff when not on map page
+            ecep.onMapPage = false;
+            $('#filter-toggle').css('visibility', 'hidden');
+            $('#find-me-btn').css('visibility', 'hidden');
+        }
+
+        ecep.search = function(address) {
+            _gaq.push(['_trackEvent', 'Geocode', 'Begin', 'From: ' + this.id]);
+            if (typeof(address) !== 'string') {
+                address = null;
+            }
+
+            var addr = address || $($(this).data('address')).val();
+            var rad = $('#search-radius').val();
+
+            if (addr == '') {
+                alert('Please type in an address.');
+                return;
+            }
+            
+            if (!ecep.onMapPage) {
+                var form = $('<form name="search" action="/" method="POST">' + 
+                    '<input type="text" name="searchText" value="' + addr +
+                    '"></input><input type="text" name="searchRadius" value="' + rad +
+                    '"></input>' + "{% csrf_token %}" + '</form>');
+                form.submit();
+                return;
+            }
+
+            if (ecep.geocoded_marker != null) {
+                ecep.geocoded_marker.setMap(null);
+                ecep.geocoded_marker = null;
+            }
+
+            ecep.geocode(addr);
+
+            // we can always hide this, even if it's hidden
+            $('#address-modal').modal('hide');
+        };
+
+        $(document).ready(function() {
+            // attach the search handler to the search button(s)
+            $('.search-button').click(ecep.search);
+        });
     })();
     </script>
     {% block scripts %}{% endblock %}

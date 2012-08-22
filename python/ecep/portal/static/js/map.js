@@ -55,11 +55,30 @@ ecep.init = function() {
     ecep.directions_service = new google.maps.DirectionsService();
     ecep.directions_display = new google.maps.DirectionsRenderer({draggable:true});
 
+    var al = google.maps.event.addListener;
     // load directions text when directions are changed
-    ecep.directionsListener = google.maps.event.addListener(ecep.directions_display, 'directions_changed', ecep.typeDirections);
+    ecep.directionsListener = al(ecep.directions_display, 'directions_changed', ecep.typeDirections);
 
-    // load locations when the map is all done
-    ecep.loadedListener = google.maps.event.addListener(ecep.map, 'tilesloaded', ecep.loadLocations);
+    var addr = $('#search-address').val();
+    var searchOnLoad = (ecep.onMapPage && addr != null && addr != '');
+    if (searchOnLoad) {
+        // Perform search if necessary once map is ready
+        var searchListener = al(ecep.map, 'tilesloaded', function() {
+            if (ecep.initialBounds == null) {
+                ecep.initialBounds = ecep.map.getBounds();
+            }
+
+            ecep.search(addr);
+
+            google.maps.event.removeListener(searchListener);
+            ecep.loadedListener = al(ecep.map, 'tilesloaded', ecep.loadLocations);
+        });
+    }
+    else {
+        // load locations when the map is all done
+        ecep.loadedListener = al(ecep.map, 'tilesloaded', ecep.loadLocations);
+    }
+
 
     // attach the geolocation handler to the geolocation button
     if (navigator.geolocation) {
@@ -70,13 +89,10 @@ ecep.init = function() {
         $('.geolocate').hide();
     }
 
-    // attach the search handler to the search button(s)
-    $('.search-button').click(ecep.search);
-
-    //Show modal splash (see index.html)
     var cookies = document.cookie.split('; ');
     var cpos = $.inArray('show_splash=true', cookies)
-    if (cpos >= 0) {
+    if (cpos >= 0 && !searchOnLoad) {
+        //Show modal splash (see index.html)
         $('#address-modal').modal({ keyboard:false, show:true });
         var ed = new Date(new Date().valueOf() + (1000 * 60 * 60));
         document.cookie = 'show_splash=false; expires='+ed.toUTCString();
@@ -118,6 +134,7 @@ ecep.init = function() {
         $('#filter-toggle').popover('hide');
         ecep.comparingChanged(event);
     });
+
 };
 
 ecep.comparingChanged = function(event) {
@@ -399,26 +416,6 @@ ecep.geolocate = function() {
     );
 };
 
-ecep.search = function() {
-    _gaq.push(['_trackEvent', 'Geocode', 'Begin', 'From: ' + this.id]);
-    var addr = $($(this).data('address')).val();
-
-    if (addr == '') {
-        alert('Please type in an address.');
-        return;
-    }
-
-    if (ecep.geocoded_marker != null) {
-        ecep.geocoded_marker.setMap(null);
-        ecep.geocoded_marker = null;
-    }
-
-    ecep.geocode(addr);
-
-    // we can always hide this, even if it's hidden
-    $('#address-modal').modal('hide');
-};
-
 ecep.geocode = function(addr) {
     ecep.geocoder.geocode({'address': addr, 'bounds': ecep.initialBounds },
         function(results, geocodeStatus) {
@@ -508,7 +505,7 @@ ecep.directions = function(event) {
 
             // update text instructions
             // move over by the width of instructions + 5px gutter
-            $('#map_container').css('right', '305px');
+            $('#map-container').css('right', '305px');
             $('#compare-box').css('right', '305px');
             google.maps.event.trigger(ecep.map, 'resize');
         }
@@ -524,7 +521,7 @@ ecep.clearDirections = function() {
     $('.directions').remove();
 
     var loc = ecep.map.getCenter();
-    $('#map_container').css('right', '0');
+    $('#map-container').css('right', '0');
     $('#compare-box').css('right', '0');
     google.maps.event.trigger(ecep.map, 'resize');
     ecep.map.setCenter(loc);
@@ -537,7 +534,7 @@ ecep.typeDirections = function() {
 
     var direlem = $('.directions');
     if (direlem.length == 0) {
-        $('#map_container')
+        $('#map-container')
             .after('<div class="visible-phone directions"/>')
             .after('<div class="hidden-phone directions"/>');
         direlem = $('.directions');
