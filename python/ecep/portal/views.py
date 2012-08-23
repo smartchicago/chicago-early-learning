@@ -8,7 +8,7 @@ from django.conf import settings
 from models import Location
 import logging, hashlib
 from datetime import datetime, timedelta
-
+from django.template.defaultfilters import title
 from faq.models import Topic, Question
 
 logger = logging.getLogger(__name__)
@@ -73,9 +73,17 @@ def location_details(location_id):
     """
     item = get_object_or_404(Location, id=location_id)
 
+    # Fix some ugly data
+    if item.site_name.isupper():
+        item.site_name = title(item.site_name)
+    if item.address.isupper():
+        item.address = title(item.address)
+    if item.city.isupper():
+        item.city = title(item.city)
+
     simple_text = [
-        'ages', 'prg_dur', 'prg_sched', 'site_affil',
-        'ctr_director', 'exec_director', 'accred']
+        'ages', 'prg_dur', 'prg_sched', 'prg_size', 'site_affil',
+        'ctr_director', 'accred']
 
     # simple fields to present -- these are the attributes that have text content
     sfields = []
@@ -176,10 +184,17 @@ def location_list(request):
             else:
                 item_filter = item_filter & rad_filter
 
+    def fixcap(x):
+        if x.site_name.isupper():
+            x.site_name = title(x.site_name)
+        return x
+
     if item_filter is None:
         items = list(Location.objects.all())
     else:
         items = list(Location.objects.filter(item_filter))
+
+    items = map(fixcap, items)
 
     logger.debug('Retrieved %d items.' % len(items))
 
