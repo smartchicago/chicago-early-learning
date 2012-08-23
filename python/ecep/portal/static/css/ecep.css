@@ -25,7 +25,9 @@
 
 
 /* Nav and subnav styling overrides =========================================== */
-
+#address-modal {
+    z-index: 1080;
+}
 #address-modal .modal-header h3 {
   font-family: "Bariol";
   color: #29ABE2;
@@ -192,7 +194,7 @@ h2.question {
   min-height: 120px;
   width: 20%;
   background: url(../images/compare-bg.png) repeat;
-  z-index: 9999;
+  z-index: 1;
   right: 0;
   top: 140px
 }
@@ -224,7 +226,7 @@ table.compare-table td {
 }
 
 #text-info-modal {
-    z-index: 9000;  /* .popover z-index is 2060, we want this in front of everything */
+    z-index: 2070;  /* .popover z-index is 2060, we want this in front of everything */
 }
 
 .container .location h2 {
@@ -540,12 +542,14 @@ h2.texting-info {
 }
 
 #compare-content ul {
+    margin: 0 0.5em 0.5em;
   padding: 15px 0 0 15px;
   list-style-type: none;
 }
 
 #compare-content li {
-  padding: 3px 0 3px;
+  padding: 3px;
+  margin: 2px;
 }
 
 .comparing {
@@ -565,4 +569,13 @@ h2.texting-info {
   top: 9px;
   position: absolute;
   right: 5px;
+}
+li.loc_item.active {
+    color: #ffffff;
+    border-radius: 3px;
+    background-color: #faa732;
+    background-image: -moz-linear-gradient(center top, #fbb450, #f89406);
+}
+li.loc_item {
+    cursor: pointer;
 }
