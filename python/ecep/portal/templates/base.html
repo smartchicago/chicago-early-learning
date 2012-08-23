@@ -62,13 +62,15 @@
             </div>
             <div class="row">
                 <div class="span2">
-                    <img src="http://placekitten.com/g/80/120" />
+                    <img class="text-popup-img" src="{% static "images/text-for-info.png" %}" alt="Text for info" />
                 </div>
-                <div class="span4 pull-right">
-                    <h2>WANT INFO VIA TEXT?</h2>
-                    <h2>SEND ONE TO:</h2>
-                    <em><h2>{{ settings.TWILIO_NUMBER }}</h2></em>
-                    <div>Just include your zip code and we'll do the rest.</div>
+                <div class="span3 pull-right">
+                    <h1 class="texting-info">Want info via text?</h2>
+		    <br>
+                    <h2 class="texting-info">Send one to:</h2>
+                    <h2>{{ settings.TWILIO_NUMBER }}</h2>
+<br>
+                    <p>Just include your zip code and we'll do the rest.</p>
                 </div>
             </div>
         </div>

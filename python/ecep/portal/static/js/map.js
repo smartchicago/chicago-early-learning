@@ -86,7 +86,7 @@ ecep.init = function() {
         animation: false,
         placement: 'bottom',
         trigger: 'manual',
-        title: 'Filter Locations',
+        title: 'Filters',
         content: $('#filter-selection').text()
     });
 
@@ -132,7 +132,7 @@ ecep.comparingChanged = function(event) {
             _gaq.push(['_trackEvent', 'Comparison', 'Change', 'Comparing: ' + ecep.comparing.join(', ')]);
 
             cmp.empty();
-            var list = $('<ol/>');
+            var list = $('<ul/>');
             cmp.append(list);
             for (var c = 0; c < ecep.comparing.length; c++) {
                 var item = $('<li/>');
@@ -145,6 +145,8 @@ ecep.comparingChanged = function(event) {
                 var btn = $('<a/>');
                 btn.attr('id', 'compare-locations');
                 btn.addClass('btn');
+		btn.addClass('btn-primary');
+		btn.addClass('compare-btn');
                 btn.text('Compare');
                 btn.data('a', ecep.comparing[0].id);
                 btn.data('b', ecep.comparing[1].id);
