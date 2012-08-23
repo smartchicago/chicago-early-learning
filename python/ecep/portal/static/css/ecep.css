@@ -23,6 +23,9 @@
     font-style: normal;
 }
 
+body {
+    padding-top: 120px;
+}
 
 /* Nav and subnav styling overrides =========================================== */
 #address-modal {
@@ -127,7 +130,7 @@ img.intro {
 h1.static-title {
   font-family: "Bariol";
   color: #29ABE2;
-  padding: 40px 0 25px 0;
+  padding: 10px 0 25px 0;
   font-weight: normal;
 }
 
