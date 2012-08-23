@@ -1,35 +1,35 @@
 {% load portal_extras %}
 <table class="compare-table">
     <tbody>
-        <tr><td>
-            <div class="location">
+        <tr><td class="loc_name">
+            <div>
                 <h4>{{ locations.name.0 }}</h4>
             </div>
-        </td><td>
-            <div class="location">
+        </td><td class="loc_name">
+            <div>
                 <h4>{{ locations.name.1 }}</h4>
             </div>
         </td></tr>
-        <tr><td>
+        <tr><td class="loc_address">
             <div class="loc_rating" style="float:right;">
                 <i class="icon-star-empty"></i>
                 <i class="icon-star-empty"></i>
                 <i class="icon-star-empty"></i>
                 <i class="icon-star-empty"></i>
                 <i class="icon-star-empty"></i><br/>
-                <span class="star-notice">What Is This?</span>
+                <span class="star-notice gmnoprint">What Is This?</span>
             </div>
             <div class="loc_address">
               {{ locations.address.0 }}, {{ locations.city.0 }}, {{ locations.state.0 }} {{ locations.zip.0 }}
             </div>
-        </td><td>
+        </td><td class="loc_address">
             <div class="loc_rating" style="float:right;">
                 <i class="icon-star-empty"></i>
                 <i class="icon-star-empty"></i>
                 <i class="icon-star-empty"></i>
                 <i class="icon-star-empty"></i>
                 <i class="icon-star-empty"></i><br/>
-                <span class="star-notice">What Is This?</span>
+                <span class="star-notice gmnoprint">What Is This?</span>
             </div>
             <div class="loc_address">
               {{ locations.address.1 }}, {{ locations.city.1 }}, {{ locations.state.1 }} {{ locations.zip.1 }}
@@ -37,12 +37,12 @@
         </td></tr>
         {% if locations.accred.0 or locations.accred.1 %}
         <tr><td>
-            <div>
+            <div class="loc_accred">
                 {% if locations.accred.0 %}<i class="icon-ok"></i>&nbsp;Accreditation: {{ locations.accred.0 }}
                 {% else %}&nbsp;{% endif %}
             </div>
         </td><td>
-            <div>
+            <div class="loc_accred">
                 {% if locations.accred.1 %}<i class="icon-ok"></i>&nbsp;Accreditation: {{ locations.accred.1 }}
                 {% else %}&nbsp;{% endif %}
             </div>

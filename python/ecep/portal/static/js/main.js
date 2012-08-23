@@ -129,37 +129,45 @@ ecep.init = function() {
         animation: false,
         placement: 'bottom',
         trigger: 'manual',
-        title: 'Filter Locations',
+        title: 'Filters',
         content: $('#filter-selection').text()
     });
 
     $('#filter-toggle').click(function() {
         $('#filter-toggle').popover('toggle');
-        $('#compare-toggle').popover('hide');
         if ($('#update-filter:visible').length > 0) {
+
+            // reset the element's left positioning
+            $('.popover')[0].style.left = null;
+            $('.popover')[0].style.top = null;
+
             $('#update-filter').click(ecep.loadLocations);
             $('#all').click(function(){
                 var filters = $('.loc_filter_check');
                 var all = this;
+                if (!all.checked) return false;
                 filters.each(function(idx, elem){
                     this.checked = all.checked;
                 });
             });
+            $('.loc_filter_check').click(function(){
+                if ($('.loc_filter_check[name!="all"]:checked').length == 
+                    $('.loc_filter_check[name!="all"]').length) {
+                    $('#all').attr('checked', 'checked');
+                }
+                else {
+                    $('#all').attr('checked', null);
+                }
+
+                if ($('.loc_filter_check:checked').length == 0) {
+                    return false;
+                }
+            });
         }
     });
 
-    $('#compare-toggle').popover({
-        animation: false,
-        placement: 'bottom',
-        trigger: 'manual',
-        title: 'Compare Locations',
-        content: '<div id="compare-content" />'
-    });
-
-    $('#compare-toggle').click(function(event){
-        $('#compare-toggle').popover('toggle');
-        $('#filter-toggle').popover('hide');
-        ecep.comparingChanged(event);
+    $('#print-toggle').click(function(){
+        window.print();
     });
 };
 
@@ -175,7 +183,7 @@ ecep.comparingChanged = function(event) {
             _gaq.push(['_trackEvent', 'Comparison', 'Change', 'Comparing: ' + ecep.comparing.join(', ')]);
 
             cmp.empty();
-            var list = $('<ol/>');
+            var list = $('<ul/>');
             cmp.append(list);
             for (var c = 0; c < ecep.comparing.length; c++) {
                 var item = $('<li/>');
@@ -188,6 +196,9 @@ ecep.comparingChanged = function(event) {
                 var btn = $('<a/>');
                 btn.attr('id', 'compare-locations');
                 btn.addClass('btn');
+                btn.addClass('gmnoprint');
+                btn.addClass('btn-primary');
+                btn.addClass('compare-btn');
                 btn.text('Compare');
                 btn.data('a', ecep.comparing[0].id);
                 btn.data('b', ecep.comparing[1].id);
@@ -195,6 +206,7 @@ ecep.comparingChanged = function(event) {
                 cmp.append(btn);
 
                 btn.click(function() {
+                    $('#filter-toggle').popover('hide');
                     var a = $(this).data('a'),
                         b = $(this).data('b');
                     ecep.showComparison(a, b);
@@ -206,7 +218,6 @@ ecep.comparingChanged = function(event) {
 
 ecep.showComparison = function(a, b) {
     _gaq.push(['_trackEvent', 'Comparison', 'Display', 'Comparing ' + a + ' to ' + b]);
-    $('#compare-toggle').popover('hide');
 
     var test = $('<div class="hidden-phone" id="viztest"/>');
     $(document.body).append(test);
@@ -400,7 +411,7 @@ ecep.loadLocations = function() {
         if (ecep.clusterr != null) {
             ecep.clusterr.clearMarkers();
         }
-        ecep.clusterr = new MarkerClusterer(ecep.map, markers, {maxZoom:18});
+        ecep.clusterr = new MarkerClusterer(ecep.map, markers, {maxZoom:18, printable:true});
 
         ecep.map.fitBounds(bounds);
 
@@ -531,8 +542,7 @@ ecep.directions = function(event) {
 
             // update text instructions
             // move over by the width of instructions + 5px gutter
-            $('#map-container').css('right', '305px');
-            $('#compare-box').css('right', '305px');
+            $('#map-container, #compare-box').addClass('show-directions').removeClass('hide-directions');
             google.maps.event.trigger(ecep.map, 'resize');
         }
         else {
@@ -547,8 +557,7 @@ ecep.clearDirections = function() {
     $('.directions').remove();
 
     var loc = ecep.map.getCenter();
-    $('#map-container').css('right', '0');
-    $('#compare-box').css('right', '0');
+    $('#map-container, #compare-box').addClass('hide-directions').removeClass('show-directions');
     google.maps.event.trigger(ecep.map, 'resize');
     ecep.map.setCenter(loc);
 };
@@ -568,7 +577,7 @@ ecep.typeDirections = function() {
     else {
         direlem.empty();
     }
-    direlem.append($('<button class="clear_dir btn pull-right"><i class="icon-remove"></i> Close</button>'));
+    direlem.append($('<button class="clear_dir btn pull-right gmnoprint"><i class="icon-remove"></i> Close</button>'));
 
     $('.clear_dir').click(ecep.clearDirections);
 
