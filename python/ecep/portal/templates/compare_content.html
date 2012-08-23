@@ -1,6 +1,15 @@
 {% load portal_extras %}
 <table class="compare-table">
     <tbody>
+<<<<<<< HEAD
+        <tr><td>
+            <div class="location">
+                <h3>{{ locations.name.0 }}</h3>
+            </div>
+        </td><td>
+            <div class="location">
+                <h3>{{ locations.name.1 }}</h3>
+=======
         <tr><td class="loc_name">
             <div>
                 <h4>{{ locations.name.0 }}</h4>
@@ -8,6 +17,7 @@
         </td><td class="loc_name">
             <div>
                 <h4>{{ locations.name.1 }}</h4>
+>>>>>>> upstream/staging
             </div>
         </td></tr>
         <tr><td class="loc_address">
@@ -32,7 +42,7 @@
                 <span class="star-notice gmnoprint">What Is This?</span>
             </div>
             <div class="loc_address">
-              {{ locations.address.1 }}, {{ locations.city.1 }}, {{ locations.state.1 }} {{ locations.zip.1 }}
+              <i class="icon-map-marker"></i> {{ locations.address.1 }}, {{ locations.city.1 }}, {{ locations.state.1 }} {{ locations.zip.1 }}
             </div>
         </td></tr>
         {% if locations.accred.0 or locations.accred.1 %}
@@ -48,13 +58,13 @@
             </div>
         </td></tr>
         {% endif %}
-        <tr><td>
-            <div>
+        <tr><td> <br>
+            <div class="web-email">
               {{ locations.url.0|urlize }}<br />
               {{ locations.email.0|urlize }}
             </div>
-        </td><td>
-            <div>
+        </td><td> <br>
+            <div class="web-email">
               {{ locations.url.1|urlize }}<br />
               {{ locations.email.1|urlize }}
             </div>
@@ -135,14 +145,14 @@
             {% endif %}
         </td></tr>
         <tr><td class="loc_simplefield {% cycle bgcolor %}">
-            <h5>Features</h5>
+            <h5 class="features">Features</h5>
             {% if locations.bfields.0 %}
             <ul>
             {{ locations.bfields.0|unordered_list }}
             </ul>
             {% endif %}
         </td><td class="loc_simplefield {{ bgcolor }}">
-            <h5>Features</h5>
+            <h5 class="features">Features</h5>
             {% if locations.bfields.1 %}
             <ul>
             {{ locations.bfields.1|unordered_list }}
