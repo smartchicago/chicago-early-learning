@@ -129,46 +129,91 @@ ecep.init = function() {
 };
 
 ecep.comparingChanged = function(event) {
-    var cmp = $('#compare-content:visible');
-    if (cmp.length > 0) {
-        if (ecep.comparing.length == 0) {
-            _gaq.push(['_trackEvent', 'Comparison', 'Change', 'No locations']);
+    _gaq.push(['_trackEvent', 'Comparison', 'Change', 'Comparing: ' + ecep.comparing.join(', ')]);
+    var cmp = $('#compare-content');
 
-            cmp.text('Please select a location to get started comparing.');
+    // if the first item in the list, it must have been sloughed off; remove it
+    if (cmp.find('li:first').data('location-id') != ecep.comparing[0].id) {
+        cmp.find('li:first').remove();
+    }
+
+    // a callback used when items are clicked, and items are added
+    var wireCompare = function(x, a, b) {
+        x.data('a', a);
+        x.data('b', b);
+        x.on('click', function() {
+            $('#filter-toggle').popover('hide');
+            var a = $(this).data('a'),
+                b = $(this).data('b');
+            ecep.showComparison(a, b);
+        });
+        x.removeClass('disabled');
+    };
+
+    // create a new list item for the last item in the comparison
+    // (only ever add one at a time)
+    var item = $('<li/>');
+    item.addClass('loc_item');
+    item.data('location-id', ecep.comparing[ecep.comparing.length-1].id);
+    item.html(ecep.comparing[ecep.comparing.length-1].name);
+    item.on('click', function() {
+        // when you click on an item, toggle the active class
+        $(this).toggleClass('active');
+        var actives = cmp.find('li.loc_item.active');
+        var btn = $('#compare-locations');
+        btn.off('click');
+
+        // if two items are selected, then wire up the comparison button
+        if (actives.length == 2) {
+            wireCompare(btn, $(actives[0]).data('location-id'), $(actives[1]).data('location-id'));
         }
+        // more or less than two items? disable the compare button
         else {
-            _gaq.push(['_trackEvent', 'Comparison', 'Change', 'Comparing: ' + ecep.comparing.join(', ')]);
+            btn.addClass('disabled');
+        }
+    });
+    cmp.find('ul').append(item);
 
-            cmp.empty();
-            var list = $('<ul/>');
-            cmp.append(list);
-            for (var c = 0; c < ecep.comparing.length; c++) {
-                var item = $('<li/>');
-                item.data('location-id', ecep.comparing[c].id);
-                item.html(ecep.comparing[c].name);
-                list.append(item);
-            }
+    // if there are two or more items, we can compare (maybe)
+    if (ecep.comparing.length >= 2) {
+        var btn = $('#compare-locations')
+        if (btn.length == 0) {
+            btn = $('<a/>');
+            btn.attr('id', 'compare-locations');
+            btn.addClass('btn');
+            btn.addClass('gmnoprint');
+            btn.addClass('btn-primary');
+            btn.addClass('compare-btn');
+            btn.text('Compare');
 
-            if (ecep.comparing.length == 2) {
-                var btn = $('<a/>');
-                btn.attr('id', 'compare-locations');
-                btn.addClass('btn');
-                btn.addClass('gmnoprint');
-                btn.addClass('btn-primary');
-                btn.addClass('compare-btn');
-                btn.text('Compare');
-                btn.data('a', ecep.comparing[0].id);
-                btn.data('b', ecep.comparing[1].id);
+            cmp.append(btn);
+        }
 
-                cmp.append(btn);
+        // always remove the click, to prevent multiple events
+        btn.off('click');
 
-                btn.click(function() {
-                    $('#filter-toggle').popover('hide');
-                    var a = $(this).data('a'),
-                        b = $(this).data('b');
-                    ecep.showComparison(a, b);
-                });
-            }
+        var a = null, b = null;
+        var actives = cmp.find('li.loc_item.active');
+
+        // if only two items in the list, allow comparing
+        // prior to selection
+        if (ecep.comparing.length == 2) {
+            a = ecep.comparing[0].id;
+            b = ecep.comparing[1].id;
+        }
+        // if there are two selected items, they may be compared
+        else if (actives.length == 2) {
+            a = $(actives[0]).data('location-id');
+            b = $(actives[1]).data('location-id');
+        }
+
+        // two things selected? wire up and enable button
+        if (a != null && b != null) {
+            wireCompare(btn, a, b);
+        }
+        // no two things comparable, disable the button
+        else {
+            btn.addClass('disabled');
         }
     }
 };
@@ -265,36 +310,23 @@ ecep.expandInfo = function(event) {
     });
 
     req.always(function() {
-        if (ecep.comparing.length == 0) {
-            ecep.comparing.push({id:mkr.get('location_id'), name:mkr.get('location_site_name')});
-        }
-        else if (ecep.comparing[0].id == mkr.get('location_id')) {
-            if (ecep.comparing.length == 2) {
-                // swap their positions
-                ecep.comparing = [
-                    ecep.comparing[1],
-                    ecep.comparing[0]
-                ];
-            }
-        }
-        else {
-            if (ecep.comparing.length == 2 && ecep.comparing[1].id == mkr.get('location_id')) {
-                // swap their positions
-                ecep.comparing = [
-                    ecep.comparing[1],
-                    ecep.comparing[0]
-                ];
-            }
-            else {
-                ecep.comparing.push({id:mkr.get('location_id'), name:mkr.get('location_site_name')});
-
-                if (ecep.comparing.length > 2) {
-                    ecep.comparing = ecep.comparing.slice(1);
-                }
-            }
+        var found = false;
+        var loc_id = mkr.get('location_id');
+        for (var i = 0; i < ecep.comparing.length && !found; i++) {
+            found = found || ecep.comparing[i].id == loc_id;
         }
 
-        ecep.comparingChanged();
+        // add the location if it's not alredy in the list
+        if (!found) {
+            ecep.comparing.push({id:loc_id, name:mkr.get('location_site_name')});
+
+            // limit the list to 10 items
+            if (ecep.comparing.length > 10) {
+                ecep.comparing = ecep.comparing.slice(1);
+            }
+
+            ecep.comparingChanged();
+        }
     });
     
     return false;
