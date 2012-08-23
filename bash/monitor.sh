@@ -15,6 +15,10 @@ if [ `whoami` != 'root' ]; then
 fi
 
 RESTART=N
+EC2_HOST=`wget -q -O - http://169.254.169.254/latest/meta-data/public-hostname`
+# Set these if the respective area is being updated
+DEPLOY_URL=""
+STAGE_URL=""
 
 if [ -e '/tmp/please_staging' ]; then
     echo "Deploy to staging"
@@ -34,6 +38,8 @@ if [ -e '/tmp/please_staging' ]; then
     RESTART=Y
 
     rm /tmp/please_staging
+
+    STAGE_URL="http://$EC2_HOST:8000/"
 fi
 
 if [ -e '/tmp/please_deploy' ]; then
@@ -54,6 +60,8 @@ if [ -e '/tmp/please_deploy' ]; then
     RESTART=Y
 
     rm /tmp/please_deploy
+
+    DEPLOY_URL="http://$EC2_HOST/"
 fi
 
 if [ $RESTART == 'Y' ]; then
@@ -70,4 +78,13 @@ if [ $RESTART == 'Y' ]; then
     fi
 
     echo "Successfully restarted gunicorn."
+
+    if [ $STAGE_URL != "" ]; then
+        echo "Updated site on Staging."
+        echo "URL: $STAGE_URL"
+    fi
+    if [ $DEPLOY_URL != "" ]; then
+        echo "Updated site on Production."
+        echo "URL: $DEPLOY_URL"
+    fi
 fi
