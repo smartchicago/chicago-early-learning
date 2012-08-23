@@ -67,3 +67,34 @@
 #compare-box {
     display: none;
 }
+.loc_accred {
+    margin-left: -13pt;
+}
+div.loc_address {
+    color: #999999;
+    white-space: nowrap;
+}
+table.compare-table {
+    width: 700pt;
+}
+table.compare-table td.loc_address, table.compare-table td.loc_name {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.compare-table td {
+    padding: 3pt 5pt;
+    width: 50%;
+    vertical-align: top;
+}
+.loc_phone_table {
+    margin-left: -5pt;
+}
+.loc_phone_table td {
+    padding: 0 5pt;
+}
+.textrow1 {
+    background-color: #eeeeee;
+}
+.location_item > div {
+    margin: 5pt 0;
+}
