@@ -11,7 +11,7 @@
                 padding-top: 60px;
             }
         </style>
-        <link rel="stylesheet" href="{% static "css/ecep.css" %}" />
+        <link rel="stylesheet" href="{% static "css/ecep.css" %}" media="screen"/>
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap-responsive.css" %}" />
         <link rel="stylesheet" href="{% static "css/print.css" %}" media="print"/>
 
@@ -23,6 +23,7 @@
         _gaq.push(function() {
             _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
         });
+
         </script>
         {% block otherhead %}{% endblock %}
     </head> 
@@ -32,9 +33,9 @@
         <div class="navbar-inner">
             <div class="container">
                 <a class="brand" href="/">
-                <img id="logoImage" src="{% static "images/cel-logo.png" %}" alt="Chicago Early Learning"> chicago early learning
+                <img id="logoImage" class="gmnoprint" src="{% static "images/cel-logo.png" %}" alt="Chicago Early Learning" /> chicago early learning
                 </a>
-                <div class="hidden-phone">
+                <div class="hidden-phone gmnoprint">
                     <ul class="nav nav-pills pull-right">
                         {% if settings.TWILIO_ENABLED %}
                             <li id="text-link">
@@ -45,7 +46,7 @@
                         <li id="faq-link"><a href="faq.html">FAQ</a></li>
                     </ul>
                 </div>
-                <div class="visible-phone">
+                <div class="visible-phone gmnoprint">
                     <ul class="nav nav-pills pull-right">
                         <li><a href="#">[X]</a></li>
                     </ul> 
@@ -77,6 +78,66 @@
     </div>
     {% endif %}
 
+    {% if mapbarEnabled %}
+    <div class="subnav subnav-fixed">
+        <button class="btn btn-primary" id="filter-toggle">Filter</button>
+        <div class="container">
+            <ul class="nav">
+                <li id="find-me-btn">
+                    <button class="geolocate hidden-phone btn btn-primary" href="#">Find Me</button>
+                    <a class="geolocate visible-phone" href="#"></a>
+                </li>
+            </ul>
+            <div class="navbar-search pull-left">
+                <input type="text" class="address-input search-query span3" id="search-address" 
+                data-button="#menu-search" placeholder="Search" value="{{ searchText }}"/>
+                <select class="hidden-phone search-query" id="search-radius">
+                    <!-- 
+                        Chrome's user-agent stylesheet has some bugs where it overrides the background
+                        text color specified by search-query unless we put it on these explicitly
+                    -->
+                    {% if options %}
+                        {% for o in options %}
+                            <option class="search-query" value="{{ o.0 }}" 
+                            {% if o.2 %}selected="true"{% endif %}>
+                            {{ o.1 }}</option>
+                        {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+            <ul class="nav">
+                <li>
+                    <button id="menu-search" class="btn btn-warning search-button" data-address="#search-address" href="#">Search</button>
+                    <!-- 
+                    <a id="menu-search" class="btn btn-primary" data-address="#search-address" href="#">
+                        <i class="icon-search icon-white"></i> Search
+                    </a>
+            -->
+                </li>
+            </ul>
+            <div class="hidden-phone">
+                <ul class="nav nav-pills pull-right">
+                    <li>
+                        <!-- <a id="compare-toggle" href="#"><i class="icon-adjust icon-white"></i> Compare</a> -->
+                        <button id="print-toggle" class="btn"><i class ="icon-print icon-black"></i> Print</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {% comment %}
+    Used on non-map pages to submit info
+    We don't use it for the actual search box for styling reasons
+    This must be defined in a template for the csrf_token
+    {% endcomment %}
+    <form name="search" action="/" method="POST" style="display:none" id="search-form">
+        <input type="text" name="searchText" value=""></input>
+        <input type="text" name="searchRadius" value=""></input>
+        {% csrf_token %}
+    </form>
+    {% endif %}
+
     {% block content %}{% endblock %}
     
     <script type="text/javascript" src="{% static "js/jquery-1.7.2.js" %}"></script>
@@ -90,7 +151,10 @@
         s.parentNode.insertBefore(ga, s);
     })();
     </script>
+
     {% block scripts %}{% endblock %}
+
+    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
 
     </body> 
 </html> 

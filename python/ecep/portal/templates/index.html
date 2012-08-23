@@ -7,58 +7,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="subnav subnav-fixed">
-<button class="btn btn-primary" id="filter-toggle">Filter</button>
-    <div class="container">
-        <ul class="nav">
-            <li>
-                <button class="geolocate hidden-phone btn btn-primary" href="#">Find Me</button>
-                <a class="geolocate visible-phone" href="#"></a>
-            </li>
-        </ul>
-        <div class="navbar-search pull-left">
-            <input type="text" class="address-input search-query span3" id="search-address" 
-                data-button="#menu-search" placeholder="Search"/>
-            <select class="hidden-phone search-query" id="search-radius">
-                <!-- 
-                    Chrome's user-agent stylesheet has some bugs where it overrides the background
-                    text color specified by search-query unless we put it on these explicitly
-                -->
-                <option class="search-query" value="-1">Distance</option>
-                <option class="search-query" value="1">&lt; 1 mi</option>
-                <option class="search-query" value="2" selected="true">&lt; 2 mi</option>
-                <option class="search-query" value="5">&lt; 5 mi</option>
-                <option class="search-query" value="10">&lt; 10 mi</option>
-                <option class="search-query" value="20">&lt; 20 mi</option>
-            </select>
-        </div>
-        <ul class="nav">
-            <li>
-                <button id="menu-search" class="btn btn-warning search-button" data-address="#search-address" href="#">Search</button>
-                <!-- 
-                <a id="menu-search" class="btn btn-primary" data-address="#search-address" href="#">
-                    <i class="icon-search icon-white"></i> Search
-                </a>
-		-->
-            </li>
-        </ul>
-        <div class="hidden-phone">
-            <ul class="nav nav-pills pull-right">
-                <li>
-                    <!-- <a id="compare-toggle" href="#"><i class="icon-adjust icon-white"></i> Compare</a> -->
-                    <button id="print-toggle" class="btn"><i class ="icon-print icon-black"></i> Print</button>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
 
 <div id="compare-box">
-      <h3 class="comparing">Comparing</h3>
-  <div id="compare-content"> </div>
+    <h3 class="comparing">Comparing</h3>
+    <div id="compare-content"><ul><li>Please select two or more locations to compare them.</li></ul></div>
 </div>
 
-<div id="map_container">
+<div id="map-container">
     <div id="map"></div>
 </div>
 
@@ -91,10 +46,10 @@
     </div>
 </div>
 
-<div id="filter-selection">
+<div id="filter-selection" style="display:none;">
     <textarea>
-    <button class="btn pull-right update" id="update-filter"><i class="icon-search"></i> Update</button>
-        <div>
+        <button class="btn pull-right update gmnoprint" id="update-filter"><i class="icon-search"></i> Update</button>
+        <div class="gmnoprint">
             <input type="checkbox" value="true" name="all" id="all" checked="true" class="loc_filter_check"/>
             <label for="all" class="filter-label">All</label>
         </div>
@@ -103,9 +58,6 @@
         <div>
             <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" class="loc_filter_check" checked="true"/>
             <label for="{{ f.0 }}" class="filter-label">{{ f.1 }}</label>
-        {% if forloop.last %}
-            <!-- <button class="btn pull-right" id="update-filter"><i class="icon-search"></i> Update</button> -->
-        {% endif %}
         </div>
         {% endfor %}
     </textarea>
@@ -115,6 +67,5 @@
 
 {% block scripts %}
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc&sensor=false"></script>
-<script type="text/javascript" src="{% static "js/map.js" %}"></script>
 <script type="text/javascript" src="{% static "js/markerclusterer.js" %}"></script>
 {% endblock %}

@@ -8,17 +8,47 @@ from django.conf import settings
 from models import Location
 import logging, hashlib
 from datetime import datetime, timedelta
-
+from django.template.defaultfilters import title
 from faq.models import Topic, Question
 
 logger = logging.getLogger(__name__)
 
 
+def get_opts(selected_val='2'):
+    """
+    Gets option list for the distance dropdown (see base.html)
+    selected_val: string representing the value of the dropdown that should be selected
+    Default is '2'
+    """
+    # Options for distance dropdown
+    # option value => (option text, enabled)
+    distance_opts = { '-1': ['Distance', False],
+                      '1': ['< 1 mi', False],
+                      '2': ['< 2 mi', False],
+                      '5': ['< 5 mi', False],
+                      '10': ['< 10 mi', False],
+                      '20': ['< 20 mi', False] }
+
+    key = selected_val if selected_val in distance_opts else '2'
+    distance_opts[key][1] = True
+    result = [[k] + v for k, v in distance_opts.items()]
+    return sorted(result, key=lambda a: int(a[0]))
+
+
 def index(request):
     fields = Location.get_boolean_fields()
+    st = ''
+    selected = '2'
+
+    if request.POST and 'searchText' in request.POST:
+        st = request.POST['searchText']
+        selected = request.POST['searchRadius']
 
     ctx = RequestContext(request, {
-        'fields':fields
+        'fields': fields,
+        'searchText': st,
+        'options': get_opts(selected),
+        'mapbarEnabled': True
     })
 
     response = render_to_response('index.html', context_instance=ctx)
@@ -34,6 +64,7 @@ def index(request):
 
     return response
 
+
 def location_details(location_id):
     """
     Helper method that gets all the fields for a specific location.
@@ -42,9 +73,17 @@ def location_details(location_id):
     """
     item = get_object_or_404(Location, id=location_id)
 
+    # Fix some ugly data
+    if item.site_name.isupper():
+        item.site_name = title(item.site_name)
+    if item.address.isupper():
+        item.address = title(item.address)
+    if item.city.isupper():
+        item.city = title(item.city)
+
     simple_text = [
-        'ages', 'prg_dur', 'prg_sched', 'site_affil',
-        'ctr_director', 'exec_director', 'accred']
+        'ages', 'prg_dur', 'prg_sched', 'prg_size', 'site_affil',
+        'ctr_director', 'accred']
 
     # simple fields to present -- these are the attributes that have text content
     sfields = []
@@ -145,10 +184,17 @@ def location_list(request):
             else:
                 item_filter = item_filter & rad_filter
 
+    def fixcap(x):
+        if x.site_name.isupper():
+            x.site_name = title(x.site_name)
+        return x
+
     if item_filter is None:
         items = list(Location.objects.all())
     else:
         items = list(Location.objects.filter(item_filter))
+
+    items = map(fixcap, items)
 
     logger.debug('Retrieved %d items.' % len(items))
 
@@ -179,7 +225,11 @@ def compare(request, a, b):
 
 
 def about(request):
-    return render_to_response('about.html', context_instance=RequestContext(request))
+    ctx = RequestContext(request, {
+        'options': get_opts(),
+        'mapbarEnabled': True
+    })
+    return render_to_response('about.html', context_instance=ctx)
 
 
 class TopicWrapper(object):
@@ -198,7 +248,10 @@ def faq(request):
     tpl = 'faq-models.html'
     topics = Topic.objects.all()
     tw = [TopicWrapper(t, request) for t in topics]
-    ctx = RequestContext(request, { 'topics': tw })
+    ctx = RequestContext(request, {
+        'topics': tw,
+        'options': get_opts(),
+        'mapbarEnabled': True
+    })
     return render_to_response(tpl, context_instance=ctx)
-
 

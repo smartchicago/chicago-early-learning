@@ -25,7 +25,9 @@
 
 
 /* Nav and subnav styling overrides =========================================== */
-
+#address-modal {
+    z-index: 1080;
+}
 #address-modal .modal-header h3 {
   font-family: "Bariol";
   color: #29ABE2;
@@ -164,14 +166,22 @@ h2.question {
   position: fixed;
   border: 1px solid #062F86;
   margin: 12px 0 0 200px;
+  top: 7em;
+  left: -8em;
 }
 
+.popover {
+    left: 81px;
+    top: 138px;
+}
+.popover.bottom .arrow {
+    left: 31px;
+}
 .popover-inner {
   border-radius: 0px;
   -moz-border-radius: 0px;
   background: #fff;
   border: 1px solid #c2c2c2;
-  margin-top: 18px;
 }
 
 .popover-title {
@@ -184,7 +194,7 @@ h2.question {
   min-height: 120px;
   width: 20%;
   background: url(../images/compare-bg.png) repeat;
-  z-index: 9999;
+  z-index: 1;
   right: 0;
   top: 140px
 }
@@ -216,14 +226,16 @@ table.compare-table td {
 }
 
 #text-info-modal {
-    z-index: 9000;  /* .popover z-index is 2060, we want this in front of everything */
+    z-index: 2070;  /* .popover z-index is 2060, we want this in front of everything */
 }
 
 .container .location h2 {
     margin-top: 3em;
     margin-bottom: 1em;
 }
-
+.loc_accred {
+    padding-top: 20px;
+}
 .loc_directions {
     float: left;
     margin: 0.75em;
@@ -366,8 +378,6 @@ table.compare-table td {
     border-radius: 0 3px 3px 0;
     border: 1px solid #2C4489;
     margin-top: -5px;
-    border: 1px solid #2C4489;
-    margin-top: -5px;
 }
 .subnav .navbar-search select.search-query {
     padding: 2px 9px;
@@ -387,12 +397,18 @@ table.compare-table td {
     font-size: 14px;
 }
 
-#map_container { 
+#map-container { 
     position: absolute;
     left: 0;
     right: 0;
     top: 7.7em;
     bottom: 0;
+}
+#map-container.show-directions, #compare-box.show-directions {
+    right: 305px;
+}
+#map-container.hide-directions, #compare-box.hide-directions {
+    right: 0;
 }
 .hidden-phone.address-input {
     width: 450px;
@@ -526,12 +542,14 @@ h2.texting-info {
 }
 
 #compare-content ul {
+    margin: 0 0.5em 0.5em;
   padding: 15px 0 0 15px;
   list-style-type: none;
 }
 
 #compare-content li {
-  padding: 3px 0 3px;
+  padding: 3px;
+  margin: 2px;
 }
 
 .comparing {
@@ -551,4 +569,13 @@ h2.texting-info {
   top: 9px;
   position: absolute;
   right: 5px;
+}
+li.loc_item.active {
+    color: #ffffff;
+    border-radius: 3px;
+    background-color: #faa732;
+    background-image: -moz-linear-gradient(center top, #fbb450, #f89406);
+}
+li.loc_item {
+    cursor: pointer;
 }
