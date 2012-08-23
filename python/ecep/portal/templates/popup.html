@@ -2,27 +2,27 @@
 {% if is_popup %}<div class="location_item">{% endif %}
     <h4>{{ item.site_name }}{% if is_popup %} <a href="/location/{{ item.id }}/"><i class="icon-share"></i></a>{% endif %}</h4>
 
+    <div class="loc_address">
+      {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
+    </div>
+
     <div class="loc_rating">
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i><br/>
-        <span class="star-notice">What Is This?</span>
-    </div>
-
-    <div class="loc_address">
-      {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
+        <span class="star-notice gmnoprint">What Is This?</span>
     </div>
 
     {% if item.accred %}
-    <div>
+    <div class="loc_accred">
         <i class="icon-ok"></i>&nbsp;Accreditation: {{ item.accred }}
     </div>
     {% endif %}
 
-    <div>
-      {{ item.url|urlize }}<br />
+    <div id="loc_links">
+      {{ item.url|urlize }}
       {{ item.email|urlize }}
     </div>
 
@@ -66,7 +66,7 @@
     {% endif %}
 
 {% if is_popup %}
-    <div class="loc_directions">
+    <div class="loc_directions gmnoprint">
         <div class="nav_single">
             <a class="btn nav_to_location" href="#" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})"><i class="icon-map-marker"></i> Directions</a>
         </div>
@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <div class="loc_moreinfo">
+    <div class="loc_moreinfo gmnoprint">
         <a href="/location/{{ item.id }}" class="btn" data-id="{{ item.id }}"><i class="icon-arrow-up"></i> More Info</a>
     </div>
 </div>

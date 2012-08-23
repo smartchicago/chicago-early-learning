@@ -25,16 +25,16 @@ If we want to actually group questions by topic, we'll need to modify this a bit
 {% autoescape off %}
 
 {% for t in topics %}
-    <h1>{{ t.topic.name }}</h1>
+    <h1 class="static-title">{{ t.topic.name }}</h1>
     <div class="faq-topic accordion" id="topic{{ forloop.counter }}">
         <div class="faq-questions">
         {% for q in t.questions %}
             <div class="accordion-group faq-question">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" 
+                <a class="accordion-toggle" data-toggle="collapse" 
                         data-parent="#topic{{ forloop.parentloop.counter }}"
                         href="#topic{{ forloop.parentloop.counter }}-{{ forloop.counter }}">
-                        {{ q.text }}
+                        <i class="icon-chevron-right"></i> {{ q.text }}
                     </a>
                 </div>
                 <div class="accordion-body collapse faq-answer"
@@ -48,11 +48,8 @@ If we want to actually group questions by topic, we'll need to modify this a bit
         </div>
     </div>
 {% endfor %}
-
 {% endautoescape %}
-
 </div>
-
 {% endblock %}
 
 {% block scripts %}

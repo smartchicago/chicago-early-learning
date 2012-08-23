@@ -11,6 +11,7 @@ ecep.directions_service = null;
 ecep.directions_display = null;
 ecep.comparing = [];
 ecep.initialBounds = null;
+ecep.onMapPage = null;
 
 ecep.getUrl = function(name) {
     switch (name) {
@@ -32,16 +33,48 @@ ecep.getUrl = function(name) {
 };
 
 ecep.init = function() {
-    var inputNode = $('input.address-input');
+    //Are we on the map page?
+    var path = window.location.pathname;
+    if (path === '/' || path === '/index.html') {
+        ecep.onMapPage = true;
+    }
+    else {
+        // disable some mapbar stuff when not on map page
+        ecep.onMapPage = false;
+        $('#filter-toggle').css('visibility', 'hidden');
+        $('#find-me-btn').css('visibility', 'hidden');
+    }
+
+    // attach the search handler to the search button(s)
+    $('.search-button').click(ecep.search);
 
     // Tie "enter" in text box to start button
-    inputNode.keyup(function(event) {
-        if(event.keyCode == 13) {
-            $($(this).data('button')).click();
-            return false;
-        }
+    var inputNode = $('input.address-input');
+    if (inputNode) {
+        inputNode.keyup(function(event) {
+            if(event.keyCode == 13) {
+                $($(this).data('button')).click();
+                return false;
+            }
+        });
+    }
+
+    $('#print-toggle').click(function(){
+        window.print();
     });
 
+
+    //Bail early if we're not on the map page
+    if (!ecep.onMapPage) {
+        return;
+    }
+
+    /*************************************************************************
+     *                      Begin Map specific init                          *
+     *************************************************************************/
+    
+
+    var al = google.maps.event.addListener;     //saves some typing
     var opts = {
         center: new google.maps.LatLng(41.8377216268434, -87.68702100000002),
         zoom: 10,
@@ -56,10 +89,27 @@ ecep.init = function() {
     ecep.directions_display = new google.maps.DirectionsRenderer({draggable:true});
 
     // load directions text when directions are changed
-    ecep.directionsListener = google.maps.event.addListener(ecep.directions_display, 'directions_changed', ecep.typeDirections);
+    ecep.directionsListener = al(ecep.directions_display, 'directions_changed', ecep.typeDirections);
 
-    // load locations when the map is all done
-    ecep.loadedListener = google.maps.event.addListener(ecep.map, 'tilesloaded', ecep.loadLocations);
+    //Tie up address search handler
+    var addr = $('#search-address').val();
+    var searchOnLoad = (ecep.onMapPage && addr != null && addr != '');
+    if (searchOnLoad) {
+        // Perform search if necessary once map is ready
+        var searchListener = al(ecep.map, 'tilesloaded', function() {
+            if (ecep.initialBounds == null) {
+                ecep.initialBounds = ecep.map.getBounds();
+            }
+
+            ecep.search(addr);
+
+            google.maps.event.removeListener(searchListener);
+        });
+    }
+    else {
+        // load locations when the map is all done
+        ecep.loadedListener = al(ecep.map, 'tilesloaded', ecep.loadLocations);
+    }
 
     // attach the geolocation handler to the geolocation button
     if (navigator.geolocation) {
@@ -70,13 +120,10 @@ ecep.init = function() {
         $('.geolocate').hide();
     }
 
-    // attach the search handler to the search button(s)
-    $('.search-button').click(ecep.search);
-
-    //Show modal splash (see index.html)
     var cookies = document.cookie.split('; ');
     var cpos = $.inArray('show_splash=true', cookies)
-    if (cpos >= 0) {
+    if (cpos >= 0 && !searchOnLoad) {
+        //Show modal splash (see index.html)
         $('#address-modal').modal({ keyboard:false, show:true });
         var ed = new Date(new Date().valueOf() + (1000 * 60 * 60));
         document.cookie = 'show_splash=false; expires='+ed.toUTCString();
@@ -86,84 +133,136 @@ ecep.init = function() {
         animation: false,
         placement: 'bottom',
         trigger: 'manual',
-        title: 'Filter Locations',
+        title: 'Filters',
         content: $('#filter-selection').text()
     });
 
     $('#filter-toggle').click(function() {
         $('#filter-toggle').popover('toggle');
-        $('#compare-toggle').popover('hide');
         if ($('#update-filter:visible').length > 0) {
+
+            // reset the element's left positioning
+            $('.popover')[0].style.left = null;
+            $('.popover')[0].style.top = null;
+
             $('#update-filter').click(ecep.loadLocations);
             $('#all').click(function(){
                 var filters = $('.loc_filter_check');
                 var all = this;
+                if (!all.checked) return false;
                 filters.each(function(idx, elem){
                     this.checked = all.checked;
                 });
             });
+            $('.loc_filter_check').click(function(){
+                if ($('.loc_filter_check[name!="all"]:checked').length == 
+                    $('.loc_filter_check[name!="all"]').length) {
+                    $('#all').attr('checked', 'checked');
+                }
+                else {
+                    $('#all').attr('checked', null);
+                }
+
+                if ($('.loc_filter_check:checked').length == 0) {
+                    return false;
+                }
+            });
         }
-    });
-
-    $('#compare-toggle').popover({
-        animation: false,
-        placement: 'bottom',
-        trigger: 'manual',
-        title: 'Compare Locations',
-        content: '<div id="compare-content" />'
-    });
-
-    $('#compare-toggle').click(function(event){
-        $('#compare-toggle').popover('toggle');
-        $('#filter-toggle').popover('hide');
-        ecep.comparingChanged(event);
     });
 };
 
 ecep.comparingChanged = function(event) {
-    var cmp = $('#compare-content:visible');
-    if (cmp.length > 0) {
-        if (ecep.comparing.length == 0) {
-            _gaq.push(['_trackEvent', 'Comparison', 'Change', 'No locations']);
+    _gaq.push(['_trackEvent', 'Comparison', 'Change', 'Comparing: ' + ecep.comparing.join(', ')]);
+    var cmp = $('#compare-content');
 
-            cmp.text('Please select a location to get started comparing.');
+    // if the first item in the list, it must have been sloughed off; remove it
+    if (cmp.find('li:first').data('location-id') != ecep.comparing[0].id) {
+        cmp.find('li:first').remove();
+    }
+
+    // a callback used when items are clicked, and items are added
+    var wireCompare = function(x, a, b) {
+        x.data('a', a);
+        x.data('b', b);
+        x.on('click', function() {
+            $('#filter-toggle').popover('hide');
+            var a = $(this).data('a'),
+                b = $(this).data('b');
+            ecep.showComparison(a, b);
+        });
+        x.removeClass('disabled');
+    };
+
+    // create a new list item for the last item in the comparison
+    // (only ever add one at a time)
+    var item = $('<li/>');
+    item.addClass('loc_item');
+    item.data('location-id', ecep.comparing[ecep.comparing.length-1].id);
+    item.html(ecep.comparing[ecep.comparing.length-1].name);
+    item.on('click', function() {
+        // when you click on an item, toggle the active class
+        $(this).toggleClass('active');
+        var actives = cmp.find('li.loc_item.active');
+        var btn = $('#compare-locations');
+        btn.off('click');
+
+        // if two items are selected, then wire up the comparison button
+        if (actives.length == 2) {
+            wireCompare(btn, $(actives[0]).data('location-id'), $(actives[1]).data('location-id'));
         }
+        // more or less than two items? disable the compare button
         else {
-            _gaq.push(['_trackEvent', 'Comparison', 'Change', 'Comparing: ' + ecep.comparing.join(', ')]);
+            btn.addClass('disabled');
+        }
+    });
+    cmp.find('ul').append(item);
 
-            cmp.empty();
-            var list = $('<ol/>');
-            cmp.append(list);
-            for (var c = 0; c < ecep.comparing.length; c++) {
-                var item = $('<li/>');
-                item.data('location-id', ecep.comparing[c].id);
-                item.html(ecep.comparing[c].name);
-                list.append(item);
-            }
+    // if there are two or more items, we can compare (maybe)
+    if (ecep.comparing.length >= 2) {
+        var btn = $('#compare-locations')
+        if (btn.length == 0) {
+            btn = $('<a/>');
+            btn.attr('id', 'compare-locations');
+            btn.addClass('btn');
+            btn.addClass('gmnoprint');
+            btn.addClass('btn-primary');
+            btn.addClass('compare-btn');
+            btn.text('Compare');
 
-            if (ecep.comparing.length == 2) {
-                var btn = $('<a/>');
-                btn.attr('id', 'compare-locations');
-                btn.addClass('btn');
-                btn.text('Compare');
-                btn.data('a', ecep.comparing[0].id);
-                btn.data('b', ecep.comparing[1].id);
+            cmp.append(btn);
+        }
 
-                cmp.append(btn);
+        // always remove the click, to prevent multiple events
+        btn.off('click');
 
-                btn.click(function() {
-                    var a = $(this).data('a'),
-                        b = $(this).data('b');
-                    ecep.showComparison(a, b);
-                });
-            }
+        var a = null, b = null;
+        var actives = cmp.find('li.loc_item.active');
+
+        // if only two items in the list, allow comparing
+        // prior to selection
+        if (ecep.comparing.length == 2) {
+            a = ecep.comparing[0].id;
+            b = ecep.comparing[1].id;
+        }
+        // if there are two selected items, they may be compared
+        else if (actives.length == 2) {
+            a = $(actives[0]).data('location-id');
+            b = $(actives[1]).data('location-id');
+        }
+
+        // two things selected? wire up and enable button
+        if (a != null && b != null) {
+            wireCompare(btn, a, b);
+        }
+        // no two things comparable, disable the button
+        else {
+            btn.addClass('disabled');
         }
     }
 };
 
 ecep.showComparison = function(a, b) {
     _gaq.push(['_trackEvent', 'Comparison', 'Display', 'Comparing ' + a + ' to ' + b]);
-    $('#compare-toggle').popover('hide');
 
     var test = $('<div class="hidden-phone" id="viztest"/>');
     $(document.body).append(test);
@@ -181,6 +280,7 @@ ecep.showComparison = function(a, b) {
     req.done(function(data, txtStatus, jqxhr) {
         _gaq.push(['_trackEvent', 'Comparison', 'AJAX success', data.length]);
         if(!fullscreen) {
+            $('#compare-box').css('z-index', 1070);
             $('#compare-modal .modal-body').html(data);
             $('#compare-modal').modal();
             $('#compare-permalink').attr('href', url);
@@ -254,36 +354,23 @@ ecep.expandInfo = function(event) {
     });
 
     req.always(function() {
-        if (ecep.comparing.length == 0) {
-            ecep.comparing.push({id:mkr.get('location_id'), name:mkr.get('location_site_name')});
-        }
-        else if (ecep.comparing[0].id == mkr.get('location_id')) {
-            if (ecep.comparing.length == 2) {
-                // swap their positions
-                ecep.comparing = [
-                    ecep.comparing[1],
-                    ecep.comparing[0]
-                ];
-            }
-        }
-        else {
-            if (ecep.comparing.length == 2 && ecep.comparing[1].id == mkr.get('location_id')) {
-                // swap their positions
-                ecep.comparing = [
-                    ecep.comparing[1],
-                    ecep.comparing[0]
-                ];
-            }
-            else {
-                ecep.comparing.push({id:mkr.get('location_id'), name:mkr.get('location_site_name')});
-
-                if (ecep.comparing.length > 2) {
-                    ecep.comparing = ecep.comparing.slice(1);
-                }
-            }
+        var found = false;
+        var loc_id = mkr.get('location_id');
+        for (var i = 0; i < ecep.comparing.length && !found; i++) {
+            found = found || ecep.comparing[i].id == loc_id;
         }
 
-        ecep.comparingChanged();
+        // add the location if it's not alredy in the list
+        if (!found) {
+            ecep.comparing.push({id:loc_id, name:mkr.get('location_site_name')});
+
+            // limit the list to 10 items
+            if (ecep.comparing.length > 10) {
+                ecep.comparing = ecep.comparing.slice(1);
+            }
+
+            ecep.comparingChanged();
+        }
     });
     
     return false;
@@ -357,7 +444,7 @@ ecep.loadLocations = function() {
         if (ecep.clusterr != null) {
             ecep.clusterr.clearMarkers();
         }
-        ecep.clusterr = new MarkerClusterer(ecep.map, markers, {maxZoom:18});
+        ecep.clusterr = new MarkerClusterer(ecep.map, markers, {maxZoom:18, printable:true});
 
         ecep.map.fitBounds(bounds);
 
@@ -397,26 +484,6 @@ ecep.geolocate = function() {
             console.warn('User location cannot be found.');
         }
     );
-};
-
-ecep.search = function() {
-    _gaq.push(['_trackEvent', 'Geocode', 'Begin', 'From: ' + this.id]);
-    var addr = $($(this).data('address')).val();
-
-    if (addr == '') {
-        alert('Please type in an address.');
-        return;
-    }
-
-    if (ecep.geocoded_marker != null) {
-        ecep.geocoded_marker.setMap(null);
-        ecep.geocoded_marker = null;
-    }
-
-    ecep.geocode(addr);
-
-    // we can always hide this, even if it's hidden
-    $('#address-modal').modal('hide');
 };
 
 ecep.geocode = function(addr) {
@@ -508,8 +575,7 @@ ecep.directions = function(event) {
 
             // update text instructions
             // move over by the width of instructions + 5px gutter
-            $('#map_container').css('right', '305px');
-            $('#compare-box').css('right', '305px');
+            $('#map-container, #compare-box').addClass('show-directions').removeClass('hide-directions');
             google.maps.event.trigger(ecep.map, 'resize');
         }
         else {
@@ -524,8 +590,7 @@ ecep.clearDirections = function() {
     $('.directions').remove();
 
     var loc = ecep.map.getCenter();
-    $('#map_container').css('right', '0');
-    $('#compare-box').css('right', '0');
+    $('#map-container, #compare-box').addClass('hide-directions').removeClass('show-directions');
     google.maps.event.trigger(ecep.map, 'resize');
     ecep.map.setCenter(loc);
 };
@@ -537,7 +602,7 @@ ecep.typeDirections = function() {
 
     var direlem = $('.directions');
     if (direlem.length == 0) {
-        $('#map_container')
+        $('#map-container')
             .after('<div class="visible-phone directions"/>')
             .after('<div class="hidden-phone directions"/>');
         direlem = $('.directions');
@@ -545,7 +610,7 @@ ecep.typeDirections = function() {
     else {
         direlem.empty();
     }
-    direlem.append($('<button class="clear_dir btn pull-right"><i class="icon-remove"></i> Close</button>'));
+    direlem.append($('<button class="clear_dir btn pull-right gmnoprint"><i class="icon-remove"></i> Close</button>'));
 
     $('.clear_dir').click(ecep.clearDirections);
 
@@ -593,6 +658,39 @@ ecep.typeDirections = function() {
         }
     }
     direlem.append(list);
+};
+
+ecep.search = function(address) {
+    _gaq.push(['_trackEvent', 'Geocode', 'Begin', 'From: ' + this.id]);
+    if (typeof(address) !== 'string') {
+        address = null;
+    }
+
+    var addr = address || $($(this).data('address')).val();
+    var rad = $('#search-radius').val();
+
+    if (addr == '') {
+        alert('Please type in an address.');
+        return;
+    }
+    
+    if (!ecep.onMapPage) {
+        var form = $('#search-form');
+        form.find('input[name="searchText"]').val(addr);
+        form.find('input[name="searchRadius"]').val(rad);
+        form.submit();
+        return;
+    }
+
+    if (ecep.geocoded_marker != null) {
+        ecep.geocoded_marker.setMap(null);
+        ecep.geocoded_marker = null;
+    }
+
+    ecep.geocode(addr);
+
+    // we can always hide this, even if it's hidden
+    $('#address-modal').modal('hide');
 };
 
 //Modal splash setup

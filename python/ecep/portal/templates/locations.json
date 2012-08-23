@@ -1,15 +1,7 @@
 [
 {% for item in items %}
 { "id": {{ item.id }}, 
-  "site_name": "{{ item.site_name }}",
-  "address": "{{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}",
-  "website": "{{ item.url }}",
-  "email": "{{ item.email }}",
-  "phone1": "{{ item.phone1 }}",
-  "phone2": "{{ item.phone2 }}",
-  "phone3": "{{ item.phone3 }}",
-  "content": "{{ item.content|safe }}",
-  "fax": "{{ item.fax }}"{% if item.geom %},
+  "site_name": "{{ item.site_name }}"{% if item.geom %},
   "lng": {{ item.geom.coords.0 }},
   "lat": {{ item.geom.coords.1 }}{% endif %} }{% if not forloop.last %},{% endif %}
 {% endfor %}
