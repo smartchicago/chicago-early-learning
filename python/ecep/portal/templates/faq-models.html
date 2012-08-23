@@ -31,10 +31,10 @@ If we want to actually group questions by topic, we'll need to modify this a bit
         {% for q in t.questions %}
             <div class="accordion-group faq-question">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" 
+                <a class="accordion-toggle" data-toggle="collapse" 
                         data-parent="#topic{{ forloop.parentloop.counter }}"
                         href="#topic{{ forloop.parentloop.counter }}-{{ forloop.counter }}">
-                        {{ q.text }}
+                        <i class="icon-chevron-right"></i> {{ q.text }}
                     </a>
                 </div>
                 <div class="accordion-body collapse faq-answer"

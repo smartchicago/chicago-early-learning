@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="{% static "css/ecep.css" %}" />
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap-responsive.css" %}" />
         <link rel="stylesheet" href="{% static "css/print.css" %}" media="print"/>
+	<link rel="stylesheet" href="{% static "css/bootstrap-toggle.css" %}" />
 
         <title>{% block title %}{% endblock %}</title> 
         <script type="text/javascript">
@@ -81,6 +82,11 @@
     
     <script type="text/javascript" src="{% static "js/jquery-1.7.2.js" %}"></script>
     <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap-toggle.js" %}"></script>
+    <script>
+	 	// Don't use .toggle, it will be global.
+	 	$('.alternative').toggle();
+    </script>
     <script type="text/javascript"> (function() {
         var ga = document.createElement('script');
         ga.type = 'text/javascript';
