@@ -231,7 +231,9 @@ table.compare-table td {
     margin-top: 3em;
     margin-bottom: 1em;
 }
-
+.loc_accred {
+    padding-top: 20px;
+}
 .loc_directions {
     float: left;
     margin: 0.75em;
