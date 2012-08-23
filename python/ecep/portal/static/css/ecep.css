@@ -25,7 +25,9 @@
 
 
 /* Nav and subnav styling overrides =========================================== */
-
+#address-modal {
+    z-index: 1080;
+}
 #address-modal .modal-header h3 {
   font-family: "Bariol";
   color: #29ABE2;
@@ -192,7 +194,7 @@ h2.question {
   min-height: 120px;
   width: 20%;
   background: url(../images/compare-bg.png) repeat;
-  z-index: 9999;
+  z-index: 1;
   right: 0;
   top: 140px
 }
@@ -224,7 +226,7 @@ table.compare-table td {
 }
 
 #text-info-modal {
-    z-index: 9000;  /* .popover z-index is 2060, we want this in front of everything */
+    z-index: 2070;  /* .popover z-index is 2060, we want this in front of everything */
 }
 
 .container .location h2 {

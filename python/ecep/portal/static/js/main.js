@@ -59,6 +59,10 @@ ecep.init = function() {
         });
     }
 
+    $('#print-toggle').click(function(){
+        window.print();
+    });
+
 
     //Bail early if we're not on the map page
     if (!ecep.onMapPage) {
@@ -164,10 +168,6 @@ ecep.init = function() {
                 }
             });
         }
-    });
-
-    $('#print-toggle').click(function(){
-        window.print();
     });
 };
 
@@ -280,6 +280,7 @@ ecep.showComparison = function(a, b) {
     req.done(function(data, txtStatus, jqxhr) {
         _gaq.push(['_trackEvent', 'Comparison', 'AJAX success', data.length]);
         if(!fullscreen) {
+            $('#compare-box').css('z-index', 1070);
             $('#compare-modal .modal-body').html(data);
             $('#compare-modal').modal();
             $('#compare-permalink').attr('href', url);
