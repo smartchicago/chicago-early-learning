@@ -32,6 +32,10 @@
   border-radius: 6px 6px 9px 9px;
 }
 
+#address-modal {
+    z-index: 1080;
+}
+
 #address-modal .modal-header h3 {
   font-family: "Bariol";
   color: #29ABE2;
@@ -168,14 +172,23 @@ h2.question {
 
 #filter-toggle {
   border: 1px solid #062F86;
+  margin: 12px 0 0 200px;
+  top: 7em;
+  left: -8em;
 }
 
+.popover {
+    left: 81px;
+    top: 138px;
+}
+.popover.bottom .arrow {
+    left: 31px;
+}
 .popover-inner {
   border-radius: 0px;
   -moz-border-radius: 0px;
   background: #fff;
   border: 1px solid #c2c2c2;
-  margin-top: 18px;
 }
 
 /* == don't re-use this class or your popover will probably look bad == */
@@ -229,14 +242,16 @@ table.compare-table td {
 }
 
 #text-info-modal {
-    z-index: 9000;  /* .popover z-index is 2060, we want this in front of everything */
+    z-index: 2070;  /* .popover z-index is 2060, we want this in front of everything */
 }
 
 .container .location h2 {
     margin-top: 3em;
     margin-bottom: 1em;
 }
-
+.loc_accred {
+    padding-top: 20px;
+}
 .loc_directions {
     float: left;
     margin: 0.75em;
@@ -374,11 +389,12 @@ table.compare-table td {
     font-size: 14px;
 }
 .subnav .navbar-search input.search-query {
-	padding: 4px 9px;
-	margin: -4px;
-	border-radius: 0 3px 3px 0;
-	border: 1px solid #2C4489;
-	margin-top: -5px;
+    padding: 4px 9px;
+    margin: -2px;
+    border-radius: 0 3px 3px 0;
+    border: 1px solid #2C4489;
+    margin-top: -5px;
+
 }
 .subnav .navbar-search select.search-query {
     padding: 2px 9px;
@@ -398,12 +414,18 @@ table.compare-table td {
     font-size: 14px;
 }
 
-#map_container { 
+#map-container { 
     position: absolute;
     left: 0;
     right: 0;
     top: 7.7em;
     bottom: 0;
+}
+#map-container.show-directions, #compare-box.show-directions {
+    right: 305px;
+}
+#map-container.hide-directions, #compare-box.hide-directions {
+    right: 0;
 }
 .hidden-phone.address-input {
     width: 450px;
@@ -584,4 +606,13 @@ h2.texting-info {
 
 .features {
   padding-left: 10px;
+
+li.loc_item.active {
+    color: #ffffff;
+    border-radius: 3px;
+    background-color: #faa732;
+    background-image: -moz-linear-gradient(center top, #fbb450, #f89406);
+}
+li.loc_item {
+    cursor: pointer;
 }

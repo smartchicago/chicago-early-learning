@@ -1,3 +1,100 @@
 .gmnoprint {
     display:none;
 }
+.container {
+    width: auto;
+    margin: 10pt;
+}
+#search-radius {
+    margin-top: -3pt
+}
+.navbar {
+    position: relative;
+    margin-top: -60pt;
+}
+.subnav {
+    position:relative;
+    margin-top: -20pt;
+    margin-left: 0;
+}
+.subnav .navbar-search .search-query {
+    color: #000;
+    background-color: #fff;
+    border-color: black;
+    font-size: 12pt;
+    border-radius: 3pt;
+}
+.subnav .navbar-search input.search-query {
+    padding: 4pt 9pt;
+    margin: -2pt;
+    border: 1pt solid;
+    margin-top: -5pt;
+}
+.subnav .navbar-search select.search-query {
+    padding: 4pt 9pt;
+    margin: 0 12pt;
+    width: 80pt;
+    height: 24pt;
+}
+#map-container { 
+    height: 450pt;
+}
+#map { height: 100%; }
+#map img { max-width: none; }
+.filter-label {
+    display: inline;
+}
+.popover {
+    left: 10pt;
+    top: 80pt;
+    font-size: 90%;
+    width: 250pt;
+}
+.loc_address {
+    color: #999999;
+}
+.loc_phone_table thead {
+    font-weight: bold;
+}
+.directions {
+    page-break-before: always;
+    border: 1pt solid black;
+    background-color: #fff;
+}
+.d_dist {
+    padding-left: 8pt;
+}
+#compare-box {
+    display: none;
+}
+.loc_accred {
+    margin-left: -13pt;
+}
+div.loc_address {
+    color: #999999;
+    white-space: nowrap;
+}
+table.compare-table {
+    width: 700pt;
+}
+table.compare-table td.loc_address, table.compare-table td.loc_name {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.compare-table td {
+    padding: 3pt 5pt;
+    width: 50%;
+    vertical-align: top;
+}
+.loc_phone_table {
+    margin-left: -5pt;
+}
+.loc_phone_table td {
+    padding: 0 5pt;
+}
+.textrow1 {
+    background-color: #eeeeee;
+}
+.location_item > div {
+    margin: 5pt 0;
+}
