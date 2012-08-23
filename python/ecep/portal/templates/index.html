@@ -8,10 +8,10 @@
 
 {% block content %}
 <div class="subnav subnav-fixed">
-<button class="btn btn-primary" id="filter-toggle">Filter</button>
     <div class="container">
         <ul class="nav">
             <li>
+		<button class="btn btn-primary" id="filter-toggle">Filter</button>
                 <button class="geolocate hidden-phone btn btn-primary" href="#">Find Me</button>
                 <a class="geolocate visible-phone" href="#"></a>
             </li>
@@ -54,6 +54,7 @@
 </div>
 
 <div id="compare-box">
+      <h3 class="comparing">Comparing</h3>
   <div id="compare-content"> </div>
 </div>
 
@@ -64,7 +65,7 @@
 <div id="address-modal" class="modal hide fade in">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">x</a>
-        <h3>Chicago Early Learning</h3>
+        <h3><img src="{% static "images/logo-blue.png" %}" alt="CEL"> Chicago Early Learning</h3>
     </div>
     <div class="modal-body">
     <img class="intro" src="{% static "images/intro-photo.jpg" %}" alt="Chicago Early Learning Portal" />
@@ -92,18 +93,18 @@
 
 <div id="filter-selection">
     <textarea>
-        <div>
-            <input type="checkbox" value="true" name="all" id="all" checked="true" class="loc_filter_check"/>
-            <label for="all" class="filter-label">All</label>
-            <hr/>
+    <button class="btn pull-right update" id="update-filter"><i class="icon-search"></i> Update</button>
+	<div class="toggle alternative" data-enabled="ON" data-disabled="OFF" data-toggle="toggle">
+          <input type="checkbox" value="true" name="all" id="all" checked="true" class="loc_filter_check checkbox"/>
+          <label for="all" class="filter-label check"></label>
         </div>
-        </div>
+	
         {% for f in fields %}
         <div>
             <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" class="loc_filter_check" checked="true"/>
             <label for="{{ f.0 }}" class="filter-label">{{ f.1 }}</label>
         {% if forloop.last %}
-            <button class="btn pull-right" id="update-filter"><i class="icon-search"></i> Update</button>
+            <!-- <button class="btn pull-right" id="update-filter"><i class="icon-search"></i> Update</button> -->
         {% endif %}
         </div>
         {% endfor %}
