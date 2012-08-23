@@ -123,6 +123,17 @@
             </div>
         </div>
     </div>
+
+    {% comment %}
+    Used on non-map pages to submit info
+    We don't use it for the actual search box for styling reasons
+    This must be defined in a template for the csrf_token
+    {% endcomment %}
+    <form name="search" action="/" method="POST" style="display:none" id="search-form">
+        <input type="text" name="searchText" value=""></input>
+        <input type="text" name="searchRadius" value=""></input>
+        {% csrf_token %}
+    </form>
     {% endif %}
 
     {% block content %}{% endblock %}
@@ -136,61 +147,12 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(ga, s);
-
-        ecep = ((typeof ecep == 'undefined') ? {} : ecep);
-
-        var path = window.location.pathname;
-        if (path === '/' || path === '/index.html') {
-            ecep.onMapPage = true;
-        }
-        else {
-            // disable some mapbar stuff when not on map page
-            ecep.onMapPage = false;
-            $('#filter-toggle').css('visibility', 'hidden');
-            $('#find-me-btn').css('visibility', 'hidden');
-        }
-
-        ecep.search = function(address) {
-            _gaq.push(['_trackEvent', 'Geocode', 'Begin', 'From: ' + this.id]);
-            if (typeof(address) !== 'string') {
-                address = null;
-            }
-
-            var addr = address || $($(this).data('address')).val();
-            var rad = $('#search-radius').val();
-
-            if (addr == '') {
-                alert('Please type in an address.');
-                return;
-            }
-            
-            if (!ecep.onMapPage) {
-                var form = $('<form name="search" action="/" method="POST">' + 
-                    '<input type="text" name="searchText" value="' + addr +
-                    '"></input><input type="text" name="searchRadius" value="' + rad +
-                    '"></input>' + "{% csrf_token %}" + '</form>');
-                form.submit();
-                return;
-            }
-
-            if (ecep.geocoded_marker != null) {
-                ecep.geocoded_marker.setMap(null);
-                ecep.geocoded_marker = null;
-            }
-
-            ecep.geocode(addr);
-
-            // we can always hide this, even if it's hidden
-            $('#address-modal').modal('hide');
-        };
-
-        $(document).ready(function() {
-            // attach the search handler to the search button(s)
-            $('.search-button').click(ecep.search);
-        });
     })();
     </script>
+
     {% block scripts %}{% endblock %}
+
+    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
 
     </body> 
 </html> 

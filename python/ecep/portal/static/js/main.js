@@ -11,6 +11,7 @@ ecep.directions_service = null;
 ecep.directions_display = null;
 ecep.comparing = [];
 ecep.initialBounds = null;
+ecep.onMapPage = null;
 
 ecep.getUrl = function(name) {
     switch (name) {
@@ -32,16 +33,44 @@ ecep.getUrl = function(name) {
 };
 
 ecep.init = function() {
-    var inputNode = $('input.address-input');
+    //Are we on the map page?
+    var path = window.location.pathname;
+    if (path === '/' || path === '/index.html') {
+        ecep.onMapPage = true;
+    }
+    else {
+        // disable some mapbar stuff when not on map page
+        ecep.onMapPage = false;
+        $('#filter-toggle').css('visibility', 'hidden');
+        $('#find-me-btn').css('visibility', 'hidden');
+    }
+
+    // attach the search handler to the search button(s)
+    $('.search-button').click(ecep.search);
 
     // Tie "enter" in text box to start button
-    inputNode.keyup(function(event) {
-        if(event.keyCode == 13) {
-            $($(this).data('button')).click();
-            return false;
-        }
-    });
+    var inputNode = $('input.address-input');
+    if (inputNode) {
+        inputNode.keyup(function(event) {
+            if(event.keyCode == 13) {
+                $($(this).data('button')).click();
+                return false;
+            }
+        });
+    }
 
+
+    //Bail early if we're not on the map page
+    if (!ecep.onMapPage) {
+        return;
+    }
+
+    /*************************************************************************
+     *                      Begin Map specific init                          *
+     *************************************************************************/
+    
+
+    var al = google.maps.event.addListener;     //saves some typing
     var opts = {
         center: new google.maps.LatLng(41.8377216268434, -87.68702100000002),
         zoom: 10,
@@ -55,10 +84,10 @@ ecep.init = function() {
     ecep.directions_service = new google.maps.DirectionsService();
     ecep.directions_display = new google.maps.DirectionsRenderer({draggable:true});
 
-    var al = google.maps.event.addListener;
     // load directions text when directions are changed
     ecep.directionsListener = al(ecep.directions_display, 'directions_changed', ecep.typeDirections);
 
+    //Tie up address search handler
     var addr = $('#search-address').val();
     var searchOnLoad = (ecep.onMapPage && addr != null && addr != '');
     if (searchOnLoad) {
@@ -71,14 +100,12 @@ ecep.init = function() {
             ecep.search(addr);
 
             google.maps.event.removeListener(searchListener);
-            ecep.loadedListener = al(ecep.map, 'tilesloaded', ecep.loadLocations);
         });
     }
     else {
         // load locations when the map is all done
         ecep.loadedListener = al(ecep.map, 'tilesloaded', ecep.loadLocations);
     }
-
 
     // attach the geolocation handler to the geolocation button
     if (navigator.geolocation) {
@@ -134,7 +161,6 @@ ecep.init = function() {
         $('#filter-toggle').popover('hide');
         ecep.comparingChanged(event);
     });
-
 };
 
 ecep.comparingChanged = function(event) {
@@ -590,6 +616,39 @@ ecep.typeDirections = function() {
         }
     }
     direlem.append(list);
+};
+
+ecep.search = function(address) {
+    _gaq.push(['_trackEvent', 'Geocode', 'Begin', 'From: ' + this.id]);
+    if (typeof(address) !== 'string') {
+        address = null;
+    }
+
+    var addr = address || $($(this).data('address')).val();
+    var rad = $('#search-radius').val();
+
+    if (addr == '') {
+        alert('Please type in an address.');
+        return;
+    }
+    
+    if (!ecep.onMapPage) {
+        var form = $('#search-form');
+        form.find('input[name="searchText"]').val(addr);
+        form.find('input[name="searchRadius"]').val(rad);
+        form.submit();
+        return;
+    }
+
+    if (ecep.geocoded_marker != null) {
+        ecep.geocoded_marker.setMap(null);
+        ecep.geocoded_marker = null;
+    }
+
+    ecep.geocode(addr);
+
+    // we can always hide this, even if it's hidden
+    $('#address-modal').modal('hide');
 };
 
 //Modal splash setup
