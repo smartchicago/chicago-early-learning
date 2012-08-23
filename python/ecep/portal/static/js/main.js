@@ -11,6 +11,7 @@ ecep.directions_service = null;
 ecep.directions_display = null;
 ecep.comparing = [];
 ecep.initialBounds = null;
+ecep.onMapPage = null;
 
 ecep.getUrl = function(name) {
     switch (name) {
@@ -32,16 +33,44 @@ ecep.getUrl = function(name) {
 };
 
 ecep.init = function() {
-    var inputNode = $('input.address-input');
+    //Are we on the map page?
+    var path = window.location.pathname;
+    if (path === '/' || path === '/index.html') {
+        ecep.onMapPage = true;
+    }
+    else {
+        // disable some mapbar stuff when not on map page
+        ecep.onMapPage = false;
+        $('#filter-toggle').css('visibility', 'hidden');
+        $('#find-me-btn').css('visibility', 'hidden');
+    }
+
+    // attach the search handler to the search button(s)
+    $('.search-button').click(ecep.search);
 
     // Tie "enter" in text box to start button
-    inputNode.keyup(function(event) {
-        if(event.keyCode == 13) {
-            $($(this).data('button')).click();
-            return false;
-        }
-    });
+    var inputNode = $('input.address-input');
+    if (inputNode) {
+        inputNode.keyup(function(event) {
+            if(event.keyCode == 13) {
+                $($(this).data('button')).click();
+                return false;
+            }
+        });
+    }
 
+
+    //Bail early if we're not on the map page
+    if (!ecep.onMapPage) {
+        return;
+    }
+
+    /*************************************************************************
+     *                      Begin Map specific init                          *
+     *************************************************************************/
+    
+
+    var al = google.maps.event.addListener;     //saves some typing
     var opts = {
         center: new google.maps.LatLng(41.8377216268434, -87.68702100000002),
         zoom: 10,
@@ -56,10 +85,27 @@ ecep.init = function() {
     ecep.directions_display = new google.maps.DirectionsRenderer({draggable:true});
 
     // load directions text when directions are changed
-    ecep.directionsListener = google.maps.event.addListener(ecep.directions_display, 'directions_changed', ecep.typeDirections);
+    ecep.directionsListener = al(ecep.directions_display, 'directions_changed', ecep.typeDirections);
 
-    // load locations when the map is all done
-    ecep.loadedListener = google.maps.event.addListener(ecep.map, 'tilesloaded', ecep.loadLocations);
+    //Tie up address search handler
+    var addr = $('#search-address').val();
+    var searchOnLoad = (ecep.onMapPage && addr != null && addr != '');
+    if (searchOnLoad) {
+        // Perform search if necessary once map is ready
+        var searchListener = al(ecep.map, 'tilesloaded', function() {
+            if (ecep.initialBounds == null) {
+                ecep.initialBounds = ecep.map.getBounds();
+            }
+
+            ecep.search(addr);
+
+            google.maps.event.removeListener(searchListener);
+        });
+    }
+    else {
+        // load locations when the map is all done
+        ecep.loadedListener = al(ecep.map, 'tilesloaded', ecep.loadLocations);
+    }
 
     // attach the geolocation handler to the geolocation button
     if (navigator.geolocation) {
@@ -70,13 +116,10 @@ ecep.init = function() {
         $('.geolocate').hide();
     }
 
-    // attach the search handler to the search button(s)
-    $('.search-button').click(ecep.search);
-
-    //Show modal splash (see index.html)
     var cookies = document.cookie.split('; ');
     var cpos = $.inArray('show_splash=true', cookies)
-    if (cpos >= 0) {
+    if (cpos >= 0 && !searchOnLoad) {
+        //Show modal splash (see index.html)
         $('#address-modal').modal({ keyboard:false, show:true });
         var ed = new Date(new Date().valueOf() + (1000 * 60 * 60));
         document.cookie = 'show_splash=false; expires='+ed.toUTCString();
@@ -442,26 +485,6 @@ ecep.geolocate = function() {
     );
 };
 
-ecep.search = function() {
-    _gaq.push(['_trackEvent', 'Geocode', 'Begin', 'From: ' + this.id]);
-    var addr = $($(this).data('address')).val();
-
-    if (addr == '') {
-        alert('Please type in an address.');
-        return;
-    }
-
-    if (ecep.geocoded_marker != null) {
-        ecep.geocoded_marker.setMap(null);
-        ecep.geocoded_marker = null;
-    }
-
-    ecep.geocode(addr);
-
-    // we can always hide this, even if it's hidden
-    $('#address-modal').modal('hide');
-};
-
 ecep.geocode = function(addr) {
     ecep.geocoder.geocode({'address': addr, 'bounds': ecep.initialBounds },
         function(results, geocodeStatus) {
@@ -634,6 +657,39 @@ ecep.typeDirections = function() {
         }
     }
     direlem.append(list);
+};
+
+ecep.search = function(address) {
+    _gaq.push(['_trackEvent', 'Geocode', 'Begin', 'From: ' + this.id]);
+    if (typeof(address) !== 'string') {
+        address = null;
+    }
+
+    var addr = address || $($(this).data('address')).val();
+    var rad = $('#search-radius').val();
+
+    if (addr == '') {
+        alert('Please type in an address.');
+        return;
+    }
+    
+    if (!ecep.onMapPage) {
+        var form = $('#search-form');
+        form.find('input[name="searchText"]').val(addr);
+        form.find('input[name="searchRadius"]').val(rad);
+        form.submit();
+        return;
+    }
+
+    if (ecep.geocoded_marker != null) {
+        ecep.geocoded_marker.setMap(null);
+        ecep.geocoded_marker = null;
+    }
+
+    ecep.geocode(addr);
+
+    // we can always hide this, even if it's hidden
+    $('#address-modal').modal('hide');
 };
 
 //Modal splash setup
