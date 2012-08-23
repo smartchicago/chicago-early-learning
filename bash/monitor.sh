@@ -17,8 +17,8 @@ fi
 RESTART=N
 EC2_HOST=`wget -q -O - http://169.254.169.254/latest/meta-data/public-hostname`
 # Set these if the respective area is being updated
-DEPLOY_URL=""
-STAGE_URL=""
+DEPLOY_URL=''
+STAGE_URL=''
 
 if [ -e '/tmp/please_staging' ]; then
     echo "Deploy to staging"
@@ -64,7 +64,7 @@ if [ -e '/tmp/please_deploy' ]; then
     DEPLOY_URL="http://$EC2_HOST/"
 fi
 
-if [ $RESTART == 'Y' ]; then
+if [ "$RESTART" == 'Y' ]; then
     pkill gunicorn
     if [ $? != 0 ]; then
         echo "Could not kill all gunicorn processes."
@@ -79,11 +79,11 @@ if [ $RESTART == 'Y' ]; then
 
     echo "Successfully restarted gunicorn."
 
-    if [ $STAGE_URL != "" ]; then
+    if [ "$STAGE_URL" != '' ]; then
         echo "Updated site on Staging."
         echo "URL: $STAGE_URL"
     fi
-    if [ $DEPLOY_URL != "" ]; then
+    if [ "$DEPLOY_URL" != '' ]; then
         echo "Updated site on Production."
         echo "URL: $DEPLOY_URL"
     fi
