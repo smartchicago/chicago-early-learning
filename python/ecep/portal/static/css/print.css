@@ -90,6 +90,7 @@ table.compare-table td.loc_address, table.compare-table td.loc_name {
     margin-left: -5pt;
 }
 .loc_phone_table td {
+    width: auto;
     padding: 0 5pt;
 }
 .textrow1 {
@@ -97,4 +98,24 @@ table.compare-table td.loc_address, table.compare-table td.loc_name {
 }
 .location_item > div {
     margin: 5pt 0;
+}
+body {
+    padding-top: 65pt;
+}
+body.static .subnav {
+    display: none;
+}
+body.static .span7 {
+    width: auto;
+    float: none;
+}
+h1.title-break {
+    page-break-before: always;
+}
+.accordion-group .collapse {
+    height: auto;
+}
+.partner {
+    max-width: 200pt;
+    max-height: 200pt;
 }

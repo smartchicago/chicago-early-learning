@@ -66,6 +66,7 @@ ecep.init = function() {
 
     //Bail early if we're not on the map page
     if (!ecep.onMapPage) {
+        $(document.body).addClass('static');
         return;
     }
 
