@@ -151,6 +151,9 @@ def location(request, location_id):
     context.update(is_popup=(tpl == 'popup.html'))
     context.update(is_embed=(tpl == 'embed.html'))
 
+    context.update(searchText='')
+    context.update(options=get_opts('2'))
+
     context = RequestContext(request, context)
 
     return render_to_response(tpl, context_instance=context)
@@ -218,6 +221,7 @@ def compare(request, a, b):
     locs = combine_details(loc_a, loc_b)
 
     ctx = RequestContext(request, {
+        'options': get_opts(),
         'locations': locs
     })
 

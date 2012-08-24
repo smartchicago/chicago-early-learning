@@ -6,11 +6,6 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0" /> 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.css" %}" />
-        <style>
-            body {
-                padding-top: 60px;
-            }
-        </style>
         <link rel="stylesheet" href="{% static "css/ecep.css" %}" media="screen"/>
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap-responsive.css" %}" />
         <link rel="stylesheet" href="{% static "css/print.css" %}" media="print"/>
@@ -79,19 +74,18 @@
     </div>
     {% endif %}
 
-    {% if mapbarEnabled %}
     <div class="subnav subnav-fixed">
-        <button class="btn btn-primary" id="filter-toggle">Filter</button>
+        <button class="btn btn-primary gmnoprint" id="filter-toggle">Filter</button>
         <div class="container">
             <ul class="nav">
                 <li id="find-me-btn">
-                    <button class="geolocate hidden-phone btn btn-primary" href="#">Find Me</button>
+                    <button class="geolocate hidden-phone btn btn-primary gmnoprint" href="#">Find Me</button>
                     <a class="geolocate visible-phone" href="#"></a>
                 </li>
             </ul>
             <div class="navbar-search pull-left">
                 <input type="text" class="address-input search-query span3" id="search-address" 
-                data-button="#menu-search" placeholder="Search" value="{{ searchText }}"/>
+                    data-button="#menu-search" placeholder="Address Search" value="{{ searchText }}"/>
                 <select class="hidden-phone search-query" id="search-radius">
                     <!-- 
                         Chrome's user-agent stylesheet has some bugs where it overrides the background
@@ -108,7 +102,7 @@
             </div>
             <ul class="nav">
                 <li>
-                    <button id="menu-search" class="btn btn-warning search-button" data-address="#search-address" href="#">Search</button>
+                    <button id="menu-search" class="btn btn-warning search-button gmnoprint" data-address="#search-address" href="#">Search</button>
                     <!-- 
                     <a id="menu-search" class="btn btn-primary" data-address="#search-address" href="#">
                         <i class="icon-search icon-white"></i> Search
@@ -116,7 +110,7 @@
             -->
                 </li>
             </ul>
-            <div class="hidden-phone">
+            <div class="hidden-phone gmnoprint">
                 <ul class="nav nav-pills pull-right">
                     <li>
                         <!-- <a id="compare-toggle" href="#"><i class="icon-adjust icon-white"></i> Compare</a> -->
@@ -137,7 +131,6 @@
         <input type="text" name="searchRadius" value=""></input>
         {% csrf_token %}
     </form>
-    {% endif %}
 
     {% block content %}{% endblock %}
     
