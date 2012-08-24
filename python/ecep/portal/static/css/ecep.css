@@ -25,9 +25,17 @@
 
 
 /* Nav and subnav styling overrides =========================================== */
+
+#address-modal {
+  -moz-border-radius: 6px 6px 9px 9px;
+  -webkit-border-radius: 6px 6px 9px 9px;
+  border-radius: 6px 6px 9px 9px;
+}
+
 #address-modal {
     z-index: 1080;
 }
+
 #address-modal .modal-header h3 {
   font-family: "Bariol";
   color: #29ABE2;
@@ -163,7 +171,6 @@ h2.question {
 }
 
 #filter-toggle {
-  position: fixed;
   border: 1px solid #062F86;
   margin: 12px 0 0 200px;
   top: 7em;
@@ -184,9 +191,18 @@ h2.question {
   border: 1px solid #c2c2c2;
 }
 
+/* == don't re-use this class or your popover will probably look bad == */
+.popover.bottom {
+  margin-left: 119px;
+}
+
 .popover-title {
   background: #fff;
   border: none;
+}
+
+#loc_links a {
+	clear: both;
 }
 
 #compare-box {
@@ -194,7 +210,7 @@ h2.question {
   min-height: 120px;
   width: 20%;
   background: url(../images/compare-bg.png) repeat;
-  z-index: 1;
+  z-index: 999;
   right: 0;
   top: 140px
 }
@@ -221,7 +237,7 @@ h2.question {
 }
 
 table.compare-table td {
-    padding: 0 0.5em;
+    padding: 5px; 0.5em;
     width: 50%;
 }
 
@@ -378,6 +394,7 @@ table.compare-table td {
     border-radius: 0 3px 3px 0;
     border: 1px solid #2C4489;
     margin-top: -5px;
+
 }
 .subnav .navbar-search select.search-query {
     padding: 2px 9px;
@@ -493,6 +510,8 @@ h2.texting-info {
   font-family: "Bariol";
   color: #29ABE2;
   font-size: 18px;
+  width: 90%;
+  margin-bottom: 5px;
 }
 
 .loc_address {
@@ -542,21 +561,20 @@ h2.texting-info {
 }
 
 #compare-content ul {
-    margin: 0 0.5em 0.5em;
-  padding: 15px 0 0 15px;
+  padding: 10px 0 0 0;
   list-style-type: none;
 }
 
 #compare-content li {
-  padding: 3px;
-  margin: 2px;
+  padding: 3px 0 3px;
+  width: 90%;
 }
 
 .comparing {
   font-family: "Bariol Bold";
   font-weight: normal;
   font-size: 20px;
-  padding: 7px 0 0 15px;
+  padding: 12px 0 0 22px;
   color: #fff;
 }
 
@@ -570,6 +588,25 @@ h2.texting-info {
   position: absolute;
   right: 5px;
 }
+
+.modal-header h3 {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+}
+
+.location h3 {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+  color: #29ABE2;
+}
+
+.web-email {
+  margin-bottom: 15px;
+}
+
+.features {
+  padding-left: 10px;
+
 li.loc_item.active {
     color: #ffffff;
     border-radius: 3px;
