@@ -171,7 +171,7 @@ h2.question {
 }
 
 .partner {
-  max-width: 135px;
+  max-width: 230px;
   max-height: 135px;
   float: left;
   vertical-align: middle;
@@ -201,7 +201,19 @@ h2.question {
   border-radius: 0px;
   -moz-border-radius: 0px;
   background: #fff;
-  border: 1px solid #c2c2c2;
+  margin-top: 20px;
+  -webkit-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.popover.bottom .arrow {
+	top: 11px;
+	left: 10%;
+	margin-left: -15px;
+	border-right: 15px solid transparent;
+	border-bottom: 15px solid white;
+	border-left: 15px solid transparent;
 }
 
 /* == don't re-use this class or your popover will probably look bad == */
@@ -218,6 +230,13 @@ h2.question {
 	clear: both;
 }
 
+.loc_name h4 {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+  font-size: 21px;
+  color: #29ABE2; 
+}
+
 #compare-box {
   position: fixed;
   min-height: 120px;
@@ -225,7 +244,7 @@ h2.question {
   background: url(../images/compare-bg.png) repeat;
   z-index: 999;
   right: 0;
-  top: 140px
+  top: 180px
 }
 
 .container .location {
@@ -234,14 +253,15 @@ h2.question {
 }
 
 #compare-modal {
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     top: 10%;
     left: 5%;
 }
 
 #compare-modal .modal-body {
-    max-height: 600px;
+    max-height: 602px;
+    overflow: hidden;
 }
 
 .container > table, #compare-modal .modal-body > table {
@@ -291,7 +311,7 @@ table.compare-table td {
 
 .loc_moreinfo, .loc_lessinfo {
     float:right;
-    margin: 0.75em;
+    margin: 1.75em;
 }
 
 .location_item {
@@ -446,6 +466,10 @@ table.compare-table td {
     right: 0;
     top: 7.7em;
     bottom: 0;
+    -webkit-box-shadow: 3px 0px 5px rgba(50, 50, 50, 0.3);
+	-moz-box-shadow:    3px 0px 5px rgba(50, 50, 50, 0.3);
+	box-shadow:         3px 0px 5px rgba(50, 50, 50, 0.3);
+    border-right: 1px solid #9c9c9c;
 }
 #map-container.show-directions, #compare-box.show-directions {
     right: 305px;
@@ -473,9 +497,21 @@ table.compare-table td {
     right: 0;
     top: 7.7em;
     bottom: 0;
-    width: 300px;
+    width: 280px;
     overflow-y: scroll;
+    padding: 10px 10px 0 0;
 }
+
+.hidden-phone.directions h3 {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+  color: #29ABE2;
+}
+
+.hidden-phone.directions b {
+  color: #29ABE2;
+}
+
 .visible-phone.directions {
     position: absolute;
     left: 0;
@@ -484,25 +520,41 @@ table.compare-table td {
     bottom: 0;
     background-color: #ffffff;
 }
+
+.external-directions {
+  padding-bottom: 15px;
+}
+
+.external-directions a {
+  font-size: 11px;
+}
+
 .d_step {
     margin: 1em auto;
 }
+
+.d_warn {
+	border-bottom: 1px solid #c2c2c2;
+}
+
 .d_instr {
 }
+
 .d_dist {
     padding-left: 1em;
+    color: #777;
 }
 /* fake star ratings */
 .loc_rating {
     float: right;
-    margin-right: 1em;
+    margin-right: 2em;
 }
 .star-notice {
     color: #999999;
 }
 
 .textrow1 {
-    background-color: #f6f6f6;
+    background-color: #e2e2e2;
 }
 .textrow2 {
 }
@@ -645,3 +697,4 @@ li.loc_item.active {
 li.loc_item {
     cursor: pointer;
 }
+
