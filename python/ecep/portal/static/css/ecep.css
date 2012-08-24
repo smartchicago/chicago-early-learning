@@ -23,8 +23,21 @@
     font-style: normal;
 }
 
+body {
+    padding-top: 120px;
+}
 
 /* Nav and subnav styling overrides =========================================== */
+
+#address-modal {
+  -moz-border-radius: 6px 6px 9px 9px;
+  -webkit-border-radius: 6px 6px 9px 9px;
+  border-radius: 6px 6px 9px 9px;
+}
+
+#address-modal {
+    z-index: 1080;
+}
 
 #address-modal .modal-header h3 {
   font-family: "Bariol";
@@ -103,27 +116,31 @@ img.intro {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.navbar-search .search-query {
-  background-color: #fff;
-  border-color: #2C4489;
+.navbar.navbar-fixed-top .navbar-inner {
+    padding: 0;
+}
+.navbar.navbar-fixed-top .container {
+    width: 790px;
+}
+@media (min-width: 1024px) {
+    .navbar.navbar-fixed-top .container {
+        width: 875px;
+    }
+}
+@media (min-width: 1200px) {
+    .navbar.navbar-fixed-top .container {
+        width: 1130px;
+    }
 }
 
-.subnav .navbar-search .search-query:focus {
-  background-color: #fff;
-  border-color: #F4C121;
-  color: #000;
-}
-
-.subnav .container #search-address {
-  border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
+.nav li button {
+    margin-top: -1px;
+    border-color: #2C4489;
 }
 
 .geolocate {
-  border-bottom-right-radius: 0px;
-  border-top-right-radius: 0px;
-  border-color: #2C4489;
-  margin-top: -1px
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
 }
 
 .subnav .container {
@@ -141,7 +158,7 @@ img.intro {
 h1.static-title {
   font-family: "Bariol";
   color: #29ABE2;
-  padding: 40px 0 25px 0;
+  padding: 10px 0 25px 0;
   font-weight: normal;
 }
 
@@ -154,7 +171,7 @@ h2.question {
 }
 
 .partner {
-  max-width: 135px;
+  max-width: 230px;
   max-height: 135px;
   float: left;
   vertical-align: middle;
@@ -177,17 +194,31 @@ h2.question {
 }
 
 #filter-toggle {
-  position: fixed;
-  border: 1px solid #062F86;
-  margin: 12px 0 0 200px;
+  margin-right: 10px;
 }
 
 .popover-inner {
   border-radius: 0px;
   -moz-border-radius: 0px;
   background: #fff;
-  border: 1px solid #c2c2c2;
-  margin-top: 18px;
+  margin-top: 20px;
+  -webkit-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.popover.bottom .arrow {
+	top: 11px;
+	left: 10%;
+	margin-left: -15px;
+	border-right: 15px solid transparent;
+	border-bottom: 15px solid white;
+	border-left: 15px solid transparent;
+}
+
+/* == don't re-use this class or your popover will probably look bad == */
+.popover.bottom {
+  margin-left: 119px;
 }
 
 .popover-title {
@@ -195,12 +226,475 @@ h2.question {
   border: none;
 }
 
+#loc_links a {
+	clear: both;
+}
+
+.loc_name h4 {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+  font-size: 21px;
+  color: #29ABE2; 
+}
+
 #compare-box {
   position: fixed;
-  min-height: 150px;
-  width: 355px;
+  min-height: 120px;
+  width: 20%;
   background: url(../images/compare-bg.png) repeat;
-  z-index: 9999;
+  z-index: 999;
   right: 0;
-  top: 140px
+  top: 180px
 }
+
+.container .location {
+    width: 50%;
+    float: left;
+}
+
+#compare-modal {
+    width: 60%;
+    margin: 0 auto;
+    top: 10%;
+    left: 5%;
+}
+
+#compare-modal .modal-body {
+    max-height: 602px;
+    overflow: hidden;
+}
+
+.container > table, #compare-modal .modal-body > table {
+    width: 100%;
+    padding: 0.5em;
+}
+
+table.compare-table td {
+    padding: 5px; 0.5em;
+    width: 50%;
+}
+
+#text-info-modal {
+    z-index: 2070;  /* .popover z-index is 2060, we want this in front of everything */
+}
+
+.container .location h2 {
+    margin-top: 3em;
+    margin-bottom: 1em;
+}
+.loc_accred {
+    padding-top: 20px;
+}
+.loc_directions {
+    float: left;
+    margin: 0.75em;
+}
+
+.accordion-toggle {
+  font-size: 20px;
+  font-family: "Bariol Bold";
+  color: #666;
+}
+
+.accordion-inner ul {
+  padding-top: 10px;
+}
+
+.accordion-inner li {
+  padding: 2px 0 2px 0;
+}
+
+.loc_directions .dropdown-menu {
+    margin-left: 107px;
+    margin-top: -57px;
+}
+
+.loc_moreinfo, .loc_lessinfo {
+    float:right;
+    margin: 1.75em;
+}
+
+.location_item {
+    width: 30em;
+    font-size: 90%;
+}
+
+.loc_address {
+    margin-bottom: 0.75em;
+}
+
+.loc_address {
+    color: #999999;
+}
+
+.compare-table .loc_phone_table {
+    margin: 0.25em -0.5em;
+}
+
+.loc_phone_table thead {
+    font-weight: bold;
+}
+.compare-table td .loc_phone_table td {
+    padding: 0 0.5em;
+    width: auto
+}
+
+.loc_waitlist {
+    border: 1px solid black;
+    background-color: #eeeeee;
+    padding: 1em;
+    margin: 1em 0;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: bold;
+}
+
+.loc_simplefield {
+    padding-bottom: 0.25em;
+    vertical-align: top;
+}
+
+
+.subnav {
+    background-color: #005182;
+    height: 50px;
+    width: 100%;
+    font-size: 14px;
+}
+.subnav-fixed {
+    border-color: #999999;
+    border-radius: 0 0 0 0;
+    border-width: 0 0 1px;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    z-index: 1020;
+}
+.subnav .container {
+    width: 650px;
+    margin-top: 8px;
+}
+@media (min-width: 1024px) {
+    .subnav .container {
+        width: 875px;
+    }
+}
+@media (min-width: 1200px) {
+    .subnav .container {
+        width: 1130px;
+    }
+}
+.subnav .nav > li {
+    display: block;
+    float: left;
+    margin-top: 5px;
+}
+.subnav .nav > li > a {
+    border-radius: 0 0 0 0;
+    margin: 0;
+    padding-bottom: 11px;
+    padding-top: 11px;
+    line-height: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: #dddddd;
+    float: left;
+    height: 14px;
+}
+.subnav .nav > li > a:hover {
+    color: #eeeeee;
+    background-color: #0B5C8D;
+}
+.subnav .nav > li > a > i {
+    margin: 2px;
+}
+.subnav-fixed .nav {
+    margin: 0 auto;
+    padding: 0 1px;
+}
+.subnav .nav {
+    margin-bottom: 0;
+    display: block;
+    left: 0;
+    position: relative;
+}
+.subnav .nav.pull-right {
+    margin-left: 10px;
+    margin-right: 0;
+    float: right;
+}
+.subnav .navbar-search .search-query {
+    color: #000;
+    background-color: #fff;
+    border-color: #2C4489;
+    font-size: 14px;
+}
+.static .subnav .navbar-search .search-query {
+    border-radius: 3px;
+}
+.subnav .navbar-search input.search-query {
+    padding: 4px 9px;
+    margin: -2px;
+    border-radius: 0 3px 3px 0;
+    border: 1px solid #2C4489;
+    margin-top: -5px;
+
+}
+.subnav .navbar-search select.search-query {
+    padding: 2px 9px;
+    margin: 0 12px;
+    width: 8em;
+    height: 28px;
+    border-radius: 3px;
+}
+.subnav .navbar-search .search-query:focus {
+  background-color: #fff;
+  border-color: #F4C121;
+  color: #000;
+}
+.subnav .navbar-search select.search-query option {
+    border-style: none;
+    border-radius: 0;
+    font-size: 14px;
+}
+
+
+#map-container { 
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 7.7em;
+    bottom: 0;
+    -webkit-box-shadow: 3px 0px 5px rgba(50, 50, 50, 0.3);
+	-moz-box-shadow:    3px 0px 5px rgba(50, 50, 50, 0.3);
+	box-shadow:         3px 0px 5px rgba(50, 50, 50, 0.3);
+    border-right: 1px solid #9c9c9c;
+}
+#map-container.show-directions, #compare-box.show-directions {
+    right: 305px;
+}
+#map-container.hide-directions, #compare-box.hide-directions {
+    right: 0;
+}
+.hidden-phone.address-input {
+    width: 450px;
+    margin-right: 12px;
+}
+.visible-phone.address-input {
+    width: 95%;
+}
+#map { height: 100%; }
+#map img { max-width: none; }
+#filter-selection {
+    display: none;
+}
+.filter-label {
+    display: inline;
+}
+.hidden-phone.directions { 
+    position: absolute;
+    right: 0;
+    top: 7.7em;
+    bottom: 0;
+    width: 280px;
+    overflow-y: scroll;
+    padding: 10px 10px 0 0;
+}
+
+.hidden-phone.directions h3 {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+  color: #29ABE2;
+}
+
+.hidden-phone.directions b {
+  color: #29ABE2;
+}
+
+.visible-phone.directions {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 6.7em;
+    bottom: 0;
+    background-color: #ffffff;
+}
+
+.external-directions {
+  padding-bottom: 15px;
+}
+
+.external-directions a {
+  font-size: 11px;
+}
+
+.d_step {
+    margin: 1em auto;
+}
+
+.d_warn {
+	border-bottom: 1px solid #c2c2c2;
+}
+
+.d_instr {
+}
+
+.d_dist {
+    padding-left: 1em;
+    color: #777;
+}
+/* fake star ratings */
+.loc_rating {
+    float: right;
+    margin-right: 2em;
+}
+.star-notice {
+    color: #999999;
+}
+
+.textrow1 {
+    background-color: #e2e2e2;
+}
+.textrow2 {
+}
+.clear_dir {
+    margin: 0.25em;
+}
+
+.text-popup-img {
+  margin-left: 21px;
+  padding-bottom: 25px;
+}
+
+h1.texting-info {
+  font-family: "Bariol Bold";
+  color: #29ABE2;
+  text-transform: none;
+  font-weight: normal;
+}
+
+h2.texting-info {
+  font-family: "Bariol";
+  color: #29ABE2;
+  text-transform: none;
+  font-weight: normal;
+}
+
+
+/* Map popover styling =============================================================== */
+
+.location_item h4 {
+  font-family: "Bariol";
+  color: #29ABE2;
+  font-size: 18px;
+  width: 90%;
+  margin-bottom: 5px;
+}
+
+.loc_address {
+  text-transform: capitalize !important;
+}
+
+.loc_address {
+  text-transform: capitalize;
+}
+
+.loc_phone_table {
+  margin-top: 10px;
+}
+
+.textrow1 {
+    background-color: #f6f6f6;
+    margin-top: 15px
+}
+
+.loc_phone_table td {
+  padding: 2px 0 2px 10px;
+}
+
+.textrow2 {
+  padding-top: 10px;
+}
+
+.loc_simplefield {
+  padding-bottom: 0.25em;
+  vertical-align: top;
+  padding: 5px 0 5px 10px;
+}
+
+.popover-title {
+  font-family: "Bariol";
+  font-weight: normal;
+  color: #29ABE2;
+  font-size: 20px;
+}
+
+.update {
+  margin-top: -45px;
+}
+
+#compare-content {
+  color: #fff;
+}
+
+#compare-content ul {
+  padding: 10px 0 0 0;
+  margin-left: 0;
+  list-style-type: none;
+}
+
+#compare-content li {
+  padding: 3px;
+  margin: 2px auto;
+  width: 90%;
+}
+
+.comparing {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+  font-size: 20px;
+  padding: 12px 0 0 22px;
+  color: #fff;
+}
+
+.accredation {
+  margin-bottom: 10px;
+}
+
+.compare-btn {
+  float: right;
+  top: 9px;
+  position: absolute;
+  right: 5px;
+}
+
+.modal-header h3 {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+}
+
+.location h3 {
+  font-family: "Bariol Bold";
+  font-weight: normal;
+  color: #29ABE2;
+}
+
+.web-email {
+  margin-bottom: 15px;
+}
+
+.features {
+  padding-left: 10px;
+}
+
+li.loc_item.active {
+    color: #ffffff;
+    border-radius: 3px;
+    background-color: #faa732;
+    background-image: -moz-linear-gradient(center top, #fbb450, #f89406);
+}
+li.loc_item {
+    cursor: pointer;
+}
+
