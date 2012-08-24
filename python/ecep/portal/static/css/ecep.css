@@ -588,11 +588,13 @@ h2.texting-info {
 
 #compare-content ul {
   padding: 10px 0 0 0;
+  margin-left: 0;
   list-style-type: none;
 }
 
 #compare-content li {
-  padding: 3px 0 3px;
+  padding: 3px;
+  margin: 2px auto;
   width: 90%;
 }
 
