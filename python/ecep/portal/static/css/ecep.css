@@ -116,11 +116,31 @@ img.intro {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
+.navbar.navbar-fixed-top .navbar-inner {
+    padding: 0;
+}
+.navbar.navbar-fixed-top .container {
+    width: 790px;
+}
+@media (min-width: 1024px) {
+    .navbar.navbar-fixed-top .container {
+        width: 875px;
+    }
+}
+@media (min-width: 1200px) {
+    .navbar.navbar-fixed-top .container {
+        width: 1130px;
+    }
+}
+
+.nav li button {
+    margin-top: -1px;
+    border-color: #2C4489;
+}
+
 .geolocate {
-  border-bottom-right-radius: 0px;
-  border-top-right-radius: 0px;
-  border-color: #2C4489;
-  margin-top: -1px
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
 }
 
 .subnav .container {
@@ -174,19 +194,9 @@ h2.question {
 }
 
 #filter-toggle {
-  border: 1px solid #062F86;
-  margin: 12px 0 0 200px;
-  top: 7em;
-  left: -8em;
+  margin-right: 10px;
 }
 
-.popover {
-    left: 81px;
-    top: 138px;
-}
-.popover.bottom .arrow {
-    left: 31px;
-}
 .popover-inner {
   border-radius: 0px;
   -moz-border-radius: 0px;
@@ -335,7 +345,6 @@ table.compare-table td {
     border-color: #999999;
     border-radius: 0 0 0 0;
     border-width: 0 0 1px;
-    box-shadow: 0 1px 0 #FFFFFF inset, 0 1px 5px rgba(0, 0, 0, 0.1);
     left: 0;
     position: fixed;
     right: 0;
@@ -343,8 +352,18 @@ table.compare-table td {
     z-index: 1020;
 }
 .subnav .container {
-    width: 1170px;
+    width: 650px;
     margin-top: 8px;
+}
+@media (min-width: 1024px) {
+    .subnav .container {
+        width: 875px;
+    }
+}
+@media (min-width: 1200px) {
+    .subnav .container {
+        width: 1130px;
+    }
 }
 .subnav .nav > li {
     display: block;
@@ -391,6 +410,9 @@ table.compare-table td {
     border-color: #2C4489;
     font-size: 14px;
 }
+.static .subnav .navbar-search .search-query {
+    border-radius: 3px;
+}
 .subnav .navbar-search input.search-query {
     padding: 4px 9px;
     margin: -2px;
@@ -416,6 +438,7 @@ table.compare-table td {
     border-radius: 0;
     font-size: 14px;
 }
+
 
 #map-container { 
     position: absolute;
