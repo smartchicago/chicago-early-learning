@@ -10,10 +10,12 @@ ecep.geocoded_marker = null;
 ecep.directions_service = null;
 ecep.directions_display = null;
 ecep.comparing = [];
+ecep.locationMarkers = { };
 ecep.initialBounds = null;
 ecep.onMapPage = null;
 
 ecep.getUrl = function(name) {
+    var mapImgs = '/static/images/map/'
     switch (name) {
         case 'loadLocations': 
             return '/location/';
@@ -27,10 +29,53 @@ ecep.getUrl = function(name) {
             return '/location/' + arguments[1] + '/';
         case 'compare':
             return '/compare/' + arguments[1] + '/' + arguments[2] + '/';
+        case 'normal-marker':
+            return mapImgs + 'marker-inactive.png';
+        case 'search-marker':
+            return mapImgs + 'loc-marker.png';
+        case 'geo-marker':
+            return mapImgs + 'geo-marker.png';
+        case 'selected-marker':
+            return mapImgs + 'marker-active.png';
+        case 'cluster-small':
+            return mapImgs + 'cluster-sm.png';
+        case 'cluster-medium':
+            return mapImgs + 'cluster-md.png';
+        case 'cluster-large':
+            return mapImgs + 'cluster-lg.png';
+
         default:
             throw 'Unknown URL endpoint "' + name + '"';
     }
 };
+
+ecep.markerStyle = [
+    {
+        url: ecep.getUrl('cluster-small'),
+        //width and height don't scale image, they crop it
+        width: 54,
+        height: 54,
+        anchor: [0, 0], //[x, y] in px from center
+        textSize: 13,     //not sure what units these are
+        textColor: 'white'
+    },
+    {
+        url: ecep.getUrl('cluster-medium'),
+        width: 61,
+        height: 61,
+        anchor: [0, 0],
+        textSize: 13,
+        textColor: 'white'
+    },
+    {
+        url: ecep.getUrl('cluster-large'),
+        width: 67,
+        height: 67,
+        anchor: [0, 0],
+        textSize: 13,
+        textColor: 'black'
+    }
+];
 
 ecep.init = function() {
     //Are we on the map page?
@@ -174,7 +219,9 @@ ecep.init = function() {
 
 ecep.comparingChanged = function(event) {
     _gaq.push(['_trackEvent', 'Comparison', 'Change', 'Comparing: ' + ecep.comparing.join(', ')]);
-    var cmp = $('#compare-content');
+    var cmp = $('#compare-content'),
+        activeImg = ecep.markerImage('selected-marker'),
+        inactiveImg = ecep.markerImage('normal-marker');
 
     // if the first item in the list, it must have been sloughed off; remove it
     if (cmp.find('li:first').data('location-id') != ecep.comparing[0].id) {
@@ -196,27 +243,38 @@ ecep.comparingChanged = function(event) {
 
     // create a new list item for the last item in the comparison
     // (only ever add one at a time)
-    var item = $('<li/>');
-    item.addClass('loc_item');
-    item.data('location-id', ecep.comparing[ecep.comparing.length-1].id);
-    item.html(ecep.comparing[ecep.comparing.length-1].name);
-    item.on('click', function() {
-        // when you click on an item, toggle the active class
+    var listNode = $('<li/>'),
+        item = ecep.comparing[ecep.comparing.length - 1];
+
+    listNode.addClass('loc_item');
+    listNode.data('location-id', item.id);
+    listNode.html(item.name);
+    listNode.on('click', function() {
+        // when you click on an listNode, toggle the active class
         $(this).toggleClass('active');
+        item.active = !item.active;
+
+        var mh = ecep.locationMarkers[item.id];
+        //this should always be true, but just to be safe...
+        if (mh) { 
+            mh.active = !mh.active;
+            mh.mkr.setIcon(mh.active ? activeImg : inactiveImg);
+        }
+
         var actives = cmp.find('li.loc_item.active');
         var btn = $('#compare-locations');
         btn.off('click');
 
-        // if two items are selected, then wire up the comparison button
+        // if two listNodes are selected, then wire up the comparison button
         if (actives.length == 2) {
             wireCompare(btn, $(actives[0]).data('location-id'), $(actives[1]).data('location-id'));
         }
-        // more or less than two items? disable the compare button
+        // more or less than two listNodes? disable the compare button
         else {
             btn.addClass('disabled');
         }
     });
-    cmp.find('ul').append(item);
+    cmp.find('ul').append(listNode);
 
     // if there are two or more items, we can compare (maybe)
     if (ecep.comparing.length >= 2) {
@@ -363,7 +421,11 @@ ecep.expandInfo = function(event) {
 
         // add the location if it's not alredy in the list
         if (!found) {
-            ecep.comparing.push({id:loc_id, name:mkr.get('location_site_name')});
+            ecep.comparing.push({
+                id: loc_id,
+                name: mkr.get('location_site_name'),
+                active: false
+            });
 
             // limit the list to 10 items
             if (ecep.comparing.length > 10) {
@@ -425,27 +487,39 @@ ecep.loadLocations = function() {
         }
 
         for (var i = 0; i < data.length; i++) {
-            if (!data[i].lng || !data[i].lat) {
+            var loc = data[i];
+            var mh = ecep.locationMarkers[loc.id] || { mkr: null, active: false };
+
+            if (!loc.lng || !loc.lat) {
                 continue;
             }
-            var ll = new google.maps.LatLng(data[i].lat, data[i].lng);
+            var ll = new google.maps.LatLng(loc.lat, loc.lng);
             bounds.extend(ll);
+
+            var markerImg = ecep.markerImage(mh.active ? 'selected-marker' : 'normal-marker');
 
             var marker = new google.maps.Marker({
                 position: ll,
-                title: data[i].site_name});
-            marker.set('location_id', data[i].id);
-            marker.set('location_site_name', data[i].site_name);
+                title: loc.site_name, 
+                icon: markerImg
+            });
+            marker.set('location_id', loc.id);
+            marker.set('location_site_name', loc.site_name);
 
             google.maps.event.addListener(marker, 'click', ecep.expandInfo);
 
             markers.push(marker);
+            mh.mkr = marker;
+            ecep.locationMarkers[loc.id] = mh;
         }
 
         if (ecep.clusterr != null) {
             ecep.clusterr.clearMarkers();
         }
-        ecep.clusterr = new MarkerClusterer(ecep.map, markers, {maxZoom:18, printable:true});
+        ecep.clusterr = new MarkerClusterer(ecep.map, markers, {
+            maxZoom: 18,
+            styles: ecep.markerStyle
+        });
 
         ecep.map.fitBounds(bounds);
 
@@ -471,7 +545,7 @@ ecep.geolocate = function() {
             var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
             if (ecep.initialBounds.contains(ll)) {
                 _gaq.push(['_trackEvent', 'Geolocate', 'Found']);
-                ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'blue', true);
+                ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'geo-marker', true);
 
                 ecep.clearDirections();
             }
@@ -496,14 +570,13 @@ ecep.geocode = function(addr) {
                 if (ecep.initialBounds.contains(ll)) {
                     _gaq.push(['_trackEvent', 'Geocode', 'Found']);
 
-                    ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
+                    ecep.geocoded_marker = ecep.dropMarker(
+                        ll, results[0].formatted_address, 'search-marker', true);
                     $('#search-address').val(addr);
 
                     // trigger the load event, and apply the radius filter
                     ecep.loadLocations();
-
                     ecep.clearDirections();
-
                     return;
                 }
                 else {
@@ -519,21 +592,12 @@ ecep.geocode = function(addr) {
     );
 };
 
-ecep.dropMarker = function(loc, title, color, reposition) {
-    var url = ecep.getUrl('blue-dot');
-    if (color == 'green') {
-        url = ecep.getUrl('green-dot');
-    }
+ecep.dropMarker = function(loc, title, urlName, reposition) {
     var marker = new google.maps.Marker({
         map: ecep.map,
         position: loc,
         title: title,
-        icon: new google.maps.MarkerImage(url),
-        shadow: new google.maps.MarkerImage(
-            ecep.getUrl('shadow-pin'),
-            new google.maps.Size(40, 37), 
-            new google.maps.Point(0,0), 
-            new google.maps.Point(12,37))
+        icon: ecep.markerImage(urlName)
     });
     if (reposition) {
         if (!ecep.map.getBounds().contains(loc)) {
@@ -542,6 +606,16 @@ ecep.dropMarker = function(loc, title, color, reposition) {
     }
     return marker;
 };
+
+ecep.markerImage = function(name) {
+    var markerImg = new google.maps.MarkerImage(
+        ecep.getUrl(name),
+        new google.maps.Size(25, 25)
+    );
+    markerImg.anchor = new google.maps.Point(12, 25);
+
+    return markerImg;
+}
 
 ecep.directions = function(event) {
     var orig = $(this).data('navto');
