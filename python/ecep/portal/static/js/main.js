@@ -66,6 +66,7 @@ ecep.init = function() {
 
     //Bail early if we're not on the map page
     if (!ecep.onMapPage) {
+        $(document.body).addClass('static');
         return;
     }
 
@@ -142,8 +143,8 @@ ecep.init = function() {
         if ($('#update-filter:visible').length > 0) {
 
             // reset the element's left positioning
-            $('.popover')[0].style.left = null;
-            $('.popover')[0].style.top = null;
+            //$('.popover')[0].style.left = null;
+            //$('.popover')[0].style.top = null;
 
             $('#update-filter').click(ecep.loadLocations);
             $('#all').click(function(){
