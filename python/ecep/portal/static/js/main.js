@@ -31,8 +31,10 @@ ecep.getUrl = function(name) {
             return '/compare/' + arguments[1] + '/' + arguments[2] + '/';
         case 'normal-marker':
             return mapImgs + 'marker-inactive.png';
-        case 'loc-marker':
+        case 'search-marker':
             return mapImgs + 'loc-marker.png';
+        case 'geo-marker':
+            return mapImgs + 'geo-marker.png';
         case 'selected-marker':
             return mapImgs + 'marker-active.png';
         case 'cluster-small':
@@ -51,16 +53,16 @@ ecep.markerStyle = [
     {
         url: ecep.getUrl('cluster-small'),
         //width and height don't scale image, they crop it
-        width: 67,
-        height: 67,
+        width: 54,
+        height: 54,
         anchor: [0, 0], //[x, y] in px from center
         textSize: 13,     //not sure what units these are
         textColor: 'white'
     },
     {
         url: ecep.getUrl('cluster-medium'),
-        width: 67,
-        height: 67,
+        width: 61,
+        height: 61,
         anchor: [0, 0],
         textSize: 13,
         textColor: 'white'
@@ -543,7 +545,7 @@ ecep.geolocate = function() {
             var ll = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
             if (ecep.initialBounds.contains(ll)) {
                 _gaq.push(['_trackEvent', 'Geolocate', 'Found']);
-                ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'blue', true);
+                ecep.geolocated_marker = ecep.dropMarker(ll, "Your Location", 'geo-marker', true);
 
                 ecep.clearDirections();
             }
@@ -568,14 +570,13 @@ ecep.geocode = function(addr) {
                 if (ecep.initialBounds.contains(ll)) {
                     _gaq.push(['_trackEvent', 'Geocode', 'Found']);
 
-                    ecep.geocoded_marker = ecep.dropMarker(ll, results[0].formatted_address, 'green', true);
+                    ecep.geocoded_marker = ecep.dropMarker(
+                        ll, results[0].formatted_address, 'search-marker', true);
                     $('#search-address').val(addr);
 
                     // trigger the load event, and apply the radius filter
                     ecep.loadLocations();
-
                     ecep.clearDirections();
-
                     return;
                 }
                 else {
@@ -591,21 +592,12 @@ ecep.geocode = function(addr) {
     );
 };
 
-ecep.dropMarker = function(loc, title, color, reposition) {
-    var url = ecep.getUrl('blue-dot');
-    if (color == 'green') {
-        url = ecep.getUrl('green-dot');
-    }
+ecep.dropMarker = function(loc, title, urlName, reposition) {
     var marker = new google.maps.Marker({
         map: ecep.map,
         position: loc,
         title: title,
-        icon: new google.maps.MarkerImage(url),
-        shadow: new google.maps.MarkerImage(
-            ecep.getUrl('shadow-pin'),
-            new google.maps.Size(40, 37), 
-            new google.maps.Point(0,0), 
-            new google.maps.Point(12,37))
+        icon: ecep.markerImage(urlName)
     });
     if (reposition) {
         if (!ecep.map.getBounds().contains(loc)) {
