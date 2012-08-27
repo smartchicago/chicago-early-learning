@@ -311,7 +311,7 @@ table.compare-table td {
 
 .loc_moreinfo, .loc_lessinfo {
     float:right;
-    margin: 2em 1em;
+    margin: 3em 3em;
 }
 
 .location_item {
@@ -352,6 +352,7 @@ table.compare-table td {
 .loc_simplefield {
     padding-bottom: 0.25em;
     vertical-align: top;
+	overflow-x: hidden;
 }
 
 
@@ -555,6 +556,7 @@ table.compare-table td {
 
 .textrow1 {
     background-color: #e2e2e2;
+    margin-top: 0px;s
 }
 .textrow2 {
   padding-top: 10px;
@@ -612,7 +614,7 @@ h2.texting-info {
 
 .textrow1 {
     background-color: #f6f6f6;
-    margin-top: 15px
+    margin-top: 0;
 }
 
 .loc_phone_table td {
