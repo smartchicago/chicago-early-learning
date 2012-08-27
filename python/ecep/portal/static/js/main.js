@@ -96,7 +96,7 @@ ecep.init = function() {
     // Tie "enter" in text box to start button
     var inputNode = $('input.address-input');
     if (inputNode) {
-        inputNode.keyup(function(event) {
+        inputNode.keypress(function(event) {
             if(event.keyCode == 13) {
                 $($(this).data('button')).click();
                 return false;
