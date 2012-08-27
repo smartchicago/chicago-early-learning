@@ -1,12 +1,12 @@
 {% load portal_extras %}
 {% if is_popup %}<div class="location_item">{% endif %}
-    <h4>{{ item.site_name }}{% if is_popup %} <a href="/location/{{ item.id }}/"><i class="icon-share"></i></a>{% endif %}</h4>
+    <h4>{{ item.site_name }}<a href="/location/{{ item.id }}/"><i class="icon-share"></i></a></h4>
 
     <div class="loc_address">
       {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
     </div>
 
-    <div class="loc_rating">
+    <div class="loc_rating" title="Eventually, every early learning program in Chicago will receive a rating out of five stars.  These stars will indicate program quality at a glance.  The stars are not filled in yet because the rating system is still under development at the state level.  (At this time, empty stars do not mean that a program did not or will not receive any stars.)">
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>

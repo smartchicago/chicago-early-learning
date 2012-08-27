@@ -26,8 +26,7 @@ def get_opts(selected_val='2'):
                       '1': ['< 1 mi', False],
                       '2': ['< 2 mi', False],
                       '5': ['< 5 mi', False],
-                      '10': ['< 10 mi', False],
-                      '20': ['< 20 mi', False] }
+                      '10': ['< 10 mi', False] }
 
     key = selected_val if selected_val in distance_opts else '2'
     distance_opts[key][1] = True
