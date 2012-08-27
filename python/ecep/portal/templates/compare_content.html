@@ -50,12 +50,12 @@
         {% endif %}
         <tr><td> <br>
             <div class="web-email">
-              {{ locations.url.0|urlize }}<br />
+              {{ locations.url.0|urlize|url_target_blank }}<br />
               {{ locations.email.0|urlize }}
             </div>
         </td><td> <br>
             <div class="web-email">
-              {{ locations.url.1|urlize }}<br />
+              {{ locations.url.1|urlize|url_target_blank }}<br />
               {{ locations.email.1|urlize }}
             </div>
         </td></tr>
