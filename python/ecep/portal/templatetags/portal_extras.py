@@ -13,3 +13,9 @@ def nicephone(value):
         return '(%s) %s-%s' % (numonly[0:3], numonly[3:6], numonly[6:],)
     else:
         return value
+
+# Opens links in new window
+def url_target_blank(text):
+    return text.replace('<a ', '<a target="_blank" ')
+url_target_blank = register.filter(url_target_blank)
+url_target_blank.is_safe = True
