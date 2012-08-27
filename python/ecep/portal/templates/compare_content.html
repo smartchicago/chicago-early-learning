@@ -50,12 +50,12 @@
         {% endif %}
         <tr><td> <br>
             <div class="web-email">
-              {{ locations.url.0|urlize }}<br />
+              {{ locations.url.0|urlize|url_target_blank }}<br />
               {{ locations.email.0|urlize }}
             </div>
         </td><td> <br>
             <div class="web-email">
-              {{ locations.url.1|urlize }}<br />
+              {{ locations.url.1|urlize|url_target_blank }}<br />
               {{ locations.email.1|urlize }}
             </div>
         </td></tr>
@@ -134,15 +134,15 @@
             </table>
             {% endif %}
         </td></tr>
-        <tr><td class="loc_simplefield {% cycle bgcolor %}">
-            <h5 class="features">Features</h5>
+        <tr><td id="features" class="loc_simplefield {% cycle bgcolor %}">
+            <h5>Features</h5>
             {% if locations.bfields.0 %}
             <ul>
             {{ locations.bfields.0|unordered_list }}
             </ul>
             {% endif %}
-        </td><td class="loc_simplefield {{ bgcolor }}">
-            <h5 class="features">Features</h5>
+        </td><td id="features" class="loc_simplefield {{ bgcolor }}">
+            <h5>Features</h5>
             {% if locations.bfields.1 %}
             <ul>
             {{ locations.bfields.1|unordered_list }}
