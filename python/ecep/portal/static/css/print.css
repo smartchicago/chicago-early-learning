@@ -12,6 +12,11 @@
     position: relative;
     margin-top: -60pt;
 }
+.navbar-inner {
+    filter: progid:dximagetransform.microsoft.gradient(enabled = false);
+    background-color: #ffffff;
+    color: #000;
+}
 .subnav {
     position:relative;
     margin-top: -20pt;
