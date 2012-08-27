@@ -1,6 +1,6 @@
 {% load portal_extras %}
 {% if is_popup %}<div class="location_item">{% endif %}
-    <h4>{{ item.site_name }}<a href="/location/{{ item.id }}/"><i class="icon-share"></i></a></h4>
+    <h4>{{ item.site_name }}<a href="/location/{{ item.id }}/">&nbsp;&nbsp;<i class="icon-share"></i></a></h4>
 
     <div class="loc_address">
       {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
@@ -11,18 +11,19 @@
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>
         <i class="icon-star-empty"></i>
-        <i class="icon-star-empty"></i><br/>
+        <i class="icon-star-empty"></i>&nbsp;&nbsp;
         <span class="star-notice gmnoprint">What Is This?</span>
     </div>
-
+	<br><br>
     {% if item.accred %}
     <div class="loc_accred">
         <i class="icon-ok"></i>&nbsp;Accreditation: {{ item.accred }}
+	    <br>
     </div>
     {% endif %}
 
     <div id="loc_links">
-      {{ item.url|urlize }}
+      {{ item.url|urlize }} <br>
       {{ item.email|urlize }}
     </div>
 
@@ -67,12 +68,12 @@
 
 {% if is_popup %}
     <div class="loc_directions gmnoprint">
-        <div class="nav_single">
-            <a class="btn nav_to_location" href="#" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})"><i class="icon-map-marker"></i> Directions</a>
+        <div class="nav_single" id="directions-button">
+            <a class="btn btn-primary nav_to_location" href="#" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})"><i class="icon-map-marker icon-white"></i> Directions</a>
         </div>
         <div class="nav_multi btn-group">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="icon-map-marker"></i>
+            <a class="btn btn-proimary dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-map-marker icon-white"></i>
                 Directions
                 <i class="icon-chevron-right"></i>
             </a>
@@ -84,7 +85,7 @@
     </div>
 
     <div class="loc_moreinfo gmnoprint">
-        <a href="/location/{{ item.id }}" class="btn" data-id="{{ item.id }}"><i class="icon-arrow-up"></i> More Info</a>
+        <a href="/location/{{ item.id }}" class="btn btn-primary" data-id="{{ item.id }}"><i class="icon-chevron-down icon-white"></i> More Info</a>
     </div>
 </div>
 {% endif %}

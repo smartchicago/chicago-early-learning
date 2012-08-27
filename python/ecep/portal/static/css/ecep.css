@@ -283,7 +283,7 @@ table.compare-table td {
     margin-bottom: 1em;
 }
 .loc_accred {
-    padding-top: 20px;
+    padding-bottom: 10px;
 }
 .loc_directions {
     float: left;
@@ -311,7 +311,7 @@ table.compare-table td {
 
 .loc_moreinfo, .loc_lessinfo {
     float:right;
-    margin: 1.75em;
+    margin: 2em 1em;
 }
 
 .location_item {
@@ -546,7 +546,7 @@ table.compare-table td {
 }
 /* fake star ratings */
 .loc_rating {
-    float: right;
+    float: left;
     margin-right: 2em;
 }
 .star-notice {
@@ -557,6 +557,8 @@ table.compare-table td {
     background-color: #e2e2e2;
 }
 .textrow2 {
+  padding-top: 10px;
+  padding-left: 10px;
 }
 .clear_dir {
     margin: 0.25em;
@@ -602,6 +604,10 @@ h2.texting-info {
 
 .loc_phone_table {
   margin-top: 10px;
+}
+
+.loc_phone_table thead {
+  font-size: 12px;
 }
 
 .textrow1 {
@@ -684,17 +690,18 @@ h2.texting-info {
   margin-bottom: 15px;
 }
 
-.features {
-  padding-left: 10px;
-}
 
 li.loc_item.active {
-    color: #ffffff;
+    color: #fff;
     border-radius: 3px;
-    background-color: #faa732;
+    background-color: #777;
     background-image: -moz-linear-gradient(center top, #fbb450, #f89406);
 }
 li.loc_item {
     cursor: pointer;
+}
+
+#directions-button {
+  margin-top: 11px;
 }
 
