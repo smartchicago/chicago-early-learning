@@ -707,4 +707,6 @@ li.loc_item {
 #directions-button {
   margin-top: 11px;
 }
-
+.checkbox-is_age_gt_3 {
+    padding-bottom: 1em;
+}
