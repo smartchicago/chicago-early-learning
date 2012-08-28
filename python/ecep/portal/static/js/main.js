@@ -531,10 +531,35 @@ ecep.loadLocations = function() {
         if (ecep.clusterr != null) {
             ecep.clusterr.clearMarkers();
         }
+
+        //Make a cluster calculator
+        //Default is calc(10)
+        //Stolen from MarkerClusterer source for default calculator
+        var calc = function(n) { 
+            n = Math.max(2, n);
+            return function(markers, numStyles) {
+                var index = 0;
+                var count = markers.length;
+                var dv = count;
+                while (dv !== 0) {
+                    dv = Math.floor(dv / n)
+                    index++;
+                }
+
+                index = Math.min(index, numStyles);
+                return {
+                    text: count,
+                    index: index
+                };
+            };
+        };
+
         ecep.clusterr = new MarkerClusterer(ecep.map, markers, {
-            maxZoom: 18,
-            styles: ecep.markerStyle
+            maxZoom: 16,
+            styles: ecep.markerStyle,
+            gridSize: 60
         });
+        ecep.clusterr.setCalculator(calc(6));
 
         ecep.map.fitBounds(bounds);
 
