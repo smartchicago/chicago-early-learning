@@ -265,7 +265,7 @@ ecep.comparingChanged = function(event) {
             mh.active = !mh.active;
             var imgType = 'normal-marker';
             if (mh.accred) { imgType = 'accred-marker'; }
-            if (mh.active) { imgType = 'active-marker'; }
+            if (mh.active) { imgType = 'selected-marker'; }
             mh.mkr.setIcon(ecep.markerImage(imgType));
         }
 
@@ -510,7 +510,7 @@ ecep.loadLocations = function() {
 
             var imgType = 'normal-marker';
             if (mh.accred) { imgType = 'accred-marker'; }
-            if (mh.active) { imgType = 'active-marker'; }
+            if (mh.active) { imgType = 'selected-marker'; }
 
             var marker = new google.maps.Marker({
                 position: ll,

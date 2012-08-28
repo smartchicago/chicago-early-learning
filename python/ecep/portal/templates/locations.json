@@ -1,7 +1,8 @@
 [
 {% for item in items %}
 { "id": {{ item.id }}, 
-  "site_name": "{{ item.site_name }}"{% if item.geom %},
+  "site_name": "{{ item.site_name }}",
+  "accred": "{{ item.accred }}"{% if item.geom %},
   "lng": {{ item.geom.coords.0 }},
   "lat": {{ item.geom.coords.1 }}{% endif %} }{% if not forloop.last %},{% endif %}
 {% endfor %}
