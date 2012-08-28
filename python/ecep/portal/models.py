@@ -1,5 +1,6 @@
 from django.contrib.gis.db import models
 
+
 class Location(models.Model):
     site_name = models.CharField('Site Name', max_length=100)
     address = models.CharField('Address', max_length=50)
@@ -53,8 +54,8 @@ class Location(models.Model):
 
         fields = []
         for field in Location._meta.fields:
-            if field.get_internal_type() == 'NullBooleanField' and \
-                not field.get_attname() in exclude:
-                    fields.append((field.get_attname(),field.verbose_name,))
+            if (field.get_internal_type() == 'NullBooleanField' and
+                    not field.get_attname() in exclude):
+                fields.append((field.get_attname(), field.verbose_name,))
 
         return fields
