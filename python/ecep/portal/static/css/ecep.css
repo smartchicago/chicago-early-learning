@@ -77,16 +77,16 @@ img.intro {
   color: #fff;
   font-family: "Bariol Bold";
   padding: 11px 20px 12px;
-  width: 20em;
+  width: 13em;
 }
 
-.navbar .nav > li > a {
+.navbar .nav > li > a, .navbar .nav-collapse .nav > li > a {
   color: #fff;
   font-family: "Bariol Bold";
   font-size: 14px;
   padding-top: 12px;
 }
-.navbar .nav > li > a:hover {
+.navbar .nav > li > a:hover, .navbar .nav-collapse .nav > li > a:hover {
   color: #F4C121;
 }
 
@@ -121,17 +121,7 @@ img.intro {
     padding: 0;
 }
 .navbar.navbar-fixed-top .container {
-    width: 790px;
-}
-@media (min-width: 1024px) {
-    .navbar.navbar-fixed-top .container {
-        width: 875px;
-    }
-}
-@media (min-width: 1200px) {
-    .navbar.navbar-fixed-top .container {
-        width: 1130px;
-    }
+    width: 100%;
 }
 
 .nav li button {
@@ -142,10 +132,6 @@ img.intro {
 .geolocate {
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
-}
-
-.subnav .container {
-  width: 1170px;
 }
 
 #search-radius {
@@ -239,13 +225,7 @@ h2.question {
 }
 
 #compare-box {
-  position: fixed;
-  min-height: 120px;
-  width: 20%;
-  background: url(../images/compare-bg.png) repeat;
-  z-index: 999;
-  right: 0;
-  top: 180px
+    display:none;
 }
 
 .container .location {
@@ -360,32 +340,10 @@ table.compare-table td {
 .subnav {
     background-color: #005182;
     height: 50px;
-    width: 100%;
     font-size: 14px;
 }
-.subnav-fixed {
-    border-color: #999999;
-    border-radius: 0 0 0 0;
-    border-width: 0 0 1px;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 50px;
-    z-index: 1020;
-}
 .subnav .container {
-    width: 650px;
-    margin-top: 8px;
-}
-@media (min-width: 1024px) {
-    .subnav .container {
-        width: 875px;
-    }
-}
-@media (min-width: 1200px) {
-    .subnav .container {
-        width: 1130px;
-    }
+    padding-top: 6px;
 }
 .subnav .nav > li {
     display: block;
@@ -410,6 +368,10 @@ table.compare-table td {
 }
 .subnav .nav > li > a > i {
     margin: 2px;
+}
+.subnav-fixed {
+    margin-left: -20px;
+    margin-right: -20px;
 }
 .subnav-fixed .nav {
     margin: 0 auto;
@@ -655,8 +617,8 @@ h2.texting-info {
 
 #compare-content li {
   padding: 3px;
-  margin: 2px 20px;
-  width: 90%;
+  margin: 2px auto;
+  max-width: 90%;
 }
 
 .comparing {
@@ -709,4 +671,92 @@ li.loc_item {
 }
 .checkbox-is_age_gt_3 {
     padding-bottom: 1em;
+}
+
+.navbar .nav-collapse .nav > li {
+    float:left;
+}
+@media (max-width: 480px) {
+    .navbar .brand {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar.navbar-fixed-top {
+        margin-bottom: 0;
+    }
+    .subnav .container {
+        width: 650px;
+    }
+    #search-address {
+        margin: -2px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .navbar.navbar-fixed-top {
+        margin-bottom: 0;
+    }
+    .navbar.navbar-fixed-top .container {
+        width: 768px;
+    }
+    .subnav .container {
+        width: 768px;
+    }
+    #compare-box {
+        display: block;
+        position: fixed;
+        min-height: 120px;
+        min-width: 200px;
+        width: 20%;
+        background: url(../images/compare-bg.png) repeat;
+        z-index: 999;
+        right: 0;
+        top: 180px
+    }
+}
+
+@media (min-width: 980px) {
+    .subnav.subnav-fixed {
+        border-color: #999999;
+        border-radius: 0 0 0 0;
+        border-width: 0 0 1px;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 50px;
+        z-index: 1020;
+    }
+    .subnav .container {
+        width: 980px;
+        margin-top: 8px;
+        padding-top: 0;
+    }
+    .navbar.navbar-fixed-top .container {
+        width: 980px;
+    }
+    .navbar.navbar-fixed-top {
+        margin-bottom: 0;
+    }
+    #compare-box {
+        display: block;
+        position: fixed;
+        min-height: 120px;
+        min-width: 250px;
+        width: 20%;
+        background: url(../images/compare-bg.png) repeat;
+        z-index: 999;
+        right: 0;
+        top: 180px
+    }
+}
+
+@media (min-width: 1200px) {
+    .subnav .container {
+        width: 1130px;
+    }
+    .navbar.navbar-fixed-top .container {
+        width: 1130px;
+    }
 }

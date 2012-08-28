@@ -28,10 +28,14 @@
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
-                <a class="brand" href="/">
-                <img id="logoImage" class="gmnoprint" src="{% static "images/cel-logo.png" %}" alt="Chicago Early Learning" /> chicago early learning
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </a>
-                <div class="hidden-phone gmnoprint">
+
+                <a class="brand" href="/"><img id="logoImage" class="gmnoprint" src="{% static "images/cel-logo.png" %}" alt="Chicago Early Learning" /> chicago early learning</a>
+                <div class="nav-collapse gmnoprint">
                     <ul class="nav nav-pills pull-right">
                         {% if settings.TWILIO_ENABLED %}
                             <li id="text-link">
@@ -41,11 +45,6 @@
                         <li id="about-link"><a href="about.html">About</a></li>
                         <li id="faq-link"><a href="faq.html">FAQ</a></li>
                     </ul>
-                </div>
-                <div class="visible-phone gmnoprint">
-                    <ul class="nav nav-pills pull-right">
-                        <li><a href="#">[X]</a></li>
-                    </ul> 
                 </div>
             </div>
         </div>
