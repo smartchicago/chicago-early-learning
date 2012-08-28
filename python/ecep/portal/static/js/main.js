@@ -694,9 +694,9 @@ ecep.typeDirections = function() {
     var external_dir = $('<div />');
     external_dir.addClass('external-directions');
 
-    var external_link = $('<a/>');
+    var external_link = $('<a target="_blank"/>');
     external_link.addClass('ext-dir');
-    external_link.text('Directions from Google');
+    external_link.text('Additional Directions from Google');
     var url = 'http://maps.google.com/?saddr=' + result.routes[0].legs[0].start_address +
         '&daddr=' + result.routes[0].legs[result.routes[0].legs.length-1].end_address;
     var tracker = _gat._getTrackerByName('outlinkTracker');
