@@ -194,10 +194,6 @@ ecep.init = function() {
         $('#filter-toggle').popover('toggle');
         if ($('#update-filter:visible').length > 0) {
 
-            // reset the element's left positioning
-            //$('.popover')[0].style.left = null;
-            //$('.popover')[0].style.top = null;
-
             $('#update-filter').click(ecep.loadLocations);
             $('#all').click(function(){
                 var filters = $('.loc_filter_check');
@@ -246,10 +242,39 @@ ecep.comparingChanged = function(event) {
         x.removeClass('disabled');
     };
 
+    var wirePopup = function(btn) {
+        btn.addClass('disabled');
+        if (btn.data('popover')) {
+            btn.popover('enable');
+        }
+        else {
+            btn.popover({
+                trigger: 'hover',
+                content: 'Select two locations to compare.',
+                template: '<div class="popover cmp-popover"><div class="arrow"></div>' +
+                    '<div class="popover-inner"><div class="popover-content"><p></p></div></div></div>',
+                placement: 'left'
+            });
+        }
+    };
+
     // create a new list item for the last item in the comparison
     // (only ever add one at a time)
     var listNode = $('<li/>'),
         item = ecep.comparing[ecep.comparing.length - 1];
+
+    var setMarkerType = function(id, active) {
+        var mh = ecep.locationMarkers[id];
+        //this should always be true, but just to be safe...
+        if (mh) { 
+            mh.active = active;
+            var imgType = 'normal-marker';
+            if (mh.accred) { imgType = 'accred-marker'; }
+            if (mh.active) { imgType = 'selected-marker'; }
+            mh.mkr.setIcon(ecep.markerImage(imgType));
+        }
+
+    };
 
     listNode.addClass('loc_item');
     listNode.data('location-id', item.id);
@@ -258,28 +283,23 @@ ecep.comparingChanged = function(event) {
         // when you click on an listNode, toggle the active class
         $(this).toggleClass('active');
         item.active = !item.active;
-
-        var mh = ecep.locationMarkers[item.id];
-        //this should always be true, but just to be safe...
-        if (mh) { 
-            mh.active = !mh.active;
-            var imgType = 'normal-marker';
-            if (mh.accred) { imgType = 'accred-marker'; }
-            if (mh.active) { imgType = 'selected-marker'; }
-            mh.mkr.setIcon(ecep.markerImage(imgType));
-        }
-
+        
+        setMarkerType(item.id, item.active);
+    
         var actives = cmp.find('li.loc_item.active');
         var btn = $('#compare-locations');
         btn.off('click');
 
         // if two listNodes are selected, then wire up the comparison button
         if (actives.length == 2) {
+            if (btn.data('popover')) {
+                btn.popover('disable');
+            }
             wireCompare(btn, $(actives[0]).data('location-id'), $(actives[1]).data('location-id'));
         }
         // more or less than two listNodes? disable the compare button
         else {
-            btn.addClass('disabled');
+            wirePopup(btn);
         }
     });
     cmp.find('ul').append(listNode);
@@ -305,25 +325,30 @@ ecep.comparingChanged = function(event) {
         var a = null, b = null;
         var actives = cmp.find('li.loc_item.active');
 
-        // if only two items in the list, allow comparing
-        // prior to selection
+        // if only two items in the list, automatically select them
         if (ecep.comparing.length == 2) {
-            a = ecep.comparing[0].id;
-            b = ecep.comparing[1].id;
+            cmp.find('li.loc_item').addClass('active');
+            actives = cmp.find('li.loc_item.active');
+            setMarkerType(ecep.comparing[0].id, true);
+            setMarkerType(ecep.comparing[1].id, true);
         }
+
         // if there are two selected items, they may be compared
-        else if (actives.length == 2) {
+        if (actives.length == 2) {
             a = $(actives[0]).data('location-id');
             b = $(actives[1]).data('location-id');
         }
 
         // two things selected? wire up and enable button
         if (a != null && b != null) {
+            if (btn.data('popover')) {
+                btn.popover('disable');
+            }
             wireCompare(btn, a, b);
         }
         // no two things comparable, disable the button
         else {
-            btn.addClass('disabled');
+            wirePopup(btn);
         }
     }
 };
