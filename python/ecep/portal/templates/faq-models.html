@@ -57,6 +57,9 @@ If we want to actually group questions by topic, we'll need to modify this a bit
 <script type="text/javascript">
     $(document).ready(function() { 
         $('#faq-link').addClass('active');
+        if (window.location.hash != '') {
+            $('a[href="' + window.location.hash + '"]').parent().next().collapse('show');
+        }
     });
 </script>
 

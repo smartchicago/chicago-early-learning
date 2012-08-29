@@ -7,13 +7,16 @@
       {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
     </div>
 
-    <div class="loc_rating" title="Eventually, every early learning program in Chicago will receive a rating out of five stars.  These stars will indicate program quality at a glance.  The stars are not filled in yet because the rating system is still under development at the state level.  (At this time, empty stars do not mean that a program did not or will not receive any stars.)">
-        <i class="icon-star-empty"></i>
-        <i class="icon-star-empty"></i>
-        <i class="icon-star-empty"></i>
-        <i class="icon-star-empty"></i>
-        <i class="icon-star-empty"></i>&nbsp;&nbsp;
-        <span class="star-notice gmnoprint">What Is This?</span>
+    <div class="loc_rating">
+        <!-- href anchor matches settings in django.faq -->
+        <a href="/faq.html#topic2-7" data-content="Eventually, every early learning program in Chicago will receive a rating out of five stars.  These stars will indicate program quality at a glance.  The stars are not filled in yet because the rating system is still under development at the state level.  (At this time, empty stars do not mean that a program did not or will not receive any stars.)" data-title="Ratings" data-trigger="hover" data-placement="right">
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>&nbsp;&nbsp;
+            <span class="star-notice gmnoprint">What Is This?</span>
+        </a>
     </div>
 	<br><br>
     {% if item.accred %}
