@@ -1,7 +1,7 @@
 {% load portal_extras %}
 {% if is_popup %}<div class="location_item">{% endif %}
 
-<h4>{{ item.site_name }}<a href="/location/{{ item.id }}/" target="_blank">&nbsp;&nbsp;<button class="btn btn-mini">Permalink</button></a></h4>
+<h4>{{ item.site_name }}&nbsp;&nbsp;<a href="/location/{{ item.id }}/" class="btn btn-mini" target="_blank">Permalink</a></h4>
 
     <div class="loc_address">
       {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
