@@ -512,9 +512,8 @@ table.compare-table td {
     color: #777;
 }
 /* fake star ratings */
-.loc_rating {
-    float: left;
-    margin-right: 2em;
+.loc_rating a {
+    text-decoration: none;
 }
 .star-notice {
     color: #999999;

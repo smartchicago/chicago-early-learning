@@ -377,6 +377,7 @@ ecep.showComparison = function(a, b) {
             $('#compare-modal .modal-body').html(data);
             $('#compare-modal').modal();
             $('#compare-permalink').attr('href', url);
+            $('.loc_rating a').popover();
         }
         else {
             // add a fullscreen div
@@ -439,6 +440,8 @@ ecep.expandInfo = function(event) {
             $('.loc_lessinfo a')
                 .off('click', ecep.expandInfo)
                 .on('click', {marker: mkr, type: 'popup'}, ecep.expandInfo);
+
+            $('.loc_rating a').popover();
         }));
     });
 
