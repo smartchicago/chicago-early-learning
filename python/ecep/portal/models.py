@@ -23,7 +23,7 @@ class Location(models.Model):
     is_child_parent_center = models.NullBooleanField('Child-Parent Center')
     ages = models.CharField('Ages Served', max_length=50, blank=True)
     exec_director = models.CharField('Executive Director', max_length=100, blank=True)
-    ctr_director = models.CharField('Center Director', max_length=100, blank=True)
+    ctr_director = models.CharField('Director/Principal', max_length=100, blank=True)
     site_affil = models.CharField('Site Affiliation', max_length=50, blank=True)
     url = models.CharField('Website', max_length=256, blank=True)
     email = models.CharField('Email', max_length=256, blank=True)
