@@ -106,6 +106,7 @@ ecep.init = function() {
 
     $('#print-toggle').click(function(){
         window.print();
+		$(this).attr('target', '_blank');
     });
 
 

@@ -1,6 +1,6 @@
 {% load portal_extras %}
 {% if is_popup %}<div class="location_item">{% endif %}
-    <h4>{{ item.site_name }}<a href="/location/{{ item.id }}/">&nbsp;&nbsp;<i class="icon-share"></i></a></h4>
+    <h4>{{ item.site_name }}<a href="/location/{{ item.id }}/">&nbsp;&nbsp;<button class="btn btn-mini">Permalink</button></a></h4>
 
     <div class="loc_address">
       {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
@@ -85,7 +85,7 @@
     </div>
 
     <div class="loc_moreinfo gmnoprint">
-        <a href="/location/{{ item.id }}" class="btn btn-primary" data-id="{{ item.id }}"><i class="icon-chevron-down icon-white"></i> More Info</a>
+        <a href="/location/{{ item.id }}" class="btn btn-warning" data-id="{{ item.id }}"><i class="icon-plus icon-white"></i> More Info</a>
     </div>
 </div>
 {% endif %}
