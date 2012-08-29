@@ -1,6 +1,7 @@
 {% load portal_extras %}
 {% if is_popup %}<div class="location_item">{% endif %}
-    <h4>{{ item.site_name }}<a href="/location/{{ item.id }}/">&nbsp;&nbsp;<button class="btn btn-mini">Permalink</button></a></h4>
+
+<h4><a href="/location/{{ item.id }}/" target="_blank">{{ item.site_name }}&nbsp;&nbsp<<button class="btn btn-mini">Permalink</button></a></h4>
 
     <div class="loc_address">
       {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
@@ -34,12 +35,14 @@
             <tr>
                 {% if item.phone1 %}
                 <td>Main Phone</td>
+                <!--
                 {% if item.phone2 %}
                 <td>Alt. Phone</td>
                 {% if item.phone3 %}
                 <td>Alt. Phone</td>
                 {% endif %}
                 {% endif %}
+                -->
                 {% endif %}
                 {% if item.fax %}
                 <td>Fax</td>
@@ -50,12 +53,14 @@
             <tr>
                 {% if item.phone1 %}
                 <td>{{ item.phone1|nicephone }}</td>
+                <!--
                 {% if item.phone2 %}
                 <td>{{ item.phone2|nicephone }}</td>
                 {% if item.phone3 %}
                 <td>{{ item.phone3|nicephone }}</td>
                 {% endif %}
                 {% endif %}
+                -->
                 {% endif %}
                 {% if item.fax %}
                 <td>{{ item.fax|nicephone }}</td>

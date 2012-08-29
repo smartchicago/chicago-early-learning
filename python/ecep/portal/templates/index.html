@@ -55,7 +55,7 @@
         </div>
 	
         {% for f in fields %}
-        <div>
+        <div class="checkbox-{{ f.0 }}">
             <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" class="loc_filter_check" checked="true"/>
             <label for="{{ f.0 }}" class="filter-label">{{ f.1 }}</label>
         </div>
