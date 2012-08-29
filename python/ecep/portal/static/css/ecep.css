@@ -227,6 +227,9 @@ h2.question {
 #compare-box {
     display:none;
 }
+.cmp-popover {
+    z-index: 2080;
+}
 
 .container .location {
     width: 50%;
