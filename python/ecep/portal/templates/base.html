@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{% static "css/ecep.css" %}" media="screen"/>
         <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap-responsive.css" %}" />
         <link rel="stylesheet" href="{% static "css/print.css" %}" media="print"/>
-	<link rel="stylesheet" href="{% static "css/bootstrap-toggle.css" %}" />
+	    <link rel="stylesheet" href="{% static "css/bootstrap-toggle.css" %}" />
 
         <title>{% block title %}{% endblock %}</title> 
         <script type="text/javascript">
@@ -61,11 +61,11 @@
                     <img class="text-popup-img" src="{% static "images/text-for-info.png" %}" alt="Text for info" />
                 </div>
                 <div class="span3 pull-left">
-                    <h1 class="texting-info">Want info via text?</h2>
-		    <br>
+                    <h1 class="texting-info">Want info via text?</h1>
+        		    <br/>
                     <h2 class="texting-info">Send one to:</h2>
                     <h2>{{ settings.TWILIO_NUMBER }}</h2>
-<br>
+                    <br/>
                     <p>Just include your zip code and we'll do the rest.</p>
                 </div>
             </div>
@@ -128,8 +128,8 @@
     This must be defined in a template for the csrf_token
     {% endcomment %}
     <form name="search" action="/" method="POST" style="display:none" id="search-form">
-        <input type="text" name="searchText" value=""></input>
-        <input type="text" name="searchRadius" value=""></input>
+        <input type="text" name="searchText" value="" />
+        <input type="text" name="searchRadius" value="" />
         {% csrf_token %}
     </form>
 
