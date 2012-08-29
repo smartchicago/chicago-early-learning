@@ -125,8 +125,8 @@ def combine_details(ldet1, ldet2):
         'url': (ldet1['item'].url, ldet2['item'].url,),
         'email': (ldet1['item'].email, ldet2['item'].email,),
         'phone1': (ldet1['item'].phone1, ldet2['item'].phone1,),
-        'phone2': (ldet1['item'].phone2, ldet2['item'].phone2,),
-        'phone3': (ldet1['item'].phone3, ldet2['item'].phone3,),
+        #'phone2': (ldet1['item'].phone2, ldet2['item'].phone2,),
+        #'phone3': (ldet1['item'].phone3, ldet2['item'].phone3,),
         'fax': (ldet1['item'].fax, ldet2['item'].fax,),
         'bfields': (ldet1['bfields'], ldet2['bfields'],),
         'sfields_zip': zip(ldet1['sfields'], ldet2['sfields'])
