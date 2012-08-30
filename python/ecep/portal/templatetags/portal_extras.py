@@ -19,17 +19,31 @@ def nicephone(value):
 
 @register.filter(needs_autoescape=True)
 def niceweb(url, niceflag, autoescape=None):
+    """
+    Generate a link to 'Website' if niceflag is set.
+    """
     return niceurl(url, niceflag, 'Website', 'http://', autoescape)
 
 
 @register.filter(needs_autoescape=True)
 def nicemail(url, niceflag, autoescape=None):
+    """
+    Generate a link to 'Email' if niceflag is set.
+    """
     return niceurl(url, niceflag, 'Email', 'mailto:', autoescape)
 
 
 def niceurl(url, niceflag, shortname, prefix, autoescape=None):
     """
-    Return a link to the url with a short name if the nice_flag is set.
+    Return a link to the url with a short name if the niceflag is set. This is 
+    a helper method, and is called by both the niceweb and nicemail filters.
+
+    @param url: The original input URL.
+    @param niceflag: A flag indicating if the URL should be replaced with 'shortname'.
+    @param shortname: The replacement text for the URL.
+    @param prefix: The protocol prefix for the URL, if it is not already in place.
+    @param autoescape: An object passed by the django escaping logic.
+    @return: A safe HTML anchor to the URL.
     """
     if url == '':
         return '';
