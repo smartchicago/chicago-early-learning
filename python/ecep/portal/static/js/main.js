@@ -60,27 +60,27 @@ ecep.markerStyle = [
     {
         url: ecep.getUrl('cluster-small'),
         //width and height don't scale image, they crop it
-        width: 54,
-        height: 54,
+        width: 37,
+        height: 37,
         anchor: [0, 0], //[x, y] in px from center
         textSize: 13,     //not sure what units these are
-        textColor: 'white'
+        textColor: 'black'
     },
     {
         url: ecep.getUrl('cluster-medium'),
-        width: 61,
-        height: 61,
+        width: 52,
+        height: 52,
         anchor: [0, 0],
         textSize: 13,
         textColor: 'white'
     },
     {
         url: ecep.getUrl('cluster-large'),
-        width: 67,
-        height: 67,
+        width: 77,
+        height: 77,
         anchor: [0, 0],
         textSize: 13,
-        textColor: 'black'
+        textColor: 'white'
     }
 ];
 

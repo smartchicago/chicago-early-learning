@@ -53,7 +53,7 @@
 		<input type="checkbox" value="true" name="all" id="all" checked="true" class="loc_filter_check checkbox"/>
             <label for="all" class="filter-label check">All</label><br><br>
         </div>
-	
+
         {% for f in fields %}
         <div class="checkbox-{{ f.0 }}">
             <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" class="loc_filter_check" checked="true"/>
