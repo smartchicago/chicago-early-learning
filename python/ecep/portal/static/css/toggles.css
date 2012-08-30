@@ -16,7 +16,6 @@
   position: relative;
   bottom: -2px;
   height: 25px;
-  margin-left: 30px; /* Re-alignment can be removed if you want */
 }
 
 .toggle:before {
@@ -203,7 +202,7 @@
 
 .toggle .check {
   display: block;
-  width: 65px;
+  width: 50px;
   height: 25px;
   border-radius: 3px;
   -moz-border-radius: 3px;

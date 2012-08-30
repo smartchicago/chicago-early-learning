@@ -5,7 +5,7 @@
 
 {% if bfields %}
 <div class="{% cycle 'textrow2' 'textrow1' as bgcolor %}">
-<h5>Features</h5>
+<h5>Programs</h5>
 
 <ul>
     {{ bfields|unordered_list }}
@@ -23,7 +23,7 @@
 
 {% if is_embed %}
 <div class="loc_lessinfo gmnoprint">
-    <a href="/location/{{ item.id }}" class="btn btn-primary" data-id="{{ item.id }}"><i class="icon-chevron-up icon-white"></i> Less Info</a>
+    <a href="/location/{{ item.id }}" class="btn btn-warning" data-id="{{ item.id }}"><i class="icon-minus icon-white"></i> Less Info</a>
 </div>
 {% endif %}
 </div>
