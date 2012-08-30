@@ -195,13 +195,24 @@ ecep.init = function() {
         $('#filter-toggle').popover('toggle');
         if ($('#update-filter:visible').length > 0) {
 
+			// $('.basic').toggle();
+
             $('#update-filter').click(ecep.loadLocations);
+
             $('#all').click(function(){
-                var filters = $('.loc_filter_check');
+                var filters = $('.basic');
                 var all = this;
-                if (!all.checked) return false;
+                if (!all.checked) {
+					return false;
+				}
                 filters.each(function(idx, elem){
-                    this.checked = all.checked;
+                    var t = $(elem).toggle();
+					if (all.checked) {
+						t.on();
+					}
+					else {
+						t.off();
+					}
                 });
             });
             $('.loc_filter_check').click(function(){
@@ -217,6 +228,7 @@ ecep.init = function() {
                     return false;
                 }
             });
+
         }
     });
 };
