@@ -155,7 +155,7 @@ class Conversation(object):
 
     def update_response(self, *args):
         """
-        Updates self.response, performs chunking logic and updates self.state and
+        Updates self.response, performs chunking logic and updates self.current_state and
         self.response_state as necessary
         one argument version:
         argv[0]:    message for response
@@ -182,10 +182,10 @@ class Conversation(object):
         if end < len(pages):
             self.response.append(Conversation.MORE)
             self.response_state = (end, pages)
-            self.state |= Conversation.State.INTERRUPTED
+            self.current_state |= Conversation.State.INTERRUPTED
         else:
             self.response_state = None
-            self.state &= ~Conversation.State.INTERRUPTED
+            self.current_state &= ~Conversation.State.INTERRUPTED
 
     def nearby_locations(self, zipcode, count=None):
         """Returns locations that fall inside zipcode"""
@@ -263,7 +263,7 @@ class Sms(View):
     View class for handling SMS messages from twilio
     """
 
-    _max_length = 160
+    _max_length = 120
     tc = TwilioRestClient(
         settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
     request = None
@@ -273,14 +273,17 @@ class Sms(View):
         # twilio_view doesn't play nice with View classes, so we insert it manually here
         return twilio_view(super(Sms, cls).as_view(**initkwargs))
 
-    def reply(self, msg):
-        """Simple wrapper for returning a text message response"""
+    def reply_str(self, msg):
+        """Simple wrapper for returning a text message response given a string to return"""
+        return self.reply_list(Sms.paginate(msg))
+
+    def reply_list(self, msgs):
+        """Simple wrapper for returning a text message response given a list of texts to return"""
         r = Response()
-        pages = Sms.paginate(msg)
         callback = self.request.build_absolute_uri(SmsCallback.URL)
         print(callback)
-        print(pages)
-        for p in pages:
+        print(msgs)
+        for p in msgs:
             r.sms(p, statusCallback=callback)
 
         return r
@@ -298,24 +301,30 @@ class Sms(View):
 
     @staticmethod
     def paginate(msg, length=_max_length, min_percent_full=0.85,
-                 page_format="(page %d/%d)", ellipsis="..."):
+                 page_formater=lambda i, m: "(page %d/%d)" % (i, m), ellipsis="..."):
         """
         Takes a message a breaks it into chunks with no more than than length characters and
         more than length * min_percent_full characters (except for the last one).
         Automatically appends pagination information to the end of each page in form of
-        'page_format % (current_page, n_pages)'.  It does its best to respect newlines and spaces,
+        page_formater(current_page, n_pages).  It does its best to respect newlines and spaces,
         but will split messages across either in order to obtain messages of minimum length.
 
         This function should work pretty well for sane inputs, but might act strange
         or explode for weird ones (e.g. length is only a few characters longer than
-        len(page_format), min_percent_full and length are both small, etc)
+        len(page_formater(1, 1)), min_percent_full and length are both small, etc)
 
         msg (string):       The message to paginate
         length:             Maximum number of characters in a page
         min_percent_full:   Each page except the last must have at least this
                             percent characters used, including the pagination string at the end
-        page_format:        Determines the pagination string appended to each page. It will
-                            be formatted with two integers. It always has "\n" prepended to it.
+        page_formater:      Determines the pagination string appended to each page. It will
+                            be called with with two integers as arguments, the current page and
+                            the number of pages respectively.  It should return the string to
+                            append to each message denoting the page number.
+                            It must have the property:
+                            len(page_formater(n, n)) >= len(page_formater(i, n)) where n is the
+                            number of pages and i < n.
+                            It always has "\n" prepended to it.
         ellipsis:           This string is appended and prepended to words that are split
                             across messages.  For example, if "foobar" is split across two
                             messages, the payload for the first will end in "foo..." and
@@ -329,10 +338,9 @@ class Sms(View):
 
         ell_len = len(ellipsis)
         min_percent_full = sorted((0.1, min_percent_full, 1.0))[1]
-        page_format = "\n" + page_format
-        pages_min = math.ceil(float(msg_len) / length)
-        digits_max = len(str(pages_min)) + 1
-        suffix_max = len(page_format % (digits_max, digits_max))
+        pages_min = int(math.ceil(float(msg_len) / length))
+        digits_max = len(str(pages_min))
+        suffix_max = len(page_formater(10 ** digits_max, 10 ** digits_max))
         payload_min = math.floor(min_percent_full * length) - suffix_max
         payload_max = length - suffix_max
         #pages_max = math.ceil(float(msg_len) / payload_min)
@@ -373,7 +381,7 @@ class Sms(View):
 
             pages:      An array holding the pages we've created so far. This funtion will
                         append new pages to it as necessary. The pages are fully complete
-                        except they have not yet had page_format appended to them.
+                        except they have not yet had page_formater output appended to them.
             message:    The next block of text to add to pages.  Some substring of msg in
                         the outer scope.
             current:    The next page to add to pages, in some stage of completion.
@@ -440,9 +448,9 @@ class Sms(View):
         n_pages = len(result)
         # assert n_pages <= pages_max
 
-        # Add page_format suffix to all the pages
+        # Add page_formater suffix to all the pages
         for (i, page) in enumerate(result):
-            result[i] += page_format % (i + 1, n_pages)
+            result[i] += "\n" + page_formater(i + 1, n_pages)
             myassert(len(result[i]) <= length,
                      "length for one of the pages was too long!")
 
@@ -464,7 +472,7 @@ class Sms(View):
         conv = Conversation(request)
         conv.process_request(request)
         conv.update_session(request.session)
-        return self.reply(conv.response)
+        return self.reply_list(conv.response)
 
 
 class SmsCallback(View):
