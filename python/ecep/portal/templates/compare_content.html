@@ -56,13 +56,13 @@
         {% endif %}
         <tr><td> <br>
             <div class="web-email">
-              {{ locations.url.0|urlize|url_target_blank }}<br />
-              {{ locations.email.0|urlize }}
+              {{ locations.url.0|niceweb:is_popup|url_target_blank}} <br>
+              {{ locations.email.0|nicemail:is_popup }}
             </div>
         </td><td> <br>
             <div class="web-email">
-              {{ locations.url.1|urlize|url_target_blank }}<br />
-              {{ locations.email.1|urlize }}
+              {{ locations.url.1|niceweb:is_popup|url_target_blank}} <br>
+              {{ locations.email.1|nicemail:is_popup }}
             </div>
         </td></tr>
         <tr><td class="{% cycle 'textrow1' 'textrow2' as bgcolor %}">

@@ -1,9 +1,11 @@
 from django import template
 from django.template.defaultfilters import stringfilter
+from django.utils.html import conditional_escape
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 
-@register.filter
+@register.filter(is_safe=True)
 @stringfilter
 def nicephone(value):
     numonly = value.replace('-','').replace('(','').replace(')','')
@@ -14,8 +16,46 @@ def nicephone(value):
     else:
         return value
 
-# Opens links in new window
+
+@register.filter(needs_autoescape=True)
+def niceweb(url, niceflag, autoescape=None):
+    return niceurl(url, niceflag, 'Website', 'http://', autoescape)
+
+
+@register.filter(needs_autoescape=True)
+def nicemail(url, niceflag, autoescape=None):
+    return niceurl(url, niceflag, 'Email', 'mailto:', autoescape)
+
+
+def niceurl(url, niceflag, shortname, prefix, autoescape=None):
+    """
+    Return a link to the url with a short name if the nice_flag is set.
+    """
+    if url == '':
+        return '';
+
+    realurl = url
+    if url.startswith(prefix):
+        pass
+    else:
+        realurl = '%s%s' % (prefix,url,)
+
+    label = url
+    if niceflag:
+        label = shortname
+
+    esc = lambda x:x
+    if autoescape:
+        esc = conditional_escape
+
+    tag = '<a href="%s">%s</a>' % (esc(realurl), esc(label),)
+    return mark_safe(tag)
+
+
+@register.filter(is_safe=True)
 def url_target_blank(text):
+    """
+    Opens links in new window.
+    """
     return text.replace('<a ', '<a target="_blank" ')
-url_target_blank = register.filter(url_target_blank)
-url_target_blank.is_safe = True
+
