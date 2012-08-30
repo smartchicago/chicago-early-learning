@@ -330,8 +330,11 @@ ecep.comparingChanged = function(event) {
         if (ecep.comparing.length == 2) {
             cmp.find('li.loc_item').addClass('active');
             actives = cmp.find('li.loc_item.active');
-            setMarkerType(ecep.comparing[0].id, true);
-            setMarkerType(ecep.comparing[1].id, true);
+
+            for (var i = 0; i < ecep.comparing.length; i++) {
+                ecep.comparing[i].active = true;
+                setMarkerType(ecep.comparing[i].id, true);
+            }
         }
 
         // if there are two selected items, they may be compared
