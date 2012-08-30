@@ -1,122 +1,94 @@
-/* General styles - Not needed by the switch */
-body {
-	background-color: #ededed;
-	
-	font-family: sans-serif;
-	font-weight: bold;
-	font-size: 14px;
-}
+/* ----------- Checkbox */
 
-.toggle {
-	width: 200px;
-}
 
-/* Switch */
-.toggle {
+input[type="checkbox"] {
+    -webkit-appearance:none;    /* Remove Safari default */
+    outline: none;
+    width: 96px;
+    height: 30px;  
+    cursor: pointer;
     position: relative;
-	display: block;
-	
-	padding: 0;
-	margin: 0;
-	border: 0;
+    border-radius: 3px;
+    background-color: #333;
+    -webkit-background-clip: padding-box;    
+    border: 0;
 }
 
-/* Position the label over all the elements, except the toggle-button
- * Clicking anywhere on the label will change the switch-state
- */
-.toggle label {
-	position: relative;
-	z-index: 3;
-	
-	display: block;
-	width: 100%;
-	padding: 3px 0;
-}
-
-/* Don't hide the input from screen-readers and keyboard access
- */
-.toggle input {
+input[type="checkbox"]:before, input[type="checkbox"]:after {
+    font: bold 16px/30px sans-serif;
+    cursor: pointer;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);    
+    text-align: center;    
     position: absolute;
-	opacity: 0;
-	z-index: 5;
+    z-index: 1;    
+    width: 32px;
+    height: 27px;
+    top: 1px;    
+    border: 0;
 }
 
-/* Outline the toggle when the input is focused */
-.toggle input:focus ~ .toggle-button {
-	outline: 1px dotted #fff;
+input[type="checkbox"]:after {
+    content: attr(data-icon1);
+    left: 1px;
+    border-radius: 3px 0 0 3px;
+
 }
 
-/* Track */
-.toggle label:after {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	z-index: 0;
-	display: block;
-	width: 80px;
-	height: 17px;
-	padding: 2px 0;
-	
-	background-color: #dd7e6d;	
-	border: 1px solid #b15b4d;
-	border-radius: 2px;
-	box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.17), 0 1px 0px rgba(255, 255, 255, 0.9);
-	
-	/* Text labels */
-	content: "OFF \a ON";
-	white-space: pre;
-	
-	color: #8f5247;
-	font-weight: bold;
-	text-align: center;
-	text-shadow: 0 1px 0px rgba(255, 255, 255, 0.4);
-		
-	-webkit-column-count: 2;
-	-moz-column-count: 2;
-	column-count: 2;
-	-webkit-column-gap: 0;
-	-moz-column-gap: 0;
-	column-gap: 0;
+input[type="checkbox"]:before {
+    content: attr(data-icon2);
+    right: 1px;
+    border-radius: 0 3px 3px 0;
 }
 
-/* We could use label:after to create the toggle button
- * But we won't be able to use transitions on it, except in Firefox
- */
-.toggle span {
-	display: block;
-	position: absolute;
-	right: -1px;
-	top: -2px;
-	z-index: 4;
-	width: 40px;
-	height: 25px;
-	
-	border: 1px solid #bbbbbb;
-	
-	background-color: #f7f7f7; 
-	background-image: -webkit-linear-gradient(top, #f7f7f7, #ececec); 
-	background-image:    -moz-linear-gradient(top, #f7f7f7, #ececec); 
-	background-image:     -ms-linear-gradient(top, #f7f7f7, #ececec); 
-	background-image:      -o-linear-gradient(top, #f7f7f7, #ececec); 
-	background-image:         linear-gradient(top, #f7f7f7, #ececec);  
-	
-	box-shadow: inset 0 1px 2px rgba(255, 255, 255, 1), 0 1px 1px rgba(0, 0, 0, 0.12);
-	border-radius: 2px;
-	
-	-webkit-transition: all 0.3s ease-out;
-	-moz-transition: all 0.3s ease-out;
-	-o-transition: all 0.3s ease-out;
-	transition: all 0.3s ease-out;
+
+/* ----------- checked/unchecked */
+
+/* unchecked */
+input[type="checkbox"] {
+    background: #fff;
+}
+input[type="checkbox"]:after {
+    background: #fff;
 }
 
-.toggle input:checked ~ span {
-	right: 45px;
+
+/* checked */
+input[type="checkbox"]:checked:after {
+    background: #29ABE2;
+    color: #fff;
 }
 
-.toggle input:checked + label:after {
-	background-color: #a0c66b;
-	border-color: #87aa5b;
+/* ----------- active/inactve */
 
-	color: #60783f;
+/* Active */
+input[type="checkbox"]:before, input[type="checkbox"]:checked:after {
+    color: #fff;  
+    z-index: 2;  
+    text-indent: 0;
+    box-shadow: inset 0 0 3px 2px rgba(0,0,0,.1), inset 0 15px 0 rgba(0,0,0,.1);
+    width: 70px;
+    z-index: 0;
 }
+
+input[type="checkbox"]:before {
+    padding-left: 10px;
+    color: #666;
+    text-shadow: 0 1px 0 rgba(255,255,255,.9);
+}
+
+input[type="checkbox"]:checked:after {
+    padding-right: 20px;
+}
+
+/* Inactive */
+input[type="checkbox"]:after, input[type="checkbox"]:checked:before {
+    background: #fff;    
+    text-indent: -9999px;
+    border-radius: 3px;
+    z-index: 99;
+    width: 25px;
+    height: 25px;
+    box-shadow: inset 0 -10px 10px rgba(0,0,0,.2), inset 0 1px 2px rgba(255,255,255,1);
+    border: 1px solid #888;
+    padding: 0;
+}​
