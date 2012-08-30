@@ -1,18 +1,22 @@
 {% load portal_extras %}
 {% if is_popup %}<div class="location_item">{% endif %}
-    <h4>{{ item.site_name }}<a href="/location/{{ item.id }}/">&nbsp;&nbsp;<i class="icon-share"></i></a></h4>
+
+<h4>{{ item.site_name }}&nbsp;&nbsp;<a href="/location/{{ item.id }}/" class="btn btn-mini" target="_blank">Permalink</a></h4>
 
     <div class="loc_address">
       {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
     </div>
 
-    <div class="loc_rating" title="Eventually, every early learning program in Chicago will receive a rating out of five stars.  These stars will indicate program quality at a glance.  The stars are not filled in yet because the rating system is still under development at the state level.  (At this time, empty stars do not mean that a program did not or will not receive any stars.)">
-        <i class="icon-star-empty"></i>
-        <i class="icon-star-empty"></i>
-        <i class="icon-star-empty"></i>
-        <i class="icon-star-empty"></i>
-        <i class="icon-star-empty"></i>&nbsp;&nbsp;
-        <span class="star-notice gmnoprint">What Is This?</span>
+    <div class="loc_rating">
+        <!-- href anchor matches settings in django.faq -->
+        <a href="/faq.html#topic2-7" data-content="Eventually, every early learning program in Chicago will receive a rating out of five stars.  These stars will indicate program quality at a glance.  The stars are not filled in yet because the rating system is still under development at the state level.  (At this time, empty stars do not mean that a program did not or will not receive any stars.)" data-title="Ratings" data-trigger="hover" data-placement="right">
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>
+            <i class="icon-star-empty"></i>&nbsp;&nbsp;
+            <span class="star-notice gmnoprint">What Is This?</span>
+        </a>
     </div>
 	<br><br>
     {% if item.accred %}
@@ -23,8 +27,8 @@
     {% endif %}
 
     <div id="loc_links">
-      {{ item.url|urlize|url_target_blank}} <br>
-      {{ item.email|urlize }}
+      {{ item.url|niceweb:is_niceurls|url_target_blank}} <br>
+      {{ item.email|nicemail:is_niceurls }}
     </div>
 
     {% if item.phone1 or item.phone2 or item.phone3 or item.fax %}
@@ -34,12 +38,14 @@
             <tr>
                 {% if item.phone1 %}
                 <td>Main Phone</td>
+                <!--
                 {% if item.phone2 %}
                 <td>Alt. Phone</td>
                 {% if item.phone3 %}
                 <td>Alt. Phone</td>
                 {% endif %}
                 {% endif %}
+                -->
                 {% endif %}
                 {% if item.fax %}
                 <td>Fax</td>
@@ -50,12 +56,14 @@
             <tr>
                 {% if item.phone1 %}
                 <td>{{ item.phone1|nicephone }}</td>
+                <!--
                 {% if item.phone2 %}
                 <td>{{ item.phone2|nicephone }}</td>
                 {% if item.phone3 %}
                 <td>{{ item.phone3|nicephone }}</td>
                 {% endif %}
                 {% endif %}
+                -->
                 {% endif %}
                 {% if item.fax %}
                 <td>{{ item.fax|nicephone }}</td>
@@ -85,7 +93,7 @@
     </div>
 
     <div class="loc_moreinfo gmnoprint">
-        <a href="/location/{{ item.id }}" class="btn btn-primary" data-id="{{ item.id }}"><i class="icon-chevron-down icon-white"></i> More Info</a>
+        <a href="/location/{{ item.id }}" class="btn btn-warning" data-id="{{ item.id }}"><i class="icon-plus icon-white"></i> More Info</a>
     </div>
 </div>
 {% endif %}

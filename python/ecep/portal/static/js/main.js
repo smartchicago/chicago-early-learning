@@ -17,26 +17,33 @@ ecep.onMapPage = null;
 ecep.getUrl = function(name) {
     var mapImgs = '/static/images/map/'
     switch (name) {
-        case 'loadLocations': 
-            return '/location/';
         case 'blue-dot':
             return 'http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png';
         case 'green-dot':
             return 'http://maps.gstatic.com/mapfiles/ms2/micons/green-dot.png';
         case 'shadow-pin':
             return 'https://www.google.com/chart?chst=d_map_pin_shadow'; 
+
+        case 'loadLocations': 
+            return '/location/';
         case 'location_info':
             return '/location/' + arguments[1] + '/';
         case 'compare':
             return '/compare/' + arguments[1] + '/' + arguments[2] + '/';
-        case 'normal-marker':
-            return mapImgs + 'marker-inactive.png';
+
         case 'search-marker':
             return mapImgs + 'loc-marker.png';
         case 'geo-marker':
             return mapImgs + 'geo-marker.png';
+        case 'normal-marker':
+            return mapImgs + 'marker-inactive.png';
+        case 'accred-marker':
+            return mapImgs + 'marker-accred.png';
         case 'selected-marker':
             return mapImgs + 'marker-active.png';
+        case 'shadow-marker':
+            return mapImgs + 'marker-shadow.png';
+
         case 'cluster-small':
             return mapImgs + 'cluster-sm.png';
         case 'cluster-medium':
@@ -106,6 +113,7 @@ ecep.init = function() {
 
     $('#print-toggle').click(function(){
         window.print();
+		$(this).attr('target', '_blank');
     });
 
 
@@ -187,10 +195,6 @@ ecep.init = function() {
         $('#filter-toggle').popover('toggle');
         if ($('#update-filter:visible').length > 0) {
 
-            // reset the element's left positioning
-            //$('.popover')[0].style.left = null;
-            //$('.popover')[0].style.top = null;
-
             $('#update-filter').click(ecep.loadLocations);
             $('#all').click(function(){
                 var filters = $('.loc_filter_check');
@@ -219,9 +223,7 @@ ecep.init = function() {
 
 ecep.comparingChanged = function(event) {
     _gaq.push(['_trackEvent', 'Comparison', 'Change', 'Comparing: ' + ecep.comparing.join(', ')]);
-    var cmp = $('#compare-content'),
-        activeImg = ecep.markerImage('selected-marker'),
-        inactiveImg = ecep.markerImage('normal-marker');
+    var cmp = $('#compare-content');
 
     // if the first item in the list, it must have been sloughed off; remove it
     if (cmp.find('li:first').data('location-id') != ecep.comparing[0].id) {
@@ -241,10 +243,39 @@ ecep.comparingChanged = function(event) {
         x.removeClass('disabled');
     };
 
+    var wirePopup = function(btn) {
+        btn.addClass('disabled');
+        if (btn.data('popover')) {
+            btn.popover('enable');
+        }
+        else {
+            btn.popover({
+                trigger: 'hover',
+                content: 'Select two locations to compare.',
+                template: '<div class="popover cmp-popover"><div class="arrow"></div>' +
+                    '<div class="popover-inner"><div class="popover-content"><p></p></div></div></div>',
+                placement: 'left'
+            });
+        }
+    };
+
     // create a new list item for the last item in the comparison
     // (only ever add one at a time)
     var listNode = $('<li/>'),
         item = ecep.comparing[ecep.comparing.length - 1];
+
+    var setMarkerType = function(id, active) {
+        var mh = ecep.locationMarkers[id];
+        //this should always be true, but just to be safe...
+        if (mh) { 
+            mh.active = active;
+            var imgType = 'normal-marker';
+            if (mh.accred) { imgType = 'accred-marker'; }
+            if (mh.active) { imgType = 'selected-marker'; }
+            mh.mkr.setIcon(ecep.markerImage(imgType));
+        }
+
+    };
 
     listNode.addClass('loc_item');
     listNode.data('location-id', item.id);
@@ -253,25 +284,23 @@ ecep.comparingChanged = function(event) {
         // when you click on an listNode, toggle the active class
         $(this).toggleClass('active');
         item.active = !item.active;
-
-        var mh = ecep.locationMarkers[item.id];
-        //this should always be true, but just to be safe...
-        if (mh) { 
-            mh.active = !mh.active;
-            mh.mkr.setIcon(mh.active ? activeImg : inactiveImg);
-        }
-
+        
+        setMarkerType(item.id, item.active);
+    
         var actives = cmp.find('li.loc_item.active');
         var btn = $('#compare-locations');
         btn.off('click');
 
         // if two listNodes are selected, then wire up the comparison button
         if (actives.length == 2) {
+            if (btn.data('popover')) {
+                btn.popover('disable');
+            }
             wireCompare(btn, $(actives[0]).data('location-id'), $(actives[1]).data('location-id'));
         }
         // more or less than two listNodes? disable the compare button
         else {
-            btn.addClass('disabled');
+            wirePopup(btn);
         }
     });
     cmp.find('ul').append(listNode);
@@ -297,25 +326,33 @@ ecep.comparingChanged = function(event) {
         var a = null, b = null;
         var actives = cmp.find('li.loc_item.active');
 
-        // if only two items in the list, allow comparing
-        // prior to selection
+        // if only two items in the list, automatically select them
         if (ecep.comparing.length == 2) {
-            a = ecep.comparing[0].id;
-            b = ecep.comparing[1].id;
+            cmp.find('li.loc_item').addClass('active');
+            actives = cmp.find('li.loc_item.active');
+
+            for (var i = 0; i < ecep.comparing.length; i++) {
+                ecep.comparing[i].active = true;
+                setMarkerType(ecep.comparing[i].id, true);
+            }
         }
+
         // if there are two selected items, they may be compared
-        else if (actives.length == 2) {
+        if (actives.length == 2) {
             a = $(actives[0]).data('location-id');
             b = $(actives[1]).data('location-id');
         }
 
         // two things selected? wire up and enable button
         if (a != null && b != null) {
+            if (btn.data('popover')) {
+                btn.popover('disable');
+            }
             wireCompare(btn, a, b);
         }
         // no two things comparable, disable the button
         else {
-            btn.addClass('disabled');
+            wirePopup(btn);
         }
     }
 };
@@ -343,6 +380,7 @@ ecep.showComparison = function(a, b) {
             $('#compare-modal .modal-body').html(data);
             $('#compare-modal').modal();
             $('#compare-permalink').attr('href', url);
+            $('.loc_rating a').popover();
         }
         else {
             // add a fullscreen div
@@ -405,6 +443,8 @@ ecep.expandInfo = function(event) {
             $('.loc_lessinfo a')
                 .off('click', ecep.expandInfo)
                 .on('click', {marker: mkr, type: 'popup'}, ecep.expandInfo);
+
+            $('.loc_rating a').popover();
         }));
     });
 
@@ -488,7 +528,11 @@ ecep.loadLocations = function() {
 
         for (var i = 0; i < data.length; i++) {
             var loc = data[i];
-            var mh = ecep.locationMarkers[loc.id] || { mkr: null, active: false };
+            var mh = (ecep.locationMarkers[loc.id] || { 
+                mkr: null,
+                active: false,
+                accred: loc.accred
+            });
 
             if (!loc.lng || !loc.lat) {
                 continue;
@@ -496,12 +540,15 @@ ecep.loadLocations = function() {
             var ll = new google.maps.LatLng(loc.lat, loc.lng);
             bounds.extend(ll);
 
-            var markerImg = ecep.markerImage(mh.active ? 'selected-marker' : 'normal-marker');
+            var imgType = 'normal-marker';
+            if (mh.accred) { imgType = 'accred-marker'; }
+            if (mh.active) { imgType = 'selected-marker'; }
 
             var marker = new google.maps.Marker({
                 position: ll,
                 title: loc.site_name, 
-                icon: markerImg
+                icon: ecep.markerImage(imgType),
+                shadow: ecep.markerShadow()
             });
             marker.set('location_id', loc.id);
             marker.set('location_site_name', loc.site_name);
@@ -516,10 +563,35 @@ ecep.loadLocations = function() {
         if (ecep.clusterr != null) {
             ecep.clusterr.clearMarkers();
         }
+
+        //Make a cluster calculator
+        //Default is calc(10)
+        //Stolen from MarkerClusterer source for default calculator
+        var calc = function(n) { 
+            n = Math.max(2, n);
+            return function(markers, numStyles) {
+                var index = 0;
+                var count = markers.length;
+                var dv = count;
+                while (dv !== 0) {
+                    dv = Math.floor(dv / n)
+                    index++;
+                }
+
+                index = Math.min(index, numStyles);
+                return {
+                    text: count,
+                    index: index
+                };
+            };
+        };
+
         ecep.clusterr = new MarkerClusterer(ecep.map, markers, {
-            maxZoom: 18,
-            styles: ecep.markerStyle
+            maxZoom: 16,
+            styles: ecep.markerStyle,
+            gridSize: 60
         });
+        ecep.clusterr.setCalculator(calc(6));
 
         ecep.map.fitBounds(bounds);
 
@@ -597,7 +669,8 @@ ecep.dropMarker = function(loc, title, urlName, reposition) {
         map: ecep.map,
         position: loc,
         title: title,
-        icon: ecep.markerImage(urlName)
+        icon: ecep.markerImage(urlName),
+        shadow: ecep.markerShadow()
     });
     if (reposition) {
         if (!ecep.map.getBounds().contains(loc)) {
@@ -615,7 +688,15 @@ ecep.markerImage = function(name) {
     markerImg.anchor = new google.maps.Point(12, 25);
 
     return markerImg;
-}
+};
+
+ecep.markerShadow = function() {
+    return new google.maps.MarkerImage(ecep.getUrl('shadow-marker'),
+        new google.maps.Size(38.0, 25.0),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(12.0, 25)
+    );
+};
 
 ecep.directions = function(event) {
     var orig = $(this).data('navto');
@@ -694,9 +775,9 @@ ecep.typeDirections = function() {
     var external_dir = $('<div />');
     external_dir.addClass('external-directions');
 
-    var external_link = $('<a/>');
+    var external_link = $('<a target="_blank"/>');
     external_link.addClass('ext-dir');
-    external_link.text('Directions from Google');
+    external_link.text('Additional Directions from Google');
     var url = 'http://maps.google.com/?saddr=' + result.routes[0].legs[0].start_address +
         '&daddr=' + result.routes[0].legs[result.routes[0].legs.length-1].end_address;
     var tracker = _gat._getTrackerByName('outlinkTracker');
