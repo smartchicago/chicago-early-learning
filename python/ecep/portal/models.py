@@ -73,7 +73,7 @@ class Location(models.Model):
         Returns a pretty string representing the value of a field if it's present, otherwise an
         empty string.  The pretty string ends in a newline.
         field:  string with the name of a field on this model
-        f:      optional rendering function.  It's given the value of the field, modifies it, and 
+        f:      optional rendering function.  It's given the value of the field, modifies it, and
                 returns the result.  Default returns its input
         """
         val = self.__dict__[field]
@@ -88,7 +88,7 @@ class Location(models.Model):
 
         attribs = ''
         for field in [
-            'is_child_care', 'is_hs', 'is_pre4all', 'is_tuition_based', 
+            'is_child_care', 'is_hs', 'is_pre4all', 'is_tuition_based',
             'is_special_ed', 'is_montessori', 'is_child_parent_center' ]:
                 if self.__dict__[field]:
                      attribs += self.verbose_name(field) + ", "
@@ -97,8 +97,8 @@ class Location(models.Model):
             result += "Attributes: " + attribs.strip(", ") + "\n"
 
         for field in [
-            'exec_director', 'ctr_director', 'site_affil', 'url', 'email', 
-            'q_stmt', 'e_info', 'as_proc', 'accred', 'prg_sched', 'prg_dur', 
+            'exec_director', 'ctr_director', 'site_affil', 'url', 'email',
+            'q_stmt', 'e_info', 'as_proc', 'accred', 'prg_sched', 'prg_dur',
             'prg_size', 'ages', 'waitlist' ]:
                 result += self.val_or_empty(field)
 
