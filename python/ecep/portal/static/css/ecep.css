@@ -215,7 +215,7 @@ h2.question {
 
 /* == don't re-use this class or your popover will probably look bad == */
 .popover.bottom {
-  margin-left: 119px;
+  margin-left: 163px;
 }
 
 .popover-title {
@@ -777,4 +777,12 @@ li.loc_item {
 
 #main-checks {
   width: 90%;
+}
+
+.popover-content label {
+	padding-left: 15px;
+}
+
+.popover-inner {
+	width: 410px;
 }
