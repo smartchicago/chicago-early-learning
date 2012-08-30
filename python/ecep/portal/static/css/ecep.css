@@ -96,6 +96,16 @@ img.intro {
   text-decoration: none;
 }
 
+.navbar .btn-navbar {
+    background-color: #0088CC;
+    background-image: -moz-linear-gradient(center top , #0088CC, #0055CC);
+}
+.navbar .btn-navbar:hover {
+    background-color: #0055CC;
+    background-image: -moz-linear-gradient(center top , #0055CC, #0033CC);
+    background-position: 0 0;
+}
+
 .navbar-inner {
   min-height: 48px;
   padding-right: 20px;
@@ -688,9 +698,6 @@ li.loc_item {
     .navbar.navbar-fixed-top {
         margin-bottom: 0;
     }
-    .subnav .container {
-        width: 650px;
-    }
     #search-address {
         margin: -2px;
     }
@@ -705,6 +712,10 @@ li.loc_item {
     }
     .subnav .container {
         width: 768px;
+    }
+    .subnav-fixed {
+        margin-left: auto;
+        margin-right: auto;
     }
     #compare-box {
         display: block;
