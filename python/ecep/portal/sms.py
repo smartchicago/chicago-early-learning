@@ -83,7 +83,8 @@ class Conversation(object):
     This is the language it recognizes:
     'h'       - Returns usage (case insensitive)
     '12345'   - 5 digit zipcode.  Returns a numbered list of "nearby" schools
-                (TODO: what does "nearby" mean?)
+                "nearby" is a straight text search of the zipcode column on the Locations
+                model.
     '4'       - 1 or 2 digit number.  Only valid if the user has already sent a zipcode
                 Returns detailed information about the corresponding school, or an error
                 if the number doesn't make sense.  The number represents a 1-based index
@@ -120,7 +121,7 @@ class Conversation(object):
     # first element is the list of messages that make up the response
     # second element is the index of the next message to send
 
-    def __init__(self, request, max_responses_=3):
+    def __init__(self, request):
         """
         Creates a new Converstation object, using data stored in request.session if available
         request: a Django HttpRequest object
@@ -155,12 +156,7 @@ class Conversation(object):
         """
         Updates self.response, performs chunking logic and updates self.current_state and
         self.response_state as necessary
-        one argument version:
-        argv[0]:    message for response
-
-        two argument version:
-        argv[0]:    index into pages
-        argv[1]:    list of all messages that are part of the total response
+        msg:    message for response.  If not supplied, it uses self.response_state.
         """
         pages = None
         i = None
