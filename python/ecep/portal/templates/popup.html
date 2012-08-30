@@ -27,8 +27,8 @@
     {% endif %}
 
     <div id="loc_links">
-      {{ item.url|urlize|url_target_blank}} <br>
-      {{ item.email|urlize }}
+      {{ item.url|niceweb:is_niceurls|url_target_blank}} <br>
+      {{ item.email|nicemail:is_niceurls }}
     </div>
 
     {% if item.phone1 or item.phone2 or item.phone3 or item.fax %}
