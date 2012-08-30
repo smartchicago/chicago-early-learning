@@ -5,14 +5,12 @@ This module contains classes and utilities for interacting with SMS messages
 import logging
 import re
 import math
-from django.conf import settings
 from django.views.generic import View
 from django.utils.decorators import classonlymethod, method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from models import Location
 from twilio.twiml import Response
-from twilio.rest import TwilioRestClient
 from django_twilio.decorators import twilio_view
 
 logger = logging.getLogger(__name__)
@@ -104,11 +102,11 @@ class Conversation(object):
     # http://www.twilio.com/help/faq/sms/does-twilio-support-stop-block-and-cancel-aka-sms-filtering
 
     USAGE = ('To get this message text "h".\n' +
-             'Text a 5 digit zipcode to get a list of nearby schools.' +
+             'Text a 5 digit zipcode to get a list of nearby places.' +
              'Text a number on the list to get more information.')
     ERROR =  'Sorry, I didn\'t understand that. Please text "h" for instructions'
     FATAL =  'We\'re sorry, something went wrong with your request! Please try again'
-    MORE =   'Reply "m" or "more" to receive more information'
+    MORE =   'Reply "m" or "more" to receive the next few pages'
 
     # Properties
     locations = None        # List of pks into models.Location, represents locations near this user
@@ -153,7 +151,7 @@ class Conversation(object):
         session['zipcode'] = self.zipcode
         session['response_state'] = self.response_state
 
-    def update_response(self, *args):
+    def update_response(self, msg=None):
         """
         Updates self.response, performs chunking logic and updates self.current_state and
         self.response_state as necessary
@@ -166,24 +164,24 @@ class Conversation(object):
         """
         pages = None
         i = None
-        if len(args) == 1:
-            pages = Sms.paginate(args[0])
+        if msg is not None:
+            pages = Sms.paginate(msg)
             i = 0
-        elif len(args) == 2:
-            pages = args[1]
-            i = args[0]
         else:
-            raise TypeError("Conversation.update_response takes 2 or 3 arguments, %d given" %
-                            (len(args) + 1))
+            rs = self.response_state
+            myassert(rs is not None, "Conversation.response_state was not set!")
+            pages = rs[0]
+            i = rs[1]
 
         start = i
         end = i + Conversation._max_responses
         self.response = pages[start:end]
         if end < len(pages):
             self.response.append(Conversation.MORE)
-            self.response_state = (end, pages)
+            self.response_state = (pages, end)
             self.current_state |= Conversation.State.INTERRUPTED
-        else:
+        elif msg is None:
+            #update previous state if we had to read it
             self.response_state = None
             self.current_state &= ~Conversation.State.INTERRUPTED
 
@@ -218,7 +216,7 @@ class Conversation(object):
                     school = "%d: %s" % (i + 1, l.site_name)
                     schools_list.append(school)
 
-                response = "Schools in %s:" % zipcode
+                response = "Places in %s:" % zipcode
                 response += "\n".join(schools_list)
                 self.update_response(response)
             else:
@@ -228,9 +226,7 @@ class Conversation(object):
             self.update_response(self.USAGE)
         elif (self._re_more.match(msg.body) and
                 (self.current_state & Conversation.State.INTERRUPTED) != 0):
-            rs = self.response_state
-            myassert(rs is not None, "Conversation.response_state was not set!")
-            self.update_response(rs[0], rs[1])
+            self.update_response()
         elif (self.current_state & Conversation.State.GOT_ZIP) != 0:
             # parse location selection
             matches = self._re_num.match(msg.body)
@@ -263,9 +259,7 @@ class Sms(View):
     View class for handling SMS messages from twilio
     """
 
-    _max_length = 120
-    tc = TwilioRestClient(
-        settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
+    _max_length = 160
     request = None
 
     @classonlymethod
@@ -281,23 +275,12 @@ class Sms(View):
         """Simple wrapper for returning a text message response given a list of texts to return"""
         r = Response()
         callback = self.request.build_absolute_uri(SmsCallback.URL)
-        print(callback)
-        print(msgs)
+        #print(callback)
+        #print(msgs)
         for p in msgs:
             r.sms(p, statusCallback=callback)
 
         return r
-
-    @staticmethod
-    def send_messages(messages, to_number, from_number):
-        """
-        Sends a list of messages to someone
-        messages:   List of messages to send
-        to_number:  Number to send messages to
-        from_number:Number to send messages from
-        """
-        for m in messages:
-            Sms.tc.sms.messages.create(to=to_number, from_=from_number, body=m)
 
     @staticmethod
     def paginate(msg, length=_max_length, min_percent_full=0.85,
