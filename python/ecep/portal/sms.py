@@ -12,6 +12,8 @@ from django.http import HttpResponse
 from models import Location
 from twilio.twiml import Response
 from django_twilio.decorators import twilio_view
+from django.core.urlresolvers import reverse
+
 
 logger = logging.getLogger(__name__)
 
@@ -270,11 +272,11 @@ class Sms(View):
     def reply_list(self, msgs):
         """Simple wrapper for returning a text message response given a list of texts to return"""
         r = Response()
-        callback = self.request.build_absolute_uri(SmsCallback.URL)
+        callback_url = self.request.build_absolute_uri(reverse('sms-callback'))
         #print(callback)
         #print(msgs)
         for p in msgs:
-            r.sms(p, statusCallback=callback)
+            r.sms(p, statusCallback=callback_url)
 
         return r
 
@@ -456,9 +458,6 @@ class Sms(View):
 
 class SmsCallback(View):
     """View class for handling twilio callbacks. Simply logs errors, ignores success"""
-    URL = '/sms/callback/'
-    URL_REGEX = r'^sms/callback/?$'
-
     @method_decorator(csrf_exempt)
     def dispatch(self, *args, **kwargs):
         return super(SmsCallback, self).dispatch(*args, **kwargs)

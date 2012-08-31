@@ -24,7 +24,7 @@ urlpatterns = patterns(
         # Due to a bug in django-twilio, method must be set to GET or POST
         # it works no matter what the request is
     }),
-    url(SmsCallback.URL_REGEX, SmsCallback.as_view()),
+    url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),
