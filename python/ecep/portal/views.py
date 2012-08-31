@@ -92,9 +92,9 @@ def location_details(location_id):
 
     for field in Location._meta.fields:
         # get boolean fields that are set, and set to True
-        if field.get_internal_type() == 'NullBooleanField' and \
-            getattr(item, field.get_attname()):
-                bfields.append(field.verbose_name)
+        if field.get_internal_type() == ('NullBooleanField' and
+                                         getattr(item, field.get_attname())):
+            bfields.append(field.verbose_name)
         # get char fields & values if they are listed above, and not empty
         elif field.get_internal_type() == 'CharField' or field.get_internal_type() == 'TextField':
             for simple in simple_text:
@@ -102,6 +102,7 @@ def location_details(location_id):
                     sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
 
     return { 'item': item, 'sfields': sfields, 'bfields': bfields }
+
 
 def combine_details(ldet1, ldet2):
     """
@@ -133,6 +134,7 @@ def combine_details(ldet1, ldet2):
     }
 
     return details
+
 
 def location(request, location_id):
     """
@@ -170,7 +172,7 @@ def location_list(request):
         for field in Location._meta.fields:
             if field.get_attname() == f:
                 logger.debug('Adding Filter: %s = %s' % (f, request.GET[f],))
-                kw = { f: request.GET[f]=='true' }
+                kw = { f: request.GET[f] == 'true' }
                 if item_filter is None:
                     etag_hash = str(kw)
                     item_filter = Q(**kw)
@@ -206,9 +208,10 @@ def location_list(request):
     md5.update(etag_hash)
     etag_hash = md5.hexdigest()
 
-    rsp = render_to_response('locations.json', {'items':items}, mimetype='application/json')
+    rsp = render_to_response('locations.json', { 'items': items }, mimetype='application/json')
     rsp['Etag'] = etag_hash
     return rsp
+
 
 def compare(request, a, b):
     loc_a = location_details(a)
@@ -260,4 +263,3 @@ def faq(request):
         'mapbarEnabled': True
     })
     return render_to_response(tpl, context_instance=ctx)
-
