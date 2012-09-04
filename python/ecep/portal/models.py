@@ -1,5 +1,6 @@
 from django.contrib.gis.db import models
 from portal.templatetags.portal_extras import nicephone
+from django.template.defaultfilters import title
 
 
 class Location(models.Model):
@@ -86,6 +87,36 @@ class Location(models.Model):
         """
         ftype = field.get_internal_type()
         return ((ftype == 'CharField' or ftype == 'TextField'))
+
+    def get_context_dict(self):
+        # Fix some ugly data
+        if self.site_name.isupper():
+            self.site_name = title(self.site_name)
+        if self.address.isupper():
+            self.address = title(self.address)
+        if self.city.isupper():
+            self.city = title(self.city)
+
+        # simple fields to present -- these are the attributes that have text content
+        sfields = []
+
+        # boolean fields to present -- these are the attributes that are set to True
+        bfields = []
+
+        for field in Location._meta.fields:
+            fname = field.get_attname()
+            if not fname in Location.display_include:
+                continue
+
+            if self.is_true_bool_field(field):
+                bfields.append(field.verbose_name)
+            elif self.is_simple_field(field):
+                kv = (field.verbose_name, getattr(self, fname))
+                sfields.append(kv)
+
+        bfields.sort()
+        sfields.sort(key=lambda a: a[0])
+        return { 'item': self, 'sfields': sfields, 'bfields': bfields }
 
     def val_or_empty(self, field, f=(lambda x: x)):
         """

@@ -71,33 +71,7 @@ def location_details(location_id):
     This is called by the detail page and the comparison page.
     """
     item = get_object_or_404(Location, id=location_id)
-
-    # Fix some ugly data
-    if item.site_name.isupper():
-        item.site_name = title(item.site_name)
-    if item.address.isupper():
-        item.address = title(item.address)
-    if item.city.isupper():
-        item.city = title(item.city)
-
-    # simple fields to present -- these are the attributes that have text content
-    sfields = []
-
-    # boolean fields to present -- these are the attributes that are set to True
-    bfields = []
-
-    for field in Location._meta.fields:
-        fname = field.get_attname()
-        if not fname in Location.display_include:
-            continue
-
-        if item.is_true_bool_field(field):
-            bfields.append(field.verbose_name)
-        elif item.is_simple_field(field):
-            kv = (field.verbose_name, getattr(item, fname))
-            sfields.append(kv)
-
-    return { 'item': item, 'sfields': sfields, 'bfields': bfields }
+    return item.get_context_dict()
 
 
 def combine_details(ldet1, ldet2):
