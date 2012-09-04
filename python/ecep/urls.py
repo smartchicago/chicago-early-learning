@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 from portal.sms import Sms, Conversation, SmsCallback
+from django.views.generic.simple import direct_to_template
 
 from django.contrib.gis import admin
 admin.autodiscover()
@@ -10,6 +11,8 @@ urlpatterns = patterns(
     url(r'^$', 'portal.views.index'),
     url(r'^about.html$', 'portal.views.about'),
     url(r'^faq.html$', 'portal.views.faq'),
+    url(r'^robots\.txt$', direct_to_template,
+        {'template': 'robots.txt', 'mimetype': 'text/plain'}),
 
     # Verbose details about a location
     url(r'^location/$', 'portal.views.location_list'),
