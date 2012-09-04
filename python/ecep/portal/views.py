@@ -35,7 +35,7 @@ def get_opts(selected_val='2'):
 
 
 def index(request):
-    fields = Location.get_boolean_fields()
+    fields = Location.get_filter_fields()
     st = ''
     selected = '2'
 
@@ -80,10 +80,6 @@ def location_details(location_id):
     if item.city.isupper():
         item.city = title(item.city)
 
-    simple_text = [
-        'ages', 'prg_dur', 'prg_sched', 'prg_size', 'site_affil',
-        'ctr_director', 'accred']
-
     # simple fields to present -- these are the attributes that have text content
     sfields = []
 
@@ -91,15 +87,15 @@ def location_details(location_id):
     bfields = []
 
     for field in Location._meta.fields:
-        # get boolean fields that are set, and set to True
-        if (field.get_internal_type() == 'NullBooleanField' and
-                                         getattr(item, field.get_attname())):
+        fname = field.get_attname()
+        if not fname in Location.display_include:
+            continue
+
+        if item.is_true_bool_field(field):
             bfields.append(field.verbose_name)
-        # get char fields & values if they are listed above, and not empty
-        elif field.get_internal_type() == 'CharField' or field.get_internal_type() == 'TextField':
-            for simple in simple_text:
-                if field.get_attname() == simple:
-                    sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
+        elif item.is_simple_field(field):
+            kv = (field.verbose_name, getattr(item, fname))
+            sfields.append(kv)
 
     return { 'item': item, 'sfields': sfields, 'bfields': bfields }
 
