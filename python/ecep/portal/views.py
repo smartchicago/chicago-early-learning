@@ -92,7 +92,7 @@ def location_details(location_id):
 
     for field in Location._meta.fields:
         # get boolean fields that are set, and set to True
-        if field.get_internal_type() == ('NullBooleanField' and
+        if (field.get_internal_type() == 'NullBooleanField' and
                                          getattr(item, field.get_attname())):
             bfields.append(field.verbose_name)
         # get char fields & values if they are listed above, and not empty
