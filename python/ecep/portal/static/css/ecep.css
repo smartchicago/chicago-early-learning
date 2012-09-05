@@ -551,6 +551,7 @@ h1.texting-info {
   color: #29ABE2;
   text-transform: none;
   font-weight: normal;
+  font-size: 25px;
 }
 
 h2.texting-info {
@@ -559,6 +560,17 @@ h2.texting-info {
   text-transform: none;
   font-weight: normal;
 }
+
+h2.texting-info-sm {
+  font-weight: normal;
+}
+
+#text-info-modal em {
+  color: #29ABE2;
+  font-style: normal;
+  font-weight: bold;
+}
+
 
 
 /* Map popover styling =============================================================== */
