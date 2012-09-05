@@ -5,10 +5,11 @@ from django.utils.safestring import mark_safe
 
 register = template.Library()
 
+
 @register.filter(is_safe=True)
 @stringfilter
 def nicephone(value):
-    numonly = value.replace('-','').replace('(','').replace(')','')
+    numonly = value.replace('-', '').replace('(', '').replace(')', '')
     if len(numonly) == 7:
         return '%s-%s' % (numonly[0:3], numonly[3:],)
     elif len(numonly) == 10:
@@ -35,7 +36,7 @@ def nicemail(url, niceflag, autoescape=None):
 
 def niceurl(url, niceflag, shortname, prefix, autoescape=None):
     """
-    Return a link to the url with a short name if the niceflag is set. This is 
+    Return a link to the url with a short name if the niceflag is set. This is
     a helper method, and is called by both the niceweb and nicemail filters.
 
     @param url: The original input URL.
@@ -46,19 +47,19 @@ def niceurl(url, niceflag, shortname, prefix, autoescape=None):
     @return: A safe HTML anchor to the URL.
     """
     if url == '':
-        return '';
+        return ''
 
     realurl = url
     if url.startswith(prefix):
         pass
     else:
-        realurl = '%s%s' % (prefix,url,)
+        realurl = '%s%s' % (prefix, url,)
 
     label = url
     if niceflag:
         label = shortname
 
-    esc = lambda x:x
+    esc = lambda x: x
     if autoescape:
         esc = conditional_escape
 
@@ -72,4 +73,13 @@ def url_target_blank(text):
     Opens links in new window.
     """
     return text.replace('<a ', '<a target="_blank" ')
+
+
+@register.filter(is_safe=True)
+def verbose_name(model, field):
+    """
+    Given a model and field name, returns the verbose name for that field
+    """
+    return model._meta.get_field_by_name(field)[0].verbose_name
+
 
