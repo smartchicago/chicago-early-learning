@@ -13,6 +13,7 @@ from models import Location
 from twilio.twiml import Response
 from django_twilio.decorators import twilio_view
 from django.core.urlresolvers import reverse
+from django.template.loader import render_to_string
 
 
 logger = logging.getLogger(__name__)
@@ -239,7 +240,9 @@ class Conversation(object):
                         (self.zipcode, idx))
                 else:
                     l = Location.objects.get(pk=self.locations[idx])
-                    self.update_response(l.get_long_string())
+                    ctx = l.get_context_dict()
+                    body = render_to_string('location.sms', ctx).strip()
+                    self.update_response(body)
             else:
                 self.update_response(
                     ("Sorry, I didn't understand that number for zipcode %s. " +
