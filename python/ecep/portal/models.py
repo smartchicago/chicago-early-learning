@@ -1,5 +1,6 @@
 from django.contrib.gis.db import models
 from portal.templatetags.portal_extras import nicephone
+from django.template.defaultfilters import title
 
 
 class Location(models.Model):
@@ -39,14 +40,25 @@ class Location(models.Model):
     geom = models.PointField('Geometry', srid=4326, null=True)
     objects = models.GeoManager()
 
+    # List of simple/boolean fields that should be displayed by Location renderers/views
+    display_include = set([
+        'ages', 'prg_dur', 'prg_sched', 'prg_size', 'site_affil', 'ctr_director', 'accred',
+        'is_child_care', 'is_hs', 'is_ehs', 'is_pre4all', 'is_tuition_based',
+        'is_special_ed', 'is_child_parent_center'])
 
     def __unicode__(self):
         return self.site_name
 
-    @staticmethod
-    def get_boolean_fields():
+    def verbose_name(self, field):
         """
-        Get all the fields of the model that are NullBooleanField types.
+        Given the name of field, returns the verbose_name property for it
+        """
+        return self._meta.get_field_by_name(field)[0].verbose_name
+
+    @staticmethod
+    def get_filter_fields():
+        """
+        Returns all boolean fields that should be used for filtering Location objects
 
         This method does not use a static list of names, but rather inspects
         the meta class attached to the model to introspect on the field types.
@@ -62,11 +74,49 @@ class Location(models.Model):
 
         return fields
 
-    def verbose_name(self, field):
+    def is_true_bool_field(self, field):
         """
-        Given the name of field, returns the verbose_name property for it
+        Returns true if field is a boolean field and self.field is True
         """
-        return self._meta.get_field_by_name(field)[0].verbose_name
+        fname = field.get_attname()
+        return (field.get_internal_type() == 'NullBooleanField' and getattr(self, fname))
+
+    def is_simple_field(self, field):
+        """
+        Returns true if field is of type CharField or TextField
+        """
+        ftype = field.get_internal_type()
+        return ((ftype == 'CharField' or ftype == 'TextField'))
+
+    def get_context_dict(self):
+        # Fix some ugly data
+        if self.site_name.isupper():
+            self.site_name = title(self.site_name)
+        if self.address.isupper():
+            self.address = title(self.address)
+        if self.city.isupper():
+            self.city = title(self.city)
+
+        # simple fields to present -- these are the attributes that have text content
+        sfields = []
+
+        # boolean fields to present -- these are the attributes that are set to True
+        bfields = []
+
+        for field in Location._meta.fields:
+            fname = field.get_attname()
+            if not fname in Location.display_include:
+                continue
+
+            if self.is_true_bool_field(field):
+                bfields.append(field.verbose_name)
+            elif self.is_simple_field(field):
+                kv = (field.verbose_name, getattr(self, fname))
+                sfields.append(kv)
+
+        bfields.sort()
+        sfields.sort(key=lambda a: a[0])
+        return { 'item': self, 'sfields': sfields, 'bfields': bfields }
 
     def val_or_empty(self, field, f=(lambda x: x)):
         """
@@ -91,7 +141,7 @@ class Location(models.Model):
             'is_child_care', 'is_hs', 'is_pre4all', 'is_tuition_based',
             'is_special_ed', 'is_montessori', 'is_child_parent_center' ]:
                 if self.__dict__[field]:
-                     attribs += self.verbose_name(field) + ", "
+                    attribs += self.verbose_name(field) + ", "
 
         if len(attribs) > 0:
             result += "Attributes: " + attribs.strip(", ") + "\n"

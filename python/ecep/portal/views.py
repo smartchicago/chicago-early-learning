@@ -35,7 +35,7 @@ def get_opts(selected_val='2'):
 
 
 def index(request):
-    fields = Location.get_boolean_fields()
+    fields = Location.get_filter_fields()
     st = ''
     selected = '2'
 
@@ -71,37 +71,7 @@ def location_details(location_id):
     This is called by the detail page and the comparison page.
     """
     item = get_object_or_404(Location, id=location_id)
-
-    # Fix some ugly data
-    if item.site_name.isupper():
-        item.site_name = title(item.site_name)
-    if item.address.isupper():
-        item.address = title(item.address)
-    if item.city.isupper():
-        item.city = title(item.city)
-
-    simple_text = [
-        'ages', 'prg_dur', 'prg_sched', 'prg_size', 'site_affil',
-        'ctr_director', 'accred']
-
-    # simple fields to present -- these are the attributes that have text content
-    sfields = []
-
-    # boolean fields to present -- these are the attributes that are set to True
-    bfields = []
-
-    for field in Location._meta.fields:
-        # get boolean fields that are set, and set to True
-        if (field.get_internal_type() == 'NullBooleanField' and
-                                         getattr(item, field.get_attname())):
-            bfields.append(field.verbose_name)
-        # get char fields & values if they are listed above, and not empty
-        elif field.get_internal_type() == 'CharField' or field.get_internal_type() == 'TextField':
-            for simple in simple_text:
-                if field.get_attname() == simple:
-                    sfields.append( (field.verbose_name, getattr(item, field.get_attname()),) )
-
-    return { 'item': item, 'sfields': sfields, 'bfields': bfields }
+    return item.get_context_dict()
 
 
 def combine_details(ldet1, ldet2):
