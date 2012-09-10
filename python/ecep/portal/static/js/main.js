@@ -103,11 +103,14 @@ ecep.init = function() {
     // Tie "enter" in text box to start button
     var inputNode = $('input.address-input');
     if (inputNode) {
-        inputNode.keypress(function(event) {
-            if(event.keyCode == 13) {
-                $($(this).data('button')).click();
-                return false;
-            }
+        $(inputNode).each(function() {
+            $(this).keypress(function(event) {
+                if(event.keyCode == 13) {
+                    $($(this).data('button')).click();
+                    event.stopPropagation();
+                    return false;
+                }
+            });
         });
     }
 
@@ -664,13 +667,21 @@ ecep.geocode = function(addr) {
     );
 };
 
-ecep.dropMarker = function(loc, title, urlName, reposition) {
+/* Utility function for giving us a marker on the map, and optionally focussing the map on it
+ * @loc: gmap Point type, specifies location of the marker
+ * @title: Title to give the marker
+ * @urlName: Name to give ecep.getUrl to find the marker image
+ * @reposition: if true, will reposition the map to center on @loc
+ * @zindex: zindex of the marker (optional)
+ */
+ecep.dropMarker = function(loc, title, urlName, reposition, zindex) {
     var marker = new google.maps.Marker({
         map: ecep.map,
         position: loc,
         title: title,
-        icon: ecep.markerImage(urlName),
-        shadow: ecep.markerShadow()
+        icon: urlName ? ecep.markerImage(urlName) : null,
+        shadow: ecep.markerShadow(),
+        zIndex: zindex || -1
     });
     if (reposition) {
         if (!ecep.map.getBounds().contains(loc)) {
@@ -680,6 +691,9 @@ ecep.dropMarker = function(loc, title, urlName, reposition) {
     return marker;
 };
 
+/* Utility function for creating a google maps marker image for us w/ some of our defaults
+ * @name: Name to give ecep.getUrl to find the marker image, required
+ */
 ecep.markerImage = function(name) {
     var markerImg = new google.maps.MarkerImage(
         ecep.getUrl(name),
@@ -690,6 +704,8 @@ ecep.markerImage = function(name) {
     return markerImg;
 };
 
+/* Utility function for getting a marker shadow image
+ */
 ecep.markerShadow = function() {
     return new google.maps.MarkerImage(ecep.getUrl('shadow-marker'),
         new google.maps.Size(38.0, 25.0),
