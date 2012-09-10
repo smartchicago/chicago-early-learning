@@ -23,6 +23,7 @@ def get_opts(selected_val='2'):
     # Options for distance dropdown
     # option value => (option text, enabled)
     distance_opts = { '-1': ['Distance', False],
+                      '0.5': ['< 0.5 mi', False],
                       '1': ['< 1 mi', False],
                       '2': ['< 2 mi', False],
                       '5': ['< 5 mi', False],
@@ -31,7 +32,7 @@ def get_opts(selected_val='2'):
     key = selected_val if selected_val in distance_opts else '2'
     distance_opts[key][1] = True
     result = [[k] + v for k, v in distance_opts.items()]
-    return sorted(result, key=lambda a: int(a[0]))
+    return sorted(result, key=lambda a: float(a[0]))
 
 
 def index(request):
