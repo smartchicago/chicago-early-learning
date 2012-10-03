@@ -525,13 +525,10 @@ table.compare-table td {
 .rating-inner {
     color: #444444;
     font-weight: bold;
-    padding-right: 1.5em;
 }
 
 .loc_rating a {
     text-decoration: none;
-    padding: 3px;
-    display: inline-block;
 }
 .star-notice {
     color: #999999;
