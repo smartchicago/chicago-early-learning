@@ -15,7 +15,6 @@ class Location(models.Model):
     fax = models.CharField('Fax Number', max_length=20, blank=True)
     is_age_lt_3 = models.NullBooleanField('Ages 0-3')
     is_age_gt_3 = models.NullBooleanField('Ages 3-5')
-    is_child_care = models.NullBooleanField('Child Care')
     is_hs = models.NullBooleanField('Head Start')
     is_ehs = models.NullBooleanField('Early Head Start')
     is_pre4all = models.NullBooleanField('Preschool for All/Prevention Initiative')
@@ -23,6 +22,7 @@ class Location(models.Model):
     is_special_ed = models.NullBooleanField('Special Ed')
     is_montessori = models.NullBooleanField('Montessori')
     is_child_parent_center = models.NullBooleanField('Child-Parent Center')
+    is_child_care = models.NullBooleanField('Child Care Assistance Program')
     ages = models.CharField('Ages Served', max_length=50, blank=True)
     exec_director = models.CharField('Executive Director', max_length=100, blank=True)
     ctr_director = models.CharField('Director/Principal', max_length=100, blank=True)
@@ -64,6 +64,9 @@ class Location(models.Model):
         the meta class attached to the model to introspect on the field types.
         This also has the benefit of providing the verbose name of the field.
         """
+
+        # TODO: This relies on fields being ordered in the fields object in the
+        # same order they're defined above.  This is probably a sketchy assumption.
         exclude = ['is_montessori', 'is_special_ed']
 
         fields = []
