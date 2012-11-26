@@ -1,2 +1,5 @@
 User-agent: *
-Disallow: /
+Disallow: /sms/
+Disallow: /sms_error/
+Disallow: /admin/
+
