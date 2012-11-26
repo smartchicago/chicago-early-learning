@@ -44,7 +44,7 @@ class Location(models.Model):
     display_include = set([
         'ages', 'prg_dur', 'prg_sched', 'prg_size', 'site_affil', 'ctr_director', 'accred',
         'is_child_care', 'is_hs', 'is_ehs', 'is_pre4all', 'is_tuition_based',
-        'is_special_ed', 'is_child_parent_center'])
+        'is_child_parent_center'])
 
     def __unicode__(self):
         return self.site_name
@@ -141,19 +141,19 @@ class Location(models.Model):
 
         attribs = ''
         for field in [
-            'is_child_care', 'is_hs', 'is_pre4all', 'is_tuition_based',
-            'is_special_ed', 'is_montessori', 'is_child_parent_center' ]:
-                if self.__dict__[field]:
-                    attribs += self.verbose_name(field) + ", "
+                'is_child_care', 'is_hs', 'is_pre4all', 'is_tuition_based',
+                'is_montessori', 'is_child_parent_center' ]:
+            if self.__dict__[field]:
+                attribs += self.verbose_name(field) + ", "
 
         if len(attribs) > 0:
             result += "Attributes: " + attribs.strip(", ") + "\n"
 
         for field in [
-            'exec_director', 'ctr_director', 'site_affil', 'url', 'email',
-            'q_stmt', 'e_info', 'as_proc', 'accred', 'prg_sched', 'prg_dur',
-            'prg_size', 'ages', 'waitlist' ]:
-                result += self.val_or_empty(field)
+                'exec_director', 'ctr_director', 'site_affil', 'url', 'email',
+                'q_stmt', 'e_info', 'as_proc', 'accred', 'prg_sched', 'prg_dur',
+                'prg_size', 'ages', 'waitlist' ]:
+            result += self.val_or_empty(field)
 
         return result.strip()
 
