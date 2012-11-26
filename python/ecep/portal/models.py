@@ -132,29 +132,3 @@ class Location(models.Model):
         val = self.__dict__[field]
         return ("%s: %s\n" % (self.verbose_name(field), f(val))) if val else ""
 
-    def get_long_string(self):
-        """Returns a long string representation of pertinent fields in this model"""
-        result = "%s\n%s\n%s, %s %s\n" % \
-            (self.site_name, self.address, self.city, self.state, self.zip)
-        for field in [ "phone1", "phone2", "phone3", "fax" ]:
-            result += self.val_or_empty(field, nicephone)
-
-        attribs = ''
-        for field in [
-                'is_child_care', 'is_hs', 'is_pre4all', 'is_tuition_based',
-                'is_montessori', 'is_child_parent_center' ]:
-            if self.__dict__[field]:
-                attribs += self.verbose_name(field) + ", "
-
-        if len(attribs) > 0:
-            result += "Attributes: " + attribs.strip(", ") + "\n"
-
-        for field in [
-                'exec_director', 'ctr_director', 'site_affil', 'url', 'email',
-                'q_stmt', 'e_info', 'as_proc', 'accred', 'prg_sched', 'prg_dur',
-                'prg_size', 'ages', 'waitlist' ]:
-            result += self.val_or_empty(field)
-
-        return result.strip()
-
-
