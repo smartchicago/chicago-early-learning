@@ -1,3 +1,6 @@
+# Copyright (c) 2012 Azavea, Inc.
+# See LICENSE in the project root for copying permission
+
 from django.conf.urls.defaults import patterns, include, url
 from portal.sms import Sms, Conversation, SmsCallback
 from django.views.generic.simple import direct_to_template

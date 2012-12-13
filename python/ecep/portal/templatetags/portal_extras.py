@@ -1,3 +1,6 @@
+# Copyright (c) 2012 Azavea, Inc.
+# See LICENSE in the project root for copying permission
+
 from django import template
 from django.template.defaultfilters import stringfilter
 from django.utils.html import conditional_escape
