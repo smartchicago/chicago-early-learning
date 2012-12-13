@@ -1,3 +1,6 @@
+# Copyright (c) 2012 Azavea, Inc.
+# See LICENSE in the project root for copying permission
+
 from django.contrib.gis.db import models
 from portal.templatetags.portal_extras import nicephone
 from django.template.defaultfilters import title

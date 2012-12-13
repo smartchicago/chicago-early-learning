@@ -1,3 +1,6 @@
+# Copyright (c) 2012 Azavea, Inc.
+# See LICENSE in the project root for copying permission
+
 """
 This module contains classes and utilities for interacting with SMS messages
 """

@@ -1,3 +1,6 @@
+# Copyright (c) 2012 Azavea, Inc.
+# See LICENSE in the project root for copying permission
+
 """
 This file demonstrates writing tests using the unittest module. These will pass
 when you run "manage.py test".
