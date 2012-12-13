@@ -111,6 +111,7 @@ class Conversation(object):
     ERROR =  'Sorry, I didn\'t understand that. Please text "h" for instructions'
     FATAL =  'We\'re sorry, something went wrong with your request! Please try again'
     MORE =   'Reply "m" or "more" to receive the next few pages'
+    LIST_HEADER = 'Places near %s. Reply with program number for more info\n'
 
     # Properties
     locations = None        # List of pks into models.Location, represents locations near this user
@@ -215,7 +216,7 @@ class Conversation(object):
                     school = "%d: %s" % (i + 1, l.site_name)
                     schools_list.append(school)
 
-                response = "Places in %s:" % zipcode
+                response = Conversation.LIST_HEADER % zipcode
                 response += "\n".join(schools_list)
                 self.update_response(response)
             else:
@@ -225,6 +226,7 @@ class Conversation(object):
             self.update_response(self.USAGE)
         elif (self._re_more.match(msg.body) and
                 (self.current_state & Conversation.State.INTERRUPTED) != 0):
+            # send next few pages
             self.update_response()
         elif (self.current_state & Conversation.State.GOT_ZIP) != 0:
             # parse location selection
@@ -237,7 +239,7 @@ class Conversation(object):
                     self.update_response(
                         ("Sorry, I don't know about that school near zipcode %s. " +
                             "Please text a number between 1 and %d or a 5 digit zipcode") %
-                        (self.zipcode, idx))
+                        (self.zipcode, length))
                 else:
                     l = Location.objects.get(pk=self.locations[idx])
                     ctx = l.get_context_dict()
@@ -246,7 +248,7 @@ class Conversation(object):
             else:
                 self.update_response(
                     ("Sorry, I didn't understand that number for zipcode %s. " +
-                        "Please text a number between 1 and %d, or a 5 digit zipcode") %
+                        "Please text a number between 1 and %d or a 5 digit zipcode") %
                     (self.zipcode, length))
         else:
             self.update_response(self.ERROR)
