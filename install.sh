@@ -1,5 +1,9 @@
 #!/bin/bash
 #
+# Copyright (c) 2012 Azavea, Inc.
+# See LICENSE in the project root for copying permission
+#
+#
 # This script will install prerequisites to run the early-childhood-portal
 # web application with nginx and gunicorn.
 #
