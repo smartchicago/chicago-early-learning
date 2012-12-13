@@ -1,5 +1,9 @@
 #!/bin/bash
 #
+# Copyright (c) 2012 Azavea, Inc.
+# See LICENSE in the project root for copying permission
+#
+#
 # This script will install prerequisites to run the early-childhood-portal
 # web application with nginx and gunicorn.
 #
@@ -141,9 +145,17 @@ configure_django() {
         return 1
     fi
 
+    echo -e "\nEnable DEBUG? (y/n)"
+    read YN
+    if [ "$YN" == "y" ]; then
+        DEBUG="True"
+    else
+        DEBUG="False"
+    fi
+
     echo -e "\nEnable Twilio? (y/n)"
-    read ET
-    if [ "$ET" == "y" ]; then
+    read YN
+    if [ "$YN" == "y" ]; then
         TWILIO_ENABLED="True"
         echo -e "\nEnter your Twilio credentials (you can leave these blank to use the test account)"
 
@@ -162,7 +174,6 @@ configure_django() {
         PHONE="None"
     fi
 
-
     echo -en "\nPlease enter a username for the django admin: "
     read USERNAME
 
@@ -170,6 +181,9 @@ configure_django() {
     read EMAIL
 
     LOCAL="$1/python/ecep/local_settings.py"
+
+    # /dev/random is theoretically better, but is usually really slow on VMs
+    KEY=$(< /dev/urandom tr -dc '_!@#$%^&*(\-_=+)a-z-0-9' | head -c50;)
 
     echo "ADMINS = (" > $LOCAL
     echo "    ('$USERNAME', '$EMAIL')," >> $LOCAL
@@ -186,13 +200,16 @@ configure_django() {
     echo "" >> $LOCAL
     echo "STATIC_ROOT = '$1/python/ecep/static/'" >> $LOCAL
     echo "" >> $LOCAL
-    echo "SECRET_KEY = 'vv=s7@tj%fbs#o=xfmb3xu-0m94g*ssxftm@u86j80xqc@kb^8'" >> $LOCAL
+    echo "SECRET_KEY = '$KEY'" >> $LOCAL
     echo "" >> $LOCAL
     echo "TEMPLATE_DIRS = (" >> $LOCAL
     echo "    '$1/python/ecep/templates/'" >> $LOCAL
     echo ")" >> $LOCAL
     echo "" >> $LOCAL
     echo "STAGING = False" >> $LOCAL
+    echo "" >> $LOCAL
+    echo "DEBUG = $DEBUG" >> $LOCAL
+    echo "TEMPLATE_DEBUG = $DEBUG" >> $LOCAL
 
     # create the logging dir, and chmod it for www-data
     LOGDIR="/var/log/ecep/"
