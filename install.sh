@@ -76,6 +76,8 @@ configure_nginx() {
     echo "        try_files \$uri @proxy_to_app;" >> $CFG
     echo "    }" >> $CFG
     echo "    location @proxy_to_app {" >> $CFG
+    echo "        proxy_set_header X-Forwarded-Host \$host;" >> $CFG
+    echo "        proxy_set_header X-Forwarded-Server \$host;   # django-twilio will return 403 if not set" >> $CFG
     echo "        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;" >> $CFG
     echo "        proxy_set_header Host \$http_host;" >> $CFG
     echo "        proxy_redirect off;" >> $CFG
