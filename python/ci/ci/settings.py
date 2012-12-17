@@ -1,6 +1,6 @@
 # Django settings for ci project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -72,7 +72,7 @@ LOGGING = {
             'handlers': ['logfile'],
             'level': 'DEBUG',
             'propagate': True,
-        }       
-    }   
-}       
+        }
+    }
+}
 
