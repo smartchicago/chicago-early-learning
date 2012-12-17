@@ -1,3 +1,6 @@
+# Copyright (c) 2012 Azavea, Inc.
+# See LICENSE in the project root for copying permission
+
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
