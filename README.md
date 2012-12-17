@@ -68,4 +68,4 @@ After running ./install.sh, the database will need to be initialized for use by 
 
 ## Support
 
-Please log any bugs or errors with the issue tracker on [github](https://github.com/smartchicago/early-childhood-portal/issues).
+Please log any bugs or errors with the issue tracker on [github](https://github.com/smartchicago/chicago-early-learning/issues).
