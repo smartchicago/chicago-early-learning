@@ -668,7 +668,7 @@ ecep.geocode = function(addr) {
                 _gaq.push(['_trackEvent', 'Geocode', 'Not Found']);
             }
 
-            alert(gettext('Sorry, the address:\n\n"%(address)s"\n\nCan\'t be found in the service area.', { address: addr });
+            alert(gettext('Sorry, the address:\n\n"%(address)s"\n\nCan\'t be found in the service area.', { address: addr }));
         }
     );
 };
