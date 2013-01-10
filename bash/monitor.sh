@@ -20,49 +20,49 @@ EC2_HOST=`wget -q -O - http://169.254.169.254/latest/meta-data/public-hostname`
 DEPLOY_URL=''
 STAGE_URL=''
 
-if [ -e '/tmp/please_staging' ]; then
-    echo "Deploy to staging"
-    cd /srv/early-childhood-portal.staging
+function fetch_update {
+    TRIGGER=$1
+    CODEPATH=$2
+    BRANCH=$3
+    
+    if [ -e '/tmp/please_$TRIGGER' ]; then
+        echo "Code update to $TRIGGER"
+        cd $2
 
-    su ec2-user -c "git pull --rebase origin staging"
-    if [ $? != 0 ]; then
-        echo "Error fetching and rebasing code from 'origin'"
-        rm /tmp/please_staging
+        su ec2-user -c "git pull --rebase origin $BRANCH"
+        if [ $? != 0 ]; then
+            echo "Error fetching and rebasing code from 'origin'"
+            rm /tmp/please_$TRIGGER
 
-        exit 2
+            exit 2
+        fi
+
+        cd python/ecep
+        su ec2-user -c "./manage.py collectstatic --noinput"
+
+        if [ -e 'locale' ]; then
+            # compile messages if the locale folder is present
+            for lc in locale/*; do
+                echo "Compiling messages for $lc locale"
+                su ec2-user -c "./manage.py compilemessages --locale $lc"
+            done
+        fi
+
+        RESTART=Y
+
+        rm /tmp/please_$TRIGGER
+
+        if [ "$TRIGGER" == "stage" ]; then
+            STAGE_URL="http://$EC2_HOST:8000/"
+        else
+            DEPLOY_URL="http://$EC2_HOST/"
+        fi
     fi
+}
 
-    cd python/ecep
-    su ec2-user -c "./manage.py collectstatic --noinput"
+fetch_update 'staging' '/srv/early-childhood-portal.staging' 'staging'
 
-    RESTART=Y
-
-    rm /tmp/please_staging
-
-    STAGE_URL="http://$EC2_HOST:8000/"
-fi
-
-if [ -e '/tmp/please_deploy' ]; then
-    echo "Deploy to production"
-    cd /srv/early-childhood-portal
-
-    su ec2-user -c "git pull --rebase origin master"
-    if [ $? != 0 ]; then
-        echo "Error fetching code from 'origin'"
-        rm /tmp/please_deploy
-
-        exit 3
-    fi
-
-    cd python/ecep
-    su ec2-user -c "./manage.py collectstatic --noinput"
-
-    RESTART=Y
-
-    rm /tmp/please_deploy
-
-    DEPLOY_URL="http://$EC2_HOST/"
-fi
+fetch_update 'deploy' '/srv/early-childhood-portal' 'master'
 
 if [ "$RESTART" == 'Y' ]; then
     pkill gunicorn
