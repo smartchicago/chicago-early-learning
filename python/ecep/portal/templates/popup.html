@@ -3,10 +3,11 @@ Copyright (c) 2012 Azavea, Inc.
 See LICENSE in the project root for copying permission
 {% endcomment %}
 
+{% load i18n %}
 {% load portal_extras %}
 {% if is_popup %}<div class="location_item">{% endif %}
 
-<h4>{{ item.site_name }}&nbsp;&nbsp;<a href="/location/{{ item.id }}/" class="btn btn-mini" target="_blank">Permalink</a></h4>
+<h4>{{ item.site_name }}&nbsp;&nbsp;<a href="/location/{{ item.id }}/" class="btn btn-mini" target="_blank">{% trans "Permalink" %}</a></h4>
 
     <div class="loc_address">
       {{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}
@@ -14,15 +15,15 @@ See LICENSE in the project root for copying permission
 
     <div class="loc_rating">
         <!-- href anchor matches settings in django.faq -->
-        <a href="/faq.html#topic2-7" data-content="The state of Illinois is currently developing a universal quality rating system that will help indicate program quality at a glance. Once that rating system is finalized, it will be included here. At this time, &quot;Not Yet Rated&quot; does not make an indication about program quality." data-title="Ratings" data-trigger="hover" data-placement="right">
-            <span class="rating-inner">Not Yet Rated</span>&nbsp;&nbsp;&nbsp;&nbsp;
-            <span class="star-notice gmnoprint">What Is This?</span>
+        <a href="/faq.html#topic2-7" data-content="{% trans "The state of Illinois is currently developing a universal quality rating system that will help indicate program quality at a glance. Once that rating system is finalized, it will be included here. At this time, &quot;Not Yet Rated&quot; does not make an indication about program quality." %}" data-title="{% trans "Ratings" %}" data-trigger="hover" data-placement="right">
+            <span class="rating-inner">{% trans "Not Yet Rated" %}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="star-notice gmnoprint">{% trans "What Is This?" %}</span>
         </a>
     </div>
 	<br><br>
     {% if item.accred %}
     <div class="loc_accred">
-        <i class="icon-ok"></i>&nbsp;Accreditation: {{ item.accred }}
+        <i class="icon-ok"></i>&nbsp;{% trans "Accreditation:" %} {{ item.accred }}
 	    <br>
     </div>
     {% endif %}
@@ -38,18 +39,18 @@ See LICENSE in the project root for copying permission
         <thead>
             <tr>
                 {% if item.phone1 %}
-                <td>Main Phone</td>
+                <td>{% trans "Main Phone" %}</td>
                 <!--
                 {% if item.phone2 %}
-                <td>Alt. Phone</td>
+                <td>{% trans "Alt. Phone" %}</td>
                 {% if item.phone3 %}
-                <td>Alt. Phone</td>
+                <td>{% trans "Alt. Phone" %}</td>
                 {% endif %}
                 {% endif %}
                 -->
                 {% endif %}
                 {% if item.fax %}
-                <td>Fax</td>
+                <td>{% trans "Fax" %}</td>
                 {% endif %}
             </tr>
         </thead>
@@ -78,23 +79,23 @@ See LICENSE in the project root for copying permission
 {% if is_popup %}
     <div class="loc_directions gmnoprint">
         <div class="nav_single" id="directions-button">
-            <a class="btn btn-primary nav_to_location" href="#" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})"><i class="icon-map-marker icon-white"></i> Directions</a>
+            <a class="btn btn-primary nav_to_location" href="#" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})"><i class="icon-map-marker icon-white"></i> {% trans "Directions" %}</a>
         </div>
         <div class="nav_multi btn-group">
             <a class="btn btn-proimary dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="icon-map-marker icon-white"></i>
-                Directions
+                {% trans "Directions" %}
                 <i class="icon-chevron-right"></i>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geolocated">From: Your Location</a></li>
-                <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geocoded">From: Address</a></li>
+                <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geolocated">{% trans "From:" %} {% trans "Your Location" %}</a></li>
+                <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geocoded">{% trans "From:" %} {% trans "Address" context "user input" %}</a></li>
             </ul>
         </div>
     </div>
 
     <div class="loc_moreinfo gmnoprint">
-        <a href="/location/{{ item.id }}" class="btn btn-warning" data-id="{{ item.id }}"><i class="icon-plus icon-white"></i> More Info</a>
+        <a href="/location/{{ item.id }}" class="btn btn-warning" data-id="{{ item.id }}"><i class="icon-plus icon-white"></i> {% trans "More Info" %}</a>
     </div>
 </div>
 {% endif %}

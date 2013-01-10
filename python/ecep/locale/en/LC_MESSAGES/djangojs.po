@@ -1,0 +1,66 @@
+# English language translation strings for chicago-early-learning
+# Copyright (C) 2013 Azavea, Inc
+# This file is distributed under the same license as the chicago-early-learning package.
+# David Zwarg <dzwarg@azavea.com>, 2013.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-10 10:54-0600\n"
+"PO-Revision-Date: 2013-01-10 09:35-0600\n"
+"Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: portal/static/js/main.js:199
+msgid "Filters"
+msgstr ""
+
+#: portal/static/js/main.js:263
+msgid "Select two locations to compare."
+msgstr ""
+
+#: portal/static/js/main.js:327
+msgid "Compare"
+msgstr ""
+
+#: portal/static/js/main.js:635
+msgid "User location is outside the service area."
+msgstr ""
+
+#: portal/static/js/main.js:640
+msgid "User location cannot be found."
+msgstr ""
+
+#: portal/static/js/main.js:671
+msgid ""
+"Sorry, the address:\n"
+"\n"
+"\"%(address)s\"\n"
+"\n"
+"Can't be found in the service area."
+msgstr ""
+
+#: portal/static/js/main.js:792
+msgid "Close"
+msgstr ""
+
+#: portal/static/js/main.js:798
+msgid "Walking Directions"
+msgstr ""
+
+#: portal/static/js/main.js:806
+msgid "Additional Directions from Google"
+msgstr ""
+
+#: portal/static/js/main.js:855
+msgid "Please type in an address."
+msgstr ""
+
+#: portal/static/js/main.js:61
+msgid "Unknown URL endpoint \"%(name)s\""
+msgstr ""

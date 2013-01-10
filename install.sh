@@ -36,7 +36,7 @@ mkdir -p $INSTALL_DIR
 
 # install requirements via apt-get
 echo -e "\nInstalling required packages with 'apt'"
-apt-get install -q -y screen openssh-server nginx gunicorn postgresql-9.1-postgis gdal-bin libgdal1-1.7.0 libgeos-c1 python-psycopg2 &>> $LOG
+apt-get install -q -y screen openssh-server nginx gunicorn postgresql-9.1-postgis gdal-bin libgdal1-1.7.0 libgeos-c1 python-psycopg2 gettext&>> $LOG
 
 service postgresql start &>> $LOG
 
