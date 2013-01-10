@@ -8,6 +8,11 @@ from django.views.generic.simple import direct_to_template
 from django.contrib.gis import admin
 admin.autodiscover()
 
+js_info_dict = {
+    'domain': 'djangojs',
+    'packages': ('ecep.portal',),
+}
+
 urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
@@ -33,6 +38,10 @@ urlpatterns = patterns(
         # it works no matter what the request is
     }),
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
+
+    # i18n
+    url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
+    url(r'^rosetta/', include('rosetta.urls')),
 
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),

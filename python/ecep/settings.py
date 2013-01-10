@@ -32,6 +32,14 @@ TIME_ZONE = 'America/Chicago'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
+# The languages supported in the application.
+# This lambda function only serves to mark the names as being i18n'd
+ugettext = lambda s: s
+LANGUAGES = (
+  ('en', ugettext('English')),
+  ('es', ugettext('Spanish')),
+)
+
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -86,6 +94,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -109,6 +118,7 @@ INSTALLED_APPS = (
     'django_twilio',
     'gunicorn',
     'faq',
+    'rosetta',
 )
 
 

@@ -3,6 +3,7 @@ Copyright (c) 2012 Azavea, Inc.
 See LICENSE in the project root for copying permission
 {% endcomment %}
 
+{% load i18n %}
 {% load staticfiles %}
 <!DOCTYPE html> 
 <html> 
@@ -43,16 +44,16 @@ See LICENSE in the project root for copying permission
                     <span class="icon-bar"></span>
                 </a>
 
-                <a class="brand" href="/"><img id="logoImage" class="gmnoprint" src="{% static "images/cel-logo.png" %}" alt="Chicago Early Learning" /> chicago early learning</a>
+                <a class="brand" href="/"><img id="logoImage" class="gmnoprint" src="{% static "images/cel-logo.png" %}" alt="{% trans "Chicago Early Learning" %}" />&nbsp;{% trans "chicago early learning" %}</a>
                 <div class="nav-collapse gmnoprint">
                     <ul class="nav nav-pills pull-right">
                         {% if settings.TWILIO_ENABLED %}
                             <li id="text-link">
-                            <a data-toggle="modal" href="#text-info-modal">Text for Info</a>
+                            <a data-toggle="modal" href="#text-info-modal">{% trans "Text for Info" %}</a>
                             </li>
                         {% endif %}
-                        <li id="about-link"><a href="about.html">About</a></li>
-                        <li id="faq-link"><a href="faq.html">FAQ</a></li>
+                        <li id="about-link"><a href="about.html">{% trans "About" %}</a></li>
+                        <li id="faq-link"><a href="faq.html">{% trans "FAQ" %}</a></li>
                     </ul>
                 </div>
             </div>
@@ -67,14 +68,15 @@ See LICENSE in the project root for copying permission
             </div>
             <div class="row">
                 <div class="span2">
-                    <img class="text-popup-img" src="{% static "images/text-for-info.png" %}" alt="Text for info" />
+                    <img class="text-popup-img" src="{% static "images/text-for-info.png" %}" alt="{% trans "Text for info" %}" />
                 </div>
                 <div class="span3 pull-left">
-                    <h1 class="texting-info">Want information via text?</h1>
+                    <h1 class="texting-info">{% trans "Want information via text?" %}</h1>
         		    <br/>
-                    <h2 class="texting-info-sm">Text your zip code to <em>{{ settings.TWILIO_NUMBER }}</em></h2>
-                    <!-- <h2 class="texting-info">{{ settings.TWILIO_NUMBER }}</h3> -->
+                    {% blocktrans with number=settings.TWILIO_NUMBER %}
+                    <h2 class="texting-info-sm">Text your zip code to <em>{{ number }}</em></h2>
                     <h2 class="texting-info-sm">and we'll do the rest.</h2>
+                    {% endblocktrans %}
                 </div>
             </div>
         </div>
@@ -85,16 +87,16 @@ See LICENSE in the project root for copying permission
         <div class="container">
             <ul class="nav">
                 <li>
-                    <button class="btn btn-primary gmnoprint" id="filter-toggle">Filter</button>
+                    <button class="btn btn-primary gmnoprint" id="filter-toggle">{% trans "Filter" %}</button>
                 </li>
                 <li id="find-me-btn">
-                    <button class="geolocate hidden-phone btn btn-primary gmnoprint" href="#">Find Me</button>
+                    <button class="geolocate hidden-phone btn btn-primary gmnoprint" href="#">{% trans "Find Me" %}</button>
                     <a class="geolocate visible-phone" href="#"></a>
                 </li>
             </ul>
             <div class="navbar-search pull-left">
                 <input type="text" class="address-input search-query span3" id="search-address" 
-                    data-button="#menu-search" placeholder="Address Search" value="{{ searchText }}"/>
+                    data-button="#menu-search" placeholder="{% trans "Address Search" %}" value="{{ searchText }}"/>
                 <select class="hidden-phone search-query" id="search-radius">
                     <!-- 
                         Chrome's user-agent stylesheet has some bugs where it overrides the background
@@ -111,19 +113,13 @@ See LICENSE in the project root for copying permission
             </div>
             <ul class="nav">
                 <li>
-                    <button id="menu-search" class="btn btn-warning search-button gmnoprint" data-address="#search-address" href="#">Search</button>
-                    <!-- 
-                    <a id="menu-search" class="btn btn-primary" data-address="#search-address" href="#">
-                        <i class="icon-search icon-white"></i> Search
-                    </a>
-            -->
+                    <button id="menu-search" class="btn btn-warning search-button gmnoprint" data-address="#search-address" href="#">{% trans "Search" %}</button>
                 </li>
             </ul>
             <div class="hidden-phone gmnoprint">
                 <ul class="nav nav-pills pull-right">
                     <li>
-                        <!-- <a id="compare-toggle" href="#"><i class="icon-adjust icon-white"></i> Compare</a> -->
-                        <button id="print-toggle" class="btn btn-primary"><i class ="icon-print icon-white"></i> Print</button>
+                        <button id="print-toggle" class="btn btn-primary"><i class ="icon-print icon-white"></i> {% trans "Print" %}</button>
                     </li>
                 </ul>
             </div>
@@ -142,7 +138,7 @@ See LICENSE in the project root for copying permission
     </form>
 
     {% block content %}{% endblock %}
-    
+    <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
     <script type="text/javascript" src="{% static "js/jquery-1.7.2.js" %}"></script>
     <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.js" %}"></script>
     <script type="text/javascript"> (function() {
