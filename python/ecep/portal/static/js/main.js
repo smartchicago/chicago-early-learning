@@ -58,7 +58,7 @@ ecep.getUrl = function(name) {
             return mapImgs + 'cluster-lg.png';
 
         default:
-            throw gettext('Unknown URL endpoint "%(name)s"', { name: name };
+            throw gettext('Unknown URL endpoint "%(name)s"', { name: name });
     }
 };
 
