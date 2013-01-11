@@ -5,9 +5,10 @@ Copyright (c) 2012 Azavea, Inc.
 See LICENSE in the project root for copying permission
 {% endcomment %}
 
+{% load i18n %}
 {% load staticfiles %}
 
-{% block title %}Chicago Early Learning{% endblock %}
+{% block title %}{% trans "Chicago Early Learning" %}{% endblock %}
 
 {% block otherhead %}
 {% endblock %}
@@ -15,7 +16,7 @@ See LICENSE in the project root for copying permission
 {% block content %}
 <div id="compare-box">
     <h3 class="comparing">Comparing</h3>
-    <div id="compare-content"><ul><li>Please select two or more locations to compare them.</li></ul></div>
+    <div id="compare-content"><ul><li>{% trans "Please select two or more locations to compare them." %}</li></ul></div>
 </div>
 
 <div id="map-container">
@@ -25,27 +26,28 @@ See LICENSE in the project root for copying permission
 <div id="address-modal" class="modal hide fade in">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">x</a>
-        <h3><img src="{% static "images/logo-blue.png" %}" alt="CEL"> Chicago Early Learning</h3>
+        <h3><img src="{% static "images/logo-blue.png" %}" alt="{% trans "CEL" %}">&nbsp;{% trans "Chicago Early Learning" %}</h3>
     </div>
     <div class="modal-body">
-    <img class="intro" src="{% static "images/intro-photo.jpg" %}" alt="Chicago Early Learning Portal" />
+    <img class="intro" src="{% static "images/intro-photo.jpg" %}" alt="{% trans "Chicago Early Learning Portal" %}" />
+        {% blocktrans %}
         <p>Welcome to the City of Chicago’s Early Learning Portal.  Here you can easily find early learning programs near your home or work.  You can also compare programs side-by-side to select the highest quality option for your child.  Browse the FAQ page to learn more about different alternatives and how to enroll your child in a quality early learning program.</p> 
-
+        {% endblocktrans %}
     </div>
     <div class="modal-footer">
-      <p id="address-start">Enter an address to get started.</p>
+      <p id="address-start">{% trans "Enter an address to get started." %}</p>
         <input type="text" class="visible-phone address-input" data-button="#splash-search"
-            placeholder="Enter an address to get started" />
+            placeholder="{% trans "Enter an address to get started" %}" />
         <input type="text" class="hidden-phone address-input" data-button="#splash-search"
-            placeholder="Enter an address to get started" />
-        <button id="splash-search" class="search-button btn btn-warning pull-right" data-address=".modal-footer .address-input:visible">Start</button>
+            placeholder="{% trans "Enter an address to get started" %}" />
+        <button id="splash-search" class="search-button btn btn-warning pull-right" data-address=".modal-footer .address-input:visible">{% trans "Start" %}</button>
     </div>
 </div>
 
 <div id="compare-modal" class="modal hide">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">x</a>
-        <h3>Comparing Locations <a id="compare-permalink" target="_blank" class="btn btn-mini">Permalink</a></h3>
+        <h3>{% trans "Comparing Locations" %} <a id="compare-permalink" target="_blank" class="btn btn-mini">{% trans "Permalink" %}</a></h3>
     </div>
     <div class="modal-body">
     </div>
@@ -54,10 +56,10 @@ See LICENSE in the project root for copying permission
 <div id="filter-selection" style="display:none;">
 
 <textarea>
-        <button class="btn pull-right update gmnoprint" id="update-filter"><i class="icon-search"></i> Update</button>
+        <button class="btn pull-right update gmnoprint" id="update-filter"><i class="icon-search"></i> {% trans "Update" %}</button>
         <div class="gmnoprint">
 		<input type="checkbox" value="true" name="all" id="all" data-icon1="ON" data-icon2="OFF" class="loc_filter_check checkbox" checked/>
-            <label for="all" class="filter-label check">All</label><br><br>
+            <label for="all" class="filter-label check">{% trans "All" %}</label><br><br>
         </div>
 
         {% for f in fields %}

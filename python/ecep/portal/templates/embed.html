@@ -3,6 +3,7 @@ Copyright (c) 2012 Azavea, Inc.
 See LICENSE in the project root for copying permission
 {% endcomment %}
 
+{% load i18n %}
 {% load portal_extras %}
 
 <div class="location_item">
@@ -28,7 +29,7 @@ See LICENSE in the project root for copying permission
 
 {% if is_embed %}
 <div class="loc_lessinfo gmnoprint">
-    <a href="/location/{{ item.id }}" class="btn btn-warning" data-id="{{ item.id }}"><i class="icon-minus icon-white"></i> Less Info</a>
+    <a href="/location/{{ item.id }}" class="btn btn-warning" data-id="{{ item.id }}"><i class="icon-minus icon-white"></i> {% trans "Less Info" %}</a>
 </div>
 {% endif %}
 </div>

@@ -13,6 +13,7 @@ import logging, hashlib
 from datetime import datetime, timedelta
 from django.template.defaultfilters import title
 from faq.models import Topic, Question
+from django.utils.translation import ugettext as _
 
 logger = logging.getLogger(__name__)
 
@@ -25,12 +26,12 @@ def get_opts(selected_val='2'):
     """
     # Options for distance dropdown
     # option value => (option text, enabled)
-    distance_opts = { '-1': ['Distance', False],
-                      '0.5': ['< 0.5 mi', False],
-                      '1': ['< 1 mi', False],
-                      '2': ['< 2 mi', False],
-                      '5': ['< 5 mi', False],
-                      '10': ['< 10 mi', False] }
+    distance_opts = { '-1': [_('Distance'), False],
+                      '0.5': [_('< 0.5 mi'), False],
+                      '1': [_('< 1 mi'), False],
+                      '2': [_('< 2 mi'), False],
+                      '5': [_('< 5 mi'), False],
+                      '10': [_('< 10 mi'), False] }
 
     key = selected_val if selected_val in distance_opts else '2'
     distance_opts[key][1] = True

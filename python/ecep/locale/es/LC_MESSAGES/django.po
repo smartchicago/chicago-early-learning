@@ -1,0 +1,565 @@
+# Spanish language translation strings for chicago-early-learning
+# Copyright (C) 2013 Azavea, Inc
+# This file is distributed under the same license as the chicago-early-learning package.
+# David Zwarg <dzwarg@azavea.com>, 2013.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-10 10:54-0600\n"
+"PO-Revision-Date: 2013-01-10 08:46-0600\n"
+"Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: settings.py:39
+msgid "English"
+msgstr ""
+
+#: settings.py:40
+msgid "Spanish"
+msgstr ""
+
+#: portal/models.py:11
+msgid "Site Name"
+msgstr ""
+
+#: portal/models.py:12
+msgctxt "field name"
+msgid "Address"
+msgstr ""
+
+#: portal/models.py:13
+msgid "City"
+msgstr ""
+
+#: portal/models.py:14
+msgid "State"
+msgstr ""
+
+#: portal/models.py:15
+msgid "Zip Code"
+msgstr ""
+
+#: portal/models.py:16
+msgid "Phone Number"
+msgstr ""
+
+#: portal/models.py:17
+msgid "Phone Number 2"
+msgstr ""
+
+#: portal/models.py:18
+msgid "Phone Number 3"
+msgstr ""
+
+#: portal/models.py:19
+msgid "Fax Number"
+msgstr ""
+
+#: portal/models.py:20
+msgid "Ages 0-3"
+msgstr ""
+
+#: portal/models.py:21
+msgid "Ages 3-5"
+msgstr ""
+
+#: portal/models.py:22
+msgid "Head Start"
+msgstr ""
+
+#: portal/models.py:23
+msgid "Early Head Start"
+msgstr ""
+
+#: portal/models.py:24
+msgid "Preschool for All/Prevention Initiative"
+msgstr ""
+
+#: portal/models.py:25
+msgid "Tuition-Based"
+msgstr ""
+
+#: portal/models.py:26
+msgid "Special Ed"
+msgstr ""
+
+#: portal/models.py:27
+msgid "Montessori"
+msgstr ""
+
+#: portal/models.py:28
+msgid "Child-Parent Center"
+msgstr ""
+
+#: portal/models.py:29
+msgid "Child Care Assistance Program"
+msgstr ""
+
+#: portal/models.py:30
+msgid "Ages Served"
+msgstr ""
+
+#: portal/models.py:31
+msgid "Executive Director"
+msgstr ""
+
+#: portal/models.py:32
+msgid "Director/Principal"
+msgstr ""
+
+#: portal/models.py:33
+msgid "Site Affiliation"
+msgstr ""
+
+#: portal/models.py:34 portal/templatetags/portal_extras.py:30
+msgid "Website"
+msgstr ""
+
+#: portal/models.py:35 portal/templatetags/portal_extras.py:38
+msgid "Email"
+msgstr ""
+
+#: portal/models.py:36
+msgid "Quality Statement"
+msgstr ""
+
+#: portal/models.py:37
+msgid "Eligibility Information"
+msgstr ""
+
+#: portal/models.py:38
+msgid "Application and Selection Process"
+msgstr ""
+
+#: portal/models.py:39
+msgid "Accreditation"
+msgstr ""
+
+#: portal/models.py:40
+msgid "Program Schedule"
+msgstr ""
+
+#: portal/models.py:41
+msgid "Program Duration"
+msgstr ""
+
+#: portal/models.py:42
+msgid "Program Size"
+msgstr ""
+
+#: portal/models.py:43
+msgid "Waitlist Situation"
+msgstr ""
+
+#: portal/models.py:44
+msgid "Geometry"
+msgstr ""
+
+#: portal/sms.py:111
+msgid "To get this message text \"h\".\n"
+msgstr ""
+
+#: portal/sms.py:114
+msgid "Sorry, I didn't understand that. Please text \"h\" for instructions"
+msgstr ""
+
+#: portal/sms.py:115
+msgid "We're sorry, something went wrong with your request! Please try again"
+msgstr ""
+
+#: portal/sms.py:116
+msgid "Reply \"m\" or \"more\" to receive the next few pages"
+msgstr ""
+
+#: portal/sms.py:117
+#, python-format
+msgid "Places near %s. Reply with program number for more info\n"
+msgstr ""
+
+#: portal/sms.py:226
+#, python-format
+msgid "Sorry, I couldn't find any schools in %(zipcode)s"
+msgstr ""
+
+#: portal/sms.py:243
+#, python-format
+msgid "Sorry, I don't know about that school near zipcode %(zipcode)s. "
+msgstr ""
+
+#: portal/sms.py:253
+#, python-format
+msgid "Sorry, I didn't understand that number for zipcode %(zipcode)s. "
+msgstr ""
+
+#: portal/sms.py:293
+#, python-format
+msgid "(page %(current)d/%(total)d)"
+msgstr ""
+
+#: portal/views.py:29
+msgid "Distance"
+msgstr ""
+
+#: portal/views.py:30
+msgid "< 0.5 mi"
+msgstr ""
+
+#: portal/views.py:31
+msgid "< 1 mi"
+msgstr ""
+
+#: portal/views.py:32
+msgid "< 2 mi"
+msgstr ""
+
+#: portal/views.py:33
+msgid "< 5 mi"
+msgstr ""
+
+#: portal/views.py:34
+msgid "< 10 mi"
+msgstr ""
+
+#: portal/templates/about.html:9 portal/templates/base.html:47
+#: portal/templates/compare.html:9 portal/templates/faq-models.html:9
+#: portal/templates/index.html:11 portal/templates/index.html.py:29
+#: portal/templates/location.html:12 templates/admin/base_site.html:7
+msgid "Chicago Early Learning"
+msgstr ""
+
+#: portal/templates/about.html:9 portal/templates/base.html:55
+msgid "About"
+msgstr ""
+
+#: portal/templates/about.html:19
+msgid "About the Chicago Early Learning Portal"
+msgstr ""
+
+#: portal/templates/about.html:20
+msgid ""
+"\n"
+"    <p>The Chicago Early Learning Portal is a collaboration between the City "
+"of Chicago, the Chicago Public Schools, the Chicago Department of Family and "
+"Support Services, the Smart Chicago Collaborative, and the University of "
+"Chicago Urban Education Lab.</p>\n"
+"\n"
+"    <p>Mayor Rahm Emanuel has made investment in early childhood education a "
+"cornerstone of his administration, with the goal of serving at-risk children "
+"and increasing the transparency and accountability of city programs.</p>\n"
+"\n"
+"    <p>Announcing this initiative in September 2011, the Mayor remarked: “We "
+"must provide children in every neighborhood with the tools they need to "
+"excel in school and succeed in the workforce, and that includes providing "
+"excellent early childhood education . . . these reforms will help parents "
+"find opportunities for their children and better prepare our students for "
+"the rigors of elementary, middle and high school classrooms.”</p>\n"
+"\n"
+"    <p>For technical assistance or for more information about the Early "
+"Learning Portal, please contact <a href=\"mailto:info@chicagoearlylearning."
+"org\">info@chicagoearlylearning.org</a>.</p>\n"
+"\n"
+"    <p>For general questions about early learning options in Chicago, "
+"including information about enrollment, eligibility, and payment, please "
+"refer to our FAQ page.</p>\n"
+"    "
+msgstr ""
+
+#: portal/templates/about.html:32
+msgid "Partners and Sponsors"
+msgstr ""
+
+#: portal/templates/about.html:36 portal/templates/about.html.py:37
+msgid "City of Chicago"
+msgstr ""
+
+#: portal/templates/about.html:38
+msgid ""
+"\n"
+"    <p>Mayor Emanuel and the City of Chicago have made a firm commitment to "
+"providing children across the city with access to high-quality education, "
+"from early learning programs all the way up through college. That is why the "
+"Mayor’s 2013 budget includes an incredible investment in programming for "
+"children, including early education seats where they are most needed. One of "
+"the most important pieces is ensuring that parents have access to the "
+"information they need to make the choices that are best for their children, "
+"and the Early Learning Portal is a piece of that objective. Here, parents "
+"will find a list of all of the early learning programs that receive City "
+"funding, an easy-to-use interactive map, basic information about the "
+"programs available at every site and suggested questions they should ask any "
+"early learning site provider in order to determine if that location is right "
+"for their child.</p>\n"
+"    "
+msgstr ""
+
+#: portal/templates/about.html:45 portal/templates/about.html.py:46
+msgid "Chicago Public Schools"
+msgstr ""
+
+#: portal/templates/about.html:47
+msgid ""
+"\n"
+"    <p>Chicago Public Schools works to ensure that every student in every "
+"community has access to a high quality education that prepares them for "
+"success in college and career.</p>\n"
+"    "
+msgstr ""
+
+#: portal/templates/about.html:54 portal/templates/about.html.py:55
+msgid "Chicago Department of Family and Support Services"
+msgstr ""
+
+#: portal/templates/about.html:56
+msgid ""
+"\n"
+"    <p>The Chicago Department of Family &amp; Support Services (DFSS) is "
+"dedicated to supporting a continuum of coordinated services to enhance the "
+"lives of Chicago residents, particularly those most in need, from birth "
+"through the senior years.</p>\n"
+"    "
+msgstr ""
+
+#: portal/templates/about.html:63 portal/templates/about.html.py:64
+msgid "Smart Chicago Collaborative"
+msgstr ""
+
+#: portal/templates/about.html:65
+msgid ""
+"\n"
+"    <p>The Smart Chicago Collaborative is a civic organization devoted to "
+"using technology to make lives better in Chicago. We work to apply the "
+"transformative power of technology to solve problems for the people of "
+"Chicago.</p>\n"
+"    "
+msgstr ""
+
+#: portal/templates/about.html:72 portal/templates/about.html.py:73
+msgid "University of Chicago Urban Education Lab"
+msgstr ""
+
+#: portal/templates/about.html:74
+msgid ""
+"\n"
+"    <p>The University of Chicago Urban Education Lab, a project of the Urban "
+"Education Institute, seeks to improve education outcomes by providing "
+"scientific evidence about what strategies are the most effective and cost "
+"effective, for whom, and why.</p>\n"
+"    "
+msgstr ""
+
+#: portal/templates/base.html:47
+msgid "chicago early learning"
+msgstr ""
+
+#: portal/templates/base.html:52
+msgid "Text for Info"
+msgstr ""
+
+#: portal/templates/base.html:56 portal/templates/faq-models.html:9
+msgid "FAQ"
+msgstr ""
+
+#: portal/templates/base.html:71
+msgid "Text for info"
+msgstr ""
+
+#: portal/templates/base.html:74
+msgid "Want information via text?"
+msgstr ""
+
+#: portal/templates/base.html:76
+#, python-format
+msgid ""
+"\n"
+"                    <h2 class=\"texting-info-sm\">Text your zip code to <em>"
+"%(number)s</em></h2>\n"
+"                    <h2 class=\"texting-info-sm\">and we'll do the rest.</"
+"h2>\n"
+"                    "
+msgstr ""
+
+#: portal/templates/base.html:90
+msgid "Filter"
+msgstr ""
+
+#: portal/templates/base.html:93
+msgid "Find Me"
+msgstr ""
+
+#: portal/templates/base.html:99
+msgid "Address Search"
+msgstr ""
+
+#: portal/templates/base.html:116
+msgid "Search"
+msgstr ""
+
+#: portal/templates/base.html:122
+msgid "Print"
+msgstr ""
+
+#: portal/templates/compare_content.html:22 portal/templates/popup.html:18
+msgid ""
+"The state of Illinois is currently developing a universal quality rating "
+"system that will help indicate program quality at a glance. Once that rating "
+"system is finalized, it will be included here. At this time, &quot;Not Yet "
+"Rated&quot; does not make an indication about program quality."
+msgstr ""
+
+#: portal/templates/compare_content.html:22
+#: portal/templates/compare_content.html:34 portal/templates/popup.html:18
+msgid "Ratings"
+msgstr ""
+
+#: portal/templates/compare_content.html:23
+#: portal/templates/compare_content.html:35 portal/templates/popup.html:19
+msgid "Not Yet Rated"
+msgstr ""
+
+#: portal/templates/compare_content.html:25
+#: portal/templates/compare_content.html:37 portal/templates/popup.html:20
+msgid "What Is This?"
+msgstr ""
+
+#: portal/templates/compare_content.html:34
+msgid ""
+"Eventually, every early learning program in Chicago will receive a quality "
+"rating. These ratings will indicate program quality at a glance. Currently, "
+"the state is still developing the quality rating system. At this time, &quot;"
+"Not Yet Rated&quot; does not reveal anything about program quality."
+msgstr ""
+
+#: portal/templates/compare_content.html:47
+#: portal/templates/compare_content.html:52 portal/templates/popup.html:26
+msgid "Accreditation:"
+msgstr ""
+
+#: portal/templates/compare_content.html:74
+#: portal/templates/compare_content.html:115 portal/templates/popup.html:42
+msgid "Main Phone"
+msgstr ""
+
+#: portal/templates/compare_content.html:77
+#: portal/templates/compare_content.html:79
+#: portal/templates/compare_content.html:118
+#: portal/templates/compare_content.html:120 portal/templates/popup.html:45
+#: portal/templates/popup.html.py:47
+msgid "Alt. Phone"
+msgstr ""
+
+#: portal/templates/compare_content.html:85 portal/templates/popup.html:53
+msgid "Fax"
+msgstr ""
+
+#: portal/templates/compare_content.html:152
+#: portal/templates/compare_content.html:159
+msgid "Programs"
+msgstr ""
+
+#: portal/templates/embed.html:32
+msgid "Less Info"
+msgstr ""
+
+#: portal/templates/index.html:19
+msgid "Please select two or more locations to compare them."
+msgstr ""
+
+#: portal/templates/index.html:29
+msgid "CEL"
+msgstr ""
+
+#: portal/templates/index.html:32
+msgid "Chicago Early Learning Portal"
+msgstr ""
+
+#: portal/templates/index.html:33
+msgid ""
+"\n"
+"        <p>Welcome to the City of Chicago’s Early Learning Portal.  Here you "
+"can easily find early learning programs near your home or work.  You can "
+"also compare programs side-by-side to select the highest quality option for "
+"your child.  Browse the FAQ page to learn more about different alternatives "
+"and how to enroll your child in a quality early learning program.</p> \n"
+"        "
+msgstr ""
+
+#: portal/templates/index.html:38
+msgid "Enter an address to get started."
+msgstr ""
+
+#: portal/templates/index.html:40 portal/templates/index.html.py:42
+msgid "Enter an address to get started"
+msgstr ""
+
+#: portal/templates/index.html:43
+msgid "Start"
+msgstr ""
+
+#: portal/templates/index.html:50
+msgid "Comparing Locations"
+msgstr ""
+
+#: portal/templates/index.html:50 portal/templates/popup.html:10
+msgid "Permalink"
+msgstr ""
+
+#: portal/templates/index.html:59
+msgid "Update"
+msgstr ""
+
+#: portal/templates/index.html:62
+msgid "All"
+msgstr ""
+
+#: portal/templates/popup.html:82 portal/templates/popup.html.py:87
+msgid "Directions"
+msgstr ""
+
+#: portal/templates/popup.html:91 portal/templates/popup.html.py:92
+msgid "From:"
+msgstr ""
+
+#: portal/templates/popup.html:91
+msgid "Your Location"
+msgstr ""
+
+#: portal/templates/popup.html:92
+msgctxt "user input"
+msgid "Address"
+msgstr ""
+
+#: portal/templates/popup.html:98
+msgid "More Info"
+msgstr ""
+
+#: templates/admin/base_site.html:4
+msgid "Chicago Early Learning Portal admin"
+msgstr ""
+
+#: templates/admin/login.html:24
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/login.html:40
+msgid "Username:"
+msgstr ""
+
+#: templates/admin/login.html:44
+msgid "Password:"
+msgstr ""
+
+#: templates/admin/login.html:51
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/admin/login.html:55
+msgid "Log in"
+msgstr ""
