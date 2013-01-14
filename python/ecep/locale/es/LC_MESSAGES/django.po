@@ -19,11 +19,11 @@ msgstr ""
 
 #: settings.py:39
 msgid "English"
-msgstr ""
+msgstr "Inglés"
 
 #: settings.py:40
 msgid "Spanish"
-msgstr ""
+msgstr "Español"
 
 #: portal/models.py:11
 msgid "Site Name"
@@ -420,7 +420,7 @@ msgstr ""
 
 #: portal/templates/base.html:47
 msgid "chicago early learning"
-msgstr ""
+msgstr "chicago early learning"
 
 #: portal/templates/base.html:52
 msgid "Text for Info"
@@ -495,8 +495,8 @@ msgstr ""
 
 #: portal/templates/compare_content.html:23
 #: portal/templates/compare_content.html:35 portal/templates/popup.html:19
-msgid "No calificado aún"
-msgstr ""
+msgid "Not Yet Rated"
+msgstr "No calificado aún"
 
 #: portal/templates/compare_content.html:25
 #: portal/templates/compare_content.html:37 portal/templates/popup.html:20
