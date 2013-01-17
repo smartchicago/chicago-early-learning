@@ -43,8 +43,8 @@ function fetch_update {
         if [ -e 'locale' ]; then
             # compile messages if the locale folder is present
             for lc in locale/*; do
-                echo "Compiling messages for $lc locale"
-                su ec2-user -c "./manage.py compilemessages --locale $lc"
+                echo "Compiling messages for `basename $lc` locale"
+                su ec2-user -c "./manage.py compilemessages --locale `basename $lc`"
             done
         fi
 
