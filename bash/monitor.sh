@@ -25,7 +25,7 @@ function fetch_update {
     CODEPATH=$2
     BRANCH=$3
     
-    if [ -e '/tmp/please_$TRIGGER' ]; then
+    if [ -e "/tmp/please_$TRIGGER" ]; then
         echo "Code update to $TRIGGER"
         cd $2
 
@@ -52,7 +52,7 @@ function fetch_update {
 
         rm /tmp/please_$TRIGGER
 
-        if [ "$TRIGGER" == "stage" ]; then
+        if [ "$TRIGGER" == "staging" ]; then
             STAGE_URL="http://$EC2_HOST:8000/"
         else
             DEPLOY_URL="http://$EC2_HOST/"
