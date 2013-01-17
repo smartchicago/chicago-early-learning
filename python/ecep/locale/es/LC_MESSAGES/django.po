@@ -27,40 +27,40 @@ msgstr "Español"
 
 #: portal/models.py:11
 msgid "Site Name"
-msgstr ""
+msgstr "Nombre del centro"
 
 #: portal/models.py:12
 msgctxt "field name"
 msgid "Address"
-msgstr ""
+msgstr "Dirección"
 
 #: portal/models.py:13
 msgid "City"
-msgstr ""
+msgstr "Ciudad"
 
 #: portal/models.py:14
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #: portal/models.py:15
 msgid "Zip Code"
-msgstr ""
+msgstr "Código postal (ZIP)"
 
 #: portal/models.py:16
 msgid "Phone Number"
-msgstr ""
+msgstr "Número de teléfono"
 
 #: portal/models.py:17
 msgid "Phone Number 2"
-msgstr ""
+msgstr "Número de teléfono 2"
 
 #: portal/models.py:18
 msgid "Phone Number 3"
-msgstr ""
+msgstr "Número de teléfono 3"
 
 #: portal/models.py:19
 msgid "Fax Number"
-msgstr ""
+msgstr "Número de fax"
 
 #: portal/models.py:20
 msgid "Ages 0-3"
@@ -88,11 +88,11 @@ msgstr "Con pago de matrícula"
 
 #: portal/models.py:26
 msgid "Special Ed"
-msgstr ""
+msgstr "Educación especial"
 
 #: portal/models.py:27
 msgid "Montessori"
-msgstr ""
+msgstr "Montessori"
 
 #: portal/models.py:28
 msgid "Child-Parent Center"
@@ -108,7 +108,7 @@ msgstr "Edades para las que se presta servicio"
 
 #: portal/models.py:31
 msgid "Executive Director"
-msgstr ""
+msgstr "Director ejecutivo"
 
 #: portal/models.py:32
 msgid "Director/Principal"
@@ -128,19 +128,19 @@ msgstr "Correo electrónico"
 
 #: portal/models.py:36
 msgid "Quality Statement"
-msgstr ""
+msgstr "Declaración de calidad"
 
 #: portal/models.py:37
 msgid "Eligibility Information"
-msgstr ""
+msgstr "Información sobre requisitos"
 
 #: portal/models.py:38
 msgid "Application and Selection Process"
-msgstr ""
+msgstr "Proceso de presentación de solicitudes y selección"
 
 #: portal/models.py:39
 msgid "Accreditation"
-msgstr ""
+msgstr "Acreditación"
 
 #: portal/models.py:40
 msgid "Program Schedule"
@@ -152,56 +152,56 @@ msgstr "Duración del programa"
 
 #: portal/models.py:42
 msgid "Program Size"
-msgstr ""
+msgstr "Tamaño del programa"
 
 #: portal/models.py:43
 msgid "Waitlist Situation"
-msgstr ""
+msgstr "Situación de la lista de espera"
 
 #: portal/models.py:44
 msgid "Geometry"
-msgstr ""
+msgstr "Geometría"
 
 #: portal/sms.py:111
 msgid "To get this message text \"h\".\n"
-msgstr ""
+msgstr "Para obtener el texto de este mensaje \"h\".\n"
 
 #: portal/sms.py:114
 msgid "Sorry, I didn't understand that. Please text \"h\" for instructions"
-msgstr ""
+msgstr "Lamentablemente no comprendimos.  Envíe un mensaje de texto con  \"h\" para recibir instrucciones"
 
 #: portal/sms.py:115
 msgid "We're sorry, something went wrong with your request! Please try again"
-msgstr ""
+msgstr "Lamentablemente algo salió mal con su pedido. Por favor vuelva a intentarlo"
 
 #: portal/sms.py:116
 msgid "Reply \"m\" or \"more\" to receive the next few pages"
-msgstr ""
+msgstr "Envíe una respuesta con \"m\" o \"more\" para recibir las páginas que siguen"
 
 #: portal/sms.py:117
 #, python-format
 msgid "Places near %s. Reply with program number for more info\n"
-msgstr ""
+msgstr "Lugares cerca de %s. Envíe una respuesta con el número de programa para recibir más información"
 
 #: portal/sms.py:226
 #, python-format
 msgid "Sorry, I couldn't find any schools in %(zipcode)s"
-msgstr ""
+msgstr "Lamentablemente no pudimos encontrar ninguna escuela en %(zipcode)s"
 
 #: portal/sms.py:243
 #, python-format
 msgid "Sorry, I don't know about that school near zipcode %(zipcode)s. "
-msgstr ""
+msgstr "Lamentablemente no tenemos información sobre esa escuela cerca del código postal %(zipcode)s"
 
 #: portal/sms.py:253
 #, python-format
 msgid "Sorry, I didn't understand that number for zipcode %(zipcode)s. "
-msgstr ""
+msgstr "Lamentablemente no comprendimos ese número para el código postal %(zipcode)s"
 
 #: portal/sms.py:293
 #, python-format
 msgid "(page %(current)d/%(total)d)"
-msgstr ""
+msgstr "(página %(current)d/%(total)d)"
 
 #: portal/views.py:29
 msgid "Distance"
@@ -424,7 +424,7 @@ msgstr "chicago early learning"
 
 #: portal/templates/base.html:52
 msgid "Text for Info"
-msgstr "Envíe un mensaje de texto para obtener información"
+msgstr "Envíe texto para recibir info"
 
 #: portal/templates/base.html:56 portal/templates/faq-models.html:9
 msgid "FAQ"
@@ -432,7 +432,7 @@ msgstr "Preguntas frecuentes"
 
 #: portal/templates/base.html:71
 msgid "Text for info"
-msgstr "Envíe un mensaje de texto para obtener información"
+msgstr "Envíe texto para recibir info"
 
 #: portal/templates/base.html:74
 msgid "Want information via text?"
@@ -465,7 +465,7 @@ msgstr "Encuéntreme"
 
 #: portal/templates/base.html:99
 msgid "Address Search"
-msgstr ""
+msgstr "Búsqueda de dirección"
 
 #: portal/templates/base.html:116
 msgid "Search"
@@ -491,7 +491,7 @@ msgstr ""
 #: portal/templates/compare_content.html:22
 #: portal/templates/compare_content.html:34 portal/templates/popup.html:18
 msgid "Ratings"
-msgstr ""
+msgstr "Calificaciones"
 
 #: portal/templates/compare_content.html:23
 #: portal/templates/compare_content.html:35 portal/templates/popup.html:19
@@ -519,7 +519,7 @@ msgstr ""
 #: portal/templates/compare_content.html:47
 #: portal/templates/compare_content.html:52 portal/templates/popup.html:26
 msgid "Accreditation:"
-msgstr ""
+msgstr "Acreditación"
 
 #: portal/templates/compare_content.html:74
 #: portal/templates/compare_content.html:115 portal/templates/popup.html:42
@@ -532,7 +532,7 @@ msgstr "Teléfono principal"
 #: portal/templates/compare_content.html:120 portal/templates/popup.html:45
 #: portal/templates/popup.html.py:47
 msgid "Alt. Phone"
-msgstr ""
+msgstr "Tel. alternativo"
 
 #: portal/templates/compare_content.html:85 portal/templates/popup.html:53
 msgid "Fax"
@@ -588,19 +588,19 @@ msgstr "Para comenzar, ingrese su dirección"
 
 #: portal/templates/index.html:43
 msgid "Start"
-msgstr ""
+msgstr "Inicio"
 
 #: portal/templates/index.html:50
 msgid "Comparing Locations"
-msgstr ""
+msgstr "Comparación de centros"
 
 #: portal/templates/index.html:50 portal/templates/popup.html:10
 msgid "Permalink"
-msgstr ""
+msgstr "Enlace permanente"
 
 #: portal/templates/index.html:59
 msgid "Update"
-msgstr ""
+msgstr "Actualizar"
 
 #: portal/templates/index.html:62
 msgid "All"
@@ -608,20 +608,20 @@ msgstr "Todos"
 
 #: portal/templates/popup.html:82 portal/templates/popup.html.py:87
 msgid "Directions"
-msgstr ""
+msgstr "Indicaciones"
 
 #: portal/templates/popup.html:91 portal/templates/popup.html.py:92
 msgid "From:"
-msgstr ""
+msgstr "De:"
 
 #: portal/templates/popup.html:91
 msgid "Your Location"
-msgstr ""
+msgstr "Su ubicación"
 
 #: portal/templates/popup.html:92
 msgctxt "user input"
 msgid "Address"
-msgstr ""
+msgstr "Dirección"
 
 #: portal/templates/popup.html:98
 msgid "More Info"
@@ -629,26 +629,26 @@ msgstr "Más información"
 
 #: templates/admin/base_site.html:4
 msgid "Chicago Early Learning Portal admin"
-msgstr ""
+msgstr "Chicago Early Learning Portal admin"
 
 #: templates/admin/login.html:24
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Por favor corrija el siguiente error:"
+msgstr[1] "Por favor corrija los siguientes errores:"
 
 #: templates/admin/login.html:40
 msgid "Username:"
-msgstr ""
+msgstr "Nombre de usuario"
 
 #: templates/admin/login.html:44
 msgid "Password:"
-msgstr ""
+msgstr "Contraseña"
 
 #: templates/admin/login.html:51
 msgid "Forgotten your password or username?"
-msgstr ""
+msgstr "¿Ha olvidado su nombre de usuario o contraseña?"
 
 #: templates/admin/login.html:55
 msgid "Log in"
-msgstr ""
+msgstr "Iniciar sesión"
