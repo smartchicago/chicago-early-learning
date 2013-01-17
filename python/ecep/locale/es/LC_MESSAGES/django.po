@@ -181,7 +181,7 @@ msgstr "Envíe una respuesta con \"m\" o \"more\" para recibir las páginas que 
 #: portal/sms.py:117
 #, python-format
 msgid "Places near %s. Reply with program number for more info\n"
-msgstr "Lugares cerca de %s. Envíe una respuesta con el número de programa para recibir más información"
+msgstr "Lugares cerca de %s. Envíe una respuesta con el número de programa para recibir más información\n"
 
 #: portal/sms.py:226
 #, python-format
