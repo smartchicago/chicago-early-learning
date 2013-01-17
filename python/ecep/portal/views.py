@@ -217,6 +217,18 @@ def about(request):
     return render_to_response('about.html', context_instance=ctx)
 
 
+class TopicWrapper(object):
+    topic = None
+    questions = None
+
+    def __init__(self, t, request):
+        self.topic = t
+        qs = Question.objects.filter(topic=t, status=Question.ACTIVE)
+        if request.user.is_anonymous():
+            qs = qs.exclude(protected=True)
+        self.questions = list(qs)
+
+
 def faq(request):
     tpl = 'faq-models.html'
 
@@ -224,17 +236,16 @@ def faq(request):
     lang = request.LANGUAGE_CODE
 
     # get the topics in this language
-    topic = Topic.objects.filter(slug='%s-faq' % lang)
-    if topic.count() == 0:
-        topic = Topic.objects.filter(slug='%s-faq' % settings.LANGUAGE_CODE[0:2])
+    topics = Topic.objects.filter(slug__startswith=lang+'-')
+    if topics.count() == 0:
+        topics = Topic.objects.filter(slug__startswith=settings.LANGUAGE_CODE[0:2]+'-')
 
-        if topic.count() == 0:
+        if topics.count() == 0:
             raise Http404()
 
 
     ctx = RequestContext(request, {
-        'topic': topic[0],
-        'questions': topic[0].questions.all(),
+        'topics': [TopicWrapper(t, request) for t in topics],
         'options': get_opts(),
         'mapbarEnabled': True
     })

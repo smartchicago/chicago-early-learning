@@ -59,7 +59,11 @@ Question models in the faq app into a new language."""
 
     def dupequestion(self, lang, lang_topic, question):
         """
-        Duplicate a question from one topic to another.
+        Duplicate a question from one topic to another. This method
+        modifies the provided question parameter by setting its ID
+        to None, and saving it as a relation to the lang_topic. This
+        effectively duplicates the question record in the database
+        and change the duplicate's topic.
         """
         question.id = None
         question.topic = lang_topic
