@@ -14,6 +14,7 @@ from datetime import datetime, timedelta
 from django.template.defaultfilters import title
 from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
+from django.utils import translation
 
 logger = logging.getLogger(__name__)
 
@@ -230,10 +231,21 @@ class TopicWrapper(object):
 
 def faq(request):
     tpl = 'faq-models.html'
-    topics = Topic.objects.all()
-    tw = [TopicWrapper(t, request) for t in topics]
+
+    # get the language of the request
+    lang = request.LANGUAGE_CODE
+
+    # get the topics in this language
+    topics = Topic.objects.filter(slug__startswith=lang+'-')
+    if topics.count() == 0:
+        topics = Topic.objects.filter(slug__startswith=settings.LANGUAGE_CODE[0:2]+'-')
+
+        if topics.count() == 0:
+            raise Http404()
+
+
     ctx = RequestContext(request, {
-        'topics': tw,
+        'topics': [TopicWrapper(t, request) for t in topics],
         'options': get_opts(),
         'mapbarEnabled': True
     })

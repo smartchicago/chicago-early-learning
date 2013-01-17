@@ -2,6 +2,7 @@
 # See LICENSE in the project root for copying permission
 
 from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.i18n import i18n_patterns
 from portal.sms import Sms, Conversation, SmsCallback
 from django.views.generic.simple import direct_to_template
 
@@ -17,8 +18,7 @@ urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
     url(r'^$', 'portal.views.index'),
-    url(r'^about.html$', 'portal.views.about'),
-    url(r'^faq.html$', 'portal.views.faq'),
+    url(r'^about.html$', 'portal.views.about', name='about'),
     url(r'^robots\.txt$', direct_to_template,
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
     url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to',
@@ -46,3 +46,8 @@ urlpatterns = patterns(
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),
 )
+
+urlpatterns += i18n_patterns('',
+    url(r'^faq.html$', 'portal.views.faq', name='faq'),
+)
+
