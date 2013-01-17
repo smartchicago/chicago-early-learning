@@ -52,8 +52,8 @@ See LICENSE in the project root for copying permission
                             <a data-toggle="modal" href="#text-info-modal">{% trans "Text for Info" %}</a>
                             </li>
                         {% endif %}
-                        <li id="about-link"><a href="about.html">{% trans "About" %}</a></li>
-                        <li id="faq-link"><a href="faq.html">{% trans "FAQ" %}</a></li>
+                        <li id="about-link"><a href="{% url about %}">{% trans "About" %}</a></li>
+                        <li id="faq-link"><a href="{% url faq %}">{% trans "FAQ" %}</a></li>
                     </ul>
                 </div>
             </div>

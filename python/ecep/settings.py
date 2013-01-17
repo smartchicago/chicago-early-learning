@@ -11,7 +11,7 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'ecep',                      # Or path to database file if using sqlite3.
+        'NAME': 'ecep2',                      # Or path to database file if using sqlite3.
         'USER': 'ecep',                      # Not used with sqlite3.
         'PASSWORD': 'ecep',                  # Not used with sqlite3.
         'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -30,7 +30,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-US'
 
 # The languages supported in the application.
 # This lambda function only serves to mark the names as being i18n'd

@@ -30,30 +30,28 @@ If we want to actually group questions by topic, we'll need to modify this a bit
 
 {% autoescape off %}
 
-{% for t in topics %}
-    <h1 class="static-title">{{ t.topic.name }}</h1>
-    <div class="faq-topic accordion" id="topic{{ forloop.counter }}">
-        <div class="faq-questions">
-        {% for q in t.questions %}
-            <div class="accordion-group faq-question">
-                <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" 
-                        data-parent="#topic{{ forloop.parentloop.counter }}"
-                        href="#topic{{ forloop.parentloop.counter }}-{{ forloop.counter }}">
-                        <i class="icon-chevron-right"></i> {{ q.text }}
-                    </a>
-                </div>
-                <div class="accordion-body collapse faq-answer"
-                    id="topic{{ forloop.parentloop.counter }}-{{ forloop.counter }}">
-                    <div class="accordion-inner">
-                        {{ q.answer }}
-                    </div>
+<h1 class="static-title">{{ topic.name }}</h1>
+<div class="faq-topic accordion" id="topic{{ forloop.counter }}">
+    <div class="faq-questions">
+    {% for q in questions %}
+        <div class="accordion-group faq-question">
+            <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" 
+                    data-parent="#topic{{ forloop.parentloop.counter }}"
+                    href="#question-{{ forloop.counter }}">
+                    <i class="icon-chevron-right"></i> {{ q.text }}
+                </a>
+            </div>
+            <div class="accordion-body collapse faq-answer"
+                id="question-{{ forloop.counter }}">
+                <div class="accordion-inner">
+                    {{ q.answer }}
                 </div>
             </div>
-        {% endfor %}
         </div>
+    {% endfor %}
     </div>
-{% endfor %}
+</div>
 {% endautoescape %}
 </div>
 {% endblock %}
