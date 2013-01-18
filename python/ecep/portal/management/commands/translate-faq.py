@@ -22,15 +22,15 @@ Question models in the faq app into a new language."""
         qset = Topic.objects.all()
 
         # only run the duplication of topic and questions once
-        if qset.count() > 1:
+        if qset.count() > 2:
             return 0
 
         self.default_lang = settings.LANGUAGE_CODE[0:2]
 
         # duplicate the topic into all the other languages
-        topic = qset[0]
-        for lang in settings.LANGUAGES:
-            self.dupetopic(lang[0], topic)
+        for topic in qset:
+            for lang in settings.LANGUAGES:
+                self.dupetopic(lang[0], topic)
 
 
     def dupetopic(self, lang, topic):
@@ -38,17 +38,16 @@ Question models in the faq app into a new language."""
         Duplicate a topic into another language.
         """
         if lang == self.default_lang:
-            slug = '%s-faq' % lang
-            if topic.slug != slug:
-                topic.slug = slug
+            if not topic.slug.startswith('%s-' % lang):
+                topic.slug = '%s-%s' % (lang, topic.slug,)
                 topic.save()
         else:
-            if topic.slug == '%s-faq' % lang:
+            if topic.slug.startswith('%s-' % lang):
                 return
 
             lang_topic, created = Topic.objects.get_or_create(
                 name='%s - %s' % (topic.name, lang),
-                slug='%s-faq' % lang
+                slug='%s-%s' % (lang, topic.slug)
             )
 
             if created:
