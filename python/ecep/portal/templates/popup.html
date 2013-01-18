@@ -15,7 +15,7 @@ See LICENSE in the project root for copying permission
 
     <div class="loc_rating">
         <!-- href anchor matches settings in django.faq -->
-        <a href="/faq.html#topic2-7" data-content="{% trans "The state of Illinois is currently developing a universal quality rating system that will help indicate program quality at a glance. Once that rating system is finalized, it will be included here. At this time, &quot;Not Yet Rated&quot; does not make an indication about program quality." %}" data-title="{% trans "Ratings" %}" data-trigger="hover" data-placement="right">
+        <a href="{% url faq %}#topic2-7" data-content="{% trans "The state of Illinois is currently developing a universal quality rating system that will help indicate program quality at a glance. Once that rating system is finalized, it will be included here. At this time, &quot;Not Yet Rated&quot; does not make an indication about program quality." %}" data-title="{% trans "Ratings" %}" data-trigger="hover" data-placement="right">
             <span class="rating-inner">{% trans "Not Yet Rated" %}</span>&nbsp;&nbsp;&nbsp;&nbsp;
             <span class="star-notice gmnoprint">{% trans "What Is This?" %}</span>
         </a>

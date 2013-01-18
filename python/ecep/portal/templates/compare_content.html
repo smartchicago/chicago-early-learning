@@ -19,7 +19,7 @@ See LICENSE in the project root for copying permission
         <tr><td class="loc_address">
             <div class="loc_rating pull-right">
                 <!-- href anchor matches settings in django.faq -->
-                <a href="/faq.html#topic2-7" data-content="{% trans "The state of Illinois is currently developing a universal quality rating system that will help indicate program quality at a glance. Once that rating system is finalized, it will be included here. At this time, &quot;Not Yet Rated&quot; does not make an indication about program quality." %}" data-title="{% trans "Ratings" %}" data-trigger="hover" data-placement="right">
+                <a href="{% url faq %}#topic2-7" data-content="{% trans "The state of Illinois is currently developing a universal quality rating system that will help indicate program quality at a glance. Once that rating system is finalized, it will be included here. At this time, &quot;Not Yet Rated&quot; does not make an indication about program quality." %}" data-title="{% trans "Ratings" %}" data-trigger="hover" data-placement="right">
                     <span class="rating-inner">{% trans "Not Yet Rated" %}</span>
                     <br/>
                     <span class="star-notice gmnoprint">{% trans "What Is This?" %}</span>
@@ -31,7 +31,7 @@ See LICENSE in the project root for copying permission
         </td><td class="loc_address">
             <div class="loc_rating pull-right">
                 <!-- href anchor matches settings in django.faq -->
-                <a href="/faq.html#topic2-7" data-content="{% trans "Eventually, every early learning program in Chicago will receive a quality rating. These ratings will indicate program quality at a glance. Currently, the state is still developing the quality rating system. At this time, &quot;Not Yet Rated&quot; does not reveal anything about program quality." %}" data-title="{% trans "Ratings" %}" data-trigger="hover" data-placement="right">
+                <a href="{% url faq %}#topic2-7" data-content="{% trans "Eventually, every early learning program in Chicago will receive a quality rating. These ratings will indicate program quality at a glance. Currently, the state is still developing the quality rating system. At this time, &quot;Not Yet Rated&quot; does not reveal anything about program quality." %}" data-title="{% trans "Ratings" %}" data-trigger="hover" data-placement="right">
                     <span class="rating-inner">{% trans "Not Yet Rated" %}</span>
                     <br/>
                     <span class="star-notice gmnoprint">{% trans "What Is This?" %}</span>
