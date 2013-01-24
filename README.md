@@ -44,6 +44,7 @@ After installation of Ubuntu Server 12.04, run the following commands from the t
 
 * sudo apt-get install -y git
 * git clone git://github.com/smartchicago/chicago-early-learning.git
+* cd chicago-early-learning
 * sudo ./install.sh
 
 The installer will go through the process of:
