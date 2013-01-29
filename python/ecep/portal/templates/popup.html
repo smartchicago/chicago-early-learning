@@ -4,6 +4,7 @@ See LICENSE in the project root for copying permission
 {% endcomment %}
 
 {% load i18n %}
+{% load l10n %}
 {% load portal_extras %}
 {% if is_popup %}<div class="location_item">{% endif %}
 
@@ -79,17 +80,17 @@ See LICENSE in the project root for copying permission
 {% if is_popup %}
     <div class="loc_directions gmnoprint">
         <div class="nav_single" id="directions-button">
-            <a class="btn btn-primary nav_to_location" href="#" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})"><i class="icon-map-marker icon-white"></i> {% trans "Directions" %}</a>
+            <a class="btn btn-primary nav_to_location" href="#" data-coords="{% localize off %}({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }}){% endlocalize %}"><i class="icon-map-marker icon-white"></i> {% trans "Directions" %}</a>
         </div>
         <div class="nav_multi btn-group">
-            <a class="btn btn-proimary dropdown-toggle" data-toggle="dropdown" href="#">
+            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="icon-map-marker icon-white"></i>
                 {% trans "Directions" %}
                 <i class="icon-chevron-right"></i>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geolocated">{% trans "From:" %} {% trans "Your Location" %}</a></li>
-                <li><a href="#" class="nav_to_location" data-coords="({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }})" data-navto="geocoded">{% trans "From:" %} {% trans "Address" context "user input" %}</a></li>
+                <li><a href="#" class="nav_to_location" data-coords="{% localize off %}({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }}){% endlocalize %}" data-navto="geolocated">{% trans "From:" %} {% trans "Your Location" %}</a></li>
+                <li><a href="#" class="nav_to_location" data-coords="{% localize off %}({{ item.geom.coords.1 }}, {{ item.geom.coords.0 }}){% endlocalize %}" data-navto="geocoded">{% trans "From:" %} {% trans "Address" context "user input" %}</a></li>
             </ul>
         </div>
     </div>

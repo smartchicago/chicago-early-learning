@@ -1,4 +1,4 @@
-{%load l10n%}[
+{% load l10n %}[
 {% for item in items %}
 { "id": {{ item.id }}, 
   "site_name": "{{ item.site_name }}",

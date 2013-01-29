@@ -74,6 +74,6 @@ See LICENSE in the project root for copying permission
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc&sensor=false"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc&sensor=false&language={{ LANGUAGE_CODE }}"></script>
 <script type="text/javascript" src="{% static "js/markerclusterer.js" %}"></script>
 {% endblock %}
