@@ -8,12 +8,14 @@ from django.db.models import Q
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import GEOSGeometry
 from django.conf import settings
+from django.http import HttpResponseRedirect
 from models import Location
 import logging, hashlib
 from datetime import datetime, timedelta
 from django.template.defaultfilters import title
 from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
+from django.utils.translation import check_for_language
 from django.utils import translation
 
 logger = logging.getLogger(__name__)
@@ -250,3 +252,14 @@ def faq(request):
         'mapbarEnabled': True
     })
     return render_to_response(tpl, context_instance=ctx)
+
+def setlang(request, language):
+    nxt = '/'
+    if 'next' in request.REQUEST:
+        nxt = request.REQUEST['next']
+
+    response = HttpResponseRedirect(nxt)
+    if language and check_for_language(language):
+        response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
+
+    return response

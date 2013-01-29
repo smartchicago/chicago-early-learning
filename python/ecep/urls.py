@@ -42,6 +42,7 @@ urlpatterns = patterns(
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
     url(r'^rosetta/', include('rosetta.urls')),
+    url(r'^setlang/(?P<language>.+)/$', 'portal.views.setlang', name='setlang'),
 
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),
