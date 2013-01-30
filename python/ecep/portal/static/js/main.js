@@ -789,7 +789,7 @@ ecep.typeDirections = function() {
         direlem.empty();
     }
     var btn = $('<button class="clear_dir btn pull-right gmnoprint"/>');
-    btn.text('<i class="icon-remove"></i> ' + gettext('Close'));
+    btn.html('<i class="icon-remove"></i> ' + gettext('Close'));
     direlem.append(btn);
 
     $('.clear_dir').click(ecep.clearDirections);
