@@ -8,9 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-10 10:54-0600\n"
+"POT-Creation-Date: 2013-02-22 09:08-0600\n"
 "PO-Revision-Date: 2013-01-10 08:46-0600\n"
-"Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan <jbranigan@azavea.com>\n"
+"Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
+"<jbranigan@azavea.com>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,7 +81,9 @@ msgstr "Early Head Start"
 
 #: portal/models.py:24
 msgid "Preschool for All/Prevention Initiative"
-msgstr "Preschool for All (Preescolar Para Todos)/ Prevention Initiative (Iniciativa de Prevención)"
+msgstr ""
+"Preschool for All (Preescolar Para Todos)/ Prevention Initiative (Iniciativa "
+"de Prevención)"
 
 #: portal/models.py:25
 msgid "Tuition-Based"
@@ -164,24 +167,30 @@ msgstr "Geometría"
 
 #: portal/sms.py:111
 msgid "To get this message text \"h\".\n"
-msgstr "Para obtener el texto de este mensaje \"h\".\n"
+msgstr "Para recibir este mensaje, envíe \"h\".\n"
 
 #: portal/sms.py:114
 msgid "Sorry, I didn't understand that. Please text \"h\" for instructions"
-msgstr "Lamentablemente no comprendimos.  Envíe un mensaje de texto con  \"h\" para recibir instrucciones"
+msgstr ""
+"Lamentablemente no comprendimos.  Envíe un mensaje de texto con  \"h\" para "
+"recibir instrucciones"
 
 #: portal/sms.py:115
 msgid "We're sorry, something went wrong with your request! Please try again"
-msgstr "Lamentablemente algo salió mal con su pedido. Por favor vuelva a intentarlo"
+msgstr ""
+"Lamentablemente algo salió mal con su pedido. Por favor vuelva a intentarlo"
 
 #: portal/sms.py:116
 msgid "Reply \"m\" or \"more\" to receive the next few pages"
-msgstr "Envíe una respuesta con \"m\" o \"more\" para recibir las páginas que siguen"
+msgstr ""
+"Envíe una respuesta con \"m\" o \"more\" para recibir las páginas que siguen"
 
 #: portal/sms.py:117
 #, python-format
 msgid "Places near %s. Reply with program number for more info\n"
-msgstr "Lugares cerca de %s. Envíe una respuesta con el número de programa para recibir más información\n"
+msgstr ""
+"Lugares cerca de %s. Envíe una respuesta con el número de programa para "
+"recibir más información\n"
 
 #: portal/sms.py:226
 #, python-format
@@ -191,56 +200,61 @@ msgstr "Lamentablemente no pudimos encontrar ninguna escuela en %(zipcode)s"
 #: portal/sms.py:243
 #, python-format
 msgid "Sorry, I don't know about that school near zipcode %(zipcode)s. "
-msgstr "Lamentablemente no tenemos información sobre esa escuela cerca del código postal %(zipcode)s"
+msgstr ""
+"Lamentablemente no tenemos información sobre esa escuela cerca del código "
+"postal %(zipcode)s"
 
 #: portal/sms.py:253
 #, python-format
 msgid "Sorry, I didn't understand that number for zipcode %(zipcode)s. "
-msgstr "Lamentablemente no comprendimos ese número para el código postal %(zipcode)s"
+msgstr ""
+"Lamentablemente no comprendimos ese número para el código postal %(zipcode)s"
 
 #: portal/sms.py:293
 #, python-format
 msgid "(page %(current)d/%(total)d)"
 msgstr "(página %(current)d/%(total)d)"
 
-#: portal/views.py:29
+#: portal/views.py:32
 msgid "Distance"
 msgstr "Distancia"
 
-#: portal/views.py:30
+#: portal/views.py:33
 msgid "< 0.5 mi"
 msgstr "< 0.5 millas"
 
-#: portal/views.py:31
+#: portal/views.py:34
 msgid "< 1 mi"
 msgstr "< 1 milla"
 
-#: portal/views.py:32
+#: portal/views.py:35
 msgid "< 2 mi"
 msgstr "< 2 millas"
 
-#: portal/views.py:33
+#: portal/views.py:36
 msgid "< 5 mi"
 msgstr "< 5 millas"
 
-#: portal/views.py:34
+#: portal/views.py:37
 msgid "< 10 mi"
 msgstr "< 10 millas"
 
-#: portal/templates/about.html:9 portal/templates/base.html:47
+#: portal/templates/about.html:9 portal/templates/base.html:48
 #: portal/templates/compare.html:9 portal/templates/faq-models.html:9
 #: portal/templates/index.html:11 portal/templates/index.html.py:29
 #: portal/templates/location.html:12 templates/admin/base_site.html:7
 msgid "Chicago Early Learning"
 msgstr "Chicago Early Learning"
 
-#: portal/templates/about.html:9 portal/templates/base.html:55
+#: portal/templates/about.html:9 portal/templates/base.html:56
 msgid "About"
 msgstr "Información acerca de nosotros"
 
 #: portal/templates/about.html:19
 msgid "About the Chicago Early Learning Portal"
-msgstr "Acerca del Chicago Early Learning Portal (Portal de Aprendizaje Temprano de Chicago)"
+msgstr ""
+"Acerca del Chicago Early Learning Portal (Portal de Aprendizaje Temprano de "
+"Chicago)"
 
 #: portal/templates/about.html:20
 msgid ""
@@ -271,31 +285,34 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    <p>El Chicago Early Learning Portal (Portal de aprendizaje temprano de Chicago) "
-"es una colaboración de la ciudad de Chicago, las Escuelas Públicas de Chicago, el "
-"Departamento de Servicios Familiares y de Apoyo de Chicago, el Smart Chicago "
-"Collaborative y el Urban Education Lab (Laboratorio de Educación Urbana) de la "
-"Universidad de Chicago.</p>\n"
+"    <p>El Chicago Early Learning Portal (Portal de aprendizaje temprano de "
+"Chicago) es una colaboración de la ciudad de Chicago, las Escuelas Públicas "
+"de Chicago, el Departamento de Servicios Familiares y de Apoyo de Chicago, "
+"el Smart Chicago Collaborative y el Urban Education Lab (Laboratorio de "
+"Educación Urbana) de la Universidad de Chicago.</p>\n"
 "\n"
-"    <p>El alcalde Rahm Emanuel ha hecho de la inversión en educación para la primera "
-"infancia uno de los pilares de su gestión, con el objetivo de brindar servicio a los "
-"niños en situación de riesgo y aumentar la transparencia y responsabilidad de dar cuenta "
-"de los programas de la ciudad.</p>\n"
+"    <p>El alcalde Rahm Emanuel ha hecho de la inversión en educación para la "
+"primera infancia uno de los pilares de su gestión, con el objetivo de "
+"brindar servicio a los niños en situación de riesgo y aumentar la "
+"transparencia y responsabilidad de dar cuenta de los programas de la ciudad."
+"</p>\n"
 "\n"
-"    <p>Al anunciar esta iniciativa en septiembre de 2011, el Alcalde observó: “Debemos "
-"proporcionar a los niños de todos los vecindarios las herramientas necesarias para "
-"destacarse en sus estudios y tener éxito en el ámbito laboral, y eso incluye ofrecer una "
-"excelente educación para la primera infancia. . . estas reformas ayudarán a los padres a "
-"encontrar mejores oportunidades para sus hijos y a preparar mejor a nuestros alumnos para "
-"las exigencias de las aulas de escuelas primarias, medias y secundarias.”</p>\n"
+"    <p>Al anunciar esta iniciativa en septiembre de 2011, el Alcalde "
+"observó: “Debemos proporcionar a los niños de todos los vecindarios las "
+"herramientas necesarias para destacarse en sus estudios y tener éxito en el "
+"ámbito laboral, y eso incluye ofrecer una excelente educación para la "
+"primera infancia. . . estas reformas ayudarán a los padres a encontrar "
+"mejores oportunidades para sus hijos y a preparar mejor a nuestros alumnos "
+"para las exigencias de las aulas de escuelas primarias, medias y "
+"secundarias.”</p>\n"
 "\n"
-"    <p>Para recibir asistencia técnica u obtener más información sobre el portal Early "
-"Learning, comuníquese con <a href=\"mailto:info@chicagoearlylearning."
-"org\">info@chicagoearlylearning.org</a>.</p>\n"
+"    <p>Para recibir asistencia técnica u obtener más información sobre el "
+"portal Early Learning, comuníquese con <a href=\"mailto:"
+"info@chicagoearlylearning.org\">info@chicagoearlylearning.org</a>.</p>\n"
 "\n"
-"    <p>Si tiene preguntas generales acerca de las opciones de aprendizaje temprano en "
-"Chicago, incluyendo información sobre inscripciones, requisitos y pago, consulte por favor "
-"nuestra página de preguntas frecuentes.</p>\n"
+"    <p>Si tiene preguntas generales acerca de las opciones de aprendizaje "
+"temprano en Chicago, incluyendo información sobre inscripciones, requisitos "
+"y pago, consulte por favor nuestra página de preguntas frecuentes.</p>\n"
 "    "
 
 #: portal/templates/about.html:32
@@ -325,19 +342,21 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    <p>El alcalde Emanuel y la ciudad de Chicago se han comprometido a proporcionar "
-"a los niños y jóvenes de la ciudad de Chicago acceso "
-"a educación de alta calidad a todos los niveles, desde los programas de aprendizaje "
-"temprano hasta la universidad. Es por ese motivo que el presupuesto del Alcalde para "
-"2013 incluye una increíble inversión en programas para niños, que comprende vacantes "
-"para educación temprana donde son más necesarias. Uno de los factores más importantes "
-"es asegurar que los padres tengan acceso a la información que necesitan para poder "
-"escoger las mejores opciones para sus hijos, y el portal Early Learning es parte de ese "
-"objetivo. Aquí, los padres encontrarán una lista de todos los programas de aprendizaje "
-"temprano que reciben fondos de la Ciudad, un mapa interactivo fácil de usar, información "
-"básica acerca de los programas disponibles en cada centro y sugerencias de preguntas que "
-"deberían hacer a todo proveedor de aprendizaje temprano con el fin de determinar si ese centro "
-"es adecuado para su hijo.</p>\n"
+"    <p>El alcalde Emanuel y la ciudad de Chicago se han comprometido a "
+"proporcionar a los niños y jóvenes de la ciudad de Chicago acceso a "
+"educación de alta calidad a todos los niveles, desde los programas de "
+"aprendizaje temprano hasta la universidad. Es por ese motivo que el "
+"presupuesto del Alcalde para 2013 incluye una increíble inversión en "
+"programas para niños, que comprende vacantes para educación temprana donde "
+"son más necesarias. Uno de los factores más importantes es asegurar que los "
+"padres tengan acceso a la información que necesitan para poder escoger las "
+"mejores opciones para sus hijos, y el portal Early Learning es parte de ese "
+"objetivo. Aquí, los padres encontrarán una lista de todos los programas de "
+"aprendizaje temprano que reciben fondos de la Ciudad, un mapa interactivo "
+"fácil de usar, información básica acerca de los programas disponibles en "
+"cada centro y sugerencias de preguntas que deberían hacer a todo proveedor "
+"de aprendizaje temprano con el fin de determinar si ese centro es adecuado "
+"para su hijo.</p>\n"
 "    "
 
 #: portal/templates/about.html:45 portal/templates/about.html.py:46
@@ -353,9 +372,10 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    <p>Las Escuelas Públicas de Chicago (Chicago Public Schools / CPS) trabajan para asegurar "
-"que todos los alumnos de todas las comunidades tengan acceso a educación de alta calidad que "
-"los prepare para desempeñarse con éxito en sus estudios universitarios y su carrera.</p>\n"
+"    <p>Las Escuelas Públicas de Chicago (Chicago Public Schools / CPS) "
+"trabajan para asegurar que todos los alumnos de todas las comunidades tengan "
+"acceso a educación de alta calidad que los prepare para desempeñarse con "
+"éxito en sus estudios universitarios y su carrera.</p>\n"
 "    "
 
 #: portal/templates/about.html:54 portal/templates/about.html.py:55
@@ -372,9 +392,10 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    <p>El Departamento de Servicios Familiares y de Apoyo de Chicago (Chicago Department of "
-"Family & Support Services / DFSS) está dedicado al apoyo de una gama de servicios coordinados para "
-"mejorar la vida de los residentes de Chicago, sobre todo los más necesitados, desde el nacimiento "
+"    <p>El Departamento de Servicios Familiares y de Apoyo de Chicago "
+"(Chicago Department of Family & Support Services / DFSS) está dedicado al "
+"apoyo de una gama de servicios coordinados para mejorar la vida de los "
+"residentes de Chicago, sobre todo los más necesitados, desde el nacimiento "
 "hasta la edad avanzada.</p>\n"
 "    "
 
@@ -392,8 +413,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    <p>El Smart Chicago Collaborative es una organización cívica dedicada "
-"al uso de la tecnología para mejorar la vida de los residentes en Chicago. "
+"    <p>El Smart Chicago Collaborative es una organización cívica dedicada al "
+"uso de la tecnología para mejorar la vida de los residentes en Chicago. "
 "Trabajamos para aplicar el poder de transformación de la tecnología para "
 "resolver los problemas de las personas de esta ciudad.</p>\n"
 "    "
@@ -412,33 +433,38 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    <p>El Urban Education Lab (Laboratorio de Educación Urbana) de la Universidad de "
-"Chicago, un proyecto del Urban Education Institute (Instituto de Educación Urbana), busca "
-"mejorar los resultados educativos al proporcionar evidencia científica de qué estrategias "
-"son más eficaces y rentables, para quiénes y por qué.</p>\n"
+"    <p>El Urban Education Lab (Laboratorio de Educación Urbana) de la "
+"Universidad de Chicago, un proyecto del Urban Education Institute (Instituto "
+"de Educación Urbana), busca mejorar los resultados educativos al "
+"proporcionar evidencia científica de qué estrategias son más eficaces y "
+"rentables, para quiénes y por qué.</p>\n"
 "    "
 
-#: portal/templates/base.html:47
+#: portal/templates/base.html:48
 msgid "chicago early learning"
 msgstr "chicago early learning"
 
-#: portal/templates/base.html:52
+#: portal/templates/base.html:53
 msgid "Text for Info"
 msgstr "Envíe texto para recibir info"
 
-#: portal/templates/base.html:56 portal/templates/faq-models.html:9
+#: portal/templates/base.html:57 portal/templates/faq-models.html:9
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
 
-#: portal/templates/base.html:71
+#: portal/templates/base.html:60
+msgid "Language"
+msgstr "Idioma"
+
+#: portal/templates/base.html:83
 msgid "Text for info"
 msgstr "Envíe texto para recibir info"
 
-#: portal/templates/base.html:74
+#: portal/templates/base.html:86
 msgid "Want information via text?"
 msgstr "¿Desea recibir información por medio de un mensaje de texto?"
 
-#: portal/templates/base.html:76
+#: portal/templates/base.html:88
 #, python-format
 msgid ""
 "\n"
@@ -449,33 +475,33 @@ msgid ""
 "                    "
 msgstr ""
 "\n"
-"                    <h2 class=\"texting-info-sm\">Envíe un mensaje de texto con su código postal (ZIP) al <em>"
-"%(number)s</em></h2>\n"
-"                    <h2 class=\"texting-info-sm\">y nos encargaremos del resto.</"
-"h2>\n"
+"                    <h2 class=\"texting-info-sm\">Envíe un mensaje de texto "
+"con su código postal (ZIP) al <em>%(number)s</em></h2>\n"
+"                    <h2 class=\"texting-info-sm\">y nos encargaremos del "
+"resto.</h2>\n"
 "                    "
 
-#: portal/templates/base.html:90
+#: portal/templates/base.html:102
 msgid "Filter"
 msgstr "Filtro"
 
-#: portal/templates/base.html:93
+#: portal/templates/base.html:105
 msgid "Find Me"
 msgstr "Encuéntreme"
 
-#: portal/templates/base.html:99
+#: portal/templates/base.html:111
 msgid "Address Search"
 msgstr "Búsqueda de dirección"
 
-#: portal/templates/base.html:116
+#: portal/templates/base.html:128
 msgid "Search"
 msgstr "Buscar"
 
-#: portal/templates/base.html:122
+#: portal/templates/base.html:134
 msgid "Print"
 msgstr "Imprimir"
 
-#: portal/templates/compare_content.html:22 portal/templates/popup.html:18
+#: portal/templates/compare_content.html:22 portal/templates/popup.html:19
 msgid ""
 "The state of Illinois is currently developing a universal quality rating "
 "system that will help indicate program quality at a glance. Once that rating "
@@ -483,23 +509,23 @@ msgid ""
 "Rated&quot; does not make an indication about program quality."
 msgstr ""
 "El estado de Illinois está actualmente desarrollando un sistema universal de "
-"calificación de calidad que ayudará a indicar la calidad de un programa de un "
-"vistazo. Una vez que el sistema esté finalizado, se lo incluirá aquí. En este "
-"momento, la etiqueta de “no calificado aún” no proporciona ninguna indicación "
-"sobre la calidad del programa."
+"calificación de calidad que ayudará a indicar la calidad de un programa de "
+"un vistazo. Una vez que el sistema esté finalizado, se lo incluirá aquí. En "
+"este momento, la etiqueta de “no calificado aún” no proporciona ninguna "
+"indicación sobre la calidad del programa."
 
 #: portal/templates/compare_content.html:22
-#: portal/templates/compare_content.html:34 portal/templates/popup.html:18
+#: portal/templates/compare_content.html:34 portal/templates/popup.html:19
 msgid "Ratings"
 msgstr "Calificaciones"
 
 #: portal/templates/compare_content.html:23
-#: portal/templates/compare_content.html:35 portal/templates/popup.html:19
+#: portal/templates/compare_content.html:35 portal/templates/popup.html:20
 msgid "Not Yet Rated"
 msgstr "No calificado aún"
 
 #: portal/templates/compare_content.html:25
-#: portal/templates/compare_content.html:37 portal/templates/popup.html:20
+#: portal/templates/compare_content.html:37 portal/templates/popup.html:21
 msgid "What Is This?"
 msgstr "¿Qué significa esto?"
 
@@ -512,40 +538,44 @@ msgid ""
 msgstr ""
 "En el futuro, cada programa de aprendizaje temprano de Chicago recibirá una "
 "calificación de calidad. Estas calificaciones ofrecerán una indicación de la "
-"calidad de un programa de un vistazo. El sistema de calificación de calidad del "
-"Estado está aún en proceso de desarrollo. En este momento, la etiqueta de “no "
-"calificado aún” no indica nada sobre la calidad del programa."
+"calidad de un programa de un vistazo. El sistema de calificación de calidad "
+"del Estado está aún en proceso de desarrollo. En este momento, la etiqueta "
+"de “no calificado aún” no indica nada sobre la calidad del programa."
 
 #: portal/templates/compare_content.html:47
-#: portal/templates/compare_content.html:52 portal/templates/popup.html:26
+#: portal/templates/compare_content.html:52 portal/templates/popup.html:27
 msgid "Accreditation:"
 msgstr "Acreditación"
 
 #: portal/templates/compare_content.html:74
-#: portal/templates/compare_content.html:115 portal/templates/popup.html:42
+#: portal/templates/compare_content.html:115 portal/templates/popup.html:43
 msgid "Main Phone"
 msgstr "Teléfono principal"
 
 #: portal/templates/compare_content.html:77
 #: portal/templates/compare_content.html:79
 #: portal/templates/compare_content.html:118
-#: portal/templates/compare_content.html:120 portal/templates/popup.html:45
-#: portal/templates/popup.html.py:47
+#: portal/templates/compare_content.html:120 portal/templates/popup.html:46
+#: portal/templates/popup.html.py:48
 msgid "Alt. Phone"
 msgstr "Tel. alternativo"
 
-#: portal/templates/compare_content.html:85 portal/templates/popup.html:53
+#: portal/templates/compare_content.html:85 portal/templates/popup.html:54
 msgid "Fax"
 msgstr "Fax"
 
 #: portal/templates/compare_content.html:152
-#: portal/templates/compare_content.html:159
+#: portal/templates/compare_content.html:159 portal/templates/embed.html:14
 msgid "Programs"
 msgstr "Programas"
 
 #: portal/templates/embed.html:32
 msgid "Less Info"
 msgstr "Menos información"
+
+#: portal/templates/index.html:18
+msgid "Comparing"
+msgstr "Comparacion"
 
 #: portal/templates/index.html:19
 msgid "Please select two or more locations to compare them."
@@ -571,11 +601,12 @@ msgid ""
 msgstr ""
 "\n"
 "        <p>Bienvenido al portal de aprendizaje temprano de la ciudad de "
-"Chicago. Aquí podrá encontrar fácilmente programas de aprendizaje temprano cerca "
-"de su hogar o lugar de trabajo. También podrá comparar programas punto por punto "
-"para escoger la mejor opción para su hijo. Revise la página de preguntas "
-"frecuentes para informarse mejor sobre las diferentes alternativas y cómo "
-"inscribir a su hijo en un programa de aprendizaje temprano óptimo.</p> \n"
+"Chicago. Aquí podrá encontrar fácilmente programas de aprendizaje temprano "
+"cerca de su hogar o lugar de trabajo. También podrá comparar programas punto "
+"por punto para escoger la mejor opción para su hijo. Revise la página de "
+"preguntas frecuentes para informarse mejor sobre las diferentes alternativas "
+"y cómo inscribir a su hijo en un programa de aprendizaje temprano óptimo.</"
+"p> \n"
 "        "
 
 #: portal/templates/index.html:38
@@ -594,7 +625,7 @@ msgstr "Inicio"
 msgid "Comparing Locations"
 msgstr "Comparación de centros"
 
-#: portal/templates/index.html:50 portal/templates/popup.html:10
+#: portal/templates/index.html:50 portal/templates/popup.html:11
 msgid "Permalink"
 msgstr "Enlace permanente"
 
@@ -606,24 +637,24 @@ msgstr "Actualizar"
 msgid "All"
 msgstr "Todos"
 
-#: portal/templates/popup.html:82 portal/templates/popup.html.py:87
+#: portal/templates/popup.html:83 portal/templates/popup.html.py:88
 msgid "Directions"
 msgstr "Indicaciones"
 
-#: portal/templates/popup.html:91 portal/templates/popup.html.py:92
+#: portal/templates/popup.html:92 portal/templates/popup.html.py:93
 msgid "From:"
 msgstr "De:"
 
-#: portal/templates/popup.html:91
+#: portal/templates/popup.html:92
 msgid "Your Location"
 msgstr "Su ubicación"
 
-#: portal/templates/popup.html:92
+#: portal/templates/popup.html:93
 msgctxt "user input"
 msgid "Address"
 msgstr "Dirección"
 
-#: portal/templates/popup.html:98
+#: portal/templates/popup.html:99
 msgid "More Info"
 msgstr "Más información"
 
