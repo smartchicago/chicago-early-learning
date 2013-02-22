@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-10 10:54-0600\n"
+"POT-Creation-Date: 2013-02-22 08:48-0600\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -202,38 +202,38 @@ msgstr ""
 msgid "(page %(current)d/%(total)d)"
 msgstr ""
 
-#: portal/views.py:29
+#: portal/views.py:32
 msgid "Distance"
 msgstr ""
 
-#: portal/views.py:30
+#: portal/views.py:33
 msgid "< 0.5 mi"
 msgstr ""
 
-#: portal/views.py:31
+#: portal/views.py:34
 msgid "< 1 mi"
 msgstr ""
 
-#: portal/views.py:32
+#: portal/views.py:35
 msgid "< 2 mi"
 msgstr ""
 
-#: portal/views.py:33
+#: portal/views.py:36
 msgid "< 5 mi"
 msgstr ""
 
-#: portal/views.py:34
+#: portal/views.py:37
 msgid "< 10 mi"
 msgstr ""
 
-#: portal/templates/about.html:9 portal/templates/base.html:47
+#: portal/templates/about.html:9 portal/templates/base.html:48
 #: portal/templates/compare.html:9 portal/templates/faq-models.html:9
 #: portal/templates/index.html:11 portal/templates/index.html.py:29
 #: portal/templates/location.html:12 templates/admin/base_site.html:7
 msgid "Chicago Early Learning"
 msgstr ""
 
-#: portal/templates/about.html:9 portal/templates/base.html:55
+#: portal/templates/about.html:9 portal/templates/base.html:56
 msgid "About"
 msgstr ""
 
@@ -352,27 +352,31 @@ msgid ""
 "    "
 msgstr ""
 
-#: portal/templates/base.html:47
+#: portal/templates/base.html:48
 msgid "chicago early learning"
 msgstr ""
 
-#: portal/templates/base.html:52
+#: portal/templates/base.html:53
 msgid "Text for Info"
 msgstr ""
 
-#: portal/templates/base.html:56 portal/templates/faq-models.html:9
+#: portal/templates/base.html:57 portal/templates/faq-models.html:9
 msgid "FAQ"
 msgstr ""
 
-#: portal/templates/base.html:71
+#: portal/templates/base.html:60
+msgid "Language"
+msgstr ""
+
+#: portal/templates/base.html:83
 msgid "Text for info"
 msgstr ""
 
-#: portal/templates/base.html:74
+#: portal/templates/base.html:86
 msgid "Want information via text?"
 msgstr ""
 
-#: portal/templates/base.html:76
+#: portal/templates/base.html:88
 #, python-format
 msgid ""
 "\n"
@@ -383,27 +387,27 @@ msgid ""
 "                    "
 msgstr ""
 
-#: portal/templates/base.html:90
+#: portal/templates/base.html:102
 msgid "Filter"
 msgstr ""
 
-#: portal/templates/base.html:93
+#: portal/templates/base.html:105
 msgid "Find Me"
 msgstr ""
 
-#: portal/templates/base.html:99
+#: portal/templates/base.html:111
 msgid "Address Search"
 msgstr ""
 
-#: portal/templates/base.html:116
+#: portal/templates/base.html:128
 msgid "Search"
 msgstr ""
 
-#: portal/templates/base.html:122
+#: portal/templates/base.html:134
 msgid "Print"
 msgstr ""
 
-#: portal/templates/compare_content.html:22 portal/templates/popup.html:18
+#: portal/templates/compare_content.html:22 portal/templates/popup.html:19
 msgid ""
 "The state of Illinois is currently developing a universal quality rating "
 "system that will help indicate program quality at a glance. Once that rating "
@@ -412,17 +416,17 @@ msgid ""
 msgstr ""
 
 #: portal/templates/compare_content.html:22
-#: portal/templates/compare_content.html:34 portal/templates/popup.html:18
+#: portal/templates/compare_content.html:34 portal/templates/popup.html:19
 msgid "Ratings"
 msgstr ""
 
 #: portal/templates/compare_content.html:23
-#: portal/templates/compare_content.html:35 portal/templates/popup.html:19
+#: portal/templates/compare_content.html:35 portal/templates/popup.html:20
 msgid "Not Yet Rated"
 msgstr ""
 
 #: portal/templates/compare_content.html:25
-#: portal/templates/compare_content.html:37 portal/templates/popup.html:20
+#: portal/templates/compare_content.html:37 portal/templates/popup.html:21
 msgid "What Is This?"
 msgstr ""
 
@@ -435,34 +439,38 @@ msgid ""
 msgstr ""
 
 #: portal/templates/compare_content.html:47
-#: portal/templates/compare_content.html:52 portal/templates/popup.html:26
+#: portal/templates/compare_content.html:52 portal/templates/popup.html:27
 msgid "Accreditation:"
 msgstr ""
 
 #: portal/templates/compare_content.html:74
-#: portal/templates/compare_content.html:115 portal/templates/popup.html:42
+#: portal/templates/compare_content.html:115 portal/templates/popup.html:43
 msgid "Main Phone"
 msgstr ""
 
 #: portal/templates/compare_content.html:77
 #: portal/templates/compare_content.html:79
 #: portal/templates/compare_content.html:118
-#: portal/templates/compare_content.html:120 portal/templates/popup.html:45
-#: portal/templates/popup.html.py:47
+#: portal/templates/compare_content.html:120 portal/templates/popup.html:46
+#: portal/templates/popup.html.py:48
 msgid "Alt. Phone"
 msgstr ""
 
-#: portal/templates/compare_content.html:85 portal/templates/popup.html:53
+#: portal/templates/compare_content.html:85 portal/templates/popup.html:54
 msgid "Fax"
 msgstr ""
 
 #: portal/templates/compare_content.html:152
-#: portal/templates/compare_content.html:159
+#: portal/templates/compare_content.html:159 portal/templates/embed.html:14
 msgid "Programs"
 msgstr ""
 
 #: portal/templates/embed.html:32
 msgid "Less Info"
+msgstr ""
+
+#: portal/templates/index.html:18
+msgid "Comparing"
 msgstr ""
 
 #: portal/templates/index.html:19
@@ -504,7 +512,7 @@ msgstr ""
 msgid "Comparing Locations"
 msgstr ""
 
-#: portal/templates/index.html:50 portal/templates/popup.html:10
+#: portal/templates/index.html:50 portal/templates/popup.html:11
 msgid "Permalink"
 msgstr ""
 
@@ -516,24 +524,24 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: portal/templates/popup.html:82 portal/templates/popup.html.py:87
+#: portal/templates/popup.html:83 portal/templates/popup.html.py:88
 msgid "Directions"
 msgstr ""
 
-#: portal/templates/popup.html:91 portal/templates/popup.html.py:92
+#: portal/templates/popup.html:92 portal/templates/popup.html.py:93
 msgid "From:"
 msgstr ""
 
-#: portal/templates/popup.html:91
+#: portal/templates/popup.html:92
 msgid "Your Location"
 msgstr ""
 
-#: portal/templates/popup.html:92
+#: portal/templates/popup.html:93
 msgctxt "user input"
 msgid "Address"
 msgstr ""
 
-#: portal/templates/popup.html:98
+#: portal/templates/popup.html:99
 msgid "More Info"
 msgstr ""
 
