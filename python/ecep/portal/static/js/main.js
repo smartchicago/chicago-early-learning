@@ -125,6 +125,42 @@ ecep.init = function() {
 		$(this).attr('target', '_blank');
     });
 
+    // make language links post in order to redirect properly
+    $('a.langlink').each(function(idx, elem) {
+        var $elem = $(elem),
+            link = $elem.attr('href');
+
+        $elem.attr('href', '#');
+        $elem.on('click', function() {
+            var form = $('<form/>'),
+                oldCsrf = $('#search-form input[name="csrfmiddlewaretoken"]'),
+                newCsrf = $('<input/>'),
+                nextElem = $('<input/>');
+
+            form.attr('action', link);
+            form.attr('method', 'POST');
+
+            // borrow CSRF from the search form
+            newCsrf.attr('name', 'csrfmiddlewaretoken');
+            newCsrf.val(oldCsrf.val());
+            newCsrf.attr('type', 'hidden');
+
+            nextElem.attr('name', 'next');
+            if (/(.*\/)(..)(\/faq.html)#?$/.test(window.location.href)) {
+                nextElem.val(RegExp.$1 + $elem.data('lang') + RegExp.$3);
+            } else {
+                nextElem.val(window.location.href);
+            }
+            nextElem.attr('type', 'hidden');
+
+            form.append(newCsrf);
+            form.append(nextElem);
+
+            $('body').append(form);
+            form.submit();
+        });
+    });
+
 
     //Bail early if we're not on the map page
     if (!ecep.onMapPage) {
