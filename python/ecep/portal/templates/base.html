@@ -57,11 +57,11 @@ See LICENSE in the project root for copying permission
                         <li id="faq-link"><a href="{% url faq %}">{% trans "FAQ" %}</a></li>
                         {% if LANGUAGES %}
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Language" %} <b class="caret"></b></a>
+                            {% get_static_prefix as STATIC_PREFIX %}
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> {% trans "Language" %} <img src="{{ STATIC_PREFIX }}images/{{ LANGUAGE_CODE }}.png"/> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                {% get_static_prefix as STATIC_PREFIX %}
                                 {% for lang in LANGUAGES %}
-                                <li><a href="{% url setlang language=lang.0 %}"><img src="{{ STATIC_PREFIX }}images/{{ lang.0 }}.png" />&nbsp;&nbsp;{% trans lang.1 %}</a></li>
+                                <li><a class="langlink" href="{% url setlang language=lang.0 %}" data-lang="{{ lang.0 }}"><img src="{{ STATIC_PREFIX }}images/{{ lang.0 }}.png" />&nbsp;&nbsp;{% trans lang.1 %}</a></li>
                                 {% endfor %}
                             </ul>
                         </li>

@@ -102,7 +102,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'ecep.urls'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -114,7 +114,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'django.contrib.gis',
-    'portal',
+    'ecep.portal',
     'django_twilio',
     'gunicorn',
     'faq',
@@ -131,6 +131,21 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+# setup path settings
+try:
+    SITE_ROOT
+except NameError:
+    SITE_ROOT = path.dirname(path.abspath(__file__))
+
+MEDIA_ROOT = SITE_ROOT + '/media/'
+STATIC_ROOT = SITE_ROOT + '/static/'
+TEMPLATE_DIRS = (
+    (SITE_ROOT + '/templates/'),
+)
+LOCALE_PATHS = (
+    (SITE_ROOT + '/locale/'),
+)
 
 # setup twilio
 

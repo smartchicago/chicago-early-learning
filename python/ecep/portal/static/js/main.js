@@ -125,6 +125,53 @@ ecep.init = function() {
 		$(this).attr('target', '_blank');
     });
 
+    // make language links post in order to redirect properly
+    $('a.langlink').each(function(idx, elem) {
+
+        // for each language link in the language switcher
+        var $elem = $(elem),
+            link = $elem.attr('href');
+
+        // change the click event to post to the language switching URL specified by 'link'
+        $elem.attr('href', '#');
+        $elem.on('click', function() {
+            // create a fake form with a CSRF token, and the next URL
+            var form = $('<form/>'),
+                oldCsrf = $('#search-form input[name="csrfmiddlewaretoken"]'),
+                newCsrf = $('<input/>'),
+                nextElem = $('<input/>');
+
+            // the form must POST to 'link' in order for redirect to occur
+            form.attr('action', link);
+            form.attr('method', 'POST');
+
+            // borrow CSRF from the search form
+            newCsrf.attr('name', 'csrfmiddlewaretoken');
+            newCsrf.val(oldCsrf.val());
+            newCsrf.attr('type', 'hidden');
+
+            nextElem.attr('name', 'next');
+            if (/(.*\/)(..)(\/faq.html)#?$/.test(window.location.href)) {
+                // change the language code in the faq page URLs
+                nextElem.val(RegExp.$1 + $elem.data('lang') + RegExp.$3);
+            } else {
+                // come back to the current page, but in a different language
+                nextElem.val(window.location.href);
+            }
+            nextElem.attr('type', 'hidden');
+
+            // append the inputs to the form
+            form.append(newCsrf);
+            form.append(nextElem);
+
+            // put the form on the page
+            $('body').append(form);
+
+            // submit the form, change, the language, and redirect to next
+            form.submit();
+        });
+    });
+
 
     //Bail early if we're not on the map page
     if (!ecep.onMapPage) {
