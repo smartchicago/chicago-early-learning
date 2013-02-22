@@ -11,7 +11,7 @@ admin.autodiscover()
 
 js_info_dict = {
     'domain': 'djangojs',
-    'packages': ('portal',),
+    'packages': ('ecep.portal',),
 }
 
 urlpatterns = patterns(
