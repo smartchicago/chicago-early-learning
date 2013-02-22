@@ -8,14 +8,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-10 10:54-0600\n"
+"POT-Creation-Date: 2013-02-22 09:08-0600\n"
 "PO-Revision-Date: 2013-01-10 09:35-0600\n"
-"Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan <jbranigan@azavea.com>\n"
+"Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
+"<jbranigan@azavea.com>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: portal/static/js/main.js:61
+msgid "Unknown URL endpoint \"%(name)s\""
+msgstr "URL de destino desconocido"
 
 #: portal/static/js/main.js:199
 msgid "Filters"
@@ -66,7 +71,3 @@ msgstr "Indicaciones adicionales de Google"
 #: portal/static/js/main.js:855
 msgid "Please type in an address."
 msgstr "Escriba una dirección"
-
-#: portal/static/js/main.js:61
-msgid "Unknown URL endpoint \"%(name)s\""
-msgstr "URL de destino desconocido"
