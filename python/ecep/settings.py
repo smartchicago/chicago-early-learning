@@ -30,7 +30,15 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-US'
+
+# The languages supported in the application.
+# This lambda function only serves to mark the names as being i18n'd
+ugettext = lambda s: s
+LANGUAGES = (
+  ('en', ugettext('English')),
+  ('es', ugettext('Spanish')),
+)
 
 SITE_ID = 1
 
@@ -86,6 +94,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -93,7 +102,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'ecep.urls'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -105,10 +114,11 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'django.contrib.gis',
-    'portal',
+    'ecep.portal',
     'django_twilio',
     'gunicorn',
     'faq',
+    'rosetta',
 )
 
 
@@ -121,6 +131,21 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+# setup path settings
+try:
+    SITE_ROOT
+except NameError:
+    SITE_ROOT = path.dirname(path.abspath(__file__))
+
+MEDIA_ROOT = SITE_ROOT + '/media/'
+STATIC_ROOT = SITE_ROOT + '/static/'
+TEMPLATE_DIRS = (
+    (SITE_ROOT + '/templates/'),
+)
+LOCALE_PATHS = (
+    (SITE_ROOT + '/locale/'),
+)
 
 # setup twilio
 

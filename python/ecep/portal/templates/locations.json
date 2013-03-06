@@ -1,9 +1,9 @@
-[
+{% load l10n %}[
 {% for item in items %}
 { "id": {{ item.id }}, 
   "site_name": "{{ item.site_name }}",
-  "accred": "{{ item.accred }}"{% if item.geom %},
+  "accred": "{{ item.accred }}"{% if item.geom %}{% localize off %},
   "lng": {{ item.geom.coords.0 }},
-  "lat": {{ item.geom.coords.1 }}{% endif %} }{% if not forloop.last %},{% endif %}
+  "lat": {{ item.geom.coords.1 }}{% endlocalize %}{% endif %} }{% if not forloop.last %},{% endif %}
 {% endfor %}
 ]

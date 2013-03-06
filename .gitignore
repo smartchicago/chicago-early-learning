@@ -9,3 +9,5 @@ python/ecep/local_settings.py
 .rope*/
 /src
 
+# Compiled message files
+*mo

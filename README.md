@@ -43,7 +43,8 @@ This web application is designed to be installed on a fresh copy of Ubuntu Serve
 After installation of Ubuntu Server 12.04, run the following commands from the terminal:
 
 * sudo apt-get install -y git
-* git clone git://github.com/smartchicago/early-childhood-portal.git
+* git clone git://github.com/smartchicago/chicago-early-learning.git
+* cd chicago-early-learning
 * sudo ./install.sh
 
 The installer will go through the process of:

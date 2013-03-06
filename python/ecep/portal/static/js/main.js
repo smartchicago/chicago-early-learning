@@ -58,7 +58,7 @@ ecep.getUrl = function(name) {
             return mapImgs + 'cluster-lg.png';
 
         default:
-            throw 'Unknown URL endpoint "' + name + '"';
+            throw gettext('Unknown URL endpoint "%(name)s"', { name: name });
     }
 };
 
@@ -123,6 +123,53 @@ ecep.init = function() {
     $('#print-toggle').click(function(){
         window.print();
 		$(this).attr('target', '_blank');
+    });
+
+    // make language links post in order to redirect properly
+    $('a.langlink').each(function(idx, elem) {
+
+        // for each language link in the language switcher
+        var $elem = $(elem),
+            link = $elem.attr('href');
+
+        // change the click event to post to the language switching URL specified by 'link'
+        $elem.attr('href', '#');
+        $elem.on('click', function() {
+            // create a fake form with a CSRF token, and the next URL
+            var form = $('<form/>'),
+                oldCsrf = $('#search-form input[name="csrfmiddlewaretoken"]'),
+                newCsrf = $('<input/>'),
+                nextElem = $('<input/>');
+
+            // the form must POST to 'link' in order for redirect to occur
+            form.attr('action', link);
+            form.attr('method', 'POST');
+
+            // borrow CSRF from the search form
+            newCsrf.attr('name', 'csrfmiddlewaretoken');
+            newCsrf.val(oldCsrf.val());
+            newCsrf.attr('type', 'hidden');
+
+            nextElem.attr('name', 'next');
+            if (/(.*\/)(..)(\/faq.html)#?$/.test(window.location.href)) {
+                // change the language code in the faq page URLs
+                nextElem.val(RegExp.$1 + $elem.data('lang') + RegExp.$3);
+            } else {
+                // come back to the current page, but in a different language
+                nextElem.val(window.location.href);
+            }
+            nextElem.attr('type', 'hidden');
+
+            // append the inputs to the form
+            form.append(newCsrf);
+            form.append(nextElem);
+
+            // put the form on the page
+            $('body').append(form);
+
+            // submit the form, change, the language, and redirect to next
+            form.submit();
+        });
     });
 
 
@@ -196,7 +243,7 @@ ecep.init = function() {
         animation: false,
         placement: 'bottom',
         trigger: 'manual',
-        title: 'Filters',
+        title: gettext('Filters'),
         content: $('#filter-selection').text()
     });
 
@@ -260,7 +307,7 @@ ecep.comparingChanged = function(event) {
         else {
             btn.popover({
                 trigger: 'hover',
-                content: 'Select two locations to compare.',
+                content: gettext('Select two locations to compare.'),
                 template: '<div class="popover cmp-popover"><div class="arrow"></div>' +
                     '<div class="popover-inner"><div class="popover-content"><p></p></div></div></div>',
                 placement: 'left'
@@ -324,7 +371,7 @@ ecep.comparingChanged = function(event) {
             btn.addClass('gmnoprint');
             btn.addClass('btn-primary');
             btn.addClass('compare-btn');
-            btn.text('Compare');
+            btn.text(gettext('Compare'));
 
             cmp.append(btn);
         }
@@ -632,12 +679,12 @@ ecep.geolocate = function() {
             }
             else {
                 _gaq.push(['_trackEvent', 'Geolocate', 'Found', 'Out of area']);
-                console.warn('User location is outside the service area.');
+                console.warn(gettext('User location is outside the service area.'));
             }
         },
         function() {
             _gaq.push(['_trackEvent', 'Geolocate', 'Error']);
-            console.warn('User location cannot be found.');
+            console.warn(gettext('User location cannot be found.'));
         }
     );
 };
@@ -668,7 +715,7 @@ ecep.geocode = function(addr) {
                 _gaq.push(['_trackEvent', 'Geocode', 'Not Found']);
             }
 
-            alert('Sorry, the address:\n\n"' + addr + '"\n\nCan\'t be found in the service area.');
+            alert(gettext('Sorry, the address:\n\n"%(address)s"\n\nCan\'t be found in the service area.', { address: addr }));
         }
     );
 };
@@ -788,18 +835,22 @@ ecep.typeDirections = function() {
     else {
         direlem.empty();
     }
-    direlem.append($('<button class="clear_dir btn pull-right gmnoprint"><i class="icon-remove"></i> Close</button>'));
+    var btn = $('<button class="clear_dir btn pull-right gmnoprint"/>');
+    btn.html('<i class="icon-remove"></i> ' + gettext('Close'));
+    direlem.append(btn);
 
     $('.clear_dir').click(ecep.clearDirections);
 
-    direlem.append($('<h3>Walking Directions</h3>'));
+    var hdng = $('<h3/>');
+    hdng.text(gettext('Walking Directions'));
+    direlem.append(hdng);
 
     var external_dir = $('<div />');
     external_dir.addClass('external-directions');
 
     var external_link = $('<a target="_blank"/>');
     external_link.addClass('ext-dir');
-    external_link.text('Additional Directions from Google');
+    external_link.text(gettext('Additional Directions from Google'));
     var url = 'http://maps.google.com/?saddr=' + result.routes[0].legs[0].start_address +
         '&daddr=' + result.routes[0].legs[result.routes[0].legs.length-1].end_address;
     var tracker = _gat._getTrackerByName('outlinkTracker');
@@ -848,7 +899,7 @@ ecep.search = function(address) {
     var rad = $('#search-radius').val();
 
     if (addr == '') {
-        alert('Please type in an address.');
+        alert(gettext('Please type in an address.'));
         return;
     }
     
