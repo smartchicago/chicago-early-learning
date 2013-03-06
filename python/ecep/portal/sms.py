@@ -17,7 +17,7 @@ from twilio.twiml import Response
 from django_twilio.decorators import twilio_view
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
-
+from django.utils.translation import ugettext as _
 
 logger = logging.getLogger(__name__)
 
@@ -108,13 +108,13 @@ class Conversation(object):
     # I wanted _re_help to recognize "help" instead of "h", but Twilio intercepts it :(
     # http://www.twilio.com/help/faq/sms/does-twilio-support-stop-block-and-cancel-aka-sms-filtering
 
-    USAGE = ('To get this message text "h".\n' +
+    USAGE = _('To get this message text "h".\n' +
              'Text a 5 digit zipcode to get a list of nearby places.' +
              'Text a number on the list to get more information.')
-    ERROR =  'Sorry, I didn\'t understand that. Please text "h" for instructions'
-    FATAL =  'We\'re sorry, something went wrong with your request! Please try again'
-    MORE =   'Reply "m" or "more" to receive the next few pages'
-    LIST_HEADER = 'Places near %s. Reply with program number for more info\n'
+    ERROR =  _('Sorry, I didn\'t understand that. Please text "h" for instructions')
+    FATAL =  _('We\'re sorry, something went wrong with your request! Please try again')
+    MORE =   _('Reply "m" or "more" to receive the next few pages')
+    LIST_HEADER = _('Places near %s. Reply with program number for more info\n')
 
     # Properties
     locations = None        # List of pks into models.Location, represents locations near this user
@@ -223,7 +223,7 @@ class Conversation(object):
                 response += "\n".join(schools_list)
                 self.update_response(response)
             else:
-                self.update_response("Sorry, I couldn't find any schools in %s" % zipcode)
+                self.update_response(_("Sorry, I couldn't find any schools in %(zipcode)s" % {'zipcode': zipcode}))
         elif self._re_help.match(msg.body):
             # parse "help" requests
             self.update_response(self.USAGE)
@@ -240,9 +240,9 @@ class Conversation(object):
                 idx = int(matches.groups()[0]) - 1
                 if idx < 0 or idx >= length:
                     self.update_response(
-                        ("Sorry, I don't know about that school near zipcode %s. " +
-                            "Please text a number between 1 and %d or a 5 digit zipcode") %
-                        (self.zipcode, length))
+                        _("Sorry, I don't know about that school near zipcode %(zipcode)s. " +
+                            "Please text a number between 1 and %(length)d or a 5 digit zipcode") %
+                        {'zipcode': self.zipcode, 'length': length})
                 else:
                     l = Location.objects.get(pk=self.locations[idx])
                     ctx = l.get_context_dict()
@@ -250,9 +250,9 @@ class Conversation(object):
                     self.update_response(body)
             else:
                 self.update_response(
-                    ("Sorry, I didn't understand that number for zipcode %s. " +
-                        "Please text a number between 1 and %d or a 5 digit zipcode") %
-                    (self.zipcode, length))
+                    _("Sorry, I didn't understand that number for zipcode %(zipcode)s. " +
+                        "Please text a number between 1 and %(length)d or a 5 digit zipcode") %
+                    {'zipcode': self.zipcode, 'length': length})
         else:
             self.update_response(self.ERROR)
 
@@ -290,7 +290,7 @@ class Sms(View):
 
     @staticmethod
     def paginate(msg, length=_max_length, min_percent_full=0.85,
-                 page_formater=lambda i, m: "(page %d/%d)" % (i, m), ellipsis="..."):
+                 page_formater=lambda i, m: _("(page %(current)d/%(total)d)") % {'current': i, 'total': m}, ellipsis="..."):
         """
         Takes a message a breaks it into chunks with no more than than length characters and
         more than length * min_percent_full characters (except for the last one).

@@ -8,11 +8,15 @@ from django.db.models import Q
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import GEOSGeometry
 from django.conf import settings
+from django.http import HttpResponseRedirect
 from models import Location
 import logging, hashlib
 from datetime import datetime, timedelta
 from django.template.defaultfilters import title
 from faq.models import Topic, Question
+from django.utils.translation import ugettext as _
+from django.utils.translation import check_for_language
+from django.utils import translation
 
 logger = logging.getLogger(__name__)
 
@@ -25,12 +29,12 @@ def get_opts(selected_val='2'):
     """
     # Options for distance dropdown
     # option value => (option text, enabled)
-    distance_opts = { '-1': ['Distance', False],
-                      '0.5': ['< 0.5 mi', False],
-                      '1': ['< 1 mi', False],
-                      '2': ['< 2 mi', False],
-                      '5': ['< 5 mi', False],
-                      '10': ['< 10 mi', False] }
+    distance_opts = { '-1': [_('Distance'), False],
+                      '0.5': [_('< 0.5 mi'), False],
+                      '1': [_('< 1 mi'), False],
+                      '2': [_('< 2 mi'), False],
+                      '5': [_('< 5 mi'), False],
+                      '10': [_('< 10 mi'), False] }
 
     key = selected_val if selected_val in distance_opts else '2'
     distance_opts[key][1] = True
@@ -229,11 +233,33 @@ class TopicWrapper(object):
 
 def faq(request):
     tpl = 'faq-models.html'
-    topics = Topic.objects.all()
-    tw = [TopicWrapper(t, request) for t in topics]
+
+    # get the language of the request
+    lang = request.LANGUAGE_CODE
+
+    # get the topics in this language
+    topics = Topic.objects.filter(slug__startswith=lang+'-')
+    if topics.count() == 0:
+        topics = Topic.objects.filter(slug__startswith=settings.LANGUAGE_CODE[0:2]+'-')
+
+        if topics.count() == 0:
+            raise Http404()
+
+
     ctx = RequestContext(request, {
-        'topics': tw,
+        'topics': [TopicWrapper(t, request) for t in topics],
         'options': get_opts(),
         'mapbarEnabled': True
     })
     return render_to_response(tpl, context_instance=ctx)
+
+def setlang(request, language):
+    nxt = '/'
+    if 'next' in request.REQUEST:
+        nxt = request.REQUEST['next']
+
+    response = HttpResponseRedirect(nxt)
+    if language and check_for_language(language):
+        response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
+
+    return response

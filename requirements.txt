@@ -3,4 +3,4 @@ gdata==2.0.17
 geopy==0.94.2
 django-twilio==0.2
 twilio==3.3.9
-
+django-rosetta==0.6.8

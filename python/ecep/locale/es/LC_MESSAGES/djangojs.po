@@ -1,0 +1,73 @@
+# Spanish language translation strings for chicago-early-learning
+# Copyright (C) 2013 Azavea, Inc
+# This file is distributed under the same license as the chicago-early-learning package.
+# David Zwarg <dzwarg@azavea.com>, 2013.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-02-22 09:08-0600\n"
+"PO-Revision-Date: 2013-01-10 09:35-0600\n"
+"Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
+"<jbranigan@azavea.com>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: portal/static/js/main.js:61
+msgid "Unknown URL endpoint \"%(name)s\""
+msgstr "URL de destino desconocido"
+
+#: portal/static/js/main.js:199
+msgid "Filters"
+msgstr "Filtros"
+
+#: portal/static/js/main.js:263
+msgid "Select two locations to compare."
+msgstr "Seleccione dos centros para compararlos."
+
+#: portal/static/js/main.js:327
+msgid "Compare"
+msgstr "Comparar"
+
+#: portal/static/js/main.js:635
+msgid "User location is outside the service area."
+msgstr "La ubicación del usuario está fuera de la zona de servicio."
+
+#: portal/static/js/main.js:640
+msgid "User location cannot be found."
+msgstr "No se ha podido encontrar la ubicación del usuario."
+
+#: portal/static/js/main.js:671
+msgid ""
+"Sorry, the address:\n"
+"\n"
+"\"%(address)s\"\n"
+"\n"
+"Can't be found in the service area."
+msgstr ""
+"Lamentablemente la dirección:\n"
+"\n"
+"\"%(address)s\"\n"
+"\n"
+"no se ha podido encontrar en la zona de servicio."
+
+#: portal/static/js/main.js:792
+msgid "Close"
+msgstr "Cerrar"
+
+#: portal/static/js/main.js:798
+msgid "Walking Directions"
+msgstr "Indicaciones para ir caminando"
+
+#: portal/static/js/main.js:806
+msgid "Additional Directions from Google"
+msgstr "Indicaciones adicionales de Google"
+
+#: portal/static/js/main.js:855
+msgid "Please type in an address."
+msgstr "Escriba una dirección"

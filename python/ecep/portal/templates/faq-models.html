@@ -5,7 +5,8 @@ Copyright (c) 2012 Azavea, Inc.
 See LICENSE in the project root for copying permission
 {% endcomment %}
 
-{% block title %}Chicago Early Learning - FAQ{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Chicago Early Learning" %} - {% trans "FAQ" %}{% endblock %}
 
 {% block otherhead %}
 <!-- custom head tags go here -->
@@ -51,8 +52,8 @@ If we want to actually group questions by topic, we'll need to modify this a bit
             </div>
         {% endfor %}
         </div>
-    </div>
-{% endfor %}
+    {% endfor %}
+</div>
 {% endautoescape %}
 </div>
 {% endblock %}

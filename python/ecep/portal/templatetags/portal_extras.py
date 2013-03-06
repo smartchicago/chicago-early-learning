@@ -5,6 +5,7 @@ from django import template
 from django.template.defaultfilters import stringfilter
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext as _
 
 register = template.Library()
 
@@ -26,7 +27,7 @@ def niceweb(url, niceflag, autoescape=None):
     """
     Generate a link to 'Website' if niceflag is set.
     """
-    return niceurl(url, niceflag, 'Website', 'http://', autoescape)
+    return niceurl(url, niceflag, _('Website'), 'http://', autoescape)
 
 
 @register.filter(needs_autoescape=True)
@@ -34,7 +35,7 @@ def nicemail(url, niceflag, autoescape=None):
     """
     Generate a link to 'Email' if niceflag is set.
     """
-    return niceurl(url, niceflag, 'Email', 'mailto:', autoescape)
+    return niceurl(url, niceflag, _('Email'), 'mailto:', autoescape)
 
 
 def niceurl(url, niceflag, shortname, prefix, autoescape=None):
