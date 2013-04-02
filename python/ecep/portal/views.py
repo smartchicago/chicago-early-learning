@@ -8,7 +8,7 @@ from django.db.models import Q
 from django.contrib.gis.measure import Distance
 from django.contrib.gis.geos import GEOSGeometry
 from django.conf import settings
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from models import Location
 import logging, hashlib
 from datetime import datetime, timedelta
