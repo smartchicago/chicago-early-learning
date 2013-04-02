@@ -32,7 +32,7 @@ the Google Maps API via geopy."""
             help='Stop geocoding on the first failure.'),
         )
 
-    geocoder = geocoders.Google()
+    geocoder = geocoders.GoogleV3()
 
     def handle(self, *args, **options):
         """
