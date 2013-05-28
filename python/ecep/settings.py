@@ -1,7 +1,7 @@
 # Copyright (c) 2012 Azavea, Inc.
 # See LICENSE in the project root for copying permission
 
-import sys
+import os
 
 # Django settings for ecep project.
 
@@ -136,7 +136,7 @@ except ImportError:
 try:
     SITE_ROOT
 except NameError:
-    SITE_ROOT = path.dirname(path.abspath(__file__))
+    SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 MEDIA_ROOT = SITE_ROOT + '/media/'
 STATIC_ROOT = SITE_ROOT + '/static/'
