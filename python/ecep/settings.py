@@ -3,6 +3,11 @@
 
 
 import os
+import djcelery
+
+
+djcelery.setup_loader()
+BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 
 # Django settings for ecep project.
 
@@ -116,10 +121,12 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.gis',
     'ecep.portal',
+    'ecep.portal.sms',
     'django_twilio',
     'gunicorn',
     'faq',
     'rosetta',
+    'djcelery',
 )
 
 

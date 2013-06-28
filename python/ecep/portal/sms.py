@@ -18,6 +18,7 @@ from django_twilio.decorators import twilio_view
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
+from celery import chain, task
 
 logger = logging.getLogger(__name__)
 
@@ -103,14 +104,14 @@ class Conversation(object):
     _re_num = re.compile(r"^\s*(\d{1,2})\s*$")
     _re_more = re.compile(r"^\s*(m|more)\s*$", re.IGNORECASE)
 
-    _max_responses = 3
+    _max_responses = 10
 
     # I wanted _re_help to recognize "help" instead of "h", but Twilio intercepts it :(
     # http://www.twilio.com/help/faq/sms/does-twilio-support-stop-block-and-cancel-aka-sms-filtering
 
     USAGE = _('To get this message text "h".\n' +
-             'Text a 5 digit zipcode to get a list of nearby places.' +
-             'Text a number on the list to get more information.')
+              'Text a 5 digit zipcode to get a list of nearby places.' +
+              'Text a number on the list to get more information.')
     ERROR =  _('Sorry, I didn\'t understand that. Please text "h" for instructions')
     FATAL =  _('We\'re sorry, something went wrong with your request! Please try again')
     MORE =   _('Reply "m" or "more" to receive the next few pages')
@@ -279,14 +280,16 @@ class Sms(View):
 
     def reply_list(self, msgs):
         """Simple wrapper for returning a text message response given a list of texts to return"""
-        r = Response()
-        callback_url = self.request.build_absolute_uri(reverse('sms-callback'))
-        #print(callback)
-        #print(msgs)
-        for p in msgs:
-            r.sms(p, statusCallback=callback_url)
+        if not msgs or len(msgs) < 1:
+            return Response()
 
-        return r
+        callback_url = self.request.build_absolute_uri(reverse('sms-callback'))
+        msg_chain = [sms_bunny.s(None, msgs[0], callback_url)]
+        for m in msgs[1:]:
+            msg_chain.append(sms_bunny.subtask((m, callback_url), countdown=3))
+
+        chain(*msg_chain).apply_async()
+        return Response()
 
     @staticmethod
     def paginate(msg, length=_max_length, min_percent_full=0.85,
@@ -481,3 +484,11 @@ class SmsCallback(View):
             logger.debug('SMS with id %s failed!' % sid)
 
         return HttpResponse(status=200)
+
+
+@task()
+def sms_bunny(_, message, callback):
+    r = Response()
+    # r.sms(message, statusCallback=callback_url)
+    print("Sending sms text: %s" % message)
+    return None
