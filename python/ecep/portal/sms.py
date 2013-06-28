@@ -12,8 +12,10 @@ from django.views.generic import View
 from django.utils.decorators import classonlymethod, method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from django.conf import settings
 from models import Location
 from twilio.twiml import Response
+from twilio.rest import TwilioRestClient
 from django_twilio.decorators import twilio_view
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
@@ -266,7 +268,9 @@ class Sms(View):
     View class for handling SMS messages from twilio
     """
 
+    # For twilio trial accounts use 120 instead, otherwise it gets truncated
     _max_length = 160
+    _sms_delay = 6
     request = None
 
     @classonlymethod
@@ -274,19 +278,26 @@ class Sms(View):
         # twilio_view doesn't play nice with View classes, so we insert it manually here
         return twilio_view(super(Sms, cls).as_view(**initkwargs))
 
-    def reply_str(self, msg):
+    def reply_str(self, sms_wrapper, msg):
         """Simple wrapper for returning a text message response given a string to return"""
-        return self.reply_list(Sms.paginate(msg))
+        return self.reply_list(sms_wrapper, Sms.paginate(msg))
 
-    def reply_list(self, msgs):
+    def reply_list(self, sms_wrapper, msgs):
         """Simple wrapper for returning a text message response given a list of texts to return"""
         if not msgs or len(msgs) < 1:
             return Response()
 
         callback_url = self.request.build_absolute_uri(reverse('sms-callback'))
-        msg_chain = [sms_bunny.s(None, msgs[0], callback_url)]
+        args = {
+            'callback': callback_url,
+            'from_': sms_wrapper.to_phone,
+            'to': sms_wrapper.from_phone,
+        }
+
+        msg_chain = [sms_bunny.s(args, msgs[0])]
         for m in msgs[1:]:
-            msg_chain.append(sms_bunny.subtask((m, callback_url), countdown=3))
+            msg_chain.append(sms_bunny.subtask((m,), countdown=self._sms_delay))
+        #msg_chain = [sms_bunny.subtask((message,), countdown=3) for message in msgs]
 
         chain(*msg_chain).apply_async()
         return Response()
@@ -464,7 +475,7 @@ class Sms(View):
         conv = Conversation(request)
         conv.process_request(request)
         conv.update_session(request.session)
-        return self.reply_list(conv.response)
+        return self.reply_list(SmsMessage(request), conv.response)
 
 
 class SmsCallback(View):
@@ -487,8 +498,20 @@ class SmsCallback(View):
 
 
 @task()
-def sms_bunny(_, message, callback):
-    r = Response()
-    # r.sms(message, statusCallback=callback_url)
-    print("Sending sms text: %s" % message)
-    return None
+def sms_bunny(args, message):
+    account_sid = settings.TWILIO_ACCOUNT_SID
+    auth_token = settings.TWILIO_AUTH_TOKEN
+    to = args['to']
+    from_ = args['from_']
+    callback = args['callback']
+    client = TwilioRestClient(account_sid, auth_token)
+
+    try:
+        client.sms.messages.create(body=message, to=to, from_=from_, status_callback=callback)
+        # print("Sending sms text: %s" % message)
+    except Exception as e:
+        # print e
+        logger.debug('Sending SMS via twilio failed! %s' % e)
+        pass
+
+    return args
