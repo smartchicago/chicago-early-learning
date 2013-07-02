@@ -47,7 +47,7 @@ ecepAdmin.loadMap = function(){
 
 // Function to add geocoded location to admin form
 ecepAdmin.addGeocodedPoint = function(location) {
-    document.getElementById('id_geom').value = "POINT (" + location.lat() + " " + location.lng() + ")";
+    document.getElementById('id_geom').value = "POINT (" + location.lng() + " " + location.lat() + ")";
 };
 
 // Function to filter results that are not rooftop results
@@ -65,7 +65,6 @@ ecepAdmin.rooftopResults = function(geocode_results) {
  *  Provides user feedback if geocoding is unsuccessful and describes
  *  how to manually set the geolocation by right-clicking
  */
-
 ecepAdmin.geocodeAddress = function() {
     var geocoder = new google.maps.Geocoder();
     var streetnum = document.getElementById("id_address").value,

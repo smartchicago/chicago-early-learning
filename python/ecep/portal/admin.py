@@ -14,22 +14,22 @@ class LocationForm(forms.ModelForm):
     and a custom clean method to properly handle points passed in as strings
     """
     
-    #lat_and_long = forms.BooleanField(required=False, label="Map/Location", widget=MapWidget())
     geom = forms.CharField(label="Geocoded Point", widget=MapWidget())
     
-    def get_lat_long(self, geom_string):
+    def get_lat_long_point(self, geom_string):
         """Takes a geom_string from cleaned_data and converts it to a point
         object. If unable to convert, raises a validation error.
         
         Arguments:
         - `geom_string`: string returned by the 'geom' input from the LocationForm
+        Takes the form of 'POINT (<LNG> <LAT>)'
         """
 
         try:
             split_geom_string = re.findall(r'([-.\w]+)', geom_string)
-            lat = float(split_geom_string[1])
-            lng = float(split_geom_string[2])
-            return lat, lng
+            lng = float(split_geom_string[1])
+            lat = float(split_geom_string[2])
+            return Point(lng, lat)
         except (IndexError, ValueError):
             raise forms.ValidationError("Invalid point specified for location")
     
@@ -42,8 +42,7 @@ class LocationForm(forms.ModelForm):
         self.cleaned_data = super(LocationForm,self).clean()
 
         try:
-            lat, lng = self.get_lat_long(self.cleaned_data['geom'])
-            self.cleaned_data['geom'] = Point(lat, lng)
+            self.cleaned_data['geom'] = self.get_lat_long(self.cleaned_data['geom'])
             return self.cleaned_data
         except forms.ValidationError:
             # Need to pass a dummy point if invalid, or we get a 500 error
