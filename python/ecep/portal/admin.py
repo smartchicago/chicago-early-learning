@@ -16,7 +16,7 @@ class LocationForm(forms.ModelForm):
     
     geom = forms.CharField(label="Geocoded Point", widget=MapWidget())
     
-    def get_lat_long_point(self, geom_string):
+    def get_point(self, geom_string):
         """Takes a geom_string from cleaned_data and converts it to a point
         object. If unable to convert, raises a validation error.
         
