@@ -78,36 +78,34 @@ ecepAdmin.geocodeAddress = function() {
         // Filter results (only rooftop)
         ecepAdmin.rooftopResults(results);
 
-        // Add markers for all results
         for (var i = 0; i < results.length; i++) {
+            // Add markers for all results
             ecepAdmin.addMarker(results[i].geometry.location);
         }
 
+        if (results.length == 1) {
         // If only one marker, set the form value to that location
         // and zoom into that location
-        if (results.length == 1) {
             ecepAdmin.addGeocodedPoint(results[0].geometry.location);
             ecepAdmin.map.setZoom(15);
             ecepAdmin.map.setCenter(results[0].geometry.location);
         }
 
+        else if (results.length > 1) {
         // If more than 2 results, let user know they can choose one
         // by clicking on the correct marker or they can set their 
         // own marker with a right-click
-        else if (results.length > 1) {
-            document.getElementById('map-help').value = " There are multiple locations that match that address, please select the correct location by clicking on a marker. You can also set the location manually by right-clicking on a position.";
+            document.getElementById('map-help').value = "There are multiple locations that match that address, please select the correct location by clicking on a marker. You can also set the location manually by right-clicking on a position.";
             document.getElementById('map-help').visibility = 'visible';
         }
-
-        // If there aren't any results, let user know they can manually set
-        // the location by right clicking on the map
         else if (results.length == 0 || status != google.maps.GeocoderStatus.OK) {
+            // If there aren't any results, let user know they can manually set
+            // the location by right clicking on the map
             document.getElementById('map-help').innerHTML = "We could not match that address to a location. You can manually set the location by right-clicking on any location on the map.";
             document.getElementById('map-help').style.display = 'block';
         }
 
     });
-
 };
 
 ecepAdmin.mapHelp = function() {

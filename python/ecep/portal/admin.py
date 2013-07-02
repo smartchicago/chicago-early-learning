@@ -39,7 +39,7 @@ class LocationForm(forms.ModelForm):
         of the way the map fills in the geocoded location form
         """
 
-        self.cleaned_data = super(LocationForm,self).clean()
+        self.cleaned_data = super(LocationForm, self).clean()
 
         try:
             self.cleaned_data['geom'] = self.get_lat_long(self.cleaned_data['geom'])
