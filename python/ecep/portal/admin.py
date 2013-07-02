@@ -9,6 +9,52 @@ class LocationAdmin(admin.OSMGeoAdmin):
     search_fields = ['site_name']
 
     fieldsets = [
+class LocationForm(forms.ModelForm):
+    """Form subclass for location model form to use custom widget for google map
+    and a custom clean method to properly handle points passed in as strings
+    """
+    
+    #lat_and_long = forms.BooleanField(required=False, label="Map/Location", widget=MapWidget())
+    geom = forms.CharField(label="Geocoded Point", widget=MapWidget())
+    
+    def get_lat_long(self, geom_string):
+        """Takes a geom_string from cleaned_data and converts it to a point
+        object. If unable to convert, raises a validation error.
+        
+        Arguments:
+        - `geom_string`: string returned by the 'geom' input from the LocationForm
+        """
+
+        try:
+            split_geom_string = re.findall(r'([-.\w]+)', geom_string)
+            lat = float(split_geom_string[1])
+            lng = float(split_geom_string[2])
+            return lat, lng
+        except (IndexError, ValueError):
+            raise forms.ValidationError("Invalid point specified for location")
+    
+    def clean(self):
+        """
+        Need to create a Point object from string returned by form because
+        of the way the map fills in the geocoded location form
+        """
+
+        self.cleaned_data = super(LocationForm,self).clean()
+
+        try:
+            lat, lng = self.get_lat_long(self.cleaned_data['geom'])
+            self.cleaned_data['geom'] = Point(lat, lng)
+            return self.cleaned_data
+        except forms.ValidationError:
+            # Need to pass a dummy point if invalid, or we get a 500 error
+            # This point does not get saved, nothing happens to it
+            self.cleaned_data['geom'] = Point(0, 0)
+            raise forms.ValidationError("Invalid point specified for location")
+
+    class Meta:
+        model = Location
+
+        
         (None,      {'fields': ['site_name']}),
         ('Address', {'fields': ['address', 'city', 'state', 'zip']}),
         ('Contact', {'fields': ['phone1', 'phone2', 'phone3', 'fax', 'url', 'email']}),
