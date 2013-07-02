@@ -41,6 +41,17 @@ ecepAdmin.loadMap = function(){
         ecepAdmin.addMarker(event.latLng);
         ecepAdmin.addGeocodedPoint(event.latLng);
     });
+    
+    if ($('#id_geom').val() && $('#id_geom').val() !== 'None') {
+        // If point already found, center and add marker there
+        var regexPoints = /([-.\d]+) ([-.\d]+)/;
+        var results = regexPoints.exec($('#id_geom').val());
+        var latlng = new google.maps.LatLng(results[2], results[1]);
+        ecepAdmin.map.setZoom(15);
+        ecepAdmin.map.setCenter(latlng);
+        ecepAdmin.addMarker(latlng);
+    }
+
 
 };
 
