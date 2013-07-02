@@ -78,6 +78,7 @@ ecepAdmin.rooftopResults = function(geocode_results) {
  */
 ecepAdmin.geocodeAddress = function() {
     var geocoder = new google.maps.Geocoder();
+    var $mapHelp = $('#map-help');
     var streetnum = $("#id_address").val(),
         city = $("#id_city").val(),
         state = $("#id_state").val(),
@@ -97,6 +98,7 @@ ecepAdmin.geocodeAddress = function() {
         if (results.length === 1) {
         // If only one marker, set the form value to that location
         // and zoom into that location
+            $mapHelp.hide();
             ecepAdmin.addGeocodedPoint(results[0].geometry.location);
             ecepAdmin.map.setZoom(15);
             ecepAdmin.map.setCenter(results[0].geometry.location);
@@ -106,14 +108,14 @@ ecepAdmin.geocodeAddress = function() {
         // If more than 2 results, let user know they can choose one
         // by clicking on the correct marker or they can set their 
         // own marker with a right-click
-            $('#map-help').text("There are multiple locations that match that address, please select the correct location by clicking on a marker. You can also set the location manually by right-clicking on a position.");
-            $('map-help').show();
+            $mapHelp.text("There are multiple locations that match that address, please select the correct location by clicking on a marker. You can also set the location manually by right-clicking on a position.");
+            $mapHelp.show();
         }
         else if (results.length === 0 || status !== google.maps.GeocoderStatus.OK) {
             // If there aren't any results, let user know they can manually set
             // the location by right clicking on the map
-            $('#map-help').text("We could not match that address to a location. You can manually set the location by right-clicking on any location on the map.");
-            $('#map-help').show();
+            $mapHelp.text("We could not match that address to a location. You can manually set the location by right-clicking on any location on the map.");
+            $mapHelp.show();
         }
 
     });
