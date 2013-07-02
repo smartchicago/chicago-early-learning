@@ -34,7 +34,7 @@ ecepAdmin.loadMap = function(){
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    ecepAdmin.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    ecepAdmin.map = new google.maps.Map($('#map')[0], mapOptions);
 
     google.maps.event.addListener(ecepAdmin.map, "rightclick", function(event) {
         ecepAdmin.clearMarkers();
@@ -47,7 +47,7 @@ ecepAdmin.loadMap = function(){
 
 // Function to add geocoded location to admin form
 ecepAdmin.addGeocodedPoint = function(location) {
-    document.getElementById('id_geom').value = "POINT (" + location.lng() + " " + location.lat() + ")";
+    $('#id_geom').val("POINT (" + location.lng() + " " + location.lat() + ")");
 };
 
 // Function to filter results that are not rooftop results
@@ -67,10 +67,10 @@ ecepAdmin.rooftopResults = function(geocode_results) {
  */
 ecepAdmin.geocodeAddress = function() {
     var geocoder = new google.maps.Geocoder();
-    var streetnum = document.getElementById("id_address").value,
-        city = document.getElementById("id_city").value,
-        state = document.getElementById("id_state").value,
-        zip = document.getElementById("id_zip").value;
+    var streetnum = $("#id_address").val(),
+        city = $("#id_city").val(),
+        state = $("#id_state").val(),
+        zip = $("#id_zip").val();
     var address = [streetnum, city, state, zip].join(', ');
     ecepAdmin.clearMarkers();
     
@@ -95,22 +95,22 @@ ecepAdmin.geocodeAddress = function() {
         // If more than 2 results, let user know they can choose one
         // by clicking on the correct marker or they can set their 
         // own marker with a right-click
-            document.getElementById('map-help').value = "There are multiple locations that match that address, please select the correct location by clicking on a marker. You can also set the location manually by right-clicking on a position.";
-            document.getElementById('map-help').visibility = 'visible';
+            $('#map-help').text("There are multiple locations that match that address, please select the correct location by clicking on a marker. You can also set the location manually by right-clicking on a position.");
+            $('map-help').show();
         }
         else if (results.length === 0 || status !== google.maps.GeocoderStatus.OK) {
             // If there aren't any results, let user know they can manually set
             // the location by right clicking on the map
-            document.getElementById('map-help').innerHTML = "We could not match that address to a location. You can manually set the location by right-clicking on any location on the map.";
-            document.getElementById('map-help').style.display = 'block';
+            $('#map-help').text("We could not match that address to a location. You can manually set the location by right-clicking on any location on the map.");
+            $('#map-help').show();
         }
 
     });
 };
 
 ecepAdmin.mapHelp = function() {
-    document.getElementById('map-help').innerHTML = "Please fill in the address of the location then click the 'Geocode Address' button to find its latitude and longitude. You can also select a location manually by right clicking anywhere on the map.";
-    document.getElementById('map-help').style.display = 'block';
+    $('#map-help').text("Please fill in the address of the location then click the 'Geocode Address' button to find its latitude and longitude. You can also select a location manually by right-clicking anywhere on the map.");
+    $('#map-help').show();
 };
 
 google.maps.event.addDomListener(window, 'load', ecepAdmin.loadMap);
