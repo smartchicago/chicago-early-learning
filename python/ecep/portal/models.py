@@ -9,7 +9,7 @@ from django.utils.translation import pgettext_lazy
 
 class Location(models.Model):
     site_name = models.CharField(_('Site Name'), max_length=100)
-    address = models.CharField(pgettext_lazy('field name', 'Address'), max_length=50)
+    address = models.CharField(pgettext_lazy(u'field name', u'Address'), max_length=50)
     city = models.CharField(_('City'), max_length=10)
     state = models.CharField(_('State'), max_length=2)
     zip = models.CharField(_('Zip Code'), max_length=10)
