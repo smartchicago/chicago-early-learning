@@ -28,7 +28,7 @@ ecepAdmin.addMarker = function(location) {
 };
 
 ecepAdmin.loadMap = function(){
-    var latlng = new google.maps.LatLng(41.8941, -87.6229914);
+    var latlng = new google.maps.LatLng(latSettings, lngSettings);
     var mapOptions = {
         zoom: 12,
         center: latlng,
