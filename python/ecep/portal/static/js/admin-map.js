@@ -3,7 +3,7 @@
  * See LICENSE in the project root for copying permission
  ********************************************************/
 
-var ecepAdmin = ((typeof ecepAdmin == 'undefined') ? {} : ecepAdmin);
+var ecepAdmin = ((typeof ecepAdmin === 'undefined') ? {} : ecepAdmin);
 
 ecepAdmin.marker_array = [];
 ecepAdmin.map;
@@ -53,7 +53,7 @@ ecepAdmin.addGeocodedPoint = function(location) {
 // Function to filter results that are not rooftop results
 ecepAdmin.rooftopResults = function(geocode_results) {
     for (var i = 0; i < geocode_results.length; i++) {
-        if (geocode_results[i].geometry.location_type != 'ROOFTOP') {
+        if (geocode_results[i].geometry.location_type !== 'ROOFTOP') {
             geocode_results.splice(i, 1);
         }
     }
@@ -83,7 +83,7 @@ ecepAdmin.geocodeAddress = function() {
             ecepAdmin.addMarker(results[i].geometry.location);
         }
 
-        if (results.length == 1) {
+        if (results.length === 1) {
         // If only one marker, set the form value to that location
         // and zoom into that location
             ecepAdmin.addGeocodedPoint(results[0].geometry.location);
@@ -98,7 +98,7 @@ ecepAdmin.geocodeAddress = function() {
             document.getElementById('map-help').value = "There are multiple locations that match that address, please select the correct location by clicking on a marker. You can also set the location manually by right-clicking on a position.";
             document.getElementById('map-help').visibility = 'visible';
         }
-        else if (results.length == 0 || status != google.maps.GeocoderStatus.OK) {
+        else if (results.length === 0 || status !== google.maps.GeocoderStatus.OK) {
             // If there aren't any results, let user know they can manually set
             // the location by right clicking on the map
             document.getElementById('map-help').innerHTML = "We could not match that address to a location. You can manually set the location by right-clicking on any location on the map.";
