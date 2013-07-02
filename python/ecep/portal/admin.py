@@ -3,12 +3,12 @@
 
 from portal.models import Location
 from django.contrib.gis import admin
+from django import forms
+from portal.widgets import MapWidget
+from django.contrib.gis.geos import Point
+import re
+from django.conf import settings
 
-class LocationAdmin(admin.OSMGeoAdmin):
-    list_display = ('site_name', 'id',)
-    search_fields = ['site_name']
-
-    fieldsets = [
 class LocationForm(forms.ModelForm):
     """Form subclass for location model form to use custom widget for google map
     and a custom clean method to properly handle points passed in as strings
@@ -55,16 +55,26 @@ class LocationForm(forms.ModelForm):
         model = Location
 
         
+class LocationAdmin(admin.OSMGeoAdmin):
+
+    class Media:
+        css = { 'all': ('css/admin-map.css',)}
+        js = ('http://maps.googleapis.com/maps/api/js?key=AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc&sensor=false&language=%s' % settings.LANGUAGE_CODE, 'js/admin-map.js')
+
+    list_display = ('site_name', 'id',)
+    search_fields = ['site_name']
+    form = LocationForm
+    fieldsets = [
         (None,      {'fields': ['site_name']}),
-        ('Address', {'fields': ['address', 'city', 'state', 'zip']}),
+        ('Address', {'fields': [('address', 'city',), ('state', 'zip'), 'geom']}),
         ('Contact', {'fields': ['phone1', 'phone2', 'phone3', 'fax', 'url', 'email']}),
         ('Flags',   {'fields': ['is_child_care', 'is_hs', 'is_ehs', 'is_pre4all', 
             'is_tuition_based', 'is_special_ed', 'is_montessori', 
             'is_child_parent_center', 'is_age_lt_3', 'is_age_gt_3']}),
         ('Other',   {'fields': ['exec_director', 'ctr_director', 'site_affil', 'q_stmt',
             'e_info', 'as_proc', 'accred', 'prg_sched', 'prg_dur', 'ages', 'waitlist']}),
-        ('Map',     {'fields': ['geom']})
     ]
+
 
 admin.site.register(Location, LocationAdmin)
 
