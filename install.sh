@@ -176,6 +176,9 @@ configure_django() {
         PHONE="None"
     fi
 
+    echo -e "\nPlease Enter Your Google Maps API Key"
+    read GOOGLEKEY
+
     echo -en "\nPlease enter a username for the django admin: "
     read USERNAME
 
@@ -212,6 +215,8 @@ configure_django() {
     echo "" >> $LOCAL
     echo "DEBUG = $DEBUG" >> $LOCAL
     echo "TEMPLATE_DEBUG = $DEBUG" >> $LOCAL
+    echo ""
+    echo "GOOGLE_MAPS_KEY = $GOOGLEKEY" >> $LOCAL
 
     # create the logging dir, and chmod it for www-data
     LOGDIR="/var/log/ecep/"
