@@ -2,6 +2,8 @@
 # See LICENSE in the project root for copying permission
 
 from django.core.management.base import BaseCommand, CommandError
+from django.conf import settings
+
 from portal.models import Location
 
 import gdata.spreadsheet.service
