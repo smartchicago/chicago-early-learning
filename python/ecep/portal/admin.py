@@ -42,7 +42,7 @@ class LocationForm(forms.ModelForm):
         self.cleaned_data = super(LocationForm, self).clean()
 
         try:
-            self.cleaned_data['geom'] = self.get_lat_long(self.cleaned_data['geom'])
+            self.cleaned_data['geom'] = self.get_point(self.cleaned_data['geom'])
             return self.cleaned_data
         except forms.ValidationError:
             # Need to pass a dummy point if invalid, or we get a 500 error
