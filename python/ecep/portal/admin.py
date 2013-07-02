@@ -58,7 +58,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
 
     class Media:
         css = { 'all': ('css/admin-map.css',)}
-        js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' % (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE), 'js/admin-map.js')
+        js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' % (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE), 'js/admin-map.js', 'js/jquery-1.7.2.min.js')
 
     list_display = ('site_name', 'id',)
     search_fields = ['site_name']
