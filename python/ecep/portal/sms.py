@@ -8,18 +8,19 @@ This module contains classes and utilities for interacting with SMS messages
 import logging
 import re
 import math
+import socket
 from django.views.generic import View
 from django.utils.decorators import classonlymethod, method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.template.loader import render_to_string
+from django.utils.translation import ugettext as _
 from models import Location
 from twilio.twiml import Response
 from twilio.rest import TwilioRestClient
 from django_twilio.decorators import twilio_view
-from django.core.urlresolvers import reverse
-from django.template.loader import render_to_string
-from django.utils.translation import ugettext as _
 from celery import chain, task
 
 logger = logging.getLogger(__name__)
@@ -45,7 +46,6 @@ def flag_enum(*names):
     t = flag_enum("foo", "bar")
     t.foo & t.bar == 0
     """
-    #flags = dict([(k, 1 << int(v)) for (k, v) in enums.items()])
     flags = dict([(name, 1 << i) for (i, name) in enumerate(names)])
     return type('Enum', (), flags)
 
@@ -269,9 +269,9 @@ class Sms(View):
     """
 
     # For twilio trial accounts use 120 instead, otherwise it gets truncated
-    _max_length = 160
-    _sms_delay = 6
-    request = None
+    _max_length = 160       # Max length of SMS payload
+    _sms_delay = 6          # Number of seconds to wait between texts in the same conversation
+    request = None          # Current django request object we're handling
 
     @classonlymethod
     def as_view(cls, **initkwargs):
@@ -279,11 +279,18 @@ class Sms(View):
         return twilio_view(super(Sms, cls).as_view(**initkwargs))
 
     def reply_str(self, sms_wrapper, msg):
-        """Simple wrapper for returning a text message response given a string to return"""
+        """Simple wrapper for returning a text message response given a string to return
+        sms_wrapper:        SmsMessage object (used for metadata)
+        msg:                String containing the message to send
+        """
         return self.reply_list(sms_wrapper, Sms.paginate(msg))
 
     def reply_list(self, sms_wrapper, msgs):
-        """Simple wrapper for returning a text message response given a list of texts to return"""
+        """Simple wrapper for returning a text message response given a list of texts to return
+        sms_wrapper:        SmsMessage object (used for metadata)
+        msg:                Iterable containing the messages to send. It is the caller's responsibility
+                            To ensure they're the proper length.
+        """
         if not msgs or len(msgs) < 1:
             return Response()
 
@@ -294,12 +301,18 @@ class Sms(View):
             'to': sms_wrapper.from_phone,
         }
 
+        # First item uses different call/args
+        # See http://docs.celeryproject.org/en/latest/userguide/canvas.html#chains
         msg_chain = [sms_bunny.s(args, msgs[0])]
         for m in msgs[1:]:
             msg_chain.append(sms_bunny.subtask((m,), countdown=self._sms_delay))
-        #msg_chain = [sms_bunny.subtask((message,), countdown=3) for message in msgs]
 
-        chain(*msg_chain).apply_async()
+        try:
+            chain(*msg_chain).apply_async()
+        except socket.error:
+            # Not finding celery counts as 502: bad gateway
+            return HttpResponse('Couldn\'t connect to celery to send SMS messages', status=502)
+
         return Response()
 
     @staticmethod
@@ -499,6 +512,17 @@ class SmsCallback(View):
 
 @task()
 def sms_bunny(args, message):
+    """Celery task for sending messages asynchronously
+    args:       Dict containing the following required fields:
+        to:         Phone number we're sending the text to (should come from twilio API args)
+        from_:      Phone number we're sending from (should come from twilio API args)
+        callback:   Url for twilio to hit when request completes
+    message:    String containing SMS payload
+
+    returns:    args (useful for chaining multiple calls together)
+
+    Note: args isn't *args to make calling this using celery chain() easier
+    """
     account_sid = settings.TWILIO_ACCOUNT_SID
     auth_token = settings.TWILIO_AUTH_TOKEN
     to = args['to']
