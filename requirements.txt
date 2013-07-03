@@ -5,3 +5,4 @@ django-twilio==0.2
 twilio==3.5.1
 django-rosetta==0.6.8
 django-celery==3.0.17
+librabbitmq==1.0.1
