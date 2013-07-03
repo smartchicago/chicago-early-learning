@@ -84,11 +84,13 @@ document, and loads the fields into the portal.Location models of the django app
             if row['Early Learning Site or School Name'] is None or row['Early Learning Site or School Name'] == '':
                 continue
 
+            STATE = (settings.STATE or row['State'])
+                
             l = Location(
                 site_name = row['Early Learning Site or School Name'],
                 address = row['Address'],
                 city = row['City'], # Yes, a space after city
-                state = settings.STATE,
+                state = STATE,
                 zip = row['Zip Code'],
                 phone = row['Phone Number'],
                 url = row['Website'],
