@@ -28,14 +28,14 @@ if [ "$YN" == "y" ]; then
 
     PASSWD=""
     PASSWD1="1"
-    while [ $PASSWD != $PASSWD1 ]; do
+    while [ "$PASSWD" != "$PASSWD1" ]; do
         echo -e "\nEnter a password:"
         read PASSWD
 
         echo -e "\nEnter it again:"
         read PASSWD1
 
-        if [ $PASSWD != $PASSWD1 ]; then
+        if [ "$PASSWD" != "$PASSWD1" ]; then
             echo "Sorry, passwords don't match, try again"
         fi
     done
@@ -55,7 +55,7 @@ if [ "$YN" == "y" ]; then
     popd
 fi
 
-echo -e "\nWould you like to use a dedicated celery worker for this app?"
+echo -e "\nWould you like to use a dedicated celery worker for this app? (y/n)"
 read YN
 if [ "$YN" == "y" ]; then
     # May need this if we need the next part?
@@ -71,12 +71,22 @@ if [ "$YN" == "y" ]; then
     echo -e "\nEnter a unique name for the queue:"
     read QUEUE_NAME
 
-    if [ $QUEUE_NAME == "" ]; then
+    if [ "$QUEUE_NAME" == "" ]; then
         echo "Error: you must enter a valid queue name"
         exit 2
     fi
 
-    # Make custom config file for our celery workers
+    # Modify django settings to use the queue
+    pushd $DJANGO_ROOT
+    cat >> local_settings.py <<EOF
+from kombu import Exchange, Queue
+CELERY_QUEUES = (Queue($QUEUE_NAME, Exchange('default')),)
+CELERY_DEFAULT_QUEUE = $QUEUE_NAME
+CELERY_DEFAULT_EXCHANGE_TYPE = 'direct'
+EOF
+    popd
+
+    # Make custom config file for our celery worker (it gets the same name as the queue)
     pushd "$PROJ_ROOT/config"
     CFG="$(pwd)/django-celery.local.config"
     cp django-celery.config $CFG
