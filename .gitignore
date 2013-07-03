@@ -2,6 +2,7 @@
 *.pyo
 *.log
 *.swp
+*.swo
 *~
 python/ecep/static/*
 python/ecep/local_settings.py
