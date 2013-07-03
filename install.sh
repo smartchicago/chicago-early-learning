@@ -176,6 +176,7 @@ configure_django() {
         PHONE="None"
     fi
 
+
     echo -en "\nPlease Enter Your Google Maps API Key"
     read GOOGLEKEY
 
@@ -184,6 +185,15 @@ configure_django() {
     read LATITUDE
     echo -en "\nLongitude:"
     read LONGITUDE
+
+    echo -e "\nAre schools limited to one state? (y/n)"
+    read YN
+    if [ "$YN" == "y" ]; then
+        echo -en "\nPlease enter the postal abbreviation for the state:"
+        read STATE
+    else
+        STATE=None
+    fi
 
     echo -en "\nPlease enter a username for the django admin: "
     read USERNAME
@@ -222,10 +232,14 @@ configure_django() {
     echo "DEBUG = $DEBUG" >> $LOCAL
     echo "TEMPLATE_DEBUG = $DEBUG" >> $LOCAL
     echo "" >> $LOCAL
+<<<<<<< HEAD
     echo "GOOGLE_MAPS_KEY = $GOOGLEKEY" >> $LOCAL
     echo "" >> $LOCAL
     echo "LONGITUDE = $LONGITUDE" >> $LOCAL
     echo "LATITUDE = $LATITUDE" >> $LOCAL
+=======
+    echo "STATE = $STATE" >> $LOCAL
+>>>>>>> Include option of setting a state variable during set-up
 
     # create the logging dir, and chmod it for www-data
     LOGDIR="/var/log/ecep/"
