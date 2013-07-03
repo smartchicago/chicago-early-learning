@@ -232,14 +232,13 @@ configure_django() {
     echo "DEBUG = $DEBUG" >> $LOCAL
     echo "TEMPLATE_DEBUG = $DEBUG" >> $LOCAL
     echo "" >> $LOCAL
-<<<<<<< HEAD
     echo "GOOGLE_MAPS_KEY = $GOOGLEKEY" >> $LOCAL
     echo "" >> $LOCAL
     echo "LONGITUDE = $LONGITUDE" >> $LOCAL
     echo "LATITUDE = $LATITUDE" >> $LOCAL
-=======
+    echo "" >> $LOCAL
     echo "STATE = $STATE" >> $LOCAL
->>>>>>> Include option of setting a state variable during set-up
+
 
     # create the logging dir, and chmod it for www-data
     LOGDIR="/var/log/ecep/"
