@@ -60,9 +60,9 @@ function fetch_update {
     fi
 }
 
-fetch_update 'staging' '/srv/early-childhood-portal.staging' 'staging'
+fetch_update 'staging' '/srv/early-childhood-portal.staging' 'staging-v1'
 
-fetch_update 'deploy' '/srv/early-childhood-portal' 'master'
+fetch_update 'deploy' '/srv/early-childhood-portal' 'master-v1'
 
 if [ "$RESTART" == 'Y' ]; then
     pkill gunicorn
