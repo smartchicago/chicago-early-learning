@@ -91,7 +91,7 @@ class CustomAdminForm(TestCase):
 
     def test_saving_valid_point(self):
         """Test that clean method correctly handles a well-formatted Point"""
-        self.test_form.cleaned_data['geom'] = 'POINT (-12.213123213, 100.112343674)'
+        self.test_form.cleaned_data['geom'] = 'POINT (-12.213123213 100.112343674)'
         try:
             self.test_form.clean()
         except forms.ValidationError:
