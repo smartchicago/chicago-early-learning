@@ -63,7 +63,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
     list_display = ('site_name', 'address', 'zip', 'id',)
     list_filter = ('is_hs', 'is_ehs', 'is_child_care', 'is_tuition_based', 'is_pre4all',
                    'is_child_parent_center', 'is_age_lt_3', 'is_age_gt_3', 'is_montessori')
-    search_fields = ['site_name', 'zip']
+    search_fields = ['site_name', 'address', 'zip']
     form = LocationForm
     fieldsets = [
         (None,      {'fields': ['site_name']}),
