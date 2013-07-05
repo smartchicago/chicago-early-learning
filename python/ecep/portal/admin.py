@@ -68,7 +68,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
     form = LocationForm
     fieldsets = [
         (None,      {'fields': ['site_name']}),
-        ('Address', {'fields': ['address', 'city', 'state', 'zip']}),
+        ('Address', {'fields': [('address', 'city'), ('state', 'zip'), 'geom']}),
         ('Contact', {'fields': ['phone', 'url']}),
         ('Hours/Duration', {'fields': [('is_full_day', 'is_part_day'),
                                        ('is_full_week', 'is_part_week'),
@@ -79,7 +79,6 @@ class LocationAdmin(admin.OSMGeoAdmin):
         ('Other',   {'fields': [('ages', 'prg_hours', 'accred'),
                                 ('language_1', 'language_2', 'language_3'),
                                 'q_stmt']}),
-        ('Map',     {'fields': ['geom']})
     ]
 
 
