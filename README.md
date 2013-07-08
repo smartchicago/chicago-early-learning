@@ -38,29 +38,41 @@ http://www.examiner.com/article/mayor-emanuel-unveils-online-early-learning-port
 
 ## Installation
 
-This web application is designed to be installed on a fresh copy of Ubuntu Server 12.04.
+This web application is designed to be deployed using [Ansbile](http://www.ansibleworks.com/) and developed locally with [vagrant](http://www.vagrantup.com).
 
-After installation of Ubuntu Server 12.04, run the following commands from the terminal:
+Requirements:
+* vagrant (version 1.2.2)
+* ansible (version 1.2.2)
 
-* sudo apt-get install -y git
+Development instructions:
+
+* apt-get install vagrant
+* pip install ansible
 * git clone git://github.com/smartchicago/chicago-early-learning.git
 * cd chicago-early-learning
-* sudo ./install.sh
+* vagrant up
 
-The installer will go through the process of:
+This will create a new Ubuntu 12.04 virtual machine using vagrant. Within the virtual machine Ansible will
 
-* Setting up the installation directory
 * Setup nginx (webserver)
 * Setup gunicorn (appserver)
 * Start nginx
 * Start gunicorn
 * Setup postgis
 * Create a django local_settings.py file
+* Sync the Django models with the database
 
-After running ./install.sh, the database will need to be initialized for use by django with:
+Open up a browser to http://localhost:8080/ and you should see the application running.
 
-    cd python/ecep
-    python manage.py syncdb
+After the VM is set up you will need to create a super user to sign into the admin interface. You can do the following from a terminal in the chicago-early-learning directory:
+
+    vagrant ssh
+    cd /usr/local/cel/app/python/ecep
+    python manage.py createsuperuser
+
+You will now be able sign into the admin interface at http://localhost:8080/admin
+
+To deploy to another server you will need to modify the `hosts` file `deployment/hosts` and the Ansible playbooks to deploy. This should require little more than setting up credentials for the new host for ssh access from the provisioning computer and modifying those files.
 
 ### To update the FAQs
 * Use the Django admin forms to modify/add questions as necessary
