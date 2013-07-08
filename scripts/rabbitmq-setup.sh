@@ -4,7 +4,7 @@
 # See LICENSE in the project root for copying permission
 #
 #
-# This script will setup rabbitmq and celeryd
+# This script will setup rabbitmq and celeryd services
 #
 
 # must be run as root
@@ -13,7 +13,7 @@ if [ `whoami` != "root" ]; then
   exit 1
 fi
 
-LOG=$PWD/log-rmq-install.log
+LOG="$PWD/log-rmq-install.log"
 PROJ_ROOT=`dirname $PWD`
 DJANGO_ROOT="$PROJ_ROOT/python/ecep"
 
@@ -49,7 +49,7 @@ if [ "$YN" == "y" ]; then
     rabbitmqctl delete_user guest &>> $LOG
 
     # Update django settings to use new user
-    pushd $DJANGO_ROOT
+    pushd "$DJANGO_ROOT"
     echo "" >> local_settings.py
     echo "BROKER_URL = 'amqp://$USER:$PASSWD@localhost:5672/'" >> local_settings.py
     popd
@@ -77,11 +77,11 @@ if [ "$YN" == "y" ]; then
     fi
 
     # Modify django settings to use the queue
-    pushd $DJANGO_ROOT
+    pushd "$DJANGO_ROOT"
     cat >> local_settings.py <<EOF
 from kombu import Exchange, Queue
-CELERY_QUEUES = (Queue($QUEUE_NAME, Exchange('default')),)
-CELERY_DEFAULT_QUEUE = $QUEUE_NAME
+CELERY_QUEUES = (Queue('$QUEUE_NAME', Exchange('default')),)
+CELERY_DEFAULT_QUEUE = '$QUEUE_NAME'
 CELERY_DEFAULT_EXCHANGE_TYPE = 'direct'
 EOF
     popd
@@ -89,25 +89,29 @@ EOF
     # Make custom config file for our celery worker (it gets the same name as the queue)
     pushd "$PROJ_ROOT/config"
     CFG="$(pwd)/django-celery.local.config"
-    cp django-celery.config $CFG
-    sed -i s/@QUEUE_NAME@/$QUEUE_NAME/g $CFG
-    sed -i s/@PROJ_ROOT@/$DJANGO_ROOT/g $CFG
+    cp django-celery.config "$CFG"
+    sed -i "s|@QUEUE_NAME@|$QUEUE_NAME|g" "$CFG"
+    sed -i "s|@PROJECT_ROOT@|$DJANGO_ROOT|g" "$CFG"
     popd
 
     # Now make a System V init script that calls the celeryd init script using our settings
     INITD="/etc/init.d"
     pushd $INITD
-    INIT_SCRIPT="$INITD/celeryd-$QUEUE_NAME"
-    cat > $INIT_SCRIPT <<EOF
+    SCRIPT_NAME="celeryd-$QUEUE_NAME"
+    INIT_SCRIPT="$INITD/$SCRIPT_NAME"
+    cat > "$INIT_SCRIPT" <<EOF
 CELERY_DEFAULTS="$CFG"
 export CELERY_DEFAULTS
 . "$PROJ_ROOT/scripts/celeryd"
 EOF
-    popd
+    chmod a+x "$INIT_SCRIPT"
     
     # Now make it fire on startup
-    pushd ../rc5.d
-    ln $INIT_SCRIPT S50celeryd-$QUEUE_NAME
+    cd ../rc5.d
+    ln "$INIT_SCRIPT" "S50$SCRIPT_NAME"
     popd
+
+    # Start the service!
+    service "$SCRIPT_NAME" start
 fi
 
