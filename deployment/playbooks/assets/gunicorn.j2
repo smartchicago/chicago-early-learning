@@ -6,11 +6,9 @@ CONFIG = {
     },
     'working_dir': '{{ app_path }}/python/ecep',
     'user': '{{ user }}',
-    # 'group': 'www-data',
     'args': (
         '--bind={{ unicorn_socket }}',
         '--workers=3',
-        # '--worker-class=egg:gunicorn#sync',
         '--timeout=30',
     ),
 }
