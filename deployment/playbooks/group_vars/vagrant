@@ -2,3 +2,4 @@
 
 ## Vagrant Specific Overrides ##
 
+clone_repo: False
