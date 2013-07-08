@@ -1,0 +1,29 @@
+---
+- hosts: all
+
+  sudo: yes
+  vars:
+    app_path: /usr/local/cel/app/
+    env_path: /usr/local/env/
+    static_path: /usr/local/cel/static/
+
+  tasks:
+
+  - name: Install Python Development Dependencies
+    apt:  pkg=python-dev state=latest update_cache=yes
+
+  - name: Install pip
+    apt: pkg=python-pip state=latest
+
+  - name: Add stable gunicorn repo
+    apt_repository: repo=ppa:gunicorn/ppa
+
+  - name: Install required system packages
+    apt: pkg=${item} state=latest update_cache=yes
+    with_items: ${system_packages}
+
+  - name: Install python packages
+    pip: requirements=${app_path}/requirements.txt
+
+  - name: Install monkey-patched Django-FAQ
+    pip: name='git+git://github.com/bhuber/django-faq.git#egg=django_faq'
