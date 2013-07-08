@@ -18,6 +18,10 @@
     apt: pkg=${item} state=latest update_cache=yes
     with_items: ${system_packages}
 
+  - name: Download source from git
+    git: repo=${git_url} version=${git_branch} dest=${app_path}
+    only_if: ${clone_repo}
+
   - name: Install python packages
     pip: requirements=${app_path}/requirements.txt
 
