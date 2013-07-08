@@ -16,9 +16,6 @@ system_packages:
   - gettext
   - python-pip
 
-git_branch: 'staging'
-git_url: ''
-
 ## Paths ##
 
 app_path: /usr/local/cel/app/
