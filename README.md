@@ -74,6 +74,13 @@ You will now be able sign into the admin interface at http://localhost:8080/admi
 
 To deploy to another server you will need to modify the `hosts` file `deployment/hosts` and the Ansible playbooks to deploy. This should require little more than setting up credentials for the new host for ssh access from the provisioning computer and modifying those files.
 
+For instance, if you are deploying to a server at `example.com` you would add that to the listing of hosts in `deployment/hosts` and optionally define any new vars to override defaults in a new vars file at `deployment/playbooks/host_vars/example.com`. Then to deploy to that server requires the following ansible command:
+
+    ansible-playbook deployment/playbooks/all.yml --inventory-file=deployment/hosts --limit=example.com --private-key=PRIVATE_KEY_FILE
+
+This will provision the setup to that host assuming you have set up ssh access with an ssh-key. Alternatively, you can use a password with the `--ask-pass` option instead. For more information and options for `ansible-playbook` please check out its [documentation](http://www.ansibleworks.com/docs/).
+
+
 ### To update the FAQs
 * Use the Django admin forms to modify/add questions as necessary
 * Run './manage.py dumpdata faq.Question > portal/fixtures/question.json'
