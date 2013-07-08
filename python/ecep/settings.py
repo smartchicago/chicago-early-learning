@@ -139,8 +139,6 @@ try:
 except NameError:
     SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-MEDIA_ROOT = SITE_ROOT + '/media/'
-STATIC_ROOT = SITE_ROOT + '/static/'
 TEMPLATE_DIRS = (
     (SITE_ROOT + '/templates/'),
 )
