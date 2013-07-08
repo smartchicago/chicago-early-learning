@@ -111,6 +111,13 @@ ecepAdmin.geocodeAddress = function() {
         // own marker with a right-click
             $mapHelp.text("There are multiple locations that match that address, please select the correct location by clicking on a marker. You can also set the location manually by right-clicking on a position.");
             $mapHelp.show();
+
+            // Zoom in on multiple markers
+            var bounds = new google.maps.LatLngBounds();
+            for (var j = 0; j < results.length; j++) {
+                bounds.extend(results[j].geometry.location);
+            };
+            ecepAdmin.map.fitBounds(bounds);
         }
         else if (results.length === 0 || status !== google.maps.GeocoderStatus.OK) {
             // If there aren't any results, let user know they can manually set

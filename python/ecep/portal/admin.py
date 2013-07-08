@@ -60,20 +60,25 @@ class LocationAdmin(admin.OSMGeoAdmin):
         css = { 'all': ('css/admin-map.css',)}
         js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' % (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE), 'js/admin-map.js', 'js/jquery-1.7.2.min.js')
 
-    list_display = ('site_name', 'address', 'zip', 'id',)
-    list_filter = ('is_hs', 'is_ehs', 'is_child_care', 'is_tuition_based', 'is_pre4all',
-                   'is_child_parent_center', 'is_age_lt_3', 'is_age_gt_3', 'is_montessori')
-    search_fields = ['site_name', 'address', 'zip']
+    list_display = ('site_name', 'address', 'zip', 'phone', 'id',)
+    list_filter = ('is_hs', 'is_ehs', 'accept_ccap', 'is_cps_based', 'is_community_based',
+                   'is_age_lt_3', 'is_age_gt_3', 'is_full_day', 'is_full_week', 'is_full_year',
+                   'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting')
+    search_fields = ['site_name', 'address', 'zip', 'language_1', 'language_2', 'language_3']
     form = LocationForm
     fieldsets = [
         (None,      {'fields': ['site_name']}),
-        ('Address', {'fields': [('address', 'city',), ('state', 'zip'), 'geom']}),
-        ('Contact', {'fields': ['phone1', 'phone2', 'phone3', 'fax', 'url', 'email']}),
-        ('Flags',   {'fields': ['is_child_care', 'is_hs', 'is_ehs', 'is_pre4all', 
-            'is_tuition_based', 'is_special_ed', 'is_montessori', 
-            'is_child_parent_center', 'is_age_lt_3', 'is_age_gt_3']}),
-        ('Other',   {'fields': ['exec_director', 'ctr_director', 'site_affil', 'q_stmt',
-            'e_info', 'as_proc', 'accred', 'prg_sched', 'prg_dur', 'ages', 'waitlist']}),
+        ('Address', {'fields': [('address', 'city'), ('state', 'zip'), 'geom']}),
+        ('Contact', {'fields': ['phone', 'url']}),
+        ('Hours/Duration', {'fields': [('is_full_day', 'is_part_day'),
+                                       ('is_full_week', 'is_part_week'),
+                                       ('is_school_year', 'is_full_year')]}),
+        ('Flags',   {'fields': [('is_age_lt_3', 'is_age_gt_3'),
+                                ('is_community_based', 'is_cps_based'),
+                                ('is_hs', 'is_ehs'), 'accept_ccap']}),
+        ('Other',   {'fields': [('ages', 'prg_hours', 'accred'),
+                                ('language_1', 'language_2', 'language_3'),
+                                'q_stmt']}),
     ]
 
 
