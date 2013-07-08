@@ -103,7 +103,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'ecep.urls'
+ROOT_URLCONF = 'urls'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -115,7 +115,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'django.contrib.gis',
-    'ecep.portal',
+    'portal',
     'django_twilio',
     'gunicorn',
     'faq',
@@ -139,8 +139,6 @@ try:
 except NameError:
     SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-MEDIA_ROOT = SITE_ROOT + '/media/'
-STATIC_ROOT = SITE_ROOT + '/static/'
 TEMPLATE_DIRS = (
     (SITE_ROOT + '/templates/'),
 )
