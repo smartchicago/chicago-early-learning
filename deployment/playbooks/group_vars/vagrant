@@ -30,9 +30,9 @@ django_debug: True
 admin_name: 'Admin'
 admin_email: 'azaveadev@azavea.com'
 
-google_maps_key: ''
+google_maps_key: 'AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc'
 
-state: ''
+state: 'IL'
 
 twilio_enabled: False
 account_sid: 'None'
