@@ -106,7 +106,7 @@ class Conversation(object):
     _re_num = re.compile(r"^\s*(\d{1,2})\s*$")
     _re_more = re.compile(r"^\s*(m|more)\s*$", re.IGNORECASE)
 
-    _max_responses = 10
+    _max_responses = 3
 
     # I wanted _re_help to recognize "help" instead of "h", but Twilio intercepts it :(
     # http://www.twilio.com/help/faq/sms/does-twilio-support-stop-block-and-cancel-aka-sms-filtering
@@ -289,7 +289,7 @@ class Sms(View):
         """Simple wrapper for returning a text message response given a list of texts to return
         sms_wrapper:        SmsMessage object (used for metadata)
         msg:                Iterable containing the messages to send. It is the caller's responsibility
-                            To ensure they're the proper length.
+                            to ensure they're the proper length.
         """
         if not msgs or len(msgs) < 1:
             return Response()
