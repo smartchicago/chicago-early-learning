@@ -2,10 +2,6 @@
 - hosts: all
 
   sudo: yes
-  vars:
-    app_path: /usr/local/cel/app/
-    env_path: /usr/local/env/
-    static_path: /usr/local/cel/static/
 
   tasks:
 
