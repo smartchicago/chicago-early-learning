@@ -33,6 +33,9 @@ google_maps_key: 'AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc'
 
 state: 'IL'
 
+latitude: 41.872524826406774
+longitude: -87.62077331542969
+
 twilio_enabled: False
 account_sid: 'None'
 account_auth: 'None'
