@@ -32,3 +32,24 @@ TEMPLATE_DIRS = (
 LONGITUDE = {{ longitude }}
 LATITUDE = {{ latitude }}
 
+# Set flag to include django-jenkins inside
+# the main settings.py file
+
+DJANGO_JENKINS = {{ django_jenkins }}
+
+{% if {{ django_jenkins }} %}
+
+# Settings for django_jenkins
+PROJECT_APPS = ['portal',]
+
+JENKINS_TASKS = (
+    'django_jenkins.tasks.run_jshint',
+    'django_jenkins.tasks.run_csslint',
+    'django_jenkins.tasks.run_pylint',
+    'django_jenkins.tasks.run_pyflakes',
+    'django_jenkins.tasks.with_coverage',
+    'django_jenkins.tasks.django_tests',
+)
+
+{% endif %}
+
