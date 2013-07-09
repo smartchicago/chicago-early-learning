@@ -1,0 +1,13 @@
+---
+
+## Jenkins Specific Overrides ##
+
+## Paths ##
+
+app_path: /var/Jenkins/workspace/CEL-Staging/
+static_path: /var/Jenkins/workspace/CEL-Staging/static
+media_path: /var/Jenkins/workspace/CEL-Staging/media
+
+## Jenkins Settings ##
+
+django_jenkins: True
