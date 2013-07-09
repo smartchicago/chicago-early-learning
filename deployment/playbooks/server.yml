@@ -1,0 +1,33 @@
+---
+- hosts: all
+
+  sudo: yes
+
+  tasks:
+
+  - name: Write gunicorn config file
+    template: src=assets/gunicorn.j2 dest=/etc/gunicorn.d/ecep
+    notify:
+      - restart gunicorn
+
+  - name: Write nginx config file
+    template: src=assets/nginx.j2 dest=/etc/nginx/sites-available/ecep.conf
+    notify:
+      - restart nginx
+
+  - name: Link nginx config to sites-enabled
+    file: state=link src=/etc/nginx/sites-available/ecep.conf path=/etc/nginx/sites-enabled/ecep
+    notify:
+      - restart nginx
+
+  - name: Remove default nginx config
+    file: state=absent path=/etc/nginx/sites-enabled/default
+    notify:
+      - restart nginx
+
+  handlers:
+  - name: restart nginx
+    action: service name=nginx state=restarted
+
+  - name: restart gunicorn
+    action: service name=gunicorn state=restarted

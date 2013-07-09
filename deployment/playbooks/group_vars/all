@@ -1,0 +1,53 @@
+---
+
+## Project Settings ##
+user: vagrant
+system_packages:
+  - git
+  - build-essential
+  - openssh-server
+  - nginx
+  - gunicorn
+  - postgresql-9.1-postgis
+  - gdal-bin
+  - libgdal1-1.7.0
+  - libgeos-c1
+  - python-psycopg2
+  - gettext
+  - python-pip
+
+## Paths ##
+
+app_path: /cel/app/
+static_path: /cel/static/
+media_path: /cel/media/
+
+## Django Settings ##
+
+django_debug: True
+
+admin_name: 'Admin'
+admin_email: 'azaveadev@azavea.com'
+
+google_maps_key: 'AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc'
+
+state: 'IL'
+
+latitude: 41.872524826406774
+longitude: -87.62077331542969
+
+twilio_enabled: False
+account_sid: 'None'
+account_auth: 'None'
+phone: 'None'
+
+## Server Settings ##
+
+unicorn_log: /var/log/unicorn.log
+unicorn_socket: unix:/tmp/gunicorn.sock
+http_port: 80
+
+## Git Settings ##
+git_url: https://github.com/smartchicago/chicago-early-learning
+git_branch: staging
+clone_repo: True
