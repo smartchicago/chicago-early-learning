@@ -270,7 +270,9 @@ class Sms(View):
 
     # For twilio trial accounts use 120 instead, otherwise it gets truncated
     _max_length = 160       # Max length of SMS payload
-    _sms_delay = 6          # Number of seconds to wait between texts in the same conversation
+
+    # 6 seemed like a good default during testing
+    _sms_delay = settings.SMS_DELAY or 6
     request = None          # Current django request object we're handling
 
     @classonlymethod
