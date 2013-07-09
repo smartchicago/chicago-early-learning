@@ -25,5 +25,14 @@
   - name: Install python packages
     pip: requirements=${app_path}/requirements.txt
 
+  - name: Install CI requirements
+    pip: requirements=${app_path}/ci_requirements.txt
+    only_if: ${django_jenkins}
+
+  - name: Install node packages
+    command: npm install ${item} -g
+    with_items: ${node_packages}
+    only_if: ${django_jenkins}
+
   - name: Install monkey-patched Django-FAQ
     pip: name='git+git://github.com/bhuber/django-faq.git#egg=django_faq'
