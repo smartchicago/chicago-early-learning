@@ -3,6 +3,11 @@
 
 
 import os
+import djcelery
+
+
+djcelery.setup_loader()
+BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 
 # Django settings for ecep project.
 
@@ -37,8 +42,8 @@ LANGUAGE_CODE = 'en-US'
 # This lambda function only serves to mark the names as being i18n'd
 ugettext = lambda s: s
 LANGUAGES = (
-  ('en', ugettext('English')),
-  ('es', ugettext('Spanish')),
+    ('en', ugettext('English')),
+    ('es', ugettext('Spanish')),
 )
 
 SITE_ID = 1
@@ -72,14 +77,14 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -116,10 +121,12 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.gis',
     'portal',
+    'portal.sms',
     'django_twilio',
     'gunicorn',
     'faq',
     'rosetta',
+    'djcelery',
 )
 
 
@@ -158,6 +165,7 @@ if TWILIO_ENABLED:
         TWILIO_ACCOUNT_SID
         TWILIO_AUTH_TOKEN
         TWILIO_NUMBER
+        SMS_DELAY
     except NameError:
         # Some defaults for debugging
         # This is a test account. We can't use the real credentials here b/c they would be public
@@ -166,6 +174,11 @@ if TWILIO_ENABLED:
         TWILIO_ACCOUNT_SID = 'AC7a652a7493f41d19851fc9f810c2a97a'
         TWILIO_AUTH_TOKEN = '7c5b5db30d48bae17dfa180b39ccbafd'
         TWILIO_NUMBER = '(484) 842-0284'
+
+        # Number of seconds to pause between sending SMS messages in the same response
+        # If you don't know what this should be or don't care, set it to none and it
+        # will use a reasonable default.
+        SMS_DELAY = None
 
 
 # setup google analytics

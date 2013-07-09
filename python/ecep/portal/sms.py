@@ -8,16 +8,20 @@ This module contains classes and utilities for interacting with SMS messages
 import logging
 import re
 import math
+import socket
 from django.views.generic import View
 from django.utils.decorators import classonlymethod, method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-from models import Location
-from twilio.twiml import Response
-from django_twilio.decorators import twilio_view
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
+from models import Location
+from twilio.twiml import Response
+from twilio.rest import TwilioRestClient
+from django_twilio.decorators import twilio_view
+from celery import chain, task
 
 logger = logging.getLogger(__name__)
 
@@ -42,7 +46,6 @@ def flag_enum(*names):
     t = flag_enum("foo", "bar")
     t.foo & t.bar == 0
     """
-    #flags = dict([(k, 1 << int(v)) for (k, v) in enums.items()])
     flags = dict([(name, 1 << i) for (i, name) in enumerate(names)])
     return type('Enum', (), flags)
 
@@ -109,8 +112,8 @@ class Conversation(object):
     # http://www.twilio.com/help/faq/sms/does-twilio-support-stop-block-and-cancel-aka-sms-filtering
 
     USAGE = _('To get this message text "h".\n' +
-             'Text a 5 digit zipcode to get a list of nearby places.' +
-             'Text a number on the list to get more information.')
+              'Text a 5 digit zipcode to get a list of nearby places.' +
+              'Text a number on the list to get more information.')
     ERROR =  _('Sorry, I didn\'t understand that. Please text "h" for instructions')
     FATAL =  _('We\'re sorry, something went wrong with your request! Please try again')
     MORE =   _('Reply "m" or "more" to receive the next few pages')
@@ -265,28 +268,54 @@ class Sms(View):
     View class for handling SMS messages from twilio
     """
 
-    _max_length = 160
-    request = None
+    # For twilio trial accounts use 120 instead, otherwise it gets truncated
+    _max_length = 160       # Max length of SMS payload
+
+    # 6 seemed like a good default during testing
+    _sms_delay = settings.SMS_DELAY or 6
+    request = None          # Current django request object we're handling
 
     @classonlymethod
     def as_view(cls, **initkwargs):
         # twilio_view doesn't play nice with View classes, so we insert it manually here
         return twilio_view(super(Sms, cls).as_view(**initkwargs))
 
-    def reply_str(self, msg):
-        """Simple wrapper for returning a text message response given a string to return"""
-        return self.reply_list(Sms.paginate(msg))
+    def reply_str(self, sms_wrapper, msg):
+        """Simple wrapper for returning a text message response given a string to return
+        sms_wrapper:        SmsMessage object (used for metadata)
+        msg:                String containing the message to send
+        """
+        return self.reply_list(sms_wrapper, Sms.paginate(msg))
 
-    def reply_list(self, msgs):
-        """Simple wrapper for returning a text message response given a list of texts to return"""
-        r = Response()
+    def reply_list(self, sms_wrapper, msgs):
+        """Simple wrapper for returning a text message response given a list of texts to return
+        sms_wrapper:        SmsMessage object (used for metadata)
+        msg:                Iterable containing the messages to send. It is the caller's responsibility
+                            to ensure they're the proper length.
+        """
+        if not msgs or len(msgs) < 1:
+            return Response()
+
         callback_url = self.request.build_absolute_uri(reverse('sms-callback'))
-        #print(callback)
-        #print(msgs)
-        for p in msgs:
-            r.sms(p, statusCallback=callback_url)
+        args = {
+            'callback': callback_url,
+            'from_': sms_wrapper.to_phone,
+            'to': sms_wrapper.from_phone,
+        }
 
-        return r
+        # First item uses different call/args
+        # See http://docs.celeryproject.org/en/latest/userguide/canvas.html#chains
+        msg_chain = [sms_bunny.s(args, msgs[0])]
+        for m in msgs[1:]:
+            msg_chain.append(sms_bunny.subtask((m,), countdown=self._sms_delay))
+
+        try:
+            chain(*msg_chain).apply_async()
+        except socket.error:
+            # Not finding celery counts as 502: bad gateway
+            return HttpResponse('Couldn\'t connect to celery to send SMS messages', status=502)
+
+        return Response()
 
     @staticmethod
     def paginate(msg, length=_max_length, min_percent_full=0.85,
@@ -461,7 +490,7 @@ class Sms(View):
         conv = Conversation(request)
         conv.process_request(request)
         conv.update_session(request.session)
-        return self.reply_list(conv.response)
+        return self.reply_list(SmsMessage(request), conv.response)
 
 
 class SmsCallback(View):
@@ -481,3 +510,34 @@ class SmsCallback(View):
             logger.debug('SMS with id %s failed!' % sid)
 
         return HttpResponse(status=200)
+
+
+@task()
+def sms_bunny(args, message):
+    """Celery task for sending messages asynchronously
+    args:       Dict containing the following required fields:
+        to:         Phone number we're sending the text to (should come from twilio API args)
+        from_:      Phone number we're sending from (should come from twilio API args)
+        callback:   Url for twilio to hit when request completes
+    message:    String containing SMS payload
+
+    returns:    args (useful for chaining multiple calls together)
+
+    Note: args isn't *args to make calling this using celery chain() easier
+    """
+    account_sid = settings.TWILIO_ACCOUNT_SID
+    auth_token = settings.TWILIO_AUTH_TOKEN
+    to = args['to']
+    from_ = args['from_']
+    callback = args['callback']
+    client = TwilioRestClient(account_sid, auth_token)
+
+    try:
+        client.sms.messages.create(body=message, to=to, from_=from_, status_callback=callback)
+        # print("Sending sms text: %s" % message)
+    except Exception as e:
+        # print e
+        logger.debug('Sending SMS via twilio failed! %s' % e)
+        pass
+
+    return args
