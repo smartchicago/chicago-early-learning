@@ -140,6 +140,12 @@ try:
 except ImportError:
     pass
 
+if DJANGO_JENKINS:
+    # If this is on CI, add django_jenkins to installed apps
+    ia = list(INSTALLED_APPS)
+    ia.append('django_jenkins')
+    INSTALLED_APPS = tuple(ia)
+    
 # setup path settings
 try:
     SITE_ROOT
