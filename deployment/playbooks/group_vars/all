@@ -40,6 +40,7 @@ twilio_enabled: False
 account_sid: 'None'
 account_auth: 'None'
 phone: 'None'
+sms_delay: None
 
 ## Server Settings ##
 

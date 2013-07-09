@@ -165,8 +165,7 @@ if TWILIO_ENABLED:
         TWILIO_ACCOUNT_SID
         TWILIO_AUTH_TOKEN
         TWILIO_NUMBER
-        # TODO: Add to local_settings template, uncomment
-        #SMS_DELAY
+        SMS_DELAY
     except NameError:
         # Some defaults for debugging
         # This is a test account. We can't use the real credentials here b/c they would be public
@@ -176,10 +175,11 @@ if TWILIO_ENABLED:
         TWILIO_AUTH_TOKEN = '7c5b5db30d48bae17dfa180b39ccbafd'
         TWILIO_NUMBER = '(484) 842-0284'
 
-# Number of seconds to pause between sending SMS messages in the same response
-# If you don't know what this should be or don't care, set it to none and it
-# will use a reasonable default.
-SMS_DELAY = None
+        # Number of seconds to pause between sending SMS messages in the same response
+        # If you don't know what this should be or don't care, set it to none and it
+        # will use a reasonable default.
+        SMS_DELAY = None
+
 
 # setup google analytics
 
