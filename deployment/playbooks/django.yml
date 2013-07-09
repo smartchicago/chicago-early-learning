@@ -1,0 +1,39 @@
+---
+- hosts: all
+
+  sudo: yes
+
+  tasks:
+
+  - name: Write local settings files
+    template: src=assets/local_settings.j2 dest=${app_path}/python/ecep/local_settings.py
+
+  - name: Create logging folders
+    file: path=/var/log/ecep/ state=directory owner=${ansible_ssh_user} mode=0777
+
+  - command: touch /var/log/ecep/django.deploy.log
+
+  - file: path=/var/log/ecep/django.deploy.log state=file owner=${ansible_ssh_user} mode=0777
+
+
+  - name: Sync database
+    django_manage: command=syncdb app_path=${app_path}/python/ecep/
+    register: sync_ecep_database
+
+  - name: Load FAQ Data into Django
+    command: python ${app_path}/python/ecep/manage.py loaddata ${item}
+    only_if: ${sync_ecep_database.changed}
+    with_items:
+       - topic
+       - question
+
+
+  - name: Create static/files files folders
+    file: path=${static_path} state=directory owner=${ansible_ssh_user}
+    file: path=${media_path} state=directory owner=${ansible_ssh_user}
+
+  - name: Collect static files
+    command: python ${app_path}/python/ecep/manage.py collectstatic --noinput
+
+  - name: Restart gunicorn
+    action: service name=gunicorn state=restarted

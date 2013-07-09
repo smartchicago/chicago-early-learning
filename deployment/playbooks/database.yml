@@ -1,0 +1,41 @@
+---
+
+- hosts: all
+
+  sudo_user: postgres
+  sudo: yes
+
+  vars:
+    postgis_path: /usr/share/postgresql/9.1/contrib/postgis-1.5/
+
+  tasks:
+
+  - name: Setting up postgres...
+    service: name=postgresql state=running
+
+  - name: Make sure template_postgis exists
+    postgresql_db: db=template_postgis state=present encoding=UTF-8 template=template0
+    register: createdb_template_postgis
+
+  - name: Create ECEP user
+    postgresql_user: name=ecep password=ecep 
+
+  - name: Run postgis setup commands
+    command: psql -d template_postgis -f ${item}
+    only_if: ${createdb_template_postgis.changed}
+    with_items:
+      - ${postgis_path}/postgis.sql
+      - ${postgis_path}/spatial_ref_sys.sql
+   
+  - name: Set template_postgis as template
+    command: psql -c "update pg_database set datistemplate='t', datallowconn='f' where datname='template_postgis';"
+    only_if: ${createdb_template_postgis.changed}
+  
+  - name: Create ecep database
+    postgresql_db: db=ecep state=present encoding=UTF-8 template=template_postgis
+    register: createdb_ecep
+
+  - name: Alter ecep database tables/permissions
+    command: psql -d ecep -c "alter table spatial_ref_sys owner to ecep; alter table geometry_columns owner to ecep; alter view geography_columns owner to ecep; create schema ecep authorization ecep;"
+    only_if: ${createdb_ecep.changed}
+
