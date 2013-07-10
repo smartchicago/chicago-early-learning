@@ -1,14 +1,10 @@
-CONFIG = {
-    'mode': 'django',
-    'environment': {
-        'PYTHONPATH': '{{ app_path }}/python/ecep',
-	'DJANGO_SETTINGS_MODULE': 'settings',
-    },
-    'working_dir': '{{ app_path }}/python/ecep',
-    'user': '{{ user }}',
-    'args': (
-        '--bind={{ unicorn_socket }}',
-        '--workers=3',
-        '--timeout=30',
-    ),
-}
+description "Gunicorn Upstart Script for CEL"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+kill timeout 30
+
+chdir {{ app_path }}/python/ecep
+
+exec {{ env_path }}/bin/gunicorn_django -w 3 --log-file "{{ unicorn_log }}" -b "{{ unicorn_socket }}"

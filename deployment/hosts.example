@@ -3,3 +3,7 @@
 
 [staging]
 
+[jenkins]
+
+[webservers:children]
+vagrant

@@ -135,11 +135,14 @@ INSTALLED_APPS = (
 
 # Import local_settings.py
 
-try:
-    from local_settings import *
-except ImportError:
-    pass
+from local_settings import *
 
+if DJANGO_JENKINS:
+    # If this is on CI, add django_jenkins to installed apps
+    ia = list(INSTALLED_APPS)
+    ia.append('django_jenkins')
+    INSTALLED_APPS = tuple(ia)
+    
 # setup path settings
 try:
     SITE_ROOT
@@ -153,53 +156,7 @@ LOCALE_PATHS = (
     (SITE_ROOT + '/locale/'),
 )
 
-# setup twilio
-
-try:
-    TWILIO_ENABLED
-except NameError:
-    TWILIO_ENABLED = False
-
-if TWILIO_ENABLED:
-    try:
-        TWILIO_ACCOUNT_SID
-        TWILIO_AUTH_TOKEN
-        TWILIO_NUMBER
-        SMS_DELAY
-    except NameError:
-        # Some defaults for debugging
-        # This is a test account. We can't use the real credentials here b/c they would be public
-        # See install.sh and local_settings.py
-        print "Warning: Twilio variables in local_settings.py weren't defined, using dev ones"
-        TWILIO_ACCOUNT_SID = 'AC7a652a7493f41d19851fc9f810c2a97a'
-        TWILIO_AUTH_TOKEN = '7c5b5db30d48bae17dfa180b39ccbafd'
-        TWILIO_NUMBER = '(484) 842-0284'
-
-        # Number of seconds to pause between sending SMS messages in the same response
-        # If you don't know what this should be or don't care, set it to none and it
-        # will use a reasonable default.
-        SMS_DELAY = None
-
-
-# setup google analytics
-
-try:
-    GA_KEY
-except NameError:
-    GA_KEY = 'UA-34089447-1'
-
-
 # setup logging
-
-try:
-    STAGING
-except NameError:
-    STAGING = False
-
-if STAGING:
-    logfile = '/var/log/ecep/django.staging.log'
-else:
-    logfile = '/var/log/ecep/django.deploy.log'
 
 LOGGING = {
     'version': 1,
