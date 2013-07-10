@@ -52,3 +52,10 @@ http_port: 80
 git_url: https://github.com/smartchicago/chicago-early-learning
 git_branch: staging
 clone_repo: True
+
+## Jenkins Settings ##
+
+django_jenkins: False
+
+node_packages:
+  - none
