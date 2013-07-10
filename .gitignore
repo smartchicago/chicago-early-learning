@@ -17,3 +17,4 @@ config/django-celery.local.config
 *mo
 
 hosts
+.vagrant/
