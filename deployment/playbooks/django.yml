@@ -33,7 +33,11 @@
     file: path=${media_path} state=directory owner=${ansible_ssh_user}
 
   - name: Collect static files
-    command: python ${app_path}/python/ecep/manage.py collectstatic --noinput
+    command: ${env_path}/bin/python ${app_path}/python/ecep/manage.py collectstatic --noinput
+
+  - name: Copy jenkins testing script
+    template: src=assets/run_jenkins_tests.j2 dest=${app_path}/run_jenkins_tests.sh
+    only_if: ${django_jenkins}
 
   - name: Restart gunicorn
     action: service name=gunicorn state=restarted
