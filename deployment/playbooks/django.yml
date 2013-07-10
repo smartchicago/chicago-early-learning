@@ -40,4 +40,5 @@
     only_if: ${django_jenkins}
 
   - name: Restart gunicorn
-    action: service name=gunicorn state=restarted
+    action: service name=ecep state=restarted
+    only_if: not ${django_jenkins}
