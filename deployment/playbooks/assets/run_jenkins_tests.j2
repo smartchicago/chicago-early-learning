@@ -9,7 +9,7 @@ cd {{ app_path }}/python/ecep
 
 python manage.py jenkins
 
-cat << EOF > ${BUILD_TAG}.htm
+cat > ${BUILD_TAG}.html << EOF
 <html>
   <head><title>CEL Build ${BUILD_TAG}</title>
 <script type="text/javascript">
