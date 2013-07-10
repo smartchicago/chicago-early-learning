@@ -18,7 +18,7 @@
     register: createdb_template_postgis
 
   - name: Create ECEP user
-    postgresql_user: name=ecep password=ecep 
+    postgresql_user: name=ecep password=ecep role_attr_flags=CREATEDB,NOSUPERUSER state=present
 
   - name: Run postgis setup commands
     command: psql -d template_postgis -f ${item}

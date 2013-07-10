@@ -1,7 +1,6 @@
 ---
 
 ## Project Settings ##
-user: vagrant
 system_packages:
   - git
   - build-essential
@@ -12,15 +11,21 @@ system_packages:
   - gdal-bin
   - libgdal1-1.7.0
   - libgeos-c1
+  - postgresql-server-dev-9.1
   - python-psycopg2
   - gettext
   - python-pip
+
+repos_to_add:
+  - ppa:chris-lea/node.js
+  - ppa:gunicorn/ppa
 
 ## Paths ##
 
 app_path: /cel/app/
 static_path: /cel/static/
 media_path: /cel/media/
+env_path: /cel/env/
 
 ## Django Settings ##
 
@@ -30,6 +35,7 @@ admin_name: 'Admin'
 admin_email: 'azaveadev@azavea.com'
 
 google_maps_key: 'AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc'
+google_analytics_key: 'UA-34089447-1'
 
 state: 'IL'
 
@@ -42,6 +48,8 @@ account_auth: 'None'
 phone: 'None'
 sms_delay: None
 
+django_log_file: '/var/log/ecep/django.log'
+
 ## Server Settings ##
 
 unicorn_log: /var/log/unicorn.log
@@ -52,3 +60,10 @@ http_port: 80
 git_url: https://github.com/smartchicago/chicago-early-learning
 git_branch: staging
 clone_repo: True
+
+## Jenkins Settings ##
+
+django_jenkins: False
+
+node_packages:
+  - none
