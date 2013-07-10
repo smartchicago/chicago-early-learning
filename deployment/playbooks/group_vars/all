@@ -48,6 +48,8 @@ account_auth: 'None'
 phone: 'None'
 sms_delay: None
 
+django_log_file: '/var/log/ecep/django.log'
+
 ## Server Settings ##
 
 unicorn_log: /var/log/unicorn.log
