@@ -68,7 +68,8 @@ Open up a browser to http://localhost:8080/ and you should see the application r
 After the VM is set up you will need to create a super user to sign into the admin interface. You can do the following from a terminal in the chicago-early-learning directory:
 
     vagrant ssh
-    cd /usr/local/cel/app/python/ecep
+    source /cel/env/bin/activate
+    cd /cel/app/python/ecep
     python manage.py createsuperuser
 
 You will now be able sign into the admin interface at http://localhost:8080/admin
