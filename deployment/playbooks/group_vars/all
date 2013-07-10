@@ -17,6 +17,10 @@ system_packages:
   - gettext
   - python-pip
 
+repos_to_add:
+  - ppa:chris-lea/node.js
+  - ppa:gunicorn/ppa
+
 ## Paths ##
 
 app_path: /cel/app/
