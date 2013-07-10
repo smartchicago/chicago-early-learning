@@ -6,7 +6,7 @@
   tasks:
 
   - name: Write gunicorn config file
-    template: src=assets/gunicorn.j2 dest=/etc/gunicorn.d/ecep
+    template: src=assets/gunicorn.j2 dest=/etc/init/ecep.conf
     notify:
       - restart gunicorn
 
@@ -30,4 +30,4 @@
     action: service name=nginx state=restarted
 
   - name: restart gunicorn
-    action: service name=gunicorn state=restarted
+    action: service name=ecep state=restarted
