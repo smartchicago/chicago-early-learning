@@ -50,6 +50,7 @@ Development instructions:
 * pip install ansible
 * git clone git://github.com/smartchicago/chicago-early-learning.git
 * cd chicago-early-learning
+* cp deployment/hosts.example deployment/hosts
 * vagrant up
 
 This will create a new Ubuntu 12.04 virtual machine using vagrant. Within the virtual machine Ansible will
@@ -74,7 +75,7 @@ You will now be able sign into the admin interface at http://localhost:8080/admi
 
 To deploy to another server you will need to modify the `hosts` file `deployment/hosts` and the Ansible playbooks to deploy. This should require little more than setting up credentials for the new host for ssh access from the provisioning computer and modifying those files.
 
-For instance, if you are deploying to a server at `example.com` you would add that to the listing of hosts in `deployment/hosts` and optionally define any new vars to override defaults in a new vars file at `deployment/playbooks/host_vars/example.com`. Then to deploy to that server requires the following ansible command:
+For instance, if you are deploying to a server at `example.com` you would add that to the listing of hosts in `deployment/hosts` and optionally define any new vars to override defaults in a new vars file at `deployment/playbooks/host_vars/example.com` or add the host to an existing group in the hosts file. Then to deploy to that server requires the following ansible command:
 
     ansible-playbook deployment/playbooks/all.yml --inventory-file=deployment/hosts --limit=example.com --private-key=PRIVATE_KEY_FILE
 
