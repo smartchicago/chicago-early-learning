@@ -1,0 +1,6 @@
+git+git://github.com/notthatbreezy/django-jenkins.git
+coverage==3.5.3
+pyflakes==0.5.0
+pylint==0.26.0
+sqlparse
+
