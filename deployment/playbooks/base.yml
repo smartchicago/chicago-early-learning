@@ -22,11 +22,14 @@
     git: repo=${git_url} version=${git_branch} dest=${app_path}
     only_if: ${clone_repo}
 
+  - name: Install virtualenv
+    pip: name=virtualenv
+
   - name: Install python packages
-    pip: requirements=${app_path}/requirements.txt
+    pip: requirements=${app_path}/requirements.txt virtualenv=${env_path}
 
   - name: Install CI requirements
-    pip: requirements=${app_path}/ci_requirements.txt
+    pip: requirements=${app_path}/ci_requirements.txt virtualenv=${env_path}
     only_if: ${django_jenkins}
 
   - name: Install node packages
@@ -35,4 +38,4 @@
     only_if: ${django_jenkins}
 
   - name: Install monkey-patched Django-FAQ
-    pip: name='git+git://github.com/bhuber/django-faq.git#egg=django_faq'
+    pip: name='git+git://github.com/bhuber/django-faq.git#egg=django_faq' virtualenv=${env_path}
