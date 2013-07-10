@@ -11,8 +11,9 @@
   - name: Install pip
     apt: pkg=python-pip state=latest
 
-  - name: Add stable gunicorn repo
-    apt_repository: repo=ppa:gunicorn/ppa
+  - name: Add some repos
+    apt_repository: repo=${item}
+    with_items: ${repos_to_add}
 
   - name: Install required system packages
     apt: pkg=${item} state=latest update_cache=yes
