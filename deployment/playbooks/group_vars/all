@@ -1,7 +1,6 @@
 ---
 
 ## Project Settings ##
-user: vagrant
 system_packages:
   - git
   - build-essential
