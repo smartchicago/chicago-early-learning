@@ -37,5 +37,13 @@
     with_items: ${node_packages}
     only_if: ${django_jenkins}
 
+  - name: Set ownership of directories
+    file: path=${item} state=directory owner=${ansible_ssh_user}
+    with_items:
+      - ${app_path}
+      - ${env_path}
+      - ${media_path}
+      - ${static_path}
+
   - name: Install monkey-patched Django-FAQ
     pip: name='git+git://github.com/bhuber/django-faq.git#egg=django_faq' virtualenv=${env_path}
