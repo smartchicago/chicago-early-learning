@@ -16,3 +16,4 @@ config/django-celery.local.config
 # Compiled message files
 *mo
 
+hosts
