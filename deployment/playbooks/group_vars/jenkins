@@ -2,12 +2,41 @@
 
 ## Jenkins Specific Overrides ##
 
+system_packages:
+  - git
+  - build-essential
+  - openssh-server
+  - nginx
+  - gunicorn
+  - postgresql-9.1-postgis
+  - postgresql-server-dev-9.1
+  - gdal-bin
+  - libgdal1-1.7.0
+  - libgeos-c1
+  - python-psycopg2
+  - gettext
+  - python-pip
+  - python-software-properties
+  - g++
+  - make
+  - nodejs
+
+node_packages:
+  - jshint
+
 ## Paths ##
 
-app_path: /var/Jenkins/workspace/CEL-Staging/
-static_path: /var/Jenkins/workspace/CEL-Staging/static
-media_path: /var/Jenkins/workspace/CEL-Staging/media
+app_path: /var/jenkins/workspace/CEL-Staging/
+static_path: /var/jenkins/workspace/CEL-Staging/static
+media_path: /var/jenkins/workspace/CEL-Staging/media
+env_path: /var/jenkins/workspace/CEL-Staging/env
 
 ## Jenkins Settings ##
 
 django_jenkins: True
+
+## Git Specific for Development ##
+
+git_url: https://github.com/smartchicago/chicago-early-learning
+git_branch: staging
+
