@@ -1,0 +1,23 @@
+#!/bin/bash
+
+WORKSPACE=`pwd`
+JENKINS_URL="testing.cel.url"
+
+source {{ env_path }}/bin/activate
+
+cd {{ app_path }}/python/ecep
+
+python manage.py jenkins
+
+cat << EOF > ${BUILD_TAG}.htm
+<html>
+  <head><title>CEL Build ${BUILD_TAG}</title>
+<script type="text/javascript">
+<!--
+window.location = "http://http://cel-staging.smartchicagoapps.org/"
+//-->
+</script>
+  </head>
+  <body>Redirecting...</body>
+</html>
+EOF
