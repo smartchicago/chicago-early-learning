@@ -41,7 +41,7 @@ LATITUDE = {{ latitude }}
 
 DJANGO_JENKINS = {{ django_jenkins }}
 
-{% if {{ django_jenkins }} %}
+{% if '{{ django_jenkins }}' %}
 
 # Settings for django_jenkins
 PROJECT_APPS = ['portal',]
