@@ -38,6 +38,8 @@ class Command(BaseCommand):
         """Checks whether or not neighborhoods are already loaded, raises an error if
         the neighborhood table already has data. This prevents user from just duplicate
         copies of the neighborhood data.
+
+        TO DO: Add a flag that can override this function.
         """
         n_count = Neighborhood.objects.filter().count()
         if n_count > 0:
