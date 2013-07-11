@@ -11,9 +11,9 @@
   - name: Create logging folders
     file: path=/var/log/ecep/ state=directory owner=${ansible_ssh_user} mode=0777
 
-  - command: touch /var/log/ecep/django.deploy.log
+  - command: touch ${django_log_file}
 
-  - file: path=/var/log/ecep/django.deploy.log state=file owner=${ansible_ssh_user} mode=0777
+  - file: path=${django_log_file} state=file owner=${ansible_ssh_user} mode=0777
 
 
   - name: Sync database
