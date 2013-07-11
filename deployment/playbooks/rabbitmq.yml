@@ -25,5 +25,5 @@
   - name: Create celery pid directory
     file: path=/var/run/celery state=directory mode=0777
 
-  - name: Start up celeryg
+  - name: Start up celery
     action: service name=celery-${queue_name} state=started
