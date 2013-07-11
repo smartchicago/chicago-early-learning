@@ -85,7 +85,7 @@ See LICENSE in the project root for copying permission
                 <div class="span3 pull-left">
                     <h1 class="texting-info">{% trans "Want information via text?" %}</h1>
         		    <br/>
-                    {% blocktrans with number=settings.TWILIO_NUMBER %}
+                    {% blocktrans with number=settings.TWILIO_PHONE %}
                     <h2 class="texting-info-sm">Text your zip code to <em>{{ number }}</em></h2>
                     <h2 class="texting-info-sm">and we'll do the rest.</h2>
                     {% endblocktrans %}

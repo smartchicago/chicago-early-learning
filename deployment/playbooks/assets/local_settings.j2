@@ -64,3 +64,10 @@ GA_KEY = '{{ google_analytics_key }}'
 # logfile to store django logs
 logfile = '{{ django_log_file }}'
 
+# RabbitMQ Settings #
+from kombu import Exchange, Queue
+BROKER_URL = 'amqp://{{ rabbit_user }}:{{ rabbit_password }}@localhost:5672//'
+CELERY_QUEUES = (Queue('{{ queue_name }}', Exchange('default')),)
+CELERY_DEFAULT_QUEUE = '{{ queue_name }}'
+CELERY_DEFAULT_EXCHANGE_TYPE = 'direct'
+
