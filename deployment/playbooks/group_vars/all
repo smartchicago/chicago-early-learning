@@ -72,6 +72,6 @@ node_packages:
 
 ## RabbitMQ Settings ##
 
-rabbit_mq_user: ecep
-rabbit_mq_password: ecep
-
+rabbit_user: ecep
+rabbit_password: ecep
+queue_name: ecep
