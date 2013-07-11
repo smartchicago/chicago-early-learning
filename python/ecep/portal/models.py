@@ -132,3 +132,13 @@ class Location(models.Model):
         val = self.__dict__[field]
         return ("%s: %s\n" % (self.verbose_name(field), f(val))) if val else ""
 
+class Neighborhood(models.Model):
+    """Model for neighborhoods in Chicago
+    """
+    boundary = models.MultiPolygonField()
+    primary_name = models.CharField(max_length=100)
+    secondary_name = models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return self.primary_name
+        
