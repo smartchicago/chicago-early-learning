@@ -15,6 +15,7 @@ system_packages:
   - python-psycopg2
   - gettext
   - python-pip
+  - rabbitmq-server
 
 repos_to_add:
   - ppa:chris-lea/node.js
@@ -61,9 +62,16 @@ git_url: https://github.com/smartchicago/chicago-early-learning
 git_branch: staging
 clone_repo: True
 
+
 ## Jenkins Settings ##
 
 django_jenkins: False
 
 node_packages:
   - none
+
+## RabbitMQ Settings ##
+
+rabbit_user: ecep
+rabbit_password: ecep
+queue_name: ecep

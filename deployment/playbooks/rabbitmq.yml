@@ -6,9 +6,24 @@
   tasks:
 
   - name: Create rabbitmq user
-    rabbitmq_user: user={{ rabbit_mq_user }} 
-                   password={{ rabbit_mq_password }}
+    rabbitmq_user: user=${rabbit_user}
+                   password=${rabbit_password}
                    state=present
                    configure_priv=.*
                    read_priv=.*
                    write_priv=.*
+
+  - name: Add celery init script
+    template: src=assets/celeryd.j2 dest=/etc/init.d/celery-${queue_name} mode=0755
+
+  - name: Make celery fire on startup
+    file: src=/etc/init.d/celery-${queue_name} dest=/etc/rc5.d/celery-${queue_name} state=link
+
+  - name: Create celery log directories
+    file: path=/var/log/celery state=directory mode=0777
+
+  - name: Create celery pid directory
+    file: path=/var/run/celery state=directory mode=0777
+
+  - name: Start up celery
+    action: service name=celery-${queue_name} state=started
