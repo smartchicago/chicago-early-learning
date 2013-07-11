@@ -1,0 +1,49 @@
+{% comment %}
+Copyright (c) 2012 Azavea, Inc.
+See LICENSE in the project root for copying permission
+{% endcomment %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0" /> 
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <title>{% block title %}{% endblock %}</title> 
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '{{ ga_key }}']);
+        _gaq.push(['_trackPageview', '{{ request.path }}']);
+        _gaq.push(function() {
+            _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
+        });
+
+        </script>
+        {% block otherhead %}{% endblock %}
+    </head> 
+    <body>
+        {% block content %}{% endblock %}
+
+        <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
+        <script type="text/javascript"> (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+        </script>
+
+        {% block scripts %}{% endblock %}
+
+        <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+    </body> 
+</html> 
