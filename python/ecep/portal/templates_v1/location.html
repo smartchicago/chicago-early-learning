@@ -7,6 +7,7 @@ See LICENSE in the project root for copying permission
 
 {% load i18n %}
 {% load staticfiles %}
+{% load portal_extras %}
 
 {% block title %}{% trans "Chicago Early Learning" %}{% endblock %}
 
@@ -14,8 +15,9 @@ See LICENSE in the project root for copying permission
 {% endblock %}
 
 {% block content %}
-Welcome to Index.html!
-{% endblock %}
-
-{% block scripts %}
+<div class="container">
+<div class="location">
+{% include "embed.html" %}
+</div>
+</div>
 {% endblock %}
