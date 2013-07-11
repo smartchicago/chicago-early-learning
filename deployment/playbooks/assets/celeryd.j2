@@ -35,7 +35,7 @@ CELERYD_MULTI="$CELERYD_CHDIR/manage.py celeryd_multi"
 CELERYCTL="$CELERYD_CHDIR/manage.py celery"
 
 # Extra arguments to celeryd
-CELERYD_OPTS="-Q {{ queue_name }} --soft-time-limit=30 --autoscale=2,1 -l warning"
+CELERYD_OPTS="-Q $QUEUE_NAME --soft-time-limit=30 --autoscale=2,1 -l warning"
 
 # %n will be replaced with the nodename.
 CELERYD_LOG_FILE="/var/log/celery/%n.log"
