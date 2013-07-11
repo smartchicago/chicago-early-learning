@@ -11,7 +11,7 @@ admin.autodiscover()
 
 js_info_dict = {
     'domain': 'djangojs',
-    'packages': ('ecep.portal',),
+    'packages': ('portal',),
 }
 
 urlpatterns = patterns(
@@ -48,4 +48,3 @@ urlpatterns += i18n_patterns(
     '',
     url(r'^faq.html$', 'portal.views.faq', name='faq'),
 )
-

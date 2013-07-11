@@ -76,8 +76,6 @@ def faq(request):
     topics = Topic.objects.filter(slug__startswith=lang + '-')
     if topics.count() == 0:
         topics = Topic.objects.filter(slug__startswith=settings.LANGUAGE_CODE[0:2] + '-')
-        if topics.count() == 0:
-            raise Http404()
 
     ctx = RequestContext(request, {
         'topics': [TopicWrapper(t, request) for t in topics],

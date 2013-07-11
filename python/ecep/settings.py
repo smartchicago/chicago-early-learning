@@ -142,7 +142,7 @@ if DJANGO_JENKINS:
     ia = list(INSTALLED_APPS)
     ia.append('django_jenkins')
     INSTALLED_APPS = tuple(ia)
-    
+
 # setup path settings
 try:
     SITE_ROOT
@@ -165,7 +165,7 @@ LOGGING = {
         'logfile': {
             'level': 'DEBUG',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': logfile,
+            'filename': LOGFILE,
         }
     },
     'loggers': {
