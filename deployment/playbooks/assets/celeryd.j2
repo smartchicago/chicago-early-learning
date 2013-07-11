@@ -28,11 +28,14 @@ CELERYD_NODES={{ queue_name }}
 # Where to chdir at start.
 CELERYD_CHDIR='{{ app_path }}/python/ecep'
 
+# Virtualenv
+ENV_PYTHON="{{ env_path }}/bin/python"
+
 # How to call "manage.py celeryd_multi"
-CELERYD_MULTI="$CELERYD_CHDIR/manage.py celeryd_multi"
+CELERYD_MULTI="$ENV_PYTHON $CELERYD_CHDIR/manage.py celeryd_multi"
 
 # How to call "manage.py celeryctl"
-CELERYCTL="$CELERYD_CHDIR/manage.py celery"
+CELERYCTL="$ENV_PYTHON $CELERYD_CHDIR/manage.py celery"
 
 # Extra arguments to celeryd
 CELERYD_OPTS="-Q $QUEUE_NAME --soft-time-limit=30 --autoscale=2,1 -l warning"
