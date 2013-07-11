@@ -1,0 +1,14 @@
+---
+- hosts: all
+
+  sudo: yes
+
+  tasks:
+
+  - name: Create rabbitmq user
+    rabbitmq_user: user={{ rabbit_mq_user }} 
+                   password={{ rabbit_mq_password }}
+                   state=present
+                   configure_priv=.*
+                   read_priv=.*
+                   write_priv=.*
