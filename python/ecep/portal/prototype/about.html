@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Chicago Early Learning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/leaflet.css">
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/leaflet.ie.css">
+    <![endif]-->
+
+    <link href="css/application.css" rel="stylesheet">
+    <link href="css/faq.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src="js/leaflet.js"></script>
+
+  </head>
+
+  <body>
+
+<!-- Navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+      <!-- Navbar LEFT -->
+      <div class="navbar-left">
+        <a class="brand" href="index.html" data-r1024="<img src='img/logo.svg' id='logo' alt='CEL'> Chicago Early Learning"><img src="img/logo.svg" id="logo" alt="CEL"></a>
+        <form class="navbar-form" id="desktop-search">
+          <div class="input-append">
+            <input id="appendedInputButton" type="text" placeholder="121 N. Lasalle, Chicago">
+            <button class="btn" id="geolocation" type="button"><i class="icon-screenshot"></i></button>
+          </div>
+          <button type="submit" class="btn" style="margin-top: -5px;"><i class="icon-search"></i> Search</a>
+        </form>
+      </div>
+      <!-- Navbar RIGHT -->
+      <div class="navbar-right">
+        <ul class="nav">
+          <li><a href="#text-for-info" data-toggle="modal" data-r1024="Text For Info"><img src="img/icons/text-for-info.svg" alt="Text For Info"></a></li>
+          <li><a href="about.html" data-r1024="About"><img src="img/icons/about.svg" alt="About"></a></li>
+          <li><a href="faq.html" data-r1024="FAQ"><img src="img/icons/faq.svg"></a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="Language <b class='caret'></b>">EN <b class="caret"></b></a>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="#"><img src="img/en.png" alt="English"> English</a></li>
+              <li><a href="#"><img src="img/es.png" alt="Spanish"> Espa&ntilde;ol</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+    <!-- Favorites top bar -->
+      <div class="container">
+        <h1 id="about-title">About</h1>
+        <p class="small">Homepage Photo Credit: <a href="http://www.flickr.com/photos/24337301@N05/8556132091/">Christopher.F Photography</a> - <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/">CC</a></p>
+
+      <div class="logos-container">
+
+      <div class="media">
+        <a class="pull-right" href="#">
+          <img src="img/logos/coc.jpg" alt="City of Chicago" style="width: 130px;">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">City of Chicago</h4>
+          <p>Mayor Emanuel and the City of Chicago have made a firm commitment to providing children across the city with access to high-quality education, from early learning programs all the way up through college. That is why the Mayor’s 2013 budget includes an incredible investment in programming for children, including early education seats where they are most needed. One of the most important pieces is ensuring that parents have access to the information they need to make the choices that are best for their children, and the Early Learning Portal is a piece of that objective. Here, parents will find a list of all of the early learning programs that receive City funding, an easy-to-use interactive map, basic information about the programs available at every site and suggested questions they should ask any early learning site provider in order to determine if that location is right for their child.</p>
+        </div>
+      </div>
+      <hr>
+
+      <div class="media">
+        <a class="pull-right" href="#">
+          <img src="img/logos/cps.jpg" alt="Chicago Public Schools">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">Chicago Public Schools</h4>
+          <p>Chicago Public Schools works to ensure that every student in every community has access to a high quality education that prepares them for success in college and career.</p>
+        </div>
+      </div>
+      <hr>
+
+      <div class="media">
+        <a class="pull-right" href="#">
+          <img src="img/logos/dfss.jpg" alt="Chicago Department of Family and Support Services">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">Chicago Department of Family and Support Services</h4>
+          <p>The Chicago Department of Family and Support Services (DFSS) is dedicated to supporting a continuum of coordinated services to enhance the lives of Chicago residents, particularly those most in need, from birth through the senior years.</p>
+        </div>
+      </div>
+      <hr>
+
+      <div class="media">
+        <a class="pull-right" href="#">
+          <img src="img/logos/scc.jpg" alt="Smart Chicago Collaborative">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">Smart Chicago Collaborative</h4>
+          <p>The Smart Chicago Collaborative is a civic organization devoted to using technology to make lives better in Chicago. We work to apply the transformative power of technology to solve problems for the people of Chicago.</p>
+        </div>
+      </div>
+      <hr>
+
+      <div class="media">
+        <a class="pull-right" href="#">
+          <img src="img/logos/uel.jpg" alt="University of Chicago Urban Education Lab">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">University of Chicago Urban Education Lab</h4>
+          <p>The University of Chicago Urban Education Lab, a project of the Urban Education Institute, seeks to improve education outcomes by providing scientific evidence about what strategies are the most effective and cost effective, for whom, and why.</p>
+        </div>
+      </div>
+
+    </div>
+      
+      </div>
+
+    <!-- Text-for-Info Modal -->
+    <div id="text-for-info" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="textForInfo" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove-circle"></i></button>
+        <h3 id="textForInfo">Want information via text?</h3>
+      </div>
+      <div class="modal-body">
+        <p>Text your zip code to <a href="sms:7738861819">(773) 886-1819</a> and we'll do the rest.</p>
+      </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/response.js"></script>
+    <script src="js/holder.js"></script>
+    <script src="js/static.js"></script>
+  </body>
+</html>
