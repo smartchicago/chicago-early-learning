@@ -36,6 +36,6 @@
     register: createdb_ecep
 
   - name: Alter ecep database tables/permissions
-    command: psql -d ecep -c "alter table spatial_ref_sys owner to ecep; alter table geometry_columns owner to ecep; alter view geography_columns owner to ecep; create schema ecep authorization ecep;"
+    command: psql -d ecep -c "alter table spatial_ref_sys owner to ecep; alter table geometry_columns owner to ecep; alter view geography_columns owner to ecep; create schema ecep authorization ecep; GRANT ALL ON TABLE geometry_columns TO ecep; GRANT ALL ON TABLE spatial_ref_sys TO ecep;"
     only_if: ${createdb_ecep.changed}
 
