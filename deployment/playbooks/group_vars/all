@@ -16,6 +16,7 @@ system_packages:
   - gettext
   - python-pip
   - rabbitmq-server
+  - apache2-utils
 
 repos_to_add:
   - ppa:chris-lea/node.js
