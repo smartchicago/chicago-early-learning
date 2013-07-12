@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import pgettext_lazy
 
 class Neighborhood(models.Model):
-    """
+    """Model for Neighborhoods 
     Model for a Neighborhood, which is simply a geographic area with a name
     boundary -- MultiPolygon for the neighborhood
     primary_name -- Display name for the neighborhood
@@ -35,8 +35,7 @@ class Neighborhood(models.Model):
         return self.primary_name
         
 class Location(models.Model):
-    """
-    Model for school locations in Chicago
+    """Model for school locations in Chicago
     """
     site_name = models.CharField(_('Site Name'), max_length=100)
     address = models.CharField(pgettext_lazy(u'field name', u'Address'), max_length=75)
