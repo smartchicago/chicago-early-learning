@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 from django.contrib.gis.utils import LayerMapping
 from django.db import IntegrityError
 
-from portal.models import Neighborhood
+from portal.models import Neighborhood, Location
 
 class Command(BaseCommand):
     """
@@ -31,8 +31,10 @@ class Command(BaseCommand):
         lm = LayerMapping(Neighborhood, path_to_shp, neighborhood_mapping)
         self.check_neighborhood_table()
         lm.save(strict=True)
+
         self.stdout.write('Successfully loaded %s neighborhoods from %s layer(s)\n'
                           % (len(lm.ds[0]), lm.ds.layer_count))
+
 
     def check_neighborhood_table(self):
         """Checks whether or not neighborhoods are already loaded, raises an error if
