@@ -58,11 +58,14 @@ unicorn_log: /var/log/unicorn.log
 unicorn_socket: unix:/tmp/gunicorn.sock
 http_port: 80
 
+http_auth: 'off'
+http_password: ''
+http_user: ''
+
 ## Git Settings ##
 git_url: https://github.com/smartchicago/chicago-early-learning
 git_branch: staging
 clone_repo: True
-
 
 ## Jenkins Settings ##
 
