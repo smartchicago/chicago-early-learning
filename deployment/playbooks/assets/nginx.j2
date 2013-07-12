@@ -7,7 +7,10 @@ upstream app_server {
 
 server {
   listen {{ http_port }} default_server;
-  server_name _;  
+  server_name _;
+
+  auth_basic                   {{ http_auth }};
+  auth_basic_user_file         .htpasswd;
 
   client_max_body_size 20M;
 
@@ -20,6 +23,7 @@ server {
   }
 
   location / {
+
   	   try_files $uri @proxy_to_app;
   }
 
