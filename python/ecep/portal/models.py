@@ -7,12 +7,25 @@ from django.template.defaultfilters import title
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import pgettext_lazy
 
+class Neighborhood(models.Model):
+    """Model for neighborhoods in Chicago
+    """
+    boundary = models.MultiPolygonField()
+    primary_name = models.CharField(max_length=100)
+    secondary_name = models.CharField(max_length=100)
+    # GeoManager is required so Django knows it can do geospatial queries to the db
+    objects = models.GeoManager()
+
+    def __unicode__(self):
+        return self.primary_name
+        
 class Location(models.Model):
     site_name = models.CharField(_('Site Name'), max_length=100)
     address = models.CharField(pgettext_lazy(u'field name', u'Address'), max_length=75)
     city = models.CharField(_('City'), max_length=75)
     state = models.CharField(_('State'), max_length=2)
     zip = models.CharField(_('Zip Code'), max_length=10)
+    neighborhood = models.ForeignKey(Neighborhood, null=True)
     phone = models.CharField(_('Phone Number'), max_length=20, blank=True)
     q_rating = models.CharField(_('Quality Rating'), max_length=10, blank=True)
     url = models.CharField(_('Website'), max_length=256, blank=True)
@@ -44,7 +57,7 @@ class Location(models.Model):
     display_include = set([
         'ages', 'is_full_day', 'is_part_day', 'is_full_week', 'is_part_week', 'is_school_year',
         'is_full_year', 'accred', 'is_community_based', 'is_cps_based', 'is_home_visiting',
-        'is_hs', 'is_ehs'])
+        'is_hs', 'is_ehs', 'neighborhood'])
 
     def __unicode__(self):
         return self.site_name
@@ -132,13 +145,16 @@ class Location(models.Model):
         val = self.__dict__[field]
         return ("%s: %s\n" % (self.verbose_name(field), f(val))) if val else ""
 
-class Neighborhood(models.Model):
-    """Model for neighborhoods in Chicago
-    """
-    boundary = models.MultiPolygonField()
-    primary_name = models.CharField(max_length=100)
-    secondary_name = models.CharField(max_length=100)
+    def save(self, *args, **kwargs):
+        """
+        before saving, we update the neighborhood for this Location
+        since we assume each location only has one neighborhood we should only ever return 
+        1 or 0 Neighborhood results from this query
+        """
+        if self.geom is not None:
+            neighborhoods = Neighborhood.objects.filter(boundary__contains=self.geom)
+            if len(neighborhoods):
+                self.neighborhood = neighborhoods[0]
+         
+        super(Location, self).save(*args, **kwargs)            
 
-    def __unicode__(self):
-        return self.primary_name
-        
