@@ -21,7 +21,9 @@ class Neighborhood(models.Model):
     objects = models.GeoManager()
 
     def save(self, *args, **kwargs):
-
+        """ Override for Model.save()
+        Updates neighborhood relation for all Locations that intersect the new Neighborhood boundaries 
+        """
         super(Neighborhood, self).save(*args, **kwargs)            
 
         # update location AFTER updating neighborhood polygon
@@ -163,7 +165,7 @@ class Location(models.Model):
         return ("%s: %s\n" % (self.verbose_name(field), f(val))) if val else ""
 
     def save(self, *args, **kwargs):
-        """
+        """ Override for Model.save()
         Overrides Location.save(). Provides the additional functionality of updating the Neighborhood 
         of the Location before the save.
         """
