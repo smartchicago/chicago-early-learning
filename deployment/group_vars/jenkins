@@ -21,6 +21,7 @@ system_packages:
   - make
   - nodejs
   - apache2-utils
+  - rabbitmq-server
 
 node_packages:
   - jshint
