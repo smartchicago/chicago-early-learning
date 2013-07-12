@@ -32,10 +32,6 @@ class Command(BaseCommand):
         self.check_neighborhood_table()
         lm.save(strict=True)
 
-        # Also resave all Location objects so they get their neighborhood ids
-        for location in Location.objects.all():
-            location.save()
-
         self.stdout.write('Successfully loaded %s neighborhoods from %s layer(s)\n'
                           % (len(lm.ds[0]), lm.ds.layer_count))
 
