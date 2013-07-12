@@ -82,6 +82,11 @@ For instance, if you are deploying to a server at `example.com` you would add th
 
 This will provision the setup to that host assuming you have set up ssh access with an ssh-key. Alternatively, you can use a password with the `--ask-pass` option instead. For more information and options for `ansible-playbook` please check out its [documentation](http://www.ansibleworks.com/docs/).
 
+You also have an option to set up a password restricted website as well (sometimes useful in development). To do so, you can either edit one of the `group_vars` files or pass command line argument to the `ansible-playbook` command. For example:
+
+    ansible-playbook deployment/playbooks/all.yml --inventory-file=deployment/hosts --limit=example.com --private-key=PRIVATE_KEY_FILE -l staging -e "http_auth=Restricted http_user=USERNAME http_password=PASSWORD"
+
+This command will deploy to your staging server defined in the hosts file, setting up a password restricted website in the process.
 
 ### To update the FAQs
 * Use the Django admin forms to modify/add questions as necessary
