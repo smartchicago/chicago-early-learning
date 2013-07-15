@@ -1,0 +1,33 @@
+/* Production build parameters for main javascript file
+ * To build, run:
+ *    node r.js -o build.main.js
+ */
+
+({
+    // See http://requirejs.org/docs/optimization.html
+    // and https://github.com/jrburke/r.js/blob/master/build/example.build.js
+    // for docs.
+
+    // By default load any module IDs from js/lib
+    baseUrl: 'lib',
+    
+    // Build output file
+    out: 'main.min.js',
+    
+    // Modules to optimize into out file
+    include: ['main'],
+    
+    // Modules to exclude from optimization (usually large, already minified libraries)
+    exclude: ['jquery'],
+    
+    // If the module ID starts with 'cel',
+    // load it from the js/cel directory. paths
+    // config is relative to the baseUrl, and
+    // never includes a '.js' extension since
+    // the paths config could be for a directory.
+    paths: {
+        cel: '../cel',
+        jquery: 'jquery-1.10.2.min',
+        main: '../main'
+    }
+})
