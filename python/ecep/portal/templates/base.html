@@ -27,6 +27,10 @@ See LICENSE in the project root for copying permission
     <![endif]-->
         
     <script type="text/javascript">
+        // Tell requirejs where to find static files if we're in debug mode
+        if ({{ settings.DEBUG }} && '{% static "" %}') {
+            window.cel_baseUrl = '{% static "" %}';
+        }
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ ga_key }}']);
         _gaq.push(['_trackPageview', '{{ request.path }}']);
@@ -86,6 +90,6 @@ See LICENSE in the project root for copying permission
     {% comment %}
     For now this is just a dummy js file, at some point we should probably change it to app-common.js or something
     {% endcomment %}
-    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+    <script data-main='{% static "js/main" %}' src='{% static "js/require.js" %}'></script>
   </body> 
 </html> 
