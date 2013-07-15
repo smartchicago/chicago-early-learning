@@ -129,5 +129,4 @@ def json_from_db_response(db_list, field):
         'response': results
     }
     return simplejson.dumps(data)
-                                                                                                                                  286,5         Bot
 
