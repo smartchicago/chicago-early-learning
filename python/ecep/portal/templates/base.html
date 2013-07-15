@@ -27,10 +27,6 @@ See LICENSE in the project root for copying permission
     <![endif]-->
         
     <script type="text/javascript">
-        // Tell requirejs where to find static files if we're in debug mode
-        if ({{ settings.DEBUG }} && '{% static "" %}') {
-            window.cel_baseUrl = '{% static "" %}';
-        }
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ ga_key }}']);
         _gaq.push(['_trackPageview', '{{ request.path }}']);
@@ -84,12 +80,20 @@ See LICENSE in the project root for copying permission
         s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    
+        <script src='{% static "js/require.js" %}'></script>
+    <script>
+        /// These settings are mirrored in build.main.js, if you're going to change them check there too
+        requirejs.config({
+            //By default load any module IDs from js/lib
+            baseUrl: '{% static "js/lib" %}',
+        });
+        
+        // TODO: right now we're always loading everything, may want to rethink this
+        require(['../' + ('{{ settings.DEBUG }}' === 'True' ? 'main' : 'main.min')]);
+    </script>
 
     {% block scripts %}{% endblock %}
 
-    {% comment %}
-    For now this is just a dummy js file, at some point we should probably change it to app-common.js or something
-    {% endcomment %}
-    <script data-main='{% static "js/main" %}' src='{% static "js/require.js" %}'></script>
   </body> 
 </html> 
