@@ -1,8 +1,10 @@
 /* Production build parameters for main javascript file
  * To build, run:
  *    node r.js -o build.main.js
+ * Then perhaps `manage.py collectstatic`
  */
 
+// Beware, some of these parameters are duplicated in debug mode in base.html and main.js
 ({
     // See http://requirejs.org/docs/optimization.html
     // and https://github.com/jrburke/r.js/blob/master/build/example.build.js
