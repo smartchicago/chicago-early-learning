@@ -17,6 +17,24 @@ requirejs.config({
 });
 
 require(['jquery'], function($) {
+    // This is the main entry point.  In order to add modules that get loaded, make a new file in
+    // ../cel, and load it by adding it to the args above (both in the array and function)
+    // for example, to define module foo:
+    //
+    // Add the file ../cel/foo.js
+    //
+    // Put this in it:
+    // define(['dep1', 'dep2'], function(dep1, dep2) {
+    //     // foo body
+    //     return something;
+    // });
+    //
+    // Then load it above by modifying the line above:
+    // require(['jquery', 'foo'], function($, foo) {
+    //
+    // parameter foo gets assigned the return value of the function in define()
+    // 
+    // See http://requirejs.org/docs/api.html for details
     console.debug('main.js loaded!');
     if (typeof $ !== 'undefined') {
         console.debug('jquery loaded!');
