@@ -6,13 +6,13 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
 from django.db.models import Q
 from django.conf import settings
-from django.http import HttpResponseRedirect, Http404
-from models import Location
+from django.http import HttpResponse, HttpResponseRedirect, Http404
+from models import Location, Neighborhood
 import logging, hashlib
 from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
-from django.utils import translation
+from django.utils import translation, simplejson
 
 logger = logging.getLogger(__name__)
 
@@ -95,3 +95,26 @@ def setlang(request, language):
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
 
     return response
+
+def ac_neighborhood(request, neighborhood):
+    field = 'primary_name'
+    neighborhood_list = Neighborhood.objects.filter(primary_name__icontains=neighborhood).order_by(field)
+    data = json_from_db_response(neighborhood_list, field)
+    return HttpResponse(data, mimetype='application/json')
+
+def ac_school(request, school):
+    field = 'site_name'
+    school_list = Location.objects.filter(site_name__contains=school).order_by(field)
+    data = json_from_db_response(school_list, field)
+    return HttpResponse(data, mimetype='application/json')
+
+def json_from_db_response(db_list, field):
+    results = []
+    for item in db_list:
+        results.append(getattr(item, field))
+    data = {
+        'response': results
+    }
+    return simplejson.dumps(data)
+                                                                                                                                  286,5         Bot
+
