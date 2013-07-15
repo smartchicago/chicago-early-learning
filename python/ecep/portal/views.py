@@ -97,18 +97,31 @@ def setlang(request, language):
     return response
 
 def ac_neighborhood(request, neighborhood):
+    """View handler for a neighborhood autocomplete request
+    neighborhood -- part of a typed search result
+    return -- list of matching neighborhood names in database  
+    """
     field = 'primary_name'
     neighborhood_list = Neighborhood.objects.filter(primary_name__icontains=neighborhood).order_by(field)
     data = json_from_db_response(neighborhood_list, field)
     return HttpResponse(data, mimetype='application/json')
 
 def ac_school(request, school):
+    """View handler for a school autocomplete request
+    schoole -- part of a typed search result
+    return -- list of matching school names in database  
+    """
     field = 'site_name'
     school_list = Location.objects.filter(site_name__contains=school).order_by(field)
     data = json_from_db_response(school_list, field)
     return HttpResponse(data, mimetype='application/json')
 
 def json_from_db_response(db_list, field):
+    """ Creates json from a Django QuerySet
+    db_list -- QuerySet to iterate
+    field -- field to print to json
+    returns -- json string dump of the QuerySet
+    """
     results = []
     for item in db_list:
         results.append(getattr(item, field))
