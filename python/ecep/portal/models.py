@@ -149,27 +149,17 @@ class Location(models.Model):
                 sfields.append(kv)
 
         # Combine Languages
-        lang_list = []
-        for lang in self.language_1, self.language_2, self.language_3:
-            if lang == None or lang == '':
-                continue
-            lang_list.append(lang)
+        lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
         languages = ", ".join(lang_list)
         if languages != '':
             sfields.append((_('Languages (other than English)'), languages))
 
         # Program Duration
-        if self.is_full_year:
-            sfields.append((_('Program Duration'), 'Full Year'))
-        else:
-            sfields.append((_('Program Duration'), 'School Year'))
+        sfields.append((_('Program Duration'), 'Full Year' if self.is_full_year else 'School Year'))
 
         # Week Duration
-        if self.is_full_week:
-            sfields.append((_('Weekday Availability'), 'Full Week'))
-        else:
-            sfields.append((_('Weekday Availability'), 'Partial Week'))
-
+        sfields.append((_('Weekday Availability'), 'Full Week' if self.is_full_week else 'Partial Week'))
+                
         bfields.sort()
         sfields.sort(key=lambda a: a[0])
         return { 'item': self, 'sfields': sfields, 'bfields': bfields }
