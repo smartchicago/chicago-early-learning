@@ -58,16 +58,17 @@ class LocationAdmin(admin.OSMGeoAdmin):
 
     class Media:
         css = { 'all': ('css/admin-map.css',)}
-        js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' % (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE), 'js/admin-map.js', 'js/jquery-1.7.2.min.js')
+        js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' % (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE), 'js/admin-map.js', 'js/jquery.js')
 
-    list_display = ('site_name', 'address', 'zip', 'phone', 'id',)
+    list_display = ('site_name', 'address', 'zip', 'phone', 'id', )
     list_filter = ('is_hs', 'is_ehs', 'accept_ccap', 'is_cps_based', 'is_community_based',
                    'is_age_lt_3', 'is_age_gt_3', 'is_full_day', 'is_full_week', 'is_full_year',
                    'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting')
     search_fields = ['site_name', 'address', 'zip', 'language_1', 'language_2', 'language_3']
+    readonly_fields = ['neighborhood']
     form = LocationForm
     fieldsets = [
-        (None,      {'fields': ['site_name']}),
+        (None,      {'fields': ['site_name', 'neighborhood']}),
         ('Address', {'fields': [('address', 'city'), ('state', 'zip'), 'geom']}),
         ('Contact', {'fields': ['phone', 'url']}),
         ('Hours/Duration', {'fields': [('is_full_day', 'is_part_day'),

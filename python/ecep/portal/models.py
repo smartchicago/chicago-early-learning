@@ -7,12 +7,44 @@ from django.template.defaultfilters import title
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import pgettext_lazy
 
+class Neighborhood(models.Model):
+    """Model for Neighborhoods 
+    Model for a Neighborhood, which is simply a geographic area with a name
+    boundary -- MultiPolygon for the neighborhood
+    primary_name -- Display name for the neighborhood
+    secondary_name -- Detailed/Unformatted name for the neighborhood
+    """
+    boundary = models.MultiPolygonField()
+    primary_name = models.CharField(max_length=100)
+    secondary_name = models.CharField(max_length=100)
+    # GeoManager is required so Django knows it can do geospatial queries to the db
+    objects = models.GeoManager()
+
+    def save(self, *args, **kwargs):
+        """ Override for Model.save()
+        Updates neighborhood relation for all Locations that intersect the new Neighborhood boundaries 
+        """
+        super(Neighborhood, self).save(*args, **kwargs)            
+
+        # update location AFTER updating neighborhood polygon
+        locations = Location.objects.filter(geom__intersects=self.boundary)
+        for location in locations:
+            # update if no neighborhood or the neighborhood is different
+            if location.neighborhood is None or location.neighborhood.id != self.id:
+                location.save()
+
+    def __unicode__(self):
+        return self.primary_name
+        
 class Location(models.Model):
+    """Model for school locations in Chicago
+    """
     site_name = models.CharField(_('Site Name'), max_length=100)
     address = models.CharField(pgettext_lazy(u'field name', u'Address'), max_length=75)
     city = models.CharField(_('City'), max_length=75)
     state = models.CharField(_('State'), max_length=2)
     zip = models.CharField(_('Zip Code'), max_length=10)
+    neighborhood = models.ForeignKey('Neighborhood', null=True)
     phone = models.CharField(_('Phone Number'), max_length=20, blank=True)
     q_rating = models.CharField(_('Quality Rating'), max_length=10, blank=True)
     url = models.CharField(_('Website'), max_length=256, blank=True)
@@ -152,13 +184,15 @@ class Location(models.Model):
         val = self.__dict__[field]
         return ("%s: %s\n" % (self.verbose_name(field), f(val))) if val else ""
 
-class Neighborhood(models.Model):
-    """Model for neighborhoods in Chicago
-    """
-    boundary = models.MultiPolygonField()
-    primary_name = models.CharField(max_length=100)
-    secondary_name = models.CharField(max_length=100)
+    def save(self, *args, **kwargs):
+        """ Override for Model.save()
+        Overrides Location.save(). Provides the additional functionality of updating the Neighborhood 
+        of the Location before the save.
+        """
+        if self.geom is not None:
+            neighborhoods = Neighborhood.objects.filter(boundary__intersects=self.geom)
+            if len(neighborhoods):
+                self.neighborhood = neighborhoods[0]
+         
+        super(Location, self).save(*args, **kwargs)            
 
-    def __unicode__(self):
-        return self.primary_name
-        
