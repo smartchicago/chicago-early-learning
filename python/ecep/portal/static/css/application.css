@@ -375,8 +375,6 @@ h1, h2, h3, h4 {
 		margin: 0;
 	}
 
-
-/* Partners ------------------------ */
 /* Single School View */
 #location-map {
     height: 250px;
@@ -393,6 +391,8 @@ h1, h2, h3, h4 {
 .leaflet-google-layer {
     z-index: 1 !important;
 }
+
+/* Partners ------------------------ */
 
 .media img {
 	max-width: 200px;
