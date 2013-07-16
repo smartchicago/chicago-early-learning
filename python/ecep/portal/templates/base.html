@@ -34,6 +34,7 @@ See LICENSE in the project root for copying permission
             _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
         });
     </script>
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     {% block otherhead %}{% endblock %}
   </head> 
   <body>
@@ -67,7 +68,7 @@ See LICENSE in the project root for copying permission
         </ul>
       </div>
     </div>
-    
+</div>
     {% block content %}{% endblock %}
 
     <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
@@ -95,5 +96,13 @@ See LICENSE in the project root for copying permission
 
     {% block scripts %}{% endblock %}
 
+    {% comment %}
+    For now this is just a dummy js file, at some point we should probably change it to app-common.js or something
+    {% endcomment %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/response.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/holder.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/application.js' %}"></script>
   </body> 
 </html> 

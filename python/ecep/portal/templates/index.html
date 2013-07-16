@@ -11,10 +11,54 @@ See LICENSE in the project root for copying permission
 {% block title %}{% trans "Chicago Early Learning" %}{% endblock %}
 
 {% block otherhead %}
+    <link href="{% static 'css/homepage.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-Welcome to Index.html!
+    <div class="jumbotron masthead">
+      <div class="container-custom">
+        <h1>Find the right school for your child.</h1>
+        <p>Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the FAQ page to learn more about different alternatives and how to enroll your child in a quality early learning program.</p>
+        <input class="homepage-search" type="text" placeholder="1828 W Chicago Ave"> 
+        <a class="btn btn-large get-started" href="search.html">Search</a><span class="intro-choice">or</span>  
+        <a class="btn btn-large get-started" href="browse.html">Just start browsing</a>
+      </div>
+    </div>
+
+    <div class="container-custom" id="featurettes">
+      <div class="media">
+        <a class="pull-left" href="#"><img class="media-object" data-src="holder.js/300x225"></a>
+        <div class="media-body">
+          <h1>Enter your address or pick a neighborhood.</h1>
+          <p>Vestibulum ac commodo eros. Morbi at sodales enim, sit amet bibendum purus. Integer faucibus sollicitudin ligula, nec condimentum risus aliquam at. Aliquam pulvinar felis tellus, et vehicula sapien convallis sed. Suspendisse cursus venenatis felis, non adipiscing enim ornare eu. Phasellus venenatis ipsum ac lacus consequat sollicitudin.</p>
+        </div>
+      </div>
+      <hr>
+      <div class="media">
+        <a class="pull-right" href="#"><img class="media-object" data-src="holder.js/300x225"></a>
+        <div class="media-body">
+          <h1>Enter your address or pick a neighborhood.</h1>
+          <p>Vestibulum ac commodo eros. Morbi at sodales enim, sit amet bibendum purus. Integer faucibus sollicitudin ligula, nec condimentum risus aliquam at. Aliquam pulvinar felis tellus, et vehicula sapien convallis sed. Suspendisse cursus venenatis felis, non adipiscing enim ornare eu. Phasellus venenatis ipsum ac lacus consequat sollicitudin.</p>
+        </div>
+      </div>
+      <hr>
+      <div class="media">
+        <a class="pull-left" href="#"><img class="media-object" data-src="holder.js/300x225"></a>
+        <div class="media-body">
+          <h1>Enter your address or pick a neighborhood.</h1>
+          <p>Vestibulum ac commodo eros. Morbi at sodales enim, sit amet bibendum purus. Integer faucibus sollicitudin ligula, nec condimentum risus aliquam at. Aliquam pulvinar felis tellus, et vehicula sapien convallis sed. Suspendisse cursus venenatis felis, non adipiscing enim ornare eu. Phasellus venenatis ipsum ac lacus consequat sollicitudin.</p>
+        </div>
+      </div>
+      <hr>
+      <div class="media">
+        <a class="pull-right" href="#"><img class="media-object" data-src="holder.js/300x225"></a>
+        <div class="media-body">
+          <h1>Enter your address or pick a neighborhood.</h1>
+          <p>Vestibulum ac commodo eros. Morbi at sodales enim, sit amet bibendum purus. Integer faucibus sollicitudin ligula, nec condimentum risus aliquam at. Aliquam pulvinar felis tellus, et vehicula sapien convallis sed. Suspendisse cursus venenatis felis, non adipiscing enim ornare eu. Phasellus venenatis ipsum ac lacus consequat sollicitudin.</p>
+        </div>
+      </div>
+      <hr>
+    </div>
 {% endblock %}
 
 {% block scripts %}
