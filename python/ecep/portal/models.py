@@ -74,9 +74,8 @@ class Location(models.Model):
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
     display_include = set([
-        'ages', 'is_full_day', 'is_part_day', 'is_full_week', 'is_part_week', 'is_school_year',
-        'is_full_year', 'accred', 'is_community_based', 'is_cps_based', 'is_home_visiting',
-        'is_hs', 'is_ehs', 'neighborhood'])
+        'ages', 'prg_hours', 'accred', 'is_community_based', 'is_cps_based', 'is_home_visiting',
+        'is_hs', 'is_ehs', 'accept_ccap'])
 
     def __unicode__(self):
         return self.site_name
@@ -149,6 +148,18 @@ class Location(models.Model):
                 kv = (field.verbose_name, getattr(self, fname))
                 sfields.append(kv)
 
+        # Combine Languages
+        lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
+        languages = ", ".join(lang_list)
+        if languages != '':
+            sfields.append((_('Languages (other than English)'), languages))
+
+        # Program Duration
+        sfields.append((_('Program Duration'), 'Full Year' if self.is_full_year else 'School Year'))
+
+        # Week Duration
+        sfields.append((_('Weekday Availability'), 'Full Week' if self.is_full_week else 'Partial Week'))
+                
         bfields.sort()
         sfields.sort(key=lambda a: a[0])
         return { 'item': self, 'sfields': sfields, 'bfields': bfields }

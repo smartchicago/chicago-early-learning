@@ -14,10 +14,10 @@ See LICENSE in the project root for copying permission
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    
 
     <link rel="icon" href='{% static "favicon.ico" %}' type="image/x-icon">
     <link rel="shortcut icon" href='{% static "favicon.ico" %}' type="image/x-icon">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
     <link href='{% static "css/bootstrap.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
     <link href='{% static "css/responsive.css" %}' rel="stylesheet">
@@ -104,5 +104,15 @@ See LICENSE in the project root for copying permission
     <script type="text/javascript" src="{% static 'js/response.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/holder.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/application.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/leaflet.js' %}"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?v=3.2&key={{ settings.GOOGLE_MAPS_KEY }}&sensor=false"></script>
+    <script src="{% static 'js/leaflet-google.js' %}"></script>
+    <script type="text/javascript">
+      // Settings for Latitude and Longitude //
+      var latSettings = "{{ settings.LATITUDE }}";
+      var lngSettings = "{{ settings.LONGITUDE}}";
+    </script>
+    <script src="{% static 'js/location-marker.js' %}"></script>
   </body> 
 </html> 
