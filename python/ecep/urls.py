@@ -34,6 +34,10 @@ urlpatterns = patterns(
         }),
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
+    # Location Views
+    url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
+    url(r'^location/(?P<location_id>\d+)/position/$', 'portal.views.location_position'),
+
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
     url(r'^rosetta/', include('rosetta.urls')),

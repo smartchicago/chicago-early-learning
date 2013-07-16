@@ -10,7 +10,7 @@ source {{ env_path }}/bin/activate
 
 cd {{ app_path }}/python/ecep
 
-python manage.py jenkins
+python manage.py jenkins --csslint-exclude=css/lib/* --jshint-exclude=js/lib/*
 
 cat > ${BUILD_TAG}.html << EOF
 <html>
