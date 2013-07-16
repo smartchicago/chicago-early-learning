@@ -13,6 +13,9 @@ from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
 from django.utils import translation, simplejson
+from operator import attrgetter
+from portal.utils import TermDistance
+
 
 logger = logging.getLogger(__name__)
 
@@ -96,37 +99,40 @@ def setlang(request, language):
 
     return response
 
-def ac_neighborhood(request, neighborhood):
-    """View handler for a neighborhood autocomplete request
-    neighborhood -- part of a typed search result
-    return -- list of matching neighborhood names in database  
-    """
-    field = 'primary_name'
-    neighborhood_list = Neighborhood.objects.filter(primary_name__icontains=neighborhood).order_by(field)
-    data = json_from_db_response(neighborhood_list, field)
-    return HttpResponse(data, mimetype='application/json')
 
-def ac_school(request, school):
-    """View handler for a school autocomplete request
-    schoole -- part of a typed search result
-    return -- list of matching school names in database  
-    """
-    field = 'site_name'
-    school_list = Location.objects.filter(site_name__contains=school).order_by(field)
-    data = json_from_db_response(school_list, field)
-    return HttpResponse(data, mimetype='application/json')
+def api(request, class_name, query):
+    """ View for handling portal api requests
 
-def json_from_db_response(db_list, field):
-    """ Creates json from a Django QuerySet
-    db_list -- QuerySet to iterate
-    field -- field to print to json
-    returns -- json string dump of the QuerySet
+    Make query against the database for relevant Location and Neighborhood
+        requests. Uses the TermDistance class to sort first by relevance to query,
+        then alphabetically.
+
+    class_name -- case-insensitive name of the class to get data from
+    query -- autocomplete query to perform on the database
+    returns json with results stored in an array
+
     """
-    results = []
-    for item in db_list:
-        results.append(getattr(item, field))
+    class_name_lower = class_name.lower()
+
+    # is there a more pythonic way to do associate the key to the class? 
+    db_list = None
+    field = ''
+    if class_name_lower == "neighborhood":
+        field = 'primary_name'
+        db_list = Neighborhood.objects.filter(primary_name__icontains=query)
+    elif class_name_lower == "school":
+        field = 'site_name'
+        db_list = Location.objects.filter(site_name__icontains=query)
+    else:
+        return HttpResponse('{"error": "Invalid search parameter ' + class_name + '"}', mimetype='application/json')
+
+    db_list = db_list.values(field)
+    comparison = [TermDistance(item[field], query) for item in db_list]
+    comparison = sorted(comparison, key=attrgetter('termDistance', 'a'))
+    results = [item.a for item in comparison]
     data = {
-        'response': results
+        class_name_lower: results
     }
-    return simplejson.dumps(data)
+
+    return HttpResponse(simplejson.dumps(data), mimetype='application/json')
 
