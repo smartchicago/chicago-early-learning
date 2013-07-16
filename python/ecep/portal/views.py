@@ -6,13 +6,14 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
 from django.db.models import Q
 from django.conf import settings
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from models import Location
 import logging, hashlib
 from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
 from django.utils import translation
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -95,3 +96,33 @@ def setlang(request, language):
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
 
     return response
+
+# Location Stuff
+def location_details(location_id):
+    """
+    Helper method that gets all the fields for a specific location.
+
+    This is called by the detail page and the comparison page.
+    """
+    item = get_object_or_404(Location, id=location_id)
+    return item.get_context_dict()
+
+def location(request, location_id):
+    """
+    Render a detail page for a single location.
+    """
+    context = location_details(location_id)
+
+    tpl = 'location.html'
+
+    context = RequestContext(request, context)
+    return render_to_response(tpl, context_instance=context)
+
+def location_position(request, location_id):
+    """
+    Render a json response with the longitude and latitude of a single location.
+    """
+    loc = get_object_or_404(Location, id=location_id)
+    results = [{'pk': location_id, 'lng':loc.geom[0], 'lat': loc.geom[1]}]
+    return HttpResponse(json.dumps(results), content_type="application/json")
+

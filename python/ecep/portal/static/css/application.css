@@ -375,6 +375,22 @@ h1, h2, h3, h4 {
 		margin: 0;
 	}
 
+/* Single School View */
+#location-map {
+    height: 250px;
+    margin-top: 75px;
+    margin-bottom: 25px;
+}
+
+/* necessary to display leaflet
+   icons above google map layer */
+.leaflet-map-pane {
+      z-index: 2 !important;
+}
+
+.leaflet-google-layer {
+    z-index: 1 !important;
+}
 
 /* Partners ------------------------ */
 
