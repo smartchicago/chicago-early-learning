@@ -42,9 +42,8 @@ class Location(models.Model):
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
     display_include = set([
-        'ages', 'is_full_day', 'is_part_day', 'is_full_week', 'is_part_week', 'is_school_year',
-        'is_full_year', 'accred', 'is_community_based', 'is_cps_based', 'is_home_visiting',
-        'is_hs', 'is_ehs'])
+        'ages', 'prg_hours', 'accred', 'is_community_based', 'is_cps_based', 'is_home_visiting',
+        'is_hs', 'is_ehs', 'accept_ccap'])
 
     def __unicode__(self):
         return self.site_name
