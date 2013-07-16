@@ -155,6 +155,8 @@ class Location(models.Model):
                 continue
             lang_list.append(lang)
         languages = ", ".join(lang_list)
+        if languages != '':
+            sfields.append((_('Languages (other than English)'), languages))
 
         # Program Duration
         if self.is_full_year:
@@ -168,7 +170,6 @@ class Location(models.Model):
         else:
             sfields.append((_('Weekday Availability'), 'Partial Week'))
 
-        sfields.append((_('Languages (other than English)'), languages))
         bfields.sort()
         sfields.sort(key=lambda a: a[0])
         return { 'item': self, 'sfields': sfields, 'bfields': bfields }
