@@ -18,3 +18,4 @@ config/django-celery.local.config
 
 hosts
 .vagrant/
+thumbs.db
