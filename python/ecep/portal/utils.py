@@ -1,35 +1,41 @@
 class TermDistance:
+    """ TermDistance utility class for portal autocomplete
+    
+    Use a pseudo-hamming distance to compare a string field of the
+        django ValueQuerySet against an arbitrary term
 
-    def __init__(self, a, b):
-
+    """
+    def __init__(self, obj, field, term):
         """Initialize TermDistance class
 
-        Computes a type of hamming distance to determine how similar the strings are
-        Useful for sorting
-
-        a -- first string in comparison 
-        b -- second string in comparison 
-
-        TODO: Update termDistance when a or b are changed
+        obj -- obj of type ValuesQuerySet
+        field -- field in ValuesQuerySet to do the comparison with
+        term -- second string in comparison
 
         """
-        if not a:
-            a = ""
-        if not b:
-            b = ""
+        if not obj:
+            raise ValueError("object required for sorting")
+        if not field:
+            raise ValueError("database field required for sorting")
+        if not term:
+            term = ""
+        if not obj[field]:
+            raise ValueError("field " + field + " not in obj " + str(obj))
 
-        self.a = a
-        self.b = b
+        self.obj = obj
+        self.field = field
+        self.field_value = self.obj[field]
+        self.term = term
         self.getTermDistance()
 
     def getTermDistance(self):
-        """Compute pseudo-hamming distance for the strs
+        """Compute pseudo-hamming distance for the two strs
 
         Result stored in self.termDistance
 
         """
-        a = self.a.lower()
-        b = self.b.lower()
+        a = self.field_value.lower()
+        b = self.term.lower()
         alen = len(a)
         blen = len(b)
         minlen = min(alen, blen)
@@ -44,7 +50,5 @@ class TermDistance:
         return self.__str__()
 
     def __str__(self):
-
         """ String representation of TermDistance """
-
-        return "[" + self.a + "|" + self.b + "|" + str(self.termDistance) + "]"
+        return "[" + self.field_value + "|" + self.term + "|" + str(self.termDistance) + "]"

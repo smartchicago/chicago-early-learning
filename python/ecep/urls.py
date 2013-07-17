@@ -25,7 +25,7 @@ urlpatterns = patterns(
         {'url': '/static/images/favicon.ico'}),
 
     # portal autocomplete api
-    url(r'^api/portal/(?P<class_name>\S+)/(?P<query>\S+)/$', 'portal.views.api'),
+    url(r'^api/autocomplete/(?P<query>\S+)/$', 'portal.views.portal_autocomplete'),
 
     # Telephony
     url(r'^sms/handler/?$', Sms.as_view()),

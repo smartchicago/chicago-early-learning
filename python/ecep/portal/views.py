@@ -8,7 +8,8 @@ from django.db.models import Q
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from models import Location, Neighborhood
-import logging, hashlib
+import hashlib
+import logging
 from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
@@ -25,17 +26,18 @@ logger = logging.getLogger(__name__)
 def get_opts(selected_val='2'):
     """
     Gets option list for the distance dropdown (see base.html)
-    selected_val: string representing the value of the dropdown that should be selected
+    selected_val: string representing the value of the dropdown that
+                  should be selected
     Default is '2'
     """
     # Options for distance dropdown
     # option value => (option text, enabled)
-    distance_opts = { '-1': [_('Distance'), False],
-                      '0.5': [_('< 0.5 mi'), False],
-                      '1': [_('< 1 mi'), False],
-                      '2': [_('< 2 mi'), False],
-                      '5': [_('< 5 mi'), False],
-                      '10': [_('< 10 mi'), False] }
+    distance_opts = {'-1': [_('Distance'), False],
+                     '0.5': [_('< 0.5 mi'), False],
+                     '1': [_('< 1 mi'), False],
+                     '2': [_('< 2 mi'), False],
+                     '5': [_('< 5 mi'), False],
+                     '10': [_('< 10 mi'), False]}
 
     key = selected_val if selected_val in distance_opts else '2'
     distance_opts[key][1] = True
@@ -44,7 +46,7 @@ def get_opts(selected_val='2'):
 
 
 def index(request):
-    ctx = RequestContext(request, { })
+    ctx = RequestContext(request, {})
     response = render_to_response('index.html', context_instance=ctx)
     return response
 
@@ -100,39 +102,46 @@ def setlang(request, language):
     return response
 
 
-def api(request, class_name, query):
-    """ View for handling portal api requests
+def portal_autocomplete(request, query):
+    """ Return as json Location & Neighborhood names that match query
 
-    Make query against the database for relevant Location and Neighborhood
-        requests. Uses the TermDistance class to sort first by relevance to query,
-        then alphabetically.
+    Make query against the database for Locations and Neighborhoods with
+        matching names. Uses the TermDistance class to sort first by relevance
+        to query, then alphabetically.
 
-    class_name -- case-insensitive name of the class to get data from
+    json output format:
+    {
+        "neighborhoods": [
+            {
+                "id": 1,
+                "name": "name"
+            }
+        ],
+        "locations": [
+            {
+                "id": 1,
+                "name": "name"
+            }
+
+        ]
+    }
+
     query -- autocomplete query to perform on the database
-    returns json with results stored in an array
 
     """
-    class_name_lower = class_name.lower()
+    neighborhoods = Neighborhood.objects.filter(primary_name__icontains=query).values('id', 'primary_name')
+    neighborhood_comparison = [TermDistance(neighborhood, 'primary_name', query) for neighborhood in neighborhoods]
+    neighborhood_comparison = sorted(neighborhood_comparison, key=attrgetter('termDistance', 'field_value'))
+    sorted_neighborhoods = [{"id": item.obj.get('id'), "name": item.field_value} for item in neighborhood_comparison]
 
-    # is there a more pythonic way to do associate the key to the class? 
-    db_list = None
-    field = ''
-    if class_name_lower == "neighborhood":
-        field = 'primary_name'
-        db_list = Neighborhood.objects.filter(primary_name__icontains=query)
-    elif class_name_lower == "school":
-        field = 'site_name'
-        db_list = Location.objects.filter(site_name__icontains=query)
-    else:
-        return HttpResponse('{"error": "Invalid search parameter ' + class_name + '"}', mimetype='application/json')
+    locations = Location.objects.filter(site_name__icontains=query).values('id', 'site_name')
+    location_comparison = [TermDistance(location, 'site_name', query) for location in locations]
+    location_comparison = sorted(location_comparison, key=attrgetter('termDistance', 'field_value'))
+    sorted_locations = [{"id": item.obj.get('id'),  "name": item.field_value} for item in location_comparison]
 
-    db_list = db_list.values(field)
-    comparison = [TermDistance(item[field], query) for item in db_list]
-    comparison = sorted(comparison, key=attrgetter('termDistance', 'a'))
-    results = [item.a for item in comparison]
     data = {
-        class_name_lower: results
+        "neighborhoods": sorted_neighborhoods,
+        "locations": sorted_locations
     }
 
     return HttpResponse(simplejson.dumps(data), mimetype='application/json')
-
