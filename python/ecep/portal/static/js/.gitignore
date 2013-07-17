@@ -1,3 +1,3 @@
 # Ignore build artifact
-*.min.js
+cel-build/
 

@@ -23,7 +23,7 @@ See LICENSE in the project root for copying permission
     <link href='{% static "css/responsive.css" %}' rel="stylesheet">
 
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
+      <script src='{% static "js/html5shiv.js" %}'></script>
     <![endif]-->
         
     <script type="text/javascript">
@@ -72,7 +72,8 @@ See LICENSE in the project root for copying permission
     {% block content %}{% endblock %}
 
     <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
-    <script type="text/javascript"> (function() {
+    <script type="text/javascript">
+    (function() {
         var ga = document.createElement('script');
         ga.type = 'text/javascript';
         ga.async = true;
@@ -82,16 +83,17 @@ See LICENSE in the project root for copying permission
     })();
     </script>
     
-        <script src='{% static "js/require.js" %}'></script>
+    <script src='{% static "js/require.js" %}'></script>
     <script>
         /// These settings are mirrored in build.main.js, if you're going to change them check there too
         requirejs.config({
             //By default load any module IDs from js/lib
-            baseUrl: '{% static "js/lib" %}',
+            baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
+                '{% static "js/cel" %}' : '{% static "js/cel-build" %}'),
         });
         
         // TODO: right now we're always loading everything, may want to rethink this
-        require(['../' + ('{{ settings.DEBUG }}' === 'True' ? 'main' : 'main.min')]);
+        require(['common'], function() {});
     </script>
 
     {% block scripts %}{% endblock %}

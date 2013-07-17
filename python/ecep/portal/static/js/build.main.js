@@ -10,14 +10,17 @@
     // and https://github.com/jrburke/r.js/blob/master/build/example.build.js
     // for docs.
 
+    appDir: 'cel',
+    dir: 'cel-build',
+    
     // By default load any module IDs from js/lib
-    baseUrl: 'lib',
+    baseUrl: '../lib',
     
     // Build output file
-    out: 'main.min.js',
+    // out: 'main.min.js',
     
     // Modules to optimize into out file
-    include: ['main'],
+    // include: ['main'],
     
     // Modules to exclude from optimization (usually large, already minified libraries)
     exclude: ['jquery'],
@@ -28,8 +31,14 @@
     // never includes a '.js' extension since
     // the paths config could be for a directory.
     paths: {
-        cel: '../cel',
         jquery: 'jquery-1.10.2.min',
-        main: '../main'
-    }
+        common: '../cel/common'
+    },
+    
+    modules: [
+        {
+            name: 'common',
+            include: 'common'
+        }
+    ]
 })
