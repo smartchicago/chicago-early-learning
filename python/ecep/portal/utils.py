@@ -5,7 +5,7 @@ class TermDistance:
         django ValueQuerySet against an arbitrary term
 
     """
-    def __init__(self, obj, field, term):
+    def __init__(self, obj, objtype, field, term):
         """Initialize TermDistance class
 
         obj -- obj of type ValuesQuerySet
@@ -19,6 +19,8 @@ class TermDistance:
             raise ValueError("database field required for sorting")
         if not term:
             term = ""
+        if not objtype:
+            objtype = ""
         if not obj[field]:
             raise ValueError("field " + field + " not in obj " + str(obj))
 
@@ -26,6 +28,7 @@ class TermDistance:
         self.field = field
         self.field_value = self.obj[field]
         self.term = term
+        self.objtype = objtype
         self.getTermDistance()
 
     def getTermDistance(self):

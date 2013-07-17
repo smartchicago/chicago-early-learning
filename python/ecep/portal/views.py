@@ -111,37 +111,91 @@ def portal_autocomplete(request, query):
 
     json output format:
     {
-        "neighborhoods": [
+        "response": [
             {
-                "id": 1,
-                "name": "name"
-            }
-        ],
-        "locations": [
-            {
-                "id": 1,
-                "name": "name"
-            }
-
+                "id": object database id,
+                "name": "object name",
+                "type": "type of object"
+            }, ...
         ]
     }
 
     query -- autocomplete query to perform on the database
 
     """
-    neighborhoods = Neighborhood.objects.filter(primary_name__icontains=query).values('id', 'primary_name')
-    neighborhood_comparison = [TermDistance(neighborhood, 'primary_name', query) for neighborhood in neighborhoods]
-    neighborhood_comparison = sorted(neighborhood_comparison, key=attrgetter('termDistance', 'field_value'))
-    sorted_neighborhoods = [{"id": item.obj.get('id'), "name": item.field_value} for item in neighborhood_comparison]
-
     locations = Location.objects.filter(site_name__icontains=query).values('id', 'site_name')
-    location_comparison = [TermDistance(location, 'site_name', query) for location in locations]
-    location_comparison = sorted(location_comparison, key=attrgetter('termDistance', 'field_value'))
-    sorted_locations = [{"id": item.obj.get('id'),  "name": item.field_value} for item in location_comparison]
+    comparison = [TermDistance(location, 'location', 'site_name', query) for location in locations]
+
+    neighborhoods = Neighborhood.objects.filter(primary_name__icontains=query).values('id', 'primary_name')
+    comparison.extend([TermDistance(neighborhood, 'neighborhood', 'primary_name', query)
+                       for neighborhood in neighborhoods])
+
+    comparison = sorted(comparison, key=attrgetter('termDistance', 'field_value'))
+    sorted_comparisons = [{"id": item.obj['id'],  "name": item.field_value, "type": item.objtype}
+                          for item in comparison]
 
     data = {
-        "neighborhoods": sorted_neighborhoods,
-        "locations": sorted_locations
+        "response": sorted_comparisons
     }
 
     return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+
+
+class TermDistance:
+    """ TermDistance utility class for portal autocomplete
+
+    Use a pseudo-hamming distance to compare a string field of the
+        django ValueQuerySet against an arbitrary term
+
+    """
+    def __init__(self, obj, objtype, field, term):
+        """Initialize TermDistance class
+
+        obj -- obj of type ValuesQuerySet
+        objtype -- type of database object eg. Neighborhood or Location
+        field -- field in ValuesQuerySet to do the comparison with
+        term -- second string in comparison
+
+        """
+        if not obj:
+            raise ValueError("object required for sorting")
+        if not field:
+            raise ValueError("database field required for sorting")
+        if not term:
+            term = ""
+        if not objtype:
+            objtype = ""
+        if not obj[field]:
+            raise ValueError("field " + field + " not in obj " + str(obj))
+
+        self.obj = obj
+        self.field = field
+        self.field_value = self.obj[field]
+        self.term = term
+        self.objtype = objtype
+        self.getTermDistance()
+
+    def getTermDistance(self):
+        """Compute pseudo-hamming distance for the two strs
+
+        Result stored in self.termDistance
+
+        """
+        a = self.field_value.lower()
+        b = self.term.lower()
+        alen = len(a)
+        blen = len(b)
+        minlen = min(alen, blen)
+        result = 0
+
+        for i in range(minlen):
+            result += (i + 1) * abs(ord(a[i]) - ord(b[i]))
+
+        self.termDistance = result
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        """ String representation of TermDistance """
+        return "[" + self.field_value + "|" + self.term + "|" + str(self.termDistance) + "]"
