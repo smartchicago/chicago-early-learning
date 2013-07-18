@@ -6,7 +6,7 @@
 
 'use strict';
  
-define(['jquery', 'Leaflet', 'server-vars'], function($, L, serverVars) {
+define(['jquery', 'Leaflet', 'server-vars', 'common'], function($, L, serverVars) {
     // These nested require statements are kind of silly, but I need serverVars.gmapKey...
     var gmapRequire = "async!http://maps.googleapis.com/maps/api/js?v=3.2&key=" +
         serverVars.gmapKey + "&sensor=false";

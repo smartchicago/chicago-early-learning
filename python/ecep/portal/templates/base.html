@@ -83,6 +83,7 @@ See LICENSE in the project root for copying permission
     </script>
     
     <script src='{% static "js/require.js" %}'></script>
+    <script src='{% static "js/require-config.js" %}'></script>
     <script>
         /// These settings are mirrored in build.main.js, if you're going to change them check there too
         requirejs.config({
@@ -103,8 +104,12 @@ See LICENSE in the project root for copying permission
         });
         
         // This forces loading of minified common libs rather than loading them separately
-        require(['common'], function() {});
-    </script>
+        require(['common'], function() { });
+     </script>
+     <!-- common must be loaded synchronously because it modifies require config
+          that the rest of the modules depend on
+     <script data-main='{% static "js/require-config.js" %}' src="scripts/require.js"></script>
+     -->
 
     {% block scripts %}{% endblock %}
     <!-- <script src="http://maps.googleapis.com/maps/api/js?v=3.2&key={{ settings.GOOGLE_MAPS_KEY }}&sensor=false"></script> -->
