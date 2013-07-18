@@ -3,19 +3,20 @@
 
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
-from django.views.decorators.cache import cache_control
-from django.db.models import Q
+#from django.views.decorators.cache import cache_control
+#from django.db.models import Q
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+#from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect
 from models import Location, Neighborhood
-import hashlib
+#import hashlib
 import logging
 from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
-from django.utils import translation, simplejson
+from django.utils import simplejson
+#from django.utils import translation, simplejson
 from operator import attrgetter
-from portal.utils import TermDistance
 import json
 
 logger = logging.getLogger(__name__)
