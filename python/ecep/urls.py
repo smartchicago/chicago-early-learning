@@ -24,6 +24,9 @@ urlpatterns = patterns(
     url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to',
         {'url': '/static/images/favicon.ico'}),
 
+    # portal autocomplete api
+    url(r'^api/autocomplete/(?P<query>\S+)/$', 'portal.views.portal_autocomplete'),
+
     # Telephony
     url(r'^sms/handler/?$', Sms.as_view()),
     url(r'^sms/error/?$', 'django_twilio.views.sms', {
