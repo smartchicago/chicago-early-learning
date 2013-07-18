@@ -32,12 +32,19 @@ requirejs.config({
         'Leaflet-google': {
             deps: ['Leaflet'],
             exports: 'L.Google'
+        },
+        '../lib/response': {
+            deps: ['jquery'],
+            exports: 'Response',
+            init: function ($) {
+                return this.Response.noConflict();
+            }
         }
     },
     enforceDefine: true
 });
 
-define(['jquery', 'Leaflet', '../lib/Response', 'bootstrap', 'Leaflet-google'], function($, L, Response) {
+define(['jquery', 'Leaflet', '../lib/response', 'bootstrap', 'Leaflet-google'], function($, L, Response) {
     // See http://requirejs.org/docs/api.html for details
     console.debug('common.js loaded!');
     if ($) {
