@@ -15,7 +15,6 @@ from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
 from django.utils import translation, simplejson
 from operator import attrgetter
-from portal.utils import TermDistance
 import json
 
 logger = logging.getLogger(__name__)
