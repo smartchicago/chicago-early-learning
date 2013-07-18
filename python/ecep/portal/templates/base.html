@@ -85,14 +85,10 @@ See LICENSE in the project root for copying permission
     <script src='{% static "js/require.js" %}'></script>
     <script src='{% static "js/require-config.js" %}'></script>
     <script>
-        /// These settings are mirrored in build.main.js, if you're going to change them check there too
         requirejs.config({
             //By default load any module IDs from js/lib
             baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
-                '{% static "js/cel" %}' : '{% static "js/cel-build" %}'),
-            paths: {
-                async: '../lib/require-plugins/async'
-            }
+                '{% static "js/cel" %}' : '{% static "js/cel-build" %}')
         });
         
         define('server-vars', function() {
@@ -106,12 +102,7 @@ See LICENSE in the project root for copying permission
         // This forces loading of minified common libs rather than loading them separately
         require(['common'], function() { });
      </script>
-     <!-- common must be loaded synchronously because it modifies require config
-          that the rest of the modules depend on
-     <script data-main='{% static "js/require-config.js" %}' src="scripts/require.js"></script>
-     -->
 
     {% block scripts %}{% endblock %}
-    <!-- <script src="http://maps.googleapis.com/maps/api/js?v=3.2&key={{ settings.GOOGLE_MAPS_KEY }}&sensor=false"></script> -->
   </body> 
 </html> 

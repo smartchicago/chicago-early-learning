@@ -2,17 +2,14 @@
  * This file MUST be loaded asynchronously on all pages for require to work
  */
 
+// These settings are mirrored in build.main.js, if you're going to change them check there too
 requirejs.config({
-    //except, if the module ID starts with 'app',
-    //load it from the js/app directory. paths
-    //config is relative to the baseUrl, and
-    //never includes a '.js' extension since
-    //the paths config could be for a directory.
     paths: {
         jquery: '../lib/jquery-1.10.2.min',
         bootstrap: '../lib/bootstrap',
         Leaflet: '../lib/leaflet',
-        'Leaflet-google': '../lib/leaflet-google'
+        'Leaflet-google': '../lib/leaflet-google',
+        async: '../lib/require-plugins/async'
     },
     shim: {
         'bootstrap': {
