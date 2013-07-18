@@ -90,14 +90,25 @@ See LICENSE in the project root for copying permission
             baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
                 '{% static "js/cel" %}' : '{% static "js/cel-build" %}')
         });
-        
-        define('server-vars', function() {
-            return {
+         
+        // Cheat to win, make a global object
+        // We need this because:
+        //   a) We can only render this in a django template
+        //   b) We need access to the GOOGLE_MAPS_KEY to load google maps using require.
+        //      If we put it in an AMD module, we have to first load the module, then 
+        //      have a nested require statement to load google maps, which is a PITA.
+        //      
+        // So, if you need to require google maps, do something like
+        // define([CEL.serverVars.gmapRequire], function() { ... })
+        CEL = {
+            serverVars: {
                 latSettings: '{{ settings.LATITUDE }}',
                 lngSettings: '{{ settings.LONGITUDE}}',
-                gmapKey: '{{ settings.GOOGLE_MAPS_KEY }}'
-            };
-        });
+                gmapKey: '{{ settings.GOOGLE_MAPS_KEY }}',
+                gmapRequire: 'async!http://maps.googleapis.com/maps/api/js?v=3.2&key=' +
+                     '{{ settings.GOOGLE_MAPS_KEY }}' + '&sensor=false'
+            }
+        };
         
         // This forces loading of minified common libs rather than loading them separately
         require(['common'], function() { });
