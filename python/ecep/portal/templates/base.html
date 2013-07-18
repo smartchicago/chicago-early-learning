@@ -23,7 +23,7 @@ See LICENSE in the project root for copying permission
     <link href='{% static "css/responsive.css" %}' rel="stylesheet">
 
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
+      <script src='{% static "js/html5shiv.js" %}'></script>
     <![endif]-->
         
     <script type="text/javascript">
@@ -34,7 +34,6 @@ See LICENSE in the project root for copying permission
             _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
         });
     </script>
-    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     {% block otherhead %}{% endblock %}
   </head> 
   <body>
@@ -72,7 +71,8 @@ See LICENSE in the project root for copying permission
     {% block content %}{% endblock %}
 
     <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
-    <script type="text/javascript"> (function() {
+    <script type="text/javascript">
+    (function() {
         var ga = document.createElement('script');
         ga.type = 'text/javascript';
         ga.async = true;
@@ -81,26 +81,28 @@ See LICENSE in the project root for copying permission
         s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    
+    <script src='{% static "js/require.js" %}'></script>
+    <script src='{% static "js/require-config.js" %}'></script>
+    <script>
+        requirejs.config({
+            //By default load any module IDs from js/lib
+            baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
+                '{% static "js/cel" %}' : '{% static "js/cel-build" %}')
+        });
+        
+        define('server-vars', function() {
+            return {
+                latSettings: '{{ settings.LATITUDE }}',
+                lngSettings: '{{ settings.LONGITUDE}}',
+                gmapKey: '{{ settings.GOOGLE_MAPS_KEY }}'
+            };
+        });
+        
+        // This forces loading of minified common libs rather than loading them separately
+        require(['common'], function() { });
+     </script>
 
     {% block scripts %}{% endblock %}
-
-    {% comment %}
-    For now this is just a dummy js file, at some point we should probably change it to app-common.js or something
-    {% endcomment %}
-    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
-    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/response.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/holder.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/application.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/leaflet.js' %}"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?v=3.2&key={{ settings.GOOGLE_MAPS_KEY }}&sensor=false"></script>
-    <script src="{% static 'js/leaflet-google.js' %}"></script>
-    <script type="text/javascript">
-      // Settings for Latitude and Longitude //
-      var latSettings = "{{ settings.LATITUDE }}";
-      var lngSettings = "{{ settings.LONGITUDE}}";
-    </script>
-    <script src="{% static 'js/location-marker.js' %}"></script>
   </body> 
 </html> 
