@@ -24,12 +24,12 @@ logger = logging.getLogger(__name__)
 
 # TODO: We probably don't need this function for the new version, I'm moving
 # it in from the old version for now to avoid lots of refactoring.
-def get_opts(selected_val='2'):
-    """
-    Gets option list for the distance dropdown (see base.html)
+def _get_opts(selected_val='2'):
+    """Gets option list for the distance dropdown (see base.html)
     selected_val: string representing the value of the dropdown that
-                  should be selected
-    Default is '2'
+                  should be selected.
+                  Default is '2'
+
     """
     # Options for distance dropdown
     # option value => (option text, enabled)
@@ -54,13 +54,21 @@ def index(request):
 
 def about(request):
     ctx = RequestContext(request, {
-        'options': get_opts(),
+        'options': _get_opts(),
         'mapbarEnabled': True
     })
     return render_to_response('about.html', context_instance=ctx)
 
 
+def search(request):
+    ctx = RequestContext(request, {})
+    response = render_to_response('search.html', context_instance=ctx)
+    return response
+
+
 class TopicWrapper(object):
+    """Wrapper for Topic model, enforces visibility rules for anonymous users"""
+
     topic = None
     questions = None
 
@@ -85,7 +93,7 @@ def faq(request):
 
     ctx = RequestContext(request, {
         'topics': [TopicWrapper(t, request) for t in topics],
-        'options': get_opts(),
+        'options': _get_opts(),
         'mapbarEnabled': True
     })
     return render_to_response(tpl, context_instance=ctx)
