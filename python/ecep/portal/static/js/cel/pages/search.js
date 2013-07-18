@@ -38,9 +38,7 @@ require(['jquery', CEL.serverVars.gmapRequire], function($) {
                 $('.locations-wrapper').animate({
                     top: top
                 }, duration);
-            },
-            onShown = function() { animateLocationWrappers(getHeight(), 175); },
-            onHidden = function() { animateLocationWrappers(getHeight(), 175); },
+            };
 
         $('.locations-wrapper').css('top', getHeight());
 
