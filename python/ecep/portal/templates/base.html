@@ -34,7 +34,6 @@ See LICENSE in the project root for copying permission
             _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
         });
     </script>
-    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     {% block otherhead %}{% endblock %}
   </head> 
   <body>
@@ -90,31 +89,24 @@ See LICENSE in the project root for copying permission
             //By default load any module IDs from js/lib
             baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
                 '{% static "js/cel" %}' : '{% static "js/cel-build" %}'),
+            paths: {
+                async: '../lib/require-plugins/async'
+            }
         });
         
-        // TODO: right now we're always loading everything, may want to rethink this
+        define('server-vars', function() {
+            return {
+                latSettings: '{{ settings.LATITUDE }}',
+                lngSettings: '{{ settings.LONGITUDE}}',
+                gmapKey: '{{ settings.GOOGLE_MAPS_KEY }}'
+            };
+        });
+        
+        // This forces loading of minified common libs rather than loading them separately
         require(['common'], function() {});
     </script>
 
     {% block scripts %}{% endblock %}
-
-    {% comment %}
-    For now this is just a dummy js file, at some point we should probably change it to app-common.js or something
-    {% endcomment %}
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/response.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/holder.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/application.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/leaflet.js' %}"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?v=3.2&key={{ settings.GOOGLE_MAPS_KEY }}&sensor=false"></script>
-    <script src="{% static 'js/leaflet-google.js' %}"></script>
-    <script type="text/javascript">
-      // Settings for Latitude and Longitude //
-      var latSettings = "{{ settings.LATITUDE }}";
-      var lngSettings = "{{ settings.LONGITUDE}}";
-    </script>
-    <script src="{% static 'js/location-marker.js' %}"></script>
+    <!-- <script src="http://maps.googleapis.com/maps/api/js?v=3.2&key={{ settings.GOOGLE_MAPS_KEY }}&sensor=false"></script> -->
   </body> 
 </html> 

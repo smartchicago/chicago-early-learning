@@ -45,3 +45,9 @@ See LICENSE in the project root for copying permission
 </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+<script>
+require(['location-marker'], function() { });
+</script>
+{% endblock %}
