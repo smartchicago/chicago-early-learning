@@ -34,66 +34,70 @@ define(['jquery-ui-autocomplete', 'Leaflet', '../lib/response', 'bootstrap', 'Le
                 url: "http://maps.googleapis.com/maps/api/geocode/json",
                 data: {
                     sensor: false,
-            components: "country:US",
-            address: request.term
+                    components: "country:US",
+                    address: request.term
                 },
                 success: function(json) {
                     if (!json || !json.results) return;
                     var data = json.results;
                     response($.map(data, function(value) {
+                        var lat = value.geometry.location.lat;
+                        var lon = value.geometry.location.lng;
                         return {
-                            "lat": value.geometry.location.lat,
-                        "lon": value.geometry.location.lon,
-                        "label": value.formatted_address,
-                        "value": value.formatted_address
+                            "lat": lat, 
+                            "lon": lon, 
+                            "label": value.formatted_address,
+                            "value": value.formatted_address
                         };
                     }));
                 }, 
                 error: function(e, status, error) {
-                    //console.log('Google Geocoder Error', e);
                     response(['No Results']);
                 }
             });
         }
 
         // autocomplete for all textboxes on the page
+        //  first tries Location and Neighborhood, then attempts to geocode the request
         $('.autocomplete-searchbox').autocomplete({
             source: function(request, response) {
                 $.ajax({
                     url: "/api/autocomplete/" + encodeURIComponent(request.term),
-                success: function(json) {
-                    if (!json || !json.response) return;
-                    var data = json.response;
-                    if (data.length > 0) {
-                        // use returned schools and neighborhoods
-                        response($.map(data, function(value) {
-                            return {
-                                "id": value.id,
-                            "type": value.type,
-                            "label": value.name,
-                            "value": value.name
-                            }
-                        }));
-                    } else {
-                        //console.log('Location/Neighborhood API empty');
+                    success: function(json) {
+                        if (!json || !json.response) return;
+                        var data = json.response;
+                        if (data.length > 0) {
+                            // use returned schools and neighborhoods
+                            response($.map(data, function(value) {
+                                return {
+                                    "id": value.id,
+                                    "type": value.type,
+                                    "label": value.name,
+                                    "value": value.name
+                                }
+                            }));
+                        } else {
+                            getGeocoderAddresses(request, response);
+                        }
+                    },
+                    error: function(e, status, error) {
                         getGeocoderAddresses(request, response);
                     }
-                },
-                error: function(e, status, error) {
-                    //console.log('Location/Neighborhood API Error');
-                    getGeocoderAddresses(request, response);
-                }
                 });
             },
             select: function(event, ui) {
                 if (ui.item) {
-                    // dummy functionality opens single location view on select
+                    // TODO: implement real functionality here
                     if (ui.item.type == "location") {
                         window.location.href = "/location/"+ui.item.id;
+                    } else if (ui.item.type == "neighborhood") {
+                        alert("Selected: " + ui.item.id + ", " + ui.item.label);
+                    } else if (ui.item.lat && ui.item.lon) {
+                        alert("Selected: " + ui.item.lat + ", " + ui.item.lon);
                     }
                 }
             },
-            minLength: 2
+            minLength: 2        // do not make a request until we have typed two chars
         });
     });
 
