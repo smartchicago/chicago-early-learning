@@ -16,7 +16,7 @@ from django.utils.translation import check_for_language
 from django.utils import translation, simplejson
 from operator import attrgetter
 from portal.utils import TermDistance
-
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -199,3 +199,35 @@ class TermDistance:
     def __str__(self):
         """ String representation of TermDistance """
         return "[" + self.field_value + "|" + self.term + "|" + str(self.termDistance) + "]"
+
+
+# Location Stuff
+def location_details(location_id):
+    """
+    Helper method that gets all the fields for a specific location.
+
+    This is called by the detail page and the comparison page.
+    """
+    item = get_object_or_404(Location, id=location_id)
+    return item.get_context_dict()
+
+
+def location(request, location_id):
+    """
+    Render a detail page for a single location.
+    """
+    context = location_details(location_id)
+
+    tpl = 'location.html'
+
+    context = RequestContext(request, context)
+    return render_to_response(tpl, context_instance=context)
+
+
+def location_position(request, location_id):
+    """
+    Render a json response with the longitude and latitude of a single location.
+    """
+    loc = get_object_or_404(Location, id=location_id)
+    results = [{'pk': location_id, 'lng': loc.geom[0], 'lat': loc.geom[1]}]
+    return HttpResponse(json.dumps(results), content_type="application/json")

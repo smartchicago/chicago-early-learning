@@ -14,16 +14,16 @@ See LICENSE in the project root for copying permission
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    
 
     <link rel="icon" href='{% static "favicon.ico" %}' type="image/x-icon">
     <link rel="shortcut icon" href='{% static "favicon.ico" %}' type="image/x-icon">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
     <link href='{% static "css/bootstrap.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
     <link href='{% static "css/responsive.css" %}' rel="stylesheet">
 
     <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
+      <script src='{% static "js/html5shiv.js" %}'></script>
     <![endif]-->
         
     <script type="text/javascript">
@@ -67,11 +67,12 @@ See LICENSE in the project root for copying permission
         </ul>
       </div>
     </div>
-    
+</div>
     {% block content %}{% endblock %}
 
     <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
-    <script type="text/javascript"> (function() {
+    <script type="text/javascript">
+    (function() {
         var ga = document.createElement('script');
         ga.type = 'text/javascript';
         ga.async = true;
@@ -80,12 +81,28 @@ See LICENSE in the project root for copying permission
         s.parentNode.insertBefore(ga, s);
     })();
     </script>
+    
+    <script src='{% static "js/require.js" %}'></script>
+    <script src='{% static "js/require-config.js" %}'></script>
+    <script>
+        requirejs.config({
+            //By default load any module IDs from js/lib
+            baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
+                '{% static "js/cel" %}' : '{% static "js/cel-build" %}')
+        });
+        
+        define('server-vars', function() {
+            return {
+                latSettings: '{{ settings.LATITUDE }}',
+                lngSettings: '{{ settings.LONGITUDE}}',
+                gmapKey: '{{ settings.GOOGLE_MAPS_KEY }}'
+            };
+        });
+        
+        // This forces loading of minified common libs rather than loading them separately
+        require(['common'], function() { });
+     </script>
 
     {% block scripts %}{% endblock %}
-
-    {% comment %}
-    For now this is just a dummy js file, at some point we should probably change it to app-common.js or something
-    {% endcomment %}
-    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
   </body> 
 </html> 

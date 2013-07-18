@@ -121,7 +121,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.gis',
     'portal',
-    'portal.sms',
     'django_twilio',
     'gunicorn',
     'faq',

@@ -17,6 +17,7 @@ system_packages:
   - python-pip
   - rabbitmq-server
   - apache2-utils
+  - nodejs
 
 repos_to_add:
   - ppa:chris-lea/node.js
