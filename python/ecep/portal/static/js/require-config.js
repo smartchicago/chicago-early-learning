@@ -9,7 +9,9 @@ requirejs.config({
         bootstrap: '../lib/bootstrap',
         Leaflet: '../lib/leaflet',
         'Leaflet-google': '../lib/leaflet-google',
-        async: '../lib/require-plugins/async'
+        Handlebars: '../lib/handlebars',
+        async: '../lib/require-plugins/async',
+        text: '../lib/require-plugins/text'
     },
     shim: {
         'bootstrap': {
@@ -32,6 +34,9 @@ requirejs.config({
             init: function ($) {
                 return this.Response.noConflict();
             }
+        },
+        'Handlebars': {
+            exports: 'Handlebars'
         }
     },
     enforceDefine: true

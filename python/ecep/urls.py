@@ -40,7 +40,7 @@ urlpatterns = patterns(
 
     # Location Views
     url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
-    url(r'^location/(?P<location_id>\d+)/position/$', 'portal.views.location_position'),
+    url(r'^api/location/(?P<location_id>\d+)/$', 'portal.views.location_api'),
 
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
