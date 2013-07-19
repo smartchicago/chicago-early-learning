@@ -131,6 +131,14 @@ class Location(models.Model):
         if self.city.isupper():
             self.city = title(self.city)
 
+        item = {'address': self.address,
+                'city': self.city,
+                'site_name': self.site_name,
+                'zip': self.zip,
+                'url': self.url,
+                'state': self.state,
+                'key': self.pk}
+
         # simple fields to present -- these are the attributes that have text content
         sfields = []
 
