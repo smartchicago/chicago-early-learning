@@ -32,7 +32,8 @@
     // the paths config could be for a directory.
     paths: {
         jquery: 'jquery-1.10.2.min',
-        common: '../cel/common'
+        common: '../cel/common',
+        Handlebars: 'handlebars'
     },
     
     modules: [
