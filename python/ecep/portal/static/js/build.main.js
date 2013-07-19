@@ -32,7 +32,7 @@
     // the paths config could be for a directory.
     paths: {
         jquery: 'jquery-1.10.2.min',
-        jquery-ui-autocomplete: 'jquery-ui-1.10.3.autocomplete-only.min',
+        'jquery-ui': 'jquery-ui-1.10.3.autocomplete-only.min',
         common: '../cel/common'
     },
     

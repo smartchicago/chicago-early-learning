@@ -1,60 +1,44 @@
 /* Main app file for CEL project
  * Mostly stolen from requirejs examples: http://requirejs.org/docs/api.html
+ * See http://requirejs.org/docs/api.html for details
  */
 
 'use strict';
 
-define(['jquery-ui-autocomplete', 'Leaflet', '../lib/response', 'bootstrap', 'Leaflet-google'], function($, L, Response) {
-    // See http://requirejs.org/docs/api.html for details
-    console.debug('common.js loaded!');
-    /*
-    if ($) {
-        console.debug('jquery loaded!');
-    }
-    if ($.fn.popover) {
-        console.debug('bootstrap loaded!');
-    }
-    if (L) {
-        console.debug('Leaflet loaded!');
-    }
-    if (Response) {
-        console.debug('Response loaded!');
-    }
-    if (L.Google) {
-        console.debug('Leaflet-google loaded!');
-    }
-    */
-
+define(['jquery', 'Leaflet', '../lib/response', 'bootstrap', 'Leaflet-google', 'jquery-ui', CEL.serverVars.gmapRequire], 
+        function($, L, Response, gmap) {
+    
     $(document).ready(function() {
 
         // autocomplete helper function that makes the request to
-        //  the google geocoder API
+        //  the google maps geocoder API
         function getGeocoderAddresses(request, response) {
-            $.ajax({
-                url: "http://maps.googleapis.com/maps/api/geocode/json",
-                data: {
-                    sensor: false,
-                    components: "country:US",
-                    address: request.term
-                },
-                success: function(json) {
-                    if (!json || !json.results) return;
-                    var data = json.results;
-                    response($.map(data, function(value) {
-                        var lat = value.geometry.location.lat;
-                        var lon = value.geometry.location.lng;
-                        return {
-                            "lat": lat, 
-                            "lon": lon, 
-                            "label": value.formatted_address,
-                            "value": value.formatted_address
-                        };
-                    }));
-                }, 
-                error: function(e, status, error) {
-                    response(['No Results']);
-                }
-            });
+            var geocoder = new google.maps.Geocoder(),
+                // Static bounds. Ideally these lat/lng pairs should be set to be slightly larger
+                //      than the bounding box of all Locations in the database.
+                northEast = new google.maps.LatLng(42.5, -86.5),
+                southWest = new google.maps.LatLng(41, -89),
+                bounds = new google.maps.LatLngBounds(southWest, northEast);
+
+            geocoder.geocode( 
+                    {
+                        address: request.term,
+                        bounds: bounds,
+                        region: 'US'
+                    }, 
+                    function(results, status) {
+                        response($.map(results, function(result) {
+                            var lat = result.geometry.location[0],
+                                lon = result.geometry.location[1];
+                            return {
+                                lat: lat,
+                                lon: lon,
+                                label: result.formatted_address,
+                                value: result.formatted_address
+                            };
+                        }));
+                    }
+             );
         }
 
         // autocomplete for all textboxes on the page
@@ -62,19 +46,21 @@ define(['jquery-ui-autocomplete', 'Leaflet', '../lib/response', 'bootstrap', 'Le
         $('.autocomplete-searchbox').autocomplete({
             source: function(request, response) {
                 $.ajax({
-                    url: "/api/autocomplete/" + encodeURIComponent(request.term),
+                    url: '/api/autocomplete/' + encodeURIComponent(request.term),
                     success: function(json) {
-                        if (!json || !json.response) return;
+                        if (!json || !json.response) {
+                            return;
+                        }
                         var data = json.response;
                         if (data.length > 0) {
                             // use returned schools and neighborhoods
                             response($.map(data, function(value) {
                                 return {
-                                    "id": value.id,
-                                    "type": value.type,
-                                    "label": value.name,
-                                    "value": value.name
-                                }
+                                    id: value.id,
+                                    type: value.type,
+                                    label: value.name,
+                                    value: value.name
+                                };
                             }));
                         } else {
                             getGeocoderAddresses(request, response);
@@ -88,12 +74,12 @@ define(['jquery-ui-autocomplete', 'Leaflet', '../lib/response', 'bootstrap', 'Le
             select: function(event, ui) {
                 if (ui.item) {
                     // TODO: implement real functionality here
-                    if (ui.item.type == "location") {
-                        window.location.href = "/location/"+ui.item.id;
-                    } else if (ui.item.type == "neighborhood") {
-                        alert("Selected: " + ui.item.id + ", " + ui.item.label);
+                    if (ui.item.type === 'location') {
+                        window.location.href = '/location/'+ui.item.id;
+                    } else if (ui.item.type === 'neighborhood') {
+                        alert('Selected: ' + ui.item.id + ', ' + ui.item.label);
                     } else if (ui.item.lat && ui.item.lon) {
-                        alert("Selected: " + ui.item.lat + ", " + ui.item.lon);
+                        alert('Selected: ' + ui.item.lat + ', ' + ui.item.lon);
                     }
                 }
             },
@@ -102,7 +88,7 @@ define(['jquery-ui-autocomplete', 'Leaflet', '../lib/response', 'bootstrap', 'Le
     });
 
     // Tooltips for all!  Anything w/ a tooltip tag gets a tooltip
-    $("[rel='tooltip']").tooltip();
+    $('[rel="tooltip"]').tooltip();
 
     // Setup Response stuff
     Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,1024] });
