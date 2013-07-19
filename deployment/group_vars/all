@@ -45,6 +45,12 @@ state: 'IL'
 latitude: 41.872524826406774
 longitude: -87.62077331542969
 
+autocomplete:
+  swlat: 41
+  swlng: -48
+  nelat: 42.5
+  nelng: -46.5
+
 twilio_enabled: False
 account_sid: 'None'
 account_auth: 'None'

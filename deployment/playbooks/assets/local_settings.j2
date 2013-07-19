@@ -41,6 +41,13 @@ TEMPLATE_DIRS = (
 LONGITUDE = {{ longitude }}
 LATITUDE = {{ latitude }}
 
+AUTOCOMPLETE = {
+    "SW_LAT": {{ autocomplete["swlat"] }},
+    "SW_LNG": {{ autocomplete["swlng"] }},
+    "NE_LAT": {{ autocomplete["nelat"] }},
+    "NE_LNG": {{ autocomplete["nelng"] }}
+}
+
 # Set flag to include django-jenkins inside
 # the main settings.py file
 
