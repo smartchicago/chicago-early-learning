@@ -26,9 +26,12 @@ define(['jquery', 'Leaflet', 'server-vars', 'text!templates/location.html', 'com
          * for location. Use google maps layer for leaflet.
          */
         $(document).ready(function() {
-            $.getJSON(window.location.pathname + 'position', function(data) {
-                var lat = data[0].lat,
-                    lng = data[0].lng,
+            var location_id = /(\d+)/.exec(window.location.pathname)[1];
+            $.getJSON(window.location.origin + '/api/location/' + location_id, function(data) {
+                var template = Handlebars.compile(html);
+                $('.container').append(template(data));
+                var lat = data.position.lat,
+                    lng = data.position.lng,
                     map = new L.Map('location-map', {center: new L.LatLng(lat, lng), zoom: 13}),
                     gmap = new L.Google('ROADMAP');
                 
