@@ -153,6 +153,14 @@ class Location(models.Model):
             if self.is_true_bool_field(field):
                 bfields.append(field.verbose_name)
             elif self.is_simple_field(field):
+        # Affiliations
+        affiliation_fields = [(self.is_community_based, 'is_community_based'),
+                              (self.is_cps_based, 'is_cps_based'),
+                              (self.is_hs, 'is_hs'),
+                              (self.is_ehs, 'is_ehs')]
+        affiliation_values = [self.verbose_name(aff[1]).encode() for aff in affiliation_fields if aff[0]]
+        sfields.append({'fieldname': u'%s' % _('Affiliations'), 'value': u', '.join(affiliation_values) if affiliation_values else 'None'})
+
                 kv = (field.verbose_name, getattr(self, fname))
                 sfields.append(kv)
 
