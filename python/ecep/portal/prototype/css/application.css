@@ -1,6 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
+html {
+	overflow: hidden;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -43,7 +47,7 @@ h1, h2, h3, h4 {
 
 .navbar-inverse .navbar-inner {
 	background: #424142;
-	border-bottom: 1px solid #252525;
+	border-bottom: 1px solid #333;
 	font-family: "Montserrat", Helvetica, Arial, sans-serif;
 	font-weight: 400;
 }
@@ -128,13 +132,17 @@ h1, h2, h3, h4 {
 /* Results --------------------- */
 
 .results-left {
-	width: 768px;
+	width: 767px;
+	border-right: 1px solid #cecece;
 	position: fixed;
 	left: 0;
 	margin-top: 61px;
 	overflow: hidden;
 	top: 0;
 	bottom: 0;
+	-webkit-box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow:    2px 0px 5px rgba(0, 0, 0, 0.5);
+	box-shadow:         2px 0px 5px rgba(0, 0, 0, 0.5);
 }
 	.accordion-group {
 		-webkit-border-radius: 0px;
@@ -144,7 +152,7 @@ h1, h2, h3, h4 {
 	.results-toolbar {
 		padding: 17px;
 		background: #eee;
-		border: none;
+		border-right:	1px solid #cecece;
 		background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
 	}
 		#header-row {
@@ -190,6 +198,9 @@ h1, h2, h3, h4 {
 				margin-left: 68%;
 				margin-top: -30px;
 			}
+	#collapseFilters {
+				border-right: 1px solid #cecece;
+	}
 	
 	.accordion-heading h1 {
 		font-size: 16px;
@@ -290,11 +301,22 @@ h1, h2, h3, h4 {
 }
 
 .header-labels {
-	font-family: "Montserrat", Helvetica, Arial, sans-serif;
-	color: rgb(142,159,172);
+	font-family: "Helvetica", Arial, sans-serif;
+	color: #c2c2c2;
+	font-size: 11px;
 }
 
+.tooltip {
+	font-size: 14px;
+	font-family: "Montserrat", Helvetica, Arial, sans-serif;
+}
+	.tooltip-inner {
+			color: #eecf16;
+	}
 
+.exportPDF {
+	width: 11px !important;
+}
 
 /* Scrollbars ---------------------- */
 
@@ -317,6 +339,10 @@ h1, h2, h3, h4 {
 
 
 /* Favorites ----------------------- */
+
+.toolbar-fav {	
+	color: #fff !important;
+}
 
 .faves-top {
 	padding: 20px;
@@ -519,10 +545,11 @@ h1, h2, h3, h4 {
 }
 
 .header-row {
-	background: rgb(29,44,54);
+	background: rgb(85,85,85);
 	color: #fff;
 	padding: 5px 5px 5px 15px;
 	font-size: 12px;
+	border-bottom: 1px solid #333;
 }
 
 .header-labels {
@@ -538,7 +565,7 @@ h1, h2, h3, h4 {
 }
 
 #header-dist {
-	padding-left: 400px;
+	padding-left: 408px;
 }
 
 .back-btn {
@@ -666,10 +693,28 @@ h1, h2, h3, h4 {
 	*background-color: #003bb3;
 }
 
-.tooltip {
-	font-size: 14px;
-	font-family: "Montserrat", Helvetica, Arial, sans-serif;
+.btn-tool {
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #317DC1;
+	*background-color: #317DC1;
+	background-image: -moz-linear-gradient(top, #317DC1, #317DC1);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#317DC1), to(#317DC1));
+	background-image: -webkit-linear-gradient(top, #317DC1, #317DC1);
+	background-image: -o-linear-gradient(top, #317DC1, #317DC1);
+	background-image: linear-gradient(to bottom, #317DC1, #317DC1);
+	background-repeat: repeat-x;
+	border-color: #317DC1;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#317DC1', endColorstr='#317DC1', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
-	.tooltip-inner {
-			color: #eecf16;
-	}
+.btn-tool:hover,
+.btn-tool:active,
+.btn-tool.active,
+.btn-tool.disabled,
+.btn-tool[disabled] {
+	color: #FFFFFF;
+	background-color: #317DC1;
+	*background-color: #003bb3;
+}

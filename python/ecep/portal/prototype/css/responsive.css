@@ -217,7 +217,7 @@
 	}
 
 	.header-row {
-		margin-top: 50px;
+		margin-top: 48px;
 	}
 	
 	.mobile-chevron {
@@ -225,6 +225,13 @@
 		margin-top: -30px;
 		position: absolute;
 		display: block;
+	}
+
+	.accordion-group {
+		border: none;
+	}
+	#collapseFilters {
+		border: none;
 	}
 
 }
@@ -275,8 +282,6 @@
 		display: none;
 	}
 
-	.header-row {
-		margin-top: 50px;
-	}
+
 
 }
