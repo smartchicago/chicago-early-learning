@@ -113,11 +113,11 @@ def location(request, location_id):
     """
     context = location_details(location_id)
 
-    tpl = 'location.html'
-
-    context = RequestContext(request, context)
-    return render_to_response(tpl, context_instance=context)
-
+def location(request, location_id):
+    ctx = RequestContext(request, { })
+    response = render_to_response('location.html', context_instance=ctx)
+    return response
+    
 def location_position(request, location_id):
     """
     Render a json response with the longitude and latitude of a single location.
