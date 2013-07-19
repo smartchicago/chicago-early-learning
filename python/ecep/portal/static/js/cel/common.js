@@ -34,9 +34,9 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaf
     Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,1024] });
 
     // geolocation                                                                                  
-    $(document).ready(function() {
-        $('.geolocation-button').bind('click', function(e) {                                                   
-            if ("geolocation" in navigator) {                                                           
+    if ('geolocation' in navigator) {
+        $(document).ready(function() {
+            $('.geolocation-button').bind('click', function(e) {                                                   
                 navigator.geolocation.getCurrentPosition(function(position) {                           
                     var positionString = position.coords.latitude + ", " + position.coords.longitude;   
                     // TODO:    load browse.html with the map centered on geolocated position           
@@ -44,9 +44,9 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaf
                     // placeholder for above TODO                                                       
                     $('#appendedInputButton').val(positionString);                                      
                 });                                                                                     
-            } else {                                                                                    
-                alert('Geolocation not available on your browser.');                                    
-            }                                                                                           
+            });
         });
-    });
+    } else {
+        $('.geolocation-button').hide();
+    }
 });
