@@ -19,10 +19,14 @@ urlpatterns = patterns(
     # Index page is in the 'portal' app
     url(r'^$', 'portal.views.index'),
     url(r'^about.html$', 'portal.views.about', name='about'),
+    url(r'^search.html$', 'portal.views.search', name='search'),
     url(r'^robots\.txt$', direct_to_template,
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
     url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to',
         {'url': '/static/images/favicon.ico'}),
+
+    # portal autocomplete api
+    url(r'^api/autocomplete/(?P<query>\S+)/$', 'portal.views.portal_autocomplete'),
 
     # Telephony
     url(r'^sms/handler/?$', Sms.as_view()),

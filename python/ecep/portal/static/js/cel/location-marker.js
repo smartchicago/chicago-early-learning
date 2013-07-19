@@ -6,11 +6,8 @@
 
 'use strict';
  
-define(['jquery', 'Leaflet', 'server-vars', 'text!templates/location.html', 'common'], function($, L, serverVars, html) {
-    // These nested require statements are kind of silly, but I need serverVars.gmapKey...
-    var gmapRequire = "async!http://maps.googleapis.com/maps/api/js?v=3.2&key=" +
-        serverVars.gmapKey + "&sensor=false";
-    require([gmapRequire], function() {
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', CEL.serverVars.gmapRequire], 
+    function($, L, html) {
         var schoolIcon = L.icon({
             iconUrl: '/static/img/leaflet-icons/marker-school.png',
             shadowUrl: '/static/img/leaflet-icons/marker-shadow.png',
@@ -40,6 +37,6 @@ define(['jquery', 'Leaflet', 'server-vars', 'text!templates/location.html', 'com
                 map.panTo(new L.LatLng(lat, lng));
             });
         });
-    });
-});
+    }
+);
 

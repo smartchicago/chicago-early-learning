@@ -25,4 +25,28 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaf
     if (Handlebars) {
         console.debug('Handlebars loaded!');
     }
+
+    // Tooltips for all!  Anything w/ a tooltip tag gets a tooltip
+    $("[rel='tooltip']").tooltip();
+
+    // Setup Response stuff
+    Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,1024] });
+    Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,1024] });
+
+    // geolocation                                                                                  
+    $(document).ready(function() {
+        $('.geolocation-button').bind('click', function(e) {                                                   
+            if ("geolocation" in navigator) {                                                           
+                navigator.geolocation.getCurrentPosition(function(position) {                           
+                    var positionString = position.coords.latitude + ", " + position.coords.longitude;   
+                    // TODO:    load browse.html with the map centered on geolocated position           
+                    //          at a respectable zoom level                                             
+                    // placeholder for above TODO                                                       
+                    $('#appendedInputButton').val(positionString);                                      
+                });                                                                                     
+            } else {                                                                                    
+                alert('Geolocation not available on your browser.');                                    
+            }                                                                                           
+        });
+    });
 });
