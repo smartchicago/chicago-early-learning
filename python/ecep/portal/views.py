@@ -216,17 +216,17 @@ def location_details(location_id):
     return item.get_context_dict()
 
 
-def location(request, location_id):
+def location_api(request, location_id):
     """
     Render a detail page for a single location.
     """
     context = location_details(location_id)
+    return HttpResponse(json.dumps(context), content_type="application/json")
 
-    tpl = 'location.html'
-
-    context = RequestContext(request, context)
-    return render_to_response(tpl, context_instance=context)
-
+def location(request, location_id):
+    ctx = RequestContext(request, { })
+    response = render_to_response('location.html', context_instance=ctx)
+    return response
 
 def location_position(request, location_id):
     """
