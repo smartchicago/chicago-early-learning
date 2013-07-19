@@ -107,11 +107,12 @@ def location_details(location_id):
     item = get_object_or_404(Location, id=location_id)
     return item.get_context_dict()
 
-def location(request, location_id):
+def location_api(request, location_id):
     """
     Render a detail page for a single location.
     """
     context = location_details(location_id)
+    return HttpResponse(json.dumps(context), content_type="application/json")
 
 def location(request, location_id):
     ctx = RequestContext(request, { })
