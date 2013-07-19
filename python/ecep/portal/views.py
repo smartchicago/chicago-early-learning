@@ -3,19 +3,15 @@
 
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
-from django.views.decorators.cache import cache_control
-from django.db.models import Q
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect
 from models import Location, Neighborhood
-import hashlib
 import logging
 from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
-from django.utils import translation, simplejson
+from django.utils import simplejson
 from operator import attrgetter
-from portal.utils import TermDistance
 import json
 
 logger = logging.getLogger(__name__)
@@ -23,12 +19,12 @@ logger = logging.getLogger(__name__)
 
 # TODO: We probably don't need this function for the new version, I'm moving
 # it in from the old version for now to avoid lots of refactoring.
-def get_opts(selected_val='2'):
-    """
-    Gets option list for the distance dropdown (see base.html)
+def _get_opts(selected_val='2'):
+    """Gets option list for the distance dropdown (see base.html)
     selected_val: string representing the value of the dropdown that
-                  should be selected
-    Default is '2'
+                  should be selected.
+                  Default is '2'
+
     """
     # Options for distance dropdown
     # option value => (option text, enabled)
@@ -53,13 +49,21 @@ def index(request):
 
 def about(request):
     ctx = RequestContext(request, {
-        'options': get_opts(),
+        'options': _get_opts(),
         'mapbarEnabled': True
     })
     return render_to_response('about.html', context_instance=ctx)
 
 
+def search(request):
+    ctx = RequestContext(request, {})
+    response = render_to_response('search.html', context_instance=ctx)
+    return response
+
+
 class TopicWrapper(object):
+    """Wrapper for Topic model, enforces visibility rules for anonymous users"""
+
     topic = None
     questions = None
 
@@ -84,7 +88,7 @@ def faq(request):
 
     ctx = RequestContext(request, {
         'topics': [TopicWrapper(t, request) for t in topics],
-        'options': get_opts(),
+        'options': _get_opts(),
         'mapbarEnabled': True
     })
     return render_to_response(tpl, context_instance=ctx)
@@ -212,17 +216,17 @@ def location_details(location_id):
     return item.get_context_dict()
 
 
-def location(request, location_id):
+def location_api(request, location_id):
     """
     Render a detail page for a single location.
     """
     context = location_details(location_id)
+    return HttpResponse(json.dumps(context), content_type="application/json")
 
-    tpl = 'location.html'
-
-    context = RequestContext(request, context)
-    return render_to_response(tpl, context_instance=context)
-
+def location(request, location_id):
+    ctx = RequestContext(request, { })
+    response = render_to_response('location.html', context_instance=ctx)
+    return response
 
 def location_position(request, location_id):
     """

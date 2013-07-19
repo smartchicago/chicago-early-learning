@@ -19,6 +19,7 @@ urlpatterns = patterns(
     # Index page is in the 'portal' app
     url(r'^$', 'portal.views.index'),
     url(r'^about.html$', 'portal.views.about', name='about'),
+    url(r'^search.html$', 'portal.views.search', name='search'),
     url(r'^robots\.txt$', direct_to_template,
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
     url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to',
@@ -39,7 +40,7 @@ urlpatterns = patterns(
 
     # Location Views
     url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
-    url(r'^location/(?P<location_id>\d+)/position/$', 'portal.views.location_position'),
+    url(r'^api/location/(?P<location_id>\d+)/$', 'portal.views.location_api'),
 
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),

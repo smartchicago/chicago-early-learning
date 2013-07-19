@@ -41,35 +41,46 @@ See LICENSE in the project root for copying permission
     <!-- Navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
-      <!-- Navbar LEFT -->
-      <div class="navbar-left">
-        <a class="brand" href="index.html" data-r1024="<img src='{% static "img/logo.svg" %}' id='logo' alt='CEL'> Chicago Early Learning"><img src='{% static "img/logo.svg" %}' id="logo" alt="CEL"></a>
-        <form class="navbar-form" id="desktop-search">
-          <div class="input-append">
-            <input id="appendedInputButton" class="autocomplete-searchbox" type="text" placeholder="121 N. Lasalle, Chicago">
-            <button class="btn" id="geolocation" type="button"><i class="icon-screenshot"></i></button>
-          </div>
-          <button type="submit" class="btn btn-info" style="margin-top: -5px;" id="searchBtn"><i class="icon-search icon-white"></i> Search</a>
-        </form>
-      </div>
-      <!-- Navbar RIGHT -->
-      <div class="navbar-right">
-        <ul class="nav">
-          <li><a href="#text-for-info" data-toggle="modal" data-r1024="Text For Info"><img src='{% static "img/icons/text-for-info.svg" %}' alt="Text For Info"></a></li>
-          <li><a href="about.html" data-r1024="About"><img src='{% static "img/icons/about.svg" %}' alt="About"></a></li>
-          <li><a href="faq.html" data-r1024="FAQ"><img src='{% static "img/icons/faq.svg" %}'></a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="Language <b class='caret'></b>">EN <b class="caret"></b></a>
-            <ul class="dropdown-menu pull-right">
-              <li><a href="#"><img src='{% static "img/en.png" %}' alt="English"> English</a></li>
-              <li><a href="#"><img src='{% static "img/es.png" %}' alt="Spanish"> Espa&ntilde;ol</a></li>
-            </ul>
-          </li>
-        </ul>
+        <!-- Navbar LEFT -->
+        <div class="navbar-left">
+          <a class="brand" href="index.html" data-r1024="<img src='{% static "img/logo.svg" %}' id='logo' alt='CEL'> Chicago Early Learning"><img src='{% static "img/logo.svg" %}' id="logo" alt="CEL"></a>
+          <form class="navbar-form" id="desktop-search">
+            <div class="input-append">
+              <input id="appendedInputButton" class="autocomplete-searchbox" type="text" placeholder="121 N. Lasalle, Chicago">
+              <button class="btn geolocation-button" id="geolocation" type="button"><i class="icon-screenshot"></i></button>
+            </div>
+            <button type="submit" class="btn btn-info" style="margin-top: -5px;" id="searchBtn"><i class="icon-search icon-white"></i> Search</a>
+          </form>
+        </div>
+        <!-- Navbar RIGHT -->
+        <div class="navbar-right">
+          <ul class="nav">
+            <li><a href="#text-for-info" data-toggle="modal" data-r1024="Text For Info"><img src='{% static "img/icons/text-for-info.svg" %}' alt="Text For Info"></a></li>
+            <li><a href="about.html" data-r1024="About"><img src='{% static "img/icons/about.svg" %}' alt="About"></a></li>
+            <li><a href="faq.html" data-r1024="FAQ"><img src='{% static "img/icons/faq.svg" %}'></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="Language <b class='caret'></b>">EN <b class="caret"></b></a>
+              <ul class="dropdown-menu pull-right">
+                <li><a href="#"><img src='{% static "img/en.png" %}' alt="English"> English</a></li>
+                <li><a href="#"><img src='{% static "img/es.png" %}' alt="Spanish"> Espa&ntilde;ol</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-</div>
     {% block content %}{% endblock %}
+
+    <!-- Text-for-Info Modal -->
+    <div id="text-for-info" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="textForInfo" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove-circle"></i></button>
+        <h3 id="textForInfo">Want information via text?</h3>
+      </div>
+      <div class="modal-body">
+        <p>Text your zip code to <a href="sms:7738861819">(773) 886-1819</a> and we'll do the rest.</p>
+      </div>
+    </div>
 
     <script type="text/javascript" src="{% url django.views.i18n.javascript_catalog %}"></script>
     <script type="text/javascript">
