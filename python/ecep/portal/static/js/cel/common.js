@@ -14,10 +14,11 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaf
         //  the google maps geocoder API
         function getGeocoderAddresses(request, response) {
             var geocoder = new google.maps.Geocoder(),
+                acSettings = CEL.serverVars.autocomplete,
                 // Static bounds. Ideally these lat/lng pairs should be set to be slightly larger
                 //      than the bounding box of all Locations in the database.
-                northEast = new google.maps.LatLng(42.5, -86.5),
-                southWest = new google.maps.LatLng(41, -89),
+                northEast = new google.maps.LatLng(acSettings.nelat, acSettings.nelng),
+                southWest = new google.maps.LatLng(acSettings.swlat, acSettings.swlng),
                 bounds = new google.maps.LatLngBounds(southWest, northEast);
 
             geocoder.geocode( 
