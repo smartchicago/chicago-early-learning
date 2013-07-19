@@ -11,7 +11,7 @@ admin.autodiscover()
 
 js_info_dict = {
     'domain': 'djangojs',
-    'packages': ('ecep.portal',),
+    'packages': ('portal',),
 }
 
 urlpatterns = patterns(
@@ -24,10 +24,8 @@ urlpatterns = patterns(
     url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to',
         {'url': '/static/images/favicon.ico'}),
 
-    # Verbose details about a location
-    url(r'^location/$', 'portal.views.location_list'),
-    url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
-    url(r'^compare/(?P<a>\d+)/(?P<b>\d+)/$', 'portal.views.compare'),
+    # portal autocomplete api
+    url(r'^api/autocomplete/(?P<query>\S+)/$', 'portal.views.portal_autocomplete'),
 
     # Telephony
     url(r'^sms/handler/?$', Sms.as_view()),
@@ -36,19 +34,24 @@ urlpatterns = patterns(
         'method': 'POST',
         # Due to a bug in django-twilio, method must be set to GET or POST
         # it works no matter what the request is
-    }),
+        }),
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
+
+    # Location Views
+    url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
+    url(r'^location/(?P<location_id>\d+)/position/$', 'portal.views.location_position'),
 
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
     url(r'^rosetta/', include('rosetta.urls')),
     url(r'^setlang/(?P<language>.+)/$', 'portal.views.setlang', name='setlang'),
 
+
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),
 )
 
-urlpatterns += i18n_patterns('',
+urlpatterns += i18n_patterns(
+    '',
     url(r'^faq.html$', 'portal.views.faq', name='faq'),
 )
-

@@ -1,6 +1,10 @@
 django==1.4
 gdata==2.0.17
-geopy==0.94.2
+geopy==0.95.1
 django-twilio==0.2
-twilio==3.3.9
+twilio==3.5.1
 django-rosetta==0.6.8
+django-celery==3.0.17
+librabbitmq==1.0.1
+psycopg2==2.5.1
+gunicorn==17.5

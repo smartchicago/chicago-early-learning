@@ -2,12 +2,20 @@
 *.pyo
 *.log
 *.swp
+*.swo
 *~
 python/ecep/static/*
 python/ecep/local_settings.py
+
+# Generated config file for celery service
+config/django-celery.local.config
 
 .rope*/
 /src
 
 # Compiled message files
 *mo
+
+hosts
+.vagrant/
+thumbs.db

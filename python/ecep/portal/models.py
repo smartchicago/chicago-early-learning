@@ -7,48 +7,75 @@ from django.template.defaultfilters import title
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import pgettext_lazy
 
+class Neighborhood(models.Model):
+    """Model for Neighborhoods 
+    Model for a Neighborhood, which is simply a geographic area with a name
+    boundary -- MultiPolygon for the neighborhood
+    primary_name -- Display name for the neighborhood
+    secondary_name -- Detailed/Unformatted name for the neighborhood
+    """
+    boundary = models.MultiPolygonField()
+    primary_name = models.CharField(max_length=100)
+    secondary_name = models.CharField(max_length=100)
+    # GeoManager is required so Django knows it can do geospatial queries to the db
+    objects = models.GeoManager()
+
+    def save(self, *args, **kwargs):
+        """ Override for Model.save()
+        Updates neighborhood relation for all Locations that intersect the new Neighborhood boundaries 
+        """
+        super(Neighborhood, self).save(*args, **kwargs)            
+
+        # update location AFTER updating neighborhood polygon
+        locations = Location.objects.filter(geom__intersects=self.boundary)
+        for location in locations:
+            # update if no neighborhood or the neighborhood is different
+            if location.neighborhood is None or location.neighborhood.id != self.id:
+                location.save()
+
+    def __unicode__(self):
+        return self.primary_name
+        
 class Location(models.Model):
+    """Model for school locations in Chicago
+    """
     site_name = models.CharField(_('Site Name'), max_length=100)
-    address = models.CharField(pgettext_lazy('field name', 'Address'), max_length=50)
-    city = models.CharField(_('City'), max_length=10)
+    address = models.CharField(pgettext_lazy(u'field name', u'Address'), max_length=75)
+    city = models.CharField(_('City'), max_length=75)
     state = models.CharField(_('State'), max_length=2)
     zip = models.CharField(_('Zip Code'), max_length=10)
-    phone1 = models.CharField(_('Phone Number'), max_length=20, blank=True)
-    phone2 = models.CharField(_('Phone Number 2'), max_length=20, blank=True)
-    phone3 = models.CharField(_('Phone Number 3'), max_length=20, blank=True)
-    fax = models.CharField(_('Fax Number'), max_length=20, blank=True)
+    neighborhood = models.ForeignKey('Neighborhood', null=True)
+    phone = models.CharField(_('Phone Number'), max_length=20, blank=True)
+    q_rating = models.CharField(_('Quality Rating'), max_length=10, blank=True)
+    url = models.CharField(_('Website'), max_length=256, blank=True)
+    q_stmt = models.TextField(_('Quality Statement'), blank=True)
+    accred = models.CharField(_('Accreditation'), max_length=100, blank=True)
+    prg_hours = models.CharField(_('Program Hours'), max_length=50, blank=True)
+    is_full_day = models.NullBooleanField(_('Full Day'))
+    is_part_day = models.NullBooleanField(_('Part Day'))
+    is_full_week = models.NullBooleanField(_('Full Week'))
+    is_part_week = models.NullBooleanField(_('Part Week'))
+    is_school_year = models.NullBooleanField(_('School Year'))
+    is_full_year = models.NullBooleanField(_('Full Year'))
+    ages = models.CharField(_('Ages Served'), max_length=50, blank=True)
     is_age_lt_3 = models.NullBooleanField(_('Ages 0-3'))
     is_age_gt_3 = models.NullBooleanField(_('Ages 3-5'))
+    language_1 = models.CharField(_('Language 1 (other than English)'), max_length=50, blank=True)
+    language_2 = models.CharField(_('Language 2 (other than English)'), max_length=50, blank=True)
+    language_3 = models.CharField(_('Language 3 (other than English)'), max_length=50, blank=True)
+    is_community_based = models.NullBooleanField(_('Community Based'))
+    is_cps_based = models.NullBooleanField(_('CPS Based'))
+    is_home_visiting = models.NullBooleanField(_('Home Visiting'))
+    accept_ccap = models.NullBooleanField(_('Accepts CCAP'))
     is_hs = models.NullBooleanField(_('Head Start'))
     is_ehs = models.NullBooleanField(_('Early Head Start'))
-    is_pre4all = models.NullBooleanField(_('Preschool for All/Prevention Initiative'))
-    is_tuition_based = models.NullBooleanField(_('Tuition-Based'))
-    is_special_ed = models.NullBooleanField(_('Special Ed'))
-    is_montessori = models.NullBooleanField(_('Montessori'))
-    is_child_parent_center = models.NullBooleanField(_('Child-Parent Center'))
-    is_child_care = models.NullBooleanField(_('Child Care Assistance Program'))
-    ages = models.CharField(_('Ages Served'), max_length=50, blank=True)
-    exec_director = models.CharField(_('Executive Director'), max_length=100, blank=True)
-    ctr_director = models.CharField(_('Director/Principal'), max_length=100, blank=True)
-    site_affil = models.CharField(_('Site Affiliation'), max_length=50, blank=True)
-    url = models.CharField(_('Website'), max_length=256, blank=True)
-    email = models.CharField(_('Email'), max_length=256, blank=True)
-    q_stmt = models.TextField(_('Quality Statement'), blank=True)
-    e_info = models.TextField(_('Eligibility Information'), blank=True)
-    as_proc = models.TextField(_('Application and Selection Process'), blank=True)
-    accred = models.CharField(_('Accreditation'), max_length=50, blank=True)
-    prg_sched = models.TextField(_('Program Schedule'), blank=True)
-    prg_dur = models.CharField(_('Program Duration'), max_length=50, blank=True)
-    prg_size = models.CharField(_('Program Size'), max_length=100, blank=True)
-    waitlist = models.TextField(_('Waitlist Situation'), blank=True)
     geom = models.PointField(_('Geometry'), srid=4326, null=True)
     objects = models.GeoManager()
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
     display_include = set([
-        'ages', 'prg_dur', 'prg_sched', 'prg_size', 'site_affil', 'ctr_director', 'accred',
-        'is_child_care', 'is_hs', 'is_ehs', 'is_pre4all', 'is_tuition_based',
-        'is_child_parent_center'])
+        'ages', 'prg_hours', 'accred', 'is_community_based', 'is_cps_based', 'is_home_visiting',
+        'is_hs', 'is_ehs', 'accept_ccap'])
 
     def __unicode__(self):
         return self.site_name
@@ -121,6 +148,18 @@ class Location(models.Model):
                 kv = (field.verbose_name, getattr(self, fname))
                 sfields.append(kv)
 
+        # Combine Languages
+        lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
+        languages = ", ".join(lang_list)
+        if languages != '':
+            sfields.append((_('Languages (other than English)'), languages))
+
+        # Program Duration
+        sfields.append((_('Program Duration'), 'Full Year' if self.is_full_year else 'School Year'))
+
+        # Week Duration
+        sfields.append((_('Weekday Availability'), 'Full Week' if self.is_full_week else 'Partial Week'))
+                
         bfields.sort()
         sfields.sort(key=lambda a: a[0])
         return { 'item': self, 'sfields': sfields, 'bfields': bfields }
@@ -135,4 +174,16 @@ class Location(models.Model):
         """
         val = self.__dict__[field]
         return ("%s: %s\n" % (self.verbose_name(field), f(val))) if val else ""
+
+    def save(self, *args, **kwargs):
+        """ Override for Model.save()
+        Overrides Location.save(). Provides the additional functionality of updating the Neighborhood 
+        of the Location before the save.
+        """
+        if self.geom is not None:
+            neighborhoods = Neighborhood.objects.filter(boundary__intersects=self.geom)
+            if len(neighborhoods):
+                self.neighborhood = neighborhoods[0]
+         
+        super(Location, self).save(*args, **kwargs)            
 

@@ -1,0 +1,50 @@
+---
+- hosts: all
+
+  sudo: yes
+
+  tasks:
+
+  - name: Install Python Development Dependencies
+    apt:  pkg=python-dev state=latest update_cache=yes
+
+  - name: Install pip
+    apt: pkg=python-pip state=latest
+
+  - name: Add some repos
+    apt_repository: repo=${item}
+    with_items: ${repos_to_add}
+
+  - name: Install required system packages
+    apt: pkg=${item} state=latest update_cache=yes
+    with_items: ${system_packages}
+
+  - name: Download source from git
+    git: repo=${git_url} version=${git_branch} dest=${app_path}
+    only_if: ${clone_repo}
+
+  - name: Install virtualenv
+    pip: name=virtualenv
+
+  - name: Install python packages
+    pip: requirements=${app_path}/requirements.txt virtualenv=${env_path}
+
+  - name: Install CI requirements
+    pip: requirements=${app_path}/ci_requirements.txt virtualenv=${env_path}
+    only_if: ${django_jenkins}
+
+  - name: Install node packages
+    command: npm install ${item} -g
+    with_items: ${node_packages}
+    only_if: ${django_jenkins}
+
+  - name: Set ownership of directories
+    file: path=${item} state=directory owner=${ansible_ssh_user}
+    with_items:
+      - ${app_path}
+      - ${env_path}
+      - ${media_path}
+      - ${static_path}
+
+  - name: Install monkey-patched Django-FAQ
+    pip: name='git+git://github.com/bhuber/django-faq.git#egg=django_faq' virtualenv=${env_path}

@@ -5,36 +5,39 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.cache import cache_control
 from django.db.models import Q
-from django.contrib.gis.measure import Distance
-from django.contrib.gis.geos import GEOSGeometry
 from django.conf import settings
-from django.http import HttpResponseRedirect
-from models import Location
-import logging, hashlib
-from datetime import datetime, timedelta
-from django.template.defaultfilters import title
+from django.http import HttpResponse, HttpResponseRedirect, Http404
+from models import Location, Neighborhood
+import hashlib
+import logging
 from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
-from django.utils import translation
+from django.utils import translation, simplejson
+from operator import attrgetter
+from portal.utils import TermDistance
+import json
 
 logger = logging.getLogger(__name__)
 
 
+# TODO: We probably don't need this function for the new version, I'm moving
+# it in from the old version for now to avoid lots of refactoring.
 def get_opts(selected_val='2'):
     """
     Gets option list for the distance dropdown (see base.html)
-    selected_val: string representing the value of the dropdown that should be selected
+    selected_val: string representing the value of the dropdown that
+                  should be selected
     Default is '2'
     """
     # Options for distance dropdown
     # option value => (option text, enabled)
-    distance_opts = { '-1': [_('Distance'), False],
-                      '0.5': [_('< 0.5 mi'), False],
-                      '1': [_('< 1 mi'), False],
-                      '2': [_('< 2 mi'), False],
-                      '5': [_('< 5 mi'), False],
-                      '10': [_('< 10 mi'), False] }
+    distance_opts = {'-1': [_('Distance'), False],
+                     '0.5': [_('< 0.5 mi'), False],
+                     '1': [_('< 1 mi'), False],
+                     '2': [_('< 2 mi'), False],
+                     '5': [_('< 5 mi'), False],
+                     '10': [_('< 10 mi'), False]}
 
     key = selected_val if selected_val in distance_opts else '2'
     distance_opts[key][1] = True
@@ -43,172 +46,9 @@ def get_opts(selected_val='2'):
 
 
 def index(request):
-    fields = Location.get_filter_fields()
-    st = ''
-    selected = '2'
-
-    if request.POST and 'searchText' in request.POST:
-        st = request.POST['searchText']
-        selected = request.POST['searchRadius']
-
-    ctx = RequestContext(request, {
-        'fields': fields,
-        'searchText': st,
-        'options': get_opts(selected),
-        'mapbarEnabled': True
-    })
-
+    ctx = RequestContext(request, {})
     response = render_to_response('index.html', context_instance=ctx)
-
-    # cookie for splash screen, defaults to true
-    try:
-        show_splash = request.COOKIES['show_splash']
-        if show_splash == 'true':
-            expires = datetime.utcnow() + timedelta(seconds=60 * 60)
-            response.set_cookie('show_splash', 'false', expires=expires, httponly=False)
-    except:
-        response.set_cookie('show_splash', 'true')
-
     return response
-
-
-def location_details(location_id):
-    """
-    Helper method that gets all the fields for a specific location.
-
-    This is called by the detail page and the comparison page.
-    """
-    item = get_object_or_404(Location, id=location_id)
-    return item.get_context_dict()
-
-
-def combine_details(ldet1, ldet2):
-    """
-    Combine the details of two locations
-
-    Parameters:
-        ldet1 - The results from location_details for one location
-        ldet2 - The results from location_details for the other location
-
-    Returns:
-        The detailed information for both locations, combined in one
-        dictionary, where each value is a tuple instead of a literal value.
-    """
-    details = {
-        'name': (ldet1['item'].site_name, ldet2['item'].site_name,),
-        'address': (ldet1['item'].address, ldet2['item'].address,),
-        'city': (ldet1['item'].city, ldet2['item'].city,),
-        'state': (ldet1['item'].state, ldet2['item'].state,),
-        'zip': (ldet1['item'].zip, ldet2['item'].zip,),
-        'accred': (ldet1['item'].accred, ldet2['item'].accred,),
-        'url': (ldet1['item'].url, ldet2['item'].url,),
-        'email': (ldet1['item'].email, ldet2['item'].email,),
-        'phone1': (ldet1['item'].phone1, ldet2['item'].phone1,),
-        #'phone2': (ldet1['item'].phone2, ldet2['item'].phone2,),
-        #'phone3': (ldet1['item'].phone3, ldet2['item'].phone3,),
-        'fax': (ldet1['item'].fax, ldet2['item'].fax,),
-        'bfields': (ldet1['bfields'], ldet2['bfields'],),
-        'sfields_zip': zip(ldet1['sfields'], ldet2['sfields'])
-    }
-
-    return details
-
-
-def location(request, location_id):
-    """
-    Render a detail page for a single location.
-    """
-    context = location_details(location_id)
-
-    tpl = 'location.html'
-    if 'm' in request.GET:
-        if request.GET['m'] == 'html':
-            tpl = 'embed.html'
-        elif request.GET['m'] == 'popup':
-            tpl = 'popup.html'
-
-    context.update(is_popup=(tpl == 'popup.html'))
-    context.update(is_embed=(tpl == 'embed.html'))
-    context.update(is_niceurls=(tpl == 'popup.html' or tpl == 'embed.html'))
-
-    context.update(searchText='')
-    context.update(options=get_opts('2'))
-
-    context = RequestContext(request, context)
-
-    return render_to_response(tpl, context_instance=context)
-
-
-@cache_control(must_revalidate=False, max_age=3600)
-def location_list(request):
-    """
-    Get a list of all the locations.
-    """
-    etag_hash = 'empty'
-    item_filter = None
-    for f in request.GET:
-        for field in Location._meta.fields:
-            if field.get_attname() == f:
-                logger.debug('Adding Filter: %s = %s' % (f, request.GET[f],))
-                kw = { f: request.GET[f] == 'true' }
-                if item_filter is None:
-                    etag_hash = str(kw)
-                    item_filter = Q(**kw)
-                else:
-                    etag_hash += str(kw)
-                    item_filter = item_filter | Q(**kw)
-
-    if 'pos' in request.GET and 'rad' in request.GET:
-        if request.GET['rad'] != '-1':
-            geom = GEOSGeometry('POINT(%s)' % request.GET['pos'])
-            rad_filter = Q(geom__distance_lte=(geom, Distance(mi=request.GET['rad'])))
-            if item_filter is None:
-                item_filter = rad_filter
-            else:
-                item_filter = item_filter & rad_filter
-
-    def fixcap(x):
-        if x.site_name.isupper():
-            x.site_name = title(x.site_name)
-        return x
-
-    if item_filter is None:
-        items = list(Location.objects.all())
-    else:
-        items = list(Location.objects.filter(item_filter))
-
-    items = map(fixcap, items)
-
-    logger.debug('Retrieved %d items.' % len(items))
-
-    # compute this filter combination's hash
-    md5 = hashlib.md5()
-    md5.update(etag_hash)
-    etag_hash = md5.hexdigest()
-
-    rsp = render_to_response('locations.json', { 'items': items }, mimetype='application/json')
-    rsp['Etag'] = etag_hash
-    return rsp
-
-
-def compare(request, a, b):
-    loc_a = location_details(a)
-    loc_b = location_details(b)
-
-    tpl = 'compare.html'
-    is_popup = 'm' in request.GET and request.GET['m'] == 'embed'
-    if is_popup:
-        tpl = 'compare_content.html'
-
-    locs = combine_details(loc_a, loc_b)
-
-    ctx = RequestContext(request, {
-        'options': get_opts(),
-        'locations': locs,
-        'is_popup': is_popup
-    })
-
-    return render_to_response(tpl, context_instance=ctx)
 
 
 def about(request):
@@ -238,13 +78,9 @@ def faq(request):
     lang = request.LANGUAGE_CODE
 
     # get the topics in this language
-    topics = Topic.objects.filter(slug__startswith=lang+'-')
+    topics = Topic.objects.filter(slug__startswith=lang + '-')
     if topics.count() == 0:
-        topics = Topic.objects.filter(slug__startswith=settings.LANGUAGE_CODE[0:2]+'-')
-
-        if topics.count() == 0:
-            raise Http404()
-
+        topics = Topic.objects.filter(slug__startswith=settings.LANGUAGE_CODE[0:2] + '-')
 
     ctx = RequestContext(request, {
         'topics': [TopicWrapper(t, request) for t in topics],
@@ -252,6 +88,7 @@ def faq(request):
         'mapbarEnabled': True
     })
     return render_to_response(tpl, context_instance=ctx)
+
 
 def setlang(request, language):
     nxt = '/'
@@ -263,3 +100,134 @@ def setlang(request, language):
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
 
     return response
+
+
+def portal_autocomplete(request, query):
+    """ Return as json Location & Neighborhood names that match query
+
+    Make query against the database for Locations and Neighborhoods with
+        matching names. Uses the TermDistance class to sort first by relevance
+        to query, then alphabetically.
+
+    json output format:
+    {
+        "response": [
+            {
+                "id": object database id,
+                "name": "object name",
+                "type": "type of object"
+            }, ...
+        ]
+    }
+
+    query -- autocomplete query to perform on the database
+
+    """
+    locations = Location.objects.filter(site_name__icontains=query).values('id', 'site_name')
+    comparison = [TermDistance(location, 'location', 'site_name', query) for location in locations]
+
+    neighborhoods = Neighborhood.objects.filter(primary_name__icontains=query).values('id', 'primary_name')
+    comparison.extend([TermDistance(neighborhood, 'neighborhood', 'primary_name', query)
+                       for neighborhood in neighborhoods])
+
+    comparison = sorted(comparison, key=attrgetter('termDistance', 'field_value'))
+    sorted_comparisons = [{"id": item.obj['id'],  "name": item.field_value, "type": item.objtype}
+                          for item in comparison]
+
+    data = {
+        "response": sorted_comparisons
+    }
+
+    return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+
+
+class TermDistance:
+    """ TermDistance utility class for portal autocomplete
+
+    Use a pseudo-hamming distance to compare a string field of the
+        django ValueQuerySet against an arbitrary term
+
+    """
+    def __init__(self, obj, objtype, field, term):
+        """Initialize TermDistance class
+
+        obj -- obj of type ValuesQuerySet
+        objtype -- type of database object eg. Neighborhood or Location
+        field -- field in ValuesQuerySet to do the comparison with
+        term -- second string in comparison
+
+        """
+        if not obj:
+            raise ValueError("object required for sorting")
+        if not field:
+            raise ValueError("database field required for sorting")
+        if not term:
+            term = ""
+        if not objtype:
+            objtype = ""
+        if not obj[field]:
+            raise ValueError("field " + field + " not in obj " + str(obj))
+
+        self.obj = obj
+        self.field = field
+        self.field_value = self.obj[field]
+        self.term = term
+        self.objtype = objtype
+        self.getTermDistance()
+
+    def getTermDistance(self):
+        """Compute pseudo-hamming distance for the two strs
+
+        Result stored in self.termDistance
+
+        """
+        a = self.field_value.lower()
+        b = self.term.lower()
+        alen = len(a)
+        blen = len(b)
+        minlen = min(alen, blen)
+        result = 0
+
+        for i in range(minlen):
+            result += (i + 1) * abs(ord(a[i]) - ord(b[i]))
+
+        self.termDistance = result
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        """ String representation of TermDistance """
+        return "[" + self.field_value + "|" + self.term + "|" + str(self.termDistance) + "]"
+
+
+# Location Stuff
+def location_details(location_id):
+    """
+    Helper method that gets all the fields for a specific location.
+
+    This is called by the detail page and the comparison page.
+    """
+    item = get_object_or_404(Location, id=location_id)
+    return item.get_context_dict()
+
+
+def location(request, location_id):
+    """
+    Render a detail page for a single location.
+    """
+    context = location_details(location_id)
+
+    tpl = 'location.html'
+
+    context = RequestContext(request, context)
+    return render_to_response(tpl, context_instance=context)
+
+
+def location_position(request, location_id):
+    """
+    Render a json response with the longitude and latitude of a single location.
+    """
+    loc = get_object_or_404(Location, id=location_id)
+    results = [{'pk': location_id, 'lng': loc.geom[0], 'lat': loc.geom[1]}]
+    return HttpResponse(json.dumps(results), content_type="application/json")

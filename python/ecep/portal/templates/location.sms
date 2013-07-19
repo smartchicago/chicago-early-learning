@@ -5,6 +5,10 @@ See LICENSE in the project root for copying permission
 
 {% load portal_extras %}
 
+{% comment %}
+TODO: redo this to reflect new Location schema
+{% endcomment %}
+
 {% autoescape off %}
 
 {{ item.site_name }}

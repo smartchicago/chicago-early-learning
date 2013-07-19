@@ -1,0 +1,19 @@
+{% comment %}
+Copyright (c) 2012 Azavea, Inc.
+See LICENSE in the project root for copying permission
+{% endcomment %}
+
+{% load portal_extras %}
+
+{% autoescape off %}
+
+{{ item.site_name }}
+{{ item.address }}
+{{ item.city }}, {{ item.state }} {{ item.zip }}
+{% if item.phone1 %}{{ item|verbose_name:"phone1" }}: {{ item.phone1|nicephone }}
+{% endif %}{% if item.fax %}{{ item|verbose_name:"fax" }}: {{ item.fax|nicephone }}
+{% endif %}{% if bfields %}Attributes: {% for b in bfields %}{{ b }}{% if not forloop.last %}, {% endif %}{% endfor %}
+{% endif %}{% for s in sfields %}{% if s.1 %}{{ s.0 }}: {{ s.1 }}
+{% endif %}{% endfor %}
+
+{% endautoescape %}

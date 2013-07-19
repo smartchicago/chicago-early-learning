@@ -1,0 +1,82 @@
+---
+
+## Project Settings ##
+system_packages:
+  - git
+  - build-essential
+  - openssh-server
+  - nginx
+  - gunicorn
+  - postgresql-9.1-postgis
+  - gdal-bin
+  - libgdal1-1.7.0
+  - libgeos-c1
+  - postgresql-server-dev-9.1
+  - python-psycopg2
+  - gettext
+  - python-pip
+  - rabbitmq-server
+  - apache2-utils
+  - nodejs
+
+repos_to_add:
+  - ppa:chris-lea/node.js
+  - ppa:gunicorn/ppa
+
+## Paths ##
+
+app_path: /cel/app/
+static_path: /cel/static/
+media_path: /cel/media/
+env_path: /cel/env/
+
+## Django Settings ##
+
+django_debug: True
+
+admin_name: 'Admin'
+admin_email: 'azaveadev@azavea.com'
+
+google_maps_key: 'AIzaSyCmAps8bQ6lqL1G5-SqfBQZdqEFWFePKKc'
+google_analytics_key: 'UA-34089447-1'
+
+state: 'IL'
+
+latitude: 41.872524826406774
+longitude: -87.62077331542969
+
+twilio_enabled: False
+account_sid: 'None'
+account_auth: 'None'
+phone: 'None'
+sms_delay: None
+
+django_log_file: '/var/log/ecep/django.log'
+
+## Server Settings ##
+
+unicorn_log: /var/log/unicorn.log
+unicorn_socket: unix:/tmp/gunicorn.sock
+http_port: 80
+
+http_auth: 'off'
+http_password: ''
+http_user: ''
+
+## Git Settings ##
+git_url: https://github.com/smartchicago/chicago-early-learning
+git_branch: staging
+clone_repo: True
+
+## Jenkins Settings ##
+
+django_jenkins: False
+
+node_packages:
+  - none
+
+## RabbitMQ Settings ##
+
+rabbit_user: ecep
+rabbit_password: ecep
+queue_name: ecep
