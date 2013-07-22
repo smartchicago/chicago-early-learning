@@ -11,6 +11,7 @@ from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
 from django.utils import simplejson
+from django.db.models import Count, Q
 from operator import attrgetter
 import json
 
@@ -217,18 +218,23 @@ def location_details(location_id):
     return item.get_context_dict()
 
 
-def location_api(request, location_id):
+def location_api(request, location_id=None):
     """
     Render a detail page for a single location.
     """
-    context = location_details(location_id)
+    if location_id:
+        context = location_details(location_id)
+    else:
+        locations = Location.objects.filter(~Q(geom=None))
+        location_contexts = [l.get_context_dict() for l in locations]
+        context = {'locations': location_contexts}
     return HttpResponse(json.dumps(context), content_type="application/json")
 
-def location(request, location_id):
+def location(request):
     ctx = RequestContext(request, { })
     response = render_to_response('location.html', context_instance=ctx)
     return response
-
+    
 def location_position(request, location_id):
     """
     Render a json response with the longitude and latitude of a single location.
