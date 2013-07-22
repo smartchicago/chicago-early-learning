@@ -1,6 +1,8 @@
 //Tooltips 
 $(function () {
-    $("[rel='tooltip']").tooltip();
+    $("[rel='tooltip']").tooltip({
+      placement : 'bottom'
+    });
 });
 
 

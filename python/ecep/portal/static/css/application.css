@@ -1,11 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,900);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html {
+	overflow: hidden;
+}
 
 body {
   padding: 0;
   margin: 0;
   overflow-y: scroll;
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
 
 html, body, #map {
@@ -13,16 +16,16 @@ html, body, #map {
 }
 
 input {
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-family: "Montserrat", Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4 {
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-family: "Montserrat", Helvetica, Arial, sans-serif;
 	font-weight: 700;
 }
 
 .btn {
-		font-family: "Roboto", Helvetica, Arial, sans-serif;
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
 		font-weight: 300;
 }
 
@@ -43,12 +46,10 @@ h1, h2, h3, h4 {
 }
 
 .navbar-inverse .navbar-inner {
-	background-image: linear-gradient(to bottom, #2D424C, #1D2C36);
-	border-bottom: 1px solid #15232B;
-	background-color: rgb(29,44,54);
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	background: #424142;
+	border-bottom: 1px solid #333;
+	font-family: "Montserrat", Helvetica, Arial, sans-serif;
 	font-weight: 400;
-	-webkit-font-smoothing: antialiased;
 }
 	.navbar-inverse .brand, 
 	.navbar-inverse .nav > li > a {
@@ -67,6 +68,11 @@ h1, h2, h3, h4 {
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle, 
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
 	background-color: rgb(29,44,54);
+}
+
+.navbar-inverse .brand, 
+.navbar-inverse .nav > li > a {
+	text-shadow: none;
 }
 
 .navbar-inner {
@@ -104,7 +110,7 @@ h1, h2, h3, h4 {
 			right 0;
 			width: auto;
 			font-size: 14px;
-			font-family: "Roboto", Helvetica, Arial,sans-serif;
+			font-family: "Montserrat", Helvetica, Arial,sans-serif;
 			padding: 8px 10px 5px 10px;
 		}
 		#geolocation {
@@ -119,20 +125,24 @@ h1, h2, h3, h4 {
 		}
 
 		.btn {
-			padding: 8px 10px 5px 10px;
+			padding: 6px 10px 5px 10px;
 		}
 
 
 /* Results --------------------- */
 
 .results-left {
-	width: 768px;
+	width: 767px;
+	border-right: 1px solid #cecece;
 	position: fixed;
 	left: 0;
 	margin-top: 61px;
 	overflow: hidden;
 	top: 0;
 	bottom: 0;
+	-webkit-box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow:    2px 0px 5px rgba(0, 0, 0, 0.5);
+	box-shadow:         2px 0px 5px rgba(0, 0, 0, 0.5);
 }
 	.accordion-group {
 		-webkit-border-radius: 0px;
@@ -142,7 +152,7 @@ h1, h2, h3, h4 {
 	.results-toolbar {
 		padding: 17px;
 		background: #eee;
-		border: none;
+		border-right:	1px solid #cecece;
 		background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
 	}
 		#header-row {
@@ -175,6 +185,9 @@ h1, h2, h3, h4 {
 		.location-test1 {
 			margin-top: 0;
 		}
+		.location h2 {
+			font-family: "Helvetica", Arial, sans-serif;
+		}
 			#loc-icon {
 				margin-left: 50%;
 				margin-top: -30px;
@@ -185,6 +198,9 @@ h1, h2, h3, h4 {
 				margin-left: 68%;
 				margin-top: -30px;
 			}
+	#collapseFilters {
+				border-right: 1px solid #cecece;
+	}
 	
 	.accordion-heading h1 {
 		font-size: 16px;
@@ -285,11 +301,22 @@ h1, h2, h3, h4 {
 }
 
 .header-labels {
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
-	color: rgb(142,159,172);
+	font-family: "Helvetica", Arial, sans-serif;
+	color: #c2c2c2;
+	font-size: 11px;
 }
 
+.tooltip {
+	font-size: 14px;
+	font-family: "Montserrat", Helvetica, Arial, sans-serif;
+}
+	.tooltip-inner {
+			color: #eecf16;
+	}
 
+.exportPDF {
+	width: 11px !important;
+}
 
 /* Scrollbars ---------------------- */
 
@@ -312,6 +339,10 @@ h1, h2, h3, h4 {
 
 
 /* Favorites ----------------------- */
+
+.toolbar-fav {	
+	color: #fff !important;
+}
 
 .faves-top {
 	padding: 20px;
@@ -514,10 +545,11 @@ h1, h2, h3, h4 {
 }
 
 .header-row {
-	background: rgb(29,44,54);
+	background: rgb(85,85,85);
 	color: #fff;
 	padding: 5px 5px 5px 15px;
 	font-size: 12px;
+	border-bottom: 1px solid #333;
 }
 
 .header-labels {
@@ -533,7 +565,7 @@ h1, h2, h3, h4 {
 }
 
 #header-dist {
-	padding-left: 400px;
+	padding-left: 408px;
 }
 
 .back-btn {
@@ -577,4 +609,112 @@ h1, h2, h3, h4 {
 	overflow: auto;
 	bottom: 0px;
 	width: 100%;
+}
+
+.btn-primary {
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #91c73d;
+	*background-color: #91c73d;
+	background-image: -moz-linear-gradient(top, #91C73D, #91c73d);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#91C73D), to(#91c73d));
+	background-image: -webkit-linear-gradient(top, #91C73D, #91c73d);
+	background-image: -o-linear-gradient(top, #91C73D, #91c73d);
+	background-image: linear-gradient(to bottom, #91C73D, #91c73d);
+	background-repeat: repeat-x;
+	border-color: #91c73d;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#91C73D', endColorstr='#91c73d', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+	color: #FFFFFF;
+	background-color: #91c73d;
+	*background-color: #003bb3;
+}
+
+
+/* branding styles */
+.more-less-btn {
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #317DC1;
+	*background-color: #317DC1;
+	background-image: -moz-linear-gradient(top, #317DC1, #317DC1);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#317DC1), to(#317DC1));
+	background-image: -webkit-linear-gradient(top, #317DC1, #317DC1);
+	background-image: -o-linear-gradient(top, #317DC1, #317DC1);
+	background-image: linear-gradient(to bottom, #317DC1, #317DC1);
+	background-repeat: repeat-x;
+	border-color: #317DC1;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#317DC1', endColorstr='#317DC1', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.more-less-btn:hover,
+.more-less-btn:active,
+.more-less-btn.active,
+.more-less-btn.disabled,
+.more-less-btn[disabled] {
+	color: #FFFFFF;
+	background-color: #317DC1;
+	*background-color: #003bb3;
+}
+
+.btn-navsearch-main {
+	color: #424142;
+	text-shadow: none !important;
+	font-weight: bold;
+	padding-top: 5px;
+	background-color: #EECF16;
+	*background-color: #EECF16;
+	background-image: -moz-linear-gradient(top, #EECF16, #EECF16);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EECF16), to(#EECF16));
+	background-image: -webkit-linear-gradient(top, #EECF16, #EECF16);
+	background-image: -o-linear-gradient(top, #EECF16, #EECF16);
+	background-image: linear-gradient(to bottom, #EECF16, #EECF16);
+	background-repeat: repeat-x;
+	border-color: #EECF16;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#EECF16', endColorstr='#EECF16', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn-navsearch-main:hover,
+.btn-navsearch-main:active,
+.btn-navsearch-main.active,
+.btn-navsearch-main.disabled,
+.btn-navsearch-main[disabled] {
+	color: #424142;
+	background-color: #EECF16;
+	*background-color: #003bb3;
+}
+
+.btn-tool {
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #317DC1;
+	*background-color: #317DC1;
+	background-image: -moz-linear-gradient(top, #317DC1, #317DC1);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#317DC1), to(#317DC1));
+	background-image: -webkit-linear-gradient(top, #317DC1, #317DC1);
+	background-image: -o-linear-gradient(top, #317DC1, #317DC1);
+	background-image: linear-gradient(to bottom, #317DC1, #317DC1);
+	background-repeat: repeat-x;
+	border-color: #317DC1;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#317DC1', endColorstr='#317DC1', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn-tool:hover,
+.btn-tool:active,
+.btn-tool.active,
+.btn-tool.disabled,
+.btn-tool[disabled] {
+	color: #FFFFFF;
+	background-color: #317DC1;
+	*background-color: #003bb3;
 }

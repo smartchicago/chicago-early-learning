@@ -21,6 +21,7 @@ See LICENSE in the project root for copying permission
     <link href='{% static "css/bootstrap.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
     <link href='{% static "css/responsive.css" %}' rel="stylesheet">
+    <link href='{% static "css/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src='{% static "js/html5shiv.js" %}'></script>
@@ -45,7 +46,7 @@ See LICENSE in the project root for copying permission
           <a class="brand" href="index.html" data-r1024="<img src='{% static "img/logo.svg" %}' id='logo' alt='CEL'> Chicago Early Learning"><img src='{% static "img/logo.svg" %}' id="logo" alt="CEL"></a>
           <form class="navbar-form" id="desktop-search">
             <div class="input-append">
-              <input id="appendedInputButton" type="text" placeholder="121 N. Lasalle, Chicago">
+              <input id="appendedInputButton" class="autocomplete-searchbox" type="text" placeholder="121 N. Lasalle, Chicago">
               <button class="btn geolocation-button" id="geolocation" type="button"><i class="icon-screenshot"></i></button>
             </div>
             <button type="submit" class="btn btn-info" style="margin-top: -5px;" id="searchBtn"><i class="icon-search icon-white"></i> Search</a>
@@ -118,7 +119,13 @@ See LICENSE in the project root for copying permission
                 lngSettings: '{{ settings.LONGITUDE}}',
                 gmapKey: '{{ settings.GOOGLE_MAPS_KEY }}',
                 gmapRequire: 'async!http://maps.googleapis.com/maps/api/js?v=3.2&key=' +
-                     '{{ settings.GOOGLE_MAPS_KEY }}' + '&sensor=false'
+                    '{{ settings.GOOGLE_MAPS_KEY }}' + '&sensor=false',
+                autocomplete: {
+                    swlat: {{ settings.AUTOCOMPLETE.SW_LAT }},
+                    swlng: {{ settings.AUTOCOMPLETE.SW_LNG }},
+                    nelat: {{ settings.AUTOCOMPLETE.NE_LAT }},
+                    nelng: {{ settings.AUTOCOMPLETE.NE_LNG }}
+                }
             }
         };
         

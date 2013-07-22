@@ -40,7 +40,7 @@
 			position: absolute;
 		}
 		#mobile-search input {
-			padding: 8px 10px 5px 10px;
+			padding: 5px 10px;
 		}
 
 }
@@ -118,7 +118,7 @@
 			position: absolute;
 			display: block;
 			font-size: 13px;
-			padding: 8px 10px 5px 10px;
+			padding: 5px 10px;
 		}
 		#mobile-search .btn-group {
 			float: right;
@@ -217,7 +217,7 @@
 	}
 
 	.header-row {
-		margin-top: 50px;
+		margin-top: 48px;
 	}
 	
 	.mobile-chevron {
@@ -225,6 +225,13 @@
 		margin-top: -30px;
 		position: absolute;
 		display: block;
+	}
+
+	.accordion-group {
+		border: none;
+	}
+	#collapseFilters {
+		border: none;
 	}
 
 }
@@ -275,8 +282,6 @@
 		display: none;
 	}
 
-	.header-row {
-		margin-top: 50px;
-	}
+
 
 }
