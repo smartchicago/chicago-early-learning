@@ -16,7 +16,7 @@ requirejs.config({
         slidepanel: '../lib/slidepanel',
 	topojson: '../lib/topojson',
         styling: '../lib/styling',
-        icons: '../lib/icons',
+        icons: '../lib/icons'
     },
     shim: {
         'jquery-ui': {
