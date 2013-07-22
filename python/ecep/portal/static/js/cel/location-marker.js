@@ -6,15 +6,15 @@
 
 'use strict';
  
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', CEL.serverVars.gmapRequire], 
-    function($, L, html) {
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'icons', 'common', CEL.serverVars.gmapRequire], 
+    function($, L, html, icons) {
 
         /* On page load, query api to get locations position, add marker to map
          * for location. Use google maps layer for leaflet.
          */
         $(document).ready(function() {
             var location_id = /(\d+)/.exec(window.location.pathname)[1];
-            $.getJSON(window.location.origin + '/api/location/' + location_id, function(data) {
+            $.getJSON(window.location.origin + '/api/location/' + location_id + '/', function(data) {
                 // Need to build html first so leaflet can find the map-location div
                 var template = Handlebars.compile(html);
                 $('.container').append(template(data));
@@ -25,7 +25,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', CEL.serve
                     gmap = new L.Google('ROADMAP');
                 
                 map.addLayer(gmap);
-                L.marker([lat, lng], {icon: schoolIcon}).addTo(map);
+                L.marker([lat, lng], {icon: icons.schoolIcon}).addTo(map);
                 map.panTo(new L.LatLng(lat, lng));
             });
         });
