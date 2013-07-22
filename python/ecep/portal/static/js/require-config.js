@@ -14,7 +14,7 @@ requirejs.config({
         async: '../lib/require-plugins/async',
         text: '../lib/require-plugins/text',
         slidepanel: '../lib/slidepanel',
-	topojson: '../lib/topojson',
+        topojson: '../lib/topojson',
         styling: '../lib/styling',
         icons: '../lib/icons'
     },
@@ -51,9 +51,9 @@ requirejs.config({
             deps: ['jquery'],
             exports: '$'
         },
-	topojson: {
-	    exports: 'topojson'
-	}
+        topojson: {
+            exports: 'topojson'
+        }
     },
     enforceDefine: true
 });
