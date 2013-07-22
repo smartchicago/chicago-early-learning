@@ -11,7 +11,11 @@ requirejs.config({
         'Leaflet-google': '../lib/leaflet-google',
         Handlebars: '../lib/handlebars',
         async: '../lib/require-plugins/async',
-        text: '../lib/require-plugins/text'
+        text: '../lib/require-plugins/text',
+        slidepanel: '../lib/slidepanel',
+	topojson: '../lib/topojson',
+        styling: '../lib/styling',
+        icons: '../lib/icons',
     },
     shim: {
         'bootstrap': {
@@ -35,9 +39,16 @@ requirejs.config({
                 return this.Response.noConflict();
             }
         },
-        'Handlebars': {
+        Handlebars: {
             exports: 'Handlebars'
-        }
+        },
+        slidepanel: {
+            deps: ['jquery'],
+            exports: '$'
+        },
+	topojson: {
+	    exports: 'topojson'
+	}
     },
     enforceDefine: true
 });
