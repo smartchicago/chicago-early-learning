@@ -3,11 +3,11 @@
  * See LICENSE in the project root for copying permission
  ********************************************************/
 
-'use strict';
 
 define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 'topojson', 'icons', 'common', CEL.serverVars.gmapRequire, 'styling'], 
     function($, L, neighborhoodList, locationList, topojson, icons, common) {
-        
+        'use strict';
+
         var map,   // Leaflet map
             gmap,    // Google basemap
             locations,    // Store location data
