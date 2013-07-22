@@ -1,16 +1,3 @@
-//Tooltips 
-$(function () {
-    $("[rel='tooltip']").tooltip();
-});
-
-
-// Responsive stuff
-// response.js
-(function() {
-	Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,1024] });
-	Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,1024] });
-})();
-
 
 // Leaflet stuff
 // leaflet.js
@@ -33,20 +20,6 @@ var homeIcon = L.icon({
 });
 
 L.marker([41.883852, -87.632061], {icon: homeIcon}).addTo(map);
-
-var schoolIcon = L.icon({
-    iconUrl: 'js/images/marker-school.png',
-    shadowUrl: 'js/images/marker-shadow.png',
-
-    iconSize:     [35, 45], // size of the icon
-    shadowSize:   [41, 41], // size of the shadow
-    iconAnchor:   [10, 60], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62],  // the same for the shadow
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-});
-
-L.marker([41.843811, -87.686763], {icon: schoolIcon}).addTo(map).bindPopup("<strong>YMCA Rauner Family</strong><br>2700 S. Western Ave., Chicago, IL 60608");
-
 var popup = L.popup();
 
 
