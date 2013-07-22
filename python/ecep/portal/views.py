@@ -41,10 +41,12 @@ def _get_opts(selected_val='2'):
     result = [[k] + v for k, v in distance_opts.items()]
     return sorted(result, key=lambda a: float(a[0]))
 
+
 def index(request):
     ctx = RequestContext(request, {})
     response = render_to_response('index.html', context_instance=ctx)
     return response
+
 
 def about(request):
     ctx = RequestContext(request, {
@@ -53,15 +55,18 @@ def about(request):
     })
     return render_to_response('about.html', context_instance=ctx)
 
+
 def search(request):
     ctx = RequestContext(request, {})
     response = render_to_response('search.html', context_instance=ctx)
     return response
 
+
 def browse(request):
     ctx = RequestContext(request, {})
     response = render_to_response('browse.html', context_instance=ctx)
     return response
+
 
 class TopicWrapper(object):
     """Wrapper for Topic model, enforces visibility rules for anonymous users"""
@@ -230,11 +235,13 @@ def location_api(request, location_id=None):
         context = {'locations': location_contexts}
     return HttpResponse(json.dumps(context), content_type="application/json")
 
+
 def location(request):
     ctx = RequestContext(request, { })
     response = render_to_response('location.html', context_instance=ctx)
     return response
-    
+
+
 def location_position(request, location_id):
     """
     Render a json response with the longitude and latitude of a single location.
@@ -242,6 +249,7 @@ def location_position(request, location_id):
     loc = get_object_or_404(Location, id=location_id)
     results = [{'pk': location_id, 'lng': loc.geom[0], 'lat': loc.geom[1]}]
     return HttpResponse(json.dumps(results), content_type="application/json")
+
 
 def neighborhood_api(request):
     counts = Neighborhood.objects.annotate(num_schools=Count('location'))
