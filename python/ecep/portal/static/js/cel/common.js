@@ -4,7 +4,7 @@
  */
 
 
-define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaflet-google', 'jquery-ui', CEL.serverVars.gmapRequire], 
+define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'bootstrap', 'Leaflet-google', 'jquery-ui', CEL.serverVars.gmapRequire], 
 function($, L, Response, Handlebars) {
     'use strict';
     
@@ -110,5 +110,21 @@ function($, L, Response, Handlebars) {
         });
     } else {
         $('.geolocation-button').hide();
-    }
+    };
+
+    return {
+        getUrl: function (name) {
+            switch (name) {
+                case 'location-api':
+                    return '/api/location/';
+                case 'neighborhood-api':
+                    return '/api/neighborhood/';
+                case 'neighborhoods-topo':
+                    return '/static/js/neighborhoods-topo.json';
+                case 'neighborhoods-geojson':
+                    return '/static/js/neighborhoods.json';
+                default:
+            throw 'Unknown URL endpoint';
+        };
+    }};
 });
