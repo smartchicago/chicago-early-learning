@@ -27,7 +27,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', CEL.serve
             $.getJSON(window.location.origin + '/api/location/' + location_id, function(data) {
                 // Need to build html first so leaflet can find the map-location div
                 var template = Handlebars.compile(html);
-                $('.container').append(template(data));
+                $('.container > .row').append(template(data));
 
                 var lat = data.position.lat,
                     lng = data.position.lng,

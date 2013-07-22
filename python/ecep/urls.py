@@ -42,6 +42,10 @@ urlpatterns = patterns(
     url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
     url(r'^api/location/(?P<location_id>\d+)/$', 'portal.views.location_api'),
 
+    # Starred Location Views
+    url(r'^starred.html$', 'portal.views.starred'),
+    url(r'^starred/?[0-9,]+/$', 'portal.views.starred'),
+
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
     url(r'^rosetta/', include('rosetta.urls')),

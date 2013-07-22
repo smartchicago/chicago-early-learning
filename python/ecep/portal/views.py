@@ -235,3 +235,13 @@ def location_position(request, location_id):
     loc = get_object_or_404(Location, id=location_id)
     results = [{'pk': location_id, 'lng': loc.geom[0], 'lat': loc.geom[1]}]
     return HttpResponse(json.dumps(results), content_type="application/json")
+
+
+## Starred Location Views
+def starred(request):
+    """
+    Render starred locations page for as many favorites as are set in url or cookie
+    """
+    ctx = RequestContext(request, { })
+    response = render_to_response('starred.html', context_instance=ctx)
+    return response

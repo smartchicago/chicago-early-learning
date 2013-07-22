@@ -5,7 +5,7 @@
 
 'use strict';
 
-define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaflet-google', 'jquery-ui', CEL.serverVars.gmapRequire], 
+define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaflet-google', 'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
         function($, L, Response, Handlebars) {
     
     $(document).ready(function() {
@@ -111,4 +111,14 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaf
     } else {
         $('.geolocation-button').hide();
     }
+
+    // Add save to cookie functionality for any "star this Location" button on the page
+    $('.button-add-starred').bind('click', function(e) {
+        var options = CEL.serverVars.starredcookie,
+            value = $.cookie(options.name, options.options),
+            newvalue = $(this).val();
+        value = (value) ? value + ',' + newvalue : newvalue;
+        $.cookie(options.name, value, options.options);
+    });
+
 });

@@ -124,6 +124,13 @@ See LICENSE in the project root for copying permission
                     swlng: {{ settings.AUTOCOMPLETE.SW_LNG }},
                     nelat: {{ settings.AUTOCOMPLETE.NE_LAT }},
                     nelng: {{ settings.AUTOCOMPLETE.NE_LNG }}
+                },
+                starredcookie: {
+                    name: '{{ settings.STARREDCOOKIE }}',
+                    options: {
+                        expires: 365,
+                        path: '/'
+                    }
                 }
             }
         };
