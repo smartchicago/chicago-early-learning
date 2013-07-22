@@ -4,7 +4,7 @@
 
 'use strict';
 
-define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaflet-google'], function($, L, Response, Handlebars) {
+define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'bootstrap', 'Leaflet-google'], function($, L, Response, Handlebars) {
     // See http://requirejs.org/docs/api.html for details
     console.debug('common.js loaded!');
     if ($) {
