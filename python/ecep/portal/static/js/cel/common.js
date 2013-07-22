@@ -3,10 +3,10 @@
  * See http://requirejs.org/docs/api.html for details
  */
 
-'use strict';
 
 define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaflet-google', 'jquery-ui', CEL.serverVars.gmapRequire], 
-        function($, L, Response, Handlebars) {
+function($, L, Response, Handlebars) {
+    'use strict';
     
     $(document).ready(function() {
 
