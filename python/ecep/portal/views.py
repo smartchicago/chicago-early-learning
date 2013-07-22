@@ -40,12 +40,10 @@ def _get_opts(selected_val='2'):
     result = [[k] + v for k, v in distance_opts.items()]
     return sorted(result, key=lambda a: float(a[0]))
 
-
 def index(request):
     ctx = RequestContext(request, {})
     response = render_to_response('index.html', context_instance=ctx)
     return response
-
 
 def about(request):
     ctx = RequestContext(request, {
@@ -54,12 +52,15 @@ def about(request):
     })
     return render_to_response('about.html', context_instance=ctx)
 
-
 def search(request):
     ctx = RequestContext(request, {})
     response = render_to_response('search.html', context_instance=ctx)
     return response
 
+def browse(request):
+    ctx = RequestContext(request, {})
+    response = render_to_response('browse.html', context_instance=ctx)
+    return response
 
 class TopicWrapper(object):
     """Wrapper for Topic model, enforces visibility rules for anonymous users"""
