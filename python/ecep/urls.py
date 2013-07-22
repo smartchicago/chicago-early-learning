@@ -40,8 +40,12 @@ urlpatterns = patterns(
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
     # Location Views
-    url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
+    url(r'^location/\d+/$', 'portal.views.location'),
     url(r'^api/location/(?P<location_id>\d+)/$', 'portal.views.location_api'),
+    url(r'^api/location/', 'portal.views.location_api'),
+    
+    # Neighborhood Views
+    url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),
 
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
