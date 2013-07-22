@@ -17,7 +17,8 @@ class Command(BaseCommand):
     """
 
     args = '<none>'
-    help = """This management command will """
+    help = """This management command exports a topojson and geojson file into the static directory folder
+    using the node package topojson"""
 
     def handle(self, *args, **options):
         """
