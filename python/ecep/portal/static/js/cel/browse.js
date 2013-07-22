@@ -51,8 +51,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * and after a change in zoom level.
          */
         var displayMap = function() {
-            var zoom_level = map.getZoom();
-            if (currentLayer !== 'neighborhood' && zoom_level < 13) {
+            var zoomLevel = map.getZoom();
+            if (currentLayer !== 'neighborhood' && zoomLevel < 13) {
                 // If not already displaying neighborhoods and zoomed out
                 currentLayer = layerType.neighborhood;
                 listResults(neighborhoods);
@@ -61,7 +61,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 neighborhoodLayer.addData(neighborhoodGeojson);
                 map.addLayer(neighborhoodLayer);
             }
-            else if (currentLayer !== 'location' && zoom_level >= 13) {
+            else if (currentLayer !== 'location' && zoomLevel >= 13) {
                 // If not already displaying locations and zoomed in
                 map.removeLayer(neighborhoodLayer);
                 map.addLayer(locationLayer);
@@ -70,8 +70,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 for(var i = 0; i < locations.length; i++){
                     var lat = locations[i].position.lat,
                         lng = locations[i].position.lng,
-                        loc_marker = L.marker([lat, lng], {icon: icons.schoolIcon});
-                    locationLayer.addLayer(loc_marker);
+                        locMarker = L.marker([lat, lng], {icon: icons.schoolIcon});
+                    locationLayer.addLayer(locMarker);
                 };
             }
         };
