@@ -13,7 +13,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             locations,    // Store location data
             neighborhoods,    // Store neighborhood data
             template,    // Hold handlebars template
-            listView = 'none',    // Keep track of current result list type
+            layerType = { none: 'none', neighborhood: 'neighborhood', location: 'location'},
+            // Keep track of current layer displayed
+            currentLayer = layerType.none,
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
             neighborhoodGeojson;    // Store neighborhood geojson
@@ -50,22 +52,22 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          */
         var displayMap = function() {
             var zoom_level = map.getZoom();
-            if (listView !== 'neighborhoods' && zoom_level < 13) {
+            if (currentLayer !== 'neighborhood' && zoom_level < 13) {
                 // If not already displaying neighborhoods and zoomed out
-                listView = 'neighborhoods';
+                currentLayer = layerType.neighborhood;
                 listResults(neighborhoods);
                 locationLayer.clearLayers();
                 neighborhoodLayer.clearLayers();
                 neighborhoodLayer.addData(neighborhoodGeojson);
                 map.addLayer(neighborhoodLayer);
             }
-            else if (listView !== 'locations' && zoom_level >= 13) {
+            else if (currentLayer !== 'location' && zoom_level >= 13) {
                 // If not already displaying locations and zoomed in
                 map.removeLayer(neighborhoodLayer);
                 map.addLayer(locationLayer);
-                listView = 'locations';
+                currentLayer = layerType.location;
                 listResults(locations);
-                for( var i=0; i < locations.length; i++){
+                for(var i = 0; i < locations.length; i++){
                     var lat = locations[i].position.lat,
                         lng = locations[i].position.lng,
                         loc_marker = L.marker([lat, lng], {icon: icons.schoolIcon});
