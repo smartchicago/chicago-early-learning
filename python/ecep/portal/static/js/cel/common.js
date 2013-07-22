@@ -110,5 +110,21 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'boo
         });
     } else {
         $('.geolocation-button').hide();
-    }
+    };
+
+    return {
+        getUrl: function (name) {
+            switch (name) {
+                case 'location-api':
+                    return '/api/location/';
+                case 'neighborhood-api':
+                    return '/api/neighborhood/';
+                case 'neighborhoods-topo':
+                    return '/static/js/neighborhoods-topo.json';
+                case 'neighborhoods-geojson':
+                    return '/static/js/neighborhoods.json';
+                default:
+            throw 'Unknown URL endpoint';
+        };
+    }};
 });

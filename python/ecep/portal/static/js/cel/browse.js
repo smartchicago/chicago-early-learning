@@ -6,7 +6,7 @@
 'use strict';
 
 define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 'topojson', 'icons', 'common', CEL.serverVars.gmapRequire, 'styling'], 
-    function($, L, neighborhoodList, locationList, topojson, icons) {
+    function($, L, neighborhoodList, locationList, topojson, icons, common) {
         
         var map,   // Leaflet map
             gmap,    // Google basemap
@@ -24,13 +24,13 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          */
         var loadData = function() {
             $.when(
-                $.getJSON(window.location.origin + '/api/location/', function(data) {
+                $.getJSON(common.getUrl('location-api'), function(data) {
                     locations = data.locations;
                 }),
-                $.getJSON('/api/neighborhood/', function(data) {
+                $.getJSON(common.getUrl('neighborhood-api'), function(data) {
                     neighborhoods = data;
                 }),
-                $.getJSON(window.location.origin + '/static/js/neighborhoods-topo.json', function(data) {
+                $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
                     neighborhoodLayer = L.geoJson(null, {
                         style: {
                             color: '#666',
