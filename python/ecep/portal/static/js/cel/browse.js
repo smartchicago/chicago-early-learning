@@ -18,7 +18,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             currentLayer = layerType.none,
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
-            neighborhoodGeojson;    // Store neighborhood geojson
+            neighborhoodGeojson,    // Store neighborhood geojson
+            $locationWrapper;    // Store div wrapper for results on left side
 
         /**
          * Loads Json data for neighborhoods and locations
@@ -81,23 +82,21 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * @param {Array of neighborhoods or locations} data
          */
         var listResults = function(data) {
-            if (data.neighborhoods) {
-                template = Handlebars.compile(neighborhoodList);
-            } else {
-                template = Handlebars.compile(locationList);
-            }
-            $('.locations-wrapper').empty();
-            $('.locations-wrapper').append(template(data));
+            var html = (data.neighborhoods) ? neighborhoodList : locationList;
+            template = Handlebars.compile(html);
+            $locationWrapper.empty();
+            $locationWrapper.append(template(data));
         };
 
         // Load data and build map when page loads
         return {
             init: function(){
-            map = new L.map('map').setView([41.88, -87.62], 10);    // Initialize Leaflet map
-            gmap = new L.Google('ROADMAP');    // Add Google baselayer
-            map.addLayer(gmap);
-            map.on('zoomend', displayMap);    // Set event handler to call displayMap when zoom changes
-            loadData();    // Load initial data
+                map = new L.map('map').setView([41.88, -87.62], 10);    // Initialize Leaflet map
+                gmap = new L.Google('ROADMAP');    // Add Google baselayer
+                map.addLayer(gmap);
+                $locationWrapper = $('.locations-wrapper');
+                map.on('zoomend', displayMap);    // Set event handler to call displayMap when zoom changes
+                loadData();    // Load initial data
             }
         };
     }
