@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% comment %}
+Copyright (c) 2012 Azavea, Inc.
+See LICENSE in the project root for copying permission
+{% endcomment %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+
+{% block title %}{% trans "Chicago Early Learning" %}{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block navbar%}
+<form class="navbar-form" id="mobile-search">
+  <a class="btn pull-left btn-info" id="refineSearch" data-toggle="collapse" data-parent="#filters" href="#collapseFilters"><img src="{% static 'img/icons/filter-white.svg' %}" class="svg-icon"></a>
+  <input type="text" placeholder="121 N Lasalle St, Chicago">
+  <div class="btn-group">
+    <button class="btn" id="toggleMapBtn" data-slidepanel="panel" href="map.html"><img src="{% static 'img/icons/map.svg' %}" class="svg-icon"></button>
+    <button class="btn" id="toggleListBtn"><img src="{% static 'img/icons/geolocate.svg' %}" class="svg-icon"></button>
+  </div>
+</form>
+{% endblock %}
+
+{% block content %}
+
+<div class="results-left">
+  <!-- Results Toolbar -->
+  <div class="accordion" id="filter-options">
+    <div class="accordion-group" id="toolbar-main">
+      <div class="accordion-heading results-toolbar">
+        <button class="btn btn-primary" data-toggle="collapse" data-parent="#filters" href="#collapseFilters" id="refineBtn">Refine your search <i class="icon-chevron-down icon-white"></i></button>
+        <div class="btn-group">
+          <a class="btn" href="favorites.html" data-r1023="<i class='icon-star'></i> Favorites (<span class='search-fav-count'>0</span>)"><i class="icon-star"></i> Favorites (<span class="search-fav-count">0</span>)</a>
+          <button class="btn" data-r1023="<i class='icon-share'></i> Share" data-toggle="dropdown"><img src="{% static 'img/icons/share.svg' %}" class="svg-icon"> Share</button>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Google+</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon-file"></i><i class="icon-share-alt"></i> Export PDF</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="collapseFilters" class="accordion-body in collapse">
+        <div class="accordion-inner filters-inner">
+          <div class="filters-left">
+            <label><input type="checkbox"> All</label>
+            <label><input type="checkbox"> Ages 0-3</label>
+            <label><input type="checkbox"> Ages 3-5</label>
+            <label><input type="checkbox"> Head Start</label>
+            <label><input type="checkbox"> Early Head Start</label>
+          </div>
+          <div class="filters-right">
+            <label><input type="checkbox"> Preschool for All / Prevention Initiative</label>
+            <label><input type="checkbox"> Tuition-based</label>
+            <label><input type="checkbox"> Child-parent Center</label>
+            <label><input type="checkbox"> Child Care Assistance Program</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-row">
+      <ul class="header-labels">
+        <li id="header-fav">Neighborhood</li>
+        <li id="header-dist">Schools</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="locations-wrapper">
+    <!-- Location -->
+  </div>  
+</div> <!-- end results left -->
+
+<!-- MAP -->
+<div class="results-right">
+  <div id="map"></div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+require(['browse'], function() { });
+</script>
+{% endblock %}
