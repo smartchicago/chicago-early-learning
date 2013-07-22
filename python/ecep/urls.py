@@ -40,6 +40,7 @@ urlpatterns = patterns(
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
     # Location Views
+    # Don't need to pass id to view since this is handled with javascript
     url(r'^location/\d+/$', 'portal.views.location'),
     url(r'^api/location/(?P<location_id>\d+)/$', 'portal.views.location_api'),
     url(r'^api/location/', 'portal.views.location_api'),
