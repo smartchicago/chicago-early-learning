@@ -91,13 +91,14 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         };
 
         // Load data and build map when page loads
-        $(document).ready( function(){
+        return {
+            init: function(){
             map = new L.map('map').setView([41.88, -87.62], 10);    // Initialize Leaflet map
             gmap = new L.Google('ROADMAP');    // Add Google baselayer
             map.addLayer(gmap);
             map.on('zoomend', displayMap);    // Set event handler to call displayMap when zoom changes
             loadData();    // Load initial data
-        });
-
+            }
+        };
     }
 );
