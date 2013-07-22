@@ -87,6 +87,6 @@ See LICENSE in the project root for copying permission
 
 {% block scripts %}
 <script>
-require(['browse'], function() { });
+require(['jquery', 'browse'], function($, browse) { $(document).ready(browse.init); });
 </script>
 {% endblock %}
