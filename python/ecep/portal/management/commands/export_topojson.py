@@ -35,6 +35,8 @@ class Command(BaseCommand):
         output.write(json)
         output.close()
 
-        subprocess.check_call(['topojson', '-p', '-o', data_path+'/neighborhoods-topo.json', data_path + '/neighborhoods.json'])
+        topo_path = data_path + '/neighborhoods-topo.json'
+        geo_path = data_path + '/neighborhoods.json'
+        subprocess.check_call(['topojson', '-p', '-o', topo_path, geo_path])
 
         sys.stdout.write('Succesfully exported %s neighborhoods\n' % len(neighborhoods))
