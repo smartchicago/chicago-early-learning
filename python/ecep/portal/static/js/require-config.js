@@ -6,6 +6,7 @@
 requirejs.config({
     paths: {
         jquery: '../lib/jquery-1.10.2.min',
+        'jquery-ui': '../lib/jquery-ui-1.10.3.autocomplete-only.min',
         bootstrap: '../lib/bootstrap',
         Leaflet: '../lib/leaflet',
         'Leaflet-google': '../lib/leaflet-google',
@@ -14,14 +15,18 @@ requirejs.config({
         text: '../lib/require-plugins/text'
     },
     shim: {
-        'bootstrap': {
+        'jquery-ui': {
+            deps: ['jquery'],
+            exports: '$'
+        },
+        bootstrap: {
             // http://stackoverflow.com/a/13556882/639619
             // Don't use the return value from bootstrap, it should attach stuff to the
             // $ object, require jquery and use it instead
             deps: ['jquery'],
             exports: '$.fn.popover'
         },
-        'Leaflet': {
+        Leaflet: {
             exports: 'L'
         },
         'Leaflet-google': {

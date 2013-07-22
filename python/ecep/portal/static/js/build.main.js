@@ -23,7 +23,7 @@
     // include: ['main'],
     
     // Modules to exclude from optimization (usually large, already minified libraries)
-    exclude: ['jquery'],
+    exclude: ['jquery', 'jquery-ui-autocomplete'],
     
     // If the module ID starts with 'cel',
     // load it from the js/cel directory. paths
@@ -32,6 +32,7 @@
     // the paths config could be for a directory.
     paths: {
         jquery: 'jquery-1.10.2.min',
+        'jquery-ui': 'jquery-ui-1.10.3.autocomplete-only.min',
         common: '../cel/common'
     },
     
