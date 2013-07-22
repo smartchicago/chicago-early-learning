@@ -225,7 +225,10 @@ def location_details(location_id):
 
 def location_api(request, location_id=None):
     """
-    Render a detail page for a single location.
+    API endpoint for locations.
+
+    If location_id is passed, return JSON representation of that location,
+    else return an array with data on every location.
     """
     if location_id:
         context = location_details(location_id)
