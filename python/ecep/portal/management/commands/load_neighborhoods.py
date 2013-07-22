@@ -37,8 +37,7 @@ class Command(BaseCommand):
                           % (len(lm.ds[0]), lm.ds.layer_count))
 
         # Export topojson
-        export_topo = export_topojson.Command()
-        export_topo.handle()
+        export_topojson.Command().handle()
 
     def check_neighborhood_table(self):
         """Checks whether or not neighborhoods are already loaded, raises an error if
