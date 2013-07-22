@@ -19,7 +19,8 @@ body {
 	color: #fff;
 	text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
 	background: #c2c2c2;
-	background: url(../img/banner.jpg);
+	background: url(../img/banner2.jpg);
+	background-size: cover;
 }
 .container-custom {
 	width: 970px;
