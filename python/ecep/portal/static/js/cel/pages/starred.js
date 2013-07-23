@@ -7,37 +7,35 @@
 'use strict';
  
 define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'jquery-cookie'], 
-    function($, L, html) {
+    function($, L, html, common) {
 
         $(document).ready(function() {
     
             // Draw the Handlebars template for a location 
-            function drawStarredLocation(data) {
+            function drawStarredLocations(data) {
                 var template = Handlebars.compile(html);
-                $('.container').append(template(data));
+                for (var i in data.locations) {
+                    var loc = data.locations[i];
+                    $('.container').append(template(loc));
+                }
 
                 // Remove map and share button for each location
                 $('.single-location-map').hide();
                 $('.single-share').hide();
+                $('#fav-count').html(data.locations.length);
             }
 
             var cookieopts = CEL.serverVars.starredcookie;
 
             // get location ids:
-            // url --> array :: /starred/12,13,54/  --> [12, 13, 54]
+            // url --> string :: /starred/12,13,54/  --> "12,13,54" 
             //      -- or --
-            // cookie string --> array :: "12,31,42" --> [12, 31, 42]
+            // cookie string 
             var cookie = $.cookie(cookieopts.name),
-                starredIdsString = window.location.pathname.split('/')[2] || cookie || "",
-                starredIds = starredIdsString ? starredIdsString.split(',') : [], 
-                numStarredIds = starredIds.length;
+                regexResult = /([0-9,]+)/.exec(window.location.pathname),
+                starredIds = regexResult[1] || cookie || "";
 
-            // Get html for each location id
-            for (var i = 0; i < numStarredIds; i++) {
-                $.getJSON(window.location.origin + '/api/location/' + starredIds[i], drawStarredLocation);
-            }
-
-            $('#fav-count').html(numStarredIds);
+            $.getJSON(common.getUrl('location-api') + starredIds, drawStarredLocations);
 
             // Click event for "Clear Selections" button
             $('#faves-clear').bind('click', function(e) {

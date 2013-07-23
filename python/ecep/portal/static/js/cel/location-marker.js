@@ -15,12 +15,14 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'icons', 'common', 
         $(document).ready(function() {
             var location_id = /(\d+)/.exec(window.location.pathname)[1];
             $.getJSON(common.getUrl('location-api') + location_id, function(data) {
-                // Need to build html first so leaflet can find the map-location div
-                var template = Handlebars.compile(html);
-                $('.container > .row').append(template(data));
+                var loc = data.locations[0],
+                    // need to build the template first so leaflet can find the map
+                    template = Handlebars.compile(html);
 
-                var lat = data.position.lat,
-                    lng = data.position.lng,
+                $('.container > .row').append(template(loc));
+
+                var lat = loc.position.lat,
+                    lng = loc.position.lng,
                     map = new L.Map('location-map', {center: new L.LatLng(lat, lng), zoom: 13}),
                     gmap = new L.Google('ROADMAP');
                 
