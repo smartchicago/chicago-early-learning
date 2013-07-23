@@ -10,6 +10,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
         var map,   // Leaflet map
             gmap,    // Google basemap
+            zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
+            latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
+            lngSettings = CEL.serverVars.lngSettings,
             locations,    // Store location data
             neighborhoods,    // Store neighborhood data
             template,    // Hold handlebars template
@@ -53,7 +56,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          */
         var displayMap = function() {
             var zoomLevel = map.getZoom();
-            if (currentLayer !== 'neighborhood' && zoomLevel < 13) {
+            console.log(zoomSettings);
+            if (currentLayer !== 'neighborhood' && zoomLevel < zoomSettings) {
                 // If not already displaying neighborhoods and zoomed out
                 currentLayer = layerType.neighborhood;
                 listResults(neighborhoods);
@@ -61,8 +65,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 neighborhoodLayer.clearLayers();
                 neighborhoodLayer.addData(neighborhoodGeojson);
                 map.addLayer(neighborhoodLayer);
+                exploreButton(neighborhoods);
             }
-            else if (currentLayer !== 'location' && zoomLevel >= 13) {
+            else if (currentLayer !== 'location' && zoomLevel >= zoomSettings) {
                 // If not already displaying locations and zoomed in
                 map.removeLayer(neighborhoodLayer);
                 map.addLayer(locationLayer);
@@ -88,10 +93,24 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $locationWrapper.append(template(data));
         };
 
+        /**
+         * Add functionality to explore button when viewing neighborhoods.
+         * On click - map pans to center of neighborhood and zooms, then
+         * rebuilds list display
+         * @param {Array of neighborhoods} data
+         */
+        var exploreButton = function(data) {
+            $('.explore-btn').click(function() {
+                map.panTo([$(this).data('lat'), $(this).data('lng')]);
+                map.setZoom(zoomSettings);
+                displayMap();
+            });
+        };
+
         // Load data and build map when page loads
         return {
             init: function(){
-                map = new L.map('map').setView([41.88, -87.62], 10);    // Initialize Leaflet map
+                map = new L.map('map').setView([latSettings, lngSettings], 10);    // Initialize Leaflet map
                 gmap = new L.Google('ROADMAP');    // Add Google baselayer
                 map.addLayer(gmap);
                 $locationWrapper = $('.locations-wrapper');
