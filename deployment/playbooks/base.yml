@@ -36,7 +36,6 @@
   - name: Install node packages
     command: npm install ${item} -g
     with_items: ${node_packages}
-    only_if: ${django_jenkins}
 
   - name: Set ownership of directories
     file: path=${item} state=directory owner=${ansible_ssh_user}
