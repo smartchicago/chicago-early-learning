@@ -25,9 +25,13 @@ class Command(BaseCommand):
         Exports neighborhood to data directory
         """
         data_path = 'portal/static/js'
-        neighborhoods = Neighborhood.objects.filter()
+        neighborhoods = Neighborhood.objects.annotate(num_schools=Count('location')).filter()
+
+        for n in neighborhoods:
+            n.center = n.center()
+        
         geoj = GeoJSON.GeoJSON()
-        djf = Django.Django(geodjango='boundary', properties=['primary_name', 'pk'])
+        djf = Django.Django(geodjango='boundary', properties=['primary_name', 'pk', 'center', 'num_schools'])
 
         json = geoj.encode(djf.decode(neighborhoods))
         
