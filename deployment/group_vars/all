@@ -81,7 +81,7 @@ clone_repo: True
 django_jenkins: False
 
 node_packages:
-  - none
+  - topojson
 
 ## RabbitMQ Settings ##
 

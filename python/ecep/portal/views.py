@@ -11,6 +11,7 @@ from faq.models import Topic, Question
 from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
 from django.utils import simplejson
+from django.db.models import Count, Q
 from operator import attrgetter
 import json
 
@@ -58,6 +59,12 @@ def about(request):
 def search(request):
     ctx = RequestContext(request, {})
     response = render_to_response('search.html', context_instance=ctx)
+    return response
+
+
+def browse(request):
+    ctx = RequestContext(request, {})
+    response = render_to_response('browse.html', context_instance=ctx)
     return response
 
 
@@ -216,17 +223,27 @@ def location_details(location_id):
     return item.get_context_dict()
 
 
-def location_api(request, location_id):
+def location_api(request, location_id=None):
     """
-    Render a detail page for a single location.
+    API endpoint for locations.
+
+    If location_id is passed, return JSON representation of that location,
+    else return an array with data on every location.
     """
-    context = location_details(location_id)
+    if location_id:
+        context = location_details(location_id)
+    else:
+        locations = Location.objects.filter(~Q(geom=None))
+        location_contexts = [l.get_context_dict() for l in locations]
+        context = {'locations': location_contexts}
     return HttpResponse(json.dumps(context), content_type="application/json")
 
-def location(request, location_id):
-    ctx = RequestContext(request, { })
+
+def location(request):
+    ctx = RequestContext(request, {})
     response = render_to_response('location.html', context_instance=ctx)
     return response
+
 
 def location_position(request, location_id):
     """
@@ -237,11 +254,19 @@ def location_position(request, location_id):
     return HttpResponse(json.dumps(results), content_type="application/json")
 
 
+def neighborhood_api(request):
+    counts = Neighborhood.objects.annotate(num_schools=Count('location'))
+    count_list = [{'name': n.primary_name, 'schools': n.num_schools, 'id': n.pk} for n in counts]
+    count_list.sort(key=lambda x: x['name'])
+    context = {'neighborhoods': count_list}
+    return HttpResponse(json.dumps(context), content_type="application/json")
+
+
 ## Starred Location Views
 def starred(request):
     """
     Render starred locations page for as many favorites as are set in url or cookie
     """
-    ctx = RequestContext(request, { })
+    ctx = RequestContext(request, {})
     response = render_to_response('starred.html', context_instance=ctx)
     return response

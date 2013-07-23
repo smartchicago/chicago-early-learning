@@ -18,8 +18,9 @@ urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
     url(r'^$', 'portal.views.index'),
-    url(r'^about.html$', 'portal.views.about', name='about'),
+    url(r'^about$', 'portal.views.about', name='about'),
     url(r'^search.html$', 'portal.views.search', name='search'),
+    url(r'^browse/$', 'portal.views.browse', name='browse'),
     url(r'^robots\.txt$', direct_to_template,
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
     url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to',
@@ -39,8 +40,13 @@ urlpatterns = patterns(
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
     # Location Views
-    url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
+    # Don't need to pass id to view since this is handled with javascript
+    url(r'^location/\d+/$', 'portal.views.location'),
     url(r'^api/location/(?P<location_id>\d+)/$', 'portal.views.location_api'),
+    url(r'^api/location/$', 'portal.views.location_api'),
+    
+    # Neighborhood Views
+    url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),
 
     # Starred Location Views
     url(r'^starred/?[0-9,]*/$', 'portal.views.starred'),

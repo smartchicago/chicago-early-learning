@@ -3,10 +3,10 @@
  * See http://requirejs.org/docs/api.html for details
  */
 
-'use strict';
-
-define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaflet-google', 'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
-        function($, L, Response, Handlebars) {
+define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'bootstrap', 
+        'Leaflet-google', 'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
+function($, L, Response, Handlebars) {
+    'use strict';
     
     $(document).ready(function() {
 
@@ -121,4 +121,19 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaf
         $.cookie(options.name, value, options.options);
     });
 
+    return {
+        getUrl: function (name) {
+            switch (name) {
+                case 'location-api':
+                    return '/api/location/';
+                case 'neighborhood-api':
+                    return '/api/neighborhood/';
+                case 'neighborhoods-topo':
+                    return '/static/js/neighborhoods-topo.json';
+                case 'neighborhoods-geojson':
+                    return '/static/js/neighborhoods.json';
+                default:
+            throw 'Unknown URL endpoint';
+        };
+    }};
 });
