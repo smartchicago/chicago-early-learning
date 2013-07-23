@@ -117,7 +117,7 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 'Leaf
         var options = CEL.serverVars.starredcookie,
             value = $.cookie(options.name, options.options),
             newvalue = $(this).val();
-        value = (value) ? value + ',' + newvalue : newvalue;
+        value = value ? value + ',' + newvalue : newvalue;
         $.cookie(options.name, value, options.options);
     });
 
