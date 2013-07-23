@@ -8,7 +8,6 @@ requirejs.config({
         jquery: '../lib/jquery-1.10.2.min',
         'jquery-ui': '../lib/jquery-ui-1.10.3.autocomplete-only.min',
         'jquery-cookie': '../lib/jquery.cookie',
-        'celcookie': '../lib/cel-cookie',
         bootstrap: '../lib/bootstrap',
         Leaflet: '../lib/leaflet',
         'Leaflet-google': '../lib/leaflet-google',

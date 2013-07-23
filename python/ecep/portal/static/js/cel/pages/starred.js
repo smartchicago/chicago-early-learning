@@ -6,19 +6,19 @@
 
 'use strict';
  
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'celcookie', 'jquery-cookie'], 
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cookie', 'jquery-cookie'], 
     function($, L, html, common, celcookie) {
 
         $(document).ready(function() {
 
-            console.log('CEL COOKIES: ', celcookie);
-    
             // Draw the Handlebars template for a location 
             function drawStarredLocations(data) {
-                var template = Handlebars.compile(html);
+                var template = Handlebars.compile(html),
+                    container = $('.container');
+                
                 for (var i in data.locations) {
                     var loc = data.locations[i];
-                    $('.container').append(template(loc));
+                    container.append(template(loc));
                 }
 
                 // Remove map and share button for each location
@@ -41,19 +41,6 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'celcooki
             } else {
                 $('.container').html('No Starred Locations');
             }
-
-
-            // Click event for "Clear Selections" button
-            $('#faves-clear').bind('click', function(e) {
-                $('.container').empty();
-                $('#fav-count').html(0);
-                $.removeCookie(celcookie.name, celcookie.options);
-            });
-
-            // Click event for "Share" button
-            $('#faves-share').bind('click', function(e) {
-                // TODO: add share functionality here
-            });
         });
     }
 );

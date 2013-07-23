@@ -112,15 +112,6 @@ function($, L, Response, Handlebars) {
         $('.geolocation-button').hide();
     }
 
-    // Add save to cookie functionality for any "star this Location" button on the page
-    $('.button-add-starred').bind('click', function(e) {
-        var options = CEL.serverVars.starredcookie,
-            value = $.cookie(options.name, options.options),
-            newvalue = $(this).val();
-        value = value ? value + ',' + newvalue : newvalue;
-        $.cookie(options.name, value, options.options);
-    });
-
     return {
         getUrl: function (name) {
             switch (name) {
