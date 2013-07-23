@@ -42,11 +42,14 @@ urlpatterns = patterns(
     # Location Views
     # Don't need to pass id to view since this is handled with javascript
     url(r'^location/\d+/$', 'portal.views.location'),
-    url(r'^api/location/(?P<location_id>\d+)/$', 'portal.views.location_api'),
+    url(r'^api/location/(?P<location_ids>[0-9,]*)/$', 'portal.views.location_api'),
     url(r'^api/location/$', 'portal.views.location_api'),
     
     # Neighborhood Views
     url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),
+
+    # Starred Location Views
+    url(r'^starred/?[0-9,]*/$', 'portal.views.starred'),
 
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
