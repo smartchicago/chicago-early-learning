@@ -256,7 +256,7 @@ def location_position(request, location_id):
 
 def neighborhood_api(request):
     counts = Neighborhood.objects.annotate(num_schools=Count('location'))
-    count_list = [{'name': n.primary_name, 'schools': n.num_schools, 'id': n.pk} for n in counts]
+    count_list = [{'name': n.primary_name, 'schools': n.num_schools, 'id': n.pk, 'center': n.center()} for n in counts]
     count_list.sort(key=lambda x: x['name'])
     context = {'neighborhoods': count_list}
     return HttpResponse(json.dumps(context), content_type="application/json")
