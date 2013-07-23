@@ -43,7 +43,7 @@ See LICENSE in the project root for copying permission
       <div class="navbar-inner">
         <!-- Navbar LEFT -->
         <div class="navbar-left">
-          <a class="brand" href="index.html" data-r1024="<img src='{% static "img/logo.svg" %}' id='logo' alt='CEL'> Chicago Early Learning"><img src='{% static "img/logo.svg" %}' id="logo" alt="CEL"></a>
+          <a class="brand" href="{% url portal.views.index %}" data-r1024="<img src='{% static "img/logo.svg" %}' id='logo' alt='CEL'> Chicago Early Learning"><img src='{% static "img/logo.svg" %}' id="logo" alt="CEL"></a>
           <form class="navbar-form" id="desktop-search">
             <div class="input-append">
               <input id="appendedInputButton" class="autocomplete-searchbox" type="text" placeholder="121 N. Lasalle, Chicago">
@@ -56,8 +56,8 @@ See LICENSE in the project root for copying permission
         <div class="navbar-right">
           <ul class="nav">
             <li><a href="#text-for-info" data-toggle="modal" data-r1024="Text For Info"><img src='{% static "img/icons/text-for-info.svg" %}' alt="Text For Info"></a></li>
-            <li><a href="about.html" data-r1024="About"><img src='{% static "img/icons/about.svg" %}' alt="About"></a></li>
-            <li><a href="faq.html" data-r1024="FAQ"><img src='{% static "img/icons/faq.svg" %}'></a></li>
+            <li><a href="{% url portal.views.about %}" data-r1024="About"><img src='{% static "img/icons/about.svg" %}' alt="About"></a></li>
+            <li><a href="{% url portal.views.faq %}" data-r1024="FAQ"><img src='{% static "img/icons/faq.svg" %}'></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="Language <b class='caret'></b>">EN <b class="caret"></b></a>
               <ul class="dropdown-menu pull-right">
