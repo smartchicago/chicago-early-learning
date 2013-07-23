@@ -61,6 +61,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 neighborhoodLayer.clearLayers();
                 neighborhoodLayer.addData(neighborhoodGeojson);
                 map.addLayer(neighborhoodLayer);
+                exploreButton(neighborhoods);
             }
             else if (currentLayer !== 'location' && zoomLevel >= 13) {
                 // If not already displaying locations and zoomed in
@@ -86,6 +87,20 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             template = Handlebars.compile(html);
             $locationWrapper.empty();
             $locationWrapper.append(template(data));
+        };
+
+        /**
+         * Add functionality to explore button when viewing neighborhoods.
+         * On click - map pans to center of neighborhood and zooms, then
+         * rebuilds list display
+         * @param {Array of neighborhoods} data
+         */
+        var exploreButton = function(data) {
+            $('.explore-btn').click(function() {
+                map.panTo([$(this).data('lat'), $(this).data('lng')]);
+                map.setZoom(13);
+                displayMap();
+            });
         };
 
         // Load data and build map when page loads
