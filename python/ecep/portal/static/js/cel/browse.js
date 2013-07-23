@@ -21,6 +21,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             currentLayer = layerType.none,
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
+            popupLayer = new L.LayerGroup(),   // Popup Layer
             neighborhoodGeojson,    // Store neighborhood geojson
             $locationWrapper;    // Store div wrapper for results on left side
 
@@ -79,6 +80,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 // If not already displaying locations and zoomed in
                 map.removeLayer(neighborhoodLayer);
                 map.addLayer(locationLayer);
+                popupLayer.clearLayers();
                 currentLayer = layerType.location;
                 listResults(locations);
                 for(var i = 0; i < locations.length; i++){
@@ -124,6 +126,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * @param {Longitude of neighborhood centroid} lng
          */
         var neighborhoodPan = function(name, numSchools, lat, lng) {
+            popupLayer.clearLayers();
             map.panTo([lat, lng]);
             if (map.getZoom() < zoomSettings - 3) {
                 // Check if at reasonable zoom level, if too far out
@@ -132,7 +135,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             }
             
             var popupContent = '<b>' + name + '</b><br>Number of Schools: ' + numSchools,
-                popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).openOn(map);
+                popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
         };
         
         /**
@@ -153,6 +156,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 map = new L.map('map').setView([latSettings, lngSettings], 10);    // Initialize Leaflet map
                 gmap = new L.Google('ROADMAP');    // Add Google baselayer
                 map.addLayer(gmap);
+                map.addLayer(popupLayer);
                 $locationWrapper = $('.locations-wrapper');
                 map.on('zoomend', displayMap);    // Set event handler to call displayMap when zoom changes
                 loadData();    // Load initial data
