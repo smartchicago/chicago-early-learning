@@ -56,7 +56,6 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          */
         var displayMap = function() {
             var zoomLevel = map.getZoom();
-            console.log(zoomSettings);
             if (currentLayer !== 'neighborhood' && zoomLevel < zoomSettings) {
                 // If not already displaying neighborhoods and zoomed out
                 currentLayer = layerType.neighborhood;
