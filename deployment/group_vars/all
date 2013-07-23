@@ -51,8 +51,6 @@ autocomplete:
   nelat: 42.5
   nelng: -46.5
 
-starred_cookie: 'CEL.starred'
-
 twilio_enabled: False
 account_sid: 'None'
 account_auth: 'None'
