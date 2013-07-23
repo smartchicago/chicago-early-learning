@@ -2,6 +2,7 @@
 # See LICENSE in the project root for copying permission
 
 from django.core.management.base import BaseCommand
+from django.db.models import Count
 
 from vectorformats.Formats import Django, GeoJSON
 from portal.models import Neighborhood
