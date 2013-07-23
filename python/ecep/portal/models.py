@@ -76,6 +76,16 @@ class Location(models.Model):
     accept_ccap = models.NullBooleanField('Accepts CCAP')
     is_hs = models.NullBooleanField('Head Start')
     is_ehs = models.NullBooleanField('Early Head Start')
+
+    # To get these placeholder fields to show up in the UI, replace
+    # 'Placeholder 1' and 'Placeholder 2' in the lines below with 
+    # real labels, and add 'placeholder_1' and 'placeholder_2' to the
+    # 'display_include' list. Also, in admin.py, browse to the
+    # LocationAdmin class and add the appropriate entries to the
+    # fieldsets list.
+    placeholder_1 = models.TextField('Placeholder 1', blank=True)
+    placeholder_2 = models.TextField('Placeholder 2', blank=True)
+    
     geom = models.PointField('Geometry', srid=4326, null=True)
     objects = models.GeoManager()
 
