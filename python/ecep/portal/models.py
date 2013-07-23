@@ -31,6 +31,15 @@ class Neighborhood(models.Model):
             if location.neighborhood is None or location.neighborhood.id != self.id:
                 location.save()
 
+    def center(self):
+        """Returns a dictionary representation of the neighborhood's centroid.
+
+        Used to add functionality to zoom on neighborhood when explore button clicked.
+        """
+        center = self.boundary.centroid.coords
+        return {'lng': center[0], 'lat': center[1]}
+
+                
     def __unicode__(self):
         return self.primary_name
         
