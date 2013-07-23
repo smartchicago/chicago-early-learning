@@ -20,11 +20,16 @@ urlpatterns = patterns(
     url(r'^$', 'portal.views.index'),
     url(r'^about$', 'portal.views.about', name='about'),
     url(r'^search.html$', 'portal.views.search', name='search'),
-    url(r'^browse/$', 'portal.views.browse', name='browse'),
     url(r'^robots\.txt$', direct_to_template,
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
     url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to',
         {'url': '/static/images/favicon.ico'}),
+    
+    # browse page
+    url(r'^browse/$', 'portal.views.browse', name='browse'),
+    url(r'^browse/[0-9\.-]+/[0-9\.-]+/$', 'portal.views.browse', name='browse'),
+    url(r'^browse/neighborhood/\d+/$', 'portal.views.browse', name='browse'),
+    url(r'^browse/location/\d+/$', 'portal.views.browse', name='browse'),
 
     # portal autocomplete api
     url(r'^api/autocomplete/(?P<query>\S+)/$', 'portal.views.portal_autocomplete'),

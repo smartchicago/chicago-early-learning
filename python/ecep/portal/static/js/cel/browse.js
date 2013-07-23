@@ -73,7 +73,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                         lng = locations[i].position.lng,
                         locMarker = L.marker([lat, lng], {icon: icons.schoolIcon});
                     locationLayer.addLayer(locMarker);
-                };
+                }
             }
         };
 
@@ -88,10 +88,21 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $locationWrapper.append(template(data));
         };
 
+        var getLatLngFromUrl = function() {
+            var lat = 41.88,
+                lng = -87.62,
+                latLngRegexResult = /browse\/([0-9\.-]+)\/([0-9\.-]+)/.exec(window.location.pathname);
+            if (latLngRegexResult) {
+                lat = latLngRegexResult[1];
+                lng = latLngRegexResult[2];
+            } 
+            return [lat, lng];
+        };
+
         // Load data and build map when page loads
         return {
             init: function(){
-                map = new L.map('map').setView([41.88, -87.62], 10);    // Initialize Leaflet map
+                map = new L.map('map').setView(getLatLngFromUrl(), 10);    // Initialize Leaflet map
                 gmap = new L.Google('ROADMAP');    // Add Google baselayer
                 map.addLayer(gmap);
                 $locationWrapper = $('.locations-wrapper');

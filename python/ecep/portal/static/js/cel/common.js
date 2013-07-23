@@ -110,7 +110,7 @@ function($, L, Response, Handlebars) {
         });
     } else {
         $('.geolocation-button').hide();
-    };
+    }
 
     return {
         getUrl: function (name) {
@@ -123,8 +123,14 @@ function($, L, Response, Handlebars) {
                     return '/static/js/neighborhoods-topo.json';
                 case 'neighborhoods-geojson':
                     return '/static/js/neighborhoods.json';
+                case 'browse-latlng':
+                    return '/browse/';
+                case 'browse-neighborhood':
+                    return '/browse/neighborhood/';
+                case 'browse-location':
+                    return '/browse/location/';
                 default:
             throw 'Unknown URL endpoint';
-        };
+        }
     }};
 });
