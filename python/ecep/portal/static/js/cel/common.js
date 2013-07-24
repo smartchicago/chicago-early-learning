@@ -127,6 +127,8 @@ function($, L, Response, Handlebars) {
                 return '/browse/neighborhood/';
             case 'browse-location':
                 return '/browse/location/';
+            case 'autocomplete-icon':
+                return 'http://placekitten.com/g/50/50';
             default:
                 throw 'Unknown URL endpoint';
         }
