@@ -10,7 +10,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
 
     'use strict';
 
-    return {
+    var favs = {
 
         /*
          * Store a reference here so we don't have to pass it around
@@ -21,7 +21,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          * Given a location id, adds the location id to the correct cookie 
          */
         addIdToCookie: function(id) {
-            var cookie = this.cookie,
+            var cookie = favs.cookie,
                 cookieString = $.cookie(cookie.name);
 
             if (cookieString) {
@@ -53,7 +53,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          * Given a location id, removes the location id from the correct cookie 
          */
         removeIdFromCookie: function(id) {
-            var cookie = this.cookie,
+            var cookie = favs.cookie,
                 cookieString = $.cookie(cookie.name);
             if (!cookieString) {
                 return;
@@ -86,8 +86,8 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 container: '.container'
             };
             var opts = $.extend({}, defaults, options),
-                self = this,
-                cookie = $.cookie(this.cookie.name);
+                self = favs,
+                cookie = $.cookie(favs.cookie.name);
 
             if (cookie) {
                 var starredIds = cookie.split(','),
@@ -97,7 +97,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 // toggle any buttons for starred locations to on state
                 for (var i = 0; i < starredIdsLength; i++) {
                     starredId = starredIds[i];
-                    this.toggle($('#favs-toggle-loc-' + starredId));
+                    favs.toggle($('#favs-toggle-loc-' + starredId));
                 }
             }
         },
@@ -123,12 +123,12 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
             // toggle off
             if ($elt.hasClass(opts.selectedClass)) {
                 img = 'star-empty.svg';
-                this.removeIdFromCookie(buttonId);
+                favs.removeIdFromCookie(buttonId);
                 increment = -1;
             // toggle on
             } else {
                 img = 'star.svg';
-                this.addIdToCookie(buttonId);
+                favs.addIdToCookie(buttonId);
                 increment = 1;
             }
 
@@ -147,7 +147,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 button: '.faves-add'
             };
             var opts = $.extend({}, defaults, options),
-                self = this;
+                self = favs;
 
             // toggle the button/cookie state
             var button = $(opts.button);
@@ -167,7 +167,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 container: '.container'
             };
             var opts = $.extend({}, defaults, options),
-                self = this;
+                self = favs;
 
             var clearbutton = $(opts.button);
             clearbutton.on('click', function(e) {
@@ -185,7 +185,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 button: '.faves-share'
             };
             var opts = $.extend({}, defaults, options),
-                self = this;
+                self = favs;
 
             var sharebutton = $(opts.button);
             sharebutton.on('click', function(e) {
@@ -193,4 +193,5 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
             });
         }
     };
+    return favs;
 });
