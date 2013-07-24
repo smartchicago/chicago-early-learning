@@ -107,7 +107,7 @@ function($, L, Response, Handlebars) {
     Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,1024] });
     Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,1024] });
 
-    var getUrl = function (name) {
+    var getUrl = function (name, opts) {
         switch (name) {
             case 'location-api':
                 return '/api/location/';
@@ -118,7 +118,7 @@ function($, L, Response, Handlebars) {
             case 'neighborhoods-geojson':
                 return '/static/js/neighborhoods.json';
             case 'browse-latlng':
-                return '/browse/';
+                return '/browse/' + opts.lat + '/' + opts.lng + '/';
             case 'browse-neighborhood':
                 return '/browse/neighborhood/';
             case 'browse-location':
@@ -133,9 +133,7 @@ function($, L, Response, Handlebars) {
         $(document).ready(function() {
             $('.geolocation-button').bind('click', function(e) {                                                   
                 navigator.geolocation.getCurrentPosition(function(position) {                           
-                    var positionString = position.coords.latitude + "/" + position.coords.longitude;   
-                    var href = getUrl('browse-latlng') + positionString + '/';
-                    window.location.href = href;
+                    window.location.href = getUrl('browse-latlng',{ lat: position.coords.latitude, lng: position.coords.longitude });
                 });                                                                                     
             });
         });
