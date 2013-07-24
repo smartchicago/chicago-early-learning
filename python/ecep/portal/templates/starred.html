@@ -18,13 +18,13 @@ See LICENSE in the project root for copying permission
 <!-- Favorites top bar -->
 <div class="row faves-top">
     <div class="faves-left">
-        <h1>Favorites (<span id="fav-count">0</span>)</h1>
+        <h1>Starred (<span class="fav-count">0</span>)</h1>
     </div>
 
     <div class="faves-right">
         <a id="faves-clear" class="btn faves-option" href="#"><i class="icon-remove-circle"></i> Clear Selections</a>
         <a id="faves-share" class="btn faves-option" href="#"><i class="icon-share"></i> Share</a>
-        <a class="btn faves-close pull-right" href="search.html"><i class="icon-arrow-left"></i> Back</a>
+        <a class="btn faves-close pull-right" href="{% url portal.views.browse %}"><i class="icon-arrow-left"></i> Back</a>
     </div>
 </div>
 

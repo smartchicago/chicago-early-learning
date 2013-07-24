@@ -6,8 +6,8 @@
 
 'use strict';
  
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cookie', 'jquery-cookie'], 
-    function($, L, html, common, celcookie) {
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cookie', 'favorites', 'jquery-cookie'], 
+    function($, L, html, common, celcookie, favorites) {
 
         $(document).ready(function() {
 
@@ -24,7 +24,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
                 // Remove map and share button for each location
                 $('.single-location-map').hide();
                 $('.single-share').hide();
-                $('#fav-count').html(data.locations.length);
+                $('.fav-count').html(data.locations.length);
             }
 
             // get location ids:
@@ -41,6 +41,8 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
             } else {
                 $('.container').html('No Starred Locations');
             }
+
+            favorites.addClearListener();
         });
     }
 );
