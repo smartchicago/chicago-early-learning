@@ -124,7 +124,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 lng = geolng;
             } 
             return [lat, lng];
-        }
+        };
 
         /**
          * Add functionality to explore button when viewing neighborhoods.
