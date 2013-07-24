@@ -149,6 +149,9 @@ h1, h2, h3, h4 {
 		-moz-border-radius: 0px;
 		border-radius: 0px;
 	}
+        .accordion {
+                margin-bottom: 0px;
+        }
 	.results-toolbar {
 		padding: 17px;
 		background: #eee;
@@ -174,13 +177,6 @@ h1, h2, h3, h4 {
 		.location button {
 			float: right;
 			margin-top: -35px;
-		}
-		#location3 {
-			margin-top: 95px;
-			margin-bottom: -3px;
-		}
-		#location2 {
-			margin-bottom: -3px;
 		}
 		.location-test1 {
 			margin-top: 0;
