@@ -61,7 +61,14 @@
 	.navbar .nav {
 		margin: 10px 0;
 	}
-	#map,
+	.results-right {
+            visibility: hidden;
+            top: 50px;
+            left: 0px;
+        },
+        #map {
+            left: 0px;
+        }
 	#moreBtn {
 		display: none;
 	}
