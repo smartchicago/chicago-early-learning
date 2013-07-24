@@ -19,14 +19,11 @@ See LICENSE in the project root for copying permission
     <link rel="shortcut icon" href='{% static "favicon.ico" %}' type="image/x-icon">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
-    <link href='{% static "css/lib/responsive.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
-
     <!--[if lt IE 9]>
       <script src='{% static "js/html5shiv.js" %}'></script>
     <![endif]-->
-        
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ ga_key }}']);
@@ -36,6 +33,8 @@ See LICENSE in the project root for copying permission
         });
     </script>
     {% block otherhead %}{% endblock %}
+    <link href='{% static "css/lib/responsive.css" %}' rel="stylesheet">
+
   </head> 
   <body>
     <!-- Navbar -->
@@ -44,13 +43,7 @@ See LICENSE in the project root for copying permission
         <!-- Navbar LEFT -->
         <div class="navbar-left">
           <a class="brand" href="{% url portal.views.index %}" data-r1024="<img src='{% static "img/logo.svg" %}' id='logo' alt='CEL'> Chicago Early Learning"><img src='{% static "img/logo.svg" %}' id="logo" alt="CEL"></a>
-          <form class="navbar-form" id="desktop-search">
-            <div class="input-append">
-              <input id="appendedInputButton" class="autocomplete-searchbox" type="text" placeholder="121 N. Lasalle, Chicago">
-              <button class="btn geolocation-button" id="geolocation" type="button"><i class="icon-screenshot"></i></button>
-            </div>
-            <button type="submit" class="btn btn-navsearch-main" style="margin-top: -5px;" id="searchBtn"><i class="icon-search"></i> Search</a>
-          </form>
+        {% block searchform %}{% endblock %}
         </div>
         <!-- Navbar RIGHT -->
         <div class="navbar-right">
