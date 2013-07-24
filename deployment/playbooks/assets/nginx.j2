@@ -9,8 +9,6 @@ server {
   listen {{ http_port }} default_server;
   server_name _;
 
-  auth_basic                   {{ http_auth }};
-  auth_basic_user_file         .htpasswd;
 
   client_max_body_size 20M;
 
@@ -22,9 +20,15 @@ server {
     alias {{ media_path }};
   }
 
-  location / {
+  location /sms {
+    auth_basic			off;
+    try_files $uri @proxy_to_app;
+  }
 
-  	   try_files $uri @proxy_to_app;
+  location / {
+    auth_basic                   {{ http_auth }};
+    auth_basic_user_file         .htpasswd;
+    try_files $uri @proxy_to_app;
   }
 
   location @proxy_to_app {
