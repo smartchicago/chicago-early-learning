@@ -110,6 +110,22 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             });
         };
 
+        /*
+         * Override default lat/lng settings geolocation lat/lng if it exists 
+         */
+        var getMapLatLng = function() {
+            var lat = latSettings,
+                lng = lngSettings,
+                $map = $('#map'),
+                geolat = $map.data('geo-lat'),
+                geolng = $map.data('geo-lng');
+            if (geolat && geolng) {
+                lat = geolat; 
+                lng = geolng;
+            } 
+            return [lat, lng];
+        }
+
         /**
          * Add functionality to explore button when viewing neighborhoods.
          * On click - map pans to center of neighborhood and zooms, then
@@ -163,7 +179,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         // Load data and build map when page loads
         return {
             init: function(){
-                map = new L.map('map').setView([latSettings, lngSettings], 10);    // Initialize Leaflet map
+                map = new L.map('map').setView(getMapLatLng(), 10);    // Initialize Leaflet map
                 gmap = new L.Google('ROADMAP');    // Add Google baselayer
                 map.addLayer(gmap);
                 map.addLayer(popupLayer);
