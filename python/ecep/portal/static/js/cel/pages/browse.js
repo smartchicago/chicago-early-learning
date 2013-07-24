@@ -12,6 +12,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         var map,   // Leaflet map
             gmap,    // Google basemap
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
+            defaultZoom = $('#map').data('zoom') || 10,
             latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
             lngSettings = CEL.serverVars.lngSettings,
             locations,    // Store location data
@@ -124,7 +125,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 lng = geolng;
             } 
             return [lat, lng];
-        }
+        };
 
         /**
          * Add functionality to explore button when viewing neighborhoods.
@@ -179,7 +180,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         // Load data and build map when page loads
         return {
             init: function(){
-                map = new L.map('map').setView(getMapLatLng(), 10);    // Initialize Leaflet map
+                map = new L.map('map').setView(getMapLatLng(), defaultZoom);    // Initialize Leaflet map
                 gmap = new L.Google('ROADMAP');    // Add Google baselayer
                 map.addLayer(gmap);
                 map.addLayer(popupLayer);
