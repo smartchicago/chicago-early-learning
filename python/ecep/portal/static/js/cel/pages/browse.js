@@ -104,6 +104,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $locationWrapper.append(template(data));
         };
 
+        /*
+         * Override default lat/lng settings with lat/lng from url if it exists
+         */
         var getLatLngFromUrl = function() {
             var lat = latSettings,
                 lng = lngSettings,
