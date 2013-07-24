@@ -27,9 +27,6 @@ urlpatterns = patterns(
     
     # browse page
     url(r'^browse/$', 'portal.views.browse', name='browse'),
-    url(r'^browse/[0-9\.-]+/[0-9\.-]+/$', 'portal.views.browse', name='browse'),
-    url(r'^browse/neighborhood/\d+/$', 'portal.views.browse', name='browse'),
-    url(r'^browse/location/\d+/$', 'portal.views.browse', name='browse'),
 
     # portal autocomplete api
     url(r'^api/autocomplete/(?P<query>\S+)/$', 'portal.views.portal_autocomplete'),

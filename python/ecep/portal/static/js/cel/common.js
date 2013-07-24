@@ -118,7 +118,7 @@ function($, L, Response, Handlebars) {
             case 'neighborhoods-geojson':
                 return '/static/js/neighborhoods.json';
             case 'browse-latlng':
-                return '/browse/' + opts.lat + '/' + opts.lng + '/';
+                return '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
             case 'browse-neighborhood':
                 return '/browse/neighborhood/';
             case 'browse-location':

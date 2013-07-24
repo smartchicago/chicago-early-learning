@@ -105,15 +105,17 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         };
 
         /*
-         * Override default lat/lng settings with lat/lng from url if it exists
+         * Override default lat/lng settings geolocation lat/lng if it exists 
          */
-        var getLatLngFromUrl = function() {
+        var getMapLatLng = function() {
             var lat = latSettings,
                 lng = lngSettings,
-                latLngRegexResult = /browse\/([0-9\.-]+)\/([0-9\.-]+)/.exec(window.location.pathname);
-            if (latLngRegexResult) {
-                lat = latLngRegexResult[1];
-                lng = latLngRegexResult[2];
+                $map = $('#map'),
+                geolat = $map.data('geo-lat'),
+                geolng = $map.data('geo-lng');
+            if (geolat && geolng) {
+                lat = geolat; 
+                lng = geolng;
             } 
             return [lat, lng];
         }
@@ -171,7 +173,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         // Load data and build map when page loads
         return {
             init: function(){
-                map = new L.map('map').setView(getLatLngFromUrl(), 10);    // Initialize Leaflet map
+                map = new L.map('map').setView(getMapLatLng(), 10);    // Initialize Leaflet map
                 gmap = new L.Google('ROADMAP');    // Add Google baselayer
                 map.addLayer(gmap);
                 map.addLayer(popupLayer);
