@@ -83,12 +83,12 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 popupLayer.clearLayers();
                 currentLayer = layerType.location;
                 listResults(locations);
-                for(var i = 0; i < locations.length; i++){
+                for(var i = 0; i < locations.length; i++) {
                     var lat = locations[i].position.lat,
                         lng = locations[i].position.lng,
                         locMarker = L.marker([lat, lng], {icon: icons.schoolIcon});
                     locationLayer.addLayer(locMarker);
-                };
+                }
             }
         };
 
@@ -131,7 +131,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             if (map.getZoom() < zoomSettings - 3) {
                 // Check if at reasonable zoom level, if too far out
                 // zoom user in
-                map.setZoom(zoomSettings-3);
+                map.setZoom(zoomSettings - 3);
             }
             
             var popupContent = '<b>' + name + '</b><br>Number of Schools: ' + numSchools,
@@ -145,8 +145,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          */
         var panHandler = function() {
             $('.accordion-group').click(function() {
-                neighborhoodPan($(this).data('name'), $(this).data('schools'), 
-                                $(this).data('lat'), $(this).data('lng'));
+                var $this = $(this);
+                neighborhoodPan($this.data('name'), $this.data('schools'), 
+                                $this.data('lat'), $this.data('lng'));
             });
         };
 
