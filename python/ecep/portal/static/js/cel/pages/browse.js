@@ -69,7 +69,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * and after a change in zoom level.
          */
         var displayMap = function() {
-            var zoomLevel = map.getZoom();
+            var zoomLevel = map.getZoom(),
+                popupTemplate = Handlebars.compile('<b>{{item.site_name}}</b><br>{{item.address}}');
+            
             if (currentLayer !== 'neighborhood' && zoomLevel < zoomSettings) {
                 // If not already displaying neighborhoods and zoomed out
                 currentLayer = layerType.neighborhood;
@@ -88,12 +90,17 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 popupLayer.clearLayers();
                 currentLayer = layerType.location;
                 listResults(locations);
-                for(var i = 0; i < locations.length; i++) {
-                    var lat = locations[i].position.lat,
-                        lng = locations[i].position.lng,
-                        locMarker = L.marker([lat, lng], {icon: icons.schoolIcon});
+
+                $.each(locations, function(i, location) {
+                    var pos = location.position,
+                        lat = pos.lat,
+                        lng = pos.lng,
+                        icon = icons.schoolIcon,
+                        locMarker = L.marker([lat, lng], { icon: icon });
+
                     locationLayer.addLayer(locMarker);
-                }
+                    locMarker.bindPopup(popupTemplate(location), { key: location.item.key });
+                });
             }
         };
 
@@ -216,6 +223,17 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
                 $locationWrapper = $('.locations-wrapper');
                 map.on('zoomend', displayMap);    // Set event handler to call displayMap when zoom changes
+
+                // highlight the appropriate list item when a location popup is shown
+                map.on('popupopen', function(e) {
+                    $('div[data-key=' + e.popup.options.key + ']').addClass('highlight');
+                });
+
+                // remove all highlighting when a location popup is closed
+                map.on('popupclose', function() {
+                    $('.location-container.highlight').removeClass('highlight');                           
+                });
+                
                 loadData();    // Load initial data
                 mapToggle();
             }
