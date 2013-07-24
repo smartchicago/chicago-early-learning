@@ -223,24 +223,28 @@ def location_details(location_id):
     return item.get_context_dict()
 
 
-def location_api(request, location_id=None):
+def location_api(request, location_ids=None):
     """
     API endpoint for locations.
 
-    If location_id is passed, return JSON representation of that location,
+    location_ids -- comma separated list of location ids to return
+
+    If location_ids is passed, return JSON representation of those locations,
     else return an array with data on every location.
     """
-    if location_id:
-        context = location_details(location_id)
+    if location_ids:
+        location_ids_array = [int(l_id) for l_id in location_ids.split(',') if l_id]
+        locations = Location.objects.filter(pk__in=location_ids_array)
     else:
         locations = Location.objects.filter(~Q(geom=None))
-        location_contexts = [l.get_context_dict() for l in locations]
-        context = {'locations': location_contexts}
+
+    location_contexts = [l.get_context_dict() for l in locations]
+    context = {'locations': location_contexts}
     return HttpResponse(json.dumps(context), content_type="application/json")
 
 
 def location(request):
-    ctx = RequestContext(request, { })
+    ctx = RequestContext(request, {})
     response = render_to_response('location.html', context_instance=ctx)
     return response
 
@@ -256,8 +260,17 @@ def location_position(request, location_id):
 
 def neighborhood_api(request):
     counts = Neighborhood.objects.annotate(num_schools=Count('location'))
-    count_list = [{'name': n.primary_name, 'schools': n.num_schools, 'id': n.pk} for n in counts]
+    count_list = [{'name': n.primary_name, 'schools': n.num_schools, 'id': n.pk, 'center': n.get_center()} for n in counts]
     count_list.sort(key=lambda x: x['name'])
     context = {'neighborhoods': count_list}
     return HttpResponse(json.dumps(context), content_type="application/json")
 
+
+## Starred Location Views
+def starred(request):
+    """
+    Render starred locations page for as many favorites as are set in url or cookie
+    """
+    ctx = RequestContext(request, {})
+    response = render_to_response('starred.html', context_instance=ctx)
+    return response

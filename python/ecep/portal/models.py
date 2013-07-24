@@ -5,8 +5,9 @@ from django.contrib.gis.db import models
 from portal.templatetags.portal_extras import nicephone
 from django.template.defaultfilters import title
 
+
 class Neighborhood(models.Model):
-    """Model for Neighborhoods 
+    """Model for Neighborhoods
     Model for a Neighborhood, which is simply a geographic area with a name
     boundary -- MultiPolygon for the neighborhood
     primary_name -- Display name for the neighborhood
@@ -20,9 +21,9 @@ class Neighborhood(models.Model):
 
     def save(self, *args, **kwargs):
         """ Override for Model.save()
-        Updates neighborhood relation for all Locations that intersect the new Neighborhood boundaries 
+        Updates neighborhood relation for all Locations that intersect the new Neighborhood boundaries
         """
-        super(Neighborhood, self).save(*args, **kwargs)            
+        super(Neighborhood, self).save(*args, **kwargs)
 
         # update location AFTER updating neighborhood polygon
         locations = Location.objects.filter(geom__intersects=self.boundary)
@@ -31,9 +32,18 @@ class Neighborhood(models.Model):
             if location.neighborhood is None or location.neighborhood.id != self.id:
                 location.save()
 
+    def get_center(self):
+        """Returns a dictionary representation of the neighborhood's centroid.
+
+        Used to add functionality to zoom on neighborhood when explore button clicked.
+        """
+        center = self.boundary.centroid.coords
+        return {'lng': center[0], 'lat': center[1]}
+
     def __unicode__(self):
         return self.primary_name
-        
+
+
 class Location(models.Model):
     """Model for school locations in Chicago
     """
@@ -67,6 +77,16 @@ class Location(models.Model):
     accept_ccap = models.NullBooleanField('Accepts CCAP')
     is_hs = models.NullBooleanField('Head Start')
     is_ehs = models.NullBooleanField('Early Head Start')
+
+    # To get these placeholder fields to show up in the UI, replace
+    # 'Placeholder 1' and 'Placeholder 2' in the lines below with
+    # real labels, and add 'placeholder_1' and 'placeholder_2' to the
+    # 'display_include' list. Also, in admin.py, browse to the
+    # LocationAdmin class and add the appropriate entries to the
+    # fieldsets list.
+    placeholder_1 = models.TextField('Placeholder 1', blank=True)
+    placeholder_2 = models.TextField('Placeholder 2', blank=True)
+
     geom = models.PointField('Geometry', srid=4326, null=True)
     objects = models.GeoManager()
 
@@ -194,13 +214,13 @@ class Location(models.Model):
 
     def save(self, *args, **kwargs):
         """ Override for Model.save()
-        Overrides Location.save(). Provides the additional functionality of updating the Neighborhood 
+        Overrides Location.save(). Provides the additional functionality of updating the Neighborhood
         of the Location before the save.
         """
         if self.geom is not None:
             neighborhoods = Neighborhood.objects.filter(boundary__intersects=self.geom)
             if len(neighborhoods):
                 self.neighborhood = neighborhoods[0]
-         
-        super(Location, self).save(*args, **kwargs)            
+
+        super(Location, self).save(*args, **kwargs)
 

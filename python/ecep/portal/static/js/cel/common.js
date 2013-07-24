@@ -3,8 +3,8 @@
  * See http://requirejs.org/docs/api.html for details
  */
 
-
-define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'bootstrap', 'Leaflet-google', 'jquery-ui', CEL.serverVars.gmapRequire], 
+define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'bootstrap', 
+        'Leaflet-google', 'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
 function($, L, Response, Handlebars) {
     'use strict';
     
@@ -28,16 +28,28 @@ function($, L, Response, Handlebars) {
                         region: 'US'
                     }, 
                     function(results, status) {
-                        response($.map(results, function(result) {
-                            var lat = result.geometry.location[0],
-                                lon = result.geometry.location[1];
-                            return {
-                                lat: lat,
-                                lon: lon,
-                                label: result.formatted_address,
-                                value: result.formatted_address
-                            };
-                        }));
+                        var cleanedResults = [];
+                        for (var i in results) {
+                            var result = results[i],
+                                lat = result.geometry.location.lat(),
+                                lon = result.geometry.location.lng(),
+                                resultLocation = new google.maps.LatLng(lat, lon);
+                            if (bounds.contains(resultLocation)) {
+                                cleanedResults.push({
+                                    lat: lat,
+                                    lon: lon,
+                                    label: result.formatted_address,
+                                    value: result.formatted_address
+                                });
+                            }
+                        }
+                        if (cleanedResults.length === 0) {
+                            cleanedResults.push({
+                                label: "No Results",
+                                value: "No Results"
+                            });
+                        }
+                        response(cleanedResults);
                     }
              );
         }
