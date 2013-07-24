@@ -45,7 +45,7 @@ state: 'IL'
 latitude: 41.872524826406774
 longitude: -87.62077331542969
 
-zoom_threshold: 15
+zoom_threshold: 14
 
 autocomplete:
   swlat: 41
