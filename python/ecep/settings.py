@@ -117,10 +117,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'django.contrib.gis',
     'portal',
+    'portal.sms',           # This is necessary for the celery worker to respond to messages
     'django_twilio',
     'gunicorn',
     'faq',
