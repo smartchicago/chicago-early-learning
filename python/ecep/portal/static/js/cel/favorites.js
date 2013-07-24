@@ -22,11 +22,14 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          */
         addIdToCookie: function(id) {
             var cookie = favs.cookie,
-                cookieString = $.cookie(cookie.name);
+                cookieString = $.cookie(cookie.name),
+                idArray,
+                arrayLen,
+                idExists;
 
             if (cookieString) {
-                var idArray = cookieString.split(','),
-                arrayLen = idArray.length,
+                idArray = cookieString.split(',');
+                arrayLen = idArray.length;
                 idExists = false;
    
                 // only add id if it doesn't exist in the cookie already
@@ -45,7 +48,6 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 cookieString = id;
             }
 
-            //console.log("favorites.add():", id, cookieString);
             $.cookie(cookie.name, cookieString, cookie.options);
         },
 
@@ -54,23 +56,26 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          */
         removeIdFromCookie: function(id) {
             var cookie = favs.cookie,
-                cookieString = $.cookie(cookie.name);
+                cookieString = $.cookie(cookie.name),
+                idArray,
+                arrayLen,
+                currentId;
+
             if (!cookieString) {
                 return;
             }
 
-            var idArray = cookieString.split(','),
-                arrayLen = idArray.length;
+            idArray = cookieString.split(',');
+            arrayLen = idArray.length;
 
             for (var i = 0; i < arrayLen; i++) {
-                var currentId = idArray[i];
+                currentId = idArray[i];
                 if (id === currentId) {
                     idArray.splice(i, 1);
                 }
             }
             
             cookieString = idArray.join(',');
-            //console.log("favorites.remove():", id, cookieString);
             $.cookie(cookie.name, cookieString, cookie.options);
         },
 
@@ -81,18 +86,21 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          */
         syncUI: function(options) {
             var defaults = {
-                button: '#faves-clear',
-                countspan: '#fav-count',
-                container: '.container'
-            };
-            var opts = $.extend({}, defaults, options),
+                    button: '#faves-clear',
+                    countspan: '#fav-count',
+                    container: '.container'
+                },
+                opts = $.extend({}, defaults, options),
                 self = favs,
-                cookie = $.cookie(favs.cookie.name);
+                cookie = $.cookie(favs.cookie.name),
+                starredIds, 
+                starredIdsLength, 
+                starredId;
 
             if (cookie) {
-                var starredIds = cookie.split(','),
-                    starredIdsLength = starredIds.length,
-                    starredId = 0;
+                starredIds = cookie.split(',');
+                starredIdsLength = starredIds.length;
+                starredId = 0;
                
                 // toggle any buttons for starred locations to on state
                 for (var i = 0; i < starredIdsLength; i++) {
@@ -110,15 +118,16 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          */
         toggle: function($elt, options) {
             var defaults = {
-                imgpath: '/static/img/icons/',
-                idAttribute: 'data-loc-id',
-                selectedClass: 'favs-button-selected'
-            };
-            var opts = $.extend({}, defaults, options),
+                    imgpath: '/static/img/icons/',
+                    idAttribute: 'data-loc-id',
+                    selectedClass: 'favs-button-selected'
+                }, 
+                opts = $.extend({}, defaults, options),
                 buttonImg = $elt.children('img'),
                 buttonId = $elt.attr(opts.idAttribute),
                 img = '',
-                increment = 0;
+                increment = 0,
+                $favbutton;
 
             // toggle off
             if ($elt.hasClass(opts.selectedClass)) {
@@ -134,7 +143,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
 
             buttonImg.attr('src', opts.imgpath + img);
             $elt.toggleClass(opts.selectedClass);
-            var $favbutton = $('.fav-count');
+            $favbutton = $('.fav-count');
             $favbutton.html(parseInt($favbutton.html(), 10) + increment);
         },
 
@@ -144,13 +153,13 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          */
         addToggleListener: function(options) {
             var defaults = {
-                button: '.faves-add'
-            };
-            var opts = $.extend({}, defaults, options),
-                self = favs;
+                    button: '.faves-add'
+                },
+                opts = $.extend({}, defaults, options),
+                self = favs,
+                button = $(opts.button);
 
             // toggle the button/cookie state
-            var button = $(opts.button);
             button.on('click', function(e) {
                 self.toggle($(this));
             });
@@ -162,14 +171,14 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          */
         addClearListener: function(options) {
             var defaults = {
-                button: '#faves-clear',
-                countspan: '.fav-count',
-                container: '.container'
-            };
-            var opts = $.extend({}, defaults, options),
-                self = favs;
+                    button: '#faves-clear',
+                    countspan: '.fav-count',
+                    container: '.container'
+                },
+                opts = $.extend({}, defaults, options),
+                self = favs,
+                clearbutton = $(opts.button);
 
-            var clearbutton = $(opts.button);
             clearbutton.on('click', function(e) {
                 $(opts.countspan).html('0');
                 $(opts.container).empty();
@@ -182,12 +191,12 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          */
         addShareListener: function(options) {
             var defaults = {
-                button: '.faves-share'
-            };
-            var opts = $.extend({}, defaults, options),
-                self = favs;
+                    button: '.faves-share'
+                },
+                opts = $.extend({}, defaults, options),
+                self = favs,
+                sharebutton = $(opts.button);
 
-            var sharebutton = $(opts.button);
             sharebutton.on('click', function(e) {
                 // TODO: Implement sharing as part of share scrum card
             });
