@@ -19,9 +19,10 @@ See LICENSE in the project root for copying permission
     <link rel="shortcut icon" href='{% static "favicon.ico" %}' type="image/x-icon">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
-    <link href='{% static "css/lib/responsive.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
+    {% block otherhead %}{% endblock %}
+    <link href='{% static "css/lib/responsive.css" %}' rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src='{% static "js/html5shiv.js" %}'></script>
@@ -35,7 +36,7 @@ See LICENSE in the project root for copying permission
             _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
         });
     </script>
-    {% block otherhead %}{% endblock %}
+
   </head> 
   <body>
     <!-- Navbar -->
