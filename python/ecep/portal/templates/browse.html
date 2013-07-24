@@ -79,7 +79,7 @@ See LICENSE in the project root for copying permission
 
 <!-- MAP -->
 <div class="results-right">
-    <div id="map"{% if request.GET.lat %} data-geo-lat="{{ request.GET.lat }}"{% endif %}{% if request.GET.lng %} data-geo-lng="{{ request.GET.lng }}"{% endif %}{% if request.GET.zoom %} data-zoom="{{ request.GET.zoom }}"{% endif %}></div>
+    <div id="map"{% if request.GET.lat %} data-geo-lat="{{ request.GET.lat }}"{% endif %}{% if request.GET.lng %} data-geo-lng="{{ request.GET.lng }}"{% endif %}{% if request.GET.zoom %} data-zoom="{{ request.GET.zoom }}"{% endif %}{% if request.GET.neighborhood %} data-neighborhood-id="{{ request.GET.neighborhood }}"{% endif %}{% if request.GET.location %} data-location-id="{{ request.GET.location }}"{% endif %}></div>
 </div>
 
 
