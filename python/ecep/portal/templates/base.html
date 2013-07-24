@@ -24,9 +24,6 @@ See LICENSE in the project root for copying permission
     <!--[if lt IE 9]>
       <script src='{% static "js/html5shiv.js" %}'></script>
     <![endif]-->
-    {% block otherhead %}{% endblock %}
-    <link href='{% static "css/lib/responsive.css" %}' rel="stylesheet">
-        
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ ga_key }}']);
@@ -35,6 +32,8 @@ See LICENSE in the project root for copying permission
             _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
         });
     </script>
+    {% block otherhead %}{% endblock %}
+    <link href='{% static "css/lib/responsive.css" %}' rel="stylesheet">
 
   </head> 
   <body>
