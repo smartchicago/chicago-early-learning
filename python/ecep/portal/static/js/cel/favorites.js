@@ -99,9 +99,6 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                     starredId = starredIds[i];
                     this.toggle($('#favs-toggle-loc-' + starredId));
                 }
-
-                // Set count on favorites button
-                $('.fav-count').html(starredIdsLength);
             }
         },
 
@@ -120,20 +117,25 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
             var opts = $.extend({}, defaults, options),
                 buttonImg = $elt.children('img'),
                 buttonId = $elt.attr(opts.idAttribute),
-                img = '';
+                img = '',
+                increment = 0;
 
             // toggle off
             if ($elt.hasClass(opts.selectedClass)) {
                 img = 'star-empty.svg';
                 this.removeIdFromCookie(buttonId);
+                increment = -1;
             // toggle on
             } else {
                 img = 'star.svg';
                 this.addIdToCookie(buttonId);
+                increment = 1;
             }
 
             buttonImg.attr('src', opts.imgpath + img);
             $elt.toggleClass(opts.selectedClass);
+            var $favbutton = $('.fav-count');
+            $favbutton.html(parseInt($favbutton.html(), 10) + increment);
         },
 
         /*
