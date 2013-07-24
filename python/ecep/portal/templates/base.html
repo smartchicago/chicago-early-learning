@@ -21,12 +21,11 @@ See LICENSE in the project root for copying permission
     <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
-    {% block otherhead %}{% endblock %}
-    <link href='{% static "css/lib/responsive.css" %}' rel="stylesheet">
-
     <!--[if lt IE 9]>
       <script src='{% static "js/html5shiv.js" %}'></script>
     <![endif]-->
+    {% block otherhead %}{% endblock %}
+    <link href='{% static "css/lib/responsive.css" %}' rel="stylesheet">
         
     <script type="text/javascript">
         var _gaq = _gaq || [];
