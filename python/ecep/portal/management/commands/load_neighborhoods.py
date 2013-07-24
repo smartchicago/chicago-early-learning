@@ -16,7 +16,7 @@ class Command(BaseCommand):
     args = '<none>'
     help = """This management command will load the neighborhood shapefile in the ecep/data/ directory
     of this project using the portal.Neighborhood models of this django application"""
-    
+
     def handle(self, *args, **options):
         """
         Load neighborhood shapefile using LayerMapping; automatically checks projection,
@@ -49,4 +49,4 @@ class Command(BaseCommand):
         n_count = Neighborhood.objects.filter().count()
         if n_count > 0:
             raise IntegrityError('Neighborhood table already has data in it; please remove this data to proceed')
-        
+

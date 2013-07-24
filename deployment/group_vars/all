@@ -49,9 +49,9 @@ zoom_threshold: 15
 
 autocomplete:
   swlat: 41
-  swlng: -48
+  swlng: -89
   nelat: 42.5
-  nelng: -46.5
+  nelng: -87
 
 twilio_enabled: False
 account_sid: 'None'

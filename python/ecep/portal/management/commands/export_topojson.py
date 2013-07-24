@@ -2,6 +2,7 @@
 # See LICENSE in the project root for copying permission
 
 from django.core.management.base import BaseCommand
+from django.db.models import Count
 
 from vectorformats.Formats import Django, GeoJSON
 from portal.models import Neighborhood
@@ -25,12 +26,16 @@ class Command(BaseCommand):
         Exports neighborhood to data directory
         """
         data_path = 'portal/static/js'
-        neighborhoods = Neighborhood.objects.filter()
+        neighborhoods = Neighborhood.objects.annotate(num_schools=Count('location')).filter()
+
+        for n in neighborhoods:
+            n.center = n.get_center()
+
         geoj = GeoJSON.GeoJSON()
-        djf = Django.Django(geodjango='boundary', properties=['primary_name', 'pk'])
+        djf = Django.Django(geodjango='boundary', properties=['primary_name', 'pk', 'center', 'num_schools'])
 
         json = geoj.encode(djf.decode(neighborhoods))
-        
+
         output = open(data_path+'/neighborhoods.json', 'w')
         output.write(json)
         output.close()

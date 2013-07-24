@@ -21,6 +21,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             currentLayer = layerType.none,
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
+            popupLayer = new L.LayerGroup(),   // Popup Layer
             neighborhoodGeojson,    // Store neighborhood geojson
             $locationWrapper;    // Store div wrapper for results on left side
 
@@ -43,6 +44,14 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                             weight: 1,
                             opacity: 1,
                             fillOpacity: 0.3
+                        },
+                        onEachFeature: function(feature, layer) {
+                            layer.on('click', function(e) {
+                                neighborhoodPan(feature.properties.primary_name,
+                                                feature.properties.num_schools,
+                                                feature.properties.center.lat, 
+                                                feature.properties.center.lng);
+                            });
                         }
                     });
                     neighborhoodGeojson = topojson.feature(data, data.objects.neighborhoods);
@@ -64,20 +73,22 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 neighborhoodLayer.clearLayers();
                 neighborhoodLayer.addData(neighborhoodGeojson);
                 map.addLayer(neighborhoodLayer);
+                panHandler();
                 exploreButton(neighborhoods);
             }
             else if (currentLayer !== 'location' && zoomLevel >= zoomSettings) {
                 // If not already displaying locations and zoomed in
                 map.removeLayer(neighborhoodLayer);
                 map.addLayer(locationLayer);
+                popupLayer.clearLayers();
                 currentLayer = layerType.location;
                 listResults(locations);
-                for(var i = 0; i < locations.length; i++){
+                for(var i = 0; i < locations.length; i++) {
                     var lat = locations[i].position.lat,
                         lng = locations[i].position.lng,
                         locMarker = L.marker([lat, lng], {icon: icons.schoolIcon});
                     locationLayer.addLayer(locMarker);
-                };
+                }
             }
         };
 
@@ -106,12 +117,47 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             });
         };
 
+        /**
+         * Pans to neighborhood and zooms to reasonable level if current view
+         * is too far out
+         * @param {Name of neighborhood} name
+         * @param {Number of schools in neighborhood} numSchools
+         * @param {Latitude of neighborhood centroid} lat
+         * @param {Longitude of neighborhood centroid} lng
+         */
+        var neighborhoodPan = function(name, numSchools, lat, lng) {
+            popupLayer.clearLayers();
+            map.panTo([lat, lng]);
+            if (map.getZoom() < zoomSettings - 3) {
+                // Check if at reasonable zoom level, if too far out
+                // zoom user in
+                map.setZoom(zoomSettings - 3);
+            }
+            
+            var popupContent = '<b>' + name + '</b><br>Number of Schools: ' + numSchools,
+                popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
+        };
+        
+        /**
+         * Function that handles pans to neighborhood when clicking on accordion group
+         * 
+         * Mostly just a wrapper around neighborhoodPan
+         */
+        var panHandler = function() {
+            $('.accordion-group').click(function() {
+                var $this = $(this);
+                neighborhoodPan($this.data('name'), $this.data('schools'), 
+                                $this.data('lat'), $this.data('lng'));
+            });
+        };
+
         // Load data and build map when page loads
         return {
             init: function(){
                 map = new L.map('map').setView([latSettings, lngSettings], 10);    // Initialize Leaflet map
                 gmap = new L.Google('ROADMAP');    // Add Google baselayer
                 map.addLayer(gmap);
+                map.addLayer(popupLayer);
                 $locationWrapper = $('.locations-wrapper');
                 map.on('zoomend', displayMap);    // Set event handler to call displayMap when zoom changes
                 loadData();    // Load initial data
