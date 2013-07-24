@@ -29,13 +29,13 @@ class Command(BaseCommand):
         neighborhoods = Neighborhood.objects.annotate(num_schools=Count('location')).filter()
 
         for n in neighborhoods:
-            n.center = n.center()
-        
+            n.center = n.get_center()
+
         geoj = GeoJSON.GeoJSON()
         djf = Django.Django(geodjango='boundary', properties=['primary_name', 'pk', 'center', 'num_schools'])
 
         json = geoj.encode(djf.decode(neighborhoods))
-        
+
         output = open(data_path+'/neighborhoods.json', 'w')
         output.write(json)
         output.close()
