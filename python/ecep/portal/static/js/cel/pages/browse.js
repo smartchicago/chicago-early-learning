@@ -4,8 +4,9 @@
  ********************************************************/
 
 
-define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 'topojson', 'icons', 'common', CEL.serverVars.gmapRequire, 'styling'], 
-    function($, L, neighborhoodList, locationList, topojson, icons, common) {
+define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
+        'topojson', 'icons', 'favorites', 'common', CEL.serverVars.gmapRequire, 'styling'], 
+    function($, L, neighborhoodList, locationList, topojson, icons, favorites, common) {
         'use strict';
 
         var map,   // Leaflet map
@@ -102,6 +103,11 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             template = Handlebars.compile(html);
             $locationWrapper.empty();
             $locationWrapper.append(template(data));
+
+            favorites.syncUI();
+            favorites.addToggleListener({
+                button: ".favs-toggle"
+            });
         };
 
         /**

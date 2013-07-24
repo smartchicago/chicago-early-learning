@@ -1,8 +1,8 @@
 {{#each this}}
 <div class="accordion location-test{{@index}}">
   <div class="accordion-group">
-    <div class="accordion-heading location">
-      <a href="#"><img src="/static/img/icons/star-empty.svg" class="fave-star" alt="Favorite"></a>
+      <div class="accordion-heading location">
+          <a href="#" class="favs-toggle" id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}"><img src="/static/img/icons/star-empty.svg" class="fave-star" alt="Favorite"></a>
       <a data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}"<h1>{{item.site_name}}</h1>
          <h2>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2></a>
            <a class="directions-icon" id="loc-icon" href="#" rel="tooltip" title="NYAEC Accredidation"><i class="icon-ok"></i></a> 
