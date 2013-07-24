@@ -107,16 +107,33 @@ function($, L, Response, Handlebars) {
     Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,1024] });
     Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,1024] });
 
+    var getUrl = function (name, opts) {
+        switch (name) {
+            case 'location-api':
+                return '/api/location/';
+            case 'neighborhood-api':
+                return '/api/neighborhood/';
+            case 'neighborhoods-topo':
+                return '/static/js/neighborhoods-topo.json';
+            case 'neighborhoods-geojson':
+                return '/static/js/neighborhoods.json';
+            case 'browse-latlng':
+                return '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
+            case 'browse-neighborhood':
+                return '/browse/neighborhood/';
+            case 'browse-location':
+                return '/browse/location/';
+            default:
+                throw 'Unknown URL endpoint';
+        }
+    };
+
     // geolocation                                                                                  
     if ('geolocation' in navigator) {
         $(document).ready(function() {
             $('.geolocation-button').bind('click', function(e) {                                                   
                 navigator.geolocation.getCurrentPosition(function(position) {                           
-                    var positionString = position.coords.latitude + ", " + position.coords.longitude;   
-                    // TODO:    load browse.html with the map centered on geolocated position           
-                    //          at a respectable zoom level                                             
-                    // placeholder for above TODO                                                       
-                    $('#appendedInputButton').val(positionString);                                      
+                    window.location.href = getUrl('browse-latlng',{ lat: position.coords.latitude, lng: position.coords.longitude });
                 });                                                                                     
             });
         });
@@ -125,18 +142,6 @@ function($, L, Response, Handlebars) {
     }
 
     return {
-        getUrl: function (name) {
-            switch (name) {
-                case 'location-api':
-                    return '/api/location/';
-                case 'neighborhood-api':
-                    return '/api/neighborhood/';
-                case 'neighborhoods-topo':
-                    return '/static/js/neighborhoods-topo.json';
-                case 'neighborhoods-geojson':
-                    return '/static/js/neighborhoods.json';
-                default:
-            throw 'Unknown URL endpoint';
-        }
-    }};
+        getUrl: getUrl
+    };
 });
