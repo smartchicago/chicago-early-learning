@@ -131,7 +131,6 @@ function($, L, Response, Handlebars) {
     // geolocation                                                                                  
     if ('geolocation' in navigator) {
         $(document).ready(function() {
-            var self = this;
             $('.geolocation-button').bind('click', function(e) {                                                   
                 navigator.geolocation.getCurrentPosition(function(position) {                           
                     var positionString = position.coords.latitude + "/" + position.coords.longitude;   
