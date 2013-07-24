@@ -50,7 +50,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                                 neighborhoodPan(feature.properties.primary_name,
                                                 feature.properties.num_schools,
                                                 feature.properties.center.lat, 
-                                                feature.properties.center.lng);
+                                                feature.properties.center.lng,
+                                                false);
                             });
                         }
                     });
@@ -124,16 +125,18 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * @param {Number of schools in neighborhood} numSchools
          * @param {Latitude of neighborhood centroid} lat
          * @param {Longitude of neighborhood centroid} lng
+         * @param {Flag to pan map to neighborhood} panFlag
          */
-        var neighborhoodPan = function(name, numSchools, lat, lng) {
+        var neighborhoodPan = function(name, numSchools, lat, lng, panFlag) {
             popupLayer.clearLayers();
-            map.panTo([lat, lng]);
-            if (map.getZoom() < zoomSettings - 3) {
-                // Check if at reasonable zoom level, if too far out
-                // zoom user in
-                map.setZoom(zoomSettings - 3);
-            }
-            
+            if (panFlag) {
+                map.panTo([lat, lng]);
+                if (map.getZoom() < zoomSettings - 3) {
+                    // Check if at reasonable zoom level, if too far out
+                    // zoom user in
+                    map.setZoom(zoomSettings - 3);
+                }
+            }            
             var popupContent = '<b>' + name + '</b><br>Number of Schools: ' + numSchools,
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
         };
@@ -147,7 +150,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $('.accordion-group').click(function() {
                 var $this = $(this);
                 neighborhoodPan($this.data('name'), $this.data('schools'), 
-                                $this.data('lat'), $this.data('lng'));
+                                $this.data('lat'), $this.data('lng'), true);
             });
         };
 
