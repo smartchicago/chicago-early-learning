@@ -88,6 +88,8 @@ function($, L, Response, Handlebars) {
                     window.location.href = getUrl('browse-latlng', { lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
                 }
             }
+            // default
+            window.location.href = getUrl('browse');
         };
 
         /*
@@ -160,6 +162,15 @@ function($, L, Response, Handlebars) {
             },
             select: function(event, ui) {
                 submitAutocomplete(ui);
+            },
+            focus: function(event, ui) {
+                // mirror data to the input element so the proper item is submitted
+                $('.autocomplete-searchbox').data({
+                    'id': ui.item.id,
+                    'type': ui.item.type,
+                    'lat': ui.item.lat,
+                    'lon': ui.item.lon
+                });
             },
             minLength: 2        // do not make a request until we have typed two chars
         });
