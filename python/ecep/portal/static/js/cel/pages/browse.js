@@ -93,6 +93,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 listResults(locations);
                 markerMap = {};
 
+                // Create map markers and bind popups
                 $.each(locations, function(i, location) {
                     var pos = location.position,
                         lat = pos.lat,
@@ -104,6 +105,23 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     markerMap[key] = locMarker;
                     locationLayer.addLayer(locMarker);
                     locMarker.bindPopup(popupTemplate(location), { key: key });
+                });
+
+                // Bind to accordion events so we can pan to the map location
+                $('.accordion-group').click(function() {
+                    var $this = $(this),
+                        key = $this.data('key'),
+                        marker = markerMap[key],
+                        latLng = marker.getLatLng();
+
+                    // 'togglePopup' would work better here, but it appears our version of leaflet
+                    // doesn't have it implemented. If we upgrade leaflet, we should switch this
+                    // to use it. Either that or keep track of whether or not this accordion group
+                    // is collapsed (there is currently a 'collapsed' class added, but it seems to
+                    // be inconsistent when testing it, probably due to some behind-the-scenes
+                    // setTimeouts.
+                    marker.openPopup();
+                    map.panTo(latLng);
                 });
             }
         };
