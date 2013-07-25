@@ -6,7 +6,7 @@
       <a data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}"<h1>{{item.site_name}}</h1>
          <h2>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2></a>
            <a class="directions-icon" id="loc-icon" href="#" rel="tooltip" title="NYAEC Accredidation"><i class="icon-ok"></i></a> 
-           <a class="directions-icon" id="loc-dirs" href="#">Directions</a>
+           <a class="directions-icon" id="loc-dirs" href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}" target="_blank">Directions</a>
            <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}" id="moreBtn">More</button>
 	   <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
      </div>
