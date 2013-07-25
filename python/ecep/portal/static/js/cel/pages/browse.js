@@ -182,7 +182,13 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         var mapToggle = function() {
             $('#toggleMapBtn').click(function() {
                 $('.results-left').toggle();
-                $('.results-right').css('visibility', 'visible');
+                var $resultsRight = $('.results-right');
+                if ($resultsRight.css('visibility') === 'hidden') {
+                    $resultsRight.css('visibility', 'visible');
+                }
+                else {
+                    $resultsRight.css('visibility', 'hidden');
+                }
             });
         };
 
