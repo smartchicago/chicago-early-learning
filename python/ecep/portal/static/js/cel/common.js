@@ -4,7 +4,7 @@
  */
 
 define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'bootstrap', 
-        'Leaflet-google', 'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
+        'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
 function($, L, Response, Handlebars) {
     'use strict';
     
