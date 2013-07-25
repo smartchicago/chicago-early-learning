@@ -21,6 +21,10 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          * Given a location id, adds the location id to the correct cookie 
          */
         addIdToCookie: function(id) {
+            if (!id) {
+                return;
+            }
+
             var cookie = favs.cookie,
                 cookieString = $.cookie(cookie.name),
                 idArray,
@@ -43,6 +47,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                     idArray.push(id);
                 }
 
+                idArray = $.grep(idArray, function (x) { return x !== ""; });
                 cookieString = idArray.join(',');
             } else {
                 cookieString = id;
@@ -55,6 +60,9 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          * Given a location id, removes the location id from the correct cookie 
          */
         removeIdFromCookie: function(id) {
+            if (!id) {
+                return;
+            }
             var cookie = favs.cookie,
                 cookieString = $.cookie(cookie.name),
                 idArray,
@@ -107,6 +115,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                     starredId = starredIds[i];
                     favs.toggle($('#favs-toggle-loc-' + starredId));
                 }
+                $('.fav-count').html(starredIdsLength);
             }
         },
 

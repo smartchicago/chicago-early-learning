@@ -14,9 +14,10 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
             // Draw the Handlebars template for a location 
             function drawStarredLocations(data) {
                 var template = Handlebars.compile(html),
-                    container = $('.container');
+                    container = $('.container'),
+                    numLocations = data.locations.length;
                 
-                for (var i in data.locations) {
+                for (var i = 0; i < numLocations; i++) {
                     var loc = data.locations[i];
                     container.append(template(loc));
                 }
