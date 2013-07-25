@@ -10,6 +10,20 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
 
     'use strict';
 
+    /*
+     * Cleans values from the array with values == deleteValue
+     * See: http://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
+     */
+    Array.prototype.clean = function(deleteValue) {
+        for (var i = 0; i < this.length; i++) {
+            if (this[i] == deleteValue) {         
+                this.splice(i, 1);
+                i--;
+            }
+        }
+        return this;
+    };
+
     var favs = {
 
         /*
@@ -21,6 +35,10 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          * Given a location id, adds the location id to the correct cookie 
          */
         addIdToCookie: function(id) {
+            if (!id) {
+                return;
+            }
+
             var cookie = favs.cookie,
                 cookieString = $.cookie(cookie.name),
                 idArray,
@@ -43,7 +61,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                     idArray.push(id);
                 }
 
-                cookieString = idArray.join(',');
+                cookieString = idArray.clean("").join(',');
             } else {
                 cookieString = id;
             }
@@ -55,6 +73,9 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          * Given a location id, removes the location id from the correct cookie 
          */
         removeIdFromCookie: function(id) {
+            if (!id) {
+                return;
+            }
             var cookie = favs.cookie,
                 cookieString = $.cookie(cookie.name),
                 idArray,
@@ -107,6 +128,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                     starredId = starredIds[i];
                     favs.toggle($('#favs-toggle-loc-' + starredId));
                 }
+                $('.fav-count').html(starredIdsLength);
             }
         },
 
