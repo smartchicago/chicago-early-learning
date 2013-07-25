@@ -1,35 +1,37 @@
 {{#each this}}
-<div class="accordion location-test{{@index}}">
-  <div class="accordion-group">
-      <div class="accordion-heading location">
-          <a href="#" class="favs-toggle" id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}"><img src="/static/img/icons/star-empty.svg" class="fave-star" alt="Favorite"></a>
-      <a data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}"<h1>{{item.site_name}}</h1>
-         <h2>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2></a>
-           <a class="directions-icon" id="loc-icon" href="#" rel="tooltip" title="NYAEC Accredidation"><i class="icon-ok"></i></a> 
-           <a class="directions-icon" id="loc-dirs" href="#">Directions</a>
-           <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}" id="moreBtn">More</button>
-	   <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
-     </div>
-</div>
-<div id="collapseLoc{{@index}}" class="accordion-body collapse">
-  <div class="accordion-inner">
-    <div class="accordion-right">
-      <a class="btn input-block-level" href="{{item.url}}" target="_blank"><i class="icon-globe"></i> Website</a>
-      <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
-      <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
-    </div>
-    <div class="accordion-left">
-      <h1>{{phone.fieldname}}</h1>
-      <h2><a href="tel:{{phone.number}}">{{phone.number}}</a></h2>
-      <hr>
-      {{#each sfields}}
-      <h1>{{fieldname}}</h1>
-      <h2>{{value}}</h2>
-      <hr>
-      {{/each}}
-      <h1>Other Features</h1>
-      <h2>{{bfields}}</h2>
+<div class="accordion location-container" data-key="{{item.key}}">
+  <div class="accordion-group" data-key="{{item.key}}">
+    <div class="accordion-heading location">
+      <a href="#"><img src="/static/img/icons/star-empty.svg" class="fave-star" alt="Favorite"></a>
+      <a data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}"><h1>{{item.site_name}}</h1>
+        <h2>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2></a>
+      <a class="directions-icon" id="loc-icon" href="#" rel="tooltip" title="NYAEC Accredidation"><i class="icon-ok"></i></a> 
+      <a class="directions-icon" id="loc-dirs" href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}" target="_blank">Directions</a>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}" id="moreBtn">More</button>
+      <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
     </div>
   </div>
+  <div id="collapseLoc{{@index}}" class="accordion-body collapse">
+    <div class="accordion-inner">
+      <div class="accordion-right">
+        <a class="btn input-block-level" href="{{item.url}}" target="_blank"><i class="icon-globe"></i> Website</a>
+        <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+        <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+      </div>
+      <div class="accordion-left">
+        <h1>{{phone.fieldname}}</h1>
+        <h2><a href="tel:{{phone.number}}">{{phone.number}}</a></h2>
+        <hr>
+        {{#each sfields}}
+        <h1>{{fieldname}}</h1>
+        <h2>{{value}}</h2>
+        <hr>
+        {{/each}}
+        <h1>Other Features</h1>
+        <h2>{{bfields}}</h2>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 {{/each}}

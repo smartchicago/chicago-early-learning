@@ -140,6 +140,7 @@ h1, h2, h3, h4 {
 	overflow: hidden;
 	top: 0;
 	bottom: 0;
+        z-index: 1001;
 	-webkit-box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow:    2px 0px 5px rgba(0, 0, 0, 0.5);
 	box-shadow:         2px 0px 5px rgba(0, 0, 0, 0.5);
@@ -312,6 +313,10 @@ h1, h2, h3, h4 {
 
 .exportPDF {
 	width: 11px !important;
+}
+
+.location-container.highlight .location {
+    background-color: #FFFBCC;
 }
 
 /* Scrollbars ---------------------- */
