@@ -28,6 +28,16 @@ define(['./Leaflet'], function(L) {
             iconAnchor:   [10, 60], // point of the icon which will correspond to marker's location
             shadowAnchor: [4, 62],  // the same for the shadow
             popupAnchor:  [10, -60] // point from which the popup should open relative to the iconAnchor
+        }),
+        highlightIcon: L.icon({
+            iconUrl: '/static/img/leaflet-icons/marker-highlight.png',
+            shadowUrl: '/static/img/leaflet-icons/marker-shadow.png',
+            
+            iconSize:     [35, 45], // size of the icon
+            shadowSize:   [41, 41], // size of the shadow
+            iconAnchor:   [10, 60], // point of the icon which will correspond to marker's location
+            shadowAnchor: [4, 62],  // the same for the shadow
+            popupAnchor:  [10, -60] // point from which the popup should open relative to the iconAnchor
         })
     };
 });

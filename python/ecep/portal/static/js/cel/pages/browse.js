@@ -26,6 +26,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
             popupLayer = new L.LayerGroup(),   // Popup Layer
+            markerMap, // Used for storing a map of location keys -> map markers
             neighborhoodGeojson,    // Store neighborhood geojson
             $locationWrapper;    // Store div wrapper for results on left side
 
@@ -90,16 +91,19 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 popupLayer.clearLayers();
                 currentLayer = layerType.location;
                 listResults(locations);
+                markerMap = {};
 
                 $.each(locations, function(i, location) {
                     var pos = location.position,
                         lat = pos.lat,
                         lng = pos.lng,
                         icon = icons.schoolIcon,
-                        locMarker = L.marker([lat, lng], { icon: icon });
+                        locMarker = L.marker([lat, lng], { icon: icon }),
+                        key = location.item.key;
 
+                    markerMap[key] = locMarker;
                     locationLayer.addLayer(locMarker);
-                    locMarker.bindPopup(popupTemplate(location), { key: location.item.key });
+                    locMarker.bindPopup(popupTemplate(location), { key: key });
                 });
             }
         };
@@ -117,6 +121,29 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             favorites.syncUI();
             favorites.addToggleListener({
                 button: ".favs-toggle"
+            });
+
+            // Watch for hover events on the list so we can highlight both 
+            // the list item and the icon on the map
+            $('.location-container').hover(function(e) {
+                var $this = $(this),
+                    key = $this.data('key'),
+                    marker = markerMap[key];
+
+                // Keeping the icon selection simple for now, since everything is
+                // currently hardcoded to school and there is a separate icon management
+                // task. This swaps out the marker for a highlight marker on mouseenter and 
+                // switches it back to school on mouseleave. It should eventually tie in to
+                // the icon management system, using the data of the location to determine the
+                // appropriate icon state. The highlight marker will probably go away and will
+                // be more specific to the actual marker (probably just increasing its size).
+                if (e.type === 'mouseenter') {
+                    $this.addClass('highlight');
+                    marker.setIcon(icons.highlightIcon);
+                } else if (e.type === 'mouseleave') {
+                    $this.removeClass('highlight');
+                    marker.setIcon(icons.schoolIcon);
+                }
             });
         };
 
