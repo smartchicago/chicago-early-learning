@@ -10,20 +10,6 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
 
     'use strict';
 
-    /*
-     * Cleans values from the array with values == deleteValue
-     * See: http://stackoverflow.com/questions/281264/remove-empty-elements-from-an-array-in-javascript
-     */
-    Array.prototype.clean = function(deleteValue) {
-        for (var i = 0; i < this.length; i++) {
-            if (this[i] == deleteValue) {         
-                this.splice(i, 1);
-                i--;
-            }
-        }
-        return this;
-    };
-
     var favs = {
 
         /*
@@ -61,7 +47,8 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                     idArray.push(id);
                 }
 
-                cookieString = idArray.clean("").join(',');
+                idArray = $.grep(idArray, function (x) { return x !== ""; });
+                cookieString = idArray.join(',');
             } else {
                 cookieString = id;
             }
