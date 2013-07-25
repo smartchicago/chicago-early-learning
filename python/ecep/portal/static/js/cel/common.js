@@ -64,8 +64,8 @@ function($, L, Response, Handlebars) {
                             //      just like in autocomplete success handler below
                             likelyResult = cleanedResults[0];
                             $element.data({
-                                'lat': likelyResult.lat,
-                                'lon': likelyResult.lon
+                                lat: likelyResult.lat,
+                                lon: likelyResult.lon
                             });
                         }
                         response(cleanedResults);
@@ -137,8 +137,8 @@ function($, L, Response, Handlebars) {
                             //      so we can access it externally
                             var likelyResult = data[0];
                             $('.autocomplete-searchbox').data({
-                                'id': likelyResult.id,
-                                'type': likelyResult.type
+                                id: likelyResult.id,
+                                type: likelyResult.type
                             });
                             // use returned schools and neighborhoods
                             response($.map(data, function(value) {
@@ -164,10 +164,10 @@ function($, L, Response, Handlebars) {
             focus: function(event, ui) {
                 // mirror data to the input element so the proper item is submitted
                 $('.autocomplete-searchbox').data({
-                    'id': ui.item.id,
-                    'type': ui.item.type,
-                    'lat': ui.item.lat,
-                    'lon': ui.item.lon
+                    id: ui.item.id,
+                    type: ui.item.type,
+                    lat: ui.item.lat,
+                    lon: ui.item.lon
                 });
             },
             minLength: 2        // do not make a request until we have typed two chars
