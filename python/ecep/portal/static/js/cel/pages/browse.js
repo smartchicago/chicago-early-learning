@@ -12,8 +12,11 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         var map,   // Leaflet map
             gmap,    // Google basemap
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
+            defaultZoom = $('#map').data('zoom') || 10,
             latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
             lngSettings = CEL.serverVars.lngSettings,
+            autocompleteIcon,
+            autocompleteMarker,                         // marker for autocomplete request
             locations,    // Store location data
             neighborhoods,    // Store neighborhood data
             template,    // Hold handlebars template
@@ -111,19 +114,21 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         };
 
         /*
-         * Override default lat/lng settings geolocation lat/lng if it exists 
+         * Get map state from DOM and override defaults if necessary 
          */
-        var getMapLatLng = function() {
+        var getMapState = function() {
             var lat = latSettings,
                 lng = lngSettings,
                 $map = $('#map'),
                 geolat = $map.data('geo-lat'),
-                geolng = $map.data('geo-lng');
+                geolng = $map.data('geo-lng'),
+                isAutocomplete = false;
             if (geolat && geolng) {
                 lat = geolat; 
                 lng = geolng;
+                isAutocomplete = true;
             } 
-            return [lat, lng];
+            return { point: [lat, lng], isAutocomplete: isAutocomplete };
         };
 
         /**
@@ -195,10 +200,20 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         // Load data and build map when page loads
         return {
             init: function(){
-                map = new L.map('map').setView(getMapLatLng(), 10);    // Initialize Leaflet map
+                var state = getMapState();
+                map = new L.map('map').setView(state.point, defaultZoom);    // Initialize Leaflet map
                 gmap = new L.Google('ROADMAP');    // Add Google baselayer
                 map.addLayer(gmap);
                 map.addLayer(popupLayer);
+
+                // draw marker for autocompleted location
+                if (state.isAutocomplete) {
+                    autocompleteIcon = L.icon({
+                        iconUrl: common.getUrl('autocomplete-icon')
+                    });
+                    autocompleteMarker = L.marker(state.point, {icon: autocompleteIcon}).addTo(map);
+                }
+
                 $locationWrapper = $('.locations-wrapper');
                 map.on('zoomend', displayMap);    // Set event handler to call displayMap when zoom changes
                 loadData();    // Load initial data

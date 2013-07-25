@@ -92,7 +92,7 @@ function($, L, Response, Handlebars) {
                     } else if (ui.item.type === 'neighborhood') {
                         alert('Selected: ' + ui.item.id + ', ' + ui.item.label);
                     } else if (ui.item.lat && ui.item.lon) {
-                        alert('Selected: ' + ui.item.lat + ', ' + ui.item.lon);
+                        window.location.href = getUrl('browse-latlng', { lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
                     }
                 }
             },
@@ -118,11 +118,17 @@ function($, L, Response, Handlebars) {
             case 'neighborhoods-geojson':
                 return '/static/js/neighborhoods.json';
             case 'browse-latlng':
-                return '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
+                var url = '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
+                if (opts.zoom) {
+                    url += '&zoom=' + opts.zoom;
+                }
+                return url;
             case 'browse-neighborhood':
                 return '/browse/neighborhood/';
             case 'browse-location':
                 return '/browse/location/';
+            case 'autocomplete-icon':
+                return 'http://placekitten.com/g/50/50';
             default:
                 throw 'Unknown URL endpoint';
         }
