@@ -254,8 +254,11 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             init: function(){
                 var state = getMapState();
                 map = new L.map('map').setView(state.point, defaultZoom);    // Initialize Leaflet map
-                gmap = new L.Google('ROADMAP');    // Add Google baselayer
-                map.addLayer(gmap);
+                var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    osmAttrib='Map data © OpenStreetMap contributors',
+                    osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});       
+                
+                map.addLayer(osm);
                 map.addLayer(popupLayer);
 
                 // draw marker for autocompleted location

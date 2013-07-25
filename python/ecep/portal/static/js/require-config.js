@@ -10,7 +10,6 @@ requirejs.config({
         'jquery-cookie': '../lib/jquery.cookie',
         bootstrap: '../lib/bootstrap',
         Leaflet: '../lib/leaflet',
-        'Leaflet-google': '../lib/leaflet-google',
         Handlebars: '../lib/handlebars',
         async: '../lib/require-plugins/async',
         text: '../lib/require-plugins/text',
@@ -33,10 +32,6 @@ requirejs.config({
         },
         Leaflet: {
             exports: 'L'
-        },
-        'Leaflet-google': {
-            deps: ['Leaflet'],
-            exports: 'L.Google'
         },
         '../lib/response': {
             deps: ['jquery'],
