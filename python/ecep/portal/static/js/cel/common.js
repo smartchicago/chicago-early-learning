@@ -10,6 +10,10 @@ function($, L, Response, Handlebars) {
     
     $(document).ready(function() {
 
+
+        // AUTOCOMPLETE
+        var $autocomplete = $('.autocomplete-searchbox');
+
         // autocomplete helper function that makes the request to
         //  the google maps geocoder API
         function getGeocoderAddresses(request, response) {
@@ -28,12 +32,19 @@ function($, L, Response, Handlebars) {
                         region: 'US'
                     }, 
                     function(results, status) {
-                        var cleanedResults = [];
+                        var cleanedResults = [],
+                            result,
+                            lat,
+                            lon,
+                            resultLocation,
+                            likelyResult,
+                            $element = $('.autocomplete-searchbox');
+
                         for (var i in results) {
-                            var result = results[i],
-                                lat = result.geometry.location.lat(),
-                                lon = result.geometry.location.lng(),
-                                resultLocation = new google.maps.LatLng(lat, lon);
+                            result = results[i];
+                            lat = result.geometry.location.lat();
+                            lon = result.geometry.location.lng();
+                            resultLocation = new google.maps.LatLng(lat, lon);
                             if (bounds.contains(resultLocation)) {
                                 cleanedResults.push({
                                     lat: lat,
@@ -48,16 +59,72 @@ function($, L, Response, Handlebars) {
                                 label: "No Results",
                                 value: "No Results"
                             });
+                        } else {
+                            // push first result to input element
+                            //      just like in autocomplete success handler below
+                            likelyResult = cleanedResults[0];
+                            $element.data({
+                                'lat': likelyResult.lat,
+                                'lon': likelyResult.lon
+                            });
                         }
                         response(cleanedResults);
                     }
              );
         }
 
-        // autocomplete for all textboxes on the page
-        //  first tries Location and Neighborhood, then attempts to geocode the request
-        $('.autocomplete-searchbox').autocomplete({
+        /*
+         * Sets window.location.href to appropriate value based on selected autocomplete result
+         * See: http://api.jqueryui.com/autocomplete/#event-select
+         *      for details on the ui object
+         */
+        var submitAutocomplete = function(ui) {
+            if (ui.item) {
+                if (ui.item.type === 'location') {
+                    window.location.href = getUrl('browse-location', { location: ui.item.id });
+                } else if (ui.item.type === 'neighborhood') {
+                    window.location.href = getUrl('browse-neighborhood', { neighborhood: ui.item.id });
+                } else if (ui.item.lat && ui.item.lon) {
+                    window.location.href = getUrl('browse-latlng', { lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
+                }
+            }
+        };
+
+        /*
+         *  Spoof the jquery ui select function ui object using the input element data attributes
+         */
+        var spoofSubmitAutocomplete = function() {
+            var ui = {
+                item: $autocomplete.data()
+            };
+            submitAutocomplete(ui);
+        };
+
+        /* 
+         * Submit the first autocomplete result on button click if none is populated
+         */
+        $('.autocomplete-submit').on('click', function(e) {
+            spoofSubmitAutocomplete();
+        });
+
+        /* 
+         * Submit the first autocomplete result on enter if no result is populated
+         * BUG: this prevents firing of jqueryui select function on the correct menu item
+         */
+        /*
+        $autocomplete.on('keyup', function(e) {
+            if (e.which === 13) {
+                spoofSubmitAutocomplete();
+            }
+        });
+        */
+
+        /*
+         * Autocomplete widget setup and all relevant callbacks
+         */
+        var autocomplete = $autocomplete.autocomplete({
             source: function(request, response) {
+                var self = this;
                 $.ajax({
                     url: '/api/autocomplete/' + encodeURIComponent(request.term),
                     success: function(json) {
@@ -66,6 +133,13 @@ function($, L, Response, Handlebars) {
                         }
                         var data = json.response;
                         if (data.length > 0) {
+                            // push first result as data attrs of the input element
+                            //      so we can access it externally
+                            var likelyResult = data[0];
+                            $('.autocomplete-searchbox').data({
+                                'id': likelyResult.id,
+                                'type': likelyResult.type
+                            });
                             // use returned schools and neighborhoods
                             response($.map(data, function(value) {
                                 return {
@@ -85,27 +159,23 @@ function($, L, Response, Handlebars) {
                 });
             },
             select: function(event, ui) {
-                if (ui.item) {
-                    // TODO: implement real functionality here
-                    if (ui.item.type === 'location') {
-                        window.location.href = '/location/'+ui.item.id;
-                    } else if (ui.item.type === 'neighborhood') {
-                        alert('Selected: ' + ui.item.id + ', ' + ui.item.label);
-                    } else if (ui.item.lat && ui.item.lon) {
-                        window.location.href = getUrl('browse-latlng', { lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
-                    }
-                }
+                submitAutocomplete(ui);
             },
             minLength: 2        // do not make a request until we have typed two chars
         });
+
     });
+    // END AUTOCOMPLETE
+
 
     // Tooltips for all!  Anything w/ a tooltip tag gets a tooltip
     $('[rel="tooltip"]').tooltip();
 
+
     // Setup Response stuff
     Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,1024] });
     Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,1024] });
+
 
     var getUrl = function (name, opts) {
         switch (name) {
@@ -124,9 +194,9 @@ function($, L, Response, Handlebars) {
                 }
                 return url;
             case 'browse-neighborhood':
-                return '/browse/neighborhood/';
+                return '/browse/?neighborhood=' + opts.neighborhood;
             case 'browse-location':
-                return '/browse/location/';
+                return '/browse/?location=' + opts.location;
             case 'autocomplete-icon':
                 return 'http://placekitten.com/g/50/50';
             default:
