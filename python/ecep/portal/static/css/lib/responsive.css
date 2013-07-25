@@ -206,7 +206,7 @@
 	}
 
 	.explore-btn {
-		display: none;
+	        margin-top: 0px !important;
 	}
 
 	.faves-left {
