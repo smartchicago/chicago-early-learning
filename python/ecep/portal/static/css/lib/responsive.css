@@ -59,12 +59,12 @@
 		margin: 10px 0;
 	}
 	.results-right {
-            visibility: hidden;
-            top: 100px;
-            left: 0px;
+                visibility: hidden;
+                top: 100px;
+                left: 0px;
         },
         #map {
-            left: 0px;
+                left: 0px;
         }
 	#moreBtn {
 		display: none;
