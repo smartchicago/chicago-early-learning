@@ -14,9 +14,6 @@
 	body {
 		overflow: hidden;
 	}
-	#map {
-		display: none;
-	}
 	.results-left {
 		width: 100%;
 	}
