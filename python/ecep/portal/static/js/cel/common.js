@@ -111,15 +111,13 @@ function($, L, Response, Handlebars) {
 
         /* 
          * Submit the first autocomplete result on enter if no result is populated
-         * BUG: this prevents firing of jqueryui select function on the correct menu item
+         * This also overrides the functionality in the select callback below
          */
-        /*
         $autocomplete.on('keyup', function(e) {
             if (e.which === 13) {
                 spoofSubmitAutocomplete();
             }
         });
-        */
 
         /*
          * Autocomplete widget setup and all relevant callbacks
