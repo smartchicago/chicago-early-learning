@@ -181,6 +181,22 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             });
         };
 
+        /**
+         * Function that toggles map view on mobile devices
+         */
+        var mapToggle = function() {
+            $('#toggleMapBtn').click(function() {
+                $('.results-left').toggle();
+                var $resultsRight = $('.results-right');
+                if ($resultsRight.css('visibility') === 'hidden') {
+                    $resultsRight.css('visibility', 'visible');
+                }
+                else {
+                    $resultsRight.css('visibility', 'hidden');
+                }
+            });
+        };
+
         // Load data and build map when page loads
         return {
             init: function(){
@@ -201,6 +217,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 $locationWrapper = $('.locations-wrapper');
                 map.on('zoomend', displayMap);    // Set event handler to call displayMap when zoom changes
                 loadData();    // Load initial data
+                mapToggle();
             }
         };
     }
