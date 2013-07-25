@@ -63,7 +63,7 @@
 	}
 	.results-right {
             visibility: hidden;
-            top: 50px;
+            top: 100px;
             left: 0px;
         },
         #map {
