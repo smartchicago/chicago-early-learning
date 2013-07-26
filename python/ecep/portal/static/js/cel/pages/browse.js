@@ -5,8 +5,10 @@
 
 
 define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
-        'topojson', 'icons', 'favorites', 'common', CEL.serverVars.gmapRequire, 'styling'], 
-    function($, L, neighborhoodList, locationList, topojson, icons, favorites, common) {
+        'topojson', 'icons', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire, 'styling',
+        'leaflet-providers'], 
+    function($, L, neighborhoodList, locationList, topojson, icons, favorites, Location,  common) {
+
         'use strict';
 
         var map,   // Leaflet map
