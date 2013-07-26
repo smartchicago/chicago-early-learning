@@ -204,7 +204,7 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
                     self.locations[location.id] = new Location(location);
                     // TODO add GetMarker and SetMarker methods to Location object
                     self.locations[location.id].setMarker();
-                    this.locationLayer.addLayer(self.location[location.id].getMarker());
+                    self.locationLayer.addLayer(self.location[location.id].getMarker());
                 }
             });
         },
