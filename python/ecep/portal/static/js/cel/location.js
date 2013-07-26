@@ -56,7 +56,8 @@ define(['jquery', 'Leaflet'], function($, L) {
         neighborhood: {}
     };
 
-    return [Location, DataLoader];
+    return {Location: Location,
+            DataLoader:  DataLoader};
 
 });
 
