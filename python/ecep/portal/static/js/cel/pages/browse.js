@@ -61,7 +61,24 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                         }
                     });
                     neighborhoodGeojson = topojson.feature(data, data.objects.neighborhoods);
-                })).then(displayMap);
+                })).then(displayInitialMap);
+        };
+
+        var displayInitialMap = function() {
+            debugger;
+            var $map = $('#map');
+            var locationId = $map.data('location-id');
+            var neighborhoodId = $map.data('neighborhood-id');
+            if (locationId) {
+                $.each(locations, function(key, value) {
+                    if (locationId == value.item.key) {
+                        locationPan(value.position.lat, value.position.lng);
+                        return false;
+                    }
+                });
+            } else if (neighborhoodId) {
+            }
+            displayMap();
         };
 
         /**
@@ -219,7 +236,19 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             var popupContent = '<b>' + name + '</b><br>Number of Schools: ' + numSchools,
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
         };
-        
+
+        /*
+         * Pans to location and zooms to reasonable level if current view is too far out
+         */ 
+        var locationPan = function(lat, lng) {
+            map.panTo([lat, lng]);
+            if (map.getZoom() < zoomSettings) {
+            // Check if at reasonable zoom level, if too far out
+                // zoom user in
+                map.setZoom(zoomSettings);
+            }
+        }
+
         /**
          * Function that handles pans to neighborhood when clicking on accordion group
          * 
