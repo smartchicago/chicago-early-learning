@@ -47,13 +47,17 @@ define(['jquery', 'Leaflet'], function($, L) {
 
         idleListener: function(map) {}, // Listens to map for zoom and movement
 
-        filterListener: function() {},
+        filterListener: function() {}, // listens to filters for changes
 
         /* Map of locations & neighborhoods, key is the id for
          * each object
          */
         locations: {},
-        neighborhood: {}
+        neighborhood: {},
+
+        events: {zoomChanged: 'zoomChanged',
+                 dataReady: 'dataReady'
+                }
     };
 
     return {Location: Location,
