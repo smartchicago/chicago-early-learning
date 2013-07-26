@@ -189,7 +189,6 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
         neighborhoodLayer: new L.LayerGroup(),
         locationLayer: new L.LayerGroup(),
         zoomSettings: CEL.serverVars.zoomSettings,
-        popupTemplate : Handlebars.compile('<b>{{item.site_name}}</b><br>{{item.address}}'),
         iconcache: {},
 
         /**
