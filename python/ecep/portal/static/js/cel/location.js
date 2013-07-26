@@ -192,23 +192,84 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
         popupTemplate : Handlebars.compile('<b>{{item.site_name}}</b><br>{{item.address}}'),
         iconcache: {},
 
-        /* Updates if location is shown in map and list based on
+        /**
+         * Updates if location is shown in map and list based on
          * applied filters and bounding box of map
          */
-        locationUpdate: function(filters, map) {},
+        locationUpdate: function(map) {
+            var filters = this.getFilters(),
+                self = this;
+            self.locationLayer.clearLayers();  // Clear existing location layers
+            $.getJSON(common.getUrl('locations', filters), function(data) {
+                for (var location in data) {
+                    self.locations[location.id] = new Location(location);
+                    location.mapMarker = L.marker([location.position.lat, location.position.lng],
+                                                  {icon: self.location[location.id].setIcon()});
+                    location.mapMarker.bindPopup(self.popupTemplate(location.data), {key: location.id});
+                    this.locationLayer.addLayer(location.mapMarker);
+                }
+            });
+        },
+        
+        neighborhoodGeoJson: function() {
+            if (this.neighborhoods.geojson === null) {
+                $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
+                    this.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
+                });
+            }
+        },
 
-        /* Updates school counts for neighborhoods based on
+        /**
+         * Updates school counts for neighborhoods based on
          * filters
          *
          * @param {Filters taken from filter-list/model} filters
+         * @param {Leaflet layerGroup that stores neighborhoods} neighborhoodLayer
          */
-        neighborhoodUpdate: function(filters, neighborhoodLayer) {},
-
-        /* Updates locations when zoom changes
+        neighborhoodUpdate: function(filters) {
+            // CONSTRUCT REQUEST WITH FILTERS
+            var request = null;
+            var self = this;
+            $.when(
+                $.getJSON(common.getUrl(request), function(data) {
+                    self.neighborhoods.data = data;
+                }),
+                this.neighborhoodGeoJson()
+            ).then(self.onZoomChange);
+        },
+                
+        /**
+         * Updates locations when zoom changes
+         *
+         * @param {map} leaflet map object
          */
-        onZoomChange: function(map) {},
-
-        idleListener: function(map) {}, // Listens to map for zoom and movement
+        onZoomChange: function(map) {
+            if (this.currentLayer !== 'neighborhood' && map.getZoom() < this.zoomSettings) {
+                this.currentLayer = this.layerType.neighborhood;
+                this.locationLayer.clearLayers();
+                this.neighborhoodLayer.addData(this.neighborhoods);
+            }
+            else if (this.currentLayer !== 'location' && map.getZoom() >= this.zoomSettings) {
+                this.currentLayer = this.layerType.location;
+                this.neighborhoodLayer.clearLayers();
+                map.addLayer(this.locationLayer);
+                for (var key in this.locations) {
+                    var location = this.locations[key],
+                        position = location.data.position,
+                        lat = position.lat,
+                        lng = position.lng;
+                    location.mapMarker = L.marker([lat, lng], {icon: location.setIcon()});
+                    location.mapMarker.bindPopup(this.popupTemplate(location.data), {key: key});
+                    this.locationLayer.addLayer(location.mapMarker);
+                };
+            }
+        },
+        
+        // Listens to map for zoom and movement
+        zoomListener: function(map) {
+            var filters = this.getFilters();
+            map.on('zoomend', this.neighborhoodUpdate(filters));
+        },
 
         filterListener: function() {}, // listens to filters for changes
 
