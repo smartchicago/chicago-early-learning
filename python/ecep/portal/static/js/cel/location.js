@@ -283,7 +283,12 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
             }
         },
 
-        /* Map of locations & neighborhoods, key is the id for
+        getFilters: function() {
+            // TO DO GET FILTERS
+            return {};
+        },
+        /**
+         * Map of locations & neighborhoods, key is the id for
          * each object
          */
         locations: {},
