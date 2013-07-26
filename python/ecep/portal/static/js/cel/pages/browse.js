@@ -5,7 +5,7 @@
 
 
 define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
-        'topojson', 'icons', 'favorites', 'common', CEL.serverVars.gmapRequire, 'styling'], 
+        'topojson', 'icons', 'favorites', 'common', CEL.serverVars.gmapRequire, 'styling', 'leaflet-providers'], 
     function($, L, neighborhoodList, locationList, topojson, icons, favorites, common) {
         'use strict';
 
@@ -254,11 +254,13 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             init: function(){
                 var state = getMapState();
                 map = new L.map('map').setView(state.point, defaultZoom);    // Initialize Leaflet map
+                /*
                 var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     osmAttrib='Map data © OpenStreetMap contributors',
                     osm = new L.TileLayer(osmUrl, {attribution: osmAttrib});       
-                
                 map.addLayer(osm);
+                */
+                L.tileLayer.provider('Acetate.all').addTo(map);
                 map.addLayer(popupLayer);
 
                 // draw marker for autocompleted location

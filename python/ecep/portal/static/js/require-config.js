@@ -10,6 +10,7 @@ requirejs.config({
         'jquery-cookie': '../lib/jquery.cookie',
         bootstrap: '../lib/bootstrap',
         Leaflet: '../lib/leaflet',
+        'leaflet-providers': '../lib/leaflet-providers',
         Handlebars: '../lib/handlebars',
         async: '../lib/require-plugins/async',
         text: '../lib/require-plugins/text',
@@ -31,6 +32,10 @@ requirejs.config({
             exports: '$.fn.popover'
         },
         Leaflet: {
+            exports: 'L'
+        },
+        'leaflet-providers': {
+            deps: ['Leaflet'],
             exports: 'L'
         },
         '../lib/response': {
