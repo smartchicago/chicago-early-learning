@@ -17,6 +17,13 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          */
         cookie: celcookie,
 
+        /*
+         * Get the favorites cookie
+         */
+        getCookie: function() {
+            return $.cookie(favs.cookie.name);
+        }
+
         /* 
          * Given a location id, adds the location id to the correct cookie 
          */
@@ -26,7 +33,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
             }
 
             var cookie = favs.cookie,
-                cookieString = $.cookie(cookie.name),
+                cookieString = favs.getCookie();
                 idArray,
                 arrayLen,
                 idExists;
@@ -64,7 +71,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 return;
             }
             var cookie = favs.cookie,
-                cookieString = $.cookie(cookie.name),
+                cookieString = favs.getCookie(),
                 idArray,
                 arrayLen,
                 currentId;
@@ -100,7 +107,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 },
                 opts = $.extend({}, defaults, options),
                 self = favs,
-                cookie = $.cookie(favs.cookie.name),
+                cookie = favs.getCookie(),
                 starredIds, 
                 starredIdsLength, 
                 starredId;

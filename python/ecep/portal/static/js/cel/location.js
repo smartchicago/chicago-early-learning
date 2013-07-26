@@ -5,21 +5,65 @@
  * data loader object
  *********************************************************/
 
-define(['jquery', 'Leaflet'], function($, L) {
-    var Location = function(starred, data){
-        this.starred = starred;
-        this.data = data;
+define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
+
+    /*
+     * Constructor for location
+     * data -- object returned from the /location/api/<id>/ url
+     */
+    var Location = function(data){
+        if (data.position && data.item) {
+            this.data = data;
+        } else {
+            throw "CELLocationInvalid";
+        }
+
+        this.mapMarker = null;
     };
+
+    /*
+     * Return ID of the location
+     *      shortcut if we need more functionality later
+     */
+    Location.prototype.getId = function() {
+        return this.data.item.key;
+    }
+
+    /* 
+     * Checks if location is starred
+     * Returns:
+     *      true if starred
+     *      false if not starred
+     */
+    Location.prototype.isStarred = function() {
+        var id = this.getId();
+        var cookie = favorites.getCookie();
+        var idlist = cookie.split(',');
+        if (idlist.indexOf(id) >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /* 
+     * Add location to cookie string
+     */
+    Location.prototype.setStarred = function() {
+        favorites.addIdToCookie(this.id);
+    }
 
     /* Function that returns appropriate icon based on
      * a location's properties
      */
-    Location.prototype.getIcon = function(){
+    Location.prototype.getIcon = function(options){
         // TO DO: Add in functionality to get icon based on 
         // characteristics of location
-    };
+        var defaults = {
 
-    Location.prototype.mapMarker = null;
+        };
+        var opts = $.extend({}, defaults, options);
+    };
 
     /* Sets boolean value for if location should be on list
      */
