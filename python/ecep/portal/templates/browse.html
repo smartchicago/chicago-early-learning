@@ -49,17 +49,18 @@ See LICENSE in the project root for copying permission
       <div id="collapseFilters" class="accordion-body in collapse">
         <div class="accordion-inner filters-inner">
           <div class="filters-left">
-            <label><input type="checkbox"> All</label>
-            <label><input type="checkbox"> Ages 0-3</label>
-            <label><input type="checkbox"> Ages 3-5</label>
-            <label><input type="checkbox"> Head Start</label>
-            <label><input type="checkbox"> Early Head Start</label>
+            {% for f in filters_left %}
+              <label>
+                <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" checked />{{ f.1 }}
+              </label>
+            {% endfor %}
           </div>
           <div class="filters-right">
-            <label><input type="checkbox"> Preschool for All / Prevention Initiative</label>
-            <label><input type="checkbox"> Tuition-based</label>
-            <label><input type="checkbox"> Child-parent Center</label>
-            <label><input type="checkbox"> Child Care Assistance Program</label>
+            {% for f in filters_right %}
+              <label>
+                <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" checked />{{ f.1 }}
+              </label>
+            {% endfor %}
           </div>
         </div>
       </div>
