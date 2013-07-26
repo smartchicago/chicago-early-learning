@@ -194,6 +194,48 @@ class TermDistance:
 
 
 # Location Stuff
+
+_location_bool_fields = {f.get_attname() for f in Location._meta.fields}
+
+
+def _make_location_filter(query_params, etag_hash=''):
+    """Helper function that converts boolean filter query params to a filter object
+
+    The resulting filter object consists of the boolean fields ORed together, then ANDed
+    with the bounding box query.  Something like this:
+        (filtera OR not filterb OR filterc ... ) AND bbox.Overlaps(Location.geom)
+
+    query_params: dict containing boolean fields in Location model with true/false string values
+                  and/or 'bbox'
+        'bbox'  : CSV of points of the form xmin,ymin,xmax,ymax
+    etag_hash   : Current string used to make etag for request
+    returns     : (Q object, etag_hash)
+
+    """
+    def make_rectangle(bbox):
+        """Given a bbox csv returns a geometry object for it"""
+        xmin, ymin, xmax, ymax = bbox.split(',')
+        return Polygon(((xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)))
+
+    # Filter by any boolean filters provided
+    result = Q()
+    for f, val in query_params.iteritems():
+        if f in _location_bool_fields:
+            logger.debug('Adding Filter: %s = %s' % (f, val))
+            kw = {f: val == 'true'}
+            etag_hash += str(kw)
+            result |= Q(**kw)
+
+    # Filter by any bbox if provided
+    if 'bbox' in query_params:
+        etag_hash = ''            # Can't cache bbox queries
+        bbox = make_rectangle(query_params['bbox'])
+        bbox_filter = Q(poly__bboverlaps=bbox)
+        result &= bbox_filter
+
+    return result, etag_hash
+
+
 def location_details(location_id):
     """
     Helper method that gets all the fields for a specific location.
@@ -204,24 +246,58 @@ def location_details(location_id):
     return item.get_context_dict()
 
 
+@cache_control(must_revalidate=False, max_age=3600)
 def location_api(request, location_ids=None):
     """
     API endpoint for locations.
 
-    location_ids -- comma separated list of location ids to return
+    location_ids: optional comma separated list of location ids to filter.
+        If no values are provided all Locations will be examined
 
-    If location_ids is passed, return JSON representation of those locations,
-    else return an array with data on every location.
+    request.GET params:
+        <any boolean field in Locations>:   value may be either 'true' or 'false'
+        'bbox':                             value is a csv of points of the form
+            xmin,ymin,xmax,ymax
+
+    returns: Locations filtered like so:
+        (Location.id in location_ids) AND (filtera OR not filterb OR ...) AND
+            bbox.Overlaps(Location.geom)
+        result has the following structure:
+            {"locations": [ Locations filtered as described above ]}
+
     """
+    def fixcap(x):
+        """Makes Location.site_name Title Case"""
+        # TODO: put this in get_context_dict?
+        if x.site_name.isupper():
+            x.site_name = title(x.site_name)
+        return x
+
+    etag_hash = 'empty'
+
+    # Filter by ids if provided
+    item_filter = None
     if location_ids:
         location_ids_array = [int(l_id) for l_id in location_ids.split(',') if l_id]
-        locations = Location.objects.filter(pk__in=location_ids_array)
+        item_filter = Q(pk__in=location_ids_array)
     else:
-        locations = Location.objects.filter(~Q(geom=None))
+        item_filter = ~Q(geom=None)
 
-    location_contexts = [l.get_context_dict() for l in locations]
+    bool_filter, etag_hash = _make_location_filter(request.GET, etag_hash)
+    item_filter &= bool_filter
+
+    location_contexts = [fixcap(l).get_context_dict() for l in Location.objects.filter(item_filter)]
+    logger.debug('Retrieved %d location_contexts.' % len(location_contexts))
     context = {'locations': location_contexts}
-    return HttpResponse(json.dumps(context), content_type="application/json")
+    rsp = HttpResponse(json.dumps(context), content_type="application/json")
+
+    if etag_hash:
+        md5 = hashlib.md5()
+        md5.update(etag_hash)
+        rsp['Etag'] = md5.hexdigest()
+
+    # import ipdb; ipdb.set_trace()
+    return rsp
 
 
 def location(request):
@@ -241,7 +317,12 @@ def location_position(request, location_id):
 
 def neighborhood_api(request):
     counts = Neighborhood.objects.annotate(num_schools=Count('location'))
-    count_list = [{'name': n.primary_name, 'schools': n.num_schools, 'id': n.pk, 'center': n.get_center()} for n in counts]
+    count_list = [{
+        'name': n.primary_name,
+        'schools': n.num_schools,
+        'id': n.pk,
+        'center': n.get_center()
+    } for n in counts]
     count_list.sort(key=lambda x: x['name'])
     context = {'neighborhoods': count_list}
     return HttpResponse(json.dumps(context), content_type="application/json")
