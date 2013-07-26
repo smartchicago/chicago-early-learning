@@ -203,10 +203,9 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
             $.getJSON(common.getUrl('locations', filters), function(data) {
                 for (var location in data) {
                     self.locations[location.id] = new Location(location);
-                    location.mapMarker = L.marker([location.position.lat, location.position.lng],
-                                                  {icon: self.location[location.id].setIcon()});
-                    location.mapMarker.bindPopup(self.popupTemplate(location.data), {key: location.id});
-                    this.locationLayer.addLayer(location.mapMarker);
+                    // TODO add GetMarker and SetMarker methods to Location object
+                    self.locations[location.id].setMarker();
+                    this.locationLayer.addLayer(self.location[location.id].getMarker());
                 }
             });
         },
