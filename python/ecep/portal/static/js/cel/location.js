@@ -209,6 +209,10 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
             });
         },
         
+        /**
+         * Helper function that only grabs geojson data if it hasn't been downloaded
+         * already
+         */
         neighborhoodGeoJson: function() {
             if (this.neighborhoods.geojson === null) {
                 $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
@@ -219,7 +223,9 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
 
         /**
          * Updates school counts for neighborhoods based on
-         * filters
+         * filters.
+         *
+         * Download topojson if it exists
          *
          * @param {Filters taken from filter-list/model} filters
          * @param {Leaflet layerGroup that stores neighborhoods} neighborhoodLayer
@@ -248,7 +254,7 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
                 this.neighborhoodLayer.addData(this.neighborhoods);
             }
             else if (this.currentLayer !== 'location' && map.getZoom() >= this.zoomSettings) {
-                this.locationUpdate(map);
+                this.locationUpdate(map); // Just call locationUpdate because that's all we care about
             }
         },
         
