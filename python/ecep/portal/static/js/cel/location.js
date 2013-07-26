@@ -271,7 +271,17 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
             map.on('zoomend', this.neighborhoodUpdate(filters));
         },
 
-        filterListener: function() {}, // listens to filters for changes
+        // listens to filters for changes
+        filterListener: function() {
+            // TODO: Wire in DOM listeners for filters once that is finished
+            var filters = this.getFilters();
+            if (this.currentLayer === 'neighborhood') {
+                this.neighborhoodUpdate(filters);
+            }
+            else if (this.currentLayer === 'location') {
+                this.locationUpdate(filters);
+            }
+        },
 
         /* Map of locations & neighborhoods, key is the id for
          * each object
