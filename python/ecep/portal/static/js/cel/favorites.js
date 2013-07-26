@@ -17,6 +17,27 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          */
         cookie: celcookie,
 
+        /*
+         * Get the favorites cookie
+         */
+        getCookie: function() {
+            return $.cookie(favs.cookie.name);
+        },
+
+        /*
+         * Input: string id
+         * Output: true if input in cookie, else false
+         */
+        isStarred: function(id) {
+            if (!id) {
+                return false;
+            }
+            id = parseInt(id, 10);
+            var cookie = favs.getCookie(),
+                idArray = cookie.split(',').map(function(x) { return parseInt(x, 10); });
+            return (idArray.indexOf(id) >= 0); 
+        },
+
         /* 
          * Given a location id, adds the location id to the correct cookie 
          */
@@ -26,7 +47,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
             }
 
             var cookie = favs.cookie,
-                cookieString = $.cookie(cookie.name),
+                cookieString = favs.getCookie(),
                 idArray,
                 arrayLen,
                 idExists;
@@ -38,7 +59,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
    
                 // only add id if it doesn't exist in the cookie already
                 for (var i = 0; i < arrayLen; i++) {
-                    if (id === idArray[i]) {
+                    if (id == idArray[i]) {
                         idExists = true;
                         break;
                     }
@@ -64,7 +85,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 return;
             }
             var cookie = favs.cookie,
-                cookieString = $.cookie(cookie.name),
+                cookieString = favs.getCookie(),
                 idArray,
                 arrayLen,
                 currentId;
@@ -78,7 +99,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
 
             for (var i = 0; i < arrayLen; i++) {
                 currentId = idArray[i];
-                if (id === currentId) {
+                if (id == currentId) {
                     idArray.splice(i, 1);
                 }
             }
@@ -100,7 +121,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 },
                 opts = $.extend({}, defaults, options),
                 self = favs,
-                cookie = $.cookie(favs.cookie.name),
+                cookie = favs.getCookie(),
                 starredIds, 
                 starredIdsLength, 
                 starredId;
