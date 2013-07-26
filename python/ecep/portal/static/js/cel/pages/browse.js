@@ -77,6 +77,12 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     }
                 });
             } else if (neighborhoodId) {
+                $.each(neighborhoods.neighborhoods, function(key, value) {
+                    if (neighborhoodId == value.id) {
+                        neighborhoodPan(value.name, value.schools, value.center.lat, value.center.lng, true);
+                        return false;
+                    }
+                });
             }
             displayMap();
         };
@@ -247,7 +253,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 // zoom user in
                 map.setZoom(zoomSettings);
             }
-        }
+        };
 
         /**
          * Function that handles pans to neighborhood when clicking on accordion group
