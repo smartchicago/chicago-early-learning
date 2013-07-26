@@ -80,7 +80,6 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
     Location.prototype.getIcon = function(options) {
         // TODO: add a cache for these icons
 
-        debugger;
         var doubleDimensions = function(option) {                                                        
             option[0] *=2;                                                                          
             option[1] *=2;                                                                          
