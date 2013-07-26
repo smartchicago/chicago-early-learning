@@ -63,7 +63,14 @@ def search(request):
 
 
 def browse(request):
-    ctx = RequestContext(request, {})
+    fields = Location.get_filter_fields()
+
+    # TODO: for now left/right split is kinda random, might want more control
+    ctx = RequestContext(request, {
+        'filters_left': fields[:len(fields) / 2],
+        'filters_right': fields[len(fields) / 2:]
+    })
+
     response = render_to_response('browse.html', context_instance=ctx)
     return response
 
