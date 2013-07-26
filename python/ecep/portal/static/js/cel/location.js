@@ -298,8 +298,7 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
         },
 
         events: {zoomChanged: 'zoomChanged',
-                 dataReady: 'dataReady'
-                }
+                 neighborhoodReady: 'neighborhoodReady'}
     };
 
     return {Location: Location,
