@@ -292,7 +292,10 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
          * each object
          */
         locations: {},
-        neighborhood: {},
+        neighborhoods: {
+            data: {}, // data for neighborhood (e.g. number of schools)
+            geojson: null // if this exists, won't re-download
+        },
 
         events: {zoomChanged: 'zoomChanged',
                  dataReady: 'dataReady'
