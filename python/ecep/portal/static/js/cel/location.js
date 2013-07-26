@@ -302,7 +302,6 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
     };
 
     return {Location: Location,
-            DataLoader:  DataLoader};
-
+            DataManager:  DataManager};
 });
 
