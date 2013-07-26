@@ -249,18 +249,7 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
                 this.neighborhoodLayer.addData(this.neighborhoods);
             }
             else if (this.currentLayer !== 'location' && map.getZoom() >= this.zoomSettings) {
-                this.currentLayer = this.layerType.location;
-                this.neighborhoodLayer.clearLayers();
-                map.addLayer(this.locationLayer);
-                for (var key in this.locations) {
-                    var location = this.locations[key],
-                        position = location.data.position,
-                        lat = position.lat,
-                        lng = position.lng;
-                    location.mapMarker = L.marker([lat, lng], {icon: location.setIcon()});
-                    location.mapMarker.bindPopup(this.popupTemplate(location.data), {key: key});
-                    this.locationLayer.addLayer(location.mapMarker);
-                };
+                this.locationUpdate(map);
             }
         },
         
