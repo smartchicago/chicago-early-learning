@@ -168,6 +168,31 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
         }
     };
 
+    /*
+     * Get location marker object
+     */
+    Location.prototype.getMarker = function() {
+        return this.mapMarker || null;
+    };
+
+    /*
+     * Input: Leaflet Marker Icons object
+     * Output: Reference to the created marker
+     * If map marker already exists, updates existing marker icon
+     * If map marker does not exist, creates marker with proper icon
+     */
+    Location.prototype.setMarker = function(options) {
+        var icon = this.getIcon(options);
+        var marker = this.getMarker();
+        if (marker) {
+            marker.setIcon(icon);
+        } else {
+            this.mapMarker = new L.Marker(this.getLatLng(), { icon: icon });
+            // TODO: clear up popupTemplate
+            this.mapMarker.bindPopup(DataManager.popupTemplate(this.data), {key: this.getId()});
+        }
+    };
+
     Location.prototype.getLatLng = function() {
         return new L.LatLng(this.data.position.lat, this.data.position.lng);
     };
