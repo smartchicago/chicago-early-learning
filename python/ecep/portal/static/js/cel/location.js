@@ -199,6 +199,7 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
             var filters = this.getFilters(),
                 self = this;
             self.locationLayer.clearLayers();  // Clear existing location layers
+            self.currentLayer = self.layerType.location;
             $.getJSON(common.getUrl('locations', filters), function(data) {
                 for (var location in data) {
                     self.locations[location.id] = new Location(location);
