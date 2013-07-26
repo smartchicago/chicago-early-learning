@@ -32,14 +32,11 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
             if (!id) {
                 return false;
             }
-            var cookie = favs.getCookie();
-            var idlist = cookie.split(',');
-            if (idlist.indexOf(id) >= 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+            id = parseInt(id, 10);
+            var cookie = favs.getCookie(),
+                idArray = cookie.split(',').map(function(x) { return parseInt(x, 10); });
+            return (idArray.indexOf(id) >= 0); 
+        },
 
         /* 
          * Given a location id, adds the location id to the correct cookie 
@@ -50,7 +47,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
             }
 
             var cookie = favs.cookie,
-                cookieString = favs.getCookie();
+                cookieString = favs.getCookie(),
                 idArray,
                 arrayLen,
                 idExists;
@@ -62,7 +59,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
    
                 // only add id if it doesn't exist in the cookie already
                 for (var i = 0; i < arrayLen; i++) {
-                    if (id === idArray[i]) {
+                    if (id == idArray[i]) {
                         idExists = true;
                         break;
                     }
@@ -102,7 +99,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
 
             for (var i = 0; i < arrayLen; i++) {
                 currentId = idArray[i];
-                if (id === currentId) {
+                if (id == currentId) {
                     idArray.splice(i, 1);
                 }
             }

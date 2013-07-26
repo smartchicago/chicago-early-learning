@@ -36,7 +36,7 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
      *      false if not starred
      */
     Location.prototype.isStarred = function() {
-        return favorites.isStarred(this.id);
+        return favorites.isStarred(this.getId());
     };
 
     /*
@@ -54,10 +54,6 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
      * Is the location accredited?
      */
     Location.prototype.isAccredited = function() {
-        // quick way.
-        return (this.data.sfields[0].value === "None") ? false : true;
-        // detailed way
-        /*
         var isAccredited = false;
         $.each(this.data.sfields, function(key, value) {
             if (value.fieldname === "Accreditation" && value.value !== "None") {
@@ -65,7 +61,7 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
                 return false;
             }
         });
-        */
+        return isAccredited;
     };
 
     /*
@@ -84,6 +80,7 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
     Location.prototype.getIcon = function(options) {
         // TODO: add a cache for these icons
 
+        debugger;
         var doubleDimensions = function(option) {                                                        
             option[0] *=2;                                                                          
             option[1] *=2;                                                                          
@@ -117,9 +114,9 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
         if (iconOpts.key) {
             key = iconOpts.key;
         } else {
-            key += (this.isSchool()) ? 'school' : 'center';
-            key += (this.isAccredited()) ? '-accredited' : '';
-            key += (this.isStarred()) ? '-starred' : '';
+            key += this.isSchool() ? 'school' : 'center';
+            key += this.isAccredited() ? '-accredited' : '';
+            key += this.isStarred() ? '-starred' : '';
         }
 
         switch (key) {
