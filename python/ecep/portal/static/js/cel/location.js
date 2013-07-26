@@ -5,7 +5,7 @@
  * data loader object
  *********************************************************/
 
-define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
+define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, favorites, topojson, common) {
 
     /*
      * Constructor for location
