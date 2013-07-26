@@ -22,6 +22,23 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          */
         getCookie: function() {
             return $.cookie(favs.cookie.name);
+        },
+
+        /*
+         * Input: string id
+         * Output: true if input in cookie, else false
+         */
+        isStarred: function(id) {
+            if (!id) {
+                return false;
+            }
+            var cookie = favs.getCookie();
+            var idlist = cookie.split(',');
+            if (idlist.indexOf(id) >= 0) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
         /* 

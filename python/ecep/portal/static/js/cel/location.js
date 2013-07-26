@@ -36,21 +36,18 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
      *      false if not starred
      */
     Location.prototype.isStarred = function() {
-        var id = this.getId();
-        var cookie = favorites.getCookie();
-        var idlist = cookie.split(',');
-        if (idlist.indexOf(id) >= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return favorites.isStarred(this.id);
     };
 
     /*
      * Add location to cookie string
      */
-    Location.prototype.setStarred = function() {
-        favorites.addIdToCookie(this.id);
+    Location.prototype.setStarred = function(add) {
+        if (add) {
+            favorites.addIdToCookie(this.getId());
+        } else {
+            favorites.removeIdFromCookie(this.getId());
+        }
     };
 
     /*
@@ -85,12 +82,25 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
      * a location's properties
      */
     Location.prototype.getIcon = function(options) {
+        // TODO: add a cache for these icons
 
-        var setHighlighted = function(options) {
+        var doubleDimensions = function(option) {                                                        
+            option[0] *=2;                                                                          
+            option[1] *=2;                                                                          
+        };                                                                                          
 
+        var setHighlighted = function(options) {                                                         
+            that.doubleDimensions(options.iconSize);                                                
+            that.doubleDimensions(options.shadowSize);                                              
+            that.doubleDimensions(options.iconAnchor);                                              
+            that.doubleDimensions(options.shadowAnchor);                                            
+            that.doubleDimensions(options.popupAnchor);                                             
+            options.iconUrl.replace(".png", "@2x.png");                                             
+            options.shadowUrl.replace(".png", "@2x.png");                                           
         };
 
         var defaults = {
+            key: null,
             highlighted: false,
             iconUrl: '/static/img/leaflet-icons/marker-icon.png',
             shadowUrl: '/static/img/leaflet-icons/marker-shadow.png',
@@ -104,16 +114,13 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
             key = '';
 
         // build a key!
-        key += (this.isSchool()) ? 'school' : 'center';
-        key += (this.isStarred()) ? '-starred' : '';
-        key += (this.isAccredited()) ? '-accredited' : '';
-
-        // if the icon already exists in cache, just return reference to that
-        //if (DataManager.IconCache[key]) {
-            //console.log("From DataManager.IconCache:", DataManager.IconCache[key]);
-            //return DataManager.IconCache[key];
-        //}
-
+        if (iconOpts.key) {
+            key = iconOpts.key;
+        } else {
+            key += (this.isSchool()) ? 'school' : 'center';
+            key += (this.isAccredited()) ? '-accredited' : '';
+            key += (this.isStarred()) ? '-starred' : '';
+        }
 
         switch (key) {
             case 'school':
@@ -152,14 +159,28 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
         }
 
         var icon = L.icon(iconOpts);
-        //DataManager.IconCache[key] = icon;
         return icon;
+    };
+
+    /*
+     * Set the locations map marker icon
+     */
+    Location.prototype.setIcon = function(options) {
+        var icon = this.getIcon(options);
+        if (this.mapMarker) {
+            this.mapMarker.setIcon(icon);
+        }
+    };
+
+    Location.prototype.getLatLng = function() {
+        return new L.LatLng(this.data.position.lat, this.data.position.lng);
     };
 
     /* Sets boolean value for if location should be on list
      */
-    Location.prototype.showInList = function(filters, map){
-        // if location filter
+    Location.prototype.isWithinMapBounds = function(map){
+        var mapBounds = map.getBounds();
+        return mapBounds.contains(this.getLatLng());
     };
 
     var DataLoader = {
