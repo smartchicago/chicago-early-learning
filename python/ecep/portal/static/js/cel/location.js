@@ -179,8 +179,17 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
         return mapBounds.contains(this.getLatLng());
     };
 
-    var DataLoader = {
-
+    var DataManager = {
+        
+        /**
+         * Settings for layers - data manager needs access to these to know which to load
+         */
+        layerType: {none: 'none', neighborhood: 'neighborhood', location: 'location'},
+        currentLayer: 'none',
+        neighborhoodLayer: new L.LayerGroup(),
+        locationLayer: new L.LayerGroup(),
+        zoomSettings: CEL.serverVars.zoomSettings,
+        popupTemplate : Handlebars.compile('<b>{{item.site_name}}</b><br>{{item.address}}'),
         iconcache: {},
 
         /* Updates if location is shown in map and list based on
