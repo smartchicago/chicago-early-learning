@@ -250,7 +250,7 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
         },
 
         getFilters: function() {
-            // TO DO GET FILTERS
+            // TODO: GET FILTERS
             return {};
         },
         /**
@@ -259,8 +259,7 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
          */
         locations: {},
         neighborhoods: {
-            data: {}, // data for neighborhood (e.g. number of schools)
-            geojson: null // if this exists, won't re-download
+            data: {} // data for neighborhood (e.g. number of schools)
         },
 
         events: {zoomChanged: 'zoomChanged',
