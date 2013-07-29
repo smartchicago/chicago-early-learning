@@ -178,7 +178,9 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
         var mapBounds = map.getBounds();
         return mapBounds.contains(this.getLatLng());
     };
+
     var layerType = {none: 'none', neighborhood: 'neighborhood', location: 'location'};
+
     var dataManager = {
         
         /**
