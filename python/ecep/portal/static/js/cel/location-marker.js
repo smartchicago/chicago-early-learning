@@ -6,8 +6,9 @@
 
 'use strict';
  
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'icons', 'common', CEL.serverVars.gmapRequire], 
-    function($, L, html, icons, common) {
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common', 
+        CEL.serverVars.gmapRequire, 'leaflet-providers'], 
+    function($, L, html, location, common) {
 
         /* On page load, query api to get locations position, add marker to map
          * for location. Use google maps layer for leaflet.
@@ -15,20 +16,19 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'icons', 'common', 
         $(document).ready(function() {
             var location_id = /(\d+)/.exec(window.location.pathname)[1];
             $.getJSON(common.getUrl('location-api') + location_id, function(data) {
-                var loc = data.locations[0],
+                var loc = new location.Location(data.locations[0]),
                     // need to build the template first so leaflet can find the map
                     template = Handlebars.compile(html);
 
-                $('.container > .row').append(template(loc));
+                $('.container > .row').append(template(loc.data));
 
-                var lat = loc.position.lat,
-                    lng = loc.position.lng,
-                    map = new L.Map('location-map', {center: new L.LatLng(lat, lng), zoom: 13}),
-                    gmap = new L.Google('ROADMAP');
+                var latLng = loc.getLatLng(), 
+                    map = new L.Map('location-map', {center: latLng, zoom: 13});
                 
-                map.addLayer(gmap);
-                L.marker([lat, lng], {icon: icons.schoolIcon}).addTo(map);
-                map.panTo(new L.LatLng(lat, lng));
+                L.tileLayer.provider('Acetate.all').addTo(map);             // basemap 
+                loc.setMarker();
+                loc.getMarker().addTo(map);
+                map.panTo(latLng);
             });
         });
     }

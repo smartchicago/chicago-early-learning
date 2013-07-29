@@ -18,8 +18,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             defaultZoom = $map.data('zoom') || 10,
             latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
             lngSettings = CEL.serverVars.lngSettings,
-            autocompleteIcon,
-            autocompleteMarker,                         // marker for autocomplete request
+            geolocatedIcon,
+            geolocatedMarker,                         // marker for autocomplete request
             template,    // Hold handlebars template
             /**
              * Valid types of map layers
@@ -47,7 +47,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         // Initialize geojson for neighborhood layer
         neighborhoodLayer = L.geoJson(null, {
             style: {
-                color: '#666',
+                color: '#317DC1',
+                fillColor: '#91C73D',
                 weight: 1,
                 opacity: 1,
                 fillOpacity: 0.3
@@ -69,7 +70,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         var setAutocompleteLocation = function() {
             if (isAutocompleteSet) {
                 if (autocompleteLocationId) {
-                    var pos = dm.locations[autocompleteLocationId].getLatLng();
+                    var loc = dm.locations[autocompleteLocationId],
+                        pos = loc.getLatLng();
+                    loc.setIcon({ highlighted: true });
                     locationPan(pos.lat, pos.lng);
                 } else if (autocompleteNeighborhoodId) {
                     var value = dm.neighborhoods.data[autocompleteNeighborhoodId]; 
@@ -276,8 +279,14 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     map.setZoom(zoomSettings - 3);
                 }
             }            
-            var popupContent = '<b>' + name + '</b><br>Number of Schools: ' + numSchools,
+            var popupContent = '<b>' + name + '</b><br>Number of Schools: ' + numSchools + '<br><a class="neighborhood-popup" href="#">Explore</a>',
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
+
+            $('.neighborhood-popup').on('click', function(e) {
+                map.panTo([lat, lng]);
+                map.setZoom(zoomSettings);
+                displayMap();
+            });
         };
 
         /*
