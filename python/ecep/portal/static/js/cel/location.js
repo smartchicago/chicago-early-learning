@@ -178,18 +178,18 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
         var mapBounds = map.getBounds();
         return mapBounds.contains(this.getLatLng());
     };
-
-    var DataManager = {
+    var layerType = {none: 'none', neighborhood: 'neighborhood', location: 'location'};
+    var dataManager = {
         
         /**
          * Settings for layers - data manager needs access to these to know which to load
          */
-        layerType: {none: 'none', neighborhood: 'neighborhood', location: 'location'},
-        currentLayer: 'none',
+        currentLayer: layerType.none,
         neighborhoodLayer: new L.LayerGroup(),
         locationLayer: new L.LayerGroup(),
         zoomSettings: CEL.serverVars.zoomSettings,
         iconcache: {},
+        map: null,
 
         /**
          * Updates if location is shown in map and list based on
@@ -296,6 +296,6 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
     };
 
     return {Location: Location,
-            DataManager:  DataManager};
+            dataManager:  dataManager};
 });
 
