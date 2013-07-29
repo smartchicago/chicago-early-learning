@@ -78,7 +78,6 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
      * a location's properties
      */
     Location.prototype.getIcon = function(options) {
-        // TODO: add a cache for these icons
 
         var doubleDimensions = function(option) {                                                        
             option[0] *=2;                                                                          
@@ -107,7 +106,8 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
             popupAnchor: [10, -60]
         };
         var iconOpts = $.extend({}, defaults, options),
-            key = '';
+            key = '',
+            cacheKey;
 
         // build a key!
         if (iconOpts.key) {
@@ -116,6 +116,15 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
             key += this.isSchool() ? 'school' : 'center';
             key += this.isAccredited() ? '-accredited' : '';
             key += this.isStarred() ? '-starred' : '';
+        }
+
+        // cache the icon with a simple key
+        cacheKey = key;
+        if (iconOpts.highlighted) {
+            cacheKey += '-highlighted';
+        }
+        if (dataManager.iconcache[cacheKey]) {
+            return dataManager.iconcache[cacheKey];
         }
 
         switch (key) {
@@ -155,6 +164,7 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
         }
 
         var icon = L.icon(iconOpts);
+        dataManager.iconcache[cacheKey] = icon;
         return icon;
     };
 
@@ -162,8 +172,8 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
      * Set the locations map marker icon
      */
     Location.prototype.setIcon = function(options) {
-        var icon = this.getIcon(options);
         if (this.mapMarker) {
+            var icon = this.getIcon(options);
             this.mapMarker.setIcon(icon);
         }
     };
@@ -188,8 +198,7 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
             marker.setIcon(icon);
         } else {
             this.mapMarker = new L.Marker(this.getLatLng(), { icon: icon });
-            // TODO: clear up popupTemplate
-            this.mapMarker.bindPopup(DataManager.popupTemplate(this.data), {key: this.getId()});
+            this.mapMarker.bindPopup(dataManager.popupTemplate(this.data), {key: this.getId()});
         }
     };
 
