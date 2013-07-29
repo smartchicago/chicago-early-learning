@@ -13,7 +13,6 @@ from faq.models import Topic, Question
 from django.utils.translation import check_for_language
 from django.utils import simplejson
 from django.db.models import Count, Q
-from django.template.defaultfilters import title
 from django.contrib.gis.geos import Polygon
 from operator import attrgetter
 import json
@@ -214,8 +213,8 @@ def _make_location_filter(query_params, etag_hash=''):
     """
     def make_rectangle(bbox):
         """Given a bbox csv returns a geometry object for it"""
-        xmin, ymin, xmax, ymax = bbox.split(',')
-        return Polygon(((xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)))
+        xmin, ymin, xmax, ymax = (float(x) for x in bbox.split(','))
+        return Polygon(((xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin), (xmin, ymin)))
 
     # Filter by any boolean filters provided
     result = Q()
@@ -230,10 +229,21 @@ def _make_location_filter(query_params, etag_hash=''):
     if 'bbox' in query_params:
         etag_hash = ''            # Can't cache bbox queries
         bbox = make_rectangle(query_params['bbox'])
-        bbox_filter = Q(poly__bboverlaps=bbox)
+        bbox_filter = Q(geom__bboverlaps=bbox)
         result &= bbox_filter
 
     return result, etag_hash
+
+
+def _make_response(context, etag_hash):
+    rsp = HttpResponse(json.dumps(context), content_type="application/json")
+
+    if etag_hash:
+        md5 = hashlib.md5()
+        md5.update(etag_hash)
+        rsp['Etag'] = md5.hexdigest()
+
+    return rsp
 
 
 def location_details(location_id):
@@ -266,13 +276,6 @@ def location_api(request, location_ids=None):
             {"locations": [ Locations filtered as described above ]}
 
     """
-    def fixcap(x):
-        """Makes Location.site_name Title Case"""
-        # TODO: put this in get_context_dict?
-        if x.site_name.isupper():
-            x.site_name = title(x.site_name)
-        return x
-
     etag_hash = 'empty'
 
     # Filter by ids if provided
@@ -286,18 +289,10 @@ def location_api(request, location_ids=None):
     bool_filter, etag_hash = _make_location_filter(request.GET, etag_hash)
     item_filter &= bool_filter
 
-    location_contexts = [fixcap(l).get_context_dict() for l in Location.objects.filter(item_filter)]
+    location_contexts = [l.get_context_dict() for l in Location.objects.filter(item_filter)]
     logger.debug('Retrieved %d location_contexts.' % len(location_contexts))
     context = {'locations': location_contexts}
-    rsp = HttpResponse(json.dumps(context), content_type="application/json")
-
-    if etag_hash:
-        md5 = hashlib.md5()
-        md5.update(etag_hash)
-        rsp['Etag'] = md5.hexdigest()
-
-    # import ipdb; ipdb.set_trace()
-    return rsp
+    return _make_response(context, etag_hash)
 
 
 def location(request):
@@ -315,17 +310,48 @@ def location_position(request, location_id):
     return HttpResponse(json.dumps(results), content_type="application/json")
 
 
+@cache_control(must_revalidate=False, max_age=60*60*24)
 def neighborhood_api(request):
-    counts = Neighborhood.objects.annotate(num_schools=Count('location'))
+    """API endpoint for neighborhoods.  Returns metadata about all neighborhoods in db.
+
+    request.GET params:
+        <any boolean field in Locations>:   value may be either 'true' or 'false'
+        'bbox':                             value is a csv of points of the form
+            xmin,ymin,xmax,ymax
+
+    returns: A list of neighborhoods.  The query params only control which locations are counted
+             in the 'schools' field.
+             Included fields for each item:
+                 'name':    Neighborhood.primary_name
+                 'schools': Count of schools in the neighborhood, using the filtering mechanism
+                            described for the locations endpoint
+                 'id':      Primary key
+                 'center':  lat/lng dict with the centroid of the neighborhood polygon
+        result has the following structure:
+            {"neighborhoods": [ List of neighborhoods as described above ]}
+    """
+    etag_hash = 'empty'
+    nb_name = Neighborhood.__name__.lower()
+    location_filter, etag_hash = _make_location_filter(request.GET, etag_hash)
+    locations = Location.objects.filter(location_filter)
+
+    # List of dicts with keys nb_name and 'nbc_count'
+    # The order_by() is important, as it prevents django from adding extra fields to the
+    # query and borking the group-by statement.
+    # See
+    # https://docs.djangoproject.com/en/1.4/topics/db/aggregation/#interaction-with-default-ordering-or-order-by
+    count_by_nbh = locations.values(nb_name).annotate(nbc_count=Count(nb_name)).order_by()
+    nbh_pk_to_count = {n[nb_name]: n['nbc_count'] for n in count_by_nbh if n[nb_name]}
+    counts = Neighborhood.objects.all().order_by('primary_name')
     count_list = [{
         'name': n.primary_name,
-        'schools': n.num_schools,
+        'schools': nbh_pk_to_count[n.pk] if n.pk in nbh_pk_to_count else 0,
         'id': n.pk,
         'center': n.get_center()
     } for n in counts]
-    count_list.sort(key=lambda x: x['name'])
+
     context = {'neighborhoods': count_list}
-    return HttpResponse(json.dumps(context), content_type="application/json")
+    return _make_response(context, etag_hash)
 
 
 ## Starred Location Views

@@ -7,7 +7,7 @@
 define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
         'topojson', 'icons', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire, 'styling',
         'leaflet-providers'], 
-    function($, L, neighborhoodList, locationList, topojson, icons, favorites, Location,  common) {
+    function($, L, neighborhoodList, locationList, topojson, icons, favorites, location,  common) {
 
         'use strict';
 
@@ -21,12 +21,24 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             geolocatedIcon,
             geolocatedMarker,                         // marker for autocomplete request
             template,    // Hold handlebars template
-            layerType = { none: 'none', neighborhood: 'neighborhood', location: 'location'},
+            /**
+             * Valid types of map layers
+             */
+            layerType = {
+                // No map layer is currently selected
+                none: 'none',
+
+                // Neighborhood polygons layer
+                neighborhood: 'neighborhood',
+
+                // Individual locations/schools layer
+                location: 'location'
+            },
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
             popupLayer = new L.LayerGroup(),   // Popup Layer
             currentLayer = layerType.none,              
-            dataManager = Location.dataManager,
+            dm = new location.DataManager(),
             isAutocompleteSet = true,
             autocompleteLocationId,
             autocompleteNeighborhoodId,
@@ -58,12 +70,12 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         var setAutocompleteLocation = function() {
             if (isAutocompleteSet) {
                 if (autocompleteLocationId) {
-                    var loc = dataManager.locations[autocompleteLocationId],
+                    var loc = dm.locations[autocompleteLocationId],
                         pos = loc.getLatLng();
                     loc.setIcon({ highlighted: true });
                     locationPan(pos.lat, pos.lng);
                 } else if (autocompleteNeighborhoodId) {
-                    var value = dataManager.neighborhoods.data[autocompleteNeighborhoodId]; 
+                    var value = dm.neighborhoods.data[autocompleteNeighborhoodId]; 
                     neighborhoodPan(value.name, value.schools, value.center.lat, value.center.lng, true);
                 }
                 isAutocompleteSet = false;
@@ -71,16 +83,16 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         };
 
         /*
-         * Update view when the dataManager triggers its neighborhood updated event
+         * Update view when the dm triggers its neighborhood updated event
          * We only want to attach this event once...
          */
-        dataManager.events.on("dataManager.neighborhoodUpdated", function(e) {
+        dm.events.on("DataManager.neighborhoodUpdated", function(e) {
             // If not already displaying neighborhoods and zoomed out
             currentLayer = layerType.neighborhood;
-            listResults(dataManager.neighborhoods.data, currentLayer);
+            listResults(dm.neighborhoods.data, currentLayer);
             locationLayer.clearLayers();
             neighborhoodLayer.clearLayers();
-            neighborhoodLayer.addData(dataManager.neighborhoods.geojson);
+            neighborhoodLayer.addData(dm.neighborhoods.geojson);
             map.addLayer(neighborhoodLayer);
             panHandler();
             exploreButton();
@@ -91,19 +103,19 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
 
         /*
-         * Update view when the dataManager triggers its location updated event
+         * Update view when the dm triggers its location updated event
          * We only want to attach this event once...
          */
-        dataManager.events.on("dataManager.locationUpdated", function(e) {
+        dm.events.on("DataManager.locationUpdated", function(e) {
             // If not already displaying locations and zoomed in
             currentLayer = layerType.location;
             map.removeLayer(neighborhoodLayer);
             map.addLayer(locationLayer);
             popupLayer.clearLayers();
-            listResults(dataManager.locations, currentLayer);
+            listResults(dm.locations, currentLayer);
 
             // Create map markers and bind popups
-            $.each(dataManager.locations, function(i, location) {
+            $.each(dm.locations, function(i, location) {
                 var locMarker = location.getMarker();
                 locationLayer.addLayer(locMarker);
             });
@@ -115,7 +127,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $('.accordion-group').click(function() {
                 var $this = $(this),
                 key = $this.data('key'),
-                loc = dataManager.locations[key],
+                loc = dm.locations[key],
                 marker = loc.getMarker(),
                 latLng = loc.getLatLng();
 
@@ -133,20 +145,20 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         /**
          * Controls logic of whether to display locations or neighborhoods
          * based on current zoom level. Called when map is initialized
-         * and after a change in zoom level. Listens to the dataManager.neighborhoodUpdated and
-         * dataManager.locationUpdated events to modify the view.
+         * and after a change in zoom level. Listens to the dm.neighborhoodUpdated and
+         * dm.locationUpdated events to modify the view.
          */
         var displayMap = function() {
             var zoomLevel = map.getZoom();
 
             if (isAutocompleteSet && autocompleteLocationId) {
-                dataManager.locationUpdate();
+                dm.locationUpdate(map);
             } else if (isAutocompleteSet && autocompleteNeighborhoodId) {
-                dataManager.neighborhoodUpdate();
-            } else if (currentLayer !== 'neighborhood' && zoomLevel < zoomSettings) {
-                dataManager.neighborhoodUpdate();
-            } else if (currentLayer !== 'location' && zoomLevel >= zoomSettings) {
-                dataManager.locationUpdate();
+                dm.neighborhoodUpdate(map);
+            } else if (currentLayer !== layerType.neighborhood && zoomLevel < zoomSettings) {
+                dm.neighborhoodUpdate(map);
+            } else if (currentLayer !== layerType.location && zoomLevel >= zoomSettings) {
+                dm.locationUpdate(map);
             }
         };
 
@@ -189,7 +201,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $('.favs-toggle').on('click', function(e) {
                 var $this = $(this),
                     key = $this.data('loc-id'),
-                    loc = dataManager.locations[key];
+                    loc = dm.locations[key];
                 loc.setIcon();
             });
 
@@ -199,7 +211,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $('.location-container').hover(function(e) {
                 var $this = $(this),
                     key = $this.data('key'),
-                    loc = dataManager.locations[key];
+                    loc = dm.locations[key];
 
                 // Keeping the icon selection simple for now, since everything is
                 // currently hardcoded to school and there is a separate icon management
@@ -295,7 +307,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * Mostly just a wrapper around neighborhoodPan
          */
         var panHandler = function() {
-            $('.accordion-group').click(function() {
+            $('.locations-wrapper .accordion-group').click(function() {
                 var $this = $(this);
                 neighborhoodPan($this.data('name'), $this.data('schools'), 
                                 $this.data('lat'), $this.data('lng'), true);
@@ -317,6 +329,64 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 }
             });
         };
+
+
+        /*
+         * Update view when the dm triggers its neighborhood updated event
+         * We only want to attach this event once...
+         */
+        dm.events.on("DataManager.neighborhoodUpdated", function(e) {
+            // If not already displaying neighborhoods and zoomed out
+            currentLayer = layerType.neighborhood;
+            listResults(dm.neighborhoods.data, currentLayer);
+            locationLayer.clearLayers();
+            neighborhoodLayer.clearLayers();
+            neighborhoodLayer.addData(dm.neighborhoods.geojson);
+            map.addLayer(neighborhoodLayer);
+            panHandler();
+            exploreButton();
+        });
+
+
+        /*
+         * Update view when the dm triggers its location updated event
+         * We only want to attach this event once...
+         */
+        dm.events.on("DataManager.locationUpdated", function(e) {
+            // If not already displaying locations and zoomed in
+            currentLayer = layerType.location;
+            map.removeLayer(neighborhoodLayer);
+            map.addLayer(locationLayer);
+            popupLayer.clearLayers();
+            listResults(dm.locations, currentLayer);
+
+            // Create map markers and bind popups
+            $.each(dm.locations, function(i, location) {
+                var locMarker = location.getMarker();
+                locationLayer.addLayer(locMarker);
+            });
+
+            // Bind to accordion events so we can pan to the map location
+            $('.locations-wrapper .accordion-group').click(function() {
+                var $this = $(this),
+                    key = $this.data('key'),
+                    loc = dm.locations[key],
+                    marker = loc.getMarker(),
+                    latLng = loc.getLatLng();
+
+                // 'togglePopup' would work better here, but it appears our version of leaflet
+                // doesn't have it implemented. If we upgrade leaflet, we should switch this
+                // to use it. Either that or keep track of whether or not this accordion group
+                // is collapsed (there is currently a 'collapsed' class added, but it seems to
+                // be inconsistent when testing it, probably due to some behind-the-scenes
+                // setTimeouts.
+                marker.openPopup();
+                map.panTo(latLng);
+            });
+        });
+
+        dm.events.on('DataManager.filtersUpdated', displayMap);
+
 
         // Load data and build map when page loads
         return {
