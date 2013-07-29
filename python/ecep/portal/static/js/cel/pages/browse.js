@@ -151,8 +151,19 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 button: ".favs-toggle"
             });
 
+            /**
+             * Watch for favorite events, if there is one, then setIcon again
+             */
+            $('.favs-toggle').on('click', function(e) {
+                var $this = $(this),
+                    key = $this.data('loc-id'),
+                    loc = dataManager.locations[key];
+                loc.setIcon();
+            });
+
             // Watch for hover events on the list so we can highlight both 
             // the list item and the icon on the map
+            
             $('.location-container').hover(function(e) {
                 var $this = $(this),
                     key = $this.data('key'),
