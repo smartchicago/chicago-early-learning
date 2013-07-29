@@ -239,7 +239,7 @@ h1, h2, h3, h4 {
 			padding: 0 15px 25px 0;
 		}
 		.accordion-inner .accordion-right {
-			width: 25%;
+			width: 23%;
 			float: right;
 		}
 			.accordion-inner. .accordion-right button {
@@ -385,6 +385,7 @@ h1, h2, h3, h4 {
 	width: 30%;
 	float: left;
 	padding: 15px;
+	min-height: 600px;
 }
 	.favorite h1 {
 		line-height: 10px;
@@ -721,6 +722,32 @@ h1, h2, h3, h4 {
 .btn-tool.active,
 .btn-tool.disabled,
 .btn-tool[disabled] {
+	color: #FFFFFF;
+	background-color: #317DC1;
+	*background-color: #003bb3;
+}
+
+.explore-btn {
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #317DC1;
+	*background-color: #317DC1;
+	background-image: -moz-linear-gradient(top, #317DC1, #317DC1);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#317DC1), to(#317DC1));
+	background-image: -webkit-linear-gradient(top, #317DC1, #317DC1);
+	background-image: -o-linear-gradient(top, #317DC1, #317DC1);
+	background-image: linear-gradient(to bottom, #317DC1, #317DC1);
+	background-repeat: repeat-x;
+	border-color: #317DC1;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#317DC1', endColorstr='#317DC1', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.explore-btn:hover,
+.explore-btn:active,
+.explore-btn.active,
+.explore-btn.disabled,
+.explore-btn[disabled] {
 	color: #FFFFFF;
 	background-color: #317DC1;
 	*background-color: #003bb3;
