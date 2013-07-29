@@ -238,21 +238,14 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
             }
         },
         
-        // Listens to map for zoom and movement
-        zoomListener: function(map) {
-            var filters = this.getFilters();
-            map.on('zoomend', this.neighborhoodUpdate(filters));
-        },
-
-        // listens to filters for changes
-        filterListener: function() {
+        // Updates data on filter changes
+        onFilterChange: function() {
             // TODO: Wire in DOM listeners for filters once that is finished
-            var filters = this.getFilters();
-            if (this.currentLayer === 'neighborhood') {
-                this.neighborhoodUpdate(filters);
+            if (dataManager.currentLayer === 'neighborhood') {
+                dataManager.neighborhoodUpdate();
             }
-            else if (this.currentLayer === 'location') {
-                this.locationUpdate(filters);
+            else if (dataManager.currentLayer === 'location') {
+                dataManager.locationUpdate();
             }
         },
 
