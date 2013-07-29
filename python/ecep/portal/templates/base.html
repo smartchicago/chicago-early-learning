@@ -19,6 +19,7 @@ See LICENSE in the project root for copying permission
     <link rel="shortcut icon" href='{% static "favicon.ico" %}' type="image/x-icon">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
+    <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
     <!--[if lt IE 9]>
@@ -73,6 +74,26 @@ See LICENSE in the project root for copying permission
       </div>
       <div class="modal-body">
         <p>Text your zip code to <a href="sms:7738861819">(773) 886-1819</a> and we'll do the rest.</p>
+      </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="share-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="share-modal-label" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="share-modal-label">Save and Share Permalink</h3>
+      </div>
+      <div class="modal-body">
+        <p>Save the following link, or share it with friends, family, or co-workers.</p>
+        
+        <input id="social-text" type="text" readonly="true">
+        <a target="_blank" id="social-mail" class="medium fc-webicon mail"><i class="icon-mail-alt"></i></a>
+        <a target="_blank" id="social-facebook" class="medium fc-webicon facebook"><i class="icon-facebook-1"></i></a>
+        <a target="_blank" id="social-gplus" class="medium fc-webicon googleplus"><i class="icon-gplus"></i></a>
+        <a target="_blank" id="social-twitter" class="medium fc-webicon twitter"><i class="icon-twitter-1"></i></a>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
       </div>
     </div>
 
