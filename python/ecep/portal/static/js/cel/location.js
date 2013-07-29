@@ -132,7 +132,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
                 $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
                 break;
             case 'school-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-favorite.png'});
                 break;
             case 'school-accredited':
                 $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
@@ -144,7 +144,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
                 $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
                 break;
             case 'center-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-favorite.png'});
                 break;
             case 'center-accredited':
                 $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
