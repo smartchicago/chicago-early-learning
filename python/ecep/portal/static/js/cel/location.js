@@ -85,13 +85,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
         };                                                                                          
 
         var setHighlighted = function(options) {                                                         
-            that.doubleDimensions(options.iconSize);                                                
-            that.doubleDimensions(options.shadowSize);                                              
-            that.doubleDimensions(options.iconAnchor);                                              
-            that.doubleDimensions(options.shadowAnchor);                                            
-            that.doubleDimensions(options.popupAnchor);                                             
+            doubleDimensions(options.iconSize);                                                
+            doubleDimensions(options.shadowSize);                                              
+            doubleDimensions(options.iconAnchor);                                              
+            doubleDimensions(options.shadowAnchor);                                            
+            doubleDimensions(options.popupAnchor);                                             
             options.iconUrl.replace(".png", "@2x.png");                                             
-            options.shadowUrl.replace(".png", "@2x.png");                                           
+            options.shadowUrl.replace(".png", "@2x.png");
+            return options;
         };
 
         var defaults = {
@@ -132,7 +133,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
                 $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
                 break;
             case 'school-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-favorite.png'});
                 break;
             case 'school-accredited':
                 $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
@@ -144,7 +145,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
                 $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
                 break;
             case 'center-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-favorite.png'});
                 break;
             case 'center-accredited':
                 $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
