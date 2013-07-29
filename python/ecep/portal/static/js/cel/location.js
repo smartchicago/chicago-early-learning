@@ -187,11 +187,8 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
          * Settings for layers - data manager needs access to these to know which to load
          */
         currentLayer: layerType.none,
-        neighborhoodLayer: new L.LayerGroup(),
-        locationLayer: new L.LayerGroup(),
         zoomSettings: CEL.serverVars.zoomSettings,
         iconcache: {},
-        map: null,
 
         /**
          * Updates if location is shown in map and list based on
