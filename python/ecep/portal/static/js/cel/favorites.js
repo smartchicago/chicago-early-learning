@@ -21,7 +21,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
          * Get the favorites cookie
          */
         getCookie: function() {
-            return $.cookie(favs.cookie.name);
+            return $.cookie(favs.cookie.name) || "";
         },
 
         /*
