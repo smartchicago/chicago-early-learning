@@ -85,13 +85,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
         };                                                                                          
 
         var setHighlighted = function(options) {                                                         
-            that.doubleDimensions(options.iconSize);                                                
-            that.doubleDimensions(options.shadowSize);                                              
-            that.doubleDimensions(options.iconAnchor);                                              
-            that.doubleDimensions(options.shadowAnchor);                                            
-            that.doubleDimensions(options.popupAnchor);                                             
+            doubleDimensions(options.iconSize);                                                
+            doubleDimensions(options.shadowSize);                                              
+            doubleDimensions(options.iconAnchor);                                              
+            doubleDimensions(options.shadowAnchor);                                            
+            doubleDimensions(options.popupAnchor);                                             
             options.iconUrl.replace(".png", "@2x.png");                                             
-            options.shadowUrl.replace(".png", "@2x.png");                                           
+            options.shadowUrl.replace(".png", "@2x.png");
+            return options;
         };
 
         var defaults = {
