@@ -5,7 +5,7 @@
  * data loader object
  *********************************************************/
 
-define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
+define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], function($, L, Handlebars, favorites, topojson, common) {
 
     /*
      * Constructor for location
@@ -78,7 +78,6 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
      * a location's properties
      */
     Location.prototype.getIcon = function(options) {
-        // TODO: add a cache for these icons
 
         var doubleDimensions = function(option) {                                                        
             option[0] *=2;                                                                          
@@ -107,7 +106,8 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
             popupAnchor: [10, -60]
         };
         var iconOpts = $.extend({}, defaults, options),
-            key = '';
+            key = '',
+            cacheKey;
 
         // build a key!
         if (iconOpts.key) {
@@ -116,6 +116,15 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
             key += this.isSchool() ? 'school' : 'center';
             key += this.isAccredited() ? '-accredited' : '';
             key += this.isStarred() ? '-starred' : '';
+        }
+
+        // cache the icon with a simple key
+        cacheKey = key;
+        if (iconOpts.highlighted) {
+            cacheKey += '-highlighted';
+        }
+        if (dataManager.iconcache[cacheKey]) {
+            return dataManager.iconcache[cacheKey];
         }
 
         switch (key) {
@@ -155,6 +164,7 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
         }
 
         var icon = L.icon(iconOpts);
+        dataManager.iconcache[cacheKey] = icon;
         return icon;
     };
 
@@ -162,9 +172,34 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
      * Set the locations map marker icon
      */
     Location.prototype.setIcon = function(options) {
-        var icon = this.getIcon(options);
         if (this.mapMarker) {
+            var icon = this.getIcon(options);
             this.mapMarker.setIcon(icon);
+        }
+    };
+
+    /*
+     * Get location marker object
+     */
+    Location.prototype.getMarker = function() {
+        return this.mapMarker || null;
+    };
+
+    /*
+     * Input: Leaflet Marker Icons object
+     * Output: Reference to the created marker
+     * If map marker already exists, updates existing marker icon
+     * If map marker does not exist, creates marker with proper icon
+     */
+    Location.prototype.setMarker = function(options) {
+        var popupTemplate = Handlebars.compile('<b>{{item.site_name}}</b><br>{{item.address}}'),
+            icon = this.getIcon(options),
+            marker = this.getMarker();
+        if (marker) {
+            marker.setIcon(icon);
+        } else {
+            this.mapMarker = new L.Marker(this.getLatLng(), { icon: icon });
+            this.mapMarker.bindPopup(popupTemplate(this.data), {key: this.getId()});
         }
     };
 
@@ -179,43 +214,104 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
         return mapBounds.contains(this.getLatLng());
     };
 
-    var DataLoader = {
-
+    var dataManager = {
+        
+        /**
+         * Settings for layers - data manager needs access to these to know which to load
+         */
+        zoomSettings: CEL.serverVars.zoomSettings,
         iconcache: {},
 
-        /* Updates if location is shown in map and list based on
+        /**
+         * Updates if location is shown in map and list based on
          * applied filters and bounding box of map
          */
-        locationUpdate: function(filters, map) {},
+        locationUpdate: function() {
+            var filters = dataManager.getFilters();
+            $.getJSON(common.getUrl('location-api', filters), function(data) {
+                $.each(data.locations, function(i, location) {
+                    var key = location.item.key;
+                    if (!dataManager.locations[key]) {
+                        dataManager.locations[key] = new Location(location);
+                    }
+                    dataManager.locations[key].setMarker();
+                });
+                dataManager.events.trigger('dataManager.locationUpdated');
+            });
+        },
 
-        /* Updates school counts for neighborhoods based on
-         * filters
+        /**
+         * Updates school counts for neighborhoods based on
+         * filters.
          *
-         * @param {Filters taken from filter-list/model} filters
+         * Download topojson if not already downloaded.
          */
-        neighborhoodUpdate: function(filters, neighborhoodLayer) {},
+        neighborhoodUpdate: function() {
+            var filters = dataManager.getFilters();
+            $.when(
+                // TODO: Update getUrl function to take filters as argument
+                $.getJSON(common.getUrl('neighborhood-api', filters), function(data) {
+                    $.each(data.neighborhoods, function(i, neighborhood) {
+                        var key = neighborhood.id, 
+                            neighborhoods = dataManager.neighborhoods.data;
+                        if (!neighborhoods[key]) {
+                            neighborhoods[key] = neighborhood;
+                        }
+                    });
+                }),
+                dataManager.geojsonUpdate()
+            ).then(function() {
+                dataManager.events.trigger('dataManager.neighborhoodUpdated');
+            });
+        },
 
-        /* Updates locations when zoom changes
+        /*
+         * Get geojson for the neighborhoods and store in dataManager
          */
-        onZoomChange: function(map) {},
+        geojsonUpdate: function() {
+            if (dataManager.neighborhoods.geojson === undefined) {
+                $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
+                    dataManager.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
+                });
+            }
+        },
 
-        idleListener: function(map) {}, // Listens to map for zoom and movement
+        // Updates data on filter changes
+        onFilterChange: function() {
+            // TODO: Wire in DOM listeners for filters once that is finished
+            if (dataManager.currentLayer === 'neighborhood') {
+                dataManager.neighborhoodUpdate();
+            }
+            else if (dataManager.currentLayer === 'location') {
+                dataManager.locationUpdate();
+            }
+        },
 
-        filterListener: function() {}, // listens to filters for changes
+        getFilters: function() {
+            // TODO: GET FILTERS
+            return {};
+        },
 
-        /* Map of locations & neighborhoods, key is the id for
+        /**
+         * Map of locations & neighborhoods, key is the id for
          * each object
          */
         locations: {},
-        neighborhood: {},
+        neighborhoods: {
+            data: {} // data for neighborhood (e.g. number of schools)
+        },
 
-        events: {zoomChanged: 'zoomChanged',
-                 dataReady: 'dataReady'
-                }
+        /* 
+         * Available events:
+         * neighborhoodUpdated: 'dataManager.neighborhoodUpdated',
+         *      triggered when neighborhood data is finished loading
+         * locationUpdated: 'dataManager.locationUpdated'
+         *      triggered when location data is finished loading
+         */
+        events: $({})
     };
 
     return {Location: Location,
-            DataLoader:  DataLoader};
-
+            dataManager:  dataManager};
 });
 

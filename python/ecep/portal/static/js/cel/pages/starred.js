@@ -44,6 +44,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
             }
 
             favorites.addClearListener();
+            favorites.addShareListener();
         });
     }
 );

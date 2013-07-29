@@ -226,6 +226,44 @@ function($, L, Response, Handlebars) {
         $('.geolocation-button').hide();
     }
 
+    // Set up social sharing behavior
+    // The options argument must be an object that contains both a url and a title,
+    // which are used to construct the appropriate sharing links.
+    $('#share-modal').on('init-modal', function(e, options) {
+        // a lot of these urls won't work when passing 'localhost' urls, but once we 
+        // move to a publically accessible url, they will work just fine
+        var templates = {
+                mail: 'mailto:?body={{ url }}&subject={{ title }}',
+                facebook: 'http://facebook.com/sharer.php?s=100&p[url]={{ url }}&p[title]={{ title }}',
+                twitter: 'https://twitter.com/share?text={{ title }}%20{{ url }}',
+
+                // looks like google recently broke their permalink that allows adding text:
+                // 'https://m.google.com/app/plus/x/?v=compose&content={{ title }}%20{{ url }}'
+                // until they fix it, the following will work, but will just share the url
+                gplus: 'https://plus.google.com/share?url={{ url }}'
+            },
+            $modal = $(this),
+            $text = $('#social-text');
+
+        // fill the input box in with the url
+        $text.attr('value', options.url);
+
+        // a url is generated for each template defined in 'templates'.
+        // to add a new service, create a link with the id 'social-[service]',
+        // and add a template to the 'templates' object.
+        $.each(templates, function (service, template) {
+            $('#social-' + service).attr('href', Handlebars.compile(template)(options));
+        });
+
+        // select the text once the dialog is shown
+        $modal.on('shown', function() {
+            $text.select();
+        });
+
+        // display the modal
+        $modal.modal('show');
+    });
+
     return {
         getUrl: getUrl
     };
