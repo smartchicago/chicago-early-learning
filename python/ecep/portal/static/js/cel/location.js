@@ -5,7 +5,7 @@
  * data loader object
  *********************************************************/
 
-define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, favorites, topojson, common) {
+define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], function($, L, Handlebars, favorites, topojson, common) {
 
     /*
      * Constructor for location
@@ -192,13 +192,14 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
      * If map marker does not exist, creates marker with proper icon
      */
     Location.prototype.setMarker = function(options) {
-        var icon = this.getIcon(options);
-        var marker = this.getMarker();
+        var popupTemplate = Handlebars.compile('<b>{{item.site_name}}</b><br>{{item.address}}'),
+            icon = this.getIcon(options),
+            marker = this.getMarker();
         if (marker) {
             marker.setIcon(icon);
         } else {
             this.mapMarker = new L.Marker(this.getLatLng(), { icon: icon });
-            this.mapMarker.bindPopup(dataManager.popupTemplate(this.data), {key: this.getId()});
+            this.mapMarker.bindPopup(popupTemplate(this.data), {key: this.getId()});
         }
     };
 
@@ -213,14 +214,11 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
         return mapBounds.contains(this.getLatLng());
     };
 
-    var layerType = {none: 'none', neighborhood: 'neighborhood', location: 'location'};
-
     var dataManager = {
         
         /**
          * Settings for layers - data manager needs access to these to know which to load
          */
-        currentLayer: layerType.none,
         zoomSettings: CEL.serverVars.zoomSettings,
         iconcache: {},
 
@@ -230,12 +228,15 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
          */
         locationUpdate: function() {
             var filters = dataManager.getFilters();
-            $.getJSON(common.getUrl('location-api'), function(data) {
-                for (var id in data.locations) {
-                    dataManager.locations[id] = new Location(data.locations[id]);
-                    // TODO add GetMarker and SetMarker methods to Location object
-                    dataManager.locations[id].setMarker();
-                }
+            $.getJSON(common.getUrl('location-api', filters), function(data) {
+                $.each(data.locations, function(i, location) {
+                    var key = location.item.key;
+                    if (!dataManager.locations[key]) {
+                        dataManager.locations[key] = new Location(location);
+                    }
+                    dataManager.locations[key].setMarker();
+                });
+                dataManager.events.trigger('dataManager.locationUpdated');
             });
         },
 
@@ -247,31 +248,28 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
          */
         neighborhoodUpdate: function() {
             var filters = dataManager.getFilters();
-            // TODO: Update getUrl function to take filters as argument
-            $.getJSON(common.getUrl('neighborhoods-api'), function(data) {
-                dataManager.neighborhoods.data = data;
-                });
+            $.when(
+                // TODO: Update getUrl function to take filters as argument
+                $.getJSON(common.getUrl('neighborhood-api', filters), function(data) {
+                    dataManager.neighborhoods.data = data.neighborhoods;
+                }),
+                dataManager.geojsonUpdate()
+            ).then(function() {
+                dataManager.events.trigger('dataManager.neighborhoodUpdated');
+            });
+        },
+
+        /*
+         * Get geojson for the neighborhoods and store in dataManager
+         */
+        geojsonUpdate: function() {
             if (dataManager.neighborhoods.geojson === undefined) {
                 $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
                     dataManager.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
                 });
-            };
+            }
         },
 
-        /**
-         * Updates locations when zoom changes
-         */
-        onZoomChange: function() {
-            if (dataManager.currentLayer !== 'neighborhood' && dataManager.map.getZoom() < dataManager.zoomSettings) {
-                dataManager.currentLayer = dataManager.layerType.neighborhood;
-                dataManager.neighborhoodUpdate();
-            }
-            else if (dataManager.currentLayer !== 'location' && dataManager.map.getZoom() >= dataManager.zoomSettings) {
-                dataManager.currentLayer = dataManager.layerType.location;
-                dataManager.locationUpdate(); // Just call locationUpdate because that's all we care about
-            }
-        },
-        
         // Updates data on filter changes
         onFilterChange: function() {
             // TODO: Wire in DOM listeners for filters once that is finished
@@ -287,6 +285,7 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
             // TODO: GET FILTERS
             return {};
         },
+
         /**
          * Map of locations & neighborhoods, key is the id for
          * each object
@@ -296,8 +295,14 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
             data: {} // data for neighborhood (e.g. number of schools)
         },
 
-        events: {zoomChanged: 'zoomChanged',
-                 neighborhoodReady: 'neighborhoodReady'}
+        /* 
+         * Available events:
+         * neighborhoodUpdated: 'dataManager.neighborhoodUpdated',
+         *      triggered when neighborhood data is finished loading
+         * locationUpdated: 'dataManager.locationUpdated'
+         *      triggered when location data is finished loading
+         */
+        events: $({})
     };
 
     return {Location: Location,
