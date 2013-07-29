@@ -71,7 +71,16 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
      *      false if not
      */
     Location.prototype.isSchool = function() {
-        return true;
+        var isSchool = false;
+        $.each(this.data.sfields, function(key, value) {
+            if (value.fieldname === "Affiliations") {
+                if (value.value.indexOf("CPS Based") !== -1) {
+                    isSchool = true;
+                } 
+                return false;
+            }
+        });
+        return isSchool;
     };
 
     /* Function that returns appropriate icon based on
