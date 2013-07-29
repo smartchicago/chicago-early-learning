@@ -156,28 +156,30 @@ LOCALE_PATHS = (
 )
 
 # setup logging
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'logfile': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': LOGFILE,
-        }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['logfile'],
-            'level': 'DEBUG',
-            'propagate': True,
+try:
+    LOGGING
+except NameError:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'logfile': {
+                'level': 'DEBUG',
+                'class': 'logging.handlers.RotatingFileHandler',
+                'filename': LOGFILE,
+            }
         },
-        'portal.views': {
-            'handlers': ['logfile'],
-            'level': 'DEBUG',
-            'propagate': True,
+        'loggers': {
+            'django.request': {
+                'handlers': ['logfile'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+            'portal.views': {
+                'handlers': ['logfile'],
+                'level': 'DEBUG',
+                'propagate': True,
+            }
         }
     }
-}
 
