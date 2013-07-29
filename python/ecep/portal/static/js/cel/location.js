@@ -78,7 +78,6 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
      * a location's properties
      */
     Location.prototype.getIcon = function(options) {
-        // TODO: add a cache for these icons
 
         var doubleDimensions = function(option) {                                                        
             option[0] *=2;                                                                          
@@ -107,7 +106,8 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
             popupAnchor: [10, -60]
         };
         var iconOpts = $.extend({}, defaults, options),
-            key = '';
+            key = '',
+            cacheKey;
 
         // build a key!
         if (iconOpts.key) {
@@ -116,6 +116,15 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
             key += this.isSchool() ? 'school' : 'center';
             key += this.isAccredited() ? '-accredited' : '';
             key += this.isStarred() ? '-starred' : '';
+        }
+
+        // cache the icon with a simple key
+        cacheKey = key;
+        if (iconOpts.highlighted) {
+            cacheKey += '-highlighted';
+        }
+        if (dataManager.iconcache[cacheKey]) {
+            return dataManager.iconcache[cacheKey];
         }
 
         switch (key) {
@@ -155,6 +164,7 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
         }
 
         var icon = L.icon(iconOpts);
+        dataManager.iconcache[cacheKey] = icon;
         return icon;
     };
 
@@ -162,9 +172,33 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
      * Set the locations map marker icon
      */
     Location.prototype.setIcon = function(options) {
-        var icon = this.getIcon(options);
         if (this.mapMarker) {
+            var icon = this.getIcon(options);
             this.mapMarker.setIcon(icon);
+        }
+    };
+
+    /*
+     * Get location marker object
+     */
+    Location.prototype.getMarker = function() {
+        return this.mapMarker || null;
+    };
+
+    /*
+     * Input: Leaflet Marker Icons object
+     * Output: Reference to the created marker
+     * If map marker already exists, updates existing marker icon
+     * If map marker does not exist, creates marker with proper icon
+     */
+    Location.prototype.setMarker = function(options) {
+        var icon = this.getIcon(options);
+        var marker = this.getMarker();
+        if (marker) {
+            marker.setIcon(icon);
+        } else {
+            this.mapMarker = new L.Marker(this.getLatLng(), { icon: icon });
+            this.mapMarker.bindPopup(dataManager.popupTemplate(this.data), {key: this.getId()});
         }
     };
 
