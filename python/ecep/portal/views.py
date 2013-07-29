@@ -13,7 +13,6 @@ from faq.models import Topic, Question
 from django.utils.translation import check_for_language
 from django.utils import simplejson
 from django.db.models import Count, Q
-from django.template.defaultfilters import title
 from django.contrib.gis.geos import Polygon
 from operator import attrgetter
 import json
@@ -266,13 +265,6 @@ def location_api(request, location_ids=None):
             {"locations": [ Locations filtered as described above ]}
 
     """
-    def fixcap(x):
-        """Makes Location.site_name Title Case"""
-        # TODO: put this in get_context_dict?
-        if x.site_name.isupper():
-            x.site_name = title(x.site_name)
-        return x
-
     etag_hash = 'empty'
 
     # Filter by ids if provided
@@ -286,7 +278,7 @@ def location_api(request, location_ids=None):
     bool_filter, etag_hash = _make_location_filter(request.GET, etag_hash)
     item_filter &= bool_filter
 
-    location_contexts = [fixcap(l).get_context_dict() for l in Location.objects.filter(item_filter)]
+    location_contexts = [l.get_context_dict() for l in Location.objects.filter(item_filter)]
     logger.debug('Retrieved %d location_contexts.' % len(location_contexts))
     context = {'locations': location_contexts}
     rsp = HttpResponse(json.dumps(context), content_type="application/json")
