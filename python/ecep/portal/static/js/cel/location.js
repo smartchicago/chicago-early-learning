@@ -194,17 +194,13 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
          * Updates if location is shown in map and list based on
          * applied filters and bounding box of map
          */
-        locationUpdate: function(map) {
-            var filters = this.getFilters(),
-                self = this;
-            self.locationLayer.clearLayers();  // Clear existing location layers
-            self.currentLayer = self.layerType.location;
-            $.getJSON(common.getUrl('locations', filters), function(data) {
-                for (var location in data) {
-                    self.locations[location.id] = new Location(location);
+        locationUpdate: function() {
+            var filters = dataManager.getFilters();
+            $.getJSON(common.getUrl('location-api'), function(data) {
+                for (var id in data.locations) {
+                    dataManager.locations[id] = new Location(data.locations[id]);
                     // TODO add GetMarker and SetMarker methods to Location object
-                    self.locations[location.id].setMarker();
-                    self.locationLayer.addLayer(self.location[location.id].getMarker());
+                    dataManager.locations[id].setMarker();
                 }
             });
         },
