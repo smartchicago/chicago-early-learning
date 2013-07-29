@@ -8,7 +8,7 @@
  
 define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common', 
         CEL.serverVars.gmapRequire, 'leaflet-providers'], 
-    function($, L, html, Location, common) {
+    function($, L, html, location, common) {
 
         /* On page load, query api to get locations position, add marker to map
          * for location. Use google maps layer for leaflet.
@@ -16,7 +16,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common
         $(document).ready(function() {
             var location_id = /(\d+)/.exec(window.location.pathname)[1];
             $.getJSON(common.getUrl('location-api') + location_id, function(data) {
-                var loc = new Location.Location(data.locations[0]),
+                var loc = new location.Location(data.locations[0]),
                     // need to build the template first so leaflet can find the map
                     template = Handlebars.compile(html);
 
