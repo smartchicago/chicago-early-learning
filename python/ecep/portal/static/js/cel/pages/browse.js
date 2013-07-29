@@ -21,7 +21,19 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             autocompleteIcon,
             autocompleteMarker,                         // marker for autocomplete request
             template,    // Hold handlebars template
-            layerType = { none: 'none', neighborhood: 'neighborhood', location: 'location'},
+            /**
+             * Valid types of map layers
+             */
+            layerType = {
+                // No map layer is currently selected
+                none: 'none',
+
+                // Neighborhood polygons layer
+                neighborhood: 'neighborhood',
+
+                // Individual locations/schools layer
+                location: 'location'
+            },
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
             popupLayer = new L.LayerGroup(),   // Popup Layer
@@ -140,9 +152,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 dm.locationUpdate(map);
             } else if (isAutocompleteSet && autocompleteNeighborhoodId) {
                 dm.neighborhoodUpdate(map);
-            } else if (currentLayer !== 'neighborhood' && zoomLevel < zoomSettings) {
+            } else if (currentLayer !== layerType.neighborhood && zoomLevel < zoomSettings) {
                 dm.neighborhoodUpdate(map);
-            } else if (currentLayer !== 'location' && zoomLevel >= zoomSettings) {
+            } else if (currentLayer !== layerType.location && zoomLevel >= zoomSettings) {
                 dm.locationUpdate(map);
             }
         };

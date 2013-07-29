@@ -242,20 +242,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         $filters: null,
 
         /**
-         * Valid types of map layers
-         */
-        layerType: {
-            // No map layer is currently selected
-            none: 'none',
-
-            // Neighborhood polygons layer
-            neighborhood: 'neighborhood',
-
-            // Individual locations/schools layer
-            location: 'location'
-        },
-
-        /**
          * Updates if location is shown in map and list based on
          * applied filters and bounding box of map
          */
