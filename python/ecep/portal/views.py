@@ -213,8 +213,8 @@ def _make_location_filter(query_params, etag_hash=''):
     """
     def make_rectangle(bbox):
         """Given a bbox csv returns a geometry object for it"""
-        xmin, ymin, xmax, ymax = bbox.split(',')
-        return Polygon(((xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)))
+        xmin, ymin, xmax, ymax = (float(x) for x in bbox.split(','))
+        return Polygon(((xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin), (xmin, ymin)))
 
     # Filter by any boolean filters provided
     result = Q()
@@ -229,7 +229,7 @@ def _make_location_filter(query_params, etag_hash=''):
     if 'bbox' in query_params:
         etag_hash = ''            # Can't cache bbox queries
         bbox = make_rectangle(query_params['bbox'])
-        bbox_filter = Q(poly__bboverlaps=bbox)
+        bbox_filter = Q(geom__bboverlaps=bbox)
         result &= bbox_filter
 
     return result, etag_hash
