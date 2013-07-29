@@ -12,9 +12,10 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         'use strict';
 
         var map,   // Leaflet map
+            $map = $('#map'),
             gmap,    // Google basemap
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
-            defaultZoom = $('#map').data('zoom') || 10,
+            defaultZoom = $map.data('zoom') || 10,
             latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
             lngSettings = CEL.serverVars.lngSettings,
             autocompleteIcon,
@@ -26,6 +27,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             popupLayer = new L.LayerGroup(),   // Popup Layer
             currentLayer = layerType.none,              
             dataManager = Location.dataManager,
+            isAutocompleteSet = true,
+            autocompleteLocationId,
+            autocompleteNeighborhoodId,
             $locationWrapper;    // Store div wrapper for results on left side
 
         // Initialize geojson for neighborhood layer
@@ -48,6 +52,22 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         });
 
         /*
+         * Set map pan/zoom centered on a neighborhood/location if requested in the url
+         */ 
+        var setAutocompleteLocation = function() {
+            if (isAutocompleteSet) {
+                if (autocompleteLocationId) {
+                    var pos = dataManager.locations[autocompleteLocationId].getLatLng();
+                    locationPan(pos.lat, pos.lng);
+                } else if (autocompleteNeighborhoodId) {
+                    var value = dataManager.neighborhoods.data[autocompleteNeighborhoodId]; 
+                    neighborhoodPan(value.name, value.schools, value.center.lat, value.center.lng, true);
+                }
+                isAutocompleteSet = false;
+            }
+        };
+
+        /*
          * Update view when the dataManager triggers its neighborhood updated event
          * We only want to attach this event once...
          */
@@ -61,6 +81,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             map.addLayer(neighborhoodLayer);
             panHandler();
             exploreButton();
+
+            // set map to location/neighborhood if autocomplete requested it
+            setAutocompleteLocation();
         });
 
 
@@ -81,6 +104,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 var locMarker = location.getMarker();
                 locationLayer.addLayer(locMarker);
             });
+
+            // set map to location/neighborhood if autocomplete requested it
+            setAutocompleteLocation();
 
             // Bind to accordion events so we can pan to the map location
             $('.accordion-group').click(function() {
@@ -110,10 +136,13 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         var displayMap = function() {
             var zoomLevel = map.getZoom();
 
-            if (currentLayer !== 'neighborhood' && zoomLevel < zoomSettings) {
+            if (isAutocompleteSet && autocompleteLocationId) {
+                dataManager.locationUpdate();
+            } else if (isAutocompleteSet && autocompleteNeighborhoodId) {
                 dataManager.neighborhoodUpdate();
-            }
-            else if (currentLayer !== 'location' && zoomLevel >= zoomSettings) {
+            } else if (currentLayer !== 'neighborhood' && zoomLevel < zoomSettings) {
+                dataManager.neighborhoodUpdate();
+            } else if (currentLayer !== 'location' && zoomLevel >= zoomSettings) {
                 dataManager.locationUpdate();
             }
         };
@@ -181,16 +210,15 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         var getMapState = function() {
             var lat = latSettings,
                 lng = lngSettings,
-                $map = $('#map'),
                 geolat = $map.data('geo-lat'),
                 geolng = $map.data('geo-lng'),
-                isAutocomplete = false;
+                isGeolocated = false;
             if (geolat && geolng) {
                 lat = geolat; 
                 lng = geolng;
-                isAutocomplete = true;
+                isGeolocated = true;
             } 
-            return { point: [lat, lng], isAutocomplete: isAutocomplete };
+            return { point: [lat, lng], isGeolocated: isGeolocated };
         };
 
         /**
@@ -228,7 +256,19 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             var popupContent = '<b>' + name + '</b><br>Number of Schools: ' + numSchools,
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
         };
-        
+
+        /*
+         * Pans to location and zooms to reasonable level if current view is too far out
+         */ 
+        var locationPan = function(lat, lng) {
+            map.panTo([lat, lng]);
+            if (map.getZoom() < zoomSettings) {
+            // Check if at reasonable zoom level, if too far out
+                // zoom user in
+                map.setZoom(zoomSettings);
+            }
+        };
+
         /**
          * Function that handles pans to neighborhood when clicking on accordion group
          * 
@@ -266,13 +306,16 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
 
-                // draw marker for autocompleted location
-                if (state.isAutocomplete) {
-                    autocompleteIcon = L.icon({
+                // draw marker for geolocated point 
+                if (state.isGeolocated) {
+                    geolocatedIcon = L.icon({
                         iconUrl: common.getUrl('autocomplete-icon')
                     });
-                    autocompleteMarker = L.marker(state.point, {icon: autocompleteIcon}).addTo(map);
+                    geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
                 }
+
+                autocompleteLocationId = $map.data('location-id');
+                autocompleteNeighborhoodId = $map.data('neighborhood-id');
 
                 $locationWrapper = $('.locations-wrapper');
                 map.on('zoomend', displayMap);    // Set event handler to call displayMap when zoom changes

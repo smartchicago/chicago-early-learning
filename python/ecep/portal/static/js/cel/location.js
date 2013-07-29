@@ -251,7 +251,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
             $.when(
                 // TODO: Update getUrl function to take filters as argument
                 $.getJSON(common.getUrl('neighborhood-api', filters), function(data) {
-                    dataManager.neighborhoods.data = data.neighborhoods;
+                    var neighborhoods = dataManager.neighborhoods.data;
+                    $.each(data.neighborhoods, function(i, neighborhood) {
+                        var key = neighborhood.id;
+                        neighborhoods[key] = neighborhood;
+                    });
                 }),
                 dataManager.geojsonUpdate()
             ).then(function() {
