@@ -102,9 +102,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
             shadowUrl: '/static/img/leaflet-icons/marker-shadow.png',
             iconSize: [35, 45],
             shadowSize: [41, 41],
-            iconAnchor: [10, 60],
-            shadowAnchor: [4, 62],
-            popupAnchor: [10, -60]
+            iconAnchor: [17, 45],
+            shadowAnchor: [10, 41],
+            popupAnchor: [0, -60]
         };
         var iconOpts = $.extend({}, defaults, options),
             key = '',
