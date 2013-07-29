@@ -752,3 +752,29 @@ h1, h2, h3, h4 {
 	background-color: #317DC1;
 	*background-color: #003bb3;
 }
+
+#faq-container {
+	margin-top: 85px;
+}
+	#faq-container h1 {
+		font-size: 32px;
+		margin-bottom: 35px;
+	}
+	
+	#faq-container .accordion-inner {
+		padding: 25px 15px 25px 35px;
+	}
+	#faq-container .accordion-heading .accordion-toggle {
+		font-family: "Montserrat", sans-serif;
+		padding: 20px;
+		color: #317DC1;
+	}
+	#faq-container .accordion-inner {
+		line-height: 1.8;
+	}
+	#faq-container .accordion-group {
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
+		margin-bottom: 8px;
+	}
