@@ -5,7 +5,7 @@
  * data loader object
  *********************************************************/
 
-define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
+define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, favorites, topojson, common) {
 
     /*
      * Constructor for location
@@ -213,43 +213,94 @@ define(['jquery', 'Leaflet', 'favorites'], function($, L, favorites) {
         return mapBounds.contains(this.getLatLng());
     };
 
-    var DataLoader = {
+    var layerType = {none: 'none', neighborhood: 'neighborhood', location: 'location'};
 
+    var dataManager = {
+        
+        /**
+         * Settings for layers - data manager needs access to these to know which to load
+         */
+        currentLayer: layerType.none,
+        zoomSettings: CEL.serverVars.zoomSettings,
         iconcache: {},
 
-        /* Updates if location is shown in map and list based on
+        /**
+         * Updates if location is shown in map and list based on
          * applied filters and bounding box of map
          */
-        locationUpdate: function(filters, map) {},
+        locationUpdate: function() {
+            var filters = dataManager.getFilters();
+            $.getJSON(common.getUrl('location-api'), function(data) {
+                for (var id in data.locations) {
+                    dataManager.locations[id] = new Location(data.locations[id]);
+                    // TODO add GetMarker and SetMarker methods to Location object
+                    dataManager.locations[id].setMarker();
+                }
+            });
+        },
 
-        /* Updates school counts for neighborhoods based on
-         * filters
+        /**
+         * Updates school counts for neighborhoods based on
+         * filters.
          *
-         * @param {Filters taken from filter-list/model} filters
+         * Download topojson if not already downloaded.
          */
-        neighborhoodUpdate: function(filters, neighborhoodLayer) {},
+        neighborhoodUpdate: function() {
+            var filters = dataManager.getFilters();
+            // TODO: Update getUrl function to take filters as argument
+            $.getJSON(common.getUrl('neighborhoods-api'), function(data) {
+                dataManager.neighborhoods.data = data;
+                });
+            if (dataManager.neighborhoods.geojson === undefined) {
+                $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
+                    dataManager.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
+                });
+            };
+        },
 
-        /* Updates locations when zoom changes
+        /**
+         * Updates locations when zoom changes
          */
-        onZoomChange: function(map) {},
+        onZoomChange: function() {
+            if (dataManager.currentLayer !== 'neighborhood' && dataManager.map.getZoom() < dataManager.zoomSettings) {
+                dataManager.currentLayer = dataManager.layerType.neighborhood;
+                dataManager.neighborhoodUpdate();
+            }
+            else if (dataManager.currentLayer !== 'location' && dataManager.map.getZoom() >= dataManager.zoomSettings) {
+                dataManager.currentLayer = dataManager.layerType.location;
+                dataManager.locationUpdate(); // Just call locationUpdate because that's all we care about
+            }
+        },
+        
+        // Updates data on filter changes
+        onFilterChange: function() {
+            // TODO: Wire in DOM listeners for filters once that is finished
+            if (dataManager.currentLayer === 'neighborhood') {
+                dataManager.neighborhoodUpdate();
+            }
+            else if (dataManager.currentLayer === 'location') {
+                dataManager.locationUpdate();
+            }
+        },
 
-        idleListener: function(map) {}, // Listens to map for zoom and movement
-
-        filterListener: function() {}, // listens to filters for changes
-
-        /* Map of locations & neighborhoods, key is the id for
+        getFilters: function() {
+            // TODO: GET FILTERS
+            return {};
+        },
+        /**
+         * Map of locations & neighborhoods, key is the id for
          * each object
          */
         locations: {},
-        neighborhood: {},
+        neighborhoods: {
+            data: {} // data for neighborhood (e.g. number of schools)
+        },
 
         events: {zoomChanged: 'zoomChanged',
-                 dataReady: 'dataReady'
-                }
+                 neighborhoodReady: 'neighborhoodReady'}
     };
 
     return {Location: Location,
-            DataLoader:  DataLoader};
-
+            dataManager:  dataManager};
 });
 
