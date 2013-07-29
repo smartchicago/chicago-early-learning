@@ -5,7 +5,8 @@
  * data loader object
  *********************************************************/
 
-define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], function($, L, Handlebars, favorites, topojson, common) {
+define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
+    function($, L, Handlebars, favorites, topojson, common) {
 
     /*
      * Constructor for location
@@ -123,8 +124,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
         if (iconOpts.highlighted) {
             cacheKey += '-highlighted';
         }
-        if (dataManager.iconcache[cacheKey]) {
-            return dataManager.iconcache[cacheKey];
+        if (_iconcache[cacheKey]) {
+            return _iconcache[cacheKey];
         }
 
         switch (key) {
@@ -164,7 +165,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
         }
 
         var icon = L.icon(iconOpts);
-        dataManager.iconcache[cacheKey] = icon;
+        _iconcache[cacheKey] = icon;
         return icon;
     };
 
@@ -214,29 +215,61 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
         return mapBounds.contains(this.getLatLng());
     };
 
-    var dataManager = {
-        
+
+    /**
+     * Creates a new DataManager object
+     * @param { Optional query collection of DOM filter objects to bind onFilterChange to } $filters
+     */
+    var DataManager = function($filters) {
+            var that = this;
+            this.events = $({});
+            this.$filters = $filters || $('.filters-inner :checkbox');
+            this.$filters.on('click', function() { that.onFilterChange(); });
+        },
+        _iconcache = {};
+
+    DataManager.prototype = {
         /**
          * Settings for layers - data manager needs access to these to know which to load
          */
         zoomSettings: CEL.serverVars.zoomSettings,
-        iconcache: {},
+
+        /**
+         * DOM filters to read filter settings from
+         * Set in constructor
+         */
+        $filters: null,
+
+        /**
+         * Valid types of map layers
+         */
+        layerType: {
+            // No map layer is currently selected
+            none: 'none',
+
+            // Neighborhood polygons layer
+            neighborhood: 'neighborhood',
+
+            // Individual locations/schools layer
+            location: 'location'
+        },
 
         /**
          * Updates if location is shown in map and list based on
          * applied filters and bounding box of map
          */
-        locationUpdate: function() {
-            var filters = dataManager.getFilters();
-            $.getJSON(common.getUrl('location-api', filters), function(data) {
+        locationUpdate: function(map) {
+            var filters = this.getFilters(map);
+                that = this;
+            $.getJSON(common.getUrl('location-api'), filters, function(data) {
                 $.each(data.locations, function(i, location) {
                     var key = location.item.key;
-                    if (!dataManager.locations[key]) {
-                        dataManager.locations[key] = new Location(location);
+                    if (!that.locations[key]) {
+                        that.locations[key] = new Location(location);
                     }
-                    dataManager.locations[key].setMarker();
+                    that.locations[key].setMarker();
                 });
-                dataManager.events.trigger('dataManager.locationUpdated');
+                that.events.trigger('DataManager.locationUpdated');
             });
         },
 
@@ -246,44 +279,47 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
          *
          * Download topojson if not already downloaded.
          */
-        neighborhoodUpdate: function() {
-            var filters = dataManager.getFilters();
+        neighborhoodUpdate: function(map) {
+            var that = this,
+                filters = that.getFilters(map);
             $.when(
-                // TODO: Update getUrl function to take filters as argument
-                $.getJSON(common.getUrl('neighborhood-api', filters), function(data) {
-                    dataManager.neighborhoods.data = data.neighborhoods;
+                $.getJSON(common.getUrl('neighborhood-api'), filters, function(data) {
+                    that.neighborhoods.data = data.neighborhoods;
                 }),
-                dataManager.geojsonUpdate()
+                that.geojsonUpdate()
             ).then(function() {
-                dataManager.events.trigger('dataManager.neighborhoodUpdated');
+                that.events.trigger('DataManager.neighborhoodUpdated');
             });
         },
 
         /*
-         * Get geojson for the neighborhoods and store in dataManager
+         * Get geojson for the neighborhoods and store in DataManager
          */
         geojsonUpdate: function() {
-            if (dataManager.neighborhoods.geojson === undefined) {
+            var that = this;
+            if (that.neighborhoods.geojson === undefined) {
                 $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
-                    dataManager.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
+                    that.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
                 });
             }
         },
 
         // Updates data on filter changes
         onFilterChange: function() {
-            // TODO: Wire in DOM listeners for filters once that is finished
-            if (dataManager.currentLayer === 'neighborhood') {
-                dataManager.neighborhoodUpdate();
-            }
-            else if (dataManager.currentLayer === 'location') {
-                dataManager.locationUpdate();
-            }
+            this.events.trigger('DataManager.filtersUpdated');
         },
 
-        getFilters: function() {
-            // TODO: GET FILTERS
-            return {};
+        getFilters: function(map) {
+            var opts = { },
+                $filters = this.$filters || $('.filters-inner :checkbox');
+            $filters.filter(':checked').each(function(idx, elem) {
+                opts[elem.id] = elem.checked;
+            });
+            if (map && map.getBounds) {
+                opts.bbox = map.getBounds().pad(1.5).toBBoxString();
+            }
+            
+            return opts;
         },
 
         /**
@@ -297,15 +333,19 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
 
         /* 
          * Available events:
-         * neighborhoodUpdated: 'dataManager.neighborhoodUpdated',
+         * neighborhoodUpdated: 'DataManager.neighborhoodUpdated',
          *      triggered when neighborhood data is finished loading
-         * locationUpdated: 'dataManager.locationUpdated'
+         * locationUpdated: 'DataManager.locationUpdated'
          *      triggered when location data is finished loading
+         * filtersUpdated: 'DataManager.filtersChanged'
+         *      fired when DOM filters change.  This includes checkboxes and map bounding box
          */
-        events: $({})
+        events: null
     };
 
-    return {Location: Location,
-            dataManager:  dataManager};
+    return {
+        Location: Location,
+        DataManager: DataManager
+    };
 });
 
