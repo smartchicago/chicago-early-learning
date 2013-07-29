@@ -228,7 +228,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
          */
         locationUpdate: function() {
             var filters = dataManager.getFilters();
-            $.getJSON(common.getUrl('location-api'), function(data) {
+            $.getJSON(common.getUrl('location-api', filters), function(data) {
                 $.each(data.locations, function(i, location) {
                     var key = location.item.key;
                     if (!dataManager.locations[key]) {
@@ -250,7 +250,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
             var filters = dataManager.getFilters();
             $.when(
                 // TODO: Update getUrl function to take filters as argument
-                $.getJSON(common.getUrl('neighborhood-api'), function(data) {
+                $.getJSON(common.getUrl('neighborhood-api', filters), function(data) {
                     dataManager.neighborhoods.data = data.neighborhoods;
                 }),
                 dataManager.geojsonUpdate()
@@ -259,7 +259,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
             });
         },
 
-        // TODO: docstrings
+        /*
+         * Get geojson for the neighborhoods and store in dataManager
+         */
         geojsonUpdate: function() {
             if (dataManager.neighborhoods.geojson === undefined) {
                 $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
@@ -283,6 +285,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
             // TODO: GET FILTERS
             return {};
         },
+
         /**
          * Map of locations & neighborhoods, key is the id for
          * each object
@@ -292,9 +295,13 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
             data: {} // data for neighborhood (e.g. number of schools)
         },
 
-        // zoomChanged: 'zoomChanged',
-        // neighborhoodUpdated: 'neighborhoodUpdated',
-        // locationUpdated: 'locationUpdated'
+        /* 
+         * Available events:
+         * neighborhoodUpdated: 'dataManager.neighborhoodUpdated',
+         *      triggered when neighborhood data is finished loading
+         * locationUpdated: 'dataManager.locationUpdated'
+         *      triggered when location data is finished loading
+         */
         events: $({})
     };
 

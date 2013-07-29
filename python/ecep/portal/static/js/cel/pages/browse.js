@@ -107,7 +107,6 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * and after a change in zoom level. Listens to the dataManager.neighborhoodUpdated and
          * dataManager.locationUpdated events to modify the view.
          */
-        // TODO: readd listResults functionality
         var displayMap = function() {
             var zoomLevel = map.getZoom();
 
