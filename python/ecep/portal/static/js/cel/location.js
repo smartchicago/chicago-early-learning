@@ -90,8 +90,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
             doubleDimensions(options.iconAnchor);                                              
             doubleDimensions(options.shadowAnchor);                                            
             doubleDimensions(options.popupAnchor);                                             
-            options.iconUrl.replace(".png", "@2x.png");                                             
-            options.shadowUrl.replace(".png", "@2x.png");
+            options.iconUrl = options.iconUrl.replace(".png", "@2x.png");                                             
+            options.shadowUrl = options.shadowUrl.replace(".png", "@2x.png");
             return options;
         };
 
@@ -130,28 +130,28 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'], f
 
         switch (key) {
             case 'school':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school.png'});
                 break;
             case 'school-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-favorite.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school-starred.png'});
                 break;
             case 'school-accredited':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school-accredited.png'});
                 break;
             case 'school-accredited-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school-accredited-starred.png'});
                 break;
             case 'center':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center.png'});
                 break;
             case 'center-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-favorite.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center-starred.png'});
                 break;
             case 'center-accredited':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center-accredited.png'});
                 break;
             case 'center-accredited-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center-accredited-starred.png'});
                 break;
             case 'geolocation':
                 break;
