@@ -167,7 +167,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $('.location-container').hover(function(e) {
                 var $this = $(this),
                     key = $this.data('key'),
-                    marker = dataManager.locations[key].getMarker();
+                    loc = dataManager.locations[key];
 
                 // Keeping the icon selection simple for now, since everything is
                 // currently hardcoded to school and there is a separate icon management
@@ -178,10 +178,10 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 // be more specific to the actual marker (probably just increasing its size).
                 if (e.type === 'mouseenter') {
                     $this.addClass('highlight');
-                    marker.setIcon(icons.highlightIcon);
+                    loc.setIcon({'highlighted': true});
                 } else if (e.type === 'mouseleave') {
                     $this.removeClass('highlight');
-                    marker.setIcon(icons.schoolIcon);
+                    loc.setIcon({'highlighted': false});
                 }
             });
         };
