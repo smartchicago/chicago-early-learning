@@ -19,112 +19,102 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             lngSettings = CEL.serverVars.lngSettings,
             autocompleteIcon,
             autocompleteMarker,                         // marker for autocomplete request
-            locations,    // Store location data
-            neighborhoods,    // Store neighborhood data
             template,    // Hold handlebars template
             layerType = { none: 'none', neighborhood: 'neighborhood', location: 'location'},
-            // Keep track of current layer displayed
-            currentLayer = layerType.none,
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
             popupLayer = new L.LayerGroup(),   // Popup Layer
-            markerMap, // Used for storing a map of location keys -> map markers
-            neighborhoodGeojson,    // Store neighborhood geojson
+            currentLayer = layerType.none,              
+            dataManager = Location.dataManager,
             $locationWrapper;    // Store div wrapper for results on left side
 
-        /**
-         * Loads Json data for neighborhoods and locations
-         * then displays one based on current zoom level
+        // Initialize geojson for neighborhood layer
+        neighborhoodLayer = L.geoJson(null, {
+            style: {
+                color: '#666',
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.3
+            },
+            onEachFeature: function(feature, layer) {
+                layer.on('click', function(e) {
+                    neighborhoodPan(feature.properties.primary_name,
+                        feature.properties.num_schools,
+                        feature.properties.center.lat, 
+                        feature.properties.center.lng,
+                        false);
+                });
+            }
+        });
+
+        /*
+         * Update view when the dataManager triggers its neighborhood updated event
+         * We only want to attach this event once...
          */
-        var loadData = function() {
-            $.when(
-                $.getJSON(common.getUrl('location-api'), function(data) {
-                    locations = data.locations;
-                }),
-                $.getJSON(common.getUrl('neighborhood-api'), function(data) {
-                    neighborhoods = data;
-                }),
-                $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
-                    neighborhoodLayer = L.geoJson(null, {
-                        style: {
-                            color: '#666',
-                            weight: 1,
-                            opacity: 1,
-                            fillOpacity: 0.3
-                        },
-                        onEachFeature: function(feature, layer) {
-                            layer.on('click', function(e) {
-                                neighborhoodPan(feature.properties.primary_name,
-                                                feature.properties.num_schools,
-                                                feature.properties.center.lat, 
-                                                feature.properties.center.lng,
-                                                false);
-                            });
-                        }
-                    });
-                    neighborhoodGeojson = topojson.feature(data, data.objects.neighborhoods);
-                })).then(displayMap);
-        };
+        dataManager.events.on("dataManager.neighborhoodUpdated", function(e) {
+            // If not already displaying neighborhoods and zoomed out
+            currentLayer = layerType.neighborhood;
+            listResults(dataManager.neighborhoods.data, currentLayer);
+            locationLayer.clearLayers();
+            neighborhoodLayer.clearLayers();
+            neighborhoodLayer.addData(dataManager.neighborhoods.geojson);
+            map.addLayer(neighborhoodLayer);
+            panHandler();
+            exploreButton();
+        });
+
+
+        /*
+         * Update view when the dataManager triggers its location updated event
+         * We only want to attach this event once...
+         */
+        dataManager.events.on("dataManager.locationUpdated", function(e) {
+            // If not already displaying locations and zoomed in
+            currentLayer = layerType.location;
+            map.removeLayer(neighborhoodLayer);
+            map.addLayer(locationLayer);
+            popupLayer.clearLayers();
+            listResults(dataManager.locations, currentLayer);
+
+            // Create map markers and bind popups
+            $.each(dataManager.locations, function(i, location) {
+                var locMarker = location.getMarker();
+                locationLayer.addLayer(locMarker);
+            });
+
+            // Bind to accordion events so we can pan to the map location
+            $('.accordion-group').click(function() {
+                var $this = $(this),
+                key = $this.data('key'),
+                loc = dataManager.locations[key],
+                marker = loc.getMarker(),
+                latLng = loc.getLatLng();
+
+                // 'togglePopup' would work better here, but it appears our version of leaflet
+                // doesn't have it implemented. If we upgrade leaflet, we should switch this
+                // to use it. Either that or keep track of whether or not this accordion group
+                // is collapsed (there is currently a 'collapsed' class added, but it seems to
+                // be inconsistent when testing it, probably due to some behind-the-scenes
+                // setTimeouts.
+                marker.openPopup();
+                map.panTo(latLng);
+            });
+        });
 
         /**
          * Controls logic of whether to display locations or neighborhoods
          * based on current zoom level. Called when map is initialized
-         * and after a change in zoom level.
+         * and after a change in zoom level. Listens to the dataManager.neighborhoodUpdated and
+         * dataManager.locationUpdated events to modify the view.
          */
         var displayMap = function() {
-            var zoomLevel = map.getZoom(),
-                popupTemplate = Handlebars.compile('<b>{{item.site_name}}</b><br>{{item.address}}');
-            
+            var zoomLevel = map.getZoom();
+
             if (currentLayer !== 'neighborhood' && zoomLevel < zoomSettings) {
-                // If not already displaying neighborhoods and zoomed out
-                currentLayer = layerType.neighborhood;
-                listResults(neighborhoods);
-                locationLayer.clearLayers();
-                neighborhoodLayer.clearLayers();
-                neighborhoodLayer.addData(neighborhoodGeojson);
-                map.addLayer(neighborhoodLayer);
-                panHandler();
-                exploreButton(neighborhoods);
+                dataManager.neighborhoodUpdate();
             }
             else if (currentLayer !== 'location' && zoomLevel >= zoomSettings) {
-                // If not already displaying locations and zoomed in
-                map.removeLayer(neighborhoodLayer);
-                map.addLayer(locationLayer);
-                popupLayer.clearLayers();
-                currentLayer = layerType.location;
-                listResults(locations);
-                markerMap = {};
-
-                // Create map markers and bind popups
-                $.each(locations, function(i, location) {
-                    var pos = location.position,
-                        lat = pos.lat,
-                        lng = pos.lng,
-                        icon = icons.schoolIcon,
-                        locMarker = L.marker([lat, lng], { icon: icon }),
-                        key = location.item.key;
-
-                    markerMap[key] = locMarker;
-                    locationLayer.addLayer(locMarker);
-                    locMarker.bindPopup(popupTemplate(location), { key: key });
-                });
-
-                // Bind to accordion events so we can pan to the map location
-                $('.accordion-group').click(function() {
-                    var $this = $(this),
-                        key = $this.data('key'),
-                        marker = markerMap[key],
-                        latLng = marker.getLatLng();
-
-                    // 'togglePopup' would work better here, but it appears our version of leaflet
-                    // doesn't have it implemented. If we upgrade leaflet, we should switch this
-                    // to use it. Either that or keep track of whether or not this accordion group
-                    // is collapsed (there is currently a 'collapsed' class added, but it seems to
-                    // be inconsistent when testing it, probably due to some behind-the-scenes
-                    // setTimeouts.
-                    marker.openPopup();
-                    map.panTo(latLng);
-                });
+                dataManager.locationUpdate();
             }
         };
 
@@ -132,11 +122,18 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * Changes list results display using Handlebars templates
          * @param {Array of neighborhoods or locations} data
          */
-        var listResults = function(data) {
-            var html = (data.neighborhoods) ? neighborhoodList : locationList;
-            template = Handlebars.compile(html);
+        var listResults = function(data, dataType) {
+            var html = dataType === layerType.neighborhood ? neighborhoodList : locationList,
+                template = Handlebars.compile(html),
+                handlebarsData = [];
+
+            $.each(data, function(key, value) {
+                var item = layerType.neighborhood === dataType ? value : value.data;
+                handlebarsData.push(item);
+            });
+
             $locationWrapper.empty();
-            $locationWrapper.append(template(data));
+            $locationWrapper.append(template(handlebarsData));
 
             // bind social sharing button clicks for individual locations
             $locationWrapper.find('.share-btn').on('click', function() {
@@ -159,7 +156,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $('.location-container').hover(function(e) {
                 var $this = $(this),
                     key = $this.data('key'),
-                    marker = markerMap[key];
+                    marker = dataManager.locations[key].getMarker();
 
                 // Keeping the icon selection simple for now, since everything is
                 // currently hardcoded to school and there is a separate icon management
@@ -200,9 +197,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * Add functionality to explore button when viewing neighborhoods.
          * On click - map pans to center of neighborhood and zooms, then
          * rebuilds list display
-         * @param {Array of neighborhoods} data
          */
-        var exploreButton = function(data) {
+        var exploreButton = function() {
             $('.explore-btn').click(function() {
                 map.panTo([$(this).data('lat'), $(this).data('lng')]);
                 map.setZoom(zoomSettings);
@@ -294,8 +290,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 // set up social sharing for the top button (next to favorites)
                 $('#share-favorites-btn').on('click', favorites.initShareModal);
                 
-                loadData();    // Load initial data
                 mapToggle();
+                displayMap();
             }
         };
     }
