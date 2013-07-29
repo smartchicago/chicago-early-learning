@@ -204,53 +204,37 @@ define(['jquery', 'Leaflet', 'favorites', 'topojson', 'common'], function($, L, 
                 }
             });
         },
-        
-        /**
-         * Helper function that only grabs geojson data if it hasn't been downloaded
-         * already
-         */
-        neighborhoodGeoJson: function() {
-            if (this.neighborhoods.geojson === null) {
-                $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
-                    this.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
-                });
-            }
-        },
 
         /**
          * Updates school counts for neighborhoods based on
          * filters.
          *
-         * Download topojson if it exists
-         *
-         * @param {Filters taken from filter-list/model} filters
-         * @param {Leaflet layerGroup that stores neighborhoods} neighborhoodLayer
+         * Download topojson if not already downloaded.
          */
-        neighborhoodUpdate: function(filters) {
-            // CONSTRUCT REQUEST WITH FILTERS
-            var request = null;
-            var self = this;
-            $.when(
-                $.getJSON(common.getUrl(request), function(data) {
-                    self.neighborhoods.data = data;
-                }),
-                this.neighborhoodGeoJson()
-            ).then(self.onZoomChange);
+        neighborhoodUpdate: function() {
+            var filters = dataManager.getFilters();
+            // TODO: Update getUrl function to take filters as argument
+            $.getJSON(common.getUrl('neighborhoods-api'), function(data) {
+                dataManager.neighborhoods.data = data;
+                });
+            if (dataManager.neighborhoods.geojson === undefined) {
+                $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
+                    dataManager.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
+                });
+            };
         },
-                
+
         /**
          * Updates locations when zoom changes
-         *
-         * @param {map} leaflet map object
          */
-        onZoomChange: function(map) {
-            if (this.currentLayer !== 'neighborhood' && map.getZoom() < this.zoomSettings) {
-                this.currentLayer = this.layerType.neighborhood;
-                this.locationLayer.clearLayers();
-                this.neighborhoodLayer.addData(this.neighborhoods);
+        onZoomChange: function() {
+            if (dataManager.currentLayer !== 'neighborhood' && dataManager.map.getZoom() < dataManager.zoomSettings) {
+                dataManager.currentLayer = dataManager.layerType.neighborhood;
+                dataManager.neighborhoodUpdate();
             }
-            else if (this.currentLayer !== 'location' && map.getZoom() >= this.zoomSettings) {
-                this.locationUpdate(map); // Just call locationUpdate because that's all we care about
+            else if (dataManager.currentLayer !== 'location' && dataManager.map.getZoom() >= dataManager.zoomSettings) {
+                dataManager.currentLayer = dataManager.layerType.location;
+                dataManager.locationUpdate(); // Just call locationUpdate because that's all we care about
             }
         },
         
