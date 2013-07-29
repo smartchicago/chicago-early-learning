@@ -138,6 +138,17 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $locationWrapper.empty();
             $locationWrapper.append(template(data));
 
+            // bind social sharing button clicks for individual locations
+            $locationWrapper.find('.share-btn').on('click', function() {
+                var key = $(this).data('key');
+
+                $('#share-modal').trigger('init-modal', {
+                    // the url is passed in to the sharing urls, so it must be absolute
+                    url: document.location.origin + '/location/' + key  + '/',
+                    title: 'Check out this early learning program'
+                });
+            });
+
             favorites.syncUI();
             favorites.addToggleListener({
                 button: ".favs-toggle"
@@ -279,6 +290,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 map.on('popupclose', function() {
                     $('.location-container.highlight').removeClass('highlight');                           
                 });
+
+                // set up social sharing for the top button (next to favorites)
+                $('#share-favorites-btn').on('click', favorites.initShareModal);
                 
                 loadData();    // Load initial data
                 mapToggle();

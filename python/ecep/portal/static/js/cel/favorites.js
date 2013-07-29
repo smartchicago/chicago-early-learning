@@ -217,19 +217,34 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
         },
 
         /*
+         * Initializes a share modal with the stored favorites information
+         */
+        initShareModal: function() {
+            // we talked about modifying this module to keep id state in memory in
+            // addition to using a cookie. when that's implemented, this function
+            // should be modified to use that in-memory data.
+            var ids = favs.getCookie() || '',
+                count = ids.split(',').length;
+
+            $('#share-modal').trigger('init-modal', {
+                // the url is passed in to the sharing urls, so it must be absolute
+                url: document.location.origin + '/starred/' + ids  + '/',
+                title: 'I just starred ' + count + ' locations'
+            });
+        },
+
+        /*
          * Adds a click listener to the specified selector for sharing current favorites.
          */
         addShareListener: function(options) {
             var defaults = {
-                    button: '.faves-share'
+                    button: '#faves-share'
                 },
                 opts = $.extend({}, defaults, options),
                 self = favs,
                 sharebutton = $(opts.button);
 
-            sharebutton.on('click', function(e) {
-                // TODO: Implement sharing as part of share scrum card
-            });
+            sharebutton.on('click', favs.initShareModal);
         }
     };
     return favs;
