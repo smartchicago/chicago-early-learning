@@ -86,13 +86,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         };                                                                                          
 
         var setHighlighted = function(options) {                                                         
-            that.doubleDimensions(options.iconSize);                                                
-            that.doubleDimensions(options.shadowSize);                                              
-            that.doubleDimensions(options.iconAnchor);                                              
-            that.doubleDimensions(options.shadowAnchor);                                            
-            that.doubleDimensions(options.popupAnchor);                                             
-            options.iconUrl.replace(".png", "@2x.png");                                             
-            options.shadowUrl.replace(".png", "@2x.png");                                           
+            doubleDimensions(options.iconSize);                                                
+            doubleDimensions(options.shadowSize);                                              
+            doubleDimensions(options.iconAnchor);                                              
+            doubleDimensions(options.shadowAnchor);                                            
+            doubleDimensions(options.popupAnchor);                                             
+            options.iconUrl = options.iconUrl.replace(".png", "@2x.png");                                             
+            options.shadowUrl = options.shadowUrl.replace(".png", "@2x.png");
+            return options;
         };
 
         var defaults = {
@@ -102,9 +103,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             shadowUrl: '/static/img/leaflet-icons/marker-shadow.png',
             iconSize: [35, 45],
             shadowSize: [41, 41],
-            iconAnchor: [10, 60],
-            shadowAnchor: [4, 62],
-            popupAnchor: [10, -60]
+            iconAnchor: [17, 45],
+            shadowAnchor: [10, 41],
+            popupAnchor: [0, -60]
         };
         var iconOpts = $.extend({}, defaults, options),
             key = '',
@@ -130,28 +131,28 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
 
         switch (key) {
             case 'school':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school.png'});
                 break;
             case 'school-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school-starred.png'});
                 break;
             case 'school-accredited':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school-accredited.png'});
                 break;
             case 'school-accredited-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-school.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school-accredited-starred.png'});
                 break;
             case 'center':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center.png'});
                 break;
             case 'center-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center-starred.png'});
                 break;
             case 'center-accredited':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center-accredited.png'});
                 break;
             case 'center-accredited-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/marker-home.png'});
+                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center-accredited-starred.png'});
                 break;
             case 'geolocation':
                 break;
@@ -284,7 +285,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                 filters = that.getFilters(map);
             $.when(
                 $.getJSON(common.getUrl('neighborhood-api'), filters, function(data) {
-                    that.neighborhoods.data = data.neighborhoods;
+                    var neighborhoods = that.neighborhoods.data;
+                    $.each(data.neighborhoods, function(i, neighborhood) {
+                        var key = neighborhood.id;
+                        neighborhoods[key] = neighborhood;
+                    });
                 }),
                 that.geojsonUpdate()
             ).then(function() {
