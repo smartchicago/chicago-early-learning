@@ -231,6 +231,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
      */
     var DataManager = function($filters) {
             var that = this;
+            this.locations = {};
+            this.neighborhoods = {
+                data: {} // data for neighborhood (e.g. number of schools)
+            };
             this.events = $({});
             this.$filters = $filters || $('.filters-inner :checkbox');
             this.$filters.on('click', function() { that.onFilterChange(); });
@@ -252,6 +256,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             var filters = this.getFilters(map);
                 that = this;
             $.getJSON(common.getUrl('location-api'), filters, function(data) {
+                that.locations = {};
                 $.each(data.locations, function(i, location) {
                     var key = location.item.key;
                     if (!that.locations[key]) {
@@ -317,7 +322,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                 opts[elem.id] = elem.checked;
             });
             if (map && map.getBounds) {
-                opts.bbox = map.getBounds().pad(1.5).toBBoxString();
+                opts.bbox = map.getBounds().pad(0.25).toBBoxString();
             }
             
             return opts;
@@ -327,10 +332,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          * Map of locations & neighborhoods, key is the id for
          * each object
          */
-        locations: {},
-        neighborhoods: {
-            data: {} // data for neighborhood (e.g. number of schools)
-        },
+        locations: null,
+        neighborhoods: null,    // Has one key 'data' with a list of neighborhood objects
 
         /* 
          * Available events:
