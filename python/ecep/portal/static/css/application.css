@@ -203,6 +203,8 @@ h1, h2, h3, h4 {
 				float: left;
 				margin-left: 68%;
 				margin-top: -30px;
+				font-size: 13px;
+				font-weight: normal;
 			}
 	#collapseFilters {
 				border-right: 1px solid #cecece;
