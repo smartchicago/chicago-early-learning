@@ -4,7 +4,7 @@
 from django.contrib.gis.db import models
 from portal.templatetags.portal_extras import nicephone
 from django.template.defaultfilters import title
-
+from django.utils.translation import ugettext as _
 
 class Neighborhood(models.Model):
     """Model for Neighborhoods
@@ -53,30 +53,30 @@ class Location(models.Model):
     state = models.CharField('State', max_length=2)
     zip = models.CharField('Zip Code', max_length=10)
     neighborhood = models.ForeignKey('Neighborhood', null=True)
-    phone = models.CharField('Phone Number', max_length=20, blank=True)
-    q_rating = models.CharField('Quality Rating', max_length=10, blank=True)
-    url = models.CharField('Website', max_length=256, blank=True)
-    q_stmt = models.TextField('Quality Statement', blank=True)
-    accred = models.CharField('Accreditation', max_length=100, blank=True)
-    prg_hours = models.CharField('Program Hours', max_length=50, blank=True)
-    is_full_day = models.NullBooleanField('Full Day')
-    is_part_day = models.NullBooleanField('Part Day')
-    is_full_week = models.NullBooleanField('Full Week')
-    is_part_week = models.NullBooleanField('Part Week')
-    is_school_year = models.NullBooleanField('School Year')
-    is_full_year = models.NullBooleanField('Full Year')
-    ages = models.CharField('Ages Served', max_length=50, blank=True)
-    is_age_lt_3 = models.NullBooleanField('Ages 0-3')
-    is_age_gt_3 = models.NullBooleanField('Ages 3-5')
+    phone = models.CharField(_('Phone Number'), max_length=20, blank=True)
+    q_rating = models.CharField(_('Quality Rating'), max_length=10, blank=True)
+    url = models.CharField(_('Website'), max_length=256, blank=True)
+    q_stmt = models.TextField(_('Quality Statement'), blank=True)
+    accred = models.CharField(_('Accreditation'), max_length=100, blank=True)
+    prg_hours = models.CharField(_('Program Hours'), max_length=50, blank=True)
+    is_full_day = models.NullBooleanField(_('Full Day'))
+    is_part_day = models.NullBooleanField(_('Part Day'))
+    is_full_week = models.NullBooleanField(_('Full Week'))
+    is_part_week = models.NullBooleanField(_('Part Week'))
+    is_school_year = models.NullBooleanField(_('School Year'))
+    is_full_year = models.NullBooleanField(_('Full Year'))
+    ages = models.CharField(_('Ages Served'), max_length=50, blank=True)
+    is_age_lt_3 = models.NullBooleanField(_('Ages 0-3'))
+    is_age_gt_3 = models.NullBooleanField(_('Ages 3-5'))
     language_1 = models.CharField('Language 1 (other than English)', max_length=50, blank=True)
     language_2 = models.CharField('Language 2 (other than English)', max_length=50, blank=True)
     language_3 = models.CharField('Language 3 (other than English)', max_length=50, blank=True)
-    is_community_based = models.NullBooleanField('Community Based')
-    is_cps_based = models.NullBooleanField('CPS Based')
-    is_home_visiting = models.NullBooleanField('Home Visiting')
-    accept_ccap = models.NullBooleanField('Accepts CCAP')
-    is_hs = models.NullBooleanField('Head Start')
-    is_ehs = models.NullBooleanField('Early Head Start')
+    is_community_based = models.NullBooleanField(_('Community Based'))
+    is_cps_based = models.NullBooleanField(_('CPS Based'))
+    is_home_visiting = models.NullBooleanField(_('Home Visiting'))
+    accept_ccap = models.NullBooleanField(_('Accepts CCAP'))
+    is_hs = models.NullBooleanField(_('Head Start'))
+    is_ehs = models.NullBooleanField(_('Early Head Start'))
 
     # To get these placeholder fields to show up in the UI, replace
     # 'Placeholder 1' and 'Placeholder 2' in the lines below with
@@ -120,7 +120,7 @@ class Location(models.Model):
         for field in Location._meta.fields:
             if (field.get_internal_type() == 'NullBooleanField' and
                     not field.get_attname() in exclude):
-                fields.append((field.get_attname(), field.verbose_name,))
+                fields.append((field.get_attname(), _(field.verbose_name),))
 
         return fields
 
@@ -169,7 +169,7 @@ class Location(models.Model):
             if self.is_true_bool_field(field):
                 bfields.append(field.verbose_name)
             elif self.is_simple_field(field):
-                kv = {'fieldname': field.verbose_name, 'value': getattr(self, fname)}
+                kv = {'fieldname': _(field.verbose_name), 'value': getattr(self, fname)}
                 sfields.append(kv)
 
         # Affiliations
@@ -177,29 +177,39 @@ class Location(models.Model):
                               (self.is_cps_based, 'is_cps_based'),
                               (self.is_hs, 'is_hs'),
                               (self.is_ehs, 'is_ehs')]
-        affiliation_values = [self.verbose_name(aff[1]).encode() for aff in affiliation_fields if aff[0]]
-        sfields.append({'fieldname': 'Affiliations', 'value': ', '.join(affiliation_values) if affiliation_values else 'None'})
+        affiliation_values = [self.verbose_name(aff[1]) for aff in affiliation_fields if aff[0]]
+        sfields.append({'fieldname': _('Affiliations'), 'value': ', '.join(affiliation_values) if affiliation_values else 'None'})
 
         # Combine Languages
         lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
         languages = ", ".join(lang_list)
         if languages != '':
-            sfields.append({'fieldname': 'Languages (other than English)', 'value': languages})
+            sfields.append({'fieldname': _('Languages (other than English)'), 'value': languages})
 
         # Program Duration
-        sfields.append({'fieldname': 'Program Duration', 'value': 'Full Year' if self.is_full_year else 'School Year'})
+        sfields.append({'fieldname': _('Program Duration'), 'value': _('Full Year') if self.is_full_year else _('School Year')})
 
         # Week Duration
-        sfields.append({'fieldname': 'Weekday Availability', 'value': 'Full Week' if self.is_full_week else 'Partial Week'})
+        sfields.append({'fieldname': _('Weekday Availability'), 'value': _('Full Week') if self.is_full_week else _('Partial Week')})
 
         # Phone
-        phone = {'fieldname': self.verbose_name('phone'), 'number': nicephone(self.phone)}
+        phone = {'fieldname': _('Phone Number'), 'number': nicephone(self.phone)}
 
         # Position
         position = {'lng': self.geom[0], 'lat': self.geom[1]}
         bfields.sort()
         sfields.sort(key=lambda a: a['fieldname'])
-        return {'item': item, 'phone': phone, 'sfields': sfields, 'bfields': bfields, 'position': position}
+
+        # Translation
+        # Adding a dictionary with strings that need to be translated in the handlebars template
+        # This way we can do this with django and not have to worry about making a separate
+        # handlebars helper
+        trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
+                      'share': _('Share')}
+        
+        return {'item': item, 'phone': phone, 'sfields': sfields,
+                'bfields': {'fieldname': _('Other Features'), 'values': bfields},
+                'position': position, 'translations': trans_dict}
 
     def val_or_empty(self, field, f=(lambda x: x)):
         """

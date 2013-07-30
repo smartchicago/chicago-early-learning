@@ -16,6 +16,9 @@ from django.db.models import Count, Q
 from django.contrib.gis.geos import Polygon
 from operator import attrgetter
 import json
+from django.utils.functional import Promise
+from django.utils.encoding import force_unicode
+from django.utils.translation import ugettext as _
 
 logger = logging.getLogger(__name__)
 
@@ -82,11 +85,9 @@ def faq(request):
 
 
 def setlang(request, language):
-    nxt = '/'
-    if 'next' in request.REQUEST:
-        nxt = request.REQUEST['next']
-
-    response = HttpResponseRedirect(nxt)
+    """Set Language cookie, reload current page"""
+    response = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    
     if language and check_for_language(language):
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
 
@@ -235,8 +236,21 @@ def _make_location_filter(query_params, etag_hash=''):
     return result, etag_hash
 
 
+class LazyEncoder(json.JSONEncoder):
+    """Encodes django's lazy i18n strings.
+    Used to serialize translated strings to JSON, because
+    simplejson chokes on it otherwise.
+
+    Taken from: http://khamidou.com/django-translation-in-json.html
+    """
+    def default(self, obj):
+        if isinstance(obj, Promise):
+            return force_unicode(obj)
+        return obj
+
+
 def _make_response(context, etag_hash):
-    rsp = HttpResponse(json.dumps(context), content_type="application/json")
+    rsp = HttpResponse(json.dumps(context, cls=LazyEncoder), content_type="application/json")
 
     if etag_hash:
         md5 = hashlib.md5()
