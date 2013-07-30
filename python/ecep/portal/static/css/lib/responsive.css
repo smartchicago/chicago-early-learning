@@ -42,6 +42,11 @@
 
 }
 
+@media (max-width: 1168px) {
+.brand {
+display: none;
+}
+}
 
 /* Landscape phone to portrait tablet --------- */
 
