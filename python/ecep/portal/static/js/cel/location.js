@@ -88,10 +88,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
      * a location's properties
      */
     Location.prototype.getIcon = function(options) {
-
         var doubleDimensions = function(option) {                                                        
-            option[0] *=2;                                                                          
-            option[1] *=2;                                                                          
+            option[0] *= 2;                                                                          
+            option[1] *= 2;                                                                          
         };                                                                                          
 
         var setHighlighted = function(options) {                                                         
@@ -240,11 +239,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
 
     DataManager.prototype = {
         /**
-         * Settings for layers - data manager needs access to these to know which to load
-         */
-        zoomSettings: CEL.serverVars.zoomSettings,
-
-        /**
          * DOM filters to read filter settings from
          * Set in constructor
          */
@@ -304,11 +298,18 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             }
         },
 
-        // Updates data on filter changes
+        /**
+         * Alerts listeners that filter data has changed
+         */
         onFilterChange: function() {
             this.events.trigger('DataManager.filtersUpdated');
         },
 
+        /**
+         * Gets the current state of location filters for passing into a GET request
+         * @param { Leaflet map object to read current bounds from } map
+         * @return { query params dict }
+         */
         getFilters: function(map) {
             var opts = { },
                 $filters = this.$filters || $('.filters-inner :checkbox');
