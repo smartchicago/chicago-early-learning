@@ -291,15 +291,15 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                 that.events.trigger('DataManager.neighborhoodUpdated');
             });
         },
-
+    
         /*
          * Get geojson for the neighborhoods and store in DataManager
          */
         geojsonUpdate: function() {
             var that = this;
             if (that.neighborhoods.geojson === undefined) {
-                $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
-                    that.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
+                return $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
+                        that.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
                 });
             }
         },
