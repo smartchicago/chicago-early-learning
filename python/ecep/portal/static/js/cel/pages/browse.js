@@ -13,6 +13,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
         var map,   // Leaflet map
             $map = $('#map'),
+            $filters = $('.filters-inner :checkbox'),
+            $filterClearAll = $('#filter-clear-all'),
             listItemSelector = '.locations-wrapper .accordion-group',
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
             defaultZoom = $map.data('zoom') || 10,
@@ -38,7 +40,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
             popupLayer = new L.LayerGroup(),    // Popup Layer
             currentLayer = layerType.none,      // Layer being currently displayed
-            dm = new location.DataManager(),    // DataManager object
+            dm = new location.DataManager($filters),    // DataManager object
             isAutocompleteSet = true,
             autocompleteLocationId,
             autocompleteNeighborhoodId,
@@ -372,6 +374,10 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 // set up social sharing for the top button (next to favorites)
                 $('#share-favorites-btn').on('click', favorites.initShareModal);
                 
+                $filters.on('click', function() { dm.onFilterChange(); });
+                $filterClearAll.on('click', function() {
+                    $filters.prop('checked', false);
+                });
                 mapToggle();
                 displayMap();
             }
