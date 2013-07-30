@@ -16,34 +16,8 @@ See LICENSE in the project root for copying permission
 
 {% block content %}
 <div class="container">
-
-<div class="row">
-<div class="favorite fullwidth">
-  <div id="location-map"></div>
-  <h1 class="school-name">{{ item.site_name }}</h1>
-  <p>{{ item.address }}, {{ item.city }}, {{ item.state }} {{ item.zip }}</p>
-  {% if item.url %}
-  <ul class="website-phone">
-    <li><i class="icon-globe"></i> <a href="{{ item.url }}" target="_blank">{{ item.url }}</a></li>
-    <a class="btn pull-right single-share" href="#"><i class="icon-share"></i> Share</a>
-  </ul>
-  {% endif %}
-  <hr>
-  <div class="school-details">
-    <h1>{% trans "Main Phone" %}</h1>
-    <h2>{{ item.phone|nicephone }}</h2>
-    <hr>
-    {% for simple in sfields %}
-      <h1>{{ simple.0}}</h1>
-      <h2>{{ simple.1 }}</h2>
-      <hr>
-    {% endfor %}
-      <h1>Other Features</h1>
-      <h2>{{ bfields|join:", " }}</h2>
-  </div>
-</div>
-</div>
-
+    <div class="row">
+    </div>
 </div>
 {% endblock %}
 
