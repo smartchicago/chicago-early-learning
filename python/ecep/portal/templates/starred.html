@@ -1,0 +1,41 @@
+{% extends "base-search.html" %}
+
+{% comment %}
+Copyright (c) 2012 Azavea, Inc.
+See LICENSE in the project root for copying permission
+{% endcomment %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+
+{% block title %}{% trans "Chicago Early Learning" %}{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block content %}
+<!-- Favorites top bar -->
+<div class="row faves-top">
+    <div class="faves-left">
+        <h1>Starred (<span class="fav-count">0</span>)</h1>
+    </div>
+
+    <div class="faves-right">
+        <a id="faves-clear" class="btn faves-option" href="#"><i class="icon-remove-circle"></i> Clear Selections</a>
+        <a id="faves-share" class="btn faves-option" href="#"><i class="icon-share"></i> Share</a>
+        <a class="btn faves-close pull-right" href="{% url portal.views.browse %}"><i class="icon-arrow-left"></i> Back</a>
+    </div>
+</div>
+
+<!-- Favorite list -->
+<div class="container">
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+require(['pages/starred'], function() { });
+</script>
+{% endblock %}
+

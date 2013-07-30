@@ -1,0 +1,19 @@
+{{#each this}}
+<div class="accordion" id="location{{@index}}" style="margin-top: 0;">
+  <div class="accordion-group neighborhood" data-name="{{name}}" data-schools="{{schools}}" data-lat="{{center.lat}}" data-lng="{{center.lng}}" data-id="{{id}}">
+    <div class="accordion-heading location">
+      <div class="row">
+        <div class="span6">
+          <h1>{{name}}</h1>
+        </div>
+        <div class="span2">
+          {{schools}}
+        </div>
+        <div class="span2 pull-right">
+          <button class="btn btn-inverse pull-right explore-btn" data-lat="{{center.lat}}" data-lng="{{center.lng}}" data-id="{{id}}">Explore</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}

@@ -45,6 +45,14 @@ state: 'IL'
 latitude: 41.872524826406774
 longitude: -87.62077331542969
 
+zoom_threshold: 14
+
+autocomplete:
+  swlat: 41
+  swlng: -89
+  nelat: 42.5
+  nelng: -87
+
 twilio_enabled: False
 account_sid: 'None'
 account_auth: 'None'
@@ -73,7 +81,7 @@ clone_repo: True
 django_jenkins: False
 
 node_packages:
-  - none
+  - topojson
 
 ## RabbitMQ Settings ##
 

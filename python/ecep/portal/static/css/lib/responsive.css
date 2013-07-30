@@ -14,9 +14,6 @@
 	body {
 		overflow: hidden;
 	}
-	#map {
-		display: none;
-	}
 	.results-left {
 		width: 100%;
 	}
@@ -66,7 +63,14 @@ display: none;
 	.navbar .nav {
 		margin: 10px 0;
 	}
-	#map,
+	.results-right {
+                visibility: hidden;
+                top: 100px;
+                left: 0px;
+        },
+        #map {
+                left: 0px;
+        }
 	#moreBtn {
 		display: none;
 	}
@@ -204,7 +208,7 @@ display: none;
 	}
 
 	.explore-btn {
-		display: none;
+	        margin-top: 0px !important;
 	}
 
 	.faves-left {

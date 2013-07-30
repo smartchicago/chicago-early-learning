@@ -3,46 +3,21 @@
 
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
-from django.views.decorators.cache import cache_control
-from django.db.models import Q
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponse, HttpResponseRedirect
+from django.views.decorators.cache import cache_control
 from models import Location, Neighborhood
-import hashlib
 import logging
+import hashlib
 from faq.models import Topic, Question
-from django.utils.translation import ugettext as _
 from django.utils.translation import check_for_language
-from django.utils import translation, simplejson
+from django.utils import simplejson
+from django.db.models import Count, Q
+from django.contrib.gis.geos import Polygon
 from operator import attrgetter
-from portal.utils import TermDistance
 import json
 
 logger = logging.getLogger(__name__)
-
-
-# TODO: We probably don't need this function for the new version, I'm moving
-# it in from the old version for now to avoid lots of refactoring.
-def get_opts(selected_val='2'):
-    """
-    Gets option list for the distance dropdown (see base.html)
-    selected_val: string representing the value of the dropdown that
-                  should be selected
-    Default is '2'
-    """
-    # Options for distance dropdown
-    # option value => (option text, enabled)
-    distance_opts = {'-1': [_('Distance'), False],
-                     '0.5': [_('< 0.5 mi'), False],
-                     '1': [_('< 1 mi'), False],
-                     '2': [_('< 2 mi'), False],
-                     '5': [_('< 5 mi'), False],
-                     '10': [_('< 10 mi'), False]}
-
-    key = selected_val if selected_val in distance_opts else '2'
-    distance_opts[key][1] = True
-    result = [[k] + v for k, v in distance_opts.items()]
-    return sorted(result, key=lambda a: float(a[0]))
 
 
 def index(request):
@@ -52,14 +27,32 @@ def index(request):
 
 
 def about(request):
-    ctx = RequestContext(request, {
-        'options': get_opts(),
-        'mapbarEnabled': True
-    })
+    ctx = RequestContext(request, {})
     return render_to_response('about.html', context_instance=ctx)
 
 
+def search(request):
+    ctx = RequestContext(request, {})
+    response = render_to_response('search.html', context_instance=ctx)
+    return response
+
+
+def browse(request):
+    fields = Location.get_filter_fields()
+
+    # TODO: for now left/right split is kinda random, might want more control
+    ctx = RequestContext(request, {
+        'filters_left': fields[:len(fields) / 2],
+        'filters_right': fields[len(fields) / 2:]
+    })
+
+    response = render_to_response('browse.html', context_instance=ctx)
+    return response
+
+
 class TopicWrapper(object):
+    """Wrapper for Topic model, enforces visibility rules for anonymous users"""
+
     topic = None
     questions = None
 
@@ -84,8 +77,6 @@ def faq(request):
 
     ctx = RequestContext(request, {
         'topics': [TopicWrapper(t, request) for t in topics],
-        'options': get_opts(),
-        'mapbarEnabled': True
     })
     return render_to_response(tpl, context_instance=ctx)
 
@@ -202,6 +193,59 @@ class TermDistance:
 
 
 # Location Stuff
+
+_location_bool_fields = {f.get_attname() for f in Location._meta.fields}
+
+
+def _make_location_filter(query_params, etag_hash=''):
+    """Helper function that converts boolean filter query params to a filter object
+
+    The resulting filter object consists of the boolean fields ORed together, then ANDed
+    with the bounding box query.  Something like this:
+        (filtera OR not filterb OR filterc ... ) AND bbox.Overlaps(Location.geom)
+
+    query_params: dict containing boolean fields in Location model with true/false string values
+                  and/or 'bbox'
+        'bbox'  : CSV of points of the form xmin,ymin,xmax,ymax
+    etag_hash   : Current string used to make etag for request
+    returns     : (Q object, etag_hash)
+
+    """
+    def make_rectangle(bbox):
+        """Given a bbox csv returns a geometry object for it"""
+        xmin, ymin, xmax, ymax = (float(x) for x in bbox.split(','))
+        return Polygon(((xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin), (xmin, ymin)))
+
+    # Filter by any boolean filters provided
+    result = Q()
+    for f, val in query_params.iteritems():
+        if f in _location_bool_fields:
+            logger.debug('Adding Filter: %s = %s' % (f, val))
+            kw = {f: val == 'true'}
+            etag_hash += str(kw)
+            result |= Q(**kw)
+
+    # Filter by any bbox if provided
+    if 'bbox' in query_params:
+        etag_hash = ''            # Can't cache bbox queries
+        bbox = make_rectangle(query_params['bbox'])
+        bbox_filter = Q(geom__bboverlaps=bbox)
+        result &= bbox_filter
+
+    return result, etag_hash
+
+
+def _make_response(context, etag_hash):
+    rsp = HttpResponse(json.dumps(context), content_type="application/json")
+
+    if etag_hash:
+        md5 = hashlib.md5()
+        md5.update(etag_hash)
+        rsp['Etag'] = md5.hexdigest()
+
+    return rsp
+
+
 def location_details(location_id):
     """
     Helper method that gets all the fields for a specific location.
@@ -212,16 +256,49 @@ def location_details(location_id):
     return item.get_context_dict()
 
 
-def location(request, location_id):
+@cache_control(must_revalidate=False, max_age=3600)
+def location_api(request, location_ids=None):
     """
-    Render a detail page for a single location.
+    API endpoint for locations.
+
+    location_ids: optional comma separated list of location ids to filter.
+        If no values are provided all Locations will be examined
+
+    request.GET params:
+        <any boolean field in Locations>:   value may be either 'true' or 'false'
+        'bbox':                             value is a csv of points of the form
+            xmin,ymin,xmax,ymax
+
+    returns: Locations filtered like so:
+        (Location.id in location_ids) AND (filtera OR not filterb OR ...) AND
+            bbox.Overlaps(Location.geom)
+        result has the following structure:
+            {"locations": [ Locations filtered as described above ]}
+
     """
-    context = location_details(location_id)
+    etag_hash = 'empty'
 
-    tpl = 'location.html'
+    # Filter by ids if provided
+    item_filter = None
+    if location_ids:
+        location_ids_array = [int(l_id) for l_id in location_ids.split(',') if l_id]
+        item_filter = Q(pk__in=location_ids_array)
+    else:
+        item_filter = ~Q(geom=None)
 
-    context = RequestContext(request, context)
-    return render_to_response(tpl, context_instance=context)
+    bool_filter, etag_hash = _make_location_filter(request.GET, etag_hash)
+    item_filter &= bool_filter
+
+    location_contexts = [l.get_context_dict() for l in Location.objects.filter(item_filter)]
+    logger.debug('Retrieved %d location_contexts.' % len(location_contexts))
+    context = {'locations': location_contexts}
+    return _make_response(context, etag_hash)
+
+
+def location(request):
+    ctx = RequestContext(request, {})
+    response = render_to_response('location.html', context_instance=ctx)
+    return response
 
 
 def location_position(request, location_id):
@@ -231,3 +308,57 @@ def location_position(request, location_id):
     loc = get_object_or_404(Location, id=location_id)
     results = [{'pk': location_id, 'lng': loc.geom[0], 'lat': loc.geom[1]}]
     return HttpResponse(json.dumps(results), content_type="application/json")
+
+
+@cache_control(must_revalidate=False, max_age=60*60*24)
+def neighborhood_api(request):
+    """API endpoint for neighborhoods.  Returns metadata about all neighborhoods in db.
+
+    request.GET params:
+        <any boolean field in Locations>:   value may be either 'true' or 'false'
+        'bbox':                             value is a csv of points of the form
+            xmin,ymin,xmax,ymax
+
+    returns: A list of neighborhoods.  The query params only control which locations are counted
+             in the 'schools' field.
+             Included fields for each item:
+                 'name':    Neighborhood.primary_name
+                 'schools': Count of schools in the neighborhood, using the filtering mechanism
+                            described for the locations endpoint
+                 'id':      Primary key
+                 'center':  lat/lng dict with the centroid of the neighborhood polygon
+        result has the following structure:
+            {"neighborhoods": [ List of neighborhoods as described above ]}
+    """
+    etag_hash = 'empty'
+    nb_name = Neighborhood.__name__.lower()
+    location_filter, etag_hash = _make_location_filter(request.GET, etag_hash)
+    locations = Location.objects.filter(location_filter)
+
+    # List of dicts with keys nb_name and 'nbc_count'
+    # The order_by() is important, as it prevents django from adding extra fields to the
+    # query and borking the group-by statement.
+    # See
+    # https://docs.djangoproject.com/en/1.4/topics/db/aggregation/#interaction-with-default-ordering-or-order-by
+    count_by_nbh = locations.values(nb_name).annotate(nbc_count=Count(nb_name)).order_by()
+    nbh_pk_to_count = {n[nb_name]: n['nbc_count'] for n in count_by_nbh if n[nb_name]}
+    counts = Neighborhood.objects.all().order_by('primary_name')
+    count_list = [{
+        'name': n.primary_name,
+        'schools': nbh_pk_to_count[n.pk] if n.pk in nbh_pk_to_count else 0,
+        'id': n.pk,
+        'center': n.get_center()
+    } for n in counts]
+
+    context = {'neighborhoods': count_list}
+    return _make_response(context, etag_hash)
+
+
+## Starred Location Views
+def starred(request):
+    """
+    Render starred locations page for as many favorites as are set in url or cookie
+    """
+    ctx = RequestContext(request, {})
+    response = render_to_response('starred.html', context_instance=ctx)
+    return response

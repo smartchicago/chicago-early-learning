@@ -1,0 +1,701 @@
+{% extends "base.html" %}
+
+{% comment %}
+Copyright (c) 2012 Azavea, Inc.
+See LICENSE in the project root for copying permission
+{% endcomment %}
+
+{% load i18n %}
+{% block title %}{% trans "Chicago Early Learning" %} - {% trans "Search" %}{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block content %}
+
+{% load staticfiles %} 
+
+{% comment %}
+TODO:
+* Add Trans blocks
+* Make the list use templates instead of hardcoded list
+{% endcomment %}
+<!-- LIST -->
+<div class="results-left">
+<!-- Results Toolbar -->
+<div class="accordion" id="filter-options">
+  <div class="accordion-group" id="toolbar-main">
+    <div class="accordion-heading results-toolbar">
+      <button class="btn btn-primary" data-toggle="collapse" data-parent="#filters" href="#collapseFilters" id="refineBtn">Refine your search <i class="icon-chevron-down icon-white"></i></button>
+      <div class="btn-group">
+        <a class="btn" href="favorites.html" data-r1023="<i class='icon-star'></i> Favorites (<span class='search-fav-count'>0</span>)"><i class="icon-star"></i> Favorites (<span class="search-fav-count">0</span>)</a>
+        <button class="btn" data-r1023="<i class='icon-share'></i> Share" data-toggle="dropdown"><img src='{% static "img/icons/share.svg" %}' class="svg-icon"> Share</button>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Google+</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon-file"></i><i class="icon-share-alt"></i> Export PDF</a></li>
+          </ul>
+      </div>
+    </div>
+
+    <div id="collapseFilters" class="accordion-body in collapse">
+      <div class="accordion-inner filters-inner">
+        <div class="filters-left">
+          <label><input type="checkbox"> All</label>
+          <label><input type="checkbox"> Ages 0-3</label>
+          <label><input type="checkbox"> Ages 3-5</label>
+          <label><input type="checkbox"> Head Start</label>
+          <label><input type="checkbox"> Early Head Start</label>
+        </div>
+        <div class="filters-right">
+          <label><input type="checkbox"> Preschool for All / Prevention Initiative</label>
+          <label><input type="checkbox"> Tuition-based</label>
+          <label><input type="checkbox"> Child-parent Center</label>
+          <label><input type="checkbox"> Child Care Assistance Program</label>
+        </div>
+      </div>
+    </div>
+  </div>
+      <div class="header-row">
+        <ul class="header-labels">
+          <li id="header-fav">Fav.</li>
+          <li id="header-name">Location</li>
+          <li id="header-dist">Distance</li>
+        </ul>
+      </div>
+</div>
+
+<div class="locations-wrapper">
+<!-- Location -->
+<div class="accordion location-test1">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <a data-toggle="collapse" data-parent="#location1" href="#collapseLoc1"<h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave. Chicago, 60608</h2></a>
+        <a class="directions-icon" id="loc-icon" href="#" rel="tooltip" title="NYAEC Accredidation"><i class="icon-ok"></i></a> 
+        <a class="directions-icon" id="loc-dirs" href="#">Directions</a>
+        <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location1" href="#collapseLoc1" id="moreBtn">More</button>
+                        <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc1" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item" id="location2">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location1" href="#collapseLoc2" id="moreBtn">More</button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc2" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item location-test1" style="margin-top: 0;">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location1" href="#collapseLoc3" id="moreBtn">More</button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc3" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item" id="location4">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location1" href="#collapseLoc4" id="moreBtn">More</button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc4" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item" id="location5">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location1" href="#collapseLoc5" id="moreBtn">More</button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc5" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item" id="location6">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location1" href="#collapseLoc6" id="moreBtn">More</button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc6" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item" id="location7">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location1" href="#collapseLoc7" id="moreBtn">More</button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc7" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item" id="location8">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location1" href="#collapseLoc8" id="moreBtn">More</button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc8" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item" id="location9">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location9" href="#collapseLoc2" id="moreBtn">More</button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc9" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item" id="location10">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location10" href="#collapseLoc10" id="moreBtn">
+        <span>More</span>
+        <span style="display: none;">Less</span>
+      </button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc10" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="accordion location-item" id="location10">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location10" href="#collapseLoc10" id="moreBtn">
+        <span>More</span>
+        <span style="display: none;">Less</span>
+      </button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc10" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="accordion location-item" id="location10">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location10" href="#collapseLoc10" id="moreBtn">
+        <span>More</span>
+        <span style="display: none;">Less</span>
+      </button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc10" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item" id="location10">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location10" href="#collapseLoc10" id="moreBtn">
+        <span>More</span>
+        <span style="display: none;">Less</span>
+      </button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc10" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Location -->
+<div class="accordion location-item" id="location10">
+  <div class="accordion-group">
+    <div class="accordion-heading location">
+      <a href="#"><img src='{% static "img/icons/star-empty.svg" %}' class="fave-star" alt="Favorite"></a>
+      <h1>YMCA Rauner Family</h1>
+      <h2>2700 S. Western Ave., Chicago, 60608</h2>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location10" href="#collapseLoc10" id="moreBtn">
+        <span>More</span>
+        <span style="display: none;">Less</span>
+      </button>
+                    <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+    </div>
+    <div id="collapseLoc10" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <div class="accordion-right">
+          <button class="btn input-block-level"><i class="icon-globe"></i> Website</button>
+          <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
+          <button class="btn input-block-level"><i class="icon-share"></i> Share</button>
+        </div>
+        <div class="accordion-left">
+          <h1>Main Phone</h1>
+          <h2>(312) 506-0130</h2>
+          <hr>
+          <h1>Fax</h1>
+          <h2>(312) 376-3751</h2>
+          <hr>
+          <h1>Site Affiliation</h1>
+          <h2>CPS Community Partnership</h2>
+          <hr>
+          <h1>Director/Principal</h1>
+          <h2>Sonya Sifuentes</h2>
+          <hr>
+          <h1>Program Duration</h1>
+          <h2>Full Year</h2>
+          <hr>
+          <h1>Program Schedule</h1>
+          <h2>Half Day/Full Day</h2>
+          <hr>
+          <h1>Ages Served</h1>
+          <h2>2-5 years</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div> <!-- end results left -->
+<!-- MAP -->
+<div class="results-right">
+<div id="map"></div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src='{% static "js/cel/pages/search.js" %}'></script>
+{% endblock %}

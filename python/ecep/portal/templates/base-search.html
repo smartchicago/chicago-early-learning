@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block searchform %}
+<form class="navbar-form" id="desktop-search">
+  <div class="input-append">
+    <input id="appendedInputButton" class="autocomplete-searchbox" type="text" placeholder="121 N. Lasalle, Chicago">
+    <button class="btn geolocation-button" id="geolocation" type="button"><i class="icon-screenshot"></i></button>
+  </div>
+  <button type="submit" class="btn btn-navsearch-main autocomplete-submit" style="margin-top: -5px;" id="searchBtn"><i class="icon-search"></i> Search</a>
+</form>
+{% endblock %}

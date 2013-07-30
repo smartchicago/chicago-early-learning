@@ -6,25 +6,37 @@
 requirejs.config({
     paths: {
         jquery: '../lib/jquery-1.10.2.min',
+        'jquery-ui': '../lib/jquery-ui-1.10.3.autocomplete-only.min',
+        'jquery-cookie': '../lib/jquery.cookie',
         bootstrap: '../lib/bootstrap',
         Leaflet: '../lib/leaflet',
-        'Leaflet-google': '../lib/leaflet-google',
-        async: '../lib/require-plugins/async'
+        'leaflet-providers': '../lib/leaflet-providers',
+        Handlebars: '../lib/handlebars',
+        async: '../lib/require-plugins/async',
+        text: '../lib/require-plugins/text',
+        slidepanel: '../lib/slidepanel',
+        topojson: '../lib/topojson',
+        styling: '../lib/styling',
+        icons: '../lib/icons'
     },
     shim: {
-        'bootstrap': {
+        'jquery-ui': {
+            deps: ['jquery'],
+            exports: '$'
+        },
+        bootstrap: {
             // http://stackoverflow.com/a/13556882/639619
             // Don't use the return value from bootstrap, it should attach stuff to the
             // $ object, require jquery and use it instead
             deps: ['jquery'],
             exports: '$.fn.popover'
         },
-        'Leaflet': {
+        Leaflet: {
             exports: 'L'
         },
-        'Leaflet-google': {
+        'leaflet-providers': {
             deps: ['Leaflet'],
-            exports: 'L.Google'
+            exports: 'L'
         },
         '../lib/response': {
             deps: ['jquery'],
@@ -32,6 +44,16 @@ requirejs.config({
             init: function ($) {
                 return this.Response.noConflict();
             }
+        },
+        Handlebars: {
+            exports: 'Handlebars'
+        },
+        slidepanel: {
+            deps: ['jquery'],
+            exports: '$'
+        },
+        topojson: {
+            exports: 'topojson'
         }
     },
     enforceDefine: true

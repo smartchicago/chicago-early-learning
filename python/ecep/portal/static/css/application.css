@@ -146,6 +146,7 @@ h1, h2, h3, h4 {
 	overflow: hidden;
 	top: 0;
 	bottom: 0;
+        z-index: 1001;
 	-webkit-box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow:    2px 0px 5px rgba(0, 0, 0, 0.5);
 	box-shadow:         2px 0px 5px rgba(0, 0, 0, 0.5);
@@ -155,6 +156,9 @@ h1, h2, h3, h4 {
 		-moz-border-radius: 0px;
 		border-radius: 0px;
 	}
+        .accordion {
+                margin-bottom: 0px;
+        }
 	.results-toolbar {
 		padding: 17px;
 		background: #eee;
@@ -180,13 +184,6 @@ h1, h2, h3, h4 {
 		.location button {
 			float: right;
 			margin-top: -35px;
-		}
-		#location3 {
-			margin-top: 95px;
-			margin-bottom: -3px;
-		}
-		#location2 {
-			margin-bottom: -3px;
 		}
 		.location-test1 {
 			margin-top: 0;
@@ -326,6 +323,10 @@ h1, h2, h3, h4 {
 	width: 11px !important;
 }
 
+.location-container.highlight .location {
+    background-color: #FFFBCC;
+}
+
 /* Scrollbars ---------------------- */
 
 ::-webkit-scrollbar {
@@ -356,6 +357,7 @@ h1, h2, h3, h4 {
 	padding: 20px;
 	width: 100%;
 	padding: 20px 20px 50px 20px;
+	margin-top: 40px;
 }
 	.faves-left {
 		width: 25%;
@@ -438,8 +440,8 @@ h1, h2, h3, h4 {
 /* Partners ------------------------ */
 
 .media img {
-	max-width: 200px;
 	padding-right: 35px;
+	max-width: 300px;
 }
 
 .logos-container {
@@ -470,6 +472,10 @@ h1, h2, h3, h4 {
 
 .accordion-group {
 	margin-bottom: 0px;
+}
+
+.accordion-group.neighborhood {
+        cursor: pointer;
 }
 
 .filters-inner {
@@ -732,6 +738,7 @@ h1, h2, h3, h4 {
 	*background-color: #003bb3;
 }
 
+<<<<<<< HEAD
 .explore-btn {
 	color: #FFFFFF;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -783,3 +790,26 @@ h1, h2, h3, h4 {
 		border-radius: 3px;
 		margin-bottom: 8px;
 	}
+
+/* -----------------------------------------
+   Social/sharing styling
+----------------------------------------- */
+
+#share-modal {
+    width: 500px;
+}
+
+#social-text {
+    width: 300px; 
+    float: left; 
+    margin-right: 10px;
+}
+    
+.fc-webicon { display: inline-block; padding: 7px 5px; background-size: 100%; width: 21px; height: 17px; text-align: left; -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; margin-bottom: 5px; color: #F1F2F2; }
+.fc-webicon:hover { color: white; margin: -1px 0 1px; -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25); -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25); }
+
+.fc-webicon.facebook { background-color: #3B5998; }
+.fc-webicon.googleplus { background-color: #d34836; }
+.fc-webicon.mail { background-color: #AAA; }
+.fc-webicon.twitter { background-color: #4099FF; }
+>>>>>>> staging

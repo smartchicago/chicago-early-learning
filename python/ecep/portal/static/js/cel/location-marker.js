@@ -6,32 +6,29 @@
 
 'use strict';
  
-define(['jquery', 'Leaflet', CEL.serverVars.gmapRequire], 
-    function($, L) {
-        var schoolIcon = L.icon({
-            iconUrl: '/static/img/leaflet-icons/marker-school.png',
-            shadowUrl: '/static/img/leaflet-icons/marker-shadow.png',
-
-            iconSize:     [35, 45], // size of the icon
-            shadowSize:   [41, 41], // size of the shadow
-            iconAnchor:   [10, 60], // point of the icon which will correspond to marker's location
-            shadowAnchor: [4, 62],  // the same for the shadow
-            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-        });
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common', 
+        CEL.serverVars.gmapRequire, 'leaflet-providers'], 
+    function($, L, html, location, common) {
 
         /* On page load, query api to get locations position, add marker to map
          * for location. Use google maps layer for leaflet.
          */
         $(document).ready(function() {
-            $.getJSON(window.location.pathname + 'position', function(data) {
-                var lat = data[0].lat,
-                    lng = data[0].lng,
-                    map = new L.Map('location-map', {center: new L.LatLng(lat, lng), zoom: 13}),
-                    gmap = new L.Google('ROADMAP');
+            var location_id = /(\d+)/.exec(window.location.pathname)[1];
+            $.getJSON(common.getUrl('location-api') + location_id, function(data) {
+                var loc = new location.Location(data.locations[0]),
+                    // need to build the template first so leaflet can find the map
+                    template = Handlebars.compile(html);
+
+                $('.container > .row').append(template(loc.data));
+
+                var latLng = loc.getLatLng(), 
+                    map = new L.Map('location-map', {center: latLng, zoom: 13});
                 
-                map.addLayer(gmap);
-                L.marker([lat, lng], {icon: schoolIcon}).addTo(map);
-                map.panTo(new L.LatLng(lat, lng));
+                L.tileLayer.provider('Acetate.all').addTo(map);             // basemap 
+                loc.setMarker();
+                loc.getMarker().addTo(map);
+                map.panTo(latLng);
             });
         });
     }
