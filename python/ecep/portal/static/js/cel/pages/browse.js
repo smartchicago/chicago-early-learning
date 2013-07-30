@@ -13,7 +13,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
         var map,   // Leaflet map
             $map = $('#map'),
-            gmap,    // Google basemap
+            listItemSelector = '.locations-wrapper .accordion-group',
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
             defaultZoom = $map.data('zoom') || 10,
             latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
@@ -36,13 +36,13 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             },
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
-            popupLayer = new L.LayerGroup(),   // Popup Layer
-            currentLayer = layerType.none,              
-            dm = new location.DataManager(),
+            popupLayer = new L.LayerGroup(),    // Popup Layer
+            currentLayer = layerType.none,      // Layer being currently displayed
+            dm = new location.DataManager(),    // DataManager object
             isAutocompleteSet = true,
             autocompleteLocationId,
             autocompleteNeighborhoodId,
-            $locationWrapper;    // Store div wrapper for results on left side
+            $locationWrapper;                   // Store div wrapper for results on left side
 
         // Initialize geojson for neighborhood layer
         neighborhoodLayer = L.geoJson(null, {
@@ -81,67 +81,6 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 isAutocompleteSet = false;
             }
         };
-
-        /*
-         * Update view when the dm triggers its neighborhood updated event
-         * We only want to attach this event once...
-         */
-        dm.events.on("DataManager.neighborhoodUpdated", function(e) {
-            // If not already displaying neighborhoods and zoomed out
-            currentLayer = layerType.neighborhood;
-            listResults(dm.neighborhoods.data, currentLayer);
-            locationLayer.clearLayers();
-            neighborhoodLayer.clearLayers();
-            neighborhoodLayer.addData(dm.neighborhoods.geojson);
-            map.addLayer(neighborhoodLayer);
-            panHandler();
-            exploreButton();
-
-            // set map to location/neighborhood if autocomplete requested it
-            setAutocompleteLocation();
-        });
-
-
-        /*
-         * Update view when the dm triggers its location updated event
-         * We only want to attach this event once...
-         */
-        dm.events.on("DataManager.locationUpdated", function(e) {
-            // If not already displaying locations and zoomed in
-            currentLayer = layerType.location;
-            map.removeLayer(neighborhoodLayer);
-            map.addLayer(locationLayer);
-            popupLayer.clearLayers();
-            listResults(dm.locations, currentLayer);
-
-            // Create map markers and bind popups
-            $.each(dm.locations, function(i, location) {
-                var locMarker = location.getMarker();
-                locationLayer.addLayer(locMarker);
-            });
-
-            // set map to location/neighborhood if autocomplete requested it
-            setAutocompleteLocation();
-
-            // Bind to accordion events so we can pan to the map location
-            $('.accordion-group').click(function() {
-                var $this = $(this),
-                key = $this.data('key'),
-                loc = dm.locations[key],
-                marker = loc.getMarker(),
-                latLng = loc.getLatLng();
-
-                // 'togglePopup' would work better here, but it appears our version of leaflet
-                // doesn't have it implemented. If we upgrade leaflet, we should switch this
-                // to use it. Either that or keep track of whether or not this accordion group
-                // is collapsed (there is currently a 'collapsed' class added, but it seems to
-                // be inconsistent when testing it, probably due to some behind-the-scenes
-                // setTimeouts.
-                marker.openPopup();
-                map.panTo(latLng);
-            });
-        });
-
         /**
          * Controls logic of whether to display locations or neighborhoods
          * based on current zoom level. Called when map is initialized
@@ -331,6 +270,10 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         };
 
 
+        /******************************************************
+         *                    Bind events                     *
+         ******************************************************/
+
         /*
          * Update view when the dm triggers its neighborhood updated event
          * We only want to attach this event once...
@@ -345,6 +288,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             map.addLayer(neighborhoodLayer);
             panHandler();
             exploreButton();
+
+            // set map to location/neighborhood if autocomplete requested it
+            setAutocompleteLocation();
         });
 
 
@@ -366,13 +312,16 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 locationLayer.addLayer(locMarker);
             });
 
+            // set map to location/neighborhood if autocomplete requested it
+            setAutocompleteLocation();
+
             // Bind to accordion events so we can pan to the map location
-            $('.locations-wrapper .accordion-group').click(function() {
+            $('.accordion-group').click(function() {
                 var $this = $(this),
-                    key = $this.data('key'),
-                    loc = dm.locations[key],
-                    marker = loc.getMarker(),
-                    latLng = loc.getLatLng();
+                key = $this.data('key'),
+                loc = dm.locations[key],
+                marker = loc.getMarker(),
+                latLng = loc.getLatLng();
 
                 // 'togglePopup' would work better here, but it appears our version of leaflet
                 // doesn't have it implemented. If we upgrade leaflet, we should switch this
@@ -384,6 +333,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 map.panTo(latLng);
             });
         });
+
 
         dm.events.on('DataManager.filtersUpdated', displayMap);
 
