@@ -322,7 +322,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                 opts[elem.id] = elem.checked;
             });
             if (map && map.getBounds) {
-                opts.bbox = map.getBounds().pad(0.25).toBBoxString();
+                opts.bbox = map.getBounds().toBBoxString();
             }
             
             return opts;

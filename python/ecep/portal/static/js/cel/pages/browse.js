@@ -155,24 +155,17 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 var $this = $(this),
                     key = $this.data('loc-id'),
                     loc = dm.locations[key];
-                loc.setIcon();
+                // always highlighted because the mouse will be over the accordion div for the click
+                loc.setIcon({ highlighted: true });
             });
 
             // Watch for hover events on the list so we can highlight both 
             // the list item and the icon on the map
-            
             $('.location-container').hover(function(e) {
                 var $this = $(this),
                     key = $this.data('key'),
                     loc = dm.locations[key];
 
-                // Keeping the icon selection simple for now, since everything is
-                // currently hardcoded to school and there is a separate icon management
-                // task. This swaps out the marker for a highlight marker on mouseenter and 
-                // switches it back to school on mouseleave. It should eventually tie in to
-                // the icon management system, using the data of the location to determine the
-                // appropriate icon state. The highlight marker will probably go away and will
-                // be more specific to the actual marker (probably just increasing its size).
                 if (e.type === 'mouseenter') {
                     $this.addClass('highlight');
                     loc.setIcon({'highlighted': true});
@@ -180,7 +173,14 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     $this.removeClass('highlight');
                     loc.setIcon({'highlighted': false});
                 }
+            }).on('click', function(e) {
+                var $this = $(this),
+                    $morelessbtn = $this.find('.more-less-btn'),
+                    btnText = $morelessbtn.html();
+                btnText = btnText === 'More' ? 'Less' : 'More';
+                $morelessbtn.html(btnText);
             });
+            
         };
 
         /*
@@ -335,8 +335,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 var $this = $(this),
                 key = $this.data('key'),
                 loc = dm.locations[key],
-                marker = loc.getMarker(),
-                latLng = loc.getLatLng();
+                marker = loc.getMarker();
 
                 // 'togglePopup' would work better here, but it appears our version of leaflet
                 // doesn't have it implemented. If we upgrade leaflet, we should switch this
@@ -344,8 +343,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 // is collapsed (there is currently a 'collapsed' class added, but it seems to
                 // be inconsistent when testing it, probably due to some behind-the-scenes
                 // setTimeouts.
-                marker.openPopup();
-                map.panTo(latLng);
+                //marker.openPopup();
             });
         });
 
