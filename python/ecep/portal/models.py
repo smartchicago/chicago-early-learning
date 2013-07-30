@@ -199,9 +199,17 @@ class Location(models.Model):
         position = {'lng': self.geom[0], 'lat': self.geom[1]}
         bfields.sort()
         sfields.sort(key=lambda a: a['fieldname'])
+
+        # Translation
+        # Adding a dictionary with strings that need to be translated in the handlebars template
+        # This way we can do this with django and not have to worry about making a separate
+        # handlebars helper
+        trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
+                      'share': _('Share')}
+        
         return {'item': item, 'phone': phone, 'sfields': sfields,
                 'bfields': {'fieldname': _('Other Features'), 'values': bfields},
-                'position': position}
+                'position': position, 'translations': trans_dict}
 
     def val_or_empty(self, field, f=(lambda x: x)):
         """
