@@ -42,3 +42,10 @@ body {
 .faq-section {
 	padding-top: 50px;
 }
+
+.logos-container p {
+	text-align: justify;
+}
+.logos-container img {
+	padding-left: 40px;
+}
