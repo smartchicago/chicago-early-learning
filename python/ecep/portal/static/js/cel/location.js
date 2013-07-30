@@ -286,22 +286,18 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                         neighborhoods[key] = neighborhood;
                     });
                 }),
-                that.geojsonUpdate()
+                // This was moved here because the deferred only knows to wait for the function
+                //      defined here. When we move this request into a wrapper function, the deferred
+                //      does not wait for the getJSON callback, only for the wrapper function.
+                //      Since the browser caches this request, performance should be ok.
+                $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
+                    if (that.neighborhoods.geojson === undefined) {
+                        that.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
+                    }
+                })
             ).then(function() {
                 that.events.trigger('DataManager.neighborhoodUpdated');
             });
-        },
-
-        /*
-         * Get geojson for the neighborhoods and store in DataManager
-         */
-        geojsonUpdate: function() {
-            var that = this;
-            if (that.neighborhoods.geojson === undefined) {
-                $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
-                    that.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
-                });
-            }
         },
 
         // Updates data on filter changes
