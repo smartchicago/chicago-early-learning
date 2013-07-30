@@ -811,3 +811,11 @@ h1, h2, h3, h4 {
 .fc-webicon.googleplus { background-color: #d34836; }
 .fc-webicon.mail { background-color: #AAA; }
 .fc-webicon.twitter { background-color: #4099FF; }
+
+.favs-close-button {
+    display: block;
+    float: right;
+    width: 20px;
+    height: 20px;
+    background-image: url("http://placekitten.com/g/20/20");
+}
