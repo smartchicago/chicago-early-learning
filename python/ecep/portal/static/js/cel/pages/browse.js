@@ -329,22 +329,6 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
             // set map to location/neighborhood if autocomplete requested it
             setAutocompleteLocation();
-
-            // Bind to accordion events so we can pan to the map location
-            $(listItemSelector).click(function() {
-                var $this = $(this),
-                key = $this.data('key'),
-                loc = dm.locations[key],
-                marker = loc.getMarker();
-
-                // 'togglePopup' would work better here, but it appears our version of leaflet
-                // doesn't have it implemented. If we upgrade leaflet, we should switch this
-                // to use it. Either that or keep track of whether or not this accordion group
-                // is collapsed (there is currently a 'collapsed' class added, but it seems to
-                // be inconsistent when testing it, probably due to some behind-the-scenes
-                // setTimeouts.
-                //marker.openPopup();
-            });
         });
 
 
