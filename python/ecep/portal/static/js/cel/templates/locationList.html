@@ -6,17 +6,16 @@
       <a data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}"><h1>{{item.site_name}}</h1>
         <h2>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2></a>
       <a class="directions-icon" id="loc-icon" href="#" rel="tooltip" title="NYAEC Accredidation"><i class="icon-ok"></i></a> 
-      <a class="directions-icon" id="loc-dirs" href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}" target="_blank">Directions</a>
-      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}" id="moreBtn">More</button>
+      <a class="directions-icon" id="loc-dirs" href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}" target="_blank">{{translations.directions}}</a>
+      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}" id="moreBtn">{{translations.more}}</button>
       <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
     </div>
   </div>
   <div id="collapseLoc{{@index}}" class="accordion-body collapse">
     <div class="accordion-inner">
       <div class="accordion-right">
-        <a class="btn input-block-level" href="{{item.url}}" target="_blank"><i class="icon-globe"></i> Website</a>
-        <button class="btn input-block-level"><i class="icon-envelope"></i> Email</button>
-        <button class="btn input-block-level share-btn" data-key="{{item.key}}"><i class="icon-share"></i> Share</button>
+        <a class="btn input-block-level" href="{{item.url}}" target="_blank"><i class="icon-globe"></i> {{translations.website}}</a>
+        <button class="btn input-block-level share-btn" data-key="{{item.key}}"><i class="icon-share"></i> {{translations.share}}</button>
       </div>
       <div class="accordion-left">
         <h1>{{phone.fieldname}}</h1>
@@ -27,8 +26,8 @@
         <h2>{{value}}</h2>
         <hr>
         {{/each}}
-        <h1>Other Features</h1>
-        <h2>{{bfields}}</h2>
+        <h1>{{bfields.fieldname}}</h1>
+        <h2>{{bfields.values}}</h2>
       </div>
     </div>
   </div>
