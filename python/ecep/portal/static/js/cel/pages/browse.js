@@ -7,7 +7,7 @@
 define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
         'topojson', 'icons', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire, 'styling',
         'leaflet-providers'], 
-    function($, L, neighborhoodList, locationList, topojson, icons, favorites, location,  common) {
+    function($, L, neighborhoodList, locationList, topojson, icons, favorites, location, common) {
 
         'use strict';
 
@@ -246,7 +246,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * Mostly just a wrapper around neighborhoodPan
          */
         var panHandler = function() {
-            $('.locations-wrapper .accordion-group').click(function() {
+            $(listItemSelector).click(function() {
                 var $this = $(this);
                 neighborhoodPan($this.data('name'), $this.data('schools'), 
                                 $this.data('lat'), $this.data('lng'), true);
@@ -316,7 +316,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             setAutocompleteLocation();
 
             // Bind to accordion events so we can pan to the map location
-            $('.accordion-group').click(function() {
+            $(listItemSelector).click(function() {
                 var $this = $(this),
                 key = $this.data('key'),
                 loc = dm.locations[key],
