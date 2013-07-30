@@ -140,25 +140,26 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $('.favs-toggle').on('click', function(e) {
                 var $this = $(this),
                     key = $this.data('loc-id'),
-                    loc = dm.locations[key];
+                    loc = dm.locations[key],
+                    iconkey = 'icon-' + loc.getIconKey();
                 loc.setIcon();
+                $('#loc-icon-'+key).attr('src', common.getUrl(iconkey));
             });
 
             // Watch for hover events on the list so we can highlight both 
             // the list item and the icon on the map
             
-            $('.location-container').hover(function(e) {
+            $('.location-container').each(function(index) {
+                var $this = $(this),
+                    key = $this.data('key'),
+                    loc = dm.locations[key],
+                    iconkey = 'icon-' + loc.getIconKey();
+                $('#loc-icon-'+key).attr('src', common.getUrl(iconkey));
+            }).hover(function(e) {
                 var $this = $(this),
                     key = $this.data('key'),
                     loc = dm.locations[key];
 
-                // Keeping the icon selection simple for now, since everything is
-                // currently hardcoded to school and there is a separate icon management
-                // task. This swaps out the marker for a highlight marker on mouseenter and 
-                // switches it back to school on mouseleave. It should eventually tie in to
-                // the icon management system, using the data of the location to determine the
-                // appropriate icon state. The highlight marker will probably go away and will
-                // be more specific to the actual marker (probably just increasing its size).
                 if (e.type === 'mouseenter') {
                     $this.addClass('highlight');
                     loc.setIcon({'highlighted': true});

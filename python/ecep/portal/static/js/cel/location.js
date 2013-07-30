@@ -88,9 +88,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
      * a location's properties
      */
     Location.prototype.getIcon = function(options) {
+        if (!options) options = {};
+
         var doubleDimensions = function(option) {                                                        
-            option[0] *= 2;                                                                          
-            option[1] *= 2;                                                                          
+            option[0] = Math.round(option[0] * 1.25);                                                                          
+            option[1] = Math.round(option[1] * 1.25);                                                                          
         };                                                                                          
 
         var setHighlighted = function(options) {                                                         
@@ -120,12 +122,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             cacheKey;
 
         // build a key!
-        if (iconOpts.key) {
-            key = iconOpts.key;
-        } else {
-            key += this.isSchool() ? 'school' : 'center';
-            key += this.isAccredited() ? '-accredited' : '';
-            key += this.isStarred() ? '-starred' : '';
+        key = iconOpts.key ? iconOpts.key : this.getIconKey();
+
+        // set icon url if not provided in options
+        if (!options.iconUrl) {
+            iconOpts.iconUrl = common.getUrl('icon-' + key);
         }
 
         // cache the icon with a simple key
@@ -139,28 +140,20 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
 
         switch (key) {
             case 'school':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school.png'});
                 break;
             case 'school-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school-starred.png'});
                 break;
             case 'school-accredited':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school-accredited.png'});
                 break;
             case 'school-accredited-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/school-accredited-starred.png'});
                 break;
             case 'center':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center.png'});
                 break;
             case 'center-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center-starred.png'});
                 break;
             case 'center-accredited':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center-accredited.png'});
                 break;
             case 'center-accredited-starred':
-                $.extend(iconOpts, {iconUrl: '/static/img/leaflet-icons/center-accredited-starred.png'});
                 break;
             case 'geolocation':
                 break;
@@ -186,6 +179,16 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             var icon = this.getIcon(options);
             this.mapMarker.setIcon(icon);
         }
+    };
+
+    /* 
+     * get the icon key used in getIcon and the iconcache 
+     */
+    Location.prototype.getIconKey = function() {
+        var key = this.isSchool() ? 'school' : 'center';
+        key += this.isAccredited() ? '-accredited' : '';
+        key += this.isStarred() ? '-starred' : '';
+        return key;
     };
 
     /*

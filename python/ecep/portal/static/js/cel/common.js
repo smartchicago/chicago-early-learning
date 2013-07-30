@@ -207,7 +207,23 @@ function($, L, Response, Handlebars) {
             case 'browse-location':
                 return '/browse/?location=' + opts.location;
             case 'autocomplete-icon':
-                return 'http://placekitten.com/g/50/50';
+                return '/static/img/leaflet-icons/geolocated.png';
+            case 'icon-school':
+                return '/static/img/leaflet-icons/school.png';
+            case 'icon-school-accredited':
+                return '/static/img/leaflet-icons/school-accredited.png';
+            case 'icon-school-starred':
+                return '/static/img/leaflet-icons/school-starred.png';
+            case 'icon-school-accredited-starred':
+                return '/static/img/leaflet-icons/school-accredited-starred.png';
+            case 'icon-center':
+                return '/static/img/leaflet-icons/center.png';
+            case 'icon-center-accredited':
+                return '/static/img/leaflet-icons/center-accredited.png';
+            case 'icon-center-starred':
+                return '/static/img/leaflet-icons/center-starred.png';
+            case 'icon-center-accredited-starred':
+                return '/static/img/leaflet-icons/center-accredited-starred.png';
             default:
                 throw 'Unknown URL endpoint';
         }
