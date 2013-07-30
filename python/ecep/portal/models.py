@@ -199,7 +199,9 @@ class Location(models.Model):
         position = {'lng': self.geom[0], 'lat': self.geom[1]}
         bfields.sort()
         sfields.sort(key=lambda a: a['fieldname'])
-        return {'item': item, 'phone': phone, 'sfields': sfields, 'bfields': bfields, 'position': position}
+        return {'item': item, 'phone': phone, 'sfields': sfields,
+                'bfields': {'fieldname': _('Other Features'), 'values': bfields},
+                'position': position}
 
     def val_or_empty(self, field, f=(lambda x: x)):
         """
