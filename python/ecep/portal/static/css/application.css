@@ -385,8 +385,11 @@ h1, h2, h3, h4 {
 	width: 30%;
 	float: left;
 	padding: 15px;
-	min-height: 600px;
+	min-height: 660px;
 }
+	.favorite .fullwidth {
+		width: 100% !important;
+	}
 	.favorite h1 {
 		line-height: 10px;
 		font-size: 16px;
