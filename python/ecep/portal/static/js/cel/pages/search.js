@@ -69,20 +69,6 @@ require(['jquery', CEL.serverVars.gmapRequire], function($) {
             animateLocationWrappers(0, 0);
         });
 				
-				
-				// Collapse filters at 768px or below?
-				// 
-				
-				var pageWidth = $(document).width();
-				function closeFilters() {
-					if (pageWidth <= 768) {
-						$filterOptions.collapse('hide');
-						animateLocationWrappers(getHeight(), 0);
-					}
-				}
-				closeFilters();
-				
-				
     });
 });
 
