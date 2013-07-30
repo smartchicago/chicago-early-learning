@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 15:52-0500\n"
+"POT-Creation-Date: 2013-07-30 16:27-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -32,7 +32,8 @@ msgstr ""
 msgid "Quality Rating"
 msgstr ""
 
-#: portal/models.py:58 portal/templatetags/portal_extras.py:30
+#: portal/models.py:58 portal/models.py:207
+#: portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr ""
 
@@ -40,7 +41,7 @@ msgstr ""
 msgid "Quality Statement"
 msgstr ""
 
-#: portal/models.py:60 portal/views.py:269
+#: portal/models.py:60
 msgid "Accreditation"
 msgstr ""
 
@@ -128,7 +129,19 @@ msgstr ""
 msgid "Partial Week"
 msgstr ""
 
-#: portal/models.py:203
+#: portal/models.py:207
+msgid "More"
+msgstr ""
+
+#: portal/models.py:207
+msgid "Directions"
+msgstr ""
+
+#: portal/models.py:208
+msgid "Share"
+msgstr ""
+
+#: portal/models.py:211
 msgid "Other Features"
 msgstr ""
 
@@ -323,6 +336,14 @@ msgid ""
 "enroll your child in a quality early learning program."
 msgstr ""
 
+#: portal/templates/index.html:23 portal/templates/search.html:9
+msgid "Search"
+msgstr ""
+
+#: portal/templates/index.html:24
+msgid "Just start browsing"
+msgstr ""
+
 #: portal/templates/index.html:32
 msgid "Find early learning centers near you."
 msgstr ""
@@ -363,10 +384,6 @@ msgstr ""
 msgid ""
 "There are a number of ways to narrow down your search so you can see only "
 "the programs and schools you are interested in."
-msgstr ""
-
-#: portal/templates/search.html:9
-msgid "Search"
 msgstr ""
 
 #: portal/templatetags/portal_extras.py:38
