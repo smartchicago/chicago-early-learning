@@ -20,8 +20,8 @@ See LICENSE in the project root for copying permission
         <h1>{% blocktrans %}Find the right school for your child.{% endblocktrans %}</h1>
         <p>{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the FAQ page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
         <input class="homepage-search autocomplete-searchbox" type="text" placeholder="1828 W Chicago Ave"> 
-        <a class="btn btn-large get-started autocomplete-submit" href="#">Search</a><span class="intro-choice">or</span>  
-        <a class="btn btn-large get-started" href="{% url portal.views.browse %}">Just start browsing</a>
+        <a class="btn btn-large get-started autocomplete-submit" href="#">{% trans "Search" %}</a><span class="intro-choice">or</span>  
+        <a class="btn btn-large get-started" href="{% url portal.views.browse %}">{% trans "Just start browsing" %}</a>
       </div>
     </div>
 
