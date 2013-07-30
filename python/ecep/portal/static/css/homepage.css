@@ -16,10 +16,10 @@ body {
 .jumbotron {
 	position: relative;
 	padding: 40px 0;
-	color: #fff;
-	text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+	color: #424142;
 	background: #c2c2c2;
-	background: url(../img/banner2.jpg);
+	background: url(../img/banner.jpg);
+	background-opacity: 0.8;
 	background-size: cover;
 }
 .container-custom {
@@ -29,7 +29,7 @@ body {
 #featurettes {
 	margin-top: 85px;
 }
-	#featurettes hr {
+country proxies for spotify	#featurettes hr {
 		margin-top: 60px;
 		padding-bottom: 50px;
 	}
@@ -53,7 +53,9 @@ body {
 	transition: 0s;
 }
 .jumbotron p {
-	margin-bottom: 50px;
+	margin: 25px 0 70px 0;
+	font-size: 18px;
+	line-height: 1.4;
 }
 
 input.homepage-search {
@@ -64,6 +66,7 @@ input.homepage-search {
 	margin-right: 10px;
 	width: 400px;
 	text-shadow: none;
+	border: 1px solid #c2c2c2;
 }
 
 .intro-choice {
