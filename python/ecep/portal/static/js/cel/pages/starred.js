@@ -28,7 +28,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
                 $('.fav-count').html(data.locations.length);
 
                 // add click listener for the close buttons
-                $('.favs-close-button').on('click', function(e) {
+                $('.favs-close-button').removeClass('none').on('click', function(e) {
                     var $favorite = $(this).parent(),
                         key = $favorite.data('key');
                     favorites.removeIdFromCookie(key);
