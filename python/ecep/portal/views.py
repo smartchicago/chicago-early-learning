@@ -82,11 +82,9 @@ def faq(request):
 
 
 def setlang(request, language):
-    nxt = '/'
-    if 'next' in request.REQUEST:
-        nxt = request.REQUEST['next']
-
-    response = HttpResponseRedirect(nxt)
+    """Set Language cookie, reload current page"""
+    response = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    
     if language and check_for_language(language):
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
 
@@ -236,7 +234,7 @@ def _make_location_filter(query_params, etag_hash=''):
 
 
 def _make_response(context, etag_hash):
-    rsp = HttpResponse(json.dumps(context), content_type="application/json")
+    rsp = HttpResponse(json.dumps(context, cls=LazyEncoder), content_type="application/json")
 
     if etag_hash:
         md5 = hashlib.md5()
