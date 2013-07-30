@@ -28,6 +28,8 @@ require(['jquery', CEL.serverVars.gmapRequire], function($) {
     $('#refineBtn').click(function() {
         $(this).find('i').toggleClass('icon-chevron-down icon-chevron-right');
     });
+		
+		
 
     //Slidepanel
     $(document).ready(function(){
@@ -66,6 +68,21 @@ require(['jquery', CEL.serverVars.gmapRequire], function($) {
         $refineSearch.on('hidden', function () {
             animateLocationWrappers(0, 0);
         });
+				
+				
+				// Collapse filters at 768px or below?
+				// 
+				
+				var pageWidth = $(document).width();
+				function closeFilters() {
+					if (pageWidth <= 768) {
+						$filterOptions.collapse('hide');
+						animateLocationWrappers(getHeight(), 0);
+					}
+				}
+				closeFilters();
+				
+				
     });
 });
 
