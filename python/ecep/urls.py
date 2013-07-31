@@ -49,21 +49,16 @@ urlpatterns = patterns(
     
     # Neighborhood Views
     url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),
-
+    
     # Starred Location Views
     url(r'^starred/?[0-9,]*/$', 'portal.views.starred'),
 
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
     url(r'^rosetta/', include('rosetta.urls')),
-    url(r'^setlang/(?P<language>.+)/$', 'portal.views.setlang', name='setlang'),
-
+    url(r'^i18n/(?P<language>.+)/$', 'portal.views.setlang', name='setlang'),
+    url(r'^faq$', 'portal.views.faq', name='faq'),
 
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),
-)
-
-urlpatterns += i18n_patterns(
-    '',
-    url(r'^faq.html$', 'portal.views.faq', name='faq'),
 )
