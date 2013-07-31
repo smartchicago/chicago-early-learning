@@ -2,13 +2,11 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 html {
-	overflow: hidden;
 }
 
 body {
   padding: 0;
   margin: 0;
-  overflow-y: scroll;
 }
 
 html, body, #map {
@@ -35,9 +33,9 @@ h1, h2, h3, h4 {
 
 .navbar .brand {
 	margin: 0;
-	padding: 0px 40px 0px 15px;
-	font-size: 19px;
-	font-weight: 700;
+	padding: 0px 0px 0px 15px;
+	font-size: 16px;
+	font-weight: 300;
 	text-transform: uppercase;
 }
 
@@ -105,11 +103,15 @@ h1, h2, h3, h4 {
 	}
 
 	/* Search ------------ */
+	
+	.navbar .nav > li > a {
+		padding: 10px 10px 10px;
+	}
 
 	#desktop-search {
 		margin-top: 8px;
 		float: right;
-		margin-right: 28px;
+		margin-right: 0;
 	}
 		#desktop-search input {
 			left: 0;
@@ -124,7 +126,7 @@ h1, h2, h3, h4 {
 		}
 		#searchBtn {
 			padding: 8px 10px 5px 10px;
-			margin-left: 10px;
+			margin-left: 5px;
 		}
 		#mobile-search {
 			display: none;

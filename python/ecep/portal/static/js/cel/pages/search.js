@@ -28,6 +28,8 @@ require(['jquery', CEL.serverVars.gmapRequire], function($) {
     $('#refineBtn').click(function() {
         $(this).find('i').toggleClass('icon-chevron-down icon-chevron-right');
     });
+		
+		
 
     //Slidepanel
     $(document).ready(function(){
@@ -66,6 +68,7 @@ require(['jquery', CEL.serverVars.gmapRequire], function($) {
         $refineSearch.on('hidden', function () {
             animateLocationWrappers(0, 0);
         });
+				
     });
 });
 
