@@ -43,16 +43,16 @@
 }
 
 @media (max-width: 1168px) {
-.brand {
-display: none;
-}
+	.brand {
+		display: none;
+	}
 }
 
 /* Landscape phone to portrait tablet --------- */
 
 @media (max-width: 1023px) { 
 	body {
-		overflow: hidden;
+		
 	}
 	.navbar .navbar-right {
 		width: 80%;
@@ -103,11 +103,22 @@ display: none;
 	}
 	.container-custom {
 		width: 98%;
-		
+		width: auto;
+		padding: 25px;
+		text-align: center;
 	}
+		.container-custom	h1 {
+			font-size: 29px;
+		}
+		.media > .pull-left { 
+			float: none;
+		}
+		.media > .pull-right { 
+			float: none;
+		}
 		.media img {
-			display: none;
 			width: 100%;
+			margin: 0 auto;
 		}
 
 	#desktop-search {
@@ -205,6 +216,7 @@ display: none;
 		padding: 10px;
 		width: 215px;
 		font-size: 12px;
+		margin-right: 0;
 	}
 
 	.explore-btn {
@@ -243,6 +255,28 @@ display: none;
 		border: none;
 	}
 
+	.container-custom .description {
+			display: none;
+		}
+
+		.jumbotron .homepage-search {
+			padding: 10px;
+			width: 92%;
+			font-size: 12px;
+		}
+		.intro-choice {
+			display: none;
+		}
+
+		.get-started {
+			width: 92%;
+			margin-bottom: 10px;
+		}
+
+		.jumbotron {
+			padding: 0;
+		}
+
 }
 
 
@@ -271,7 +305,7 @@ display: none;
 	}
 	.jumbotron .homepage-search {
 		padding: 10px;
-		width: 85%;
+		width: 92%;
 		font-size: 12px;
 	}
 
