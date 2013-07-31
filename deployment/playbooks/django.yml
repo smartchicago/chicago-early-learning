@@ -36,6 +36,12 @@
     template: src=assets/run_jenkins_tests.j2 dest=${app_path}/run_jenkins_tests.sh
     only_if: ${django_jenkins}
 
+  - name: Fix permissions on language files
+    file: path=${app_path}/python/ecep/locale state=directory owner=${ansible_ssh_user} mode=0777
+
+  - name: Compile messages for i18n
+    command: ${env_path}/bin/python ${app_path}/python/ecep/manage.py compilemessages
+
   - name: Restart gunicorn
     action: service name=ecep state=restarted
     only_if: not ${django_jenkins}
