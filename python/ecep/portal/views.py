@@ -201,9 +201,9 @@ _location_bool_fields = {f.get_attname() for f in Location._meta.fields}
 def _make_location_filter(query_params, etag_hash=''):
     """Helper function that converts boolean filter query params to a filter object
 
-    The resulting filter object consists of the boolean fields ORed together, then ANDed
+    The resulting filter object consists of the boolean fields ANDed together, then ANDed
     with the bounding box query.  Something like this:
-        (filtera OR not filterb OR filterc ... ) AND bbox.Overlaps(Location.geom)
+        (filtera AND not filterb AND filterc ... ) AND bbox.Overlaps(Location.geom)
 
     query_params: dict containing boolean fields in Location model with true/false string values
                   and/or 'bbox'
@@ -284,7 +284,7 @@ def location_api(request, location_ids=None):
             xmin,ymin,xmax,ymax
 
     returns: Locations filtered like so:
-        (Location.id in location_ids) AND (filtera OR not filterb OR ...) AND
+        (Location.id in location_ids) AND (filtera AND not filterb AND ...) AND
             bbox.Overlaps(Location.geom)
         result has the following structure:
             {"locations": [ Locations filtered as described above ]}
@@ -361,7 +361,8 @@ def neighborhood_api(request):
         'name': n.primary_name,
         'schools': nbh_pk_to_count[n.pk] if n.pk in nbh_pk_to_count else 0,
         'id': n.pk,
-        'center': n.get_center()
+        'center': n.get_center(),
+        'explore': _('Explore')
     } for n in counts]
 
     context = {'neighborhoods': count_list}
