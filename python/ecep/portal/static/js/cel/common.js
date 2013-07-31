@@ -81,7 +81,7 @@ function($, L, Response, Handlebars) {
             if (ui.item) {
                 if (ui.item.type === 'location') {
                     window.location.href = getUrl(
-                        'browse-location', { location: ui.item.id });
+                        'autocomplete-location', { location: ui.item.id });
                 } else if (ui.item.type === 'neighborhood') {
                     window.location.href = getUrl(
                         'browse-neighborhood', { neighborhood: ui.item.id });
@@ -222,8 +222,8 @@ function($, L, Response, Handlebars) {
                 return '/browse/?neighborhood=' + opts.neighborhood;
             case 'browse-location':
                 return '/browse/?location=' + opts.location;
-            case 'autocomplete-icon':
-                return '/static/img/leaflet-icons/geolocated.png';
+            case 'autocomplete-location':
+                return '/location/' + opts.location + '/';
             case 'icon-school':
                 return '/static/img/leaflet-icons/school.png';
             case 'icon-school-accredited':
