@@ -114,7 +114,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     dm.neighborhoodUpdate(map);
                 }
             }
-        }, 250, true);
+        }, 250);
 
         /**
          * Changes list results display using Handlebars templates
@@ -209,9 +209,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          */
         var exploreButton = function() {
             $('.explore-btn').click(function() {
-                map.panTo([$(this).data('lat'), $(this).data('lng')]);
-                map.setZoom(zoomSettings);
-                displayMap();
+                map.setView([$(this).data('lat'), $(this).data('lng')], zoomSettings);
             });
         };
 
