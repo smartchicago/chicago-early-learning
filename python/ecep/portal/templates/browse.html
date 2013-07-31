@@ -47,18 +47,19 @@ See LICENSE in the project root for copying permission
       </div>
 
       <div id="collapseFilters" class="accordion-body in collapse">
+        <button class="btn btn-primary float-left" id="filter-clear-all">Clear Filters</button>
         <div class="accordion-inner filters-inner">
           <div class="filters-left">
             {% for f in filters_left %}
               <label>
-                <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" checked />{{ f.1 }}
+                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
               </label>
             {% endfor %}
           </div>
           <div class="filters-right">
             {% for f in filters_right %}
               <label>
-                <input type="checkbox" value="true" name="{{ f.0 }}" id="{{ f.0 }}" checked />{{ f.1 }}
+                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
               </label>
             {% endfor %}
           </div>
