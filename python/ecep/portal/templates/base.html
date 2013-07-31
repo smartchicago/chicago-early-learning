@@ -49,14 +49,17 @@ See LICENSE in the project root for copying permission
         <!-- Navbar RIGHT -->
         <div class="navbar-right">
           <ul class="nav">
-            <li><a href="#text-for-info" data-toggle="modal" data-r1024="Text For Info"><img src='{% static "img/icons/text-for-info.svg" %}' alt="Text For Info"></a></li>
-            <li><a href="{% url portal.views.about %}" data-r1024="About"><img src='{% static "img/icons/about.svg" %}' alt="About"></a></li>
-            <li><a href="{% url portal.views.faq %}" data-r1024="FAQ"><img src='{% static "img/icons/faq.svg" %}'></a></li>
+            <li><a href="#text-for-info" data-toggle="modal" data-r1024={% trans "Text For Info" %}><img src='{% static "img/icons/text-for-info.svg" %}' alt="Text For Info"></a></li>
+            <li><a href="{% url portal.views.about %}" data-r1024={% trans "About" %}><img src='{% static "img/icons/about.svg" %}' alt="About"></a></li>
+            <li><a href="{% url portal.views.faq %}" data-r1024={% trans "FAQ" %}><img src='{% static "img/icons/faq.svg" %}'></a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="Language <b class='caret'></b>">EN <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="{% trans 'Language' %} <b class='caret'></b>">EN <b class="caret"></b></a>
+
               <ul class="dropdown-menu pull-right">
-                <li><a href="#"><img src='{% static "img/en.png" %}' alt="English"> English</a></li>
-                <li><a href="#"><img src='{% static "img/es.png" %}' alt="Spanish"> Espa&ntilde;ol</a></li>
+                {% get_static_prefix as STATIC_PREFIX %}
+                {% for lang in LANGUAGES %}
+                <li><a class="langlink" href="{% url setlang language=lang.0 %}" data-lang="{{ lang.0 }}"><img src='{{ STATIC_PREFIX }}img/{{ lang.0 }}.png' />&nbsp;&nbsp;{% trans lang.1 %}</a></li>
+                {% endfor %}
               </ul>
             </li>
           </ul>
@@ -70,10 +73,10 @@ See LICENSE in the project root for copying permission
     <div id="text-for-info" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="textForInfo" aria-hidden="true">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove-circle"></i></button>
-        <h3 id="textForInfo">Want information via text?</h3>
+        <h3 id="textForInfo">{% blocktrans %}Want information via text?{% endblocktrans %}</h3>
       </div>
       <div class="modal-body">
-        <p>Text your zip code to <a href="sms:{{ settings.TWILIO_PHONE }}">{{ settings.TWILIO_PHONE }}</a> and we'll do the rest.</p>
+        <p>{% blocktrans %}Text your zip code to {% endblocktrans %}<a href="sms:{{ settings.TWILIO_PHONE }}">{{ settings.TWILIO_PHONE }}</a>{% blocktrans %} and we'll do the rest.{% endblocktrans %}</p>
       </div>
     </div>
 
@@ -81,10 +84,10 @@ See LICENSE in the project root for copying permission
     <div id="share-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="share-modal-label" aria-hidden="true">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="share-modal-label">Save and Share Permalink</h3>
+        <h3 id="share-modal-label">{% blocktrans %}Save and Share Permalink{% endblocktrans %}</h3>
       </div>
       <div class="modal-body">
-        <p>Save the following link, or share it with friends, family, or co-workers.</p>
+        <p>{% blocktrans %}Save the following link, or share it with friends, family, or co-workers.{% endblocktrans %}</p>
         
         <input id="social-text" type="text" readonly="true">
         <a target="_blank" id="social-mail" class="medium fc-webicon mail"><i class="icon-mail-alt"></i></a>
@@ -129,25 +132,23 @@ See LICENSE in the project root for copying permission
         // define([CEL.serverVars.gmapRequire], function() { ... })
         CEL = {
             serverVars: {
-                latSettings: '{{ settings.LATITUDE }}',
-                lngSettings: '{{ settings.LONGITUDE}}',
+                latSettings: '{{ settings.LATITUDE|stringformat:'f' }}',
+                lngSettings: '{{ settings.LONGITUDE|stringformat:'f' }}',
                 zoomSettings: '{{ settings.ZOOM_THRESHOLD }}',
                 gmapKey: '{{ settings.GOOGLE_MAPS_KEY }}',
                 gmapRequire: 'async!http://maps.googleapis.com/maps/api/js?v=3.2&key=' +
                     '{{ settings.GOOGLE_MAPS_KEY }}' + '&sensor=false',
                 autocomplete: {
-                    swlat: {{ settings.AUTOCOMPLETE.SW_LAT }},
-                    swlng: {{ settings.AUTOCOMPLETE.SW_LNG }},
-                    nelat: {{ settings.AUTOCOMPLETE.NE_LAT }},
-                    nelng: {{ settings.AUTOCOMPLETE.NE_LNG }}
+                    swlat: {{ settings.AUTOCOMPLETE.SW_LAT|stringformat:'f' }},
+                    swlng: {{ settings.AUTOCOMPLETE.SW_LNG|stringformat:'f' }},
+                    nelat: {{ settings.AUTOCOMPLETE.NE_LAT|stringformat:'f' }},
+                    nelng: {{ settings.AUTOCOMPLETE.NE_LNG|stringformat:'f' }}
                 }
             }
         };
-        
         // This forces loading of minified common libs rather than loading them separately
         require(['common'], function() { });
      </script>
-
     {% block scripts %}{% endblock %}
   </body> 
 </html> 

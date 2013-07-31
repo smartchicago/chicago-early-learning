@@ -26,6 +26,16 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
                 $('.single-location-map').hide();
                 $('.single-share').hide();
                 $('.fav-count').html(data.locations.length);
+
+                // add click listener for the close buttons
+                $('.favs-close-button').removeClass('none').on('click', function(e) {
+                    var $favorite = $(this).parent(),
+                        key = $favorite.data('key');
+                    favorites.removeIdFromCookie(key);
+                    $favorite.remove();
+                    favorites.syncUI();
+                    e.stopPropagation();
+                });
             }
 
             // get location ids:

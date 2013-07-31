@@ -813,3 +813,13 @@ h1, h2, h3, h4 {
 .fc-webicon.googleplus { background-color: #d34836; }
 .fc-webicon.mail { background-color: #AAA; }
 .fc-webicon.twitter { background-color: #4099FF; }
+
+.none {
+    display: none;
+}
+
+.favs-close-button {
+    display: block;
+    float: right;
+    font-size: 24px;
+}

@@ -126,18 +126,16 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 starredIdsLength, 
                 starredId;
 
-            if (cookie) {
-                starredIds = cookie.split(',');
-                starredIdsLength = starredIds.length;
-                starredId = 0;
-               
-                // toggle any buttons for starred locations to on state
-                for (var i = 0; i < starredIdsLength; i++) {
-                    starredId = starredIds[i];
-                    favs.toggle($('#favs-toggle-loc-' + starredId));
-                }
-                $('.fav-count').html(starredIdsLength);
+            starredIds = cookie ? cookie.split(',') : [];
+            starredIdsLength = starredIds.length;
+            starredId = 0;
+            
+            // toggle any buttons for starred locations to on state
+            for (var i = 0; i < starredIdsLength; i++) {
+                starredId = starredIds[i];
+                favs.toggle($('#favs-toggle-loc-' + starredId));
             }
+            $('.fav-count').html(starredIdsLength);
         },
 
         /*

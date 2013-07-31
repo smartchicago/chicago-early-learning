@@ -236,8 +236,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                 data: {} // data for neighborhood (e.g. number of schools)
             };
             this.events = $({});
-            this.$filters = $filters || $('.filters-inner :checkbox');
-            this.$filters.on('click', function() { that.onFilterChange(); });
+            this.$filters = $filters;
         },
         _iconcache = {};
 
@@ -252,18 +251,46 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          * Updates if location is shown in map and list based on
          * applied filters and bounding box of map
          */
-        locationUpdate: function(map) {
+        locationUpdate: function(map, locationLayer) {
             var filters = this.getFilters(map);
                 that = this;
             $.getJSON(common.getUrl('location-api'), filters, function(data) {
-                that.locations = {};
+                // Unfortunately we can't just blow away the locations here because that
+                // makes the popovers disappear every time you pan, so we have to do it
+                // the hard way.
+
+                var locs = that.locations;
+
+                // Mark...
+                $.each(locs, function(i, location) {
+                    // Only the truely worthy shall survive
+                    location._mark = false;
+                });
+
+                // Load...
                 $.each(data.locations, function(i, location) {
                     var key = location.item.key;
-                    if (!that.locations[key]) {
-                        that.locations[key] = new Location(location);
+                    if (!locs[key]) {
+                        var l = new Location(location);
+                        l.setMarker();
+                        locationLayer.addLayer(l.getMarker());
+                        l._mark = true;
+                        locs[key] = l;
+                    } else {
+                        locs[key]._mark = true;
                     }
-                    that.locations[key].setMarker();
                 });
+
+                // ...and Sweep
+                $.each(locs, function(i, location) {
+                    if (location._mark) {
+                        delete location._mark;
+                    } else {
+                        locationLayer.removeLayer(location.getMarker());
+                        delete locs[i];
+                    }
+                });
+
                 that.events.trigger('DataManager.locationUpdated');
             });
         },
@@ -317,12 +344,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          */
         getFilters: function(map) {
             var opts = { },
-                $filters = this.$filters || $('.filters-inner :checkbox');
+                $filters = this.$filters;
             $filters.filter(':checked').each(function(idx, elem) {
                 opts[elem.id] = elem.checked;
             });
             if (map && map.getBounds) {
-                opts.bbox = map.getBounds().pad(0.25).toBBoxString();
+                opts.bbox = map.getBounds().toBBoxString();
             }
             
             return opts;
