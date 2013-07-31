@@ -192,13 +192,13 @@ h1, h2, h3, h4 {
 			font-family: "Helvetica", Arial, sans-serif;
 		}
 			#loc-icon {
-				margin-left: 50%;
+				margin-left: 65%;
 				margin-top: -30px;
 				float: left;
 			}
 			#loc-dirs {
 				float: left;
-				margin-left: 68%;
+				margin-left: 75%;
 				margin-top: -30px;
 				font-size: 13px;
 				font-weight: normal;
@@ -789,6 +789,10 @@ h1, h2, h3, h4 {
 		border-radius: 3px;
 		margin-bottom: 8px;
 	}
+	
+.location-icons {
+	max-width: 18px;
+}
 
 /* -----------------------------------------
    Social/sharing styling
