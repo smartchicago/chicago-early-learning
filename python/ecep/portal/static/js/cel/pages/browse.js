@@ -156,14 +156,23 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $('.favs-toggle').on('click', function(e) {
                 var $this = $(this),
                     key = $this.data('loc-id'),
-                    loc = dm.locations[key];
+                    loc = dm.locations[key],
+                    iconkey = 'icon-' + loc.getIconKey();
+
                 // always highlighted because the mouse will be over the accordion div for the click
                 loc.setIcon({ highlighted: true });
+                $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
             });
 
             // Watch for hover events on the list so we can highlight both 
             // the list item and the icon on the map
-            $('.location-container').hover(function(e) {
+            $('.location-container').each(function(index) {
+                var $this = $(this),
+                    key = $this.data('key'),
+                    loc = dm.locations[key],
+                    iconkey = 'icon-' + loc.getIconKey();
+                $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
+            }).hover(function(e) {
                 var $this = $(this),
                     key = $this.data('key'),
                     loc = dm.locations[key];
@@ -175,14 +184,19 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     $this.removeClass('highlight');
                     loc.setIcon({'highlighted': false});
                 }
-            }).on('click', function(e) {
-                var $this = $(this),
-                    $morelessbtn = $this.find('.more-less-btn'),
-                    btnText = $morelessbtn.html();
-                btnText = btnText === gettext('More') ? gettext('Less') : gettext('More');
-                $morelessbtn.html(btnText);
             });
-            
+            // plugin to accordion events for consistency
+            // TODO: why dothest thou fire thrice?
+            $('.locations-wrapper').on('show.bs.collapse', function(e) {
+                var $this = $(this),
+                    $morelessbtn = $this.find('.more-less-btn');
+                $morelessbtn.html(gettext('Less'));
+            }).on('hide.bs.collapse', function(e) {
+                var $this = $(this),
+                    $morelessbtn = $this.find('.more-less-btn');
+                console.log(e, this);
+                $morelessbtn.html(gettext('More'));
+            });
         };
 
         /*
@@ -343,7 +357,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 // draw marker for geolocated point 
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
-                        iconUrl: common.getUrl('autocomplete-icon')
+                        iconUrl: common.getUrl('icon-geolocation')
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
                 }
