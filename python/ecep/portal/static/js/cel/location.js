@@ -88,7 +88,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
      * a location's properties
      */
     Location.prototype.getIcon = function(options) {
-        if (!options) options = {};
+        options = options || {};
 
         var scaleDimensions = function(option, scale) {                                                        
             scale = parseFloat(scale);
