@@ -177,7 +177,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 var $this = $(this),
                     $morelessbtn = $this.find('.more-less-btn'),
                     btnText = $morelessbtn.html();
-                btnText = btnText === 'More' ? 'Less' : 'More';
+                btnText = btnText === gettext('More') ? gettext('Less') : gettext('More');
                 $morelessbtn.html(btnText);
             });
             
@@ -232,7 +232,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     map.setZoom(zoomSettings - 3);
                 }
             }            
-            var popupContent = '<b>' + name + '</b><br>Number of Schools: ' + numSchools + '<br><a class="neighborhood-popup" href="#">Explore</a>',
+            var popupContent = '<b>' + name + '</b><br>' + gettext('Number of Schools') + ': ' + numSchools + '<br><a class="neighborhood-popup" href="#">' + gettext('Explore') + '</a>',
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
 
             $('.neighborhood-popup').on('click', function(e) {
