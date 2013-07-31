@@ -5,7 +5,7 @@
   {{#if item.url}}
   <ul class="website-phone">
     <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank">{{item.url}}</a></li>
-    <a class="btn pull-right single-share" href="#"><i class="icon-share"></i> Share</a>
+    <a class="btn pull-right single-share" href="#"><i class="icon-share"></i>{{translations.share}}</a>
   </ul>
   {{/if}}
   <hr>
@@ -18,7 +18,7 @@
       <h2>{{value}}</h2>
       <hr>
     {{/each}}
-      <h1>Other Features</h1>
-      <h2>{{bfields}}</h2>
+      <h1>{{bfields.fieldname}}</h1>
+      <h2>{{bfields.values}}</h2>
   </div>
 </div>
