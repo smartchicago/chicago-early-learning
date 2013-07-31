@@ -57,7 +57,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.isAccredited = function() {
         var isAccredited = false;
         $.each(this.data.sfields, function(key, value) {
-            if (value.fieldname === "Accreditation" && value.value !== "None") {
+            if (value.fieldname === gettext("Accreditation") && value.value !== "None") {
                 isAccredited = true;
                 return false;
             }
@@ -74,7 +74,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.isSchool = function() {
         var isSchool = false;
         $.each(this.data.sfields, function(key, value) {
-            if (value.fieldname === "Affiliations") {
+            if (value.fieldname === gettext("Affiliations")) {
                 if (value.value.indexOf("CPS Based") !== -1) {
                     isSchool = true;
                 } 
