@@ -240,6 +240,8 @@ function($, L, Response, Handlebars) {
                 return '/static/img/leaflet-icons/center-starred.png';
             case 'icon-center-accredited-starred':
                 return '/static/img/leaflet-icons/center-accredited-starred.png';
+            case 'icon-geolocation':
+                return '/static/img/leaflet-icons/geocode.png';
             default:
                 throw 'Unknown URL endpoint';
         }

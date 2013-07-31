@@ -356,7 +356,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 // draw marker for geolocated point 
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
-                        iconUrl: common.getUrl('autocomplete-icon')
+                        iconUrl: common.getUrl('icon-geolocation')
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
                 }
