@@ -21,10 +21,11 @@
 		width: 100%;
 		left: 0;
 	}
-	#desktop-search input {
-		
-	}
 
+	#toggleListBtn {
+		margin-top: 1px;
+	}
+	
 		.cb_slide_panel {
 		background: #fff;
 		margin-top: 61px;
@@ -132,13 +133,13 @@
 	}
 		#mobile-search input {
 			width: auto;
-			right: 98px;
-			left: 59px;
-			top: 62px;
+			right: 57px;
+			left: 93px;
+			top: 65px;
 			position: absolute;
 			display: block;
 			font-size: 13px;
-			padding: 5px 10px;
+			padding: 5px 10px 6px;
 		}
 		#mobile-search .btn-group {
 			float: right;
@@ -149,7 +150,7 @@
 		#refineSearch {
 			margin-left: 10px;
 			margin-right: 10px;
-			margin-top: 7px;
+			margin-top: 5px;
 		}
 		.results-toolbar {
 			display: none;
@@ -184,6 +185,12 @@
 		margin-top: 113px;
 	}
 
+	#toggleMapBtn {
+		float: right;
+		right: 10px;
+		position: absolute;
+	}
+	
 	.filters-left,
 	.filters-right {
 		float: left;
@@ -258,6 +265,14 @@
 	.container-custom .description {
 			display: none;
 		}
+		
+	.container-custom .description-mobile {
+			display: block;
+		}
+		
+		.autocomplete-submit {
+			display: none;
+		}
 
 		.jumbotron .homepage-search {
 			padding: 10px;
@@ -269,7 +284,7 @@
 		}
 
 		.get-started {
-			width: 92%;
+			width: 20%;
 			margin-bottom: 10px;
 		}
 
@@ -323,6 +338,13 @@
 		float: right;
 		padding-right: 10px;
 		display: none;
+	}
+	
+	#toggleListBtn {
+		margin-top: -1px;
+	}
+	#toggleMapBtn {
+		margin-top: 4px;
 	}
 
 
