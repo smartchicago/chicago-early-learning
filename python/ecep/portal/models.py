@@ -199,7 +199,7 @@ class Location(models.Model):
         position = {'lng': self.geom[0], 'lat': self.geom[1]}
 
         # Quality Statement
-        if self.q_stmt != '':
+        if self.q_stmt:
             sfields.append({'fieldname': _('Quality Statement'), 'value': self.q_stmt})
         
         bfields.sort()
