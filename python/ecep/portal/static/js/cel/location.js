@@ -236,8 +236,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                 data: {} // data for neighborhood (e.g. number of schools)
             };
             this.events = $({});
-            this.$filters = $filters || $('.filters-inner :checkbox');
-            this.$filters.on('click', function() { that.onFilterChange(); });
+            this.$filters = $filters;
         },
         _iconcache = {};
 
@@ -317,7 +316,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          */
         getFilters: function(map) {
             var opts = { },
-                $filters = this.$filters || $('.filters-inner :checkbox');
+                $filters = this.$filters;
             $filters.filter(':checked').each(function(idx, elem) {
                 opts[elem.id] = elem.checked;
             });
