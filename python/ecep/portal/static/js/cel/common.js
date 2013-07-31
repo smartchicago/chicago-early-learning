@@ -9,8 +9,6 @@ function($, L, Response, Handlebars) {
     'use strict';
     
     $(document).ready(function() {
-
-
         // AUTOCOMPLETE
         var $autocomplete = $('.autocomplete-searchbox');
 
@@ -81,11 +79,14 @@ function($, L, Response, Handlebars) {
         var submitAutocomplete = function(ui) {
             if (ui.item) {
                 if (ui.item.type === 'location') {
-                    window.location.href = getUrl('browse-location', { location: ui.item.id });
+                    window.location.href = getUrl(
+                        'browse-location', { location: ui.item.id });
                 } else if (ui.item.type === 'neighborhood') {
-                    window.location.href = getUrl('browse-neighborhood', { neighborhood: ui.item.id });
+                    window.location.href = getUrl(
+                        'browse-neighborhood', { neighborhood: ui.item.id });
                 } else if (ui.item.lat && ui.item.lon) {
-                    window.location.href = getUrl('browse-latlng', { lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
+                    window.location.href = getUrl(
+                        'browse-latlng', { lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
                 }
             }
             // default
@@ -186,6 +187,12 @@ function($, L, Response, Handlebars) {
     Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,1024] });
 
 
+    /**
+     * Central api for getting urls for the app
+     * @param { logical name of the endpoint } name
+     * @param { Options for creating the url, depends on name } opts
+     * @return { URL string for request }
+     */
     var getUrl = function (name, opts) {
         switch (name) {
             case 'location-api':
@@ -281,6 +288,35 @@ function($, L, Response, Handlebars) {
     });
 
     return {
-        getUrl: getUrl
+        getUrl: getUrl,
+
+        // Stolen from _.js v1.5.1
+        // https://github.com/jashkenas/underscore/blob/dc5a3fa0133b7000c36ba76a413139c63f646789/underscore.js
+        // See project root for license
+        //
+        // Returns a function, that, as long as it continues to be invoked, will not
+        // be triggered. The function will be called after it stops being called for
+        // N milliseconds. If `immediate` is passed, trigger the function on the
+        // leading edge, instead of the trailing.
+        debounce: function(func, wait, immediate) {
+            var result,
+                timeout = null;
+            return function() {
+                var context = this,
+                    args = arguments,
+                    later = function() {
+                        timeout = null;
+                        if (!immediate) result = func.apply(context, args);
+                    },
+                    callNow = immediate && !timeout;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                    if (callNow) {
+                        result = func.apply(context, args);
+                    }
+
+                return result;
+            };
+        }
     };
 });
