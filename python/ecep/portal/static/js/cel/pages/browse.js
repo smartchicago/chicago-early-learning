@@ -161,7 +161,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
                 // always highlighted because the mouse will be over the accordion div for the click
                 loc.setIcon({ highlighted: true });
-                $('#loc-icon-'+key).attr('src', common.getUrl(iconkey));
+                $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
             });
 
             // Watch for hover events on the list so we can highlight both 

@@ -90,17 +90,22 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.getIcon = function(options) {
         if (!options) options = {};
 
-        var doubleDimensions = function(option) {                                                        
-            option[0] = Math.round(option[0] * 1.25);                                                                          
-            option[1] = Math.round(option[1] * 1.25);                                                                          
+        var scaleDimensions = function(option, scale) {                                                        
+            scale = parseFloat(scale);
+            if (isNaN(scale)) {
+                return;
+            }
+            option[0] = Math.round(option[0] * scale);                                                                          
+            option[1] = Math.round(option[1] * scale);                                                                          
         };                                                                                          
 
         var setHighlighted = function(options) {                                                         
-            doubleDimensions(options.iconSize);                                                
-            doubleDimensions(options.shadowSize);                                              
-            doubleDimensions(options.iconAnchor);                                              
-            doubleDimensions(options.shadowAnchor);                                            
-            doubleDimensions(options.popupAnchor);                                             
+            var scale = 1.25;
+            scaleDimensions(options.iconSize, scale);                                                
+            scaleDimensions(options.shadowSize, scale);                                              
+            scaleDimensions(options.iconAnchor, scale);                                              
+            scaleDimensions(options.shadowAnchor, scale);                                            
+            scaleDimensions(options.popupAnchor, scale);                                             
             options.iconUrl = options.iconUrl.replace(".png", "@2x.png");                                             
             options.shadowUrl = options.shadowUrl.replace(".png", "@2x.png");
             return options;
@@ -138,30 +143,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             return _iconcache[cacheKey];
         }
 
-        switch (key) {
-            case 'school':
-                break;
-            case 'school-starred':
-                break;
-            case 'school-accredited':
-                break;
-            case 'school-accredited-starred':
-                break;
-            case 'center':
-                break;
-            case 'center-starred':
-                break;
-            case 'center-accredited':
-                break;
-            case 'center-accredited-starred':
-                break;
-            case 'geolocation':
-                break;
-            default:
-                return null;
-        }
-
-        // highlighting means we double all dimensions and replace the icon with @2x
+        // highlighting means we scale all dimensions up and replace the icon with @2x
         if (iconOpts.highlighted) {
             iconOpts = setHighlighted(iconOpts);
         }
