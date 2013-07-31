@@ -182,14 +182,18 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     $this.removeClass('highlight');
                     loc.setIcon({'highlighted': false});
                 }
-            }).on('click', function(e) {
-                var $this = $(this),
-                    $morelessbtn = $this.find('.more-less-btn'),
-                    btnText = $morelessbtn.html();
-                btnText = btnText === 'More' ? 'Less' : 'More';
-                $morelessbtn.html(btnText);
             });
-            
+            // plugin to accordion events for consistency
+            // TODO: why dothest thou fire thrice?
+            $('.locations-wrapper').on('show.bs.collapse', function(e) {
+                var $this = $(this),
+                    $morelessbtn = $this.find('.more-less-btn');
+                $morelessbtn.html('Less');
+            }).on('hide.bs.collapse', function(e) {
+                var $this = $(this),
+                    $morelessbtn = $this.find('.more-less-btn');
+                $morelessbtn.html('More');
+            });
         };
 
         /*
