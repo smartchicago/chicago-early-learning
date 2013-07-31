@@ -8,7 +8,7 @@
         <h2>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2>
       </a>
       <a class="directions-icon" id="loc-icon" href="#" rel="tooltip" title="NYAEC Accredidation">
-        <img id="loc-icon-{{item.key}}" src="/static/js/leaflet-icons/center.png" class="location-icons" />
+        <img id="loc-icon-{{item.key}}" src="/static/img/leaflet-icons/center.png" class="location-icons" />
       </a> 
       <a class="directions-icon" id="loc-dirs" href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}" target="_blank">{{translations.directions}}</a>
       <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}" id="moreBtn">{{translations.more}}</button>
