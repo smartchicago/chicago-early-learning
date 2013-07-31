@@ -171,7 +171,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     key = $this.data('key'),
                     loc = dm.locations[key],
                     iconkey = 'icon-' + loc.getIconKey();
-                $('#loc-icon-'+key).attr('src', common.getUrl(iconkey));
+                $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
             }).hover(function(e) {
                 var $this = $(this),
                     key = $this.data('key'),
@@ -194,6 +194,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             }).on('hide.bs.collapse', function(e) {
                 var $this = $(this),
                     $morelessbtn = $this.find('.more-less-btn');
+                console.log(e, this);
                 $morelessbtn.html(gettext('More'));
             });
         };
