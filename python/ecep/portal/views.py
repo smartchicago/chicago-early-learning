@@ -87,7 +87,7 @@ def faq(request):
 def setlang(request, language):
     """Set Language cookie, reload current page"""
     response = HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    
+
     if language and check_for_language(language):
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, language)
 
@@ -224,7 +224,7 @@ def _make_location_filter(query_params, etag_hash=''):
             logger.debug('Adding Filter: %s = %s' % (f, val))
             kw = {f: val == 'true'}
             etag_hash += str(kw)
-            result |= Q(**kw)
+            result &= Q(**kw)
 
     # Filter by any bbox if provided
     if 'bbox' in query_params:
