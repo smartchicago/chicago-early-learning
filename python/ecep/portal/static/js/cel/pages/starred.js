@@ -34,6 +34,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
                     favorites.removeIdFromCookie(key);
                     $favorite.remove();
                     favorites.syncUI();
+                    e.stopPropagation();
                 });
             }
 

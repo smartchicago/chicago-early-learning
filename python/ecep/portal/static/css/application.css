@@ -819,7 +819,5 @@ h1, h2, h3, h4 {
 .favs-close-button {
     display: block;
     float: right;
-    width: 20px;
-    height: 20px;
-    background-image: url("http://placekitten.com/g/20/20");
+    font-size: 24px;
 }
