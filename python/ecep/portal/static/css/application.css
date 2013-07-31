@@ -181,6 +181,7 @@ h1, h2, h3, h4 {
 	.location {
 		padding: 17px;
 		background: #f7f7f7;
+		border-bottom: 1px solid #DFDFDF;
 	}
 		.loc-icon {
 			position: relative;
