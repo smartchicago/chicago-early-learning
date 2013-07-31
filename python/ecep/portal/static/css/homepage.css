@@ -1,12 +1,5 @@
 /* Homepage ------------------------ */
 
-body {
-	overflow-y: scroll !important;
-
-}
-
-
-
 .masthead {
 	padding: 70px 0 80px;
 	margin-bottom: 0;
@@ -29,7 +22,7 @@ body {
 #featurettes {
 	margin-top: 85px;
 }
-country proxies for spotify	#featurettes hr {
+	#featurettes hr {
 		margin-top: 60px;
 		padding-bottom: 50px;
 	}
@@ -72,4 +65,12 @@ input.homepage-search {
 .intro-choice {
 	margin-left: 20px;
 	margin-right: 17px;
+}
+
+.media-body h1 {
+	color: #317DC1;
+}
+.media-body p {
+	line-height: 1.5;
+	padding-top: 10px;
 }

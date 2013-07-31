@@ -9,6 +9,7 @@ function($, L, Response, Handlebars) {
     'use strict';
     
     $(document).ready(function() {
+
         // AUTOCOMPLETE
         var $autocomplete = $('.autocomplete-searchbox');
 
@@ -173,11 +174,19 @@ function($, L, Response, Handlebars) {
             },
             minLength: 2        // do not make a request until we have typed two chars
         });
-
+        // END AUTOCOMPLETE
     });
-    // END AUTOCOMPLETE
 
-
+    // Hide the address bar on mobile browsers
+    // TODO: More robust solution: http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
+    /*
+    window.addEventListener("load",function() {
+        setTimeout(function(){
+            window.scrollTo(0, 1);
+        }, 0);
+    });
+    */
+			
     // Tooltips for all!  Anything w/ a tooltip tag gets a tooltip
     $('[rel="tooltip"]').tooltip();
 
