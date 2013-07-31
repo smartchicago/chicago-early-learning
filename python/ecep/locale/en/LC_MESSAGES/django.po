@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 16:27-0500\n"
+"POT-Creation-Date: 2013-07-31 08:46-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -186,6 +186,10 @@ msgstr ""
 msgid "(page %(current)d/%(total)d)"
 msgstr ""
 
+#: portal/views.py:365
+msgid "Explore"
+msgstr ""
+
 #: portal/views_v1.py:32
 msgid "Distance"
 msgstr ""
@@ -290,6 +294,11 @@ msgid ""
 "effective, for whom, and why."
 msgstr ""
 
+#: portal/templates/base-search.html:9 portal/templates/index.html:23
+#: portal/templates/search.html:9
+msgid "Search"
+msgstr ""
+
 #: portal/templates/base.html:52
 msgid "Text For Info"
 msgstr ""
@@ -334,10 +343,6 @@ msgid ""
 "programs side-by-side to select the highest quality option for your child. "
 "Browse the FAQ page to learn more about different alternatives and how to "
 "enroll your child in a quality early learning program."
-msgstr ""
-
-#: portal/templates/index.html:23 portal/templates/search.html:9
-msgid "Search"
 msgstr ""
 
 #: portal/templates/index.html:24

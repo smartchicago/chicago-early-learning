@@ -361,7 +361,8 @@ def neighborhood_api(request):
         'name': n.primary_name,
         'schools': nbh_pk_to_count[n.pk] if n.pk in nbh_pk_to_count else 0,
         'id': n.pk,
-        'center': n.get_center()
+        'center': n.get_center(),
+        'explore': _('Explore')
     } for n in counts]
 
     context = {'neighborhoods': count_list}
