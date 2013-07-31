@@ -122,12 +122,25 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * @param {Type of current layer, see layerType} dataType
          */
         var listResults = function(data, dataType) {
-            var html = dataType === layerType.neighborhood ? neighborhoodList : locationList,
+            var isNb = (dataType === layerType.neighborhood), 
+                html = (isNb ? neighborhoodList : locationList),
+                dataList,
                 template = Handlebars.compile(html),
                 handlebarsData = [];
 
-            $.each(data, function(key, value) {
-                var item = layerType.neighborhood === dataType ? value : value.data;
+            // Sort everything by name ascending
+            dataList = $.map(data, function(v, k) {
+                return v;
+            }).sort(function(a, b) {
+                if (isNb) {
+                    return a.name.localeCompare(b.name);
+                } else {
+                    return a.data.item.site_name.localeCompare(b.data.item.site_name);
+                }
+            });
+
+            $.each(dataList, function(key, value) {
+                var item = isNb ? value : value.data;
                 handlebarsData.push(item);
             });
 
