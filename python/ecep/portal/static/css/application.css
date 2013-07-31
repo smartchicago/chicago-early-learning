@@ -207,6 +207,13 @@ h1, h2, h3, h4 {
 				border-right: 1px solid #cecece;
 	}
 	
+	.truncate {
+		width: 300px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
 	.accordion-heading h1 {
 		font-size: 16px;
 		padding: 0;
