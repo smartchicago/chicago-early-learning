@@ -190,7 +190,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         var popupTemplate = Handlebars.compile(
                                 '<b>{{item.site_name}}</b><br>{{item.address}}<br>' +
                                 '<a href="' + common.getUrl('single-location', { location: this.getId() }) + 
-                                '">Browse</a>'
+                                '">' + gettext('Explore') + '</a>'
                             ),
             icon = this.getIcon(options),
             marker = this.getMarker();
