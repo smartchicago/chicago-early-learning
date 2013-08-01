@@ -187,18 +187,23 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
      * If map marker does not exist, creates marker with proper icon
      */
     Location.prototype.setMarker = function(options) {
-        var popupTemplate = Handlebars.compile(
-                                '<b>{{item.site_name}}</b><br>{{item.address}}<br>' +
-                                '<a href="' + common.getUrl('single-location', { location: this.getId() }) + 
-                                '">' + gettext('Details') + '</a>'
-                            ),
+        var defaults = {
+                popup: true
+            };
             icon = this.getIcon(options),
             marker = this.getMarker();
+        options = $.extend({}, defaults, options);
         if (marker) {
             marker.setIcon(icon);
         } else {
             this.mapMarker = new L.Marker(this.getLatLng(), { icon: icon });
-            this.mapMarker.bindPopup(popupTemplate(this.data), {key: this.getId()});
+            if (options.popup === true) {
+                var popupText = '<b>{{item.site_name}}</b><br>{{item.address}}<br>' +
+                                '<a href="' + common.getUrl('single-location', { location: this.getId() }) + 
+                                '">' + gettext('Details') + '</a>',
+                    popupTemplate = Handlebars.compile(popupText);
+                this.mapMarker.bindPopup(popupTemplate(this.data), {key: this.getId()});
+            }
         }
     };
 
