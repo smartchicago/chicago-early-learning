@@ -295,6 +295,10 @@
 		.jumbotron {
 			padding: 0;
 		}
+
+		.leaflet-container .leaflet-control-zoom {
+			margin-top: 31px;
+		}
 		
 		.locations-wrapper {
 		overflow: hidden; }
@@ -391,6 +395,14 @@
 		.get-started {
 			width: 45%;
 			margin-bottom: 10px;
+		}
+
+		#toggleMapBtn {
+			margin-top: 3px;
+		}
+
+		.leaflet-container .leaflet-control-zoom {
+			margin-top: 31px;
 		}
 
 

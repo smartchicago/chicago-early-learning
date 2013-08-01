@@ -27,6 +27,10 @@ h1, h2, h3, h4 {
 		font-weight: 300;
 }
 
+.location-map  {
+
+}
+
 
 
 /* Navbar ---------------------- */
@@ -443,6 +447,7 @@ h1, h2, h3, h4 {
     margin-top: 75px;
     margin-bottom: 25px;
 }
+
 
 /* necessary to display leaflet
    icons above google map layer */
