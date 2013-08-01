@@ -197,10 +197,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     $this.removeClass('highlight');
                     loc.setIcon({'highlighted': false});
                 }
-            });
-            // plugin to accordion events for consistency
-            // TODO: why dothest thou fire thrice?
-            $('.location-container').on('show.bs.collapse', function(e) {
+            }).on('show.bs.collapse', function(e) {
                 var $this = $(this),
                     $morelessbtn = $this.find('.more-less-btn');
                 $morelessbtn.html(gettext('Less'));
