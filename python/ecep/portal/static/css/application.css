@@ -941,10 +941,16 @@ h1, h2, h3, h4 {
 		margin-top: 10px;
 		color: #c2c2c2;
 }
-	.favs-close-button:hover {
-		text-decoration: none;
-		color: #000;
-	}
+
+.favs-close-button:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+.single-star {
+    margin-top: -28px;
+    margin-right: 90px;
+}
 
 .description-mobile {
 	display: none;
