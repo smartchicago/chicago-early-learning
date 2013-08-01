@@ -437,6 +437,10 @@
 		.fave-star {
 			display: none;
 		}
+		
+		.single-share {
+			content: "";
+		}
 
 
 }

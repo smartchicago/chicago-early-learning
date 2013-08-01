@@ -683,6 +683,11 @@ h1, h2, h3, h4 {
 
 }
 
+		#filter-clear-all {
+			float: right;
+			margin-top: -37px;
+		}
+
 .btn-primary {
 	color: #FFFFFF;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
