@@ -62,15 +62,6 @@ ecepAdmin.addGeocodedPoint = function(location) {
     $('#id_geom').val("POINT (" + location.lng() + " " + location.lat() + ")");
 };
 
-// Function to filter results that are not rooftop results
-ecepAdmin.rooftopResults = function(geocode_results) {
-    for (var i = 0; i < geocode_results.length; i++) {
-        if (geocode_results[i].geometry.location_type !== 'ROOFTOP') {
-            geocode_results.splice(i, 1);
-        }
-    }
-};
-
 /** Function to geocode address and insert value into the location
  *  input of the admin form.
  *
@@ -88,8 +79,6 @@ ecepAdmin.geocodeAddress = function() {
     ecepAdmin.clearMarkers();
     
     geocoder.geocode( {'address': address}, function(results, status) {
-        // Filter results (only rooftop)
-        ecepAdmin.rooftopResults(results);
 
         for (var i = 0; i < results.length; i++) {
             // Add markers for all results
