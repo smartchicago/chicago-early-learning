@@ -13,10 +13,10 @@
   </div>
   <div id="collapseLoc{{@index}}" class="accordion-body collapse">
     <div class="accordion-inner">
-      <div class="accordion-right">
-        <a class="btn input-block-level" href="{{item.url}}" target="_blank"><i class="icon-globe"></i> {{translations.website}}</a>
-        <button class="btn input-block-level share-btn" data-key="{{item.key}}"><i class="icon-share"></i> {{translations.share}}</button>
-      </div>
+			<div class="btn-group web-share">
+        <button class="btn btn-standard input-block-level" href="{{item.url}}" target="_blank"><i class="icon-globe"></i> {{translations.website}}</button>
+        <button class="btn btn-standard input-block-level share-btn" data-key="{{item.key}}"><i class="icon-share"></i> {{translations.share}}</button>
+			</div>
       <div class="accordion-left">
         <h1>{{phone.fieldname}}</h1>
         <h2><a href="tel:{{phone.number}}">{{phone.number}}</a></h2>

@@ -101,6 +101,15 @@ h1, h2, h3, h4 {
 	.navbar .nav img {
 		max-height: 20px;
 	}
+	
+	.modal-header .close {
+		font-size: 35px;
+	}
+	
+	.web-share {
+		width: 313px;
+	}
+	
 
 	/* Search ------------ */
 	
@@ -843,7 +852,7 @@ h1, h2, h3, h4 {
 }
 
 #faq-container {
-	margin-top: 85px;
+	margin-top: 55px;
 }
 	#faq-container h1 {
 		font-size: 32px;
@@ -855,7 +864,7 @@ h1, h2, h3, h4 {
 	}
 	#faq-container .accordion-heading .accordion-toggle {
 		font-family: "Montserrat", sans-serif;
-		padding: 20px;
+		padding: 20px 0;
 		color: #317DC1;
 	}
 	#faq-container .accordion-inner {
@@ -866,6 +875,11 @@ h1, h2, h3, h4 {
 		-webkit-border-radius: 3px;
 		border-radius: 3px;
 		margin-bottom: 8px;
+		border: none;
+		border-bottom: 1px solid #e0e0e0;
+	}
+	.static-title {
+		margin-top: 55px;
 	}
 
 /* -----------------------------------------
