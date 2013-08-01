@@ -122,8 +122,10 @@ See LICENSE in the project root for copying permission
     <script>
         requirejs.config({
             //By default load any module IDs from js/lib
-            baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
-                '{% static "js/cel" %}' : '{% static "js/cel-build" %}')
+            // TODO: enable build in release mode once we start actually doing it
+            //baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
+                //'{% static "js/cel" %}' : '{% static "js/cel-build" %}')
+            baseUrl: '{% static "js/cel" %}'
         });
          
         // Cheat to win, make a global object
