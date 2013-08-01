@@ -90,17 +90,17 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * and after a change in zoom level. Listens to the dm.neighborhoodUpdated and
          * dm.locationUpdated events to modify the view.
          */
-        var displayMap = common.debounce(function() {
+        var displayMap = common.debounce(function(e) {
             var zoomLevel = map.getZoom();
 
             if (isAutocompleteSet && autocompleteLocationId) {
                 dm.locationUpdate(map, locationLayer);
             } else if (isAutocompleteSet && autocompleteNeighborhoodId) {
-                dm.neighborhoodUpdate(map);
+                dm.neighborhoodUpdate();
             } else if (currentLayer !== layerType.neighborhood) {
                 if (zoomLevel < zoomSettings) {
                     // We zoomed out, switch to neighborhoods
-                    dm.neighborhoodUpdate(map);
+                    dm.neighborhoodUpdate();
                 } else {
                     // We're still good, update locations
                     dm.locationUpdate(map, locationLayer);
@@ -109,9 +109,10 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 if (zoomLevel >= zoomSettings) {
                     // We zoomed in, switch to locations
                     dm.locationUpdate(map, locationLayer);
-                } else {
-                    // We're still good, update neighborhoods
-                    dm.neighborhoodUpdate(map);
+                }
+                if (e && e.type === 'DataManager' && e.namespace === 'filtersUpdated') {
+                    // Ok, we're still on neighborhooks, only need to update if filters changed
+                    dm.neighborhoodUpdate();
                 }
             }
         }, 250);
@@ -259,9 +260,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
 
             $('.neighborhood-popup').on('click', function(e) {
-                map.panTo([lat, lng]);
-                map.setZoom(zoomSettings);
-                displayMap();
+                map.setView([lat, lng], zoomSettings);
             });
         };
 
