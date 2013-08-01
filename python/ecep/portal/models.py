@@ -44,7 +44,7 @@ class Neighborhood(models.Model):
         return {'lng': center[0], 'lat': center[1]}
 
     def __unicode__(self):
-        return self.primary_name
+        return unicode(self.primary_name)
 
 
 class Location(models.Model):
@@ -98,13 +98,13 @@ class Location(models.Model):
     #display_include = set(['ages', 'accred', 'is_hs', 'is_ehs', ])
 
     def __unicode__(self):
-        return self.site_name
+        return unicode(self.site_name)
 
     def verbose_name(self, field):
         """
         Given the name of field, returns the verbose_name property for it
         """
-        return self._meta.get_field_by_name(field)[0].verbose_name
+        return unicode(self._meta.get_field_by_name(field)[0].verbose_name)
 
     @staticmethod
     def get_filter_fields():
