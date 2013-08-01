@@ -386,7 +386,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
                 // highlight the appropriate list item when a location popup is shown
                 map.on('popupopen', function(e) {
-                    $('div[data-key=' + e.popup.options.key + ']').addClass('highlight');
+                    var $div = $('.location-container div[data-key=' + e.popup.options.key + ']');
+                    $div.addClass('highlight');
+                    $div[0].scrollIntoViewIfNeeded();
                 });
 
                 // remove all highlighting when a location popup is closed
