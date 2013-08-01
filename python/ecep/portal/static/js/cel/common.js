@@ -81,7 +81,7 @@ function($, L, Response, Handlebars) {
             if (ui.item) {
                 if (ui.item.type === 'location') {
                     window.location.href = getUrl(
-                        'autocomplete-location', { location: ui.item.id });
+                        'single-location', { location: ui.item.id });
                 } else if (ui.item.type === 'neighborhood') {
                     window.location.href = getUrl(
                         'browse-neighborhood', { neighborhood: ui.item.id });
@@ -223,7 +223,7 @@ function($, L, Response, Handlebars) {
                 return '/browse/?neighborhood=' + opts.neighborhood;
             case 'browse-location':
                 return '/browse/?location=' + opts.location;
-            case 'autocomplete-location':
+            case 'single-location':
                 return '/location/' + opts.location + '/';
             case 'icon-school':
                 return '/static/img/leaflet-icons/school.png';
