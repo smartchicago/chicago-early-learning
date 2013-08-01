@@ -55,7 +55,7 @@
 
 @media (max-width: 1023px) { 
 	body {
-		
+		overflow-y: hidden;
 	}
 	
 	.web-share {
@@ -301,7 +301,11 @@
 		}
 		
 		.locations-wrapper {
-		overflow: hidden; }
+			overflow-y: scroll; 
+			overflow-x: hidden;
+			/* enable native scrolling on mobile */
+			-webkit-overflow-scrolling: touch;
+		}
 		
 		.location .span2 {
 			margin-top: -26px !important;
@@ -329,6 +333,16 @@
 		.fullwidth {
 			width: 100% !important;
 		}
+		
+			.accordion-right {
+		width: 100%;
+	}
+	.accordion-right .btn {
+		width: 48%;
+	}
+	.share-btn {
+		float: right;
+	}
 
 }
 
@@ -342,6 +356,16 @@
 
 	body {
 		overflow-y: scroll;
+	}
+	
+	.accordion-right {
+		width: 100%;
+	}
+	.accordion-right .btn {
+		width: 48%;
+	}
+	.share-btn {
+		float: right;
 	}
 	
 		.filters-left,
@@ -403,6 +427,15 @@
 
 		.leaflet-container .leaflet-control-zoom {
 			margin-top: 31px;
+		}
+		
+		#filter-clear-all {
+			float: left;
+			margin-top: 15px;
+		}
+		
+		.fave-star {
+			display: none;
 		}
 
 

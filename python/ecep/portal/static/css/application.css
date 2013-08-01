@@ -676,10 +676,11 @@ h1, h2, h3, h4 {
 .about-content p {
 	text-align: justify;
 	padding-right: 40px;
+	max-width: 510px;
 }
 
 .starred-btn {
-	color: #fff !important;
+
 }
 
 .btn-primary {

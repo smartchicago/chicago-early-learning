@@ -37,10 +37,10 @@ p
   <div class="accordion" id="filter-options">
     <div class="accordion-group" id="toolbar-main">
       <div class="accordion-heading results-toolbar">
-        <button class="btn btn-primary" data-toggle="collapse" data-parent="#filters" href="#collapseFilters" id="refineBtn">Refine your search <i class="icon-chevron-down icon-white"></i></button> <button class="btn btn-standard2" id="filter-clear-all">Clear Filters</button>
+        <button class="btn btn-primary" data-toggle="collapse" data-parent="#filters" href="#collapseFilters" id="refineBtn">Refine your search <i class="icon-chevron-down icon-white"></i></button> 
         <div class="btn-group">
-            <a class="btn btn-standard starred-btn" href="{% url portal.views.starred %}" data-r1023="<i class='icon-star'></i> Starred (<span class='fav-count'>0</span>)"><i class="icon-star"></i> Starred (<span class="fav-count">0</span>)</a>
-          <button id="share-favorites-btn" class="btn btn-standard"><img src="{% static 'img/icons/share-white.svg' %}" class="svg-icon"> Share</button>
+            <a class="btn starred-btn" href="{% url portal.views.starred %}" data-r1023="<i class='icon-star'></i> Starred (<span class='fav-count'>0</span>)"><i class="icon-star"></i> Starred (<span class="fav-count">0</span>)</a>
+          <button id="share-favorites-btn" class="btn"><img src="{% static 'img/icons/share.svg' %}" class="svg-icon"> Share</button>
           <ul class="dropdown-menu pull-right">
             <li><a href="#">Twitter</a></li>
             <li><a href="#">Facebook</a></li>
@@ -66,6 +66,7 @@ p
                 <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
               </label>
             {% endfor %}
+						<button class="btn pull-right" id="filter-clear-all">Clear Filters</button>
           </div>
         </div>
       </div>
