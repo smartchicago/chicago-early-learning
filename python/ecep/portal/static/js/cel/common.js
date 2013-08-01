@@ -7,8 +7,17 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'boo
         'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
 function($, L, Response, Handlebars) {
     'use strict';
+
+    var desktopBreakpoint = 1024;
     
     $(document).ready(function() {
+
+        // collapse filter div on mobile
+        //  this is the manual way to do it. A bit hacky.
+        var width = $(document).width();
+        if (width >= desktopBreakpoint) {
+            $('#collapseFilters').addClass('in');
+        }
 
         // AUTOCOMPLETE
         var $autocomplete = $('.autocomplete-searchbox');
@@ -193,8 +202,8 @@ function($, L, Response, Handlebars) {
 
 
     // Setup Response stuff
-    Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,1024] });
-    Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,1024] });
+    Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,desktopBreakpoint] });
+    Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,desktopBreakpoint] });
 
 
     /**
