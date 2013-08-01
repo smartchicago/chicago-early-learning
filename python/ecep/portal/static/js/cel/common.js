@@ -14,6 +14,7 @@ function($, L, Response, Handlebars) {
 
         // collapse filter div on mobile
         //  this is the manual way to do it. A bit hacky.
+        //  TODO: export breakpoints if we continue to use response.js
         var width = $(document).width();
         if (width >= desktopBreakpoint) {
             $('#collapseFilters').addClass('in');
