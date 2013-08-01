@@ -1,4 +1,4 @@
-<div class="favorite" data-key="{{item.key}}">
+<div class="favorite fullwidth" style="width:100%;" data-key="{{item.key}}">
   <div id="location-map" class="single-location-map"></div>
   <a href="javascript:void(0)" class="none favs-close-button">&times;</a>
   <h1 class="school-name">{{item.site_name}}</h1>
@@ -6,7 +6,7 @@
   {{#if item.url}}
   <ul class="website-phone">
     <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank">{{item.url}}</a></li>
-    <a class="btn pull-right single-share" href="#"><i class="icon-share"></i>{{translations.share}}</a>
+    <a class="btn pull-right single-share" href="#" data-r1024="<i class='icon-share'></i>{{translations.share}}"><i class="icon-share"></i></a>
   </ul>
   {{/if}}
   <hr>

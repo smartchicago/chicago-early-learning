@@ -200,16 +200,10 @@
 		right: 10px;
 		position: absolute;
 	}
-	
-	.filters-left,
-	.filters-right {
-		float: left;
-		width: 100%;
-		padding-bottom: 0px;
-	}
 
 	.container {
-		width: 100%;
+		width: 82%;
+		padding: 25px;
 	}
 
 	.faq-left {
@@ -301,6 +295,10 @@
 		.jumbotron {
 			padding: 0;
 		}
+
+		.leaflet-container .leaflet-control-zoom {
+			margin-top: 31px;
+		}
 		
 		.locations-wrapper {
 		overflow: hidden; }
@@ -312,6 +310,24 @@
 		
 		.hideonmobile {
 			display: none;
+		}
+		
+		.about-content {
+			text-align: center;
+		}
+		.about-content p {
+			text-align: center;
+		}
+		.about-content img {
+			max-width: 200px;
+			padding-bottom: 40px;
+		}
+		#about-title {
+			padding-left: 0;
+		}
+		
+		.fullwidth {
+			width: 100% !important;
 		}
 
 }
@@ -326,6 +342,13 @@
 
 	body {
 		overflow-y: scroll;
+	}
+	
+		.filters-left,
+	.filters-right {
+		float: left;
+		width: 100%;
+		padding-bottom: 0px;
 	}
 
 	.media img {
@@ -372,6 +395,14 @@
 		.get-started {
 			width: 45%;
 			margin-bottom: 10px;
+		}
+
+		#toggleMapBtn {
+			margin-top: 3px;
+		}
+
+		.leaflet-container .leaflet-control-zoom {
+			margin-top: 31px;
 		}
 
 
