@@ -6,6 +6,7 @@
   {{#if item.url}}
   <ul class="website-phone">
     <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank">{{item.url}}</a></li>
+    <a href="javascript:void(0)" class="favs-toggle single-star pull-right" id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}"><img src="/static/img/icons/star-empty.svg" class="fave-star" alt="Favorite"></a>
     <a class="btn pull-right single-share" href="#" data-r1024="<i class='icon-share'></i>{{translations.share}}"><img src="/static/img/icons/share.svg" class="svg-icon"> Share</a>
   </ul>
   {{/if}}
