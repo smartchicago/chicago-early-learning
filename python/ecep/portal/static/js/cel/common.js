@@ -186,6 +186,7 @@ function($, L, Response, Handlebars) {
         }, 0);
     });
     */
+
 			
     // Tooltips for all!  Anything w/ a tooltip tag gets a tooltip
     $('[rel="tooltip"]').tooltip();
