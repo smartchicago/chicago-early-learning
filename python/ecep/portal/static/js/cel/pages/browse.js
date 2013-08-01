@@ -90,17 +90,17 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * and after a change in zoom level. Listens to the dm.neighborhoodUpdated and
          * dm.locationUpdated events to modify the view.
          */
-        var displayMap = common.debounce(function() {
+        var displayMap = common.debounce(function(e) {
             var zoomLevel = map.getZoom();
 
             if (isAutocompleteSet && autocompleteLocationId) {
                 dm.locationUpdate(map, locationLayer);
             } else if (isAutocompleteSet && autocompleteNeighborhoodId) {
-                dm.neighborhoodUpdate(map);
+                dm.neighborhoodUpdate();
             } else if (currentLayer !== layerType.neighborhood) {
                 if (zoomLevel < zoomSettings) {
                     // We zoomed out, switch to neighborhoods
-                    dm.neighborhoodUpdate(map);
+                    dm.neighborhoodUpdate();
                 } else {
                     // We're still good, update locations
                     dm.locationUpdate(map, locationLayer);
@@ -109,12 +109,13 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 if (zoomLevel >= zoomSettings) {
                     // We zoomed in, switch to locations
                     dm.locationUpdate(map, locationLayer);
-                } else {
-                    // We're still good, update neighborhoods
-                    dm.neighborhoodUpdate(map);
+                }
+                if (e && e.type === 'DataManager' && e.namespace === 'filtersUpdated') {
+                    // Ok, we're still on neighborhooks, only need to update if filters changed
+                    dm.neighborhoodUpdate();
                 }
             }
-        }, 250, true);
+        }, 250);
 
         /**
          * Changes list results display using Handlebars templates
@@ -122,12 +123,25 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * @param {Type of current layer, see layerType} dataType
          */
         var listResults = function(data, dataType) {
-            var html = dataType === layerType.neighborhood ? neighborhoodList : locationList,
+            var isNb = (dataType === layerType.neighborhood), 
+                html = (isNb ? neighborhoodList : locationList),
+                dataList,
                 template = Handlebars.compile(html),
                 handlebarsData = [];
 
-            $.each(data, function(key, value) {
-                var item = layerType.neighborhood === dataType ? value : value.data;
+            // Sort everything by name ascending
+            dataList = $.map(data, function(v, k) {
+                return v;
+            }).sort(function(a, b) {
+                if (isNb) {
+                    return a.name.localeCompare(b.name);
+                } else {
+                    return a.data.item.site_name.localeCompare(b.data.item.site_name);
+                }
+            });
+
+            $.each(dataList, function(key, value) {
+                var item = isNb ? value : value.data;
                 handlebarsData.push(item);
             });
 
@@ -156,14 +170,23 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $('.favs-toggle').on('click', function(e) {
                 var $this = $(this),
                     key = $this.data('loc-id'),
-                    loc = dm.locations[key];
+                    loc = dm.locations[key],
+                    iconkey = 'icon-' + loc.getIconKey();
+
                 // always highlighted because the mouse will be over the accordion div for the click
                 loc.setIcon({ highlighted: true });
+                $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
             });
 
             // Watch for hover events on the list so we can highlight both 
             // the list item and the icon on the map
-            $('.location-container').hover(function(e) {
+            $('.location-container').each(function(index) {
+                var $this = $(this),
+                    key = $this.data('key'),
+                    loc = dm.locations[key],
+                    iconkey = 'icon-' + loc.getIconKey();
+                $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
+            }).hover(function(e) {
                 var $this = $(this),
                     key = $this.data('key'),
                     loc = dm.locations[key];
@@ -175,14 +198,15 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     $this.removeClass('highlight');
                     loc.setIcon({'highlighted': false});
                 }
-            }).on('click', function(e) {
+            }).on('show.bs.collapse', function(e) {
                 var $this = $(this),
-                    $morelessbtn = $this.find('.more-less-btn'),
-                    btnText = $morelessbtn.html();
-                btnText = btnText === gettext('More') ? gettext('Less') : gettext('More');
-                $morelessbtn.html(btnText);
+                    $morelessbtn = $this.find('.more-less-btn');
+                $morelessbtn.html(gettext('Less'));
+            }).on('hide.bs.collapse', function(e) {
+                var $this = $(this),
+                    $morelessbtn = $this.find('.more-less-btn');
+                $morelessbtn.html(gettext('More'));
             });
-            
         };
 
         /*
@@ -209,9 +233,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          */
         var exploreButton = function() {
             $('.explore-btn').click(function() {
-                map.panTo([$(this).data('lat'), $(this).data('lng')]);
-                map.setZoom(zoomSettings);
-                displayMap();
+                map.setView([$(this).data('lat'), $(this).data('lng')], zoomSettings);
             });
         };
 
@@ -238,9 +260,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
 
             $('.neighborhood-popup').on('click', function(e) {
-                map.panTo([lat, lng]);
-                map.setZoom(zoomSettings);
-                displayMap();
+                map.setView([lat, lng], zoomSettings);
             });
         };
 
@@ -345,7 +365,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 // draw marker for geolocated point 
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
-                        iconUrl: common.getUrl('autocomplete-icon')
+                        iconUrl: common.getUrl('icon-geolocation')
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
                 }
@@ -362,7 +382,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
                 // highlight the appropriate list item when a location popup is shown
                 map.on('popupopen', function(e) {
-                    $('div[data-key=' + e.popup.options.key + ']').addClass('highlight');
+                    var $div = $('.location-container div[data-key=' + e.popup.options.key + ']');
+                    $div.addClass('highlight');
+                    $div[0].scrollIntoView();
                 });
 
                 // remove all highlighting when a location popup is closed
@@ -377,6 +399,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 $filters.on('click', function() { dm.onFilterChange(); });
                 $filterClearAll.on('click', function() {
                     $filters.prop('checked', false);
+                    dm.onFilterChange();
                 });
 
                 mapToggle();

@@ -81,7 +81,7 @@ function($, L, Response, Handlebars) {
             if (ui.item) {
                 if (ui.item.type === 'location') {
                     window.location.href = getUrl(
-                        'browse-location', { location: ui.item.id });
+                        'single-location', { location: ui.item.id });
                 } else if (ui.item.type === 'neighborhood') {
                     window.location.href = getUrl(
                         'browse-neighborhood', { neighborhood: ui.item.id });
@@ -223,8 +223,26 @@ function($, L, Response, Handlebars) {
                 return '/browse/?neighborhood=' + opts.neighborhood;
             case 'browse-location':
                 return '/browse/?location=' + opts.location;
-            case 'autocomplete-icon':
-                return 'http://placekitten.com/g/50/50';
+            case 'single-location':
+                return '/location/' + opts.location + '/';
+            case 'icon-school':
+                return '/static/img/leaflet-icons/school.png';
+            case 'icon-school-accredited':
+                return '/static/img/leaflet-icons/school-accredited.png';
+            case 'icon-school-starred':
+                return '/static/img/leaflet-icons/school-starred.png';
+            case 'icon-school-accredited-starred':
+                return '/static/img/leaflet-icons/school-accredited-starred.png';
+            case 'icon-center':
+                return '/static/img/leaflet-icons/center.png';
+            case 'icon-center-accredited':
+                return '/static/img/leaflet-icons/center-accredited.png';
+            case 'icon-center-starred':
+                return '/static/img/leaflet-icons/center-starred.png';
+            case 'icon-center-accredited-starred':
+                return '/static/img/leaflet-icons/center-accredited-starred.png';
+            case 'icon-geolocation':
+                return '/static/img/leaflet-icons/geocode.png';
             default:
                 throw 'Unknown URL endpoint';
         }
