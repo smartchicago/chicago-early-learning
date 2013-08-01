@@ -1,0 +1,292 @@
+/* Large Desktop ------------------------------ */
+
+@media (min-width: 1200px) { 
+	.cb_slide_panel {
+		background: #fff;
+		margin-top: 61px;
+	}
+}
+
+
+/* Portrait tablet to landscape and desktop --- */
+
+@media (min-width: 767px) and (max-width: 978px) { 
+	body {
+		overflow: hidden;
+	}
+	#map {
+		display: none;
+	}
+	.results-left {
+		width: 100%;
+	}
+	#filter-options {
+		width: 100%;
+		left: 0;
+	}
+	#desktop-search input {
+		
+	}
+
+		.cb_slide_panel {
+		background: #fff;
+		margin-top: 61px;
+	}
+
+			#mobile-search .btn-group {
+			float: right;
+			top: 62px;
+			right: 10px;
+			position: absolute;
+		}
+		#mobile-search input {
+			padding: 5px 10px;
+		}
+
+}
+
+@media (max-width: 1168px) {
+.brand {
+display: none;
+}
+}
+
+/* Landscape phone to portrait tablet --------- */
+
+@media (max-width: 1023px) { 
+	body {
+		overflow: hidden;
+	}
+	.navbar .navbar-right {
+		width: 80%;
+	}
+	.navbar .navbar-left {
+		width: 20%;
+	}
+	.navbar .nav {
+		margin: 10px 0;
+	}
+	#map,
+	#moreBtn {
+		display: none;
+	}
+	.results-left {
+		width: 100%;
+		margin-top: 61px;
+		position: fixed;
+	}
+	.accordion-inner .accordion-right,
+	.accordion-inner .accordion-left {
+		width: 100%;
+	}
+	.accordion-inner .accordion-left {
+		margin-top: 25px;
+	}
+	.accordion-inner {
+		padding: 25px 15px;
+	}
+	.modal {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		margin-left: 0px;
+		border-radius: 0px;
+		top 0;
+		min-height: 25%;
+	}
+	.modal.fade.in {
+		top: 0%;
+	}
+	.container-custom {
+		width: 98%;
+		
+	}
+		.media img {
+			display: none;
+			width: 100%;
+		}
+
+	#desktop-search {
+		display: none;
+	}
+
+	#mobile-search {
+		width: 100%;
+		display: block;
+		padding-bottom: 10px;
+	}
+		#mobile-search input {
+			width: auto;
+			right: 98px;
+			left: 59px;
+			top: 62px;
+			position: absolute;
+			display: block;
+			font-size: 13px;
+			padding: 5px 10px;
+		}
+		#mobile-search .btn-group {
+			float: right;
+			top: 62px;
+			right: 10px;
+			position: absolute;
+		}
+		#refineSearch {
+			margin-left: 10px;
+			margin-right: 10px;
+			margin-top: 7px;
+		}
+		.results-toolbar {
+			display: none;
+		}
+		.filters-inner {
+			margin-top: 35px;
+			padding: 20px 15px;
+		}
+		#location1 {
+			margin-top: 44px;
+		}
+		#location3 {
+			margin-top: 44px;
+		}
+		
+		#filter-options {
+			position: relative;
+			width: 100%;
+			background-color: #fff;
+			border: none;
+		}
+		.favorite {
+			width: 100%;
+			border-top: 2px solid red;
+		}
+		.directions-icon {
+			display: none;
+		}
+
+	.cb_slide_panel {
+		background: #fff;
+		margin-top: 113px;
+	}
+
+	.filters-left,
+	.filters-right {
+		float: left;
+		width: 100%;
+		padding-bottom: 0px;
+	}
+
+	.container {
+		width: 100%;
+	}
+
+	.faq-left {
+		width: 100%;
+		position: relative;
+	}
+	.faq-right {
+		width: 85%;
+		padding: 20px;
+		float: left;
+	}
+	.faq-left h1 {
+		margin-top: 61px;
+	}
+
+	.jumbotron .get-started {
+		padding: 10px;
+		font-size: 12px;
+	}
+	.jumbotron .homepage-search {
+		padding: 10px;
+		width: 215px;
+		font-size: 12px;
+	}
+
+	.explore-btn {
+		display: none;
+	}
+
+	.faves-left {
+		width: 100%;
+	}
+	.faves-right {
+		width: 100%;
+		float: left;
+		padding: 0;
+		margin: 0;
+	}
+
+	#header-dist {
+		display: none;
+	}
+
+	.header-row {
+		margin-top: 48px;
+	}
+	
+	.mobile-chevron {
+		right: 20px;
+		margin-top: -30px;
+		position: absolute;
+		display: block;
+	}
+
+	.accordion-group {
+		border: none;
+	}
+	#collapseFilters {
+		border: none;
+	}
+
+}
+
+
+/* Landscape phones and down ------------------ */
+
+@media (max-width: 480px) { 
+	#logo {
+		max-width: 45px !important;
+	}
+
+	body {
+		overflow-y: scroll;
+	}
+
+	.media img {
+	}
+
+	.cb_slide_panel {
+		background: #fff;
+		margin-top: 113px;
+	}
+
+		.jumbotron .get-started {
+		padding: 10px;
+		font-size: 12px;
+	}
+	.jumbotron .homepage-search {
+		padding: 10px;
+		width: 85%;
+		font-size: 12px;
+	}
+
+		.results-left .span2 {
+		float: right;
+		right: 0;
+		margin-right: -80px;
+		margin-top: 0px;
+	}
+	#header-fav {
+		width: 100%;
+	}
+	#header-dist {
+		padding-left: 0;
+		float: right;
+		padding-right: 10px;
+		display: none;
+	}
+
+
+
+}

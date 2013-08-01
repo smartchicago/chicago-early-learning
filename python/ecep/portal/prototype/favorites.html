@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Chicago Early Learning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/leaflet.css">
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/leaflet.ie.css">
+    <![endif]-->
+
+    <link href="css/application.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <link href="css/print.css" rel="stylesheet" media="print">
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src="js/leaflet.js"></script>
+
+  </head>
+
+  <body>
+
+<!-- Navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+      <!-- Navbar LEFT -->
+      <div class="navbar-left">
+        <a class="brand" href="index.html" data-r1024="<img src='img/logo.svg' id='logo' alt='CEL'> Chicago Early Learning"><img src="img/logo.svg" id="logo" alt="CEL"></a>
+        <form class="navbar-form" id="desktop-search">
+          <div class="input-append">
+            <input id="appendedInputButton" type="text" placeholder="121 N. Lasalle, Chicago">
+            <button class="btn" id="geolocation" type="button"><i class="icon-screenshot"></i></button>
+          </div>
+          <button type="submit" class="btn" style="margin-top: -5px;"><i class="icon-search"></i> Search</a>
+        </form>
+      </div>
+      <!-- Navbar RIGHT -->
+      <div class="navbar-right">
+        <ul class="nav">
+          <li><a href="#text-for-info" data-toggle="modal" data-r1024="Text For Info"><img src="img/icons/text-for-info.svg" alt="Text For Info"></a></li>
+          <li><a href="about.html" data-r1024="About"><img src="img/icons/about.svg" alt="About"></a></li>
+          <li><a href="faq.html" data-r1024="FAQ"><img src="img/icons/faq.svg"></a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="Language <b class='caret'></b>">EN <b class="caret"></b></a>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="#"><img src="img/en.png" alt="English"> English</a></li>
+              <li><a href="#"><img src="img/es.png" alt="Spanish"> Espa&ntilde;ol</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+        <form class="navbar-form" id="mobile-search">
+          <a class="btn pull-left" id="refineSearch" data-toggle="collapse" data-parent="#filters" href="#collapseFilters"><img src="img/icons/filter.svg" class="svg-icon"></a>
+          <input type="text" placeholder="121 N Lasalle St, Chicago">
+          <div class="btn-group">
+            <button class="btn" id="toggleMapBtn" data-slidepanel="panel" href="map.html"><img src="img/icons/map.svg" class="svg-icon"></button>
+            <button class="btn" id="toggleListBtn"><img src="img/icons/geolocate.svg" class="svg-icon"></button>
+          </div>
+        </form>
+
+    </div>
+
+    <!-- Favorites top bar -->
+      <div class="row faves-top">
+        <div class="faves-left">
+          <h1 id="fav-count">Favorites (0)</h1>
+        </div>
+        <div class="faves-right">
+          <a class="btn faves-option" href="#"><i class="icon-remove-circle"></i> Clear Selections</a>
+          <a class="btn faves-option" href="#"><i class="icon-share"></i> Share</a>
+          <a class="btn faves-close pull-right" href="search.html"><i class="icon-arrow-left"></i> Back</a>
+        </div>
+      </div>
+
+      
+        <div class="favorite">
+          <h1>Columbus Elementary School</h1>
+          <p>1003 N Leavitt St., Chicago, IL 60622</p>
+          <ul class="website-phone">
+            <li><i class="icon-globe"></i> <a href="http://cps.k12.il.us" target="_blank">http://cps.k12.il.us</a></li>
+            <li><i class="icon-envelope"></i> <a href="mailto:jwedmonds@cps.k12.il.us" target="_blank">jwedmonds@cps.k12.il.us</a></li>
+          </ul>
+          <hr>
+          <div class="school-details">
+            <h1>Main Phone</h1>
+            <h2>(312) 506-0130</h2>
+            <hr>
+            <h1>Fax</h1>
+            <h2>(312) 376-3751</h2>
+            <hr>
+            <h1>Site Affiliation</h1>
+            <h2>CPS Community Partnership</h2>
+            <hr>
+            <h1>Director/Principal</h1>
+            <h2>Sonya Sifuentes</h2>
+            <hr>
+            <h1>Program Duration</h1>
+            <h2>Full Year</h2>
+            <hr>
+            <h1>Program Schedule</h1>
+            <h2>Half Day/Full Day</h2>
+            <hr>
+            <h1>Ages Served</h1>
+            <h2>2-5 years</h2>
+          </div>
+        </div>
+        <div class="favorite">
+          <h1>Columbus Elementary School</h1>
+          <p>1003 N Leavitt St., Chicago, IL 60622</p>
+          <ul class="website-phone">
+            <li><i class="icon-globe"></i> <a href="http://cps.k12.il.us" target="_blank">http://cps.k12.il.us</a></li>
+            <li><i class="icon-envelope"></i> <a href="mailto:jwedmonds@cps.k12.il.us" target="_blank">jwedmonds@cps.k12.il.us</a></li>
+          </ul>
+          <hr>
+          <div class="school-details">
+            <h1>Main Phone</h1>
+            <h2>(312) 506-0130</h2>
+            <hr>
+            <h1>Fax</h1>
+            <h2>(312) 376-3751</h2>
+            <hr>
+            <h1>Site Affiliation</h1>
+            <h2>CPS Community Partnership</h2>
+            <hr>
+            <h1>Director/Principal</h1>
+            <h2>Sonya Sifuentes</h2>
+            <hr>
+            <h1>Program Duration</h1>
+            <h2>Full Year</h2>
+            <hr>
+            <h1>Program Schedule</h1>
+            <h2>Half Day/Full Day</h2>
+            <hr>
+            <h1>Ages Served</h1>
+            <h2>2-5 years</h2>
+          </div>
+        </div>
+        <div class="favorite">
+          <h1>Columbus Elementary School</h1>
+          <p>1003 N Leavitt St., Chicago, IL 60622</p>
+          <ul class="website-phone">
+            <li><i class="icon-globe"></i> <a href="http://cps.k12.il.us" target="_blank">http://cps.k12.il.us</a></li>
+            <li><i class="icon-envelope"></i> <a href="mailto:jwedmonds@cps.k12.il.us" target="_blank">jwedmonds@cps.k12.il.us</a></li>
+          </ul>
+          <hr>
+          <div class="school-details">
+            <h1>Main Phone</h1>
+            <h2>(312) 506-0130</h2>
+            <hr>
+            <h1>Fax</h1>
+            <h2>(312) 376-3751</h2>
+            <hr>
+            <h1>Site Affiliation</h1>
+            <h2>CPS Community Partnership</h2>
+            <hr>
+            <h1>Director/Principal</h1>
+            <h2>Sonya Sifuentes</h2>
+            <hr>
+            <h1>Program Duration</h1>
+            <h2>Full Year</h2>
+            <hr>
+            <h1>Program Schedule</h1>
+            <h2>Half Day/Full Day</h2>
+            <hr>
+            <h1>Ages Served</h1>
+            <h2>2-5 years</h2>
+          </div>
+        </div>
+      
+
+
+
+
+    <!-- Text-for-Info Modal -->
+    <div id="text-for-info" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="textForInfo" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove-circle"></i></button>
+        <h3 id="textForInfo">Want information via text?</h3>
+      </div>
+      <div class="modal-body">
+        <p>Text your zip code to <a href="sms:7738861819">(773) 886-1819</a> and we'll do the rest.</p>
+      </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/response.js"></script>
+    <script src="js/holder.js"></script>
+    <script src="js/application.js"></script>
+    <script>
+      $( document ).ready(function() {
+        var numFavs = $('.favorite').length;
+        $('h1#fav-count').html("Favorites (" + numFavs + ")");
+      });
+    </script>
+
+  </body>
+</html>

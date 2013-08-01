@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base-search.html" %}
 
 {% comment %}
 Copyright (c) 2012 Azavea, Inc.
@@ -16,8 +16,14 @@ See LICENSE in the project root for copying permission
 
 {% block content %}
 <div class="container">
-<div class="location">
-{% include "embed.html" %}
-</div>
+    <div class="row">
+    </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+<script>
+require(['location-marker'], function() { });
+</script>
+{% endblock %}
+

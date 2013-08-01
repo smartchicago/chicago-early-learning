@@ -1,7 +1,13 @@
 # Copyright (c) 2012 Azavea, Inc.
 # See LICENSE in the project root for copying permission
 
-import sys
+
+import os
+import djcelery
+
+
+djcelery.setup_loader()
+BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 
 # Django settings for ecep project.
 
@@ -36,8 +42,8 @@ LANGUAGE_CODE = 'en-US'
 # This lambda function only serves to mark the names as being i18n'd
 ugettext = lambda s: s
 LANGUAGES = (
-  ('en', ugettext('English')),
-  ('es', ugettext('Spanish')),
+    ('en', ugettext('English')),
+    ('es', ugettext('Spanish')),
 )
 
 SITE_ID = 1
@@ -71,14 +77,14 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -94,15 +100,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
-ROOT_URLCONF = 'ecep.urls'
+ROOT_URLCONF = 'urls'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -111,14 +117,15 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'django.contrib.gis',
-    'ecep.portal',
+    'portal',
+    'portal.sms',           # This is necessary for the celery worker to respond to messages
     'django_twilio',
     'gunicorn',
     'faq',
     'rosetta',
+    'djcelery',
 )
 
 
@@ -127,19 +134,20 @@ INSTALLED_APPS = (
 
 # Import local_settings.py
 
-try:
-    from local_settings import *
-except ImportError:
-    pass
+from local_settings import *
+
+if DJANGO_JENKINS:
+    # If this is on CI, add django_jenkins to installed apps
+    ia = list(INSTALLED_APPS)
+    ia.append('django_jenkins')
+    INSTALLED_APPS = tuple(ia)
 
 # setup path settings
 try:
     SITE_ROOT
 except NameError:
-    SITE_ROOT = path.dirname(path.abspath(__file__))
+    SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-MEDIA_ROOT = SITE_ROOT + '/media/'
-STATIC_ROOT = SITE_ROOT + '/static/'
 TEMPLATE_DIRS = (
     (SITE_ROOT + '/templates/'),
 )
@@ -147,69 +155,31 @@ LOCALE_PATHS = (
     (SITE_ROOT + '/locale/'),
 )
 
-# setup twilio
-
-try:
-    TWILIO_ENABLED
-except NameError:
-    TWILIO_ENABLED = False
-
-if TWILIO_ENABLED:
-    try:
-        TWILIO_ACCOUNT_SID
-        TWILIO_AUTH_TOKEN
-        TWILIO_NUMBER
-    except NameError:
-        # Some defaults for debugging
-        # This is a test account. We can't use the real credentials here b/c they would be public
-        # See install.sh and local_settings.py
-        print "Warning: Twilio variables in local_settings.py weren't defined, using dev ones"
-        TWILIO_ACCOUNT_SID = 'AC7a652a7493f41d19851fc9f810c2a97a'
-        TWILIO_AUTH_TOKEN = '7c5b5db30d48bae17dfa180b39ccbafd'
-        TWILIO_NUMBER = '(484) 842-0284'
-
-
-# setup google analytics
-
-try:
-    GA_KEY
-except NameError:
-    GA_KEY = 'UA-34089447-1'
-
-
 # setup logging
-
 try:
-    STAGING
+    LOGGING
 except NameError:
-    STAGING = False
-
-if STAGING:
-    logfile = '/var/log/ecep/django.staging.log'
-else:
-    logfile = '/var/log/ecep/django.deploy.log'
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'logfile': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': logfile,
-        }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['logfile'],
-            'level': 'DEBUG',
-            'propagate': True,
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'logfile': {
+                'level': 'DEBUG',
+                'class': 'logging.handlers.RotatingFileHandler',
+                'filename': LOGFILE,
+            }
         },
-        'portal.views': {
-            'handlers': ['logfile'],
-            'level': 'DEBUG',
-            'propagate': True,
+        'loggers': {
+            'django.request': {
+                'handlers': ['logfile'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+            'portal.views': {
+                'handlers': ['logfile'],
+                'level': 'DEBUG',
+                'propagate': True,
+            }
         }
     }
-}
 

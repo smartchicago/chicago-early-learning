@@ -1,6 +1,14 @@
 {% extends "admin/base.html" %}
 {% load i18n %}
 
+{% block extrahead %}
+<script type="text/javascript">
+  // Settings for Latitude and Longitude //
+  var latSettings = "{{ settings.LATITUDE }}";
+  var lngSettings = "{{ settings.LONGITUDE}}"
+</script>
+{% endblock extrahead %}
+
 {% block title %}{{ title }} | {% trans 'Chicago Early Learning Portal admin' %}{% endblock %}
 
 {% block branding %}
