@@ -402,6 +402,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 $filters.on('click', function() { dm.onFilterChange(); });
                 $filterClearAll.on('click', function() {
                     $filters.prop('checked', false);
+                    dm.onFilterChange();
                 });
 
                 mapToggle();
