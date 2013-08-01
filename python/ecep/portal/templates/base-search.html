@@ -3,8 +3,8 @@
 {% load i18n %}
 <form class="navbar-form" id="desktop-search">
   <div class="input-append">
-    <input id="appendedInputButton" class="autocomplete-searchbox" type="text" placeholder="121 N. Lasalle, Chicago">
-    <button class="btn btn-standard2 geolocation-button" id="geolocation" type="button"><img src="../static/img/icons/geolocate.svg" /></button>
+    <input id="appendedInputButton" class="autocomplete-searchbox" type="text" placeholder="Enter a school, neighborhood, or address">
+    <button class="btn btn-standard2 geolocation-button" id="geolocation" rel="tooltip" data-title="Click to use your current location" data-placement="bottom" type="button"><img src="../static/img/icons/geolocate.svg" /></button>
   </div>
   <button type="submit" class="btn btn-navsearch-main autocomplete-submit" style="margin-top: -5px;" id="searchBtn"><i class="icon-search"></i>{% trans 'Search' %}</a>
 </form>
