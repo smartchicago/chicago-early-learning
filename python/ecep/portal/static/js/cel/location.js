@@ -187,7 +187,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
      * If map marker does not exist, creates marker with proper icon
      */
     Location.prototype.setMarker = function(options) {
-        var popupTemplate = Handlebars.compile('<b>{{item.site_name}}</b><br>{{item.address}}'),
+        var popupTemplate = Handlebars.compile(
+                                '<b>{{item.site_name}}</b><br>{{item.address}}<br>' +
+                                '<a href="' + common.getUrl('single-location', { location: this.getId() }) + 
+                                '">Browse</a>'
+                            ),
             icon = this.getIcon(options),
             marker = this.getMarker();
         if (marker) {
