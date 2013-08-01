@@ -200,16 +200,10 @@
 		right: 10px;
 		position: absolute;
 	}
-	
-	.filters-left,
-	.filters-right {
-		float: left;
-		width: 100%;
-		padding-bottom: 0px;
-	}
 
 	.container {
-		width: 100%;
+		width: 82%;
+		padding: 25px;
 	}
 
 	.faq-left {
@@ -313,6 +307,24 @@
 		.hideonmobile {
 			display: none;
 		}
+		
+		.about-content {
+			text-align: center;
+		}
+		.about-content p {
+			text-align: center;
+		}
+		.about-content img {
+			max-width: 200px;
+			padding-bottom: 40px;
+		}
+		#about-title {
+			padding-left: 0;
+		}
+		
+		.fullwidth {
+			width: 100% !important;
+		}
 
 }
 
@@ -326,6 +338,13 @@
 
 	body {
 		overflow-y: scroll;
+	}
+	
+		.filters-left,
+	.filters-right {
+		float: left;
+		width: 100%;
+		padding-bottom: 0px;
 	}
 
 	.media img {

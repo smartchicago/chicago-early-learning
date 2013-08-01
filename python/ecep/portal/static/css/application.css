@@ -661,6 +661,11 @@ h1, h2, h3, h4 {
 	border-bottom-right-radius: 3px;
 }
 
+.about-content p {
+	text-align: justify;
+	padding-right: 40px;
+}
+
 .starred-btn {
 	color: #fff !important;
 }
@@ -911,8 +916,14 @@ h1, h2, h3, h4 {
 .favs-close-button {
     display: block;
     float: right;
-    font-size: 24px;
+    font-size: 35px;
+		margin-top: 10px;
+		color: #c2c2c2;
 }
+	.favs-close-button:hover {
+		text-decoration: none;
+		color: #000;
+	}
 
 .description-mobile {
 	display: none;
