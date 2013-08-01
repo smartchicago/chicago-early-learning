@@ -286,9 +286,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          *
          * Download topojson if not already downloaded.
          */
-        neighborhoodUpdate: function(map) {
+        neighborhoodUpdate: function() {
             var that = this,
-                filters = that.getFilters(map);
+                filters = that.getFilters();
             $.when(
                 $.getJSON(common.getUrl('neighborhood-api'), filters, function(data) {
                     var neighborhoods = that.neighborhoods.data;
