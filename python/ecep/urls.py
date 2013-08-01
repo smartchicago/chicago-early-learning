@@ -11,23 +11,25 @@ admin.autodiscover()
 
 js_info_dict = {
     'domain': 'djangojs',
-    'packages': ('ecep.portal',),
+    'packages': ('portal',),
 }
 
 urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
     url(r'^$', 'portal.views.index'),
-    url(r'^about.html$', 'portal.views.about', name='about'),
+    url(r'^about$', 'portal.views.about', name='about'),
+    url(r'^search.html$', 'portal.views.search', name='search'),
     url(r'^robots\.txt$', direct_to_template,
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
     url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to',
         {'url': '/static/images/favicon.ico'}),
+    
+    # browse page
+    url(r'^browse/$', 'portal.views.browse', name='browse'),
 
-    # Verbose details about a location
-    url(r'^location/$', 'portal.views.location_list'),
-    url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location'),
-    url(r'^compare/(?P<a>\d+)/(?P<b>\d+)/$', 'portal.views.compare'),
+    # portal autocomplete api
+    url(r'^api/autocomplete/(?P<query>\S+)/$', 'portal.views.portal_autocomplete'),
 
     # Telephony
     url(r'^sms/handler/?$', Sms.as_view()),
@@ -36,19 +38,27 @@ urlpatterns = patterns(
         'method': 'POST',
         # Due to a bug in django-twilio, method must be set to GET or POST
         # it works no matter what the request is
-    }),
+        }),
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
+
+    # Location Views
+    # Don't need to pass id to view since this is handled with javascript
+    url(r'^location/\d+/$', 'portal.views.location'),
+    url(r'^api/location/(?P<location_ids>[0-9,]*)/$', 'portal.views.location_api'),
+    url(r'^api/location/$', 'portal.views.location_api'),
+    
+    # Neighborhood Views
+    url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),
+    
+    # Starred Location Views
+    url(r'^starred/?[0-9,]*/$', 'portal.views.starred'),
 
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
     url(r'^rosetta/', include('rosetta.urls')),
-    url(r'^setlang/(?P<language>.+)/$', 'portal.views.setlang', name='setlang'),
+    url(r'^i18n/(?P<language>.+)/$', 'portal.views.setlang', name='setlang'),
+    url(r'^faq$', 'portal.views.faq', name='faq'),
 
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),
 )
-
-urlpatterns += i18n_patterns('',
-    url(r'^faq.html$', 'portal.views.faq', name='faq'),
-)
-

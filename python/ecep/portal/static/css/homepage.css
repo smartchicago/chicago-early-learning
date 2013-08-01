@@ -1,0 +1,76 @@
+/* Homepage ------------------------ */
+
+.masthead {
+	padding: 70px 0 80px;
+	margin-bottom: 0;
+	margin-top: 61px;
+	color: #fff;
+}
+.jumbotron {
+	position: relative;
+	padding: 40px 0;
+	color: #424142;
+	background: #c2c2c2;
+	background: url(../img/banner.jpg);
+	background-opacity: 0.8;
+	background-size: cover;
+}
+.container-custom {
+	width: 970px;
+	margin: 0 auto;
+}
+#featurettes {
+	margin-top: 15px;
+}
+	#featurettes hr {
+		margin-top: 60px;
+		padding-bottom: 50px;
+	}
+.jumbotron .get-started {
+	padding: 20px 50px;
+	box-shadow: none;
+	border: none;
+	background: #b54747;
+	color: #fff;
+	text-shadow: none;
+	border-radius: 4px;
+	transition: 0.3s;
+	border-bottom: 3px solid rgb(128, 36, 36);
+} 
+.jumbotron .get-started:hover {
+	background-color: #bb5959;
+	transition: 0.3s;
+}
+.jumbotron .get-started:active {
+	box-shadow: inset 1px 2px 5px 1px rgb(128, 36, 36);;
+	transition: 0s;
+}
+.jumbotron p {
+	margin: 25px 0 70px 0;
+	font-size: 18px;
+	line-height: 1.4;
+}
+
+input.homepage-search {
+	padding: 20px;
+	margin-top: 9px;
+	border: none;
+	font-size: 18px;
+	margin-right: 10px;
+	width: 400px;
+	text-shadow: none;
+	border: 1px solid #c2c2c2;
+}
+
+.intro-choice {
+	margin-left: 20px;
+	margin-right: 17px;
+}
+
+.media-body h1 {
+	color: #317DC1;
+}
+.media-body p {
+	line-height: 1.5;
+	padding-top: 10px;
+}

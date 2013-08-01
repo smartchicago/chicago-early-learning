@@ -1,0 +1,14 @@
+{
+    "browser": true,
+    "devel": true,
+    "jquery": true,
+    "globals": {
+        "CEL": false,
+        "define": false,
+        "require": false,
+        "google": false
+    },
+    "plusplus": false,
+    "debug": true
+}
+

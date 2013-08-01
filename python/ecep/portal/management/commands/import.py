@@ -2,6 +2,8 @@
 # See LICENSE in the project root for copying permission
 
 from django.core.management.base import BaseCommand, CommandError
+from django.conf import settings
+
 from portal.models import Location
 
 import gdata.spreadsheet.service
@@ -79,48 +81,45 @@ document, and loads the fields into the portal.Location models of the django app
                 self.stdout.write('\t"%s"\n' % f)
 
         for row in reader:
-            if row['Site Name'] is None or row['Site Name'] == '':
+            if row['Early Learning Site or School Name'] is None or row['Early Learning Site or School Name'] == '':
                 continue
 
+            STATE = (settings.STATE or row['State'])
+                
             l = Location(
-                site_name = row['Site Name'],
+                site_name = row['Early Learning Site or School Name'],
                 address = row['Address'],
-                city = row['City '], # Yes, a space after city
-                state = row['State'],
-                zip = row['Zip'],
-                phone1 = row['Phone Number'],
-                phone2 = row['Phone Number 2'],
-                phone3 = row['Phone Number 3'],
-                fax = row['Fax'],
-                is_child_care = parse_maybe(row['CC']),
-                is_hs = parse_maybe(row['HS']),
-                is_ehs = parse_maybe(row['EHS']),
-                is_pre4all = parse_maybe(row['PFA']),
-                is_tuition_based = parse_maybe(row['TB']),
-                is_special_ed = parse_maybe(row['SE']),
-                is_montessori = parse_maybe(row['MONT']),
-                is_child_parent_center = parse_maybe(row['CPC']),
-                is_age_lt_3 = parse_maybe(row['Ages 0-3']),
-                is_age_gt_3 = parse_maybe(row['Ages 3-5']),
-                exec_director = row['Executive Director'],
-                ctr_director = row['Director/Principal'],
-                site_affil = row['Site Affiliation'],
+                city = row['City'], # Yes, a space after city
+                state = STATE,
+                zip = row['Zip Code'],
+                phone = row['Phone Number'],
                 url = row['Website'],
-                email = row['email'],
-                q_stmt = row['Quality Statement'],
-                e_info = row['Eligibility Information'],
-                as_proc = row['Application and Selection Process'],
+                q_stmt = row['Program Statement'],
                 accred = row['Accreditation'],
-                prg_sched = row['Program Schedule'],
-                prg_dur = row['Program Duration'],
-                prg_size = row['Program Size'],
+                prg_hours = row['Hours of Drop-Off/Pick-Up'],
+                is_full_day = parse_maybe(row['Daily Schedule: Full Day Programming']),
+                is_part_day = parse_maybe(row['Daily Schedule: Part Day Programming']),
+                is_full_week = parse_maybe(row['Weekly Schedule: Full Week']),
+                is_part_week = parse_maybe(row['Weekly Schedule: Part Week']),
+                is_school_year = parse_maybe(row['Program Duration: School Year']),
+                is_full_year = parse_maybe(row['Program Duration: Full Year']),
                 ages = row['Ages Served'],
-                waitlist = row['Waitlist']
+                is_age_lt_3 = parse_maybe(row['Ages Served 0-3']),
+                is_age_gt_3 = parse_maybe(row['Ages Served 3-5']),
+                language_1 = row['Language 1 Spoken (other than English)'],
+                language_2 = row['Languages 2 Spoken (other than English)'],
+                language_3 = row['Languages 3 Spoken (other than English)'],
+                is_community_based = parse_maybe(row['Community-Based Program']),
+                is_cps_based = parse_maybe(row['CPS School-Based Program']),
+                is_home_visiting = parse_maybe(row['Home Visiting']),
+                accept_ccap = parse_maybe(row['Accept CCAP?']),
+                is_hs = parse_maybe(row['Head Start']),
+                is_ehs = parse_maybe(row['Early Head Start']),
             )
             try:
                 l.save()
             except Exception, ex:
-                self.stdout.write('Could not save "%s"\n' % row['Site Name']) 
+                self.stdout.write('Could not save "%s"\n' % row['Early Learning Site or School Name']) 
                 if options['verbosity'] > 1:
                     self.stdout.write('%s\n' % ex)
                 return False
