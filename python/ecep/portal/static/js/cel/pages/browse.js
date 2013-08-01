@@ -385,7 +385,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 map.on('popupopen', function(e) {
                     var $div = $('.location-container div[data-key=' + e.popup.options.key + ']');
                     $div.addClass('highlight');
-                    $div[0].scrollIntoViewIfNeeded();
+                    $div[0].scrollIntoView();
                 });
 
                 // remove all highlighting when a location popup is closed
