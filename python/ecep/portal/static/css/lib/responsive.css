@@ -16,15 +16,18 @@
 	}
 	.results-left {
 		width: 100%;
+				overflow: scroll;
+		-webkit-overflow-scrolling: touch;
 	}
 	#filter-options {
 		width: 100%;
 		left: 0;
 	}
-	#desktop-search input {
-		
-	}
 
+	#toggleListBtn {
+		margin-top: 1px;
+	}
+	
 		.cb_slide_panel {
 		background: #fff;
 		margin-top: 61px;
@@ -54,6 +57,11 @@
 	body {
 		
 	}
+	
+	.web-share {
+		width: 50%;
+	}
+	
 	.navbar .navbar-right {
 		width: 80%;
 	}
@@ -76,7 +84,7 @@
 	}
 	.results-left {
 		width: 100%;
-		margin-top: 61px;
+		margin-top: 70px;
 		position: fixed;
 	}
 	.accordion-inner .accordion-right,
@@ -132,13 +140,16 @@
 	}
 		#mobile-search input {
 			width: auto;
-			right: 98px;
-			left: 59px;
-			top: 62px;
+			right: 57px;
+			left: 93px;
+			top: 65px;
 			position: absolute;
 			display: block;
 			font-size: 13px;
-			padding: 5px 10px;
+			padding: 5px 10px 6px;
+			-moz-box-shadow: none !important;
+			-webkit-box-shadow: none !important;
+			box-shadow: none !important;
 		}
 		#mobile-search .btn-group {
 			float: right;
@@ -149,7 +160,7 @@
 		#refineSearch {
 			margin-left: 10px;
 			margin-right: 10px;
-			margin-top: 7px;
+			margin-top: 5px;
 		}
 		.results-toolbar {
 			display: none;
@@ -184,6 +195,12 @@
 		margin-top: 113px;
 	}
 
+	#toggleMapBtn {
+		float: right;
+		right: 10px;
+		position: absolute;
+	}
+	
 	.filters-left,
 	.filters-right {
 		float: left;
@@ -258,6 +275,14 @@
 	.container-custom .description {
 			display: none;
 		}
+		
+	.container-custom .description-mobile {
+			display: block;
+		}
+		
+		.autocomplete-submit {
+			display: none;
+		}
 
 		.jumbotron .homepage-search {
 			padding: 10px;
@@ -269,12 +294,24 @@
 		}
 
 		.get-started {
-			width: 92%;
+			width: 28%;
 			margin-bottom: 10px;
 		}
 
 		.jumbotron {
 			padding: 0;
+		}
+		
+		.locations-wrapper {
+		overflow: hidden; }
+		
+		.location .span2 {
+			margin-top: -26px !important;
+			margin-right: 0 !important;
+		}
+		
+		.hideonmobile {
+			display: none;
 		}
 
 }
@@ -309,7 +346,7 @@
 		font-size: 12px;
 	}
 
-		.results-left .span2 {
+	.results-left .span2 {
 		float: right;
 		right: 0;
 		margin-right: -80px;
@@ -324,7 +361,18 @@
 		padding-right: 10px;
 		display: none;
 	}
+	
+	#toggleListBtn {
+		margin-top: -2px;
+	}
+	#toggleMapBtn {
+		margin-top: 4px;
+	}
 
+		.get-started {
+			width: 45%;
+			margin-bottom: 10px;
+		}
 
 
 }
