@@ -27,6 +27,10 @@ h1, h2, h3, h4 {
 		font-weight: 300;
 }
 
+.location-map  {
+
+}
+
 
 
 /* Navbar ---------------------- */
@@ -451,6 +455,7 @@ h1, h2, h3, h4 {
     margin-bottom: 25px;
 }
 
+
 /* necessary to display leaflet
    icons above google map layer */
 .leaflet-map-pane {
@@ -668,9 +673,20 @@ h1, h2, h3, h4 {
 	border-bottom-right-radius: 3px;
 }
 
-.starred-btn {
-	color: #fff !important;
+.about-content p {
+	text-align: justify;
+	padding-right: 40px;
+	max-width: 510px;
 }
+
+.starred-btn {
+
+}
+
+		#filter-clear-all {
+			float: right;
+			margin-top: -37px;
+		}
 
 .btn-primary {
 	color: #FFFFFF;
@@ -921,7 +937,19 @@ h1, h2, h3, h4 {
 
 .favs-close-button {
     float: right;
-    font-size: 24px;
+    font-size: 35px;
+		margin-top: 10px;
+		color: #c2c2c2;
+}
+
+.favs-close-button:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+.single-star {
+    margin-top: -28px;
+    margin-right: 90px;
 }
 
 .description-mobile {
