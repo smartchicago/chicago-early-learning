@@ -148,6 +148,17 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $locationWrapper.empty();
             $locationWrapper.append(template(handlebarsData));
 
+            // set header title
+            var $headerFav = $('#header-fav'),
+                $headerDist = $('#header-dist');
+            if (isNb) {
+                $headerFav.text(gettext('Neighborhood'));
+                $headerDist.text(gettext('Schools'));
+            } else {
+                $headerFav.text(gettext('School'));
+                $headerDist.text(gettext('More Information'));
+            }
+
             // bind social sharing button clicks for individual locations
             $locationWrapper.find('.share-btn').on('click', function() {
                 var key = $(this).data('key');

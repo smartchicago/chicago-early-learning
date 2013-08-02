@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-01 15:41-0500\n"
+"POT-Creation-Date: 2013-08-02 08:28-0500\n"
 "PO-Revision-Date: 2013-01-10 08:46-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -26,125 +26,63 @@ msgstr "Inglés"
 msgid "Spanish"
 msgstr "Español"
 
-#: portal/models.py:56 portal/models.py:196
-msgid "Phone Number"
-msgstr "Número de teléfono"
-
-#: portal/models.py:57
-#, fuzzy
-msgid "Quality Rating"
-msgstr "Declaración de calidad"
-
-#: portal/models.py:58 portal/models.py:212
-#: portal/templatetags/portal_extras.py:30
-msgid "Website"
-msgstr "Sitio web"
-
-#: portal/models.py:59 portal/models.py:203
-msgid "Quality Statement"
-msgstr "Declaración de calidad"
-
-#: portal/models.py:60
-msgid "Accreditation"
-msgstr "Acreditación"
-
-#: portal/models.py:61
-msgid "Program Hours"
-msgstr "Programas"
-
-#: portal/models.py:62
-msgid "Full Day"
-msgstr "Año completo"
-
-#: portal/models.py:63
-msgid "Part Day"
-msgstr "Parte del día"
-
-#: portal/models.py:64 portal/models.py:193
-msgid "Full Week"
-msgstr "Semana completa"
-
-#: portal/models.py:65
-msgid "Part Week"
-msgstr "Semana parcial"
-
-#: portal/models.py:66 portal/models.py:190
-msgid "School Year"
-msgstr "Año Escolar"
-
-#: portal/models.py:67 portal/models.py:190
-msgid "Full Year"
-msgstr "Año completo"
-
-#: portal/models.py:68
-msgid "Ages Served"
-msgstr "Edades para las que se presta servicio"
-
-#: portal/models.py:69
-msgid "Ages 0-3"
-msgstr "0‐3 años"
-
-#: portal/models.py:70
-msgid "Ages 3-5"
-msgstr "3‐5 años"
-
-#: portal/models.py:74
-msgid "Community Based"
-msgstr ""
-
-#: portal/models.py:75
-msgid "CPS Based"
-msgstr ""
-
-#: portal/models.py:76
-msgid "Home Visiting"
-msgstr "Visitas a Domicilio"
-
-#: portal/models.py:77
-msgid "Accepts CCAP"
-msgstr ""
-
-#: portal/models.py:78
-msgid "Head Start"
-msgstr "Head Start"
-
-#: portal/models.py:79
-msgid "Early Head Start"
-msgstr "Early Head Start"
-
-#: portal/models.py:181
+#: portal/models.py:185
 msgid "Affiliations"
 msgstr "Afiliación del centro/sede"
 
-#: portal/models.py:187
+#: portal/models.py:192
 msgid "Languages (other than English)"
 msgstr "Idiomas (excepto Inglés)"
 
-#: portal/models.py:190
+#: portal/models.py:195
 msgid "Program Duration"
 msgstr "Duración del programa"
 
-#: portal/models.py:193
+#: portal/models.py:195
+msgid "Full Year"
+msgstr "Año completo"
+
+#: portal/models.py:195
+msgid "School Year"
+msgstr "Año Escolar"
+
+#: portal/models.py:198
 msgid "Weekday Availability"
 msgstr ""
 
-#: portal/models.py:193
+#: portal/models.py:198
+msgid "Full Week"
+msgstr "Semana completa"
+
+#: portal/models.py:198
 msgid "Partial Week"
 msgstr "Semana parcial"
 
-#: portal/models.py:212
+#: portal/models.py:201
+msgid "Phone Number"
+msgstr "Número de teléfono"
+
+#: portal/models.py:208
+msgid "Quality Statement"
+msgstr "Declaración de calidad"
+
+#: portal/models.py:217
 msgid "More"
 msgstr "Más"
 
-#: portal/models.py:212
+#: portal/models.py:217 portal/templatetags/portal_extras.py:30
+msgid "Website"
+msgstr "Sitio web"
+
+#: portal/models.py:217
 msgid "Directions"
 msgstr "Indicaciones"
 
-#: portal/models.py:213
+#: portal/models.py:218
 msgid "Share"
 msgstr ""
 
-#: portal/models.py:216
+#: portal/models.py:221
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -481,6 +419,43 @@ msgstr "¿Ha olvidado su nombre de usuario o contraseña?"
 #: templates/admin/login.html:55
 msgid "Log in"
 msgstr "Iniciar sesión"
+
+#, fuzzy
+#~ msgid "Quality Rating"
+#~ msgstr "Declaración de calidad"
+
+#~ msgid "Accreditation"
+#~ msgstr "Acreditación"
+
+#~ msgid "Program Hours"
+#~ msgstr "Programas"
+
+#~ msgid "Full Day"
+#~ msgstr "Año completo"
+
+#~ msgid "Part Day"
+#~ msgstr "Parte del día"
+
+#~ msgid "Part Week"
+#~ msgstr "Semana parcial"
+
+#~ msgid "Ages Served"
+#~ msgstr "Edades para las que se presta servicio"
+
+#~ msgid "Ages 0-3"
+#~ msgstr "0‐3 años"
+
+#~ msgid "Ages 3-5"
+#~ msgstr "3‐5 años"
+
+#~ msgid "Home Visiting"
+#~ msgstr "Visitas a Domicilio"
+
+#~ msgid "Head Start"
+#~ msgstr "Head Start"
+
+#~ msgid "Early Head Start"
+#~ msgstr "Early Head Start"
 
 #~ msgid "About the Chicago Early Learning Portal"
 #~ msgstr ""
