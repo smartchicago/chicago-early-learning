@@ -21,6 +21,8 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common
                     template = Handlebars.compile(html);
 
                 $('.container > .row').append(template(loc.data));
+                $('.single-location-map').show();
+                $('.favs-toggle').show();
 
                 var latLng = loc.getLatLng(), 
                     map = new L.Map('location-map', {center: latLng, zoom: 13});
@@ -37,6 +39,14 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common
                 $star.on('click', function(e) {
                     favorites.toggle($star);
                     loc.setMarker();
+                });
+
+                $('.single-share').show().on('click', function(e) {
+                    $('#share-modal').trigger('init-modal', {                                           
+                        // the url is passed in to the sharing urls, so it must be absolute             
+                        url: document.location.origin + '/location/' + location_id  + '/',                      
+                        title: 'Check out this early learning program'                                  
+                    });
                 });
             });
         });

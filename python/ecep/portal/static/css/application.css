@@ -31,6 +31,10 @@ h1, h2, h3, h4 {
 
 }
 
+.bm20 {
+    margin-bottom: 20px;
+}
+
 
 
 /* Navbar ---------------------- */
@@ -409,19 +413,10 @@ h1, h2, h3, h4 {
 		margin-right: 20px;
 	}
 
-.fullwidth {
-	width: 100%;
-}
+    .fullwidth {
+	    width: 100%;
+    }
 
-.favorite {
-	width: 30%;
-	float: left;
-	padding: 15px;
-	min-height: 660px;
-}
-	.favorite .fullwidth {
-		width: 100% !important;
-	}
 	.favorite h1 {
 		line-height: 10px;
 		font-size: 16px;

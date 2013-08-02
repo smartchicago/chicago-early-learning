@@ -15,25 +15,35 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
             function drawStarredLocations(data) {
                 var template = Handlebars.compile(html),
                     container = $('.container'),
-                    numLocations = data.locations.length;
-                
+                    $starred = $('<div></div>'),
+                    numLocations = data.locations.length,
+                    divRowHtml = '<div class="row bm20"></div>',
+                    $divRow = $(divRowHtml);
+
                 for (var i = 0; i < numLocations; i++) {
                     var loc = data.locations[i];
-                    container.append(template(loc));
+                    var $location = $(template(loc)).addClass("span4");
+                    $divRow.append($location);
+
+                    if ((i + 1) % 3 === 0 || i === numLocations - 1) {
+                        $starred.append($divRow);
+                        $divRow = $(divRowHtml);
+                    }
                 }
 
+                // attach in single dom operation
+                container.html($starred);     
+
                 // Remove map and share button for each location
-                $('.single-location-map').hide();
-                $('.single-share').hide();
-                $('.fav-count').html(data.locations.length);
+                $('.fav-count').html(numLocations);
 
                 // add click listener for the close buttons
                 $('.favs-close-button').removeClass('none').on('click', function(e) {
                     var $favorite = $(this).parent(),
-                        key = $favorite.data('key');
+                        key = $favorite.data('key'),
+                        dataLength = data.locations.length;
                     favorites.removeIdFromCookie(key);
-                    $favorite.remove();
-                    favorites.syncUI();
+                    $.getJSON(common.getUrl('location-api') + favorites.getCookie(), drawStarredLocations);
                 });
             }
 
