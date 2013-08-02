@@ -23,7 +23,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common
                 $('.container > .row').append(template(loc.data));
 
                 var latLng = loc.getLatLng(), 
-                    map = new L.Map('location-map', {center: latLng, zoom: 13});
+                    map = new L.Map('location-map', { center: latLng, zoom: 13, dragging: false });
                 
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap 
                 loc.setMarker({ popup: false });
