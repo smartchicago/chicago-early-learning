@@ -94,8 +94,10 @@ class Location(models.Model):
     objects = models.GeoManager()
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
-    display_include = set(['ages', 'prg_hours', 'accred', 'is_home_visiting', 'accept_ccap'])
-    #display_include = set(['ages', 'accred', 'is_hs', 'is_ehs', ])
+    display_include = {'ages', 'prg_hours', 'accred', 'accept_ccap',
+                       'is_home_visiting', 'is_hs', 'is_ehs', 'url',
+                       'is_full_day', 'is_part_day', 'is_full_week', 'is_part_week',
+                       'is_school_year', 'is_full_year', 'is_community_based', 'is_cps_based'}
 
     def __unicode__(self):
         return unicode(self.site_name)
@@ -165,23 +167,24 @@ class Location(models.Model):
         # boolean fields to present -- these are the attributes that are set to True
         bfields = []
 
-        for field in Location._meta.fields:
+        # Fields to include in Affiliation aggregate field
+        affiliation_fields = [self._meta.get_field_by_name(name)[0] for name in
+                              ['is_community_based', 'is_cps_based', 'is_hs', 'is_ehs']]
+        aff_field_names = {f.get_attname() for f in affiliation_fields}
+
+        for field in self._meta.fields:
             fname = field.get_attname()
-            if not fname in Location.display_include:
+            if not fname in self.display_include or fname in aff_field_names:
                 continue
 
             if self.is_true_bool_field(field):
                 bfields.append(field.verbose_name)
             elif self.is_simple_field(field):
-                kv = {'fieldname': _(field.verbose_name), 'value': getattr(self, fname)}
+                kv = {'fieldname': _(field.verbose_name), 'value': field.value_from_object(self)}
                 sfields.append(kv)
 
-        # Affiliations
-        affiliation_fields = [(self.is_community_based, 'is_community_based'),
-                              (self.is_cps_based, 'is_cps_based'),
-                              (self.is_hs, 'is_hs'),
-                              (self.is_ehs, 'is_ehs')]
-        affiliation_values = [self.verbose_name(aff[1]) for aff in affiliation_fields if aff[0]]
+        affiliation_values = [self.verbose_name(aff.get_attname()) for aff in affiliation_fields
+                              if aff.value_from_object(self)]
         sfields.append({'fieldname': _('Affiliations'),
                         'value': ', '.join(affiliation_values) if affiliation_values else 'None'})
         
