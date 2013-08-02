@@ -124,8 +124,6 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          */
         var listResults = function(data, dataType) {
 
-            console.log("In listResults()");
-
             var isNb = (dataType === layerType.neighborhood), 
                 html = (isNb ? neighborhoodList : locationList),
                 dataList,
@@ -194,24 +192,13 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
             // Watch for hover events on the list so we can highlight both 
             // the list item and the icon on the map
-            $('.location-container').each(function(index) {
+            var $locationContainer = $('.location-container');
+            $locationContainer.each(function(index) {
                 var $this = $(this),
                     key = $this.data('key'),
                     loc = dm.locations[key],
                     iconkey = 'icon-' + loc.getIconKey();
                 $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
-            }).hover(function(e) {
-                var $this = $(this),
-                    key = $this.data('key'),
-                    loc = dm.locations[key];
-
-                if (e.type === 'mouseenter') {
-                    $this.addClass('highlight');
-                    loc.setIcon({'highlighted': true});
-                } else if (e.type === 'mouseleave') {
-                    $this.removeClass('highlight');
-                    loc.setIcon({'highlighted': false});
-                }
             }).on('show.bs.collapse', function(e) {
                 var $this = $(this),
                     $morelessbtn = $this.find('.more-less-btn');
@@ -221,6 +208,22 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     $morelessbtn = $this.find('.more-less-btn');
                 $morelessbtn.html(gettext('More'));
             });
+            // feature detection: we only want hover events on non-touch devices 
+            if (!("ontouchstart" in document.documentElement)) {
+                $locationContainer.on('mouseenter mouseleave', function(e) {
+                    var $this = $(this),
+                    key = $this.data('key'),
+                    loc = dm.locations[key];
+
+                    if (e.type === 'mouseenter') {
+                        $this.addClass('highlight');
+                        loc.setIcon({'highlighted': true});
+                    } else if (e.type === 'mouseleave') {
+                        $this.removeClass('highlight');
+                        loc.setIcon({'highlighted': false});
+                    }
+                });
+            }
         };
 
         /*
@@ -375,8 +378,6 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 map = new L.map('map').setView(state.point, defaultZoom);   // Initialize Leaflet map
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
-
-                console.log("Map Loaded");
 
                 // draw marker for geolocated point 
                 if (state.isGeolocated) {
