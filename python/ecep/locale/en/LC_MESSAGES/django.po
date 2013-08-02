@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 08:46-0500\n"
+"POT-Creation-Date: 2013-08-02 11:00-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -24,124 +24,75 @@ msgstr ""
 msgid "Spanish"
 msgstr ""
 
-#: portal/models.py:56 portal/models.py:196
-msgid "Phone Number"
-msgstr ""
-
-#: portal/models.py:57
-msgid "Quality Rating"
-msgstr ""
-
-#: portal/models.py:58 portal/models.py:207
-#: portal/templatetags/portal_extras.py:30
-msgid "Website"
-msgstr ""
-
-#: portal/models.py:59
-msgid "Quality Statement"
-msgstr ""
-
-#: portal/models.py:60
-msgid "Accreditation"
-msgstr ""
-
-#: portal/models.py:61
-msgid "Program Hours"
-msgstr ""
-
-#: portal/models.py:62
-msgid "Full Day"
-msgstr ""
-
-#: portal/models.py:63
-msgid "Part Day"
-msgstr ""
-
-#: portal/models.py:64 portal/models.py:193
-msgid "Full Week"
-msgstr ""
-
-#: portal/models.py:65
-msgid "Part Week"
-msgstr ""
-
-#: portal/models.py:66 portal/models.py:190
-msgid "School Year"
-msgstr ""
-
-#: portal/models.py:67 portal/models.py:190
-msgid "Full Year"
-msgstr ""
-
-#: portal/models.py:68
-msgid "Ages Served"
-msgstr ""
-
-#: portal/models.py:69
-msgid "Ages 0-3"
-msgstr ""
-
-#: portal/models.py:70
-msgid "Ages 3-5"
-msgstr ""
-
-#: portal/models.py:74
-msgid "Community Based"
-msgstr ""
-
-#: portal/models.py:75
-msgid "CPS Based"
-msgstr ""
-
-#: portal/models.py:76
-msgid "Home Visiting"
-msgstr ""
-
-#: portal/models.py:77
-msgid "Accepts CCAP"
-msgstr ""
-
-#: portal/models.py:78
-msgid "Head Start"
-msgstr ""
-
-#: portal/models.py:79
-msgid "Early Head Start"
-msgstr ""
-
-#: portal/models.py:181
+#: portal/models.py:185
 msgid "Affiliations"
 msgstr ""
 
-#: portal/models.py:187
+#: portal/models.py:192
 msgid "Languages (other than English)"
 msgstr ""
 
-#: portal/models.py:190
+#: portal/models.py:195
 msgid "Program Duration"
 msgstr ""
 
-#: portal/models.py:193
+#: portal/models.py:195
+msgid "Full Year"
+msgstr ""
+
+#: portal/models.py:195
+msgid "School Year"
+msgstr ""
+
+#: portal/models.py:198
 msgid "Weekday Availability"
 msgstr ""
 
-#: portal/models.py:193
+#: portal/models.py:198
+msgid "Full Week"
+msgstr ""
+
+#: portal/models.py:198
 msgid "Partial Week"
 msgstr ""
 
-#: portal/models.py:207
-msgid "More"
-msgstr ""
-
-#: portal/models.py:207
-msgid "Directions"
+#: portal/models.py:201
+msgid "Phone Number"
 msgstr ""
 
 #: portal/models.py:208
+msgid "Quality Statement"
+msgstr ""
+
+#: portal/models.py:217
+msgid "More"
+msgstr ""
+
+#: portal/models.py:217 portal/templatetags/portal_extras.py:30
+msgid "Website"
+msgstr ""
+
+#: portal/models.py:217
+msgid "Directions"
+msgstr ""
+
+#: portal/models.py:218 portal/templates/browse.html:43
 msgid "Share"
 msgstr ""
 
-#: portal/models.py:211
+#: portal/models.py:225
+msgid "Directions from Google"
+msgstr ""
+
+#: portal/models.py:225
+msgid "Click to show more information"
+msgstr ""
+
+#: portal/models.py:226
+msgid "Click to star location"
+msgstr ""
+
+#: portal/models.py:229
 msgid "Other Features"
 msgstr ""
 
@@ -190,6 +141,10 @@ msgstr ""
 msgid "Explore"
 msgstr ""
 
+#: portal/views.py:366
+msgid "Click to see schools in this neighborhood"
+msgstr ""
+
 #: portal/views_v1.py:32
 msgid "Distance"
 msgstr ""
@@ -222,15 +177,15 @@ msgid "Chicago Early Learning"
 msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
-#: portal/templates/base.html:53
+#: portal/templates/base.html:59
 msgid "About"
 msgstr ""
 
-#: portal/templates/about.html:28
+#: portal/templates/about.html:27
 msgid "City of Chicago"
 msgstr ""
 
-#: portal/templates/about.html:29
+#: portal/templates/about.html:28
 msgid ""
 "Mayor Emanuel and the City of Chicago have made a firm commitment to "
 "providing children across the city with access to high-quality education, "
@@ -247,22 +202,22 @@ msgid ""
 "for their child."
 msgstr ""
 
-#: portal/templates/about.html:39
+#: portal/templates/about.html:38
 msgid "Chicago Public Schools"
 msgstr ""
 
-#: portal/templates/about.html:40
+#: portal/templates/about.html:39
 msgid ""
 "Chicago Public Schools works to ensure that every student in every community "
 "has access to a high quality education that prepares them for success in "
 "college and career."
 msgstr ""
 
-#: portal/templates/about.html:50
+#: portal/templates/about.html:49
 msgid "Chicago Department of Family and Support Services"
 msgstr ""
 
-#: portal/templates/about.html:51
+#: portal/templates/about.html:50
 msgid ""
 "The Chicago Department of Family and Support Services (DFSS) is dedicated to "
 "supporting a continuum of coordinated services to enhance the lives of "
@@ -270,11 +225,11 @@ msgid ""
 "senior years."
 msgstr ""
 
-#: portal/templates/about.html:61
+#: portal/templates/about.html:60
 msgid "Smart Chicago Collaborative"
 msgstr ""
 
-#: portal/templates/about.html:62
+#: portal/templates/about.html:61
 msgid ""
 "The Smart Chicago Collaborative is a civic organization devoted to using "
 "technology to make lives better in Chicago. We work to apply the "
@@ -282,11 +237,11 @@ msgid ""
 "Chicago."
 msgstr ""
 
-#: portal/templates/about.html:73
+#: portal/templates/about.html:72
 msgid "University of Chicago Urban Education Lab"
 msgstr ""
 
-#: portal/templates/about.html:74
+#: portal/templates/about.html:73
 msgid ""
 "The University of Chicago Urban Education Lab, a project of the Urban "
 "Education Institute, seeks to improve education outcomes by providing "
@@ -294,49 +249,77 @@ msgid ""
 "effective, for whom, and why."
 msgstr ""
 
+#: portal/templates/base-search.html:7
+msgid "Click to user your current location"
+msgstr ""
+
 #: portal/templates/base-search.html:9 portal/templates/index.html:23
 #: portal/templates/search.html:9
 msgid "Search"
 msgstr ""
 
-#: portal/templates/base.html:52
+#: portal/templates/base.html:58
 msgid "Text For Info"
 msgstr ""
 
-#: portal/templates/base.html:54 portal/templates/faq-models.html:9
+#: portal/templates/base.html:60 portal/templates/faq-models.html:9
 msgid "FAQ"
 msgstr ""
 
-#: portal/templates/base.html:56
+#: portal/templates/base.html:62
 msgid "Language"
 msgstr ""
 
-#: portal/templates/base.html:76
+#: portal/templates/base.html:82
 msgid "Want information via text?"
 msgstr ""
 
-#: portal/templates/base.html:79
+#: portal/templates/base.html:85
 msgid "Text your zip code to "
 msgstr ""
 
-#: portal/templates/base.html:79
+#: portal/templates/base.html:85
 msgid " and we'll do the rest."
 msgstr ""
 
-#: portal/templates/base.html:87
+#: portal/templates/base.html:93
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:90
+#: portal/templates/base.html:96
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
+msgstr ""
+
+#: portal/templates/browse.html:40
+msgid "Click to hide filters"
+msgstr ""
+
+#: portal/templates/browse.html:40
+msgid "Refine your search"
+msgstr ""
+
+#: portal/templates/browse.html:42
+msgid "Click to view starred locations"
+msgstr ""
+
+#: portal/templates/browse.html:42
+msgid "Starred"
+msgstr ""
+
+#: portal/templates/browse.html:43
+msgid "Click to share starred schools"
+msgstr ""
+
+#: portal/templates/browse.html:69
+msgid "Reset Search"
 msgstr ""
 
 #: portal/templates/index.html:20
 msgid "Find the right school for your child."
 msgstr ""
 
-#: portal/templates/index.html:21
+#: portal/templates/index.html:21 portal/templates/index.html.py:30
 msgid ""
 "Welcome to the City of Chicago's Early Learning Portal. Here you can easily "
 "find early learning programs near your home or work. You can also compare "
@@ -349,43 +332,43 @@ msgstr ""
 msgid "Just start browsing"
 msgstr ""
 
-#: portal/templates/index.html:32
+#: portal/templates/index.html:36
 msgid "Find early learning centers near you."
 msgstr ""
 
-#: portal/templates/index.html:33
+#: portal/templates/index.html:37
 msgid ""
 "Search by the address where you live or work to quickly find all of the "
 "early learning centers located near you. The results are shown in a list and "
 "on a map so you can find what you want the way you find it easiest."
 msgstr ""
 
-#: portal/templates/index.html:40
+#: portal/templates/index.html:44
 msgid "Browse locations by neighborhood."
 msgstr ""
 
-#: portal/templates/index.html:41
+#: portal/templates/index.html:45
 msgid ""
 "You can pick a neighborhood from the list or map if you don't want to search "
 "by address. You can also type a neighborhood or even a school name into the "
 "search bar to get there faster."
 msgstr ""
 
-#: portal/templates/index.html:48
+#: portal/templates/index.html:52
 msgid "Text for more info"
 msgstr ""
 
-#: portal/templates/index.html:49
+#: portal/templates/index.html:53
 msgid ""
 "Get details about locations near you with text messages. Simply send a zip "
 "code and follow the instructions on your phone."
 msgstr ""
 
-#: portal/templates/index.html:56
+#: portal/templates/index.html:60
 msgid "Refine your search to find exactly what you want."
 msgstr ""
 
-#: portal/templates/index.html:57
+#: portal/templates/index.html:61
 msgid ""
 "There are a number of ways to narrow down your search so you can see only "
 "the programs and schools you are interested in."
