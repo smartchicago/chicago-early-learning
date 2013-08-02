@@ -122,6 +122,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * @param {Type of current layer, see layerType} dataType
          */
         var listResults = function(data, dataType) {
+
+            console.log("In listResults()");
+
             var html = dataType === layerType.neighborhood ? neighborhoodList : locationList,
                 template = Handlebars.compile(html),
                 handlebarsData = [];
@@ -353,6 +356,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 map = new L.map('map').setView(state.point, defaultZoom);   // Initialize Leaflet map
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
+
+                console.log("Map Loaded");
 
                 // draw marker for geolocated point 
                 if (state.isGeolocated) {
