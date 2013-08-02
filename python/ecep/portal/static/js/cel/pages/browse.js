@@ -123,6 +123,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * @param {Type of current layer, see layerType} dataType
          */
         var listResults = function(data, dataType) {
+
             var isNb = (dataType === layerType.neighborhood), 
                 html = (isNb ? neighborhoodList : locationList),
                 dataList,
@@ -172,7 +173,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
             favorites.syncUI();
             favorites.addToggleListener({
-                button: ".favs-toggle"
+                button: '.favs-toggle'
             });
 
             /**
@@ -191,24 +192,13 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
             // Watch for hover events on the list so we can highlight both 
             // the list item and the icon on the map
-            $('.location-container').each(function(index) {
+            var $locationContainer = $('.location-container');
+            $locationContainer.each(function(index) {
                 var $this = $(this),
                     key = $this.data('key'),
                     loc = dm.locations[key],
                     iconkey = 'icon-' + loc.getIconKey();
                 $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
-            }).hover(function(e) {
-                var $this = $(this),
-                    key = $this.data('key'),
-                    loc = dm.locations[key];
-
-                if (e.type === 'mouseenter') {
-                    $this.addClass('highlight');
-                    loc.setIcon({'highlighted': true});
-                } else if (e.type === 'mouseleave') {
-                    $this.removeClass('highlight');
-                    loc.setIcon({'highlighted': false});
-                }
             }).on('show.bs.collapse', function(e) {
                 var $this = $(this),
                     $morelessbtn = $this.find('.more-less-btn'),
@@ -232,6 +222,22 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             }).on('hide.bs.collapse', function(e) {
                 $('#refineBtn').attr('data-hint', gettext('Click to show filters'));
             });
+            // feature detection: we only want hover events on non-touch devices 
+            if (!('ontouchstart' in document.documentElement)) {
+                $locationContainer.on('mouseenter mouseleave', function(e) {
+                    var $this = $(this),
+                    key = $this.data('key'),
+                    loc = dm.locations[key];
+
+                    if (e.type === 'mouseenter') {
+                        $this.addClass('highlight');
+                        loc.setIcon({'highlighted': true});
+                    } else if (e.type === 'mouseleave') {
+                        $this.removeClass('highlight');
+                        loc.setIcon({'highlighted': false});
+                    }
+                });
+            }
         };
 
         /*
@@ -339,7 +345,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * Update view when the dm triggers its neighborhood updated event
          * We only want to attach this event once...
          */
-        dm.events.on("DataManager.neighborhoodUpdated", function(e) {
+        dm.events.on('DataManager.neighborhoodUpdated', function(e) {
             // If not already displaying neighborhoods and zoomed out
             if (currentLayer !== layerType.neighborhood) {
                 currentLayer = layerType.neighborhood;
@@ -362,7 +368,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * Update view when the dm triggers its location updated event
          * We only want to attach this event once...
          */
-        dm.events.on("DataManager.locationUpdated", function(e) {
+        dm.events.on('DataManager.locationUpdated', function(e) {
             // If not already displaying locations and zoomed in
             if (currentLayer !== layerType.location) {
                 currentLayer = layerType.location;

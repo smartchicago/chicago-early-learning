@@ -273,6 +273,8 @@ function($, L, Response, Handlebars) {
             $('.geolocation-button').bind('click', function(e) {                                                   
                 navigator.geolocation.getCurrentPosition(function(position) {                           
                     window.location.href = getUrl('browse-latlng',{ lat: position.coords.latitude, lng: position.coords.longitude });
+                }, function(e) {
+                    alert(gettext('Please enable geolocation services.'));
                 });                                                                                     
             });
         });
