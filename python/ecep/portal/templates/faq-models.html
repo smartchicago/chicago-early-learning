@@ -59,14 +59,14 @@ If we want to actually group questions by topic, we'll need to modify this a bit
 {% endblock %}
 
 {% block scripts %}
-
-<script type="text/javascript">
+<script>
+require(['jquery'], function($) {
     $(document).ready(function() { 
         $('#faq-link').addClass('active');
         if (window.location.hash != '') {
             $('a[href="' + window.location.hash + '"]').parent().next().collapse('show');
         }
     });
+});
 </script>
-
 {% endblock %}
