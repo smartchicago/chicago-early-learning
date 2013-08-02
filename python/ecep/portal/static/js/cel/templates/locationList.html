@@ -7,11 +7,11 @@
         <h1 class="truncate">{{item.site_name}}</h1>
         <h2>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2>
       </a>
-      <a class="directions-icon" id="loc-icon" href="#" rel="tooltip" title="NYAEC Accredidation">
+      <a class="directions-icon hint--right" id="loc-icon" href="#" data-hint="{{tooltip.accreditation}}">
         <img id="loc-icon-{{item.key}}" src="/static/img/leaflet-icons/center.png" class="location-icons" />
       </a> 
-      <a class="directions-icon" id="loc-dirs" href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}" target="_blank">{{translations.directions}}</a>
-      <button class="btn btn-inverse more-less-btn" data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}" id="moreBtn">{{translations.more}}</button>
+      <a class="directions-icon hint--left" data-hint="Directions from Google" id="loc-dirs" href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}" target="_blank">{{translations.directions}}</a>
+      <button class="btn btn-inverse more-less-btn hint--left" data-hint="{{tooltip.explore}}" data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}" id="moreBtn">{{translations.more}}</button>
       <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
     </div>
   </div>
