@@ -2,7 +2,7 @@
 <div class="accordion location-container" data-key="{{item.key}}">
   <div class="accordion-group" data-key="{{item.key}}">
     <div class="accordion-heading location">
-      <a href="#" class="favs-toggle" id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}"><img src="/static/img/icons/star-empty.svg" class="fave-star" alt="Favorite"></a>
+      <a href="#" class="favs-toggle hint--right" data-hint="{% trans 'Click to star school' %}" id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}"><img src="/static/img/icons/star-empty.svg" class="fave-star" alt="Favorite"></a>
       <a data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}">
         <h1 class="truncate">{{item.site_name}}</h1>
         <h2>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2>
