@@ -126,7 +126,6 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
             console.log("In listResults()");
 
-            var html = dataType === layerType.neighborhood ? neighborhoodList : locationList,
             var isNb = (dataType === layerType.neighborhood), 
                 html = (isNb ? neighborhoodList : locationList),
                 dataList,
