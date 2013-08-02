@@ -40,10 +40,9 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
                 // add click listener for the close buttons
                 $('.favs-close-button').removeClass('none').on('click', function(e) {
                     var $favorite = $(this).parent(),
-                        key = $favorite.data('key'),
-                        dataLength = data.locations.length;
+                        key = $favorite.data('key');
                     favorites.removeIdFromCookie(key);
-                    $.getJSON(common.getUrl('location-api') + favorites.getCookie(), drawStarredLocations);
+                    $.getJSON(common.getUrl('location-api', { locations: favorites.getCookie() }), drawStarredLocations);
                 });
             }
 
@@ -57,7 +56,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
             
             if (regexResult || cookie) {
                 starredIds = regexResult ? regexResult[1] : cookie;
-                $.getJSON(common.getUrl('location-api') + starredIds, drawStarredLocations);
+                $.getJSON(common.getUrl('location-api', { locations: favorites.getCookie() }), drawStarredLocations);
             } else {
                 $('.container').html('No Starred Locations');
             }

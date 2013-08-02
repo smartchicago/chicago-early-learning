@@ -15,7 +15,10 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common
          */
         $(document).ready(function() {
             var location_id = /(\d+)/.exec(window.location.pathname)[1];
-            $.getJSON(common.getUrl('location-api') + location_id, function(data) {
+            var url = common.getUrl('location-api', { locations: location_id });
+            //var url = '/api/location/' + location_id + '/';
+            console.log(url);
+            $.getJSON(url, function(data) {
                 var loc = new location.Location(data.locations[0]),
                     // need to build the template first so leaflet can find the map
                     template = Handlebars.compile(html);
@@ -44,7 +47,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common
                 $('.single-share').show().on('click', function(e) {
                     $('#share-modal').trigger('init-modal', {                                           
                         // the url is passed in to the sharing urls, so it must be absolute             
-                        url: document.location.origin + '/location/' + location_id  + '/',                      
+                        url: document.location.origin + common.getUrl('single-location', { location: location_id }), 
                         title: 'Check out this early learning program'                                  
                     });
                 });

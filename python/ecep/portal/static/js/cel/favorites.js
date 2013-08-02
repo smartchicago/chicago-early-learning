@@ -226,7 +226,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
 
             $('#share-modal').trigger('init-modal', {
                 // the url is passed in to the sharing urls, so it must be absolute
-                url: document.location.origin + '/starred/' + ids  + '/',
+                url: document.location.origin + common.getUrl('starred', { locations: ids }),
                 title: 'I just starred ' + count + ' locations'
             });
         },
