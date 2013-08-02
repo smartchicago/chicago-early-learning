@@ -162,11 +162,13 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 img = 'star-empty.svg';
                 favs.removeIdFromCookie(buttonId);
                 increment = -1;
+                $elt.attr('data-hint', gettext('Click to star location'));
             // toggle on
             } else {
                 img = 'star.svg';
                 favs.addIdToCookie(buttonId);
                 increment = 1;
+                $elt.attr('data-hint', gettext('Click to remove star from location'));
             }
 
             buttonImg.attr('src', opts.imgpath + img);
