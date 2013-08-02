@@ -1,9 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-html {
-}
-
 body {
   padding: 0;
   margin: 0;
@@ -27,10 +24,6 @@ h1, h2, h3, h4 {
 		font-weight: 300;
 }
 
-.location-map  {
-
-}
-
 .bm20 {
     margin-bottom: 20px;
 }
@@ -39,21 +32,21 @@ h1, h2, h3, h4 {
  * Added because we defined a class close used elsewhere that overrides the margin-top of
  *  the default bootstrap elements.
  */
-button.iealert-close {
-    margin-top: 0px;
+.iealert-close {
+    margin-top: 0;
 }
 
 /* Navbar ---------------------- */
 
 .navbar .brand {
 	margin: 0;
-	padding: 0px 0px 0px 15px;
+	padding: 0 0 0 15;
 	font-size: 16px;
 	font-weight: 300;
 	text-transform: uppercase;
 }
 
-#logo {
+.logo {
 	width: 40px;
 	padding-right: 15px;
 }
@@ -64,34 +57,36 @@ button.iealert-close {
 	font-family: "Montserrat", Helvetica, Arial, sans-serif;
 	font-weight: 400;
 }
-	.navbar-inverse .brand, 
-	.navbar-inverse .nav > li > a {
-		color: #fff;
-		transition: 0.3s;
-		-webkit-transition: 0.3s;
-	}
-	.navbar-inverse .brand, 
-	.navbar-inverse .nav > li > a:hover {
-		color: #eece16;
-		transition: 0.3s;
-		-webkit-transition: 0.3s;
-	}
-	
-.navbar-inverse .nav li.dropdown.open > .dropdown-toggle, 
-.navbar-inverse .nav li.dropdown.active > .dropdown-toggle, 
-.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
-	background-color: rgb(29,44,54);
-}
+    .navbar-inverse .brand, 
+    .navbar-inverse .nav > li > a {
+        color: #fff;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+    }
+    .navbar-inverse .brand, 
+    .navbar-inverse .nav > li > a:hover {
+        color: #eece16;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+    }
+        
+    .navbar-inverse .nav li.dropdown.open > .dropdown-toggle, 
+    .navbar-inverse .nav li.dropdown.active > .dropdown-toggle, 
+    .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
+        background-color: rgb(29,44,54);
+    }
 
-.navbar-inverse .brand, 
-.navbar-inverse .nav > li > a {
-	text-shadow: none;
-	color: #fff;
-}
+    .navbar-inverse .brand, 
+    .navbar-inverse .nav > li > a {
+        text-shadow: none;
+        color: #fff;
+    }
 
-.navbar-inverse .brand span {
-	color: #eece16;
-}
+    .navbar-inverse .brand span {
+        color: #eece16;
+    }
 
 .navbar-inner {
 	min-height: 60px;
@@ -138,7 +133,7 @@ button.iealert-close {
 	}
 		#desktop-search input {
 			left: 0;
-			right 0;
+			right: 0;
 			width: auto;
 			font-size: 14px;
 			font-family: "Montserrat", Helvetica, Arial,sans-serif;
@@ -171,17 +166,17 @@ button.iealert-close {
 	top: 0;
 	bottom: 0;
         z-index: 1001;
-	-webkit-box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
-	-moz-box-shadow:    2px 0px 4px rgba(0, 0, 0, 0.25);
-	box-shadow:         2px 0px 4px rgba(0, 0, 0, 0.25);
+	-webkit-box-shadow: 2px 0 4px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow:    2px 0 4px rgba(0, 0, 0, 0.25);
+	box-shadow:         2px 0 4px rgba(0, 0, 0, 0.25);
 }
 	.accordion-group {
-		-webkit-border-radius: 0px;
-		-moz-border-radius: 0px;
-		border-radius: 0px;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
 	}
         .accordion {
-                margin-bottom: 0px;
+                margin-bottom: 0;
         }
 	
 	.accordion-group {
@@ -270,38 +265,38 @@ button.iealert-close {
 	.accordion-inner {
 		padding: 25px 15px 25px 60px;
 	}
-		.accordion-inner .accordion-left {
-			width: 70%;
-			float: left;
-			padding: 0 15px 25px 0;
-		}
-		.accordion-inner .accordion-right {
-			width: 23%;
-			float: right;
-		}
-			.accordion-inner. .accordion-right button {
-				float: right;
-			}
-			.accordion-inner .accordion-right .btn {
-				text-align: center;
-				margin-bottom: 5px;
-			}
-	.accordion-inner h1 {
-		font-size: 16px;
-		margin: 0;
-		line-height: 16px;
-	}
-	.accordion-inner h2 {
-		font-size: 13px;
-		padding: 0;
-		font-weight: normal;
-		margin: 0;
-		line-height: 24px;
-		color: #666;
-	}
-	.accordion-inner hr {
-		margin: 10px 0;
-	}
+    .accordion-inner .accordion-left {
+        width: 70%;
+        float: left;
+        padding: 0 15px 25px 0;
+    }
+    .accordion-inner .accordion-right {
+        width: 23%;
+        float: right;
+    }
+        .accordion-inner .accordion-right button {
+            float: right;
+        }
+        .accordion-inner .accordion-right .btn {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .accordion-inner h1 {
+            font-size: 16px;
+            margin: 0;
+            line-height: 16px;
+        }
+        .accordion-inner h2 {
+            font-size: 13px;
+            padding: 0;
+            font-weight: normal;
+            margin: 0;
+            line-height: 24px;
+            color: #666;
+        }
+        .accordion-inner hr {
+            margin: 10px 0;
+        }
 
 	.location-item {
 		margin-top: -21px;
@@ -338,7 +333,7 @@ button.iealert-close {
 	position: fixed;
 	width: 715px;
 	background-color: #fff;
-	border-bottom: 0px;
+	border-bottom: 0;
 	z-index: 9999;
 	margin-bottom: 0;
 }
@@ -374,7 +369,7 @@ button.iealert-close {
  
 ::-webkit-scrollbar-track {
 		background-color: rgb(248, 248, 248);
-    border-radius: 0px;
+    border-radius: 0;
     border: 1px solid #eee;
 }
  
@@ -424,7 +419,6 @@ button.iealert-close {
     }
 
 	.favorite h1 {
-		line-height: 10px;
 		font-size: 16px;
 		margin: 0;
 		line-height: 15px;
@@ -501,7 +495,7 @@ button.iealert-close {
 }
 
 .accordion-group {
-	margin-bottom: 0px;
+	margin-bottom: 0;
 }
 
 .accordion-group.neighborhood {
@@ -661,7 +655,7 @@ button.iealert-close {
 	top: 0;
 	position: absolute;
 	overflow: auto;
-	bottom: 0px;
+	bottom: 0;
 	width: 100%;
 }
 
@@ -680,14 +674,10 @@ button.iealert-close {
 	max-width: 510px;
 }
 
-.starred-btn {
-
+#filter-clear-all {
+    float: right;
+    margin-top: -37px;
 }
-
-		#filter-clear-all {
-			float: right;
-			margin-top: -37px;
-		}
 
 .btn-primary {
 	color: #FFFFFF;
@@ -983,13 +973,14 @@ button.iealert-close {
 		-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 		-moz-box-shadow:    2px 2px 5px rgba(0, 0, 0, 0.2);
 		box-shadow:         2px 2px 5px rgba(0, 0, 0, 0.2);
-		-webkit-border-radius: 0px;
-		-moz-border-radius: 0px;
-		border-radius: 0px;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
 	}
 	
 	.ui-menu-item a:hover {
 		color: #000;
 		background: #eee;
+		border: 1px solid #000;
 		border: 1px solid rgba(0,0,0,0);
 	}
