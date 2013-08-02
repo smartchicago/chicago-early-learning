@@ -31,6 +31,10 @@ h1, h2, h3, h4 {
 
 }
 
+.bm20 {
+    margin-bottom: 20px;
+}
+
 /*
  * Added because we defined a class close used elsewhere that overrides the margin-top of
  *  the default bootstrap elements.
@@ -38,7 +42,6 @@ h1, h2, h3, h4 {
 button.iealert-close {
     margin-top: 0px;
 }
-
 
 /* Navbar ---------------------- */
 
@@ -416,19 +419,10 @@ button.iealert-close {
 		margin-right: 20px;
 	}
 
-.fullwidth {
-	width: 100%;
-}
+    .fullwidth {
+	    width: 100%;
+    }
 
-.favorite {
-	width: 30%;
-	float: left;
-	padding: 15px;
-	min-height: 660px;
-}
-	.favorite .fullwidth {
-		width: 100% !important;
-	}
 	.favorite h1 {
 		line-height: 10px;
 		font-size: 16px;
