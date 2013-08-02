@@ -8,20 +8,25 @@ See LICENSE in the project root for copying permission
 {% load i18n %}
 {% load staticfiles %}
 {% load portal_extras %}
-
+p
 {% block title %}{% trans "Chicago Early Learning" %}{% endblock %}
 
 {% block otherhead %}
 {% endblock %}
 
 {% block navbar%}
+
+
+
 <form class="navbar-form" id="mobile-search">
-  <a class="btn pull-left btn-info" id="refineSearch" data-toggle="collapse" data-parent="#filters" href="#collapseFilters"><img src="{% static 'img/icons/filter-white.svg' %}" class="svg-icon"></a>
-  <input type="text" placeholder="121 N Lasalle St, Chicago">
-  <div class="btn-group">
-    <button class="btn" id="toggleMapBtn" data-slidepanel="panel"><img src="{% static 'img/icons/map.svg' %}" class="svg-icon"></button>
-    <button class="btn" id="toggleListBtn"><img src="{% static 'img/icons/geolocate.svg' %}" class="svg-icon"></button>
-  </div>
+  <a class="btn pull-left btn-primary" id="refineSearch" data-toggle="collapse" data-parent="#filters" href="#collapseFilters"><img src="{% static 'img/icons/filter-white.svg' %}" class="svg-icon"></a>
+
+<div class="input-prepend">
+  <button class="btn btn-standard2" id="toggleListBtn"><img src="{% static 'img/icons/geolocate.svg' %}" class="svg-icon"></button>
+  <input type="text" placeholder="121 N Lasalle St">
+</div>
+<button class="btn btn-standard2" id="toggleMapBtn" data-slidepanel="panel"><img src="{% static 'img/icons/map.svg' %}" class="svg-icon"></button>
+
 </form>
 {% endblock %}
 
@@ -32,9 +37,9 @@ See LICENSE in the project root for copying permission
   <div class="accordion" id="filter-options">
     <div class="accordion-group" id="toolbar-main">
       <div class="accordion-heading results-toolbar">
-        <button class="btn btn-primary" data-toggle="collapse" data-parent="#filters" href="#collapseFilters" id="refineBtn">Refine your search <i class="icon-chevron-down icon-white"></i></button>
+        <button class="btn btn-primary" data-toggle="collapse" data-parent="#filters" href="#collapseFilters" id="refineBtn">Refine your search <i class="icon-chevron-down icon-white"></i></button> 
         <div class="btn-group">
-            <a class="btn" href="{% url portal.views.starred %}" data-r1023="<i class='icon-star'></i> Starred (<span class='fav-count'>0</span>)"><i class="icon-star"></i> Starred (<span class="fav-count">0</span>)</a>
+            <a class="btn starred-btn" href="{% url portal.views.starred %}" data-r1023="<i class='icon-star'></i> Starred (<span class='fav-count'>0</span>)"><i class="icon-star"></i> Starred (<span class="fav-count">0</span>)</a>
           <button id="share-favorites-btn" class="btn"><img src="{% static 'img/icons/share.svg' %}" class="svg-icon"> Share</button>
           <ul class="dropdown-menu pull-right">
             <li><a href="#">Twitter</a></li>
@@ -46,8 +51,7 @@ See LICENSE in the project root for copying permission
         </div>
       </div>
 
-      <div id="collapseFilters" class="accordion-body in collapse">
-        <button class="btn btn-primary float-left" id="filter-clear-all">Clear Filters</button>
+      <div id="collapseFilters" class="accordion-body collapse">
         <div class="accordion-inner filters-inner">
           <div class="filters-left">
             {% for f in filters_left %}
@@ -62,6 +66,7 @@ See LICENSE in the project root for copying permission
                 <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
               </label>
             {% endfor %}
+            <button class="btn pull-right" id="filter-clear-all">{% trans "Reset Search" %}</button>
           </div>
         </div>
       </div>

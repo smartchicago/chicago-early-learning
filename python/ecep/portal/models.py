@@ -4,7 +4,10 @@
 from django.contrib.gis.db import models
 from portal.templatetags.portal_extras import nicephone
 from django.template.defaultfilters import title
-from django.utils.translation import ugettext as _
+
+# Model fields need to be translated lazily
+from django.utils.translation import ugettext as _, ugettext_lazy as _l
+
 
 class Neighborhood(models.Model):
     """Model for Neighborhoods
@@ -41,7 +44,7 @@ class Neighborhood(models.Model):
         return {'lng': center[0], 'lat': center[1]}
 
     def __unicode__(self):
-        return self.primary_name
+        return unicode(self.primary_name)
 
 
 class Location(models.Model):
@@ -53,30 +56,30 @@ class Location(models.Model):
     state = models.CharField('State', max_length=2)
     zip = models.CharField('Zip Code', max_length=10)
     neighborhood = models.ForeignKey('Neighborhood', null=True)
-    phone = models.CharField(_('Phone Number'), max_length=20, blank=True)
-    q_rating = models.CharField(_('Quality Rating'), max_length=10, blank=True)
-    url = models.CharField(_('Website'), max_length=256, blank=True)
-    q_stmt = models.TextField(_('Quality Statement'), blank=True)
-    accred = models.CharField(_('Accreditation'), max_length=100, blank=True)
-    prg_hours = models.CharField(_('Program Hours'), max_length=50, blank=True)
-    is_full_day = models.NullBooleanField(_('Full Day'))
-    is_part_day = models.NullBooleanField(_('Part Day'))
-    is_full_week = models.NullBooleanField(_('Full Week'))
-    is_part_week = models.NullBooleanField(_('Part Week'))
-    is_school_year = models.NullBooleanField(_('School Year'))
-    is_full_year = models.NullBooleanField(_('Full Year'))
-    ages = models.CharField(_('Ages Served'), max_length=50, blank=True)
-    is_age_lt_3 = models.NullBooleanField(_('Ages 0-3'))
-    is_age_gt_3 = models.NullBooleanField(_('Ages 3-5'))
+    phone = models.CharField(_l('Phone Number'), max_length=20, blank=True)
+    q_rating = models.CharField(_l('Quality Rating'), max_length=10, blank=True)
+    url = models.CharField(_l('Website'), max_length=256, blank=True)
+    q_stmt = models.TextField(_l('Quality Statement'), blank=True)
+    accred = models.CharField(_l('Accreditation'), max_length=100, blank=True)
+    prg_hours = models.CharField(_l('Program Hours'), max_length=50, blank=True)
+    is_full_day = models.NullBooleanField(_l('Full Day'))
+    is_part_day = models.NullBooleanField(_l('Part Day'))
+    is_full_week = models.NullBooleanField(_l('Full Week'))
+    is_part_week = models.NullBooleanField(_l('Part Week'))
+    is_school_year = models.NullBooleanField(_l('School Year'))
+    is_full_year = models.NullBooleanField(_l('Full Year'))
+    ages = models.CharField(_l('Ages Served'), max_length=50, blank=True)
+    is_age_lt_3 = models.NullBooleanField(_l('Ages 0-3'))
+    is_age_gt_3 = models.NullBooleanField(_l('Ages 3-5'))
     language_1 = models.CharField('Language 1 (other than English)', max_length=50, blank=True)
     language_2 = models.CharField('Language 2 (other than English)', max_length=50, blank=True)
     language_3 = models.CharField('Language 3 (other than English)', max_length=50, blank=True)
-    is_community_based = models.NullBooleanField(_('Community Based'))
-    is_cps_based = models.NullBooleanField(_('CPS Based'))
-    is_home_visiting = models.NullBooleanField(_('Home Visiting'))
-    accept_ccap = models.NullBooleanField(_('Accepts CCAP'))
-    is_hs = models.NullBooleanField(_('Head Start'))
-    is_ehs = models.NullBooleanField(_('Early Head Start'))
+    is_community_based = models.NullBooleanField(_l('Community Based'))
+    is_cps_based = models.NullBooleanField(_l('CPS Based'))
+    is_home_visiting = models.NullBooleanField(_l('Home Visiting'))
+    accept_ccap = models.NullBooleanField(_l('Accepts CCAP'))
+    is_hs = models.NullBooleanField(_l('Head Start'))
+    is_ehs = models.NullBooleanField(_l('Early Head Start'))
 
     # To get these placeholder fields to show up in the UI, replace
     # 'Placeholder 1' and 'Placeholder 2' in the lines below with
@@ -92,15 +95,16 @@ class Location(models.Model):
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
     display_include = set(['ages', 'prg_hours', 'accred', 'is_home_visiting', 'accept_ccap'])
+    #display_include = set(['ages', 'accred', 'is_hs', 'is_ehs', ])
 
     def __unicode__(self):
-        return self.site_name
+        return unicode(self.site_name)
 
     def verbose_name(self, field):
         """
         Given the name of field, returns the verbose_name property for it
         """
-        return self._meta.get_field_by_name(field)[0].verbose_name
+        return unicode(self._meta.get_field_by_name(field)[0].verbose_name)
 
     @staticmethod
     def get_filter_fields():
@@ -178,7 +182,8 @@ class Location(models.Model):
                               (self.is_hs, 'is_hs'),
                               (self.is_ehs, 'is_ehs')]
         affiliation_values = [self.verbose_name(aff[1]) for aff in affiliation_fields if aff[0]]
-        sfields.append({'fieldname': _('Affiliations'), 'value': ', '.join(affiliation_values) if affiliation_values else 'None'})
+        sfields.append({'fieldname': _('Affiliations'),
+                        'value': ', '.join(affiliation_values) if affiliation_values else 'None'})
 
         # Combine Languages
         lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
@@ -201,7 +206,7 @@ class Location(models.Model):
         # Quality Statement
         if self.q_stmt:
             sfields.append({'fieldname': _('Quality Statement'), 'value': self.q_stmt})
-        
+
         bfields.sort()
         sfields.sort(key=lambda a: a['fieldname'])
 
@@ -211,7 +216,7 @@ class Location(models.Model):
         # handlebars helper
         trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
                       'share': _('Share')}
-        
+
         return {'item': item, 'phone': phone, 'sfields': sfields,
                 'bfields': {'fieldname': _('Other Features'), 'values': bfields},
                 'position': position, 'translations': trans_dict}

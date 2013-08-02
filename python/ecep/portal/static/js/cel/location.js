@@ -57,7 +57,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.isAccredited = function() {
         var isAccredited = false;
         $.each(this.data.sfields, function(key, value) {
-            if (value.fieldname === "Accreditation" && value.value !== "None") {
+            if (value.fieldname === gettext("Accreditation") && value.value !== "None") {
                 isAccredited = true;
                 return false;
             }
@@ -74,7 +74,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.isSchool = function() {
         var isSchool = false;
         $.each(this.data.sfields, function(key, value) {
-            if (value.fieldname === "Affiliations") {
+            if (value.fieldname === gettext("Affiliations")) {
                 if (value.value.indexOf("CPS Based") !== -1) {
                     isSchool = true;
                 } 
@@ -187,14 +187,23 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
      * If map marker does not exist, creates marker with proper icon
      */
     Location.prototype.setMarker = function(options) {
-        var popupTemplate = Handlebars.compile('<b>{{item.site_name}}</b><br>{{item.address}}'),
+        var defaults = {
+                popup: true
+            };
             icon = this.getIcon(options),
             marker = this.getMarker();
+        options = $.extend({}, defaults, options);
         if (marker) {
             marker.setIcon(icon);
         } else {
             this.mapMarker = new L.Marker(this.getLatLng(), { icon: icon });
-            this.mapMarker.bindPopup(popupTemplate(this.data), {key: this.getId()});
+            if (options.popup === true) {
+                var popupText = '<b>{{item.site_name}}</b><br>{{item.address}}<br>' +
+                                '<a href="' + common.getUrl('single-location', { location: this.getId() }) + 
+                                '">' + gettext('Details') + '</a>',
+                    popupTemplate = Handlebars.compile(popupText);
+                this.mapMarker.bindPopup(popupTemplate(this.data), {key: this.getId()});
+            }
         }
     };
 
@@ -286,9 +295,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          *
          * Download topojson if not already downloaded.
          */
-        neighborhoodUpdate: function(map) {
+        neighborhoodUpdate: function() {
             var that = this,
-                filters = that.getFilters(map);
+                filters = that.getFilters();
             $.when(
                 $.getJSON(common.getUrl('neighborhood-api'), filters, function(data) {
                     var neighborhoods = that.neighborhoods.data;

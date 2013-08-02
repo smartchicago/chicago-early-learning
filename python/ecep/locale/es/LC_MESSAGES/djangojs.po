@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 08:47-0500\n"
+"POT-Creation-Date: 2013-08-02 08:28-0500\n"
 "PO-Revision-Date: 2013-01-10 09:35-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -18,19 +18,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: portal/static/js/cel/pages/browse.js:180
-msgid "More"
-msgstr "Más"
+#: portal/static/js/cel/location.js:60
+msgid "Accreditation"
+msgstr "Acreditación"
 
-#: portal/static/js/cel/pages/browse.js:180
+#: portal/static/js/cel/location.js:77
+msgid "Affiliations"
+msgstr "Afiliación del centro/sede"
+
+#: portal/static/js/cel/location.js:203
+msgid "Details"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:155
+msgid "Neighborhood"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:156
+msgid "Schools"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:158
+msgid "School"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:159
+msgid "More Information"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:215
 msgid "Less"
 msgstr "Menos"
 
-#: portal/static/js/cel/pages/browse.js:235
+#: portal/static/js/cel/pages/browse.js:219
+msgid "More"
+msgstr "Más"
+
+#: portal/static/js/cel/pages/browse.js:270
 msgid "Number of Schools"
 msgstr "Cantidad de escuelas"
 
-#: portal/static/js/cel/pages/browse.js:235
+#: portal/static/js/cel/pages/browse.js:270
 msgid "Explore"
 msgstr "Explorar"
 

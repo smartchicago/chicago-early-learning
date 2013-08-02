@@ -6,9 +6,9 @@
 
 'use strict';
  
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common', 
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common', 'favorites', 
         CEL.serverVars.gmapRequire, 'leaflet-providers'], 
-    function($, L, html, location, common) {
+    function($, L, html, location, common, favorites) {
 
         /* On page load, query api to get locations position, add marker to map
          * for location. Use google maps layer for leaflet.
@@ -26,9 +26,18 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common
                     map = new L.Map('location-map', {center: latLng, zoom: 13});
                 
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap 
-                loc.setMarker();
+                loc.setMarker({ popup: false });
                 loc.getMarker().addTo(map);
                 map.panTo(latLng);
+
+                var $star = $('.favs-toggle');
+                if (favorites.isStarred(location_id)) {
+                    favorites.toggle($star);
+                }
+                $star.on('click', function(e) {
+                    favorites.toggle($star);
+                    loc.setMarker();
+                });
             });
         });
     }

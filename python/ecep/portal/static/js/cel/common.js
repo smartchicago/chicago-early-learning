@@ -7,8 +7,18 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'boo
         'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
 function($, L, Response, Handlebars) {
     'use strict';
+
+    var desktopBreakpoint = 1024;
     
     $(document).ready(function() {
+
+        // collapse filter div on mobile
+        //  this is the manual way to do it. A bit hacky.
+        //  TODO: export breakpoints if we continue to use response.js
+        var width = $(document).width();
+        if (width >= desktopBreakpoint) {
+            $('#collapseFilters').addClass('in');
+        }
 
         // AUTOCOMPLETE
         var $autocomplete = $('.autocomplete-searchbox');
@@ -81,7 +91,7 @@ function($, L, Response, Handlebars) {
             if (ui.item) {
                 if (ui.item.type === 'location') {
                     window.location.href = getUrl(
-                        'browse-location', { location: ui.item.id });
+                        'single-location', { location: ui.item.id });
                 } else if (ui.item.type === 'neighborhood') {
                     window.location.href = getUrl(
                         'browse-neighborhood', { neighborhood: ui.item.id });
@@ -186,14 +196,15 @@ function($, L, Response, Handlebars) {
         }, 0);
     });
     */
+
 			
     // Tooltips for all!  Anything w/ a tooltip tag gets a tooltip
     $('[rel="tooltip"]').tooltip();
 
 
     // Setup Response stuff
-    Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,1024] });
-    Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,1024] });
+    Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,desktopBreakpoint] });
+    Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,desktopBreakpoint] });
 
 
     /**
@@ -222,8 +233,8 @@ function($, L, Response, Handlebars) {
                 return '/browse/?neighborhood=' + opts.neighborhood;
             case 'browse-location':
                 return '/browse/?location=' + opts.location;
-            case 'autocomplete-icon':
-                return '/static/img/leaflet-icons/geolocated.png';
+            case 'single-location':
+                return '/location/' + opts.location + '/';
             case 'icon-school':
                 return '/static/img/leaflet-icons/school.png';
             case 'icon-school-accredited':

@@ -27,6 +27,17 @@ h1, h2, h3, h4 {
 		font-weight: 300;
 }
 
+.location-map  {
+
+}
+
+/*
+ * Added because we defined a class close used elsewhere that overrides the margin-top of
+ *  the default bootstrap elements.
+ */
+button.iealert-close {
+    margin-top: 0px;
+}
 
 
 /* Navbar ---------------------- */
@@ -101,6 +112,15 @@ h1, h2, h3, h4 {
 	.navbar .nav img {
 		max-height: 20px;
 	}
+	
+	.modal-header .close {
+		font-size: 35px;
+	}
+	
+	.web-share {
+		width: 313px;
+	}
+	
 
 	/* Search ------------ */
 	
@@ -141,7 +161,6 @@ h1, h2, h3, h4 {
 
 .results-left {
 	width: 715px;
-	border-right: 1px solid #cecece;
 	position: fixed;
 	left: 0;
 	margin-top: 61px;
@@ -149,9 +168,9 @@ h1, h2, h3, h4 {
 	top: 0;
 	bottom: 0;
         z-index: 1001;
-	-webkit-box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
-	-moz-box-shadow:    2px 0px 5px rgba(0, 0, 0, 0.5);
-	box-shadow:         2px 0px 5px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow:    2px 0px 4px rgba(0, 0, 0, 0.25);
+	box-shadow:         2px 0px 4px rgba(0, 0, 0, 0.25);
 }
 	.accordion-group {
 		-webkit-border-radius: 0px;
@@ -161,6 +180,12 @@ h1, h2, h3, h4 {
         .accordion {
                 margin-bottom: 0px;
         }
+	
+	.accordion-group {
+		border: none;
+		border-top: 1px solid #e5e5e5;
+	}
+	
 	.results-toolbar {
 		padding: 17px;
 		background: #eee;
@@ -176,6 +201,7 @@ h1, h2, h3, h4 {
 	.location {
 		padding: 17px;
 		background: #f7f7f7;
+		border-bottom: 1px solid #DFDFDF;
 	}
 		.loc-icon {
 			position: relative;
@@ -436,6 +462,7 @@ h1, h2, h3, h4 {
     margin-bottom: 25px;
 }
 
+
 /* necessary to display leaflet
    icons above google map layer */
 .leaflet-map-pane {
@@ -601,6 +628,11 @@ h1, h2, h3, h4 {
 	margin-left: 15px;
 }
 
+.geolocation-button img {
+	max-width: 15px;
+	margin-top: -5px;
+}
+
 .more-less-btn {
 	color: #FFFFFF;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -638,6 +670,30 @@ h1, h2, h3, h4 {
 	bottom: 0px;
 	width: 100%;
 }
+
+#share-favorites-btn {
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-moz-border-radius-bottomright: 3px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+.about-content p {
+	text-align: justify;
+	padding-right: 40px;
+	max-width: 510px;
+}
+
+.starred-btn {
+
+}
+
+		#filter-clear-all {
+			float: right;
+			margin-top: -37px;
+		}
 
 .btn-primary {
 	color: #FFFFFF;
@@ -773,8 +829,60 @@ h1, h2, h3, h4 {
 	*background-color: #003bb3;
 }
 
+.btn-standard {
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #ADADAD;
+	*background-color: #ADADAD;
+	background-image: -moz-linear-gradient(top, #ADADAD, #ADADAD);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ADADAD), to(#ADADAD));
+	background-image: -webkit-linear-gradient(top, #ADADAD, #ADADAD);
+	background-image: -o-linear-gradient(top, #ADADAD, #ADADAD);
+	background-image: linear-gradient(to bottom, #ADADAD, #ADADAD);
+	background-repeat: repeat-x;
+	border-color: #ADADAD;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ADADAD', endColorstr='#ADADAD', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn-standard:hover,
+.btn-standard:active,
+.btn-standard.active,
+.btn-standard.disabled,
+.btn-standard[disabled] {
+	color: #FFFFFF;
+	background-color: #ADADAD;
+	*background-color: #003bb3;
+}
+
+.btn-standard2 {
+	color: #5C5C5C;
+	text-shadow: none !important;
+	background-color: #DEDEDE;
+	*background-color: #DEDEDE;
+	background-image: -moz-linear-gradient(top, #DEDEDE, #DEDEDE);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#DEDEDE), to(#DEDEDE));
+	background-image: -webkit-linear-gradient(top, #DEDEDE, #DEDEDE);
+	background-image: -o-linear-gradient(top, #DEDEDE, #DEDEDE);
+	background-image: linear-gradient(to bottom, #DEDEDE, #DEDEDE);
+	background-repeat: repeat-x;
+	border-color: #DEDEDE;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DEDEDE', endColorstr='#DEDEDE', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.btn-standard2:hover,
+.btn-standard2:active,
+.btn-standard2.active,
+.btn-standard2.disabled,
+.btn-standard2[disabled] {
+	color: #A3A3A3;
+	background-color: #DEDEDE;
+	*background-color: #003bb3;
+}
+
 #faq-container {
-	margin-top: 85px;
+	margin-top: 55px;
 }
 	#faq-container h1 {
 		font-size: 32px;
@@ -786,7 +894,7 @@ h1, h2, h3, h4 {
 	}
 	#faq-container .accordion-heading .accordion-toggle {
 		font-family: "Montserrat", sans-serif;
-		padding: 20px;
+		padding: 20px 0;
 		color: #317DC1;
 	}
 	#faq-container .accordion-inner {
@@ -797,6 +905,11 @@ h1, h2, h3, h4 {
 		-webkit-border-radius: 3px;
 		border-radius: 3px;
 		margin-bottom: 8px;
+		border: none;
+		border-bottom: 1px solid #e0e0e0;
+	}
+	.static-title {
+		margin-top: 55px;
 	}
 	
 .location-icons {
@@ -830,7 +943,59 @@ h1, h2, h3, h4 {
 }
 
 .favs-close-button {
-    display: block;
     float: right;
-    font-size: 24px;
+    font-size: 35px;
+		margin-top: 10px;
+		color: #c2c2c2;
 }
+
+.favs-close-button:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+.single-star {
+    margin-top: -28px;
+    margin-right: 90px;
+}
+
+.description-mobile {
+	display: none;
+}
+
+
+/* Leaflet/jQueryUI Overrides -- */
+
+.leaflet-popup-content-wrapper {
+	border-radius: 4px;
+}
+.leaflet-popup-content {
+	font-size: 14px;
+	text-align: center;
+}
+	.leaflet-popup-content b {
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		color: #2C75AF;
+		font-size: 16px;
+	}
+	.leaflet-popup-content a {
+		padding-top: 10px;
+	}
+
+	.ui-autocomplete {
+		background-color: #fff;
+		font-family: "Montserrat", Helvetica, Arial, sans-serif;
+		font-size: 16px;
+		-webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow:    2px 2px 5px rgba(0, 0, 0, 0.2);
+		box-shadow:         2px 2px 5px rgba(0, 0, 0, 0.2);
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px;
+	}
+	
+	.ui-menu-item a:hover {
+		color: #000;
+		background: #eee;
+		border: 1px solid rgba(0,0,0,0);
+	}
