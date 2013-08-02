@@ -211,12 +211,26 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 }
             }).on('show.bs.collapse', function(e) {
                 var $this = $(this),
-                    $morelessbtn = $this.find('.more-less-btn');
+                    $morelessbtn = $this.find('.more-less-btn'),
+                    $directionsLink = $this.find('#loc-dirs');
                 $morelessbtn.html(gettext('Less'));
+                $morelessbtn.attr('data-hint', gettext('Click to show less information'));
             }).on('hide.bs.collapse', function(e) {
                 var $this = $(this),
                     $morelessbtn = $this.find('.more-less-btn');
                 $morelessbtn.html(gettext('More'));
+                $morelessbtn.attr('data-hint', gettext('Click to show more information'));
+            });
+        };
+
+        /**
+         * Change tooltip when refining search
+         */
+        var refineListener = function(){
+            $('#collapseFilters').on('show.bs.collapse', function(e) { 
+                $('#refineBtn').attr('data-hint', gettext('Click to hide filters')); 
+            }).on('hide.bs.collapse', function(e) {
+                $('#refineBtn').attr('data-hint', gettext('Click to show filters'));
             });
         };
 
@@ -412,9 +426,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     $filters.prop('checked', false);
                     dm.onFilterChange();
                 });
-
                 mapToggle();
                 displayMap();
+                refineListener();
             }
         };
     }

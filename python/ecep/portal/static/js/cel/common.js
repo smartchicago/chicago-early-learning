@@ -197,10 +197,6 @@ function($, L, Response, Handlebars) {
     });
     */
 
-			
-    // Tooltips for all!  Anything w/ a tooltip tag gets a tooltip
-    $('[rel="tooltip"]').tooltip();
-
 
     // Setup Response stuff
     Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,desktopBreakpoint] });

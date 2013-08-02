@@ -184,7 +184,7 @@ class Location(models.Model):
         affiliation_values = [self.verbose_name(aff[1]) for aff in affiliation_fields if aff[0]]
         sfields.append({'fieldname': _('Affiliations'),
                         'value': ', '.join(affiliation_values) if affiliation_values else 'None'})
-
+        
         # Combine Languages
         lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
         languages = ", ".join(lang_list)
@@ -217,9 +217,17 @@ class Location(models.Model):
         trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
                       'share': _('Share')}
 
+        # More information for tooltip icon
+        accreditation = ['Accredited'] if self.accred else []
+        accreditation.append('School' if self.is_cps_based else 'Center')
+        
+        # Tooltips - necessary for translations in handlebars template
+        tooltip = {'directions': _('Directions from Google'), 'moreinfo': _('Click to show more information'),
+                   'star': _('Click to star location'), 'accreditation': ' '.join(accreditation)}
+        
         return {'item': item, 'phone': phone, 'sfields': sfields,
                 'bfields': {'fieldname': _('Other Features'), 'values': bfields},
-                'position': position, 'translations': trans_dict}
+                'position': position, 'translations': trans_dict, 'tooltip': tooltip}
 
     def val_or_empty(self, field, f=(lambda x: x)):
         """
