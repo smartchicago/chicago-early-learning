@@ -173,7 +173,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
             favorites.syncUI();
             favorites.addToggleListener({
-                button: ".favs-toggle"
+                button: '.favs-toggle'
             });
 
             /**
@@ -209,7 +209,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 $morelessbtn.html(gettext('More'));
             });
             // feature detection: we only want hover events on non-touch devices 
-            if (!("ontouchstart" in document.documentElement)) {
+            if (!('ontouchstart' in document.documentElement)) {
                 $locationContainer.on('mouseenter mouseleave', function(e) {
                     var $this = $(this),
                     key = $this.data('key'),
@@ -331,7 +331,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * Update view when the dm triggers its neighborhood updated event
          * We only want to attach this event once...
          */
-        dm.events.on("DataManager.neighborhoodUpdated", function(e) {
+        dm.events.on('DataManager.neighborhoodUpdated', function(e) {
             // If not already displaying neighborhoods and zoomed out
             if (currentLayer !== layerType.neighborhood) {
                 currentLayer = layerType.neighborhood;
@@ -354,7 +354,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * Update view when the dm triggers its location updated event
          * We only want to attach this event once...
          */
-        dm.events.on("DataManager.locationUpdated", function(e) {
+        dm.events.on('DataManager.locationUpdated', function(e) {
             // If not already displaying locations and zoomed in
             if (currentLayer !== layerType.location) {
                 currentLayer = layerType.location;
