@@ -197,10 +197,6 @@ function($, L, Response, Handlebars) {
     });
     */
 
-			
-    // Tooltips for all!  Anything w/ a tooltip tag gets a tooltip
-    $('[rel="tooltip"]').tooltip();
-
 
     // Setup Response stuff
     Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,desktopBreakpoint] });
@@ -214,9 +210,16 @@ function($, L, Response, Handlebars) {
      * @return { URL string for request }
      */
     var getUrl = function (name, opts) {
+        var url = '';
         switch (name) {
             case 'location-api':
-                return '/api/location/';
+                // requires opts.locations to be comma separated string or
+                //      array of integers
+                url = '/api/location/';
+                if (opts && opts.locations) {
+                    url += opts.locations.toString() + '/';
+                }
+                return url;
             case 'neighborhood-api':
                 return '/api/neighborhood/';
             case 'neighborhoods-topo':
@@ -224,7 +227,7 @@ function($, L, Response, Handlebars) {
             case 'neighborhoods-geojson':
                 return '/static/js/neighborhoods.json';
             case 'browse-latlng':
-                var url = '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
+                url = '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
                 if (opts.zoom) {
                     url += '&zoom=' + opts.zoom;
                 }
@@ -235,6 +238,12 @@ function($, L, Response, Handlebars) {
                 return '/browse/?location=' + opts.location;
             case 'single-location':
                 return '/location/' + opts.location + '/';
+            case 'starred':
+                url = '/starred/';
+                if (opts && opts.locations) {
+                    url += opts.locations.toString() + '/';
+                }
+                return url;
             case 'icon-school':
                 return '/static/img/leaflet-icons/school.png';
             case 'icon-school-accredited':

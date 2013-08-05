@@ -162,11 +162,13 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                 img = 'star-empty.svg';
                 favs.removeIdFromCookie(buttonId);
                 increment = -1;
+                $elt.attr('data-hint', gettext('Click to star location'));
             // toggle on
             } else {
                 img = 'star.svg';
                 favs.addIdToCookie(buttonId);
                 increment = 1;
+                $elt.attr('data-hint', gettext('Click to remove star from location'));
             }
 
             buttonImg.attr('src', opts.imgpath + img);
@@ -226,7 +228,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
 
             $('#share-modal').trigger('init-modal', {
                 // the url is passed in to the sharing urls, so it must be absolute
-                url: document.location.origin + '/starred/' + ids  + '/',
+                url: document.location.origin + common.getUrl('starred', { locations: ids }),
                 title: 'I just starred ' + count + ' locations'
             });
         },
