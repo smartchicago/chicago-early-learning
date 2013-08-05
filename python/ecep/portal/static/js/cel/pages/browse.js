@@ -231,6 +231,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             });
             // feature detection: we only want hover events on non-touch devices 
             if (!('ontouchstart' in document.documentElement)) {
+                var $locationContainer = $('.location-container');
                 $locationContainer.on('mouseenter mouseleave', function(e) {
                     var $this = $(this),
                     key = $this.data('key'),
