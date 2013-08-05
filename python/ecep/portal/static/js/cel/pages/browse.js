@@ -6,7 +6,7 @@
 
 define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
         'topojson', 'icons', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire, 'styling',
-        'leaflet-providers'], 
+        'leaflet-providers', 'history'], 
     function($, L, neighborhoodList, locationList, topojson, icons, favorites, location, common) {
 
         'use strict';
@@ -91,7 +91,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * dm.locationUpdated events to modify the view.
          */
         var displayMap = common.debounce(function(e) {
-            var zoomLevel = map.getZoom();
+            var zoomLevel = map.getZoom(),
+                mapCenter = map.getCenter();
 
             if (isAutocompleteSet && autocompleteLocationId) {
                 dm.locationUpdate(map, locationLayer);
@@ -114,7 +115,13 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     // Ok, we're still on neighborhooks, only need to update if filters changed
                     dm.neighborhoodUpdate();
                 }
-            }
+            };
+            
+            // If we move the map, don't want to go back to geolocated spot in history and also don't want the geolocated
+            // marker at the center of the map user is going back to
+            History.pushState({isGeolocated: false},
+                              null, 
+                              common.getUrl('browse-latlng', {lat: mapCenter.lat, lng: mapCenter.lng, zoom: zoomLevel}));
         }, 250);
 
         /**
@@ -213,6 +220,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             });
             // feature detection: we only want hover events on non-touch devices 
             if (!('ontouchstart' in document.documentElement)) {
+                var $locationContainer = $('.location-container');
                 $locationContainer.on('mouseenter mouseleave', function(e) {
                     var $this = $(this),
                     key = $this.data('key'),
@@ -388,11 +396,15 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         // Load data and build map when page loads
         return {
             init: function() {
-                var state = getMapState();
+                var state = getMapState(),
+                    historyState = History.getState().data;
                 map = new L.map('map').setView(state.point, defaultZoom);   // Initialize Leaflet map
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
 
+                // Use history for mapstate if not undefined (prevents geolocation when browsing back)
+                state.isGeolocated = historyState.isGeolocated || state.isGeolocated;
+                
                 // draw marker for geolocated point 
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({

@@ -5,7 +5,7 @@ from django.conf.urls.defaults import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from portal.sms import Sms, Conversation, SmsCallback
 from django.views.generic.simple import direct_to_template
-
+from sitemap import LocationSiteMap, StaticViewSitemap
 from django.contrib.gis import admin
 admin.autodiscover()
 
@@ -14,10 +14,12 @@ js_info_dict = {
     'packages': ('portal',),
 }
 
+sitemaps = {'location': LocationSiteMap, 'static': StaticViewSitemap}
+
 urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
-    url(r'^$', 'portal.views.index'),
+    url(r'^$', 'portal.views.index', name='index'),
     url(r'^about$', 'portal.views.about', name='about'),
     url(r'^search.html$', 'portal.views.search', name='search'),
     url(r'^robots\.txt$', direct_to_template,
@@ -42,7 +44,8 @@ urlpatterns = patterns(
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
     # Location Views
-    url(r'^location/\d+/$', 'portal.views.location'),
+    # Need to pass id to view for sitemap, but don't need to do anything with it since this is handled with javascript
+    url(r'^location/(\d+)/$', 'portal.views.location', name='location-view'),
     
     # Starred Location Views
     url(r'^starred/?[0-9,]*/$', 'portal.views.starred'),
@@ -55,6 +58,9 @@ urlpatterns = patterns(
 
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),
+
+    # Sitemaps
+    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 )
 
 urlpatterns += i18n_patterns('',
