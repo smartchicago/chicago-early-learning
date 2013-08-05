@@ -91,7 +91,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * dm.locationUpdated events to modify the view.
          */
         var displayMap = common.debounce(function(e) {
-            var zoomLevel = map.getZoom();
+            var zoomLevel = map.getZoom(),
+                mapCenter = map.getCenter();
 
             if (isAutocompleteSet && autocompleteLocationId) {
                 dm.locationUpdate(map, locationLayer);
@@ -114,7 +115,13 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     // Ok, we're still on neighborhooks, only need to update if filters changed
                     dm.neighborhoodUpdate();
                 }
-            }
+            };
+            
+            // If we move the map, don't want to go back to geolocated spot in history and also don't want the geolocated
+            // marker at the center of the map user is going back to
+            History.pushState({isGeolocated: false},
+                              null, 
+                              common.getUrl('browse-latlng', {lat: mapCenter.lat, lng: mapCenter.lng, zoom: zoomLevel}));
         }, 250);
 
         /**
