@@ -6,7 +6,7 @@
 
 define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
         'topojson', 'icons', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire, 'styling',
-        'leaflet-providers'], 
+        'leaflet-providers', 'history'], 
     function($, L, neighborhoodList, locationList, topojson, icons, favorites, location, common) {
 
         'use strict';
