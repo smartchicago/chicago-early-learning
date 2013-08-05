@@ -42,8 +42,8 @@ urlpatterns = patterns(
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
     # Location Views
-    # Don't need to pass id to view since this is handled with javascript
-    url(r'^location/\d+/$', 'portal.views.location'),
+    # Need to pass id to view for sitemap, but don't need to do anything with it since this is handled with javascript
+    url(r'^location/(\d+)/$', 'portal.views.location', name='location-view'),
     url(r'^api/location/(?P<location_ids>[0-9,]*)/$', 'portal.views.location_api'),
     url(r'^api/location/$', 'portal.views.location_api'),
     
