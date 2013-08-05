@@ -94,10 +94,10 @@ function($, L, Response, Handlebars) {
                         'single-location', { location: ui.item.id });
                 } else if (ui.item.type === 'neighborhood') {
                     window.location.href = getUrl(
-                        'browse-neighborhood', { neighborhood: ui.item.id });
+                        'browse', { type: 'neighborhood', neighborhood: ui.item.id });
                 } else if (ui.item.lat && ui.item.lon) {
                     window.location.href = getUrl(
-                        'browse-latlng', { lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
+                        'browse', { type: 'latlng', lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
                 }
             }
             // default
@@ -226,27 +226,38 @@ function($, L, Response, Handlebars) {
             case 'location-api':
                 // requires opts.locations to be comma separated string or
                 //      array of integers
-                url = '/' + ($.cookie('django_language') || CEL.serverVars.default_language) + '/api/location/';
+                url = '/' + ($.cookie('django_language') || CEL.serverVars.default_language) +
+                    '/api/location/';
                 if (opts && opts.locations) {
                     url += opts.locations.toString() + '/';
                 }
                 return url;
             case 'neighborhood-api':
-                return '/' + ($.cookie('django_language') || CEL.serverVars.default_language) + '/api/neighborhood/';
+                return '/' + ($.cookie('django_language') || CEL.serverVars.default_language) + 
+                    '/api/neighborhood/';
             case 'neighborhoods-topo':
                 return '/static/js/neighborhoods-topo.json';
             case 'neighborhoods-geojson':
                 return '/static/js/neighborhoods.json';
-            case 'browse-latlng':
-                url = '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
-                if (opts.zoom) {
-                    url += '&zoom=' + opts.zoom;
+            case 'browse':
+                if (!opts) {
+                    return '/browse/';
                 }
-                return url;
-            case 'browse-neighborhood':
-                return '/browse/?neighborhood=' + opts.neighborhood;
-            case 'browse-location':
-                return '/browse/?location=' + opts.location;
+                switch (opts.type) {
+                    case 'latlng':
+                        url = '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
+                        if (opts.zoom) {
+                            url += '&zoom=' + opts.zoom;
+                        }
+                        return url;
+                    case 'neighborhood':
+                        return '/browse/?neighborhood=' + opts.neighborhood;
+                    case 'location':
+                        return '/browse/?location=' + opts.location;
+                    default:
+                        break;
+                }
+                break;
             case 'single-location':
                 return '/location/' + opts.location + '/';
             case 'starred':
@@ -274,8 +285,9 @@ function($, L, Response, Handlebars) {
             case 'icon-geolocation':
                 return '/static/img/leaflet-icons/geocode.png';
             default:
-                throw 'Unknown URL endpoint';
+                break;
         }
+        throw 'Unknown URL endpoint';
     };
 
     // geolocation                                                                                  
@@ -284,8 +296,8 @@ function($, L, Response, Handlebars) {
             $('.geolocation-button').bind('click', function(e) {
                 navigator.geolocation.getCurrentPosition(function(position) {                           
                     window.location.href = getUrl(
-                        'browse-latlng',
-                        { lat: position.coords.latitude, lng: position.coords.longitude }
+                        'browse',
+                        { type: 'latlng', lat: position.coords.latitude, lng: position.coords.longitude }
                     );
                 }, function(e) {
                     alert(gettext('Please enable geolocation services.'));

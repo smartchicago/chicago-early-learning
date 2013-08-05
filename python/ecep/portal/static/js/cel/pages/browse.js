@@ -4,10 +4,10 @@
  ********************************************************/
 
 
-define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
+define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
         'topojson', 'icons', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire, 'styling',
         'leaflet-providers', 'history'], 
-    function($, L, neighborhoodList, locationList, topojson, icons, favorites, location, common) {
+    function($, L, Handlebars, neighborhoodList, locationList, topojson, icons, favorites, location, common) {
 
         'use strict';
 
@@ -44,6 +44,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             isAutocompleteSet = true,
             autocompleteLocationId,
             autocompleteNeighborhoodId,
+            updateUrl = null,                   // Updates the url to reflect page state
             $locationWrapper;                   // Store div wrapper for results on left side
 
         // Initialize geojson for neighborhood layer
@@ -115,13 +116,27 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     // Ok, we're still on neighborhooks, only need to update if filters changed
                     dm.neighborhoodUpdate();
                 }
-            };
+            }
             
-            // If we move the map, don't want to go back to geolocated spot in history and also don't want the geolocated
-            // marker at the center of the map user is going back to
-            History.pushState({isGeolocated: false},
-                              null, 
-                              common.getUrl('browse-latlng', {lat: mapCenter.lat, lng: mapCenter.lng, zoom: zoomLevel}));
+            // Don't want this to fire on page load since it will screw w/ history, so
+            // disable it the first time through.
+            if (updateUrl) {
+                updateUrl();
+            } else {
+                // If we move the map, don't want to go back to geolocated spot in history
+                // and also don't want the geolocated marker at the center of the map user
+                // is going back to.
+                updateUrl = function () {
+                    History.pushState(
+                        {isGeolocated: false},
+                        null,
+                        common.getUrl(
+                            'browse',
+                            {type: 'latlng', lat: mapCenter.lat, lng: mapCenter.lng, zoom: zoomLevel}
+                        )
+                    );
+                };
+            }
         }, 250);
 
         /**
@@ -130,7 +145,6 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * @param {Type of current layer, see layerType} dataType
          */
         var listResults = function(data, dataType) {
-
             var isNb = (dataType === layerType.neighborhood), 
                 html = (isNb ? neighborhoodList : locationList),
                 dataList,
@@ -220,7 +234,6 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             });
             // feature detection: we only want hover events on non-touch devices 
             if (!('ontouchstart' in document.documentElement)) {
-                var $locationContainer = $('.location-container');
                 $locationContainer.on('mouseenter mouseleave', function(e) {
                     var $this = $(this),
                     key = $this.data('key'),
