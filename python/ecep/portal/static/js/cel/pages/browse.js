@@ -389,11 +389,15 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
         // Load data and build map when page loads
         return {
             init: function() {
-                var state = getMapState();
+                var state = getMapState(),
+                    historyState = History.getState().data;
                 map = new L.map('map').setView(state.point, defaultZoom);   // Initialize Leaflet map
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
 
+                // Use history for mapstate if not undefined (prevents geolocation when browsing back)
+                state.isGeolocated = historyState.isGeolocated === undefined ? state.isGeolocated : historyState.isGeolocated;
+                
                 // draw marker for geolocated point 
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
