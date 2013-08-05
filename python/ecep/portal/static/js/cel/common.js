@@ -211,7 +211,6 @@ function($, L, Response, Handlebars) {
      */
     var getUrl = function (name, opts) {
         var url = '';
-        console.log(CEL.serverVars.default_language);
         switch (name) {
             case 'location-api':
                 // requires opts.locations to be comma separated string or
