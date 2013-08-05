@@ -157,7 +157,8 @@ See LICENSE in the project root for copying permission
                     swlng: {{ settings.AUTOCOMPLETE.SW_LNG|stringformat:'f' }},
                     nelat: {{ settings.AUTOCOMPLETE.NE_LAT|stringformat:'f' }},
                     nelng: {{ settings.AUTOCOMPLETE.NE_LNG|stringformat:'f' }}
-                }
+                },
+                staticRoot: '{% static "" %}'
             }
         };
         // This forces loading of minified common libs rather than loading them separately
