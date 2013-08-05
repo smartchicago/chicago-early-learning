@@ -215,13 +215,13 @@ function($, L, Response, Handlebars) {
             case 'location-api':
                 // requires opts.locations to be comma separated string or
                 //      array of integers
-                url = '/api/location/';
+                url = '/' + ($.cookie('django_language') || 'en') + '/api/location/';
                 if (opts && opts.locations) {
                     url += opts.locations.toString() + '/';
                 }
                 return url;
             case 'neighborhood-api':
-                return '/api/neighborhood/';
+                return '/' + ($.cookie('django_language') || 'en') + '/api/neighborhood/';
             case 'neighborhoods-topo':
                 return '/static/js/neighborhoods-topo.json';
             case 'neighborhoods-geojson':
