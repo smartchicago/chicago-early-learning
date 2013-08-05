@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.gis',
+    'django.contrib.sitemaps',
     'portal',
     'portal.sms',           # This is necessary for the celery worker to respond to messages
     'django_twilio',
