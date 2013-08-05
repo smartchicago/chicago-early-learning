@@ -42,13 +42,7 @@ urlpatterns = patterns(
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
     # Location Views
-    # Don't need to pass id to view since this is handled with javascript
     url(r'^location/\d+/$', 'portal.views.location'),
-    url(r'^api/location/(?P<location_ids>[0-9,]*)/$', 'portal.views.location_api'),
-    url(r'^api/location/$', 'portal.views.location_api'),
-    
-    # Neighborhood Views
-    url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),
     
     # Starred Location Views
     url(r'^starred/?[0-9,]*/$', 'portal.views.starred'),
@@ -61,4 +55,15 @@ urlpatterns = patterns(
 
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),
+)
+
+urlpatterns += i18n_patterns('',
+
+    # Location API
+    url(r'^api/location/(?P<location_ids>[0-9,]*)/$', 'portal.views.location_api'),
+    url(r'^api/location/$', 'portal.views.location_api'),
+
+    # Neighborhood API
+    url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),
+
 )
