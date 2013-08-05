@@ -218,17 +218,6 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 $morelessbtn.html(gettext('More'));
                 $morelessbtn.attr('data-hint', gettext('Click to show more information'));
             });
-        };
-
-        /**
-         * Change tooltip when refining search
-         */
-        var refineListener = function(){
-            $('#collapseFilters').on('show.bs.collapse', function(e) { 
-                $('#refineBtn').attr('data-hint', gettext('Click to hide filters')); 
-            }).on('hide.bs.collapse', function(e) {
-                $('#refineBtn').attr('data-hint', gettext('Click to show filters'));
-            });
             // feature detection: we only want hover events on non-touch devices 
             if (!('ontouchstart' in document.documentElement)) {
                 var $locationContainer = $('.location-container');
@@ -246,6 +235,17 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     }
                 });
             }
+        };
+
+        /**
+         * Change tooltip when refining search
+         */
+        var refineListener = function(){
+            $('#collapseFilters').on('show.bs.collapse', function(e) { 
+                $('#refineBtn').attr('data-hint', gettext('Click to hide filters')); 
+            }).on('hide.bs.collapse', function(e) {
+                $('#refineBtn').attr('data-hint', gettext('Click to show filters'));
+            });
         };
 
         /*

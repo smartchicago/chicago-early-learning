@@ -46,11 +46,6 @@ urlpatterns = patterns(
     # Location Views
     # Need to pass id to view for sitemap, but don't need to do anything with it since this is handled with javascript
     url(r'^location/(\d+)/$', 'portal.views.location', name='location-view'),
-    url(r'^api/location/(?P<location_ids>[0-9,]*)/$', 'portal.views.location_api'),
-    url(r'^api/location/$', 'portal.views.location_api'),
-    
-    # Neighborhood Views
-    url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),
     
     # Starred Location Views
     url(r'^starred/?[0-9,]*/$', 'portal.views.starred'),
@@ -66,4 +61,15 @@ urlpatterns = patterns(
 
     # Sitemaps
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+)
+
+urlpatterns += i18n_patterns('',
+
+    # Location API
+    url(r'^api/location/(?P<location_ids>[0-9,]*)/$', 'portal.views.location_api'),
+    url(r'^api/location/$', 'portal.views.location_api'),
+
+    # Neighborhood API
+    url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),
+
 )

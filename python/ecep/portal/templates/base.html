@@ -59,7 +59,7 @@ See LICENSE in the project root for copying permission
             <li><a href="{% url portal.views.about %}" data-r1024={% trans "About" %}><img src='{% static "img/icons/about.svg" %}' alt="About"></a></li>
             <li><a href="{% url portal.views.faq %}" data-r1024={% trans "FAQ" %}><img src='{% static "img/icons/faq.svg" %}'></a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="{% trans 'Language' %} <b class='caret'></b>">EN <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="{% trans 'Language' %} <b class='caret'></b>">{{ LANGUAGE_CODE|upper }} <b class="caret"></b></a>
 
               <ul class="dropdown-menu pull-right">
                 {% get_static_prefix as STATIC_PREFIX %}
@@ -157,7 +157,10 @@ See LICENSE in the project root for copying permission
                     swlng: {{ settings.AUTOCOMPLETE.SW_LNG|stringformat:'f' }},
                     nelat: {{ settings.AUTOCOMPLETE.NE_LAT|stringformat:'f' }},
                     nelng: {{ settings.AUTOCOMPLETE.NE_LNG|stringformat:'f' }}
-                }
+                },
+                // settings.LANGUAGE_CODE instead of LANGUAGE_CODE because we want default, not
+                //      what is currently set
+                default_language: '{{ settings.LANGUAGE_CODE }}'    
             }
         };
         // This forces loading of minified common libs rather than loading them separately
