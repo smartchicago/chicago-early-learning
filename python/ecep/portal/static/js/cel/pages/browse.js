@@ -403,7 +403,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 map.addLayer(popupLayer);
 
                 // Use history for mapstate if not undefined (prevents geolocation when browsing back)
-                state.isGeolocated = historyState.isGeolocated || state.isGeolocated;
+                state.isGeolocated = typeof historyState.isGeolocated === 'undefined' ? state.isGeolocated : historyState.isGeolocated;
                 
                 // draw marker for geolocated point 
                 if (state.isGeolocated) {
