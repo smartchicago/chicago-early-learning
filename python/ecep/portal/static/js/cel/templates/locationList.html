@@ -2,24 +2,43 @@
 <div class="accordion location-container" data-key="{{item.key}}">
   <div class="accordion-group" data-key="{{item.key}}">
     <div class="accordion-heading location">
-      <a href="#" class="favs-toggle hint--right" data-hint="{{tooltip.star}}" id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}"><img src="/static/img/icons/star-empty.svg" class="fave-star" alt="Favorite"></a>
-      <a data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}">
+      <a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle hint--right"
+          data-hint="{{tooltip.star}}" data-loc-id="{{item.key}}">
+        <img src='{{static "img/icons/star-empty.svg"}}' class="fave-star" alt="Favorite">
+      </a>
+      <a href="#collapseLoc{{@index}}"data-toggle="collapse" data-parent="#location{{@index}}" >
         <h1 class="truncate">{{item.site_name}}</h1>
         <h2>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2>
       </a>
-      <a class="directions-icon hint--right" id="loc-icon" href="#" data-hint="{{tooltip.accreditation}}">
-        <img id="loc-icon-{{item.key}}" src="/static/img/leaflet-icons/center.png" class="location-icons" />
+      <a href="#" id="loc-icon" class="directions-icon hint--right"
+          data-hint="{{tooltip.accreditation}}">
+        <img id="loc-icon-{{item.key}}" class="location-icons"
+            src='{{static "img/leaflet-icons/center.png"}}' />
       </a> 
-      <a class="directions-icon hint--left" data-hint="{{tooltip.directions}}" id="loc-dirs" href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}" target="_blank">{{translations.directions}}</a>
-      <button class="btn btn-inverse more-less-btn hint--left" data-hint="{{tooltip.moreinfo}}" data-toggle="collapse" data-parent="#location{{@index}}" href="#collapseLoc{{@index}}" id="moreBtn">{{translations.more}}</button>
+      <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"
+          id="loc-dirs" class="directions-icon hint--left" data-hint="{{tooltip.directions}}"
+          target="_blank">
+        {{translations.directions}}
+      </a>
+      <button href="#collapseLoc{{@index}}"
+          id="moreBtn" class="btn btn-inverse more-less-btn hint--left"
+          data-hint="{{tooltip.moreinfo}}" data-toggle="collapse" data-parent="#location{{@index}}">
+        {{translations.more}}
+      </button>
       <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
     </div>
   </div>
   <div id="collapseLoc{{@index}}" class="accordion-body collapse">
     <div class="accordion-inner">
       <div class="accordion-right">
-        <button class="btn input-block-level" href="{{item.url}}" target="_blank"><i class="icon-globe"></i> {{translations.website}}</button>
-        <button class="btn input-block-level share-btn" data-key="{{item.key}}"><img src="/static/img/icons/share.svg" class="svg-icon"> {{translations.share}}</button>
+        <button href="{{item.url}}" class="btn input-block-level" target="_blank">
+          <i class="icon-globe"></i>
+          {{translations.website}}
+        </button>
+        <button class="btn input-block-level share-btn" data-key="{{item.key}}">
+          <img src='{{static "img/icons/share.svg"}}' class="svg-icon">
+          {{translations.share}}
+        </button>
       </div>
       <div class="accordion-left">
         <h1>{{phone.fieldname}}</h1>
