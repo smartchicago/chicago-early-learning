@@ -17,12 +17,16 @@ requirejs.config({
         slidepanel: '../lib/slidepanel',
         topojson: '../lib/topojson',
         styling: '../lib/styling',
-        icons: '../lib/icons'
+        icons: '../lib/icons',
+        history: '../lib/native.history'
     },
     shim: {
         'jquery-ui': {
             deps: ['jquery'],
             exports: '$'
+        },
+        history: {
+            exports: 'History'
         },
         bootstrap: {
             // http://stackoverflow.com/a/13556882/639619
