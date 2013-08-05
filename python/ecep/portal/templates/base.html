@@ -157,7 +157,10 @@ See LICENSE in the project root for copying permission
                     swlng: {{ settings.AUTOCOMPLETE.SW_LNG|stringformat:'f' }},
                     nelat: {{ settings.AUTOCOMPLETE.NE_LAT|stringformat:'f' }},
                     nelng: {{ settings.AUTOCOMPLETE.NE_LNG|stringformat:'f' }}
-                }
+                },
+                // settings.LANGUAGE_CODE instead of LANGUAGE_CODE because we want default, not
+                //      what is currently set
+                default_language: '{{ settings.LANGUAGE_CODE }}'    
             }
         };
         // This forces loading of minified common libs rather than loading them separately
