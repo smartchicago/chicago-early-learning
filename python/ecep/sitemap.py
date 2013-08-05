@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 
 from portal.models import Location
 
+
 class LocationSiteMap(sitemaps.Sitemap):
     """
     Sitemap for individual location views
@@ -19,6 +20,7 @@ class LocationSiteMap(sitemaps.Sitemap):
 
     def location(self, item):
         return reverse('location-view', args=(item.id,))
+
 
 class StaticViewSitemap(sitemaps.Sitemap):
     """
