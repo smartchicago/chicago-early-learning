@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-01 15:41-0500\n"
+"POT-Creation-Date: 2013-08-02 11:00-0500\n"
 "PO-Revision-Date: 2013-01-10 08:46-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -26,125 +26,76 @@ msgstr "Inglés"
 msgid "Spanish"
 msgstr "Español"
 
-#: portal/models.py:56 portal/models.py:196
-msgid "Phone Number"
-msgstr "Número de teléfono"
-
-#: portal/models.py:57
-#, fuzzy
-msgid "Quality Rating"
-msgstr "Declaración de calidad"
-
-#: portal/models.py:58 portal/models.py:212
-#: portal/templatetags/portal_extras.py:30
-msgid "Website"
-msgstr "Sitio web"
-
-#: portal/models.py:59 portal/models.py:203
-msgid "Quality Statement"
-msgstr "Declaración de calidad"
-
-#: portal/models.py:60
-msgid "Accreditation"
-msgstr "Acreditación"
-
-#: portal/models.py:61
-msgid "Program Hours"
-msgstr "Programas"
-
-#: portal/models.py:62
-msgid "Full Day"
-msgstr "Año completo"
-
-#: portal/models.py:63
-msgid "Part Day"
-msgstr "Parte del día"
-
-#: portal/models.py:64 portal/models.py:193
-msgid "Full Week"
-msgstr "Semana completa"
-
-#: portal/models.py:65
-msgid "Part Week"
-msgstr "Semana parcial"
-
-#: portal/models.py:66 portal/models.py:190
-msgid "School Year"
-msgstr "Año Escolar"
-
-#: portal/models.py:67 portal/models.py:190
-msgid "Full Year"
-msgstr "Año completo"
-
-#: portal/models.py:68
-msgid "Ages Served"
-msgstr "Edades para las que se presta servicio"
-
-#: portal/models.py:69
-msgid "Ages 0-3"
-msgstr "0‐3 años"
-
-#: portal/models.py:70
-msgid "Ages 3-5"
-msgstr "3‐5 años"
-
-#: portal/models.py:74
-msgid "Community Based"
-msgstr ""
-
-#: portal/models.py:75
-msgid "CPS Based"
-msgstr ""
-
-#: portal/models.py:76
-msgid "Home Visiting"
-msgstr "Visitas a Domicilio"
-
-#: portal/models.py:77
-msgid "Accepts CCAP"
-msgstr ""
-
-#: portal/models.py:78
-msgid "Head Start"
-msgstr "Head Start"
-
-#: portal/models.py:79
-msgid "Early Head Start"
-msgstr "Early Head Start"
-
-#: portal/models.py:181
+#: portal/models.py:185
 msgid "Affiliations"
 msgstr "Afiliación del centro/sede"
 
-#: portal/models.py:187
+#: portal/models.py:192
 msgid "Languages (other than English)"
 msgstr "Idiomas (excepto Inglés)"
 
-#: portal/models.py:190
+#: portal/models.py:195
 msgid "Program Duration"
 msgstr "Duración del programa"
 
-#: portal/models.py:193
+#: portal/models.py:195
+msgid "Full Year"
+msgstr "Año completo"
+
+#: portal/models.py:195
+msgid "School Year"
+msgstr "Año Escolar"
+
+#: portal/models.py:198
 msgid "Weekday Availability"
 msgstr ""
 
-#: portal/models.py:193
+#: portal/models.py:198
+msgid "Full Week"
+msgstr "Semana completa"
+
+#: portal/models.py:198
 msgid "Partial Week"
 msgstr "Semana parcial"
 
-#: portal/models.py:212
+#: portal/models.py:201
+msgid "Phone Number"
+msgstr "Número de teléfono"
+
+#: portal/models.py:208
+msgid "Quality Statement"
+msgstr "Declaración de calidad"
+
+#: portal/models.py:217
 msgid "More"
 msgstr "Más"
 
-#: portal/models.py:212
+#: portal/models.py:217 portal/templatetags/portal_extras.py:30
+msgid "Website"
+msgstr "Sitio web"
+
+#: portal/models.py:217
 msgid "Directions"
 msgstr "Indicaciones"
 
-#: portal/models.py:213
+#: portal/models.py:218 portal/templates/browse.html:43
 msgid "Share"
 msgstr ""
 
-#: portal/models.py:216
+#: portal/models.py:225
+#, fuzzy
+msgid "Directions from Google"
+msgstr "Indicaciones"
+
+#: portal/models.py:225
+msgid "Click to show more information"
+msgstr ""
+
+#: portal/models.py:226
+msgid "Click to star location"
+msgstr ""
+
+#: portal/models.py:229
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -202,6 +153,10 @@ msgstr "(página %(current)d/%(total)d)"
 msgid "Explore"
 msgstr "Explorar"
 
+#: portal/views.py:366
+msgid "Click to see schools in this neighborhood"
+msgstr ""
+
 #: portal/views_v1.py:32
 msgid "Distance"
 msgstr "Distancia"
@@ -234,7 +189,7 @@ msgid "Chicago Early Learning"
 msgstr "Chicago Early Learning"
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
-#: portal/templates/base.html:58
+#: portal/templates/base.html:59
 msgid "About"
 msgstr "Información acerca de nosotros"
 
@@ -338,43 +293,69 @@ msgstr ""
 "evidencia científica de qué estrategias son más eficaces y rentables, para "
 "quiénes y por qué."
 
+#: portal/templates/base-search.html:7
+msgid "Click to user your current location"
+msgstr ""
+
 #: portal/templates/base-search.html:9 portal/templates/index.html:23
 #: portal/templates/search.html:9
 msgid "Search"
 msgstr "Buscar"
 
-#: portal/templates/base.html:57
+#: portal/templates/base.html:58
 #, fuzzy
 msgid "Text For Info"
 msgstr "Envíe texto para recibir info"
 
-#: portal/templates/base.html:59 portal/templates/faq-models.html:9
+#: portal/templates/base.html:60 portal/templates/faq-models.html:9
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
 
-#: portal/templates/base.html:61
+#: portal/templates/base.html:62
 msgid "Language"
 msgstr "Idioma"
 
-#: portal/templates/base.html:81
+#: portal/templates/base.html:82
 msgid "Want information via text?"
 msgstr "¿Desea recibir información por medio de un mensaje de texto?"
 
-#: portal/templates/base.html:84
+#: portal/templates/base.html:85
 msgid "Text your zip code to "
 msgstr ""
 
-#: portal/templates/base.html:84
+#: portal/templates/base.html:85
 msgid " and we'll do the rest."
 msgstr ""
 
-#: portal/templates/base.html:92
+#: portal/templates/base.html:93
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:95
+#: portal/templates/base.html:96
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
+msgstr ""
+
+#: portal/templates/browse.html:40
+msgid "Click to hide filters"
+msgstr ""
+
+#: portal/templates/browse.html:40
+#, fuzzy
+msgid "Refine your search"
+msgstr "Búsqueda de dirección"
+
+#: portal/templates/browse.html:42
+msgid "Click to view starred locations"
+msgstr ""
+
+#: portal/templates/browse.html:42
+#, fuzzy
+msgid "Starred"
+msgstr "Inicio"
+
+#: portal/templates/browse.html:43
+msgid "Click to share starred schools"
 msgstr ""
 
 #: portal/templates/browse.html:69
@@ -482,6 +463,43 @@ msgstr "¿Ha olvidado su nombre de usuario o contraseña?"
 msgid "Log in"
 msgstr "Iniciar sesión"
 
+#, fuzzy
+#~ msgid "Quality Rating"
+#~ msgstr "Declaración de calidad"
+
+#~ msgid "Accreditation"
+#~ msgstr "Acreditación"
+
+#~ msgid "Program Hours"
+#~ msgstr "Programas"
+
+#~ msgid "Full Day"
+#~ msgstr "Año completo"
+
+#~ msgid "Part Day"
+#~ msgstr "Parte del día"
+
+#~ msgid "Part Week"
+#~ msgstr "Semana parcial"
+
+#~ msgid "Ages Served"
+#~ msgstr "Edades para las que se presta servicio"
+
+#~ msgid "Ages 0-3"
+#~ msgstr "0‐3 años"
+
+#~ msgid "Ages 3-5"
+#~ msgstr "3‐5 años"
+
+#~ msgid "Home Visiting"
+#~ msgstr "Visitas a Domicilio"
+
+#~ msgid "Head Start"
+#~ msgstr "Head Start"
+
+#~ msgid "Early Head Start"
+#~ msgstr "Early Head Start"
+
 #~ msgid "About the Chicago Early Learning Portal"
 #~ msgstr ""
 #~ "Acerca del Chicago Early Learning Portal (Portal de Aprendizaje Temprano "
@@ -578,9 +596,6 @@ msgstr "Iniciar sesión"
 
 #~ msgid "Enter an address to get started"
 #~ msgstr "Para comenzar, ingrese su dirección"
-
-#~ msgid "Start"
-#~ msgstr "Inicio"
 
 #~ msgid "Comparing Locations"
 #~ msgstr "Comparación de centros"

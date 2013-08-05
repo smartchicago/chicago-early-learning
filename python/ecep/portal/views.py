@@ -362,7 +362,8 @@ def neighborhood_api(request):
         'schools': nbh_pk_to_count[n.pk] if n.pk in nbh_pk_to_count else 0,
         'id': n.pk,
         'center': n.get_center(),
-        'explore': _('Explore')
+        'explore': _('Explore'),
+        'tooltip': {'explore': _('Click to see schools in this neighborhood')}
     } for n in counts]
 
     context = {'neighborhoods': count_list}

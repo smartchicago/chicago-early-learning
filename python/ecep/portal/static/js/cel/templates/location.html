@@ -1,12 +1,13 @@
-<div class="favorite fullwidth" style="width:100%;" data-key="{{item.key}}">
-  <div id="location-map" class="single-location-map"></div>
+<div class="favorite" data-key="{{item.key}}">
+  <div id="location-map" class="none single-location-map"></div>
   <a href="javascript:void(0)" class="none favs-close-button">&times;</a>
   <h1 class="school-name">{{item.site_name}}</h1>
   <p>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</p>
   {{#if item.url}}
   <ul class="website-phone">
     <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank">{{item.url}}</a></li>
-    <a class="btn pull-right single-share" href="#" data-r1024="<i class='icon-share'></i>{{translations.share}}"><img src="/static/img/icons/share.svg" class="svg-icon"> Share</a>
+    <a href="javascript:void(0)" class="none favs-toggle single-star pull-right" id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}"><img src="/static/img/icons/star-empty.svg" class="fave-star" alt="Favorite"></a>
+    <a class="none btn pull-right single-share" href="#" data-r1024="<i class='icon-share'></i>{{translations.share}}"><img src="/static/img/icons/share.svg" class="svg-icon"> Share</a>
   </ul>
   {{/if}}
   <hr>
