@@ -8,13 +8,13 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'boo
 function($, L, Response, Handlebars) {
     'use strict';
 
+    //  TODO: export breakpoints if we continue to use response.js
     var desktopBreakpoint = 1024;
     
     $(document).ready(function() {
 
         // collapse filter div on mobile
         //  this is the manual way to do it. A bit hacky.
-        //  TODO: export breakpoints if we continue to use response.js
         var width = $(document).width();
         if (width >= desktopBreakpoint) {
             $('#collapseFilters').addClass('in');
@@ -35,50 +35,50 @@ function($, L, Response, Handlebars) {
                 bounds = new google.maps.LatLngBounds(southWest, northEast);
 
             geocoder.geocode( 
-                    {
-                        address: request.term,
-                        bounds: bounds,
-                        region: 'US'
-                    }, 
-                    function(results, status) {
-                        var cleanedResults = [],
-                            result,
-                            lat,
-                            lon,
-                            resultLocation,
-                            likelyResult,
-                            $element = $('.autocomplete-searchbox');
+                {
+                    address: request.term,
+                    bounds: bounds,
+                    region: 'US'
+                }, 
+                function(results, status) {
+                    var cleanedResults = [],
+                        result,
+                        lat,
+                        lon,
+                        resultLocation,
+                        likelyResult,
+                        $element = $('.autocomplete-searchbox');
 
-                        for (var i in results) {
-                            result = results[i];
-                            lat = result.geometry.location.lat();
-                            lon = result.geometry.location.lng();
-                            resultLocation = new google.maps.LatLng(lat, lon);
-                            if (bounds.contains(resultLocation)) {
-                                cleanedResults.push({
-                                    lat: lat,
-                                    lon: lon,
-                                    label: result.formatted_address,
-                                    value: result.formatted_address
-                                });
-                            }
-                        }
-                        if (cleanedResults.length === 0) {
+                    for (var i in results) {
+                        result = results[i];
+                        lat = result.geometry.location.lat();
+                        lon = result.geometry.location.lng();
+                        resultLocation = new google.maps.LatLng(lat, lon);
+                        if (bounds.contains(resultLocation)) {
                             cleanedResults.push({
-                                label: "No Results",
-                                value: "No Results"
-                            });
-                        } else {
-                            // push first result to input element
-                            //      just like in autocomplete success handler below
-                            likelyResult = cleanedResults[0];
-                            $element.data({
-                                lat: likelyResult.lat,
-                                lon: likelyResult.lon
+                                lat: lat,
+                                lon: lon,
+                                label: result.formatted_address,
+                                value: result.formatted_address
                             });
                         }
-                        response(cleanedResults);
                     }
+                    if (cleanedResults.length === 0) {
+                        cleanedResults.push({
+                            label: "No Results",
+                            value: "No Results"
+                        });
+                    } else {
+                        // push first result to input element
+                        //      just like in autocomplete success handler below
+                        likelyResult = cleanedResults[0];
+                        $element.data({
+                            lat: likelyResult.lat,
+                            lon: likelyResult.lon
+                        });
+                    }
+                    response(cleanedResults);
+                }
              );
         }
 
@@ -202,6 +202,17 @@ function($, L, Response, Handlebars) {
     Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,desktopBreakpoint] });
     Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,desktopBreakpoint] });
 
+    // Handlebars helpers
+
+    /**
+     * Helper for resolving static urls in handlebars templates
+     * @param { URL to convert to static, same as argument for django static template function } url
+     * @return { full static url }
+     */
+    Handlebars.registerHelper('static', function(url) {
+        return CEL.serverVars.staticRoot + url;
+    });
+
 
     /**
      * Central api for getting urls for the app
@@ -270,9 +281,12 @@ function($, L, Response, Handlebars) {
     // geolocation                                                                                  
     if ('geolocation' in navigator) {
         $(document).ready(function() {
-            $('.geolocation-button').bind('click', function(e) {                                                   
+            $('.geolocation-button').bind('click', function(e) {
                 navigator.geolocation.getCurrentPosition(function(position) {                           
-                    window.location.href = getUrl('browse-latlng',{ lat: position.coords.latitude, lng: position.coords.longitude });
+                    window.location.href = getUrl(
+                        'browse-latlng',
+                        { lat: position.coords.latitude, lng: position.coords.longitude }
+                    );
                 }, function(e) {
                     alert(gettext('Please enable geolocation services.'));
                 });                                                                                     
