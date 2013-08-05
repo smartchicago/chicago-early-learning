@@ -4,13 +4,11 @@
  * JavaScript for the starred locations page 
  ********************************************************/
 
-'use strict';
- 
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cookie', 'favorites', 'jquery-cookie'], 
-    function($, L, html, common, celcookie, favorites) {
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cookie', 'favorites', 'Handlebars', 'jquery-cookie'], 
+    function($, L, html, common, celcookie, favorites, Handlebars) {
+        'use strict';
 
         $(document).ready(function() {
-
             // Draw the Handlebars template for a location 
             function drawStarredLocations(data) {
                 var template = Handlebars.compile(html),
