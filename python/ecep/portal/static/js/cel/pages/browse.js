@@ -44,6 +44,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             isAutocompleteSet = true,
             autocompleteLocationId,
             autocompleteNeighborhoodId,
+            updateUrl = null,                   // Updates the url to reflect page state
             $locationWrapper;                   // Store div wrapper for results on left side
 
         // Initialize geojson for neighborhood layer
@@ -117,16 +118,25 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 }
             }
             
-            // If we move the map, don't want to go back to geolocated spot in history and also don't want the geolocated
-            // marker at the center of the map user is going back to
-            History.pushState(
-                {isGeolocated: false},
-                null,
-                common.getUrl(
-                    'browse',
-                    {type: 'latlng', lat: mapCenter.lat, lng: mapCenter.lng, zoom: zoomLevel}
-                )
-            );
+            // Don't want this to fire on page load since it will screw w/ history, so
+            // disable it the first time through.
+            if (updateUrl) {
+                updateUrl();
+            } else {
+                // If we move the map, don't want to go back to geolocated spot in history
+                // and also don't want the geolocated marker at the center of the map user
+                // is going back to.
+                updateUrl = function () {
+                    History.pushState(
+                        {isGeolocated: false},
+                        null,
+                        common.getUrl(
+                            'browse',
+                            {type: 'latlng', lat: mapCenter.lat, lng: mapCenter.lng, zoom: zoomLevel}
+                        )
+                    );
+                };
+            }
         }, 250);
 
         /**
