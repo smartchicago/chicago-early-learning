@@ -328,18 +328,13 @@ function($, L, Response, Handlebars) {
             $text = $('#social-text');
 
         // fill the input box in with the url
-        $text.attr('value', options.url);
+        $text.attr('href', options.url).text(options.url);
 
         // a url is generated for each template defined in 'templates'.
         // to add a new service, create a link with the id 'social-[service]',
         // and add a template to the 'templates' object.
         $.each(templates, function (service, template) {
             $('#social-' + service).attr('href', Handlebars.compile(template)(options));
-        });
-
-        // select the text once the dialog is shown
-        $modal.on('shown', function() {
-            $text.select();
         });
 
         // display the modal

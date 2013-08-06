@@ -909,9 +909,7 @@ h1, h2, h3, h4 {
 }
 
 #social-text {
-    width: 300px; 
-    float: left; 
-    margin-right: 10px;
+
 }
     
 .fc-webicon { display: inline-block; padding: 7px 5px; background-size: 100%; width: 21px; height: 17px; text-align: left; -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; margin-bottom: 5px; color: #F1F2F2; }
