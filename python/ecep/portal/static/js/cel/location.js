@@ -318,8 +318,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         geojsonUpdate: function() {
             var that = this;
             if (that.neighborhoods.geojson === undefined) {
-                return $.getJSON(common.getUrl('neighborhoods-topo'), function(data) {
-                        that.neighborhoods.geojson = topojson.feature(data, data.objects.neighborhoods);
+                return $.getJSON(common.getUrl('neighborhoods-geojson'), function(data) {
+                        that.neighborhoods.geojson = data;
                 });
             }
         },
