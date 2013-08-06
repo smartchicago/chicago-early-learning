@@ -1,6 +1,8 @@
 # Copyright (c) 2013 Azavea, Inc.
 # See LICENSE in the project root for copying permission
 
+from django.conf import settings
+from django.contrib.gis.geos import GEOSGeometry, MultiPolygon
 from django.core.management.base import BaseCommand
 from django.db.models import Count
 
@@ -9,6 +11,7 @@ from portal.models import Neighborhood
 
 import sys
 import subprocess
+
 
 class Command(BaseCommand):
     """
@@ -23,13 +26,23 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """
-        Exports neighborhood to data directory
+        Exports neighborhood to data directory, simplifying the polygons in the process.
+        Simplify: https://docs.djangoproject.com/en/1.4/ref/contrib/gis/geos/#django.contrib.gis.geos.GEOSGeometry.simplify
         """
         data_path = 'portal/static/js'
         neighborhoods = Neighborhood.objects.annotate(num_schools=Count('location')).filter()
 
         for n in neighborhoods:
             n.center = n.get_center()
+
+            # Simplify our boundaries so they take up less space
+            newBoundary = n.boundary.simplify(settings.SIMPLIFY_EPSILON, True)
+            if newBoundary.geom_type == 'MultiPolygon':
+                n.boundary = newBoundary
+            elif newBoundary.geom_type == 'Polygon':
+                n.boundary = MultiPolygon(newBoundary)
+            else:
+                raise TypeError('Invalid type ' + n.boundary.geom_type + ' encountered')
 
         geoj = GeoJSON.GeoJSON()
         djf = Django.Django(geodjango='boundary', properties=['primary_name', 'pk', 'center', 'num_schools'])
