@@ -1,13 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:300,400,700);
 
 body {
   padding: 0;
   margin: 0;
 }
 
-html, body, #map {
-    height: 100%;
+html, body {
 }
 
 input {
@@ -42,13 +41,15 @@ h1, h2, h3, h4 {
     margin: 0;
     padding: 0 0 0 15;
     font-size: 16px;
-    font-weight: 300;
     text-transform: uppercase;
+    font-weight: 300;
 }
 
 .logo {
     width: 40px;
+    height: 40px;
     padding-right: 15px;
+    min-width: 40px;
 }
 
 .navbar-inverse .navbar-inner {
@@ -89,8 +90,8 @@ h1, h2, h3, h4 {
     }
 
 .navbar-inner {
-    min-height: 60px;
-}
+    height: 60px;
+    }
     .navbar-left {
         width: 65%;
         float: left;
@@ -100,8 +101,13 @@ h1, h2, h3, h4 {
         float: right;
     }
     .navbar .brand {
-        margin: 10px 0;
-    }
+        margin: 0;
+        }
+        .navbar .brand span {
+            color: #EECF16;
+            font-weight: 700;
+        }
+
     .navbar .nav {
         float: right;
         margin: 10px 0;
@@ -310,7 +316,12 @@ h1, h2, h3, h4 {
 }
     #map {
         margin-top: 0;
-        width: inherit;
+        width: 100%;
+        position: absolute !important;
+        top: 0;
+        height: auto;
+        bottom: 0;
+        z-index: 0;
     }
     .leaflet-container .leaflet-control-zoom {
             margin-top: 71px;
@@ -320,6 +331,7 @@ h1, h2, h3, h4 {
         color: #000;
         font-size: 16px;
         font-weight: bold;
+        display: inline-block;
     }
     .accordion-heading a:hover {
         text-decoration: none;
@@ -364,6 +376,7 @@ h1, h2, h3, h4 {
 
 ::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
     z-index: 9999;
 }
  
@@ -903,10 +916,6 @@ h1, h2, h3, h4 {
 /* -----------------------------------------
    Social/sharing styling
 ----------------------------------------- */
-
-#share-modal {
-    width: 500px;
-}
 
 #social-text {
     width: 300px; 

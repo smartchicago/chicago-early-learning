@@ -26,7 +26,7 @@ require(['jquery', CEL.serverVars.gmapRequire], function($) {
 
     // Chevron change
     $('#refineBtn').click(function() {
-        $(this).find('i').toggleClass('icon-chevron-down icon-chevron-right');
+        $(this).find('i').toggleClass('icon-down-open icon-right-open');
     });
 		
 		
