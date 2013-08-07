@@ -221,7 +221,7 @@ class Location(models.Model):
                       'share': _('Share')}
 
         # More information for tooltip icon
-        accreditation = ['Accredited'] if self.accred else []
+        accreditation = ['Accredited'] if self.accred != 'None' else []
         accreditation.append('School' if self.is_cps_based else 'Center')
         
         # Tooltips - necessary for translations in handlebars template
