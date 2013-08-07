@@ -26,6 +26,9 @@ h1, h2, h3, h4 {
 .bm20 {
     margin-bottom: 20px;
 }
+.container {
+    margin-bottom: 20px;
+}
 
 /*
  * Added because we defined a class close used elsewhere that overrides the margin-top of
@@ -126,9 +129,12 @@ h1, h2, h3, h4 {
     .favs-toggle i {
         font-size: 24px;
         position: relative;
-        top: -8px;
         left: -6px;
-    }
+        color: black;
+        }
+        .accordion-group .favs-toggle i {
+            top: -8px;
+        }
     
 
     /* Search ------------ */
