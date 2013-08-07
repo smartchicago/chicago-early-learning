@@ -8,15 +8,15 @@
       </a>
       <a href="#collapseLoc{{@index}}"data-toggle="collapse" data-parent="#location{{@index}}" >
         <h1 class="truncate">{{item.site_name}}</h1>
-        <h2>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2>
+        <h2 class="truncate">{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2>
       </a>
-      <a href="#" id="loc-icon" class="directions-icon hint--right"
+      <a href="#" id="loc-icon" class="hideonmobile directions-icon hint--right"
           data-hint="{{tooltip.accreditation}}">
         <img id="loc-icon-{{item.key}}" class="location-icons"
             src='{{static "img/leaflet-icons/center.png"}}' />
       </a> 
       <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"
-          id="loc-dirs" class="directions-icon hint--left" data-hint="{{tooltip.directions}}"
+          id="loc-dirs" class="hideonmobile directions-icon hint--left" data-hint="{{tooltip.directions}}"
           target="_blank">
         {{translations.directions}}
       </a>

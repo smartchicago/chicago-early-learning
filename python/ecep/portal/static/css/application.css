@@ -39,7 +39,6 @@ h1, h2, h3, h4 {
 
 .navbar .brand {
     margin: 0;
-    padding: 0 0 0 15;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: 300;
@@ -149,7 +148,7 @@ h1, h2, h3, h4 {
             padding: 8px 15px 5px 15px;
         }
         #searchBtn {
-            padding: 8px 10px 5px 10px;
+            padding: 6px 10px 7px 10px;
             margin-left: 5px;
         }
         #mobile-search {
@@ -244,7 +243,12 @@ h1, h2, h3, h4 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-    }
+        }
+        .truncate:hover {
+            width:auto;
+            overflow: visible;
+            text-overflow: none;
+        }
     
     .accordion-heading h1 {
         font-size: 16px;

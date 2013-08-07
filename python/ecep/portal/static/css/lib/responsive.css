@@ -23,11 +23,6 @@
         width: 100%;
         left: 0;
     }
-
-    #toggleListBtn {
-        margin-top: 1px;
-    }
-    
         .cb_slide_panel {
         background: #fff;
         margin-top: 61px;
@@ -55,9 +50,45 @@
 
 @media (max-width: 1023px) { 
     
+    .accordion-heading .favs-toggle {
+        display: none;
+    }
+
+    .accordion-heading #loc-icon,
+    .accordion-heading #loc-dirs {
+        display: none;
+    }
+
+    .hint:hover:before, 
+    .hint:hover:after, 
+    [data-hint]:hover:before, 
+    [data-hint]:hover:after {
+        visibility: hidden;
+        opacity: 0;
+    }
+    .accordion-heading a {
+        width: 100%;
+    }
+    .truncate {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        }
+        .truncate:hover {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
     .navbar-inner {
         max-height: 110px;
         height: auto;
+    }
+
+    #toggleListBtn {
+        margin-top: -2px;
     }
 
     .web-share {
@@ -145,12 +176,13 @@
         width: 100%;
         display: block;
         padding-bottom: 10px;
+        clear: both;
     }
         #mobile-search input {
             width: auto;
             right: 57px;
             left: 93px;
-            top: 65px;
+            top: 66px;
             position: absolute;
             display: block;
             font-size: 13px;
@@ -168,13 +200,19 @@
         #refineSearch {
             margin-left: 10px;
             margin-right: 10px;
-            margin-top: 5px;
-        }
+            margin-top: 4px;
+            }
+            #refineSearch + .input-prepend {
+                margin-top: 6px
+            }
+
         .results-toolbar {
             display: none;
         }
         .filters-inner {
             padding: 15px;
+            max-height: 300px;
+            overflow: auto;
         }
         #location1 {
             margin-top: 44px;
@@ -435,9 +473,6 @@
     #toggleListBtn {
         margin-top: -2px;
     }
-    #toggleMapBtn {
-        margin-top: 4px;
-    }
 
         .get-started {
             width: 92%;
@@ -445,7 +480,7 @@
         }
 
         #toggleMapBtn {
-            margin-top: 3px;
+            margin-top: 4px;
         }
 
         .leaflet-container .leaflet-control-zoom {
