@@ -252,7 +252,7 @@ h1, h2, h3, h4 {
         text-overflow: ellipsis;
         }
         .truncate:hover {
-            width:auto;
+            width: auto;
             overflow: visible;
             text-overflow: none;
         }
@@ -268,7 +268,7 @@ h1, h2, h3, h4 {
         padding: 0;
         font-weight: normal;
         margin: 0;
-        line-height: 24px;
+        line-height: 16px;
         color: #666;
     }
     .accordion-heading img {
