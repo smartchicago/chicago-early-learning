@@ -151,7 +151,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 html = (isNb ? neighborhoodList : locationList),
                 dataList,
                 template = Handlebars.compile(html),
-                handlebarsData = [];
+                handlebarsData = [],
+                th = $("#filter-options").height();
+
 
             // Sort everything by name ascending
             dataList = $.map(data, function(v, k) {
@@ -171,6 +173,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
             $locationWrapper.empty();
             $locationWrapper.append(template(handlebarsData));
+
+            // Set top margin so that list is not hidden by filters
+            $locationWrapper.css("top", th);
 
             // set header title
             var $headerFav = $('#header-fav'),
