@@ -121,12 +121,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             // Don't want this to fire on page load since it will screw w/ history, so
             // disable it the first time through.
             if (updateUrl) {
-                updateUrl();
+                updateUrl(mapCenter, zoomLevel);
             } else {
                 // If we move the map, don't want to go back to geolocated spot in history
                 // and also don't want the geolocated marker at the center of the map user
                 // is going back to.
-                updateUrl = function () {
+                // Need to pass mapCenter and zoomLevel as variables or these values don't change
+                // each time the function is called
+                updateUrl = function (mapCenter, zoomLevel) {
                     History.pushState(
                         {isGeolocated: false},
                         null,
