@@ -50,6 +50,15 @@
 
 @media (max-width: 1023px) { 
     
+    #toggleListBtn {
+        margin-top: -2px;
+        font-size: 16px;
+        width: 40px;
+        padding: 6px 8px 5px;
+        position: relative;
+        z-index: 99;
+    }
+
     .accordion-heading .favs-toggle {
         display: none;
     }
@@ -199,8 +208,10 @@
         }
         #refineSearch {
             margin-left: 10px;
-            margin-right: 10px;
+            margin-right: 8px;
             margin-top: 4px;
+            width: 20px;
+            padding: 6px 8px 5px;
             }
             #refineSearch + .input-prepend {
                 margin-top: 6px
@@ -244,6 +255,9 @@
         float: right;
         right: 10px;
         position: absolute;
+        font-size: 16px;
+        width: 40px;
+        padding: 6px 8px 5px;
     }
 
     .container {
@@ -298,7 +312,6 @@
         position: absolute;
         display: block;
     }
-
     .accordion-group {
         border: none;
     }
@@ -469,11 +482,6 @@
         padding-right: 10px;
         display: none;
     }
-    
-    #toggleListBtn {
-        margin-top: -2px;
-    }
-
         .get-started {
             width: 92%;
             margin-bottom: 10px;

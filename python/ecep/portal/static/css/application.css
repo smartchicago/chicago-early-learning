@@ -123,6 +123,12 @@ h1, h2, h3, h4 {
     .web-share {
         width: 313px;
     }
+    .favs-toggle i {
+        font-size: 24px;
+        position: relative;
+        top: -8px;
+        left: -6px;
+    }
     
 
     /* Search ------------ */
@@ -145,7 +151,8 @@ h1, h2, h3, h4 {
             padding: 8px 10px 5px 10px;
         }
         #geolocation {
-            padding: 8px 15px 5px 15px;
+            padding: 7px 8px 6px 8px;
+            font-size: 16px;
         }
         #searchBtn {
             padding: 6px 10px 7px 10px;
@@ -325,7 +332,7 @@ h1, h2, h3, h4 {
         top: 0;
         height: auto;
         bottom: 0;
-        z-index: 0;
+        z-index: -1;
     }
     .leaflet-container .leaflet-control-zoom {
             margin-top: 71px;
@@ -922,7 +929,13 @@ h1, h2, h3, h4 {
 ----------------------------------------- */
 
 #social-text {
-
+    clear: both;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
     
 .fc-webicon { display: inline-block; padding: 7px 5px; background-size: 100%; width: 21px; height: 17px; text-align: left; -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; margin-bottom: 5px; color: #F1F2F2; }
