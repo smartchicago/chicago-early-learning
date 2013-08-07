@@ -4,10 +4,10 @@
  ********************************************************/
 
 
-define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
+define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
         'topojson', 'icons', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire, 'styling',
-        'leaflet-providers'], 
-    function($, L, neighborhoodList, locationList, topojson, icons, favorites, location, common) {
+        'leaflet-providers', 'history'], 
+    function($, L, Handlebars, neighborhoodList, locationList, topojson, icons, favorites, location, common) {
 
         'use strict';
 
@@ -44,6 +44,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             isAutocompleteSet = true,
             autocompleteLocationId,
             autocompleteNeighborhoodId,
+            updateUrl = null,                   // Updates the url to reflect page state
             $locationWrapper;                   // Store div wrapper for results on left side
 
         // Initialize geojson for neighborhood layer
@@ -91,7 +92,8 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * dm.locationUpdated events to modify the view.
          */
         var displayMap = common.debounce(function(e) {
-            var zoomLevel = map.getZoom();
+            var zoomLevel = map.getZoom(),
+                mapCenter = map.getCenter();
 
             if (isAutocompleteSet && autocompleteLocationId) {
                 dm.locationUpdate(map, locationLayer);
@@ -114,6 +116,26 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     // Ok, we're still on neighborhooks, only need to update if filters changed
                     dm.neighborhoodUpdate();
                 }
+            }
+            
+            // Don't want this to fire on page load since it will screw w/ history, so
+            // disable it the first time through.
+            if (updateUrl) {
+                updateUrl();
+            } else {
+                // If we move the map, don't want to go back to geolocated spot in history
+                // and also don't want the geolocated marker at the center of the map user
+                // is going back to.
+                updateUrl = function () {
+                    History.pushState(
+                        {isGeolocated: false},
+                        null,
+                        common.getUrl(
+                            'browse',
+                            {type: 'latlng', lat: mapCenter.lat, lng: mapCenter.lng, zoom: zoomLevel}
+                        )
+                    );
+                };
             }
         }, 250);
 
@@ -148,6 +170,17 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             $locationWrapper.empty();
             $locationWrapper.append(template(handlebarsData));
 
+            // set header title
+            var $headerFav = $('#header-fav'),
+                $headerDist = $('#header-dist');
+            if (isNb) {
+                $headerFav.text(gettext('Neighborhood'));
+                $headerDist.text(gettext('Schools'));
+            } else {
+                $headerFav.text(gettext('School'));
+                $headerDist.text(gettext('More Information'));
+            }
+
             // bind social sharing button clicks for individual locations
             $locationWrapper.find('.share-btn').on('click', function() {
                 var key = $(this).data('key');
@@ -161,7 +194,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
             favorites.syncUI();
             favorites.addToggleListener({
-                button: ".favs-toggle"
+                button: '.favs-toggle'
             });
 
             /**
@@ -180,32 +213,51 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
 
             // Watch for hover events on the list so we can highlight both 
             // the list item and the icon on the map
-            $('.location-container').each(function(index) {
+            var $locationContainer = $('.location-container');
+            $locationContainer.each(function(index) {
                 var $this = $(this),
                     key = $this.data('key'),
                     loc = dm.locations[key],
                     iconkey = 'icon-' + loc.getIconKey();
                 $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
-            }).hover(function(e) {
-                var $this = $(this),
-                    key = $this.data('key'),
-                    loc = dm.locations[key];
-
-                if (e.type === 'mouseenter') {
-                    $this.addClass('highlight');
-                    loc.setIcon({'highlighted': true});
-                } else if (e.type === 'mouseleave') {
-                    $this.removeClass('highlight');
-                    loc.setIcon({'highlighted': false});
-                }
             }).on('show.bs.collapse', function(e) {
                 var $this = $(this),
-                    $morelessbtn = $this.find('.more-less-btn');
+                    $morelessbtn = $this.find('.more-less-btn'),
+                    $directionsLink = $this.find('#loc-dirs');
                 $morelessbtn.html(gettext('Less'));
+                $morelessbtn.attr('data-hint', gettext('Click to show less information'));
             }).on('hide.bs.collapse', function(e) {
                 var $this = $(this),
                     $morelessbtn = $this.find('.more-less-btn');
                 $morelessbtn.html(gettext('More'));
+                $morelessbtn.attr('data-hint', gettext('Click to show more information'));
+            });
+            // feature detection: we only want hover events on non-touch devices 
+            if (!('ontouchstart' in document.documentElement)) {
+                $locationContainer.on('mouseenter mouseleave', function(e) {
+                    var $this = $(this),
+                    key = $this.data('key'),
+                    loc = dm.locations[key];
+
+                    if (e.type === 'mouseenter') {
+                        $this.addClass('highlight');
+                        loc.setIcon({'highlighted': true});
+                    } else if (e.type === 'mouseleave') {
+                        $this.removeClass('highlight');
+                        loc.setIcon({'highlighted': false});
+                    }
+                });
+            }
+        };
+
+        /**
+         * Change tooltip when refining search
+         */
+        var refineListener = function(){
+            $('#collapseFilters').on('show.bs.collapse', function(e) { 
+                $('#refineBtn').attr('data-hint', gettext('Click to hide filters')); 
+            }).on('hide.bs.collapse', function(e) {
+                $('#refineBtn').attr('data-hint', gettext('Click to show filters'));
             });
         };
 
@@ -314,7 +366,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * Update view when the dm triggers its neighborhood updated event
          * We only want to attach this event once...
          */
-        dm.events.on("DataManager.neighborhoodUpdated", function(e) {
+        dm.events.on('DataManager.neighborhoodUpdated', function(e) {
             // If not already displaying neighborhoods and zoomed out
             if (currentLayer !== layerType.neighborhood) {
                 currentLayer = layerType.neighborhood;
@@ -337,7 +389,7 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
          * Update view when the dm triggers its location updated event
          * We only want to attach this event once...
          */
-        dm.events.on("DataManager.locationUpdated", function(e) {
+        dm.events.on('DataManager.locationUpdated', function(e) {
             // If not already displaying locations and zoomed in
             if (currentLayer !== layerType.location) {
                 currentLayer = layerType.location;
@@ -352,16 +404,26 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
             setAutocompleteLocation();
         });
 
+        $(document).ready(function() {
+        // Chevron change
+            $('#refineBtn').click(function() {
+                $(this).find('i').toggleClass('icon-down-open icon-right-open');
+            });
+        });
 
 
         // Load data and build map when page loads
         return {
             init: function() {
-                var state = getMapState();
+                var state = getMapState(),
+                    historyState = History.getState().data;
                 map = new L.map('map').setView(state.point, defaultZoom);   // Initialize Leaflet map
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
 
+                // Use history for mapstate if not undefined (prevents geolocation when browsing back)
+                state.isGeolocated = typeof historyState.isGeolocated === 'undefined' ? state.isGeolocated : historyState.isGeolocated;
+                
                 // draw marker for geolocated point 
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
@@ -383,8 +445,10 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                 // highlight the appropriate list item when a location popup is shown
                 map.on('popupopen', function(e) {
                     var $div = $('.location-container div[data-key=' + e.popup.options.key + ']');
-                    $div.addClass('highlight');
-                    $div[0].scrollIntoView();
+                    if ($div.length > 0) {
+                        $div.addClass('highlight');
+                        $div[0].scrollIntoView();
+                    }
                 });
 
                 // remove all highlighting when a location popup is closed
@@ -401,9 +465,9 @@ define(['jquery', 'Leaflet', 'text!templates/neighborhoodList.html', 'text!templ
                     $filters.prop('checked', false);
                     dm.onFilterChange();
                 });
-
                 mapToggle();
                 displayMap();
+                refineListener();
             }
         };
     }

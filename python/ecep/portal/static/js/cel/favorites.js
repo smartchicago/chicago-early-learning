@@ -6,7 +6,7 @@
  *      listeners for sharing/clearing/toggling favorites
  *********************************************************/
 
-define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
+define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcookie, common) {
 
     'use strict';
 
@@ -151,7 +151,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
                     selectedClass: 'favs-button-selected'
                 }, 
                 opts = $.extend({}, defaults, options),
-                buttonImg = $elt.children('img'),
+                buttonImg = $elt.children('i'),
                 buttonId = $elt.attr(opts.idAttribute),
                 img = '',
                 increment = 0,
@@ -159,17 +159,19 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
 
             // toggle off
             if ($elt.hasClass(opts.selectedClass)) {
-                img = 'star-empty.svg';
+                img = 'icon-star-empty';
                 favs.removeIdFromCookie(buttonId);
                 increment = -1;
+                $elt.attr('data-hint', gettext('Click to star location'));
             // toggle on
             } else {
-                img = 'star.svg';
+                img = 'icon-star';
                 favs.addIdToCookie(buttonId);
                 increment = 1;
+                $elt.attr('data-hint', gettext('Click to remove star from location'));
             }
 
-            buttonImg.attr('src', opts.imgpath + img);
+            buttonImg.attr('class', img);
             $elt.toggleClass(opts.selectedClass);
             $favbutton = $('.fav-count');
             $favbutton.html(parseInt($favbutton.html(), 10) + increment);
@@ -226,7 +228,7 @@ define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
 
             $('#share-modal').trigger('init-modal', {
                 // the url is passed in to the sharing urls, so it must be absolute
-                url: document.location.origin + '/starred/' + ids  + '/',
+                url: document.location.origin + common.getUrl('starred', { locations: ids }),
                 title: 'I just starred ' + count + ' locations'
             });
         },
