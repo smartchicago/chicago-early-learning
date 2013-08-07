@@ -220,11 +220,8 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
          * Initializes a share modal with the stored favorites information
          */
         initShareModal: function() {
-            // we talked about modifying this module to keep id state in memory in
-            // addition to using a cookie. when that's implemented, this function
-            // should be modified to use that in-memory data.
-            var ids = favs.getCookie() || '',
-                count = ids.split(',').length;
+            var ids = favs.getCookie(), 
+                count = ids ? ids.split(',').length : 0;
 
             $('#share-modal').trigger('init-modal', {
                 // the url is passed in to the sharing urls, so it must be absolute
