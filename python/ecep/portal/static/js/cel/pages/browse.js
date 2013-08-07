@@ -404,6 +404,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             setAutocompleteLocation();
         });
 
+        $(document).ready(function() {
+        // Chevron change
+            $('#refineBtn').click(function() {
+                $(this).find('i').toggleClass('icon-down-open icon-right-open');
+            });
+        });
 
 
         // Load data and build map when page loads

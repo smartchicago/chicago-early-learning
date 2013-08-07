@@ -1,13 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:300,400,700);
 
 body {
   padding: 0;
   margin: 0;
 }
 
-html, body, #map {
-    height: 100%;
+html, body {
 }
 
 input {
@@ -27,6 +26,9 @@ h1, h2, h3, h4 {
 .bm20 {
     margin-bottom: 20px;
 }
+.container {
+    margin-bottom: 20px;
+}
 
 /*
  * Added because we defined a class close used elsewhere that overrides the margin-top of
@@ -40,15 +42,16 @@ h1, h2, h3, h4 {
 
 .navbar .brand {
     margin: 0;
-    padding: 0 0 0 15;
     font-size: 16px;
-    font-weight: 300;
     text-transform: uppercase;
+    font-weight: 300;
 }
 
 .logo {
     width: 40px;
+    height: 40px;
     padding-right: 15px;
+    min-width: 40px;
 }
 
 .navbar-inverse .navbar-inner {
@@ -89,8 +92,8 @@ h1, h2, h3, h4 {
     }
 
 .navbar-inner {
-    min-height: 60px;
-}
+    height: 60px;
+    }
     .navbar-left {
         width: 65%;
         float: left;
@@ -100,8 +103,13 @@ h1, h2, h3, h4 {
         float: right;
     }
     .navbar .brand {
-        margin: 10px 0;
-    }
+        margin: 0;
+        }
+        .navbar .brand span {
+            color: #EECF16;
+            font-weight: 700;
+        }
+
     .navbar .nav {
         float: right;
         margin: 10px 0;
@@ -118,6 +126,15 @@ h1, h2, h3, h4 {
     .web-share {
         width: 313px;
     }
+    .favs-toggle i {
+        font-size: 24px;
+        position: relative;
+        left: -6px;
+        color: black;
+        }
+        .accordion-group .favs-toggle i {
+            top: -8px;
+        }
     
 
     /* Search ------------ */
@@ -140,10 +157,11 @@ h1, h2, h3, h4 {
             padding: 8px 10px 5px 10px;
         }
         #geolocation {
-            padding: 8px 15px 5px 15px;
+            padding: 7px 8px 6px 8px;
+            font-size: 16px;
         }
         #searchBtn {
-            padding: 8px 10px 5px 10px;
+            padding: 6px 10px 7px 10px;
             margin-left: 5px;
         }
         #mobile-search {
@@ -238,7 +256,12 @@ h1, h2, h3, h4 {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-    }
+        }
+        .truncate:hover {
+            width: auto;
+            overflow: visible;
+            text-overflow: none;
+        }
     
     .accordion-heading h1 {
         font-size: 16px;
@@ -251,7 +274,7 @@ h1, h2, h3, h4 {
         padding: 0;
         font-weight: normal;
         margin: 0;
-        line-height: 24px;
+        line-height: 16px;
         color: #666;
     }
     .accordion-heading img {
@@ -310,7 +333,12 @@ h1, h2, h3, h4 {
 }
     #map {
         margin-top: 0;
-        width: inherit;
+        width: 100%;
+        position: absolute !important;
+        top: 0;
+        height: auto;
+        bottom: 0;
+        z-index: 0;
     }
     .leaflet-container .leaflet-control-zoom {
             margin-top: 71px;
@@ -320,6 +348,7 @@ h1, h2, h3, h4 {
         color: #000;
         font-size: 16px;
         font-weight: bold;
+        display: inline-block;
     }
     .accordion-heading a:hover {
         text-decoration: none;
@@ -364,6 +393,7 @@ h1, h2, h3, h4 {
 
 ::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
     z-index: 9999;
 }
  
@@ -904,12 +934,14 @@ h1, h2, h3, h4 {
    Social/sharing styling
 ----------------------------------------- */
 
-#share-modal {
-    width: 500px;
-}
-
 #social-text {
-
+    clear: both;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
     
 .fc-webicon { display: inline-block; padding: 7px 5px; background-size: 100%; width: 21px; height: 17px; text-align: left; -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; margin-bottom: 5px; color: #F1F2F2; }

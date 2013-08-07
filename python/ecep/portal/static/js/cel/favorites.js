@@ -151,7 +151,7 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                     selectedClass: 'favs-button-selected'
                 }, 
                 opts = $.extend({}, defaults, options),
-                buttonImg = $elt.children('img'),
+                buttonImg = $elt.children('i'),
                 buttonId = $elt.attr(opts.idAttribute),
                 img = '',
                 increment = 0,
@@ -159,19 +159,19 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
 
             // toggle off
             if ($elt.hasClass(opts.selectedClass)) {
-                img = 'star-empty.svg';
+                img = 'icon-star-empty';
                 favs.removeIdFromCookie(buttonId);
                 increment = -1;
                 $elt.attr('data-hint', gettext('Click to star location'));
             // toggle on
             } else {
-                img = 'star.svg';
+                img = 'icon-star';
                 favs.addIdToCookie(buttonId);
                 increment = 1;
                 $elt.attr('data-hint', gettext('Click to remove star from location'));
             }
 
-            buttonImg.attr('src', opts.imgpath + img);
+            buttonImg.attr('class', img);
             $elt.toggleClass(opts.selectedClass);
             $favbutton = $('.fav-count');
             $favbutton.html(parseInt($favbutton.html(), 10) + increment);

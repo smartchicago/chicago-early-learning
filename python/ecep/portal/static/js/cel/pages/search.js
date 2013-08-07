@@ -24,13 +24,6 @@ require(['jquery', CEL.serverVars.gmapRequire], function($) {
     });
 
 
-    // Chevron change
-    $('#refineBtn').click(function() {
-        $(this).find('i').toggleClass('icon-chevron-down icon-chevron-right');
-    });
-		
-		
-
     //Slidepanel
     $(document).ready(function(){
         var $filterOptions = $('#filter-options'),
