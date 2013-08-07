@@ -6,7 +6,7 @@
  *      listeners for sharing/clearing/toggling favorites
  *********************************************************/
 
-define(['jquery', 'cel-cookie', 'jquery-cookie'], function($, celcookie) {
+define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcookie, common) {
 
     'use strict';
 
