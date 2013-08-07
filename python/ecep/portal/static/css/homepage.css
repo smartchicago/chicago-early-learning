@@ -23,11 +23,11 @@
     margin-top: 15px;
 }
     #featurettes hr {
-        margin-top: 60px;
-        padding-bottom: 50px;
+        margin: 40px 0;
     }
-.jumbotron .get-started {
-    padding: 20px 50px;
+.jumbotron .get-started,
+.get-started {
+    padding: 20px 35px;
     box-shadow: none;
     border: none;
     background: #b54747;
@@ -37,11 +37,13 @@
     transition: 0.3s;
     border-bottom: 3px solid rgb(128, 36, 36);
 } 
-.jumbotron .get-started:hover {
+.jumbotron .get-started:hover,
+.get-started:hover {
     background-color: #bb5959;
     transition: 0.3s;
 }
-.jumbotron .get-started:active {
+.jumbotron .get-started:active,
+.get-started:active {
     box-shadow: inset 1px 2px 5px 1px rgb(128, 36, 36);;
     transition: 0s;
 }
@@ -66,11 +68,22 @@ input.homepage-search {
     margin-left: 20px;
     margin-right: 17px;
 }
+.media img {
+    box-shadow: 3px 3px 0 rgba(0,0,0,.25);
+    border: 1px solid #CCC;
+    margin-right: 35px;
+    max-width: none;
+    padding: 0;
+}
 
 .media-body h1 {
     color: #317DC1;
+    font-size: 32px;
 }
 .media-body p {
     line-height: 1.5;
     padding-top: 10px;
+    font-size: 18px;
+    color: #999;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
 }

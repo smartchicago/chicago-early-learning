@@ -23,11 +23,6 @@
         width: 100%;
         left: 0;
     }
-
-    #toggleListBtn {
-        margin-top: 1px;
-    }
-    
         .cb_slide_panel {
         background: #fff;
         margin-top: 61px;
@@ -54,10 +49,57 @@
 /* Landscape phone to portrait tablet --------- */
 
 @media (max-width: 1023px) { 
-    body {
-        overflow-y: hidden;
-    }
     
+    #toggleListBtn {
+        margin-top: -2px;
+        font-size: 16px;
+        width: 40px;
+        padding: 6px 8px 5px;
+        position: relative;
+        z-index: 99;
+    }
+
+    .accordion-heading .favs-toggle {
+        display: none;
+    }
+
+    .accordion-heading #loc-icon,
+    .accordion-heading #loc-dirs {
+        display: none;
+    }
+
+    .hint:hover:before, 
+    .hint:hover:after, 
+    [data-hint]:hover:before, 
+    [data-hint]:hover:after {
+        visibility: hidden;
+        opacity: 0;
+    }
+    .accordion-heading a {
+        width: 100%;
+    }
+    .truncate {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        }
+        .truncate:hover {
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    .navbar-inner {
+        max-height: 110px;
+        height: auto;
+    }
+
+    #toggleListBtn {
+        margin-top: -2px;
+    }
+
     .web-share {
         width: 50%;
     }
@@ -72,19 +114,22 @@
         margin: 10px 0;
     }
     .results-right {
-                visibility: hidden;
-                top: 100px;
-                left: 0px;
-        },
-        #map {
-                left: 0px;
+        visibility: hidden;
+        top: 111px;
+        left: 0px;
+        height: auto;
+        bottom: 0;
         }
+        #map {
+            left: 0px;
+        }
+
     #moreBtn {
         display: none;
     }
     .results-left {
         width: 100%;
-        margin-top: 70px;
+        margin-top: 111px;
         position: fixed;
     }
     .accordion-inner .accordion-right,
@@ -97,18 +142,6 @@
     .accordion-inner {
         padding: 25px 15px;
     }
-    .modal {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        margin-left: 0px;
-        border-radius: 0px;
-        top 0;
-        min-height: 25%;
-    }
-    .modal.fade.in {
-        top: 0%;
-    }
     .container-custom {
         width: 98%;
         width: auto;
@@ -118,8 +151,12 @@
         .container-custom    h1 {
             font-size: 29px;
         }
+        .media {
+            margin: 0;
+        }
         .media > .pull-left { 
             float: none;
+            margin-right: 0;
         }
         .media > .pull-right { 
             float: none;
@@ -127,6 +164,17 @@
         .media img {
             width: 100%;
             margin: 0 auto;
+            padding: 0;
+            max-width: 300px;
+        }
+        .media-body h1 {
+            font-size: 24px;
+            margin-top: 20px;
+            margin-bottom: 0;
+            line-height: 28px;
+        }
+        .media-body p {
+            font-size: 14px;
         }
 
     #desktop-search {
@@ -137,12 +185,13 @@
         width: 100%;
         display: block;
         padding-bottom: 10px;
+        clear: both;
     }
         #mobile-search input {
             width: auto;
             right: 57px;
             left: 93px;
-            top: 65px;
+            top: 66px;
             position: absolute;
             display: block;
             font-size: 13px;
@@ -159,15 +208,22 @@
         }
         #refineSearch {
             margin-left: 10px;
-            margin-right: 10px;
-            margin-top: 5px;
-        }
+            margin-right: 8px;
+            margin-top: 4px;
+            width: 20px;
+            padding: 6px 8px 5px;
+            }
+            #refineSearch + .input-prepend {
+                margin-top: 6px
+            }
+
         .results-toolbar {
             display: none;
         }
         .filters-inner {
-            margin-top: 35px;
-            padding: 20px 15px;
+            padding: 15px;
+            max-height: 300px;
+            overflow: auto;
         }
         #location1 {
             margin-top: 44px;
@@ -199,11 +255,13 @@
         float: right;
         right: 10px;
         position: absolute;
+        font-size: 16px;
+        width: 40px;
+        padding: 6px 8px 5px;
     }
 
     .container {
-        width: 82%;
-        padding: 25px;
+        width: 100%;
     }
 
     .faq-left {
@@ -247,10 +305,6 @@
     #header-dist {
         display: none;
     }
-
-    .header-row {
-        margin-top: 48px;
-    }
     
     .mobile-chevron {
         right: 20px;
@@ -258,7 +312,6 @@
         position: absolute;
         display: block;
     }
-
     .accordion-group {
         border: none;
     }
@@ -288,7 +341,7 @@
         }
 
         .get-started {
-            width: 28%;
+            width: 92%;
             margin-bottom: 10px;
         }
 
@@ -308,8 +361,8 @@
         }
         
         .location .span2 {
-            margin-top: -26px !important;
-            margin-right: 0 !important;
+            margin-top: 0;
+            margin-right: 0;
         }
         
         .hideonmobile {
@@ -319,12 +372,18 @@
         .about-content {
             text-align: center;
         }
+        .about-content .media-heading {
+            text-align: left;
+        }
         .about-content p {
-            text-align: center;
+            text-align: left;
+            max-width: none;
+            padding: 0;
         }
         .about-content img {
             max-width: 200px;
-            padding-bottom: 40px;
+            padding-bottom: 25px;
+            padding-right: 0 !important;
         }
         #about-title {
             padding-left: 0;
@@ -346,16 +405,29 @@
 
 }
 
+@media (max-width: 767px) {
+    .modal {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        left: 20px;
+        width: auto;
+        margin: 0;
+    }
+    .modal.fade.in {
+        top: 20px;
+    }
+    .span6 {
+        width: auto;
+    }
+}
+
 
 /* Landscape phones and down ------------------ */
 
 @media (max-width: 480px) { 
     #logo {
         max-width: 45px !important;
-    }
-
-    body {
-        overflow-y: scroll;
     }
     
     .accordion-right {
@@ -368,9 +440,9 @@
         float: right;
     }
     
-        .filters-left,
+    .filters-left,
     .filters-right {
-        float: left;
+        float: none;
         width: 100%;
         padding-bottom: 0px;
     }
@@ -383,9 +455,11 @@
         margin-top: 113px;
     }
 
-        .jumbotron .get-started {
+    .jumbotron .get-started,
+    .get-started {
         padding: 10px;
         font-size: 12px;
+        width: 92%;
     }
     .jumbotron .homepage-search {
         padding: 10px;
@@ -396,8 +470,8 @@
     .results-left .span2 {
         float: right;
         right: 0;
-        margin-right: -80px;
         margin-top: 0px;
+        width: auto;
     }
     #header-fav {
         width: 100%;
@@ -408,21 +482,13 @@
         padding-right: 10px;
         display: none;
     }
-    
-    #toggleListBtn {
-        margin-top: -2px;
-    }
-    #toggleMapBtn {
-        margin-top: 4px;
-    }
-
         .get-started {
-            width: 45%;
+            width: 92%;
             margin-bottom: 10px;
         }
 
         #toggleMapBtn {
-            margin-top: 3px;
+            margin-top: 4px;
         }
 
         .leaflet-container .leaflet-control-zoom {
@@ -430,8 +496,9 @@
         }
         
         #filter-clear-all {
-            float: left;
-            margin-top: 15px;
+            float: none;
+            margin-bottom: 15px;
+            margin-top: 5px;
         }
         
         .fave-star {
