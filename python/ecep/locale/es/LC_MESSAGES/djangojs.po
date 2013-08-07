@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-01 12:25-0500\n"
+"POT-Creation-Date: 2013-08-02 11:00-0500\n"
 "PO-Revision-Date: 2013-01-10 09:35-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -18,6 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
+#: portal/static/js/cel/favorites.js:165
+msgid "Click to star location"
+msgstr ""
+
+#: portal/static/js/cel/favorites.js:171
+msgid "Click to remove star from location"
+msgstr ""
+
 #: portal/static/js/cel/location.js:60
 msgid "Accreditation"
 msgstr "Acreditación"
@@ -26,23 +34,55 @@ msgstr "Acreditación"
 msgid "Affiliations"
 msgstr "Afiliación del centro/sede"
 
-#: portal/static/js/cel/location.js:193
+#: portal/static/js/cel/location.js:203
 msgid "Details"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:203
+#: portal/static/js/cel/pages/browse.js:155
+msgid "Neighborhood"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:156
+msgid "Schools"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:158
+msgid "School"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:159
+msgid "More Information"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:216
 msgid "Less"
 msgstr "Menos"
 
-#: portal/static/js/cel/pages/browse.js:207
+#: portal/static/js/cel/pages/browse.js:217
+msgid "Click to show less information"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:221
 msgid "More"
 msgstr "Más"
 
-#: portal/static/js/cel/pages/browse.js:258
+#: portal/static/js/cel/pages/browse.js:222
+msgid "Click to show more information"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:231
+msgid "Click to hide filters"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:233
+msgid "Click to show filters"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:284
 msgid "Number of Schools"
 msgstr "Cantidad de escuelas"
 
-#: portal/static/js/cel/pages/browse.js:258
+#: portal/static/js/cel/pages/browse.js:284
 msgid "Explore"
 msgstr "Explorar"
 

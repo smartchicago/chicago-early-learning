@@ -21,14 +21,15 @@ See LICENSE in the project root for copying permission
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href='{% static "img/apple-touch-icon-72-precomposed.png" %}'>
 		<link rel="apple-touch-icon-precomposed" href='{% static "img/apple-touch-icon-57-precomposed.png" %}'>
 		<link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
-		
+
+    <link href='{% static "css/lib/hint.min.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
     <!--[if lt IE 9]>
-      <script src='{% static "js/html5shiv.js" %}'></script>
+      <script src='{% static "js/lib/html5shiv.js" %}'></script>
     <![endif]-->
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -48,7 +49,9 @@ See LICENSE in the project root for copying permission
       <div class="navbar-inner">
         <!-- Navbar LEFT -->
         <div class="navbar-left">
-          <a class="brand" href="{% url portal.views.index %}" data-r1024="<img src='{% static "img/logo.svg" %}' id='logo' alt='CEL'> Chicago Early Learning"><img src='{% static "img/logo.svg" %}' id="logo" alt="CEL"></a>
+          <a class="brand" href="{% url portal.views.index %}" data-r1024="<img src='{% static "img/logo.png" %}' class='logo' alt='CEL'></object> <span>Chicago</span> Early Learning">
+            <img src='{% static "img/logo.png" %}' class="logo" alt='CEL'>
+          </a>
         {% block searchform %}{% endblock %}
         </div>
         <!-- Navbar RIGHT -->
@@ -58,7 +61,7 @@ See LICENSE in the project root for copying permission
             <li><a href="{% url portal.views.about %}" data-r1024={% trans "About" %}><img src='{% static "img/icons/about.svg" %}' alt="About"></a></li>
             <li><a href="{% url portal.views.faq %}" data-r1024={% trans "FAQ" %}><img src='{% static "img/icons/faq.svg" %}'></a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="{% trans 'Language' %} <b class='caret'></b>">EN <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="{% trans 'Language' %} <b class='caret'></b>">{{ LANGUAGE_CODE|upper }} <b class="caret"></b></a>
 
               <ul class="dropdown-menu pull-right">
                 {% get_static_prefix as STATIC_PREFIX %}
@@ -68,9 +71,15 @@ See LICENSE in the project root for copying permission
               </ul>
             </li>
           </ul>
-        </div>
+      </div>
 	{% block navbar %}{% endblock %}
       </div>
+    <!--[if lt IE 8]>
+      <div class="alert alert-error text-center">
+        <button type="button" class="close iealert-close" data-dismiss="alert">&times;</button>
+        <strong>Warning!</strong> Your web browser is not supported. Please upgrade for a better experience. 
+      </div>
+    <![endif]-->
     </div>
     {% block content %}{% endblock %}
 
@@ -94,7 +103,7 @@ See LICENSE in the project root for copying permission
       <div class="modal-body">
         <p>{% blocktrans %}Save the following link, or share it with friends, family, or co-workers.{% endblocktrans %}</p>
         
-        <input id="social-text" type="text" readonly="true">
+        <a id="social-text" href="#"></a>
         <a target="_blank" id="social-mail" class="medium fc-webicon mail"><i class="icon-mail-alt"></i></a>
         <a target="_blank" id="social-facebook" class="medium fc-webicon facebook"><i class="icon-facebook-1"></i></a>
         <a target="_blank" id="social-gplus" class="medium fc-webicon googleplus"><i class="icon-gplus"></i></a>
@@ -150,7 +159,11 @@ See LICENSE in the project root for copying permission
                     swlng: {{ settings.AUTOCOMPLETE.SW_LNG|stringformat:'f' }},
                     nelat: {{ settings.AUTOCOMPLETE.NE_LAT|stringformat:'f' }},
                     nelng: {{ settings.AUTOCOMPLETE.NE_LNG|stringformat:'f' }}
-                }
+                },
+                staticRoot: '{% static "" %}',
+                // settings.LANGUAGE_CODE instead of LANGUAGE_CODE because we want default, not
+                //      what is currently set
+                default_language: '{{ settings.LANGUAGE_CODE }}'    
             }
         };
         // This forces loading of minified common libs rather than loading them separately
