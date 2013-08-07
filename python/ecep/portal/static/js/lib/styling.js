@@ -8,10 +8,8 @@
 
 define(['./slidepanel'], function($) {
     $(document).ready(function(){
+        var th;
 
-        var th = $("#filter-options").height();
-        $(".locations-wrapper").css("top", th);
-        
         $(window).on("resize", function(){
             th = $("#filter-options").height();
             $(".locations-wrapper").css("top", th);
