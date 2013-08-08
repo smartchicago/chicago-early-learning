@@ -40,7 +40,7 @@ See LICENSE in the project root for copying permission
         <button class="btn btn-primary hint--bottom" data-hint="{%trans 'Click to hide filters' %}" data-toggle="collapse" data-parent="#filters" href="#collapseFilters" id="refineBtn">{% trans "Refine your search" %} <i class="icon-down-open icon-white"></i></button> 
         <div class="btn-group">
             <a class="btn starred-btn hint--bottom" data-hint="{% trans 'Click to view starred locations' %}" href="{% url portal.views.starred %}" data-r1023="<i class='icon-star'></i> Starred (<span class='fav-count'>0</span>)"><i class="icon-star"></i> {% trans 'Starred' %} (<span class="fav-count">0</span>)</a>
-          <button id="share-favorites-btn" class="btn  hint--bottom" data-hint="{% trans 'Click to share starred schools' %}"><i class="icon-share"></i>{% trans 'Share' %}</button>
+          <button id="share-favorites-btn" class="btn  hint--bottom" data-hint="{% trans 'Click to share starred locations' %}"><i class="icon-share"></i>{% trans 'Share' %}</button>
           <ul class="dropdown-menu pull-right">
             <li><a href="#">Twitter</a></li>
             <li><a href="#">Facebook</a></li>
@@ -74,7 +74,7 @@ See LICENSE in the project root for copying permission
     <div class="header-row">
       <ul class="header-labels">
         <li id="header-fav">Neighborhood</li>
-        <li id="header-dist">Schools</li>
+        <li id="header-dist">locations</li>
       </ul>
     </div>
   </div>
