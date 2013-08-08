@@ -34,8 +34,8 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
             }
             id = parseInt(id, 10);
             var cookie = favs.getCookie(),
-                idArray = cookie.split(',').map(function(x) { return parseInt(x, 10); });
-            return (idArray.indexOf(id) >= 0); 
+                idArray = $.map(cookie.split(','), function(x) { return parseInt(x, 10); });
+            return ($.inArray(id, idArray) >= 0); 
         },
 
         /* 
