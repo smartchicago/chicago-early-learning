@@ -59,6 +59,8 @@ account_auth: 'None'
 phone: 'None'
 sms_delay: None
 
+hotline_phone: '312.229.1690'
+
 simplify_epsilon: 0.0005
 
 django_log_file: '/var/log/ecep/django.log'

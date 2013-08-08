@@ -15,6 +15,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             $map = $('#map'),
             $filters = $('.filters-inner :checkbox'),
             $filterClearAll = $('#filter-clear-all'),
+            $collapseFilters = $('#collapseFilters'),
             listItemSelector = '.locations-wrapper .accordion-group',
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
             defaultZoom = $map.data('zoom') || 10,
@@ -121,16 +122,19 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             // Don't want this to fire on page load since it will screw w/ history, so
             // disable it the first time through.
             if (updateUrl) {
-                updateUrl(mapCenter, zoomLevel);
+                updateUrl(mapCenter, zoomLevel, $collapseFilters.hasClass('in'));
             } else {
                 // If we move the map, don't want to go back to geolocated spot in history
                 // and also don't want the geolocated marker at the center of the map user
                 // is going back to.
                 // Need to pass mapCenter and zoomLevel as variables or these values don't change
                 // each time the function is called
-                updateUrl = function (mapCenter, zoomLevel) {
+                updateUrl = function (mapCenter, zoomLevel, filtersVisible) {
                     History.pushState(
-                        {isGeolocated: false},
+                        {
+                            isGeolocated: false,
+                            filtersVisible: filtersVisible 
+                        },
                         null,
                         common.getUrl(
                             'browse',
@@ -182,9 +186,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 $headerDist = $('#header-dist');
             if (isNb) {
                 $headerFav.text(gettext('Neighborhood'));
-                $headerDist.text(gettext('Schools'));
+                $headerDist.text(gettext('Locations'));
             } else {
-                $headerFav.text(gettext('School'));
+                $headerFav.text(gettext('Location'));
                 $headerDist.text(gettext('More Information'));
             }
 
@@ -316,7 +320,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     map.setZoom(zoomSettings - 3);
                 }
             }            
-            var popupContent = '<b>' + name + '</b><br>' + gettext('Number of Schools') + ': ' + numSchools + '<br><a class="neighborhood-popup" href="#">' + gettext('Explore') + '</a>',
+            var popupContent = '<b>' + name + '</b><br>' + gettext('Number of Locations') + ': ' + numSchools + '<br><a class="neighborhood-popup" href="#">' + gettext('Explore') + '</a>',
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
 
             $('.neighborhood-popup').on('click', function(e) {
@@ -412,14 +416,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             setAutocompleteLocation();
         });
 
-        $(document).ready(function() {
-        // Chevron change
-            $('#refineBtn').click(function() {
-                $(this).find('i').toggleClass('icon-down-open icon-right-open');
-            });
-        });
-
-
         // Load data and build map when page loads
         return {
             init: function() {
@@ -439,6 +435,24 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
                 }
+
+                // add class 'in' to set filters state if requested by history and were on desktop
+                $(document).ready(function() {
+                    var width = $(document).width(),
+                        $refineBtn = $('#refineBtn');
+
+                    if (historyState.filtersVisible !== false && width >= common.breakpoints.desktop) {
+                        $collapseFilters.addClass('in');
+                        $refineBtn.find('i').toggleClass('icon-down-open icon-right-open');
+                    }
+                    // Chevron change
+                    $refineBtn.click(function() {
+                        $(this).find('i').toggleClass('icon-down-open icon-right-open');
+                        if (updateUrl) {
+                            updateUrl(map.getCenter(), map.getZoom(), !($collapseFilters.hasClass('in')));
+                        }
+                    });
+                });
 
                 autocompleteLocationId = $map.data('location-id');
                 autocompleteNeighborhoodId = $map.data('neighborhood-id');
