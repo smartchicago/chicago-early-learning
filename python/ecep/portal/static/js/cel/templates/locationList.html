@@ -43,14 +43,16 @@
       <div class="accordion-left">
         <h1>{{phone.fieldname}}</h1>
         <h2><a href="tel:{{phone.number}}">{{phone.number}}</a></h2>
-        <hr>
         {{#each sfields}}
+        <hr>
         <h1>{{fieldname}}</h1>
         <h2>{{value}}</h2>
-        <hr>
         {{/each}}
+        {{#if bfields.values }}
+        <hr>
         <h1>{{bfields.fieldname}}</h1>
         <h2>{{bfields.values}}</h2>
+        {{/if}}
       </div>
     </div>
   </div>
