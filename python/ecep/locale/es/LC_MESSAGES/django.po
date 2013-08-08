@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-08 16:11-0500\n"
+"POT-Creation-Date: 2013-08-08 16:43-0500\n"
 "PO-Revision-Date: 2013-01-10 08:46-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -391,7 +391,7 @@ msgstr ""
 #: portal/templates/index.html:52
 msgid ""
 "If you’d like to talk to someone about your options, please call the "
-"Chicago: Ready to Learn! hotline at "
+"Chicago: Ready to Learn! Hotline at "
 msgstr ""
 
 #: portal/templates/index.html:59
