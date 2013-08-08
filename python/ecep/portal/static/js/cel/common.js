@@ -118,6 +118,7 @@ function($, L, Response, Handlebars) {
          * Submit the first autocomplete result on button click if none is populated
          */
         $('.autocomplete-submit').on('click', function(e) {
+            e.preventDefault();
             spoofSubmitAutocomplete();
         });
 

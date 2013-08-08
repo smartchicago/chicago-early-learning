@@ -4,11 +4,10 @@
  * Requires: google-maps-api-v3; jquery; leaflet;
  ********************************************************/
 
-'use strict';
- 
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common', 'favorites', 
-        CEL.serverVars.gmapRequire, 'leaflet-providers'], 
-    function($, L, html, location, common, favorites) {
+define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/location.html', 'location',
+       'common', 'favorites', CEL.serverVars.gmapRequire, 'leaflet-providers'], 
+    function($, L, Handlebars, html, location, common, favorites) {
+        'use strict';
 
         /* On page load, query api to get locations position, add marker to map
          * for location. Use google maps layer for leaflet.
@@ -47,7 +46,8 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'location', 'common
                 $('.single-share').show().on('click', function(e) {
                     $('#share-modal').trigger('init-modal', {                                           
                         // the url is passed in to the sharing urls, so it must be absolute             
-                        url: document.location.origin + common.getUrl('single-location', { location: location_id }), 
+                        url: document.location.origin + 
+                            common.getUrl('single-location', { location: location_id }), 
                         title: 'Check out this early learning program'                                  
                     });
                 });
