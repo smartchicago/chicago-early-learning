@@ -402,6 +402,19 @@
     .share-btn {
         float: right;
     }
+		
+				.favorite {
+						padding: 36px;
+            width: auto;
+						left: 0;
+						right: 0;
+        }
+				
+				#faq-container {
+					padding: 36px;
+					width: auto;
+				}
+
 
 }
 
@@ -508,6 +521,6 @@
         .single-share {
             content: "";
         }
-
+				
 
 }
