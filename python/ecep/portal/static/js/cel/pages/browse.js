@@ -380,6 +380,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             }
 
             listResults(dm.neighborhoods.data, currentLayer);
+            $locationWrapper.removeClass('none');
             locationLayer.clearLayers();
             neighborhoodLayer.clearLayers();
             neighborhoodLayer.addData(dm.neighborhoods.geojson);
@@ -406,9 +407,15 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             map.removeLayer(neighborhoodLayer);
             map.addLayer(locationLayer);
             listResults(dm.locations, currentLayer);
+            $locationWrapper.removeClass('none');
 
             // set map to location/neighborhood if autocomplete requested it
             setAutocompleteLocation();
+        });
+
+        dm.events.on('DataManager.locationUpdating DataManager.neighborhoodUpdating', function(e) {
+            $locationWrapper.addClass('none');
+            console.log('Updating location or neighborhood');
         });
 
         $(document).ready(function() {

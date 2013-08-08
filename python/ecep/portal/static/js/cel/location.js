@@ -189,7 +189,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.setMarker = function(options) {
         var defaults = {
                 popup: true
-            };
+            },
             icon = this.getIcon(options),
             marker = this.getMarker();
         options = $.extend({}, defaults, options);
@@ -248,6 +248,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         locationUpdate: function(map, locationLayer) {
             var filters = this.getFilters(map);
                 that = this;
+            that.events.trigger('DataManager.locationUpdating');
             $.getJSON(common.getUrl('location-api'), filters, function(data) {
                 // Unfortunately we can't just blow away the locations here because that
                 // makes the popovers disappear every time you pan, so we have to do it
@@ -298,6 +299,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         neighborhoodUpdate: function() {
             var that = this,
                 filters = that.getFilters();
+            that.events.trigger('DataManager.neighborhoodUpdating');
             $.when(
                 $.getJSON(common.getUrl('neighborhood-api'), filters, function(data) {
                     var neighborhoods = that.neighborhoods.data;
@@ -358,8 +360,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
 
         /* 
          * Available events:
+         * neighborhoodUpdating: 'DataManager.neighborhoodUpdating'
+         *      triggered when a neighborhood update begins, before the json request is sent
          * neighborhoodUpdated: 'DataManager.neighborhoodUpdated',
          *      triggered when neighborhood data is finished loading
+         * locationUpdating: 'DataManager.locationUpdating'
+         *      triggered when a location update begins, before the json request is sent
          * locationUpdated: 'DataManager.locationUpdated'
          *      triggered when location data is finished loading
          * filtersUpdated: 'DataManager.filtersChanged'
