@@ -189,7 +189,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.setMarker = function(options) {
         var defaults = {
                 popup: true
-            };
+            },
             icon = this.getIcon(options),
             marker = this.getMarker();
         options = $.extend({}, defaults, options);
