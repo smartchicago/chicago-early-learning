@@ -54,7 +54,7 @@ See LICENSE in the project root for copying permission
       <div id="collapseFilters" class="accordion-body collapse">
         <div class="accordion-inner filters-inner">
           <div class="filters-left">
-            {% for f in filters_left %}
+            {% for f in filters_left %}   
               <label>
                 <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
               </label>

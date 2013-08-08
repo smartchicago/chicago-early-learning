@@ -369,8 +369,8 @@ h1, h2, h3, h4 {
 
 .header-labels {
     font-family: "Helvetica", Arial, sans-serif;
-    color: #c2c2c2;
-    font-size: 11px;
+    color: #fff;
+    font-size: 17px;
 }
 
 .tooltip {
@@ -638,7 +638,7 @@ h1, h2, h3, h4 {
 }
 
 #header-dist {
-    padding-left: 408px;
+    padding-left: 350px;
 }
 
 .back-btn {
