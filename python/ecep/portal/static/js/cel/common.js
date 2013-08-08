@@ -224,6 +224,10 @@ function($, L, Response, Handlebars) {
     var getUrl = function (name, opts) {
         var url = '';
         switch (name) {
+            case 'origin':
+                // IE < 9 doesn't define location.origin
+                return window.location.origin ||
+                    (window.location.protocol + "//" + window.location.host);
             case 'location-api':
                 // requires opts.locations to be comma separated string or
                 //      array of integers

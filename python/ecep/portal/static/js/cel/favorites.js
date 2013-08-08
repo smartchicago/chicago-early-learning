@@ -34,8 +34,8 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
             }
             id = parseInt(id, 10);
             var cookie = favs.getCookie(),
-                idArray = cookie.split(',').map(function(x) { return parseInt(x, 10); });
-            return (idArray.indexOf(id) >= 0); 
+                idArray = $.map(cookie.split(','), function(x) { return parseInt(x, 10); });
+            return ($.inArray(id, idArray) >= 0); 
         },
 
         /* 
@@ -225,7 +225,7 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
 
             $('#share-modal').trigger('init-modal', {
                 // the url is passed in to the sharing urls, so it must be absolute
-                url: document.location.origin + common.getUrl('starred', { locations: ids }),
+                url: common.getUrl('origin') + common.getUrl('starred', { locations: ids }),
                 title: 'I just starred ' + count + ' locations'
             });
         },

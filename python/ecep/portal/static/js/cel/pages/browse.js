@@ -194,7 +194,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
                 $('#share-modal').trigger('init-modal', {
                     // the url is passed in to the sharing urls, so it must be absolute
-                    url: document.location.origin + '/location/' + key  + '/',
+                    url: common.getUrl('origin') +
+                            common.getUrl('single-location', { location: key }), 
                     title: 'Check out this early learning program'
                 });
             });
