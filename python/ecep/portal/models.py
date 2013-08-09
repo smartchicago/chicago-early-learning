@@ -94,10 +94,9 @@ class Location(models.Model):
     objects = models.GeoManager()
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
-    display_include = {'ages', 'prg_hours', 'accred', 'accept_ccap',
+    display_include = {'ages', 'accred', 'accept_ccap',
                        'is_home_visiting', 'is_hs', 'is_ehs', 'url',
-                       'is_full_day', 'is_part_day', 'is_full_week', 'is_part_week',
-                       'is_school_year', 'is_full_year', 'is_community_based', 'is_cps_based'}
+                       'is_community_based', 'is_cps_based'}
 
     def __unicode__(self):
         return unicode(self.site_name)
@@ -169,7 +168,12 @@ class Location(models.Model):
 
         # Fields to include in Affiliation aggregate field
         affiliation_fields = [self._meta.get_field_by_name(name)[0] for name in
-                              ['is_community_based', 'is_cps_based', 'is_hs', 'is_ehs']]
+                              ['is_home_visiting', 'is_community_based', 'is_cps_based', 'is_hs', 'is_ehs']]
+        program_fields = [self._meta.get_field_by_name(name)[0] for name in
+                            ['is_full_year', 'is_school_year']]
+        week_fields = [self._meta.get_field_by_name(name)[0] for name in
+                            ['is_full_week', 'is_part_week', 'is_full_day', 'is_part_day']]
+
         aff_field_names = {f.get_attname() for f in affiliation_fields}
 
         for field in self._meta.fields:
@@ -185,7 +189,7 @@ class Location(models.Model):
 
         affiliation_values = [self.verbose_name(aff.get_attname()) for aff in affiliation_fields
                               if aff.value_from_object(self)]
-        sfields.append({'fieldname': _('Affiliations'),
+        sfields.append({'fieldname': _('Program Information'),
                         'value': ', '.join(affiliation_values) if affiliation_values else 'None'})
         
         # Combine Languages
@@ -194,11 +198,18 @@ class Location(models.Model):
         if languages != '':
             sfields.append({'fieldname': _('Languages (other than English)'), 'value': languages})
 
-        # Program Duration
-        sfields.append({'fieldname': _('Program Duration'), 'value': _('Full Year') if self.is_full_year else _('School Year')})
+        # Program Duration/Hours
+        program_values = [self.verbose_name(prg.get_attname()) for prg in program_fields
+                              if prg.value_from_object(self)]
+        program_values.append(self.prg_hours)
+        sfields.append({'fieldname': _('Duration/Hours'), 
+                        'value': ', '.join(program_values) if program_values else 'None'})
 
-        # Week Duration
-        sfields.append({'fieldname': _('Weekday Availability'), 'value': _('Full Week') if self.is_full_week else _('Partial Week')})
+        # Weekday Avaialability
+        week_values = [self.verbose_name(wk.get_attname()) for wk in week_fields
+                              if wk.value_from_object(self)]
+        sfields.append({'fieldname': _('Weekday Availability'), 
+                        'value': ', '.join(week_values) if week_values else 'None'})
 
         # Phone
         phone = {'fieldname': _('Phone Number'), 'number': nicephone(self.phone)}
@@ -208,7 +219,7 @@ class Location(models.Model):
 
         # Quality Statement
         if self.q_stmt:
-            sfields.append({'fieldname': _('Quality Statement'), 'value': self.q_stmt})
+            sfields.append({'fieldname': _('Description'), 'value': self.q_stmt})
 
         bfields.sort()
         sfields.sort(key=lambda a: a['fieldname'])

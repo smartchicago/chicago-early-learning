@@ -46,7 +46,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/location.html', 'loca
                 $('.single-share').show().on('click', function(e) {
                     $('#share-modal').trigger('init-modal', {                                           
                         // the url is passed in to the sharing urls, so it must be absolute             
-                        url: document.location.origin + 
+                        url: common.getUrl('origin') + 
                             common.getUrl('single-location', { location: location_id }), 
                         title: 'Check out this early learning program'                                  
                     });

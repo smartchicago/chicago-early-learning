@@ -74,7 +74,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.isSchool = function() {
         var isSchool = false;
         $.each(this.data.sfields, function(key, value) {
-            if (value.fieldname === gettext("Affiliations")) {
+            if (value.fieldname === gettext("Program Information")) {
                 if (value.value.indexOf("CPS Based") !== -1) {
                     isSchool = true;
                 } 
@@ -246,9 +246,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          * applied filters and bounding box of map
          */
         locationUpdate: function(map, locationLayer) {
-            var filters = this.getFilters(map);
-                that = this;
+            var that = this;
             that.events.trigger('DataManager.locationUpdating');
+
+            var filters = that.getFilters(map);
             $.getJSON(common.getUrl('location-api'), filters, function(data) {
                 // Unfortunately we can't just blow away the locations here because that
                 // makes the popovers disappear every time you pan, so we have to do it
@@ -297,9 +298,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          * Download topojson if not already downloaded.
          */
         neighborhoodUpdate: function() {
-            var that = this,
-                filters = that.getFilters();
+            var that = this;
             that.events.trigger('DataManager.neighborhoodUpdating');
+
+            var filters = that.getFilters();
             $.when(
                 $.getJSON(common.getUrl('neighborhood-api'), filters, function(data) {
                     var neighborhoods = that.neighborhoods.data;

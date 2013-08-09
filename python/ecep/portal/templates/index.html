@@ -49,7 +49,7 @@ See LICENSE in the project root for copying permission
           <a class="pull-left" href="#"><img class="media-object" src="{% static 'img/cel3.png' %}"></a>
         <div class="media-body">
           <h1>{% blocktrans %}Text for more info{% endblocktrans %}</h1>
-          <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code and follow the instructions on your phone.{% endblocktrans %}</p>
+          <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code to {% endblocktrans %}<a href="sms:{{ settings.TWILIO_PHONE }}">{{ settings.TWILIO_PHONE }}</a>{% blocktrans %} and follow the instructions on your phone.{% endblocktrans %}<br><br>{% blocktrans %}If you’d like to talk to someone about your options, please call the Chicago: Ready to Learn! Hotline at {% endblocktrans %}<a href="tel:{{ settings.HOTLINE_PHONE }}">{{ settings.HOTLINE_PHONE }}</a>.</p>
         </div>
       </div>
       <hr>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 11:00-0500\n"
+"POT-Creation-Date: 2013-08-08 16:43-0500\n"
 "PO-Revision-Date: 2013-01-10 09:35-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: portal/static/js/cel/common.js:312
+msgid "Please enable geolocation services."
+msgstr ""
 
 #: portal/static/js/cel/favorites.js:165
 msgid "Click to star location"
@@ -31,60 +35,64 @@ msgid "Accreditation"
 msgstr "Acreditación"
 
 #: portal/static/js/cel/location.js:77
-msgid "Affiliations"
-msgstr "Afiliación del centro/sede"
+msgid "Program Information"
+msgstr ""
 
 #: portal/static/js/cel/location.js:203
 msgid "Details"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:155
+#: portal/static/js/cel/pages/browse.js:188
 msgid "Neighborhood"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:156
-msgid "Schools"
+#: portal/static/js/cel/pages/browse.js:189
+msgid "Locations"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:158
-msgid "School"
+#: portal/static/js/cel/pages/browse.js:191
+msgid "Location"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:159
+#: portal/static/js/cel/pages/browse.js:192
 msgid "More Information"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:216
+#: portal/static/js/cel/pages/browse.js:238
 msgid "Less"
 msgstr "Menos"
 
-#: portal/static/js/cel/pages/browse.js:217
+#: portal/static/js/cel/pages/browse.js:239
 msgid "Click to show less information"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:221
+#: portal/static/js/cel/pages/browse.js:243
 msgid "More"
 msgstr "Más"
 
-#: portal/static/js/cel/pages/browse.js:222
+#: portal/static/js/cel/pages/browse.js:244
 msgid "Click to show more information"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:231
+#: portal/static/js/cel/pages/browse.js:269
 msgid "Click to hide filters"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:233
+#: portal/static/js/cel/pages/browse.js:271
 msgid "Click to show filters"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:284
-msgid "Number of Schools"
+#: portal/static/js/cel/pages/browse.js:322
+#, fuzzy
+msgid "Number of Locations"
 msgstr "Cantidad de escuelas"
 
-#: portal/static/js/cel/pages/browse.js:284
+#: portal/static/js/cel/pages/browse.js:322
 msgid "Explore"
 msgstr "Explorar"
+
+#~ msgid "Affiliations"
+#~ msgstr "Afiliación del centro/sede"
 
 #~ msgid "Unknown URL endpoint \"%(name)s\""
 #~ msgstr "URL de destino desconocido"
