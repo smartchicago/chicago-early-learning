@@ -176,8 +176,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 handlebarsData.push(item);
             });
 
-            $locationWrapper.empty().append(template(handlebarsData)).removeClass('ajax-spinner');
             window.clearTimeout(ajaxTimeoutId);
+            $locationWrapper.empty().append(template(handlebarsData)).removeClass('ajax-spinner');
 
             // Set top margin so that list is not hidden by filters
             $locationWrapper.css("top", th);
