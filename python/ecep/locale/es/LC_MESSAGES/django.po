@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-08 16:43-0500\n"
+"POT-Creation-Date: 2013-08-09 12:03-0500\n"
 "PO-Revision-Date: 2013-01-10 08:46-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -140,7 +140,7 @@ msgid "Explore"
 msgstr "Explorar"
 
 #: portal/views.py:366
-msgid "Click to see schools in this neighborhood"
+msgid "Click to see locations in this neighborhood"
 msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/browse.html:12
@@ -151,7 +151,7 @@ msgid "Chicago Early Learning"
 msgstr "Chicago Early Learning"
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
-#: portal/templates/base.html:61
+#: portal/templates/base.html:62
 msgid "About"
 msgstr "Información acerca de nosotros"
 
@@ -263,36 +263,36 @@ msgstr ""
 msgid "Search"
 msgstr "Buscar"
 
-#: portal/templates/base.html:60
+#: portal/templates/base.html:61
 #, fuzzy
 msgid "Text For Info"
 msgstr "Envíe texto para recibir info"
 
-#: portal/templates/base.html:62 portal/templates/faq-models.html:9
+#: portal/templates/base.html:63 portal/templates/faq-models.html:9
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
 
-#: portal/templates/base.html:64
+#: portal/templates/base.html:65
 msgid "Language"
 msgstr "Idioma"
 
-#: portal/templates/base.html:90
+#: portal/templates/base.html:91
 msgid "Want information via text?"
 msgstr "¿Desea recibir información por medio de un mensaje de texto?"
 
-#: portal/templates/base.html:93
+#: portal/templates/base.html:94
 msgid "Text your zip code to "
 msgstr ""
 
-#: portal/templates/base.html:93
+#: portal/templates/base.html:94
 msgid " and we'll do the rest."
 msgstr ""
 
-#: portal/templates/base.html:101
+#: portal/templates/base.html:102
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:104
+#: portal/templates/base.html:105
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""

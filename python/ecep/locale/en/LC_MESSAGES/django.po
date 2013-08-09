@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 11:00-0500\n"
+"POT-Creation-Date: 2013-08-09 12:02-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -24,75 +24,59 @@ msgstr ""
 msgid "Spanish"
 msgstr ""
 
-#: portal/models.py:185
-msgid "Affiliations"
+#: portal/models.py:192
+msgid "Program Information"
 msgstr ""
 
-#: portal/models.py:192
+#: portal/models.py:199
 msgid "Languages (other than English)"
 msgstr ""
 
-#: portal/models.py:195
-msgid "Program Duration"
+#: portal/models.py:205
+msgid "Duration/Hours"
 msgstr ""
 
-#: portal/models.py:195
-msgid "Full Year"
-msgstr ""
-
-#: portal/models.py:195
-msgid "School Year"
-msgstr ""
-
-#: portal/models.py:198
+#: portal/models.py:211
 msgid "Weekday Availability"
 msgstr ""
 
-#: portal/models.py:198
-msgid "Full Week"
-msgstr ""
-
-#: portal/models.py:198
-msgid "Partial Week"
-msgstr ""
-
-#: portal/models.py:201
+#: portal/models.py:215
 msgid "Phone Number"
 msgstr ""
 
-#: portal/models.py:208
-msgid "Quality Statement"
+#: portal/models.py:222
+msgid "Description"
 msgstr ""
 
-#: portal/models.py:217
+#: portal/models.py:231
 msgid "More"
 msgstr ""
 
-#: portal/models.py:217 portal/templatetags/portal_extras.py:30
+#: portal/models.py:231 portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr ""
 
-#: portal/models.py:217
+#: portal/models.py:231
 msgid "Directions"
 msgstr ""
 
-#: portal/models.py:218 portal/templates/browse.html:43
+#: portal/models.py:232 portal/templates/browse.html:43
 msgid "Share"
 msgstr ""
 
-#: portal/models.py:225
+#: portal/models.py:239
 msgid "Directions from Google"
 msgstr ""
 
-#: portal/models.py:225
+#: portal/models.py:239
 msgid "Click to show more information"
 msgstr ""
 
-#: portal/models.py:226
+#: portal/models.py:240
 msgid "Click to star location"
 msgstr ""
 
-#: portal/models.py:229
+#: portal/models.py:243
 msgid "Other Features"
 msgstr ""
 
@@ -142,42 +126,18 @@ msgid "Explore"
 msgstr ""
 
 #: portal/views.py:366
-msgid "Click to see schools in this neighborhood"
-msgstr ""
-
-#: portal/views_v1.py:32
-msgid "Distance"
-msgstr ""
-
-#: portal/views_v1.py:33
-msgid "< 0.5 mi"
-msgstr ""
-
-#: portal/views_v1.py:34
-msgid "< 1 mi"
-msgstr ""
-
-#: portal/views_v1.py:35
-msgid "< 2 mi"
-msgstr ""
-
-#: portal/views_v1.py:36
-msgid "< 5 mi"
-msgstr ""
-
-#: portal/views_v1.py:37
-msgid "< 10 mi"
+msgid "Click to see locations in this neighborhood"
 msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/browse.html:12
 #: portal/templates/faq-models.html:9 portal/templates/index.html:11
-#: portal/templates/location.html:12 portal/templates/search.html:9
-#: portal/templates/starred.html:12 templates/admin/base_site.html:15
+#: portal/templates/location.html:12 portal/templates/starred.html:12
+#: templates/admin/base_site.html:15
 msgid "Chicago Early Learning"
 msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
-#: portal/templates/base.html:59
+#: portal/templates/base.html:62
 msgid "About"
 msgstr ""
 
@@ -249,44 +209,43 @@ msgid ""
 "effective, for whom, and why."
 msgstr ""
 
-#: portal/templates/base-search.html:7
+#: portal/templates/base-search.html:11
 msgid "Click to user your current location"
 msgstr ""
 
-#: portal/templates/base-search.html:9 portal/templates/index.html:23
-#: portal/templates/search.html:9
+#: portal/templates/base-search.html:17 portal/templates/index.html:24
 msgid "Search"
 msgstr ""
 
-#: portal/templates/base.html:58
+#: portal/templates/base.html:61
 msgid "Text For Info"
 msgstr ""
 
-#: portal/templates/base.html:60 portal/templates/faq-models.html:9
+#: portal/templates/base.html:63 portal/templates/faq-models.html:9
 msgid "FAQ"
 msgstr ""
 
-#: portal/templates/base.html:62
+#: portal/templates/base.html:65
 msgid "Language"
 msgstr ""
 
-#: portal/templates/base.html:82
+#: portal/templates/base.html:91
 msgid "Want information via text?"
 msgstr ""
 
-#: portal/templates/base.html:85
+#: portal/templates/base.html:94
 msgid "Text your zip code to "
 msgstr ""
 
-#: portal/templates/base.html:85
+#: portal/templates/base.html:94
 msgid " and we'll do the rest."
 msgstr ""
 
-#: portal/templates/base.html:93
+#: portal/templates/base.html:102
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:96
+#: portal/templates/base.html:105
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -315,11 +274,11 @@ msgstr ""
 msgid "Reset Search"
 msgstr ""
 
-#: portal/templates/index.html:20
+#: portal/templates/index.html:21
 msgid "Find the right school for your child."
 msgstr ""
 
-#: portal/templates/index.html:21 portal/templates/index.html.py:30
+#: portal/templates/index.html:22 portal/templates/index.html.py:31
 msgid ""
 "Welcome to the City of Chicago's Early Learning Portal. Here you can easily "
 "find early learning programs near your home or work. You can also compare "
@@ -328,50 +287,64 @@ msgid ""
 "enroll your child in a quality early learning program."
 msgstr ""
 
-#: portal/templates/index.html:24
-msgid "Just start browsing"
+#: portal/templates/index.html:25
+msgid "Browse by Neighborhood"
 msgstr ""
 
-#: portal/templates/index.html:36
+#: portal/templates/index.html:35
 msgid "Find early learning centers near you."
 msgstr ""
 
-#: portal/templates/index.html:37
+#: portal/templates/index.html:36
 msgid ""
 "Search by the address where you live or work to quickly find all of the "
 "early learning centers located near you. The results are shown in a list and "
 "on a map so you can find what you want the way you find it easiest."
 msgstr ""
 
-#: portal/templates/index.html:44
+#: portal/templates/index.html:43
 msgid "Browse locations by neighborhood."
 msgstr ""
 
-#: portal/templates/index.html:45
+#: portal/templates/index.html:44
 msgid ""
 "You can pick a neighborhood from the list or map if you don't want to search "
 "by address. You can also type a neighborhood or even a school name into the "
 "search bar to get there faster."
 msgstr ""
 
-#: portal/templates/index.html:52
+#: portal/templates/index.html:51
 msgid "Text for more info"
 msgstr ""
 
-#: portal/templates/index.html:53
+#: portal/templates/index.html:52
 msgid ""
 "Get details about locations near you with text messages. Simply send a zip "
-"code and follow the instructions on your phone."
+"code to "
 msgstr ""
 
-#: portal/templates/index.html:60
+#: portal/templates/index.html:52
+msgid " and follow the instructions on your phone."
+msgstr ""
+
+#: portal/templates/index.html:52
+msgid ""
+"If you’d like to talk to someone about your options, please call the "
+"Chicago: Ready to Learn! Hotline at "
+msgstr ""
+
+#: portal/templates/index.html:59
 msgid "Refine your search to find exactly what you want."
 msgstr ""
 
-#: portal/templates/index.html:61
+#: portal/templates/index.html:60
 msgid ""
 "There are a number of ways to narrow down your search so you can see only "
 "the programs and schools you are interested in."
+msgstr ""
+
+#: portal/templates/index.html:64
+msgid "Get Started!"
 msgstr ""
 
 #: portal/templatetags/portal_extras.py:38
