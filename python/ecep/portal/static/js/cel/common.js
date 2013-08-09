@@ -88,17 +88,18 @@ function($, L, Response, Handlebars) {
                 if (ui.item.type === 'location') {
                     window.location.href = getUrl(
                         'single-location', { location: ui.item.id });
+                    return;
                 } else if (ui.item.type === 'neighborhood') {
                     window.location.href = getUrl(
                         'browse', { type: 'neighborhood', neighborhood: ui.item.id });
+                    return;
                 } else if (ui.item.lat && ui.item.lon) {
                     window.location.href = getUrl(
                         'browse', { type: 'latlng', lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
+                    return;
                 }
-            } else {
-                // default
-                window.location.href = getUrl('browse');
             }
+            window.location.href = getUrl('browse');
         };
 
         /*
