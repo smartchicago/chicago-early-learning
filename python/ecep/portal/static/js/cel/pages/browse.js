@@ -47,7 +47,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             autocompleteNeighborhoodId,
             updateUrl = null,                   // Updates the url to reflect page state
             ajaxTimeoutId,                        
-            spinnerDelayMillis,
+            spinnerDelayMillis = 500,
             $locationWrapper;                   // Store div wrapper for results on left side
 
         // Initialize geojson for neighborhood layer
