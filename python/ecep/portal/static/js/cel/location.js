@@ -74,7 +74,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.isSchool = function() {
         var isSchool = false;
         $.each(this.data.sfields, function(key, value) {
-            if (value.fieldname === gettext("Affiliations")) {
+            if (value.fieldname === gettext("Program Information")) {
                 if (value.value.indexOf("CPS Based") !== -1) {
                     isSchool = true;
                 } 
@@ -189,7 +189,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.setMarker = function(options) {
         var defaults = {
                 popup: true
-            };
+            },
             icon = this.getIcon(options),
             marker = this.getMarker();
         options = $.extend({}, defaults, options);

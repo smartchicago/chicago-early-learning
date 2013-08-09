@@ -8,17 +8,13 @@ define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'boo
 function($, L, Response, Handlebars) {
     'use strict';
 
-    //  TODO: export breakpoints if we continue to use response.js
-    var desktopBreakpoint = 1024;
-    
-    $(document).ready(function() {
+    var breakpoints = {
+        mobile: 420,
+        tablet: 767,
+        desktop: 1024
+    };
 
-        // collapse filter div on mobile
-        //  this is the manual way to do it. A bit hacky.
-        var width = $(document).width();
-        if (width >= desktopBreakpoint) {
-            $('#collapseFilters').addClass('in');
-        }
+    $(document).ready(function() {
 
         // AUTOCOMPLETE
         var $autocomplete = $('.autocomplete-searchbox');
@@ -99,9 +95,10 @@ function($, L, Response, Handlebars) {
                     window.location.href = getUrl(
                         'browse', { type: 'latlng', lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
                 }
+            } else {
+                // default
+                window.location.href = getUrl('browse');
             }
-            // default
-            window.location.href = getUrl('browse');
         };
 
         /*
@@ -200,8 +197,14 @@ function($, L, Response, Handlebars) {
 
 
     // Setup Response stuff
-    Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,desktopBreakpoint] });
-    Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,desktopBreakpoint] });
+    var breakpointsArray = [
+        0,
+        breakpoints.mobile,
+        breakpoints.tablet,
+        breakpoints.desktop
+    ];
+    Response.create({ mode: 'markup', prefix: 'r', breakpoints: breakpointsArray });
+    Response.create({ mode: 'src',  prefix: 'src', breakpoints: breakpointsArray });
 
     // Handlebars helpers
 
@@ -224,6 +227,10 @@ function($, L, Response, Handlebars) {
     var getUrl = function (name, opts) {
         var url = '';
         switch (name) {
+            case 'origin':
+                // IE < 9 doesn't define location.origin
+                return window.location.origin ||
+                    (window.location.protocol + "//" + window.location.host);
             case 'location-api':
                 // requires opts.locations to be comma separated string or
                 //      array of integers
@@ -298,7 +305,12 @@ function($, L, Response, Handlebars) {
                 navigator.geolocation.getCurrentPosition(function(position) {                           
                     window.location.href = getUrl(
                         'browse',
-                        { type: 'latlng', lat: position.coords.latitude, lng: position.coords.longitude }
+                        { 
+                            type: 'latlng', 
+                            lat: position.coords.latitude, 
+                            lng: position.coords.longitude,
+                            zoom: CEL.serverVars.zoomSettings
+                        }
                     );
                 }, function(e) {
                     alert(gettext('Please enable geolocation services.'));
@@ -344,6 +356,8 @@ function($, L, Response, Handlebars) {
 
     return {
         getUrl: getUrl,
+
+        breakpoints: breakpoints, 
 
         // Stolen from _.js v1.5.1
         // https://github.com/jashkenas/underscore/blob/dc5a3fa0133b7000c36ba76a413139c63f646789/underscore.js
