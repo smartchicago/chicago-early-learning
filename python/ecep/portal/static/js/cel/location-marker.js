@@ -15,8 +15,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/location.html', 'loca
         $(document).ready(function() {
             var location_id = /(\d+)/.exec(window.location.pathname)[1];
             var url = common.getUrl('location-api', { locations: location_id });
-            //var url = '/api/location/' + location_id + '/';
-            console.log(url);
             $.getJSON(url, function(data) {
                 var loc = new location.Location(data.locations[0]),
                     // need to build the template first so leaflet can find the map

@@ -246,8 +246,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          * applied filters and bounding box of map
          */
         locationUpdate: function(map, locationLayer) {
-            var filters = this.getFilters(map);
-                that = this;
+            var that = this;
+            that.events.trigger('DataManager.locationUpdating');
+
+            var filters = that.getFilters(map);
             $.getJSON(common.getUrl('location-api'), filters, function(data) {
                 // Unfortunately we can't just blow away the locations here because that
                 // makes the popovers disappear every time you pan, so we have to do it
@@ -296,8 +298,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          * Download topojson if not already downloaded.
          */
         neighborhoodUpdate: function() {
-            var that = this,
-                filters = that.getFilters();
+            var that = this;
+            that.events.trigger('DataManager.neighborhoodUpdating');
+
+            var filters = that.getFilters();
             $.when(
                 $.getJSON(common.getUrl('neighborhood-api'), filters, function(data) {
                     var neighborhoods = that.neighborhoods.data;
@@ -358,8 +362,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
 
         /* 
          * Available events:
+         * neighborhoodUpdating: 'DataManager.neighborhoodUpdating'
+         *      triggered when a neighborhood update begins, before the json request is sent
          * neighborhoodUpdated: 'DataManager.neighborhoodUpdated',
          *      triggered when neighborhood data is finished loading
+         * locationUpdating: 'DataManager.locationUpdating'
+         *      triggered when a location update begins, before the json request is sent
          * locationUpdated: 'DataManager.locationUpdated'
          *      triggered when location data is finished loading
          * filtersUpdated: 'DataManager.filtersChanged'

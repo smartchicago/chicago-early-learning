@@ -46,6 +46,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             autocompleteLocationId,
             autocompleteNeighborhoodId,
             updateUrl = null,                   // Updates the url to reflect page state
+            ajaxTimeoutId,                        
+            spinnerDelayMillis = 500,
             $locationWrapper;                   // Store div wrapper for results on left side
 
         // Initialize geojson for neighborhood layer
@@ -158,7 +160,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 handlebarsData = [],
                 th = $("#filter-options").height();
 
-
             // Sort everything by name ascending
             dataList = $.map(data, function(v, k) {
                 return v;
@@ -175,8 +176,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 handlebarsData.push(item);
             });
 
-            $locationWrapper.empty();
-            $locationWrapper.append(template(handlebarsData));
+            window.clearTimeout(ajaxTimeoutId);
+            $locationWrapper.empty().append(template(handlebarsData)).removeClass('ajax-spinner');
 
             // Set top margin so that list is not hidden by filters
             $locationWrapper.css("top", th);
@@ -414,6 +415,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
             // set map to location/neighborhood if autocomplete requested it
             setAutocompleteLocation();
+        });
+
+        dm.events.on('DataManager.locationUpdating DataManager.neighborhoodUpdating', function(e) {
+            ajaxTimeoutId = window.setTimeout(function() {
+                $locationWrapper.empty().addClass('ajax-spinner');
+            }, spinnerDelayMillis);
         });
 
         // Load data and build map when page loads

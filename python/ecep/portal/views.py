@@ -363,7 +363,7 @@ def neighborhood_api(request):
         'id': n.pk,
         'center': n.get_center(),
         'explore': _('Explore'),
-        'tooltip': {'explore': _('Click to see schools in this neighborhood')}
+        'tooltip': {'explore': _('Click to see locations in this neighborhood')}
     } for n in counts]
 
     context = {'neighborhoods': count_list}
