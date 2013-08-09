@@ -539,8 +539,8 @@ h1, h2, h3, h4 {
         padding: 3px 0;
     }
     .filters-inner label input {
-        margin-top: -2px;
-        margin-right: 3px;
+        margin-top: -3px;
+        margin-right: 7px;
     }
 
 
@@ -716,6 +716,10 @@ h1, h2, h3, h4 {
 .filters-4 {
 	width: 25%;
 	float: left;
+}
+
+.filters-4 {
+	padding-bottom: 40px;
 }
 
 .btn-primary {
