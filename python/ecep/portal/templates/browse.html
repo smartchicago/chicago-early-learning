@@ -40,7 +40,7 @@ See LICENSE in the project root for copying permission
         <button class="btn btn-primary hint--bottom" data-hint="{%trans 'Click to hide filters' %}" data-toggle="collapse" data-parent="#filters" href="#collapseFilters" id="refineBtn">{% trans "Refine your search" %} <i class="icon-right-open icon-white"></i></button> 
         <div class="btn-group">
             <a class="btn starred-btn hint--bottom" data-hint="{% trans 'Click to view starred locations' %}" href="{% url portal.views.starred %}" data-r1023="<i class='icon-star'></i> Starred (<span class='fav-count'>0</span>)"><i class="icon-star"></i> {% trans 'Starred' %} (<span class="fav-count">0</span>)</a>
-          <button id="share-favorites-btn" class="btn  hint--bottom" data-hint="{% trans 'Click to share starred schools' %}"><i class="icon-share"></i>{% trans 'Share' %}</button>
+          <button id="share-favorites-btn" class="btn  hint--bottom" data-hint="{% trans 'Click to share starred locations' %}"><i class="icon-share"></i>{% trans 'Share' %}</button>
           <ul class="dropdown-menu pull-right">
             <li><a href="#">Twitter</a></li>
             <li><a href="#">Facebook</a></li>
@@ -53,15 +53,29 @@ See LICENSE in the project root for copying permission
 
       <div id="collapseFilters" class="accordion-body collapse">
         <div class="accordion-inner filters-inner">
-          <div class="filters-left">
-            {% for f in filters_left %}
+          <div class="filters-1">
+            {% for f in filters_1 %}   
               <label>
                 <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
               </label>
             {% endfor %}
           </div>
-          <div class="filters-right">
-            {% for f in filters_right %}
+          <div class="filters-2">
+            {% for f in filters_2 %}   
+              <label>
+                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
+              </label>
+            {% endfor %}
+          </div>
+          <div class="filters-3">
+            {% for f in filters_3 %}   
+              <label>
+                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
+              </label>
+            {% endfor %}
+          </div>
+          <div class="filters-4">
+            {% for f in filters_4 %}
               <label>
                 <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
               </label>
@@ -74,7 +88,7 @@ See LICENSE in the project root for copying permission
     <div class="header-row">
       <ul class="header-labels">
         <li id="header-fav">Neighborhood</li>
-        <li id="header-dist">Schools</li>
+        <li id="header-dist">Locations</li>
       </ul>
     </div>
   </div>
