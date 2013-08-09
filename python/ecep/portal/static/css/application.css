@@ -705,8 +705,17 @@ h1, h2, h3, h4 {
 }
 
 #filter-clear-all {
-    float: right;
-    margin-top: -37px;
+    float: left;
+    margin-top: 10px;
+}
+
+
+.filters-1,
+.filters-2,
+.filters-3,
+.filters-4 {
+	width: 25%;
+	float: left;
 }
 
 .btn-primary {

@@ -522,5 +522,13 @@
             content: "";
         }
 				
+				.filters-1,
+.filters-2,
+.filters-3,
+.filters-4 {
+	width: 50%;
+	float: left;
+}
+				
 
 }
