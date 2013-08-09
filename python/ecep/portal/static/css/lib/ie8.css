@@ -1,0 +1,9 @@
+/* IE8 Fixes --------------------------- */
+
+.explore-btn {
+	margin-top: 0;
+}
+
+.more-less-btn {
+	margin-top: 0 !important;
+}
