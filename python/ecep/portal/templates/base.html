@@ -43,6 +43,18 @@ See LICENSE in the project root for copying permission
     {% block otherhead %}{% endblock %}
     <link href='{% static "css/lib/responsive.css" %}' rel="stylesheet">
 
+    <style>
+        /* 
+            This is a hack because there is no other simple way to ensure that the correct
+            background url is selected in all cases for this css style. 
+        */
+        /* spinner */
+        .ajax-spinner {
+            background: url("{% static "img/ajax-spinner.gif" %}") no-repeat center;
+            width: 100%;
+        }
+    </style>
+
   </head> 
   <body>
     <!-- Navbar -->

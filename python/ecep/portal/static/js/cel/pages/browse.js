@@ -419,7 +419,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
         dm.events.on('DataManager.locationUpdating DataManager.neighborhoodUpdating', function(e) {
             ajaxTimeoutId = window.setTimeout(function() {
-                $locationWrapper.addClass('ajax-spinner');
+                $locationWrapper.empty().addClass('ajax-spinner');
             }, spinnerDelayMillis);
         });
 

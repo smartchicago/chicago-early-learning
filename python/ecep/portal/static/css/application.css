@@ -1015,8 +1015,3 @@ h1, h2, h3, h4 {
         border: 1px solid rgba(0,0,0,0);
     }
 
-/* spinner */
-.ajax-spinner {
-    background: url("/static/img/ajax-spinner.gif") no-repeat center;
-    width: 100%;
-}
