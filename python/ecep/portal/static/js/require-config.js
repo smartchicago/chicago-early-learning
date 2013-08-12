@@ -15,7 +15,6 @@ requirejs.config({
         async: '../lib/require-plugins/async',
         text: '../lib/require-plugins/text',
         topojson: '../lib/topojson',
-        styling: '../lib/styling',
         icons: '../lib/icons',
         history: '../lib/native.history'
     },
