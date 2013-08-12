@@ -227,7 +227,6 @@ h1, h2, h3, h4 {
         }
         .location button {
             float: right;
-            margin-top: -35px;
         }
         .location-test1 {
             margin-top: 0;
@@ -236,14 +235,16 @@ h1, h2, h3, h4 {
             font-family: "Helvetica", Arial, sans-serif;
         }
             #loc-icon {
-                margin-left: 65%;
-                margin-top: -30px;
-                float: left;
+                left: 65%;
+								margin-top: 3px;
+                position: absolute;
+                float: none;
             }
             #loc-dirs {
-                float: left;
-                margin-left: 75%;
-                margin-top: -30px;
+                left: 75%;
+								margin-top: 5px;
+                position: absolute;
+                float: none;
                 font-size: 13px;
                 font-weight: normal;
             }
@@ -259,8 +260,11 @@ h1, h2, h3, h4 {
         }
         .truncate:hover {
             width: auto;
+						width: 300px\9;
             overflow: visible;
+            overflow: hidden\9;
             text-overflow: none;
+            text-overflow: ellipsis\9;
         }
     
     .accordion-heading h1 {
