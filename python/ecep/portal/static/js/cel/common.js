@@ -3,7 +3,7 @@
  * See http://requirejs.org/docs/api.html for details
  */
 
-define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'bootstrap', 
+define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 
         'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
 function($, L, Response, Handlebars) {
     'use strict';

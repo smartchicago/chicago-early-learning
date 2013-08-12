@@ -358,16 +358,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * Function that toggles map view on mobile devices
          */
         var mapToggle = function() {
-            $('#toggleMapBtn').click(function() {
-                $('.results-left').toggle();
-                var $resultsRight = $('.results-right');
-                if ($resultsRight.css('visibility') === 'hidden') {
-                    $resultsRight.css('visibility', 'visible');
-                }
-                else {
-                    $resultsRight.css('visibility', 'hidden');
-                }
-            });
+            $('.results-left').toggleClass('none');
+            $('.results-right').toggleClass('visible');
         };
 
 
@@ -441,6 +433,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                         iconUrl: common.getUrl('icon-geolocation')
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
+
+                    // also open the map if on mobile
+                    var width = $(document).width();
+                    if (width < common.breakpoints.desktop) {
+                        mapToggle();
+                    }
                 }
 
                 // add class 'in' to set filters state if requested by history and were on desktop
@@ -494,7 +492,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     $filters.prop('checked', false);
                     dm.onFilterChange();
                 });
-                mapToggle();
+                
+                $('#toggleMapBtn').click(function(e) {
+                    mapToggle();
+                    e.preventDefault();
+                });
+
                 displayMap();
                 refineListener();
             }
