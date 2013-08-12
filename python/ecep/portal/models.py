@@ -94,8 +94,7 @@ class Location(models.Model):
     objects = models.GeoManager()
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
-    display_include = {'ages', 'accred', 'accept_ccap',
-                       'is_home_visiting', 'is_hs', 'is_ehs', 'url',
+    display_include = {'ages', 'accred', 'accept_ccap', 'is_home_visiting', 'is_hs', 'is_ehs',
                        'is_community_based', 'is_cps_based'}
 
     def __unicode__(self):
