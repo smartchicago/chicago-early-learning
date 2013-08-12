@@ -16,6 +16,7 @@ requirejs.config({
         text: '../lib/require-plugins/text',
         topojson: '../lib/topojson',
         icons: '../lib/icons',
+        styling: '../lib/styling',
         history: '../lib/native.history'
     },
     shim: {
