@@ -57,7 +57,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.isAccredited = function() {
         var isAccredited = false;
         $.each(this.data.sfields, function(key, value) {
-            if (value.fieldname === gettext("Accreditation") && value.value !== "None") {
+            if (value.fieldname === gettext("Accreditation") && value.value !== "") {
                 isAccredited = true;
                 return false;
             }

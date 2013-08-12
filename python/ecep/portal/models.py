@@ -184,7 +184,11 @@ class Location(models.Model):
             if self.is_true_bool_field(field):
                 bfields.append(field.verbose_name)
             elif self.is_simple_field(field):
-                kv = {'fieldname': _(field.verbose_name), 'value': field.value_from_object(self)}
+                value = field.value_from_object(self)
+                kv = {
+                        'fieldname': _(field.verbose_name), 
+                        'value': value if value else _("None")
+                }
                 sfields.append(kv)
 
         affiliation_values = [self.verbose_name(aff.get_attname()) for aff in affiliation_fields
@@ -201,7 +205,8 @@ class Location(models.Model):
         # Program Duration/Hours
         program_values = [self.verbose_name(prg.get_attname()) for prg in program_fields
                               if prg.value_from_object(self)]
-        program_values.append(self.prg_hours)
+        program_hours = self.prg_hours if self.prg_hours else _("No Hours Listed")
+        program_values.append(program_hours)
         sfields.append({'fieldname': _('Duration/Hours'), 
                         'value': ', '.join(program_values) if program_values else 'None'})
 
