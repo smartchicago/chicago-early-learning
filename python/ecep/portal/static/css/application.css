@@ -917,12 +917,15 @@ h1, h2, h3, h4 {
     }
     
     #faq-container .accordion-inner {
-        padding: 25px 15px 25px 35px;
+        padding: 25px 15px 25px 0px;
     }
     #faq-container .accordion-heading .accordion-toggle {
         font-family: "Montserrat", sans-serif;
         padding: 20px 0;
         color: #317DC1;
+    }
+		    #faq-container .accordion-heading .accordion-toggle:hover {
+        color: #155792;
     }
     #faq-container .accordion-inner {
         line-height: 1.8;
