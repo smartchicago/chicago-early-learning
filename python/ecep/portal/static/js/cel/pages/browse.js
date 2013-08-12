@@ -82,7 +82,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     locationPan(pos.lat, pos.lng);
                 } else if (autocompleteNeighborhoodId) {
                     var value = dm.neighborhoods.data[autocompleteNeighborhoodId]; 
-                    neighborhoodPan(value.name, value.schools, value.center.lat, value.center.lng, true);
+                    map.setView([value.center.lat, value.center.lng], zoomSettings);
                 }
                 isAutocompleteSet = false;
             }
