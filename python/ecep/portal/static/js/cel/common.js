@@ -14,6 +14,19 @@ function($, L, Response, Handlebars) {
         desktop: 1024
     };
 
+    // Hide the address bar on mobile browsers
+    // Solution from: http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
+    function hideAddressBar() {
+        if(!window.location.hash) {
+            if(document.height < window.outerHeight) {
+                document.body.style.height = (window.outerHeight + 50) + 'px';
+            }
+            setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+        }
+    }
+    window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+    window.addEventListener("orientationchange", hideAddressBar );
+
     $(document).ready(function() {
 
         // AUTOCOMPLETE
@@ -185,17 +198,6 @@ function($, L, Response, Handlebars) {
         });
         // END AUTOCOMPLETE
     });
-
-    // Hide the address bar on mobile browsers
-    // TODO: More robust solution: http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
-    /*
-    window.addEventListener("load",function() {
-        setTimeout(function(){
-            window.scrollTo(0, 1);
-        }, 0);
-    });
-    */
-
 
     // Setup Response stuff
     var breakpointsArray = [
