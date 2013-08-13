@@ -5,6 +5,13 @@ upstream app_server {
   server {{ unicorn_socket }} fail_timeout=0;
 }
 
+http {
+  gzip on;
+  gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+  gzip_comp_level 6;
+  gzip_types text/plain text/html text/css application/json application/x-javascript text/javascript application/javascript;
+}
+
 server {
   listen {{ http_port }} default_server;
   server_name _;
