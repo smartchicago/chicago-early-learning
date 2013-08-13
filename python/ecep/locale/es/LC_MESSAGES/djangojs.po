@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-09 12:03-0500\n"
+"POT-Creation-Date: 2013-08-13 12:12-0500\n"
 "PO-Revision-Date: 2013-01-10 09:35-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: portal/static/js/cel/common.js:316
+#: portal/static/js/cel/common.js:323
 msgid "Please enable geolocation services."
 msgstr ""
 
@@ -33,6 +33,10 @@ msgstr ""
 #: portal/static/js/cel/location.js:60
 msgid "Accreditation"
 msgstr "Acreditación"
+
+#: portal/static/js/cel/location.js:60
+msgid "None"
+msgstr ""
 
 #: portal/static/js/cel/location.js:77
 msgid "Program Information"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-09 12:03-0500\n"
+"POT-Creation-Date: 2013-08-13 12:12-0500\n"
 "PO-Revision-Date: 2013-01-10 08:46-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -26,62 +26,70 @@ msgstr "Inglés"
 msgid "Spanish"
 msgstr "Español"
 
-#: portal/models.py:192
+#: portal/models.py:189
+msgid "None"
+msgstr ""
+
+#: portal/models.py:195
 #, fuzzy
 msgid "Program Information"
 msgstr "Duración del programa"
 
-#: portal/models.py:199
+#: portal/models.py:202
 msgid "Languages (other than English)"
 msgstr "Idiomas (excepto Inglés)"
 
-#: portal/models.py:205
+#: portal/models.py:207
+msgid "No Hours Listed"
+msgstr ""
+
+#: portal/models.py:209
 msgid "Duration/Hours"
 msgstr ""
 
-#: portal/models.py:211
+#: portal/models.py:215
 msgid "Weekday Availability"
 msgstr ""
 
-#: portal/models.py:215
+#: portal/models.py:219
 msgid "Phone Number"
 msgstr "Número de teléfono"
 
-#: portal/models.py:222
+#: portal/models.py:226
 #, fuzzy
 msgid "Description"
 msgstr "Indicaciones"
 
-#: portal/models.py:231
+#: portal/models.py:235
 msgid "More"
 msgstr "Más"
 
-#: portal/models.py:231 portal/templatetags/portal_extras.py:30
+#: portal/models.py:235 portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr "Sitio web"
 
-#: portal/models.py:231
+#: portal/models.py:235
 msgid "Directions"
 msgstr "Indicaciones"
 
-#: portal/models.py:232 portal/templates/browse.html:43
+#: portal/models.py:236 portal/templates/browse.html:43
 msgid "Share"
 msgstr ""
 
-#: portal/models.py:239
+#: portal/models.py:243
 #, fuzzy
 msgid "Directions from Google"
 msgstr "Indicaciones"
 
-#: portal/models.py:239
+#: portal/models.py:243
 msgid "Click to show more information"
 msgstr ""
 
-#: portal/models.py:240
+#: portal/models.py:244
 msgid "Click to star location"
 msgstr ""
 
-#: portal/models.py:243
+#: portal/models.py:247
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -135,11 +143,11 @@ msgstr ""
 msgid "(page %(current)d/%(total)d)"
 msgstr "(página %(current)d/%(total)d)"
 
-#: portal/views.py:365
+#: portal/views.py:369
 msgid "Explore"
 msgstr "Explorar"
 
-#: portal/views.py:366
+#: portal/views.py:370
 msgid "Click to see locations in this neighborhood"
 msgstr ""
 
@@ -151,7 +159,7 @@ msgid "Chicago Early Learning"
 msgstr "Chicago Early Learning"
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
-#: portal/templates/base.html:62
+#: portal/templates/base.html:75
 msgid "About"
 msgstr "Información acerca de nosotros"
 
@@ -256,43 +264,43 @@ msgstr ""
 "quiénes y por qué."
 
 #: portal/templates/base-search.html:11
-msgid "Click to user your current location"
+msgid "Click to use your current location"
 msgstr ""
 
 #: portal/templates/base-search.html:17 portal/templates/index.html:24
 msgid "Search"
 msgstr "Buscar"
 
-#: portal/templates/base.html:61
+#: portal/templates/base.html:74
 #, fuzzy
 msgid "Text For Info"
 msgstr "Envíe texto para recibir info"
 
-#: portal/templates/base.html:63 portal/templates/faq-models.html:9
+#: portal/templates/base.html:76 portal/templates/faq-models.html:9
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
 
-#: portal/templates/base.html:65
+#: portal/templates/base.html:78
 msgid "Language"
 msgstr "Idioma"
 
-#: portal/templates/base.html:91
+#: portal/templates/base.html:104
 msgid "Want information via text?"
 msgstr "¿Desea recibir información por medio de un mensaje de texto?"
 
-#: portal/templates/base.html:94
+#: portal/templates/base.html:107
 msgid "Text your zip code to "
 msgstr ""
 
-#: portal/templates/base.html:94
+#: portal/templates/base.html:107
 msgid " and we'll do the rest."
 msgstr ""
 
-#: portal/templates/base.html:102
+#: portal/templates/base.html:115
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:105
+#: portal/templates/base.html:118
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -316,10 +324,10 @@ msgid "Starred"
 msgstr "Inicio"
 
 #: portal/templates/browse.html:43
-msgid "Click to share starred schools"
+msgid "Click to share starred locations"
 msgstr ""
 
-#: portal/templates/browse.html:69
+#: portal/templates/browse.html:83
 #, fuzzy
 msgid "Reset Search"
 msgstr "Búsqueda de dirección"
