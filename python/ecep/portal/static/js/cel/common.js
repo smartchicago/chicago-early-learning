@@ -250,22 +250,22 @@ function($, L, Response, Handlebars) {
                 return '/static/js/neighborhoods.json';
             case 'browse':
                 if (!opts) {
-                    return '/browse/';
+                    return '/search/';
                 }
                 switch (opts.type) {
                     case 'latlng':
-                        url = '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
+                        url = '/search/?lat=' + opts.lat + '&lng=' + opts.lng;
                         if (opts.zoom) {
                             url += '&zoom=' + opts.zoom;
                         }
                         return url;
                     case 'geo-latlng':
-                        url = '/browse/?geolat=' + opts.lat + '&geolng=' + opts.lng;
+                        url = '/search/?geolat=' + opts.lat + '&geolng=' + opts.lng;
                         return url;
                     case 'neighborhood':
-                        return '/browse/?neighborhood=' + opts.neighborhood;
+                        return '/search/?neighborhood=' + opts.neighborhood;
                     case 'location':
-                        return '/browse/?location=' + opts.location;
+                        return '/search/?location=' + opts.location;
                     default:
                         break;
                 }
