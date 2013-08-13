@@ -419,8 +419,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
         return {
             init: function() {
                 var state = getMapState(),
-                    historyState = History.getState().data;
-                map = new L.map('map').setView(state.point, defaultZoom);   // Initialize Leaflet map
+                    historyState = History.getState().data,
+                    zoom = state.isGeolocated ? CEL.serverVars.zoomSettings : defaultZoom;
+                map = new L.map('map').setView(state.point, zoom);   // Initialize Leaflet map
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
 
@@ -431,7 +432,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                         iconUrl: common.getUrl('icon-geolocation')
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
-                    map.setZoom(CEL.serverVars.zoomSettings);
 
                     var width = $(document).width();
                     if (width < common.breakpoints.desktop) {

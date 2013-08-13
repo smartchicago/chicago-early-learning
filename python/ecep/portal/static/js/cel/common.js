@@ -306,6 +306,7 @@ function($, L, Response, Handlebars) {
     if ('geolocation' in navigator) {
         $(document).ready(function() {
             $('.geolocation-button').bind('click', function(e) {
+                e.preventDefault();
                 navigator.geolocation.getCurrentPosition(function(position) {                           
                     window.location.href = getUrl(
                         'browse',
@@ -316,6 +317,7 @@ function($, L, Response, Handlebars) {
                         }
                     );
                 }, function(e) {
+                    e.preventDefault();
                     alert(gettext('Please enable geolocation services.'));
                 });                                                                                     
             });
