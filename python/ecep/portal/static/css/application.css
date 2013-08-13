@@ -260,7 +260,7 @@ h1, h2, h3, h4 {
         }
         .truncate:hover {
             width: auto;
-						width: 300px\9;
+			width: 300px\9;
             overflow: visible;
             overflow: hidden\9;
             text-overflow: none;

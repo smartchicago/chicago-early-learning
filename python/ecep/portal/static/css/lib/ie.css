@@ -10,4 +10,6 @@
 
 .truncate:hover {
 	text-overflow: ellipsis\9;
+	overflow: hidden\9;
+	width: 300px\9;
 }
