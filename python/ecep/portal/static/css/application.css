@@ -30,6 +30,10 @@ h1, h2, h3, h4 {
     margin-bottom: 20px;
 }
 
+.text-grey {
+    color: grey;
+}
+
 /*
  * Added because we defined a class close used elsewhere that overrides the margin-top of
  *  the default bootstrap elements.
