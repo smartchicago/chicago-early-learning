@@ -41,6 +41,4 @@ define(['jquery'], function($) {
             }, 0);
         });
     });
-
-    return;
 });
