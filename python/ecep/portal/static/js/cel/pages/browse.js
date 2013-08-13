@@ -360,6 +360,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
         var mapToggle = function() {
             $('.results-left').toggleClass('none');
             $('.results-right').toggleClass('visible');
+            var $toggleMapBtnIcon = $('#toggleMapBtn').children('i');
+            $toggleMapBtnIcon.toggleClass('icon-globe icon-list');
         };
 
 
