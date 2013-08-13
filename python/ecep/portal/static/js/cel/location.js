@@ -174,6 +174,23 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     };
 
     /*
+     * return a pretty print string describing the icon and location
+     */
+    Location.prototype.getIconDescription = function() {
+        var descriptions = {
+            center: gettext('Center'),
+            'center-starred': gettext('Starred Center'),
+            'center-accredited': gettext('Accredited Center'),
+            'center-accredited-starred': gettext('Starred Accredited Center'),
+            school: gettext('School'),
+            'school-starred': gettext('Starred School'),
+            'school-accredited': gettext('Accredited School'),
+            'school-accredited-starred': gettext('Starred Accredited School')
+        };
+        return descriptions[this.getIconKey()];
+    };
+
+    /*
      * Get location marker object
      */
     Location.prototype.getMarker = function() {

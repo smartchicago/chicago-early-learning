@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-13 13:00-0500\n"
+"POT-Creation-Date: 2013-08-13 15:06-0500\n"
 "PO-Revision-Date: 2013-01-10 09:35-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: portal/static/js/cel/common.js:323
+#: portal/static/js/cel/common.js:328
 msgid "Please enable geolocation services."
 msgstr ""
 
@@ -42,7 +42,41 @@ msgstr ""
 msgid "Program Information"
 msgstr ""
 
-#: portal/static/js/cel/location.js:203
+#: portal/static/js/cel/location.js:181
+msgid "Center"
+msgstr ""
+
+#: portal/static/js/cel/location.js:182
+msgid "Starred Center"
+msgstr ""
+
+#: portal/static/js/cel/location.js:183
+#, fuzzy
+msgid "Accredited Center"
+msgstr "Acreditación"
+
+#: portal/static/js/cel/location.js:184
+msgid "Starred Accredited Center"
+msgstr ""
+
+#: portal/static/js/cel/location.js:185
+msgid "School"
+msgstr ""
+
+#: portal/static/js/cel/location.js:186
+msgid "Starred School"
+msgstr ""
+
+#: portal/static/js/cel/location.js:187
+#, fuzzy
+msgid "Accredited School"
+msgstr "Acreditación"
+
+#: portal/static/js/cel/location.js:188
+msgid "Starred Accredited School"
+msgstr ""
+
+#: portal/static/js/cel/location.js:220
 msgid "Details"
 msgstr ""
 
@@ -62,36 +96,36 @@ msgstr ""
 msgid "More Information"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:240
+#: portal/static/js/cel/pages/browse.js:244
 msgid "Less"
 msgstr "Menos"
 
-#: portal/static/js/cel/pages/browse.js:241
+#: portal/static/js/cel/pages/browse.js:245
 msgid "Click to show less information"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:245
+#: portal/static/js/cel/pages/browse.js:249
 msgid "More"
 msgstr "Más"
 
-#: portal/static/js/cel/pages/browse.js:246
+#: portal/static/js/cel/pages/browse.js:250
 msgid "Click to show more information"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:271
+#: portal/static/js/cel/pages/browse.js:275
 msgid "Click to hide filters"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:273
+#: portal/static/js/cel/pages/browse.js:277
 msgid "Click to show filters"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:324
+#: portal/static/js/cel/pages/browse.js:328
 #, fuzzy
 msgid "Number of Locations"
 msgstr "Cantidad de escuelas"
 
-#: portal/static/js/cel/pages/browse.js:324
+#: portal/static/js/cel/pages/browse.js:328
 msgid "Explore"
 msgstr "Explorar"
 
