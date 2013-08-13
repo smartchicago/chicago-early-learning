@@ -162,13 +162,13 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                 img = 'icon-star-empty';
                 favs.removeIdFromCookie(buttonId);
                 increment = -1;
-                $elt.attr('data-hint', gettext('Click to star location'));
+                $elt.attr('data-hint', gettext('Click to save to your list'));
             // toggle on
             } else {
                 img = 'icon-star';
                 favs.addIdToCookie(buttonId);
                 increment = 1;
-                $elt.attr('data-hint', gettext('Click to remove star from location'));
+                $elt.attr('data-hint', gettext('Click to remove from your list'));
             }
 
             buttonImg.attr('class', img);

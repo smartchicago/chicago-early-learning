@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-13 12:12-0500\n"
+"POT-Creation-Date: 2013-08-13 13:00-0500\n"
 "PO-Revision-Date: 2013-01-10 09:35-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -23,11 +23,11 @@ msgid "Please enable geolocation services."
 msgstr ""
 
 #: portal/static/js/cel/favorites.js:165
-msgid "Click to star location"
+msgid "Click to save to your list"
 msgstr ""
 
 #: portal/static/js/cel/favorites.js:171
-msgid "Click to remove star from location"
+msgid "Click to remove from your list"
 msgstr ""
 
 #: portal/static/js/cel/location.js:60

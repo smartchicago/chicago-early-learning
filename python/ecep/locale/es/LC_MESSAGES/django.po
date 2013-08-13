@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-13 12:12-0500\n"
+"POT-Creation-Date: 2013-08-13 13:00-0500\n"
 "PO-Revision-Date: 2013-01-10 08:46-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
 "<jbranigan@azavea.com>\n"
@@ -315,7 +315,7 @@ msgid "Refine your search"
 msgstr "Búsqueda de dirección"
 
 #: portal/templates/browse.html:42
-msgid "Click to view starred locations"
+msgid "Click to view your list"
 msgstr ""
 
 #: portal/templates/browse.html:42
@@ -323,8 +323,8 @@ msgstr ""
 msgid "Starred"
 msgstr "Inicio"
 
-#: portal/templates/browse.html:43
-msgid "Click to share starred locations"
+#: portal/templates/browse.html:43 portal/templates/starred.html:26
+msgid "Click to share your list"
 msgstr ""
 
 #: portal/templates/browse.html:83
