@@ -259,6 +259,9 @@ function($, L, Response, Handlebars) {
                             url += '&zoom=' + opts.zoom;
                         }
                         return url;
+                    case 'geo-latlng':
+                        url = '/browse/?geolat=' + opts.lat + '&geolng=' + opts.lng;
+                        return url;
                     case 'neighborhood':
                         return '/browse/?neighborhood=' + opts.neighborhood;
                     case 'location':
@@ -307,10 +310,9 @@ function($, L, Response, Handlebars) {
                     window.location.href = getUrl(
                         'browse',
                         { 
-                            type: 'latlng', 
+                            type: 'geo-latlng', 
                             lat: position.coords.latitude, 
-                            lng: position.coords.longitude,
-                            zoom: CEL.serverVars.zoomSettings
+                            lng: position.coords.longitude
                         }
                     );
                 }, function(e) {

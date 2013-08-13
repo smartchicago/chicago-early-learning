@@ -278,10 +278,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * Get map state from DOM and override defaults if necessary 
          */
         var getMapState = function() {
-            var lat = latSettings,
-                lng = lngSettings,
-                geolat = $map.data('geo-lat'),
-                geolng = $map.data('geo-lng'),
+            var lat = $map.data('lat') || latSettings,
+                lng = $map.data('lng') || lngSettings,
+                geolat = $map.data('geolat'),
+                geolng = $map.data('geolng'),
                 isGeolocated = false;
             if (geolat && geolng) {
                 lat = geolat; 
@@ -424,17 +424,15 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
 
-                // Use history for mapstate if not undefined (prevents geolocation when browsing back)
-                state.isGeolocated = typeof historyState.isGeolocated === 'undefined' ? state.isGeolocated : historyState.isGeolocated;
-                
                 // draw marker for geolocated point 
+                //      and open the map if on mobile
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
                         iconUrl: common.getUrl('icon-geolocation')
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
+                    map.setZoom(CEL.serverVars.zoomSettings);
 
-                    // also open the map if on mobile
                     var width = $(document).width();
                     if (width < common.breakpoints.desktop) {
                         mapToggle();
