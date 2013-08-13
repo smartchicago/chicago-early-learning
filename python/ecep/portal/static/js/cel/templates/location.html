@@ -3,9 +3,10 @@
   <a href="javascript:void(0)" class="none favs-close-button">&times;</a>
   <h1 class="school-name">{{item.site_name}}</h1>
   <p>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</p>
-  {{#if item.url}}
   <ul class="website-phone">
+    {{#if item.url}}
     <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank">{{item.url}}</a></li>
+    {{/if}}
     <a href="javascript:void(0)"
         class="none favs-toggle single-star pull-right" id="favs-toggle-loc-{{item.key}}"
         data-loc-id="{{item.key}}">
@@ -17,7 +18,6 @@
       Share
     </a>
   </ul>
-  {{/if}}
   <hr>
   <div class="school-details">
     <h1>{{phone.fieldname}}</h1>

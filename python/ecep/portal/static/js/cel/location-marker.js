@@ -15,6 +15,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/location.html', 'loca
         $(document).ready(function() {
             var location_id = /(\d+)/.exec(window.location.pathname)[1];
             var url = common.getUrl('location-api', { locations: location_id });
+            var width = $(document).width();
             $.getJSON(url, function(data) {
                 var loc = new location.Location(data.locations[0]),
                     // need to build the template first so leaflet can find the map
@@ -22,7 +23,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/location.html', 'loca
 
                 $('.container > .row').append(template(loc.data));
                 $('.single-location-map').show();
-                $('.favs-toggle').show();
+                if (width >= common.breakpoints.desktop) {
+                    $('.favs-toggle').show();
+                }
 
                 var latLng = loc.getLatLng(), 
                     map = new L.Map('location-map', { center: latLng, zoom: 13, dragging: false });

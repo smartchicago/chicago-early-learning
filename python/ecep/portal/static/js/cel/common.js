@@ -3,7 +3,7 @@
  * See http://requirejs.org/docs/api.html for details
  */
 
-define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'bootstrap', 
+define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 
         'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
 function($, L, Response, Handlebars) {
     'use strict';
@@ -13,6 +13,19 @@ function($, L, Response, Handlebars) {
         tablet: 767,
         desktop: 1024
     };
+
+    // Hide the address bar on mobile browsers
+    // Solution from: http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
+    function hideAddressBar() {
+        if(!window.location.hash) {
+            if(document.height < window.outerHeight) {
+                document.body.style.height = (window.outerHeight + 50) + 'px';
+            }
+            setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+        }
+    }
+    window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+    window.addEventListener("orientationchange", hideAddressBar );
 
     $(document).ready(function() {
 
@@ -186,17 +199,6 @@ function($, L, Response, Handlebars) {
         // END AUTOCOMPLETE
     });
 
-    // Hide the address bar on mobile browsers
-    // TODO: More robust solution: http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
-    /*
-    window.addEventListener("load",function() {
-        setTimeout(function(){
-            window.scrollTo(0, 1);
-        }, 0);
-    });
-    */
-
-
     // Setup Response stuff
     var breakpointsArray = [
         0,
@@ -250,19 +252,22 @@ function($, L, Response, Handlebars) {
                 return '/static/js/neighborhoods.json';
             case 'browse':
                 if (!opts) {
-                    return '/browse/';
+                    return '/search/';
                 }
                 switch (opts.type) {
                     case 'latlng':
-                        url = '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
+                        url = '/search/?lat=' + opts.lat + '&lng=' + opts.lng;
                         if (opts.zoom) {
                             url += '&zoom=' + opts.zoom;
                         }
                         return url;
+                    case 'geo-latlng':
+                        url = '/search/?geolat=' + opts.lat + '&geolng=' + opts.lng;
+                        return url;
                     case 'neighborhood':
-                        return '/browse/?neighborhood=' + opts.neighborhood;
+                        return '/search/?neighborhood=' + opts.neighborhood;
                     case 'location':
-                        return '/browse/?location=' + opts.location;
+                        return '/search/?location=' + opts.location;
                     default:
                         break;
                 }
@@ -303,17 +308,18 @@ function($, L, Response, Handlebars) {
     if ('geolocation' in navigator) {
         $(document).ready(function() {
             $('.geolocation-button').bind('click', function(e) {
+                e.preventDefault();
                 navigator.geolocation.getCurrentPosition(function(position) {                           
                     window.location.href = getUrl(
                         'browse',
                         { 
-                            type: 'latlng', 
+                            type: 'geo-latlng', 
                             lat: position.coords.latitude, 
-                            lng: position.coords.longitude,
-                            zoom: CEL.serverVars.zoomSettings
+                            lng: position.coords.longitude
                         }
                     );
                 }, function(e) {
+                    e.preventDefault();
                     alert(gettext('Please enable geolocation services.'));
                 });                                                                                     
             });

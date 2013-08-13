@@ -27,7 +27,7 @@ urlpatterns = patterns(
         {'url': '/static/images/favicon.ico'}),
 
     # browse page
-    url(r'^browse/$', 'portal.views.browse', name='browse'),
+    url(r'^search/$', 'portal.views.browse', name='browse'),
 
     # portal autocomplete api
     url(r'^api/autocomplete/(?P<query>\S+)/$', 'portal.views.portal_autocomplete'),
