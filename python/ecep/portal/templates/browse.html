@@ -25,7 +25,7 @@ See LICENSE in the project root for copying permission
   <button class="btn btn-standard2 geolocation-button" id="toggleListBtn"><i class="icon-target"></i></button>
   <input type="text" class="autocomplete-searchbox" placeholder="Enter an address">
 </div>
-<button class="btn btn-standard2" id="toggleMapBtn" data-slidepanel="panel"><i class="icon-globe"></i></button>
+<button class="btn btn-standard2" id="toggleMapBtn"><i class="icon-globe"></i></button>
 
 </form>
 {% endblock %}
@@ -39,8 +39,8 @@ See LICENSE in the project root for copying permission
       <div class="accordion-heading results-toolbar">
         <button class="btn btn-primary hint--bottom" data-hint="{%trans 'Click to hide filters' %}" data-toggle="collapse" data-parent="#filters" href="#collapseFilters" id="refineBtn">{% trans "Refine your search" %} <i class="icon-right-open icon-white"></i></button> 
         <div class="btn-group">
-            <a class="btn starred-btn hint--bottom" data-hint="{% trans 'Click to view starred locations' %}" href="{% url portal.views.starred %}" data-r1023="<i class='icon-star'></i> Starred (<span class='fav-count'>0</span>)"><i class="icon-star"></i> {% trans 'Starred' %} (<span class="fav-count">0</span>)</a>
-          <button id="share-favorites-btn" class="btn  hint--bottom" data-hint="{% trans 'Click to share starred locations' %}"><i class="icon-share"></i>{% trans 'Share' %}</button>
+            <a class="btn starred-btn hint--bottom" data-hint="{% trans 'Click to view your list' %}" href="{% url portal.views.starred %}" data-r1023="<i class='icon-star'></i> Starred (<span class='fav-count'>0</span>)"><i class="icon-star"></i> {% trans 'Starred' %} (<span class="fav-count">0</span>)</a>
+          <button id="share-favorites-btn" class="btn  hint--bottom" data-hint="{% trans 'Click to share your list' %}"><i class="icon-share"></i>{% trans 'Share' %}</button>
           <ul class="dropdown-menu pull-right">
             <li><a href="#">Twitter</a></li>
             <li><a href="#">Facebook</a></li>
@@ -100,7 +100,7 @@ See LICENSE in the project root for copying permission
 
 <!-- MAP -->
 <div class="results-right">
-    <div id="map"{% if request.GET.lat %} data-geo-lat="{{ request.GET.lat }}"{% endif %}{% if request.GET.lng %} data-geo-lng="{{ request.GET.lng }}"{% endif %}{% if request.GET.zoom %} data-zoom="{{ request.GET.zoom }}"{% endif %}{% if request.GET.neighborhood %} data-neighborhood-id="{{ request.GET.neighborhood }}"{% endif %}{% if request.GET.location %} data-location-id="{{ request.GET.location }}"{% endif %}></div>
+    <div id="map"{% if request.GET.geolat %} data-geolat="{{ request.GET.geolat }}"{% endif %}{% if request.GET.geolng %} data-geolng="{{ request.GET.geolng }}"{% endif %}{% if request.GET.lat %} data-lat="{{ request.GET.lat }}"{% endif %}{% if request.GET.lng %} data-lng="{{ request.GET.lng }}"{% endif %}{% if request.GET.zoom %} data-zoom="{{ request.GET.zoom }}"{% endif %}{% if request.GET.neighborhood %} data-neighborhood-id="{{ request.GET.neighborhood }}"{% endif %}{% if request.GET.location %} data-location-id="{{ request.GET.location }}"{% endif %}></div>
 </div>
 
 

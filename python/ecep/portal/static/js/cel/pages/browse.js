@@ -5,8 +5,8 @@
 
 
 define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
-        'topojson', 'icons', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire, 'styling',
-        'leaflet-providers', 'history'], 
+        'topojson', 'icons', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire,
+        'leaflet-providers', 'history', 'styling'], 
     function($, L, Handlebars, neighborhoodList, locationList, topojson, icons, favorites, location, common) {
 
         'use strict';
@@ -82,7 +82,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     locationPan(pos.lat, pos.lng);
                 } else if (autocompleteNeighborhoodId) {
                     var value = dm.neighborhoods.data[autocompleteNeighborhoodId]; 
-                    neighborhoodPan(value.name, value.schools, value.center.lat, value.center.lng, true);
+                    map.setView([value.center.lat, value.center.lng], zoomSettings);
                 }
                 isAutocompleteSet = false;
             }
@@ -278,10 +278,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * Get map state from DOM and override defaults if necessary 
          */
         var getMapState = function() {
-            var lat = latSettings,
-                lng = lngSettings,
-                geolat = $map.data('geo-lat'),
-                geolng = $map.data('geo-lng'),
+            var lat = $map.data('lat') || latSettings,
+                lng = $map.data('lng') || lngSettings,
+                geolat = $map.data('geolat'),
+                geolng = $map.data('geolng'),
                 isGeolocated = false;
             if (geolat && geolng) {
                 lat = geolat; 
@@ -358,16 +358,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * Function that toggles map view on mobile devices
          */
         var mapToggle = function() {
-            $('#toggleMapBtn').click(function() {
-                $('.results-left').toggle();
-                var $resultsRight = $('.results-right');
-                if ($resultsRight.css('visibility') === 'hidden') {
-                    $resultsRight.css('visibility', 'visible');
-                }
-                else {
-                    $resultsRight.css('visibility', 'hidden');
-                }
-            });
+            $('.results-left').toggleClass('none');
+            $('.results-right').toggleClass('visible');
+            var $toggleMapBtnIcon = $('#toggleMapBtn').children('i');
+            $toggleMapBtnIcon.toggleClass('icon-globe icon-list');
         };
 
 
@@ -427,20 +421,24 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
         return {
             init: function() {
                 var state = getMapState(),
-                    historyState = History.getState().data;
-                map = new L.map('map').setView(state.point, defaultZoom);   // Initialize Leaflet map
+                    historyState = History.getState().data,
+                    zoom = state.isGeolocated ? CEL.serverVars.zoomSettings : defaultZoom;
+                map = new L.map('map').setView(state.point, zoom);   // Initialize Leaflet map
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
 
-                // Use history for mapstate if not undefined (prevents geolocation when browsing back)
-                state.isGeolocated = typeof historyState.isGeolocated === 'undefined' ? state.isGeolocated : historyState.isGeolocated;
-                
                 // draw marker for geolocated point 
+                //      and open the map if on mobile
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
                         iconUrl: common.getUrl('icon-geolocation')
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
+
+                    var width = $(document).width();
+                    if (width < common.breakpoints.desktop) {
+                        mapToggle();
+                    }
                 }
 
                 // add class 'in' to set filters state if requested by history and were on desktop
@@ -473,7 +471,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
                 // highlight the appropriate list item when a location popup is shown
                 map.on('popupopen', function(e) {
-                    var $div = $('.location-container div[data-key=' + e.popup.options.key + ']');
+                    var $div = $('div.location-container[data-key=' + e.popup.options.key + ']');
                     if ($div.length > 0) {
                         $div.addClass('highlight');
                         $div[0].scrollIntoView();
@@ -494,7 +492,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     $filters.prop('checked', false);
                     dm.onFilterChange();
                 });
-                mapToggle();
+                
+                $('#toggleMapBtn').click(function(e) {
+                    mapToggle();
+                    e.preventDefault();
+                });
+
                 displayMap();
                 refineListener();
             }
