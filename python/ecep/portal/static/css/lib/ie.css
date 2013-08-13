@@ -7,3 +7,9 @@
 .more-less-btn {
 	margin-top: 0 !important;
 }
+
+.truncate:hover {
+	text-overflow: ellipsis\9;
+	overflow: hidden\9;
+	width: 300px\9;
+}

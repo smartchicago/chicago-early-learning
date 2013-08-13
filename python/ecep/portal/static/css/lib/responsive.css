@@ -146,7 +146,7 @@
         width: 98%;
         width: auto;
         padding: 25px;
-        text-align: center;
+        text-align: left;
     }
         .container-custom    h1 {
             font-size: 29px;
@@ -404,7 +404,7 @@
     }
 		
 				.favorite {
-						padding: 36px;
+						padding: 35px 10px 35px 35px;
             width: auto;
 						left: 0;
 						right: 0;
@@ -520,7 +520,12 @@
         
         .single-share {
             content: "";
-        }
+						float: right;
+						position: absolute;
+						top: 102px;
+						right: 10px;
+				}
+       }
 				
 				.filters-1,
 				.filters-2,
