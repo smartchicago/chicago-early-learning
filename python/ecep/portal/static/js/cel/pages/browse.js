@@ -217,11 +217,13 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 var $this = $(this),
                     key = $this.data('loc-id'),
                     loc = dm.locations[key],
-                    iconkey = 'icon-' + loc.getIconKey();
+                    iconkey = 'icon-' + loc.getIconKey(),
+                    $locIcon = $('#loc-icon-' + key);
 
                 // always highlighted because the mouse will be over the accordion div for the click
                 loc.setIcon({ highlighted: true });
-                $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
+                $locIcon.attr('src', common.getUrl(iconkey));
+                $locIcon.parent('a').attr('data-hint', loc.getIconDescription());
             });
 
             // Watch for hover events on the list so we can highlight both 
@@ -231,8 +233,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 var $this = $(this),
                     key = $this.data('key'),
                     loc = dm.locations[key],
-                    iconkey = 'icon-' + loc.getIconKey();
-                $('#loc-icon-' + key).attr('src', common.getUrl(iconkey));
+                    iconkey = 'icon-' + loc.getIconKey(),
+                    $locIcon = $('#loc-icon-' + key);
+                $locIcon.attr('src', common.getUrl(iconkey));
+                $locIcon.parent('a').attr('data-hint', loc.getIconDescription());
             }).on('show.bs.collapse', function(e) {
                 var $this = $(this),
                     $morelessbtn = $this.find('.more-less-btn'),
