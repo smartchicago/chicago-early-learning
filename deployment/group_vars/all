@@ -75,6 +75,8 @@ http_auth: 'off'
 http_password: ''
 http_user: ''
 
+gzip_compression_level: 6
+
 ## Git Settings ##
 git_url: https://github.com/smartchicago/chicago-early-learning
 git_branch: staging
@@ -92,3 +94,8 @@ node_packages:
 rabbit_user: ecep
 rabbit_password: ecep
 queue_name: ecep
+
+## gunicorn settings ##
+
+gunicorn_workers: 3
+
