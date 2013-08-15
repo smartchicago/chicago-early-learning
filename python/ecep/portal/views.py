@@ -314,7 +314,7 @@ def location_api(request, location_ids=None):
 
 
 def location(request, location_id=None):
-    ctx = RequestContext(request, {})
+    ctx = RequestContext(request, { 'loc': location_details(location_id) })
     response = render_to_response('location.html', context_instance=ctx)
     return response
 
