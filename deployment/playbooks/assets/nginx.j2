@@ -18,6 +18,7 @@ server {
 
   location /static/ {
     alias {{ static_path }};
+    expires 604800;
   }
 
   location /media/ {
