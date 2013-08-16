@@ -1,4 +1,4 @@
-# Copyright (c) 2012 Azavea, Inc.
+# Copyright (c) 2012, 2013 Azavea, Inc.
 # See LICENSE in the project root for copying permission
 
 from django import template
