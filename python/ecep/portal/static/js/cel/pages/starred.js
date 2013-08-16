@@ -4,8 +4,8 @@
  * JavaScript for the starred locations page 
  ********************************************************/
 
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cookie', 'favorites', 'Handlebars', 'jquery-cookie'], 
-    function($, L, html, common, celcookie, favorites, Handlebars) {
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorites', 'Handlebars'], 
+    function($, L, html, common, favorites, Handlebars) {
         'use strict';
 
         $(document).ready(function() {
@@ -35,26 +35,32 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'cel-cook
                 // Remove map and share button for each location
                 $('.fav-count').html(numLocations);
 
-                // add click listener for the close buttons
-                $('.favs-close-button').removeClass('none').on('click', function(e) {
-                    var $favorite = $(this).parent(),
-                        key = $favorite.data('key');
-                    favorites.removeIdFromCookie(key);
-                    $.getJSON(common.getUrl('location-api', { locations: favorites.getCookie() }), drawStarredLocations);
-                });
+                
+                // add close buttons and click listener if we are displaying cookie locations
+                //      else hide because this was a shared link and the "remove" functionality
+                //      does not make sense
+                if (!regexResult) {
+                    $('.favs-close-button').removeClass('none').on('click', function(e) {
+                        var $favorite = $(this).parent(),
+                            key = $favorite.data('key');
+    
+                        favorites.removeIdFromCookie(key);
+                        $.getJSON(common.getUrl('location-api', { locations: favorites.getCookie() }), drawStarredLocations);
+                    });
+                }
             }
 
             // get location ids:
             // url --> string :: /starred/12,13,54/  --> "12,13,54" 
             //      -- or --
             // cookie string 
-            var cookie = $.cookie(celcookie.name),
+            var cookie = favorites.getCookie(),
                 regexResult = /([0-9,]+)/.exec(window.location.pathname),
                 starredIds = "";
-            
+
             if (regexResult || cookie) {
                 starredIds = regexResult ? regexResult[1] : cookie;
-                $.getJSON(common.getUrl('location-api', { locations: favorites.getCookie() }), drawStarredLocations);
+                $.getJSON(common.getUrl('location-api', { locations: starredIds }), drawStarredLocations);
             } else {
                 $('.container').html('No Starred Locations');
             }

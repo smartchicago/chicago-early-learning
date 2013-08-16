@@ -31,10 +31,10 @@
   <div id="collapseLoc{{@index}}" class="accordion-body collapse">
     <div class="accordion-inner">
       <div class="accordion-right">
-        <button href="{{item.url}}" class="btn input-block-level" target="_blank">
+          <a {{#if item.url}}href="{{item.url}}" {{/if}}class="btn input-block-level{{#unless item.url}} text-grey{{/unless}}" target="_blank">
           <i class="icon-globe"></i>
           {{translations.website}}
-        </button>
+        </a>
         <button class="btn input-block-level share-btn" data-key="{{item.key}}">
           <i class="icon-share"></i>
           {{translations.share}}
@@ -43,17 +43,18 @@
       <div class="accordion-left">
         <h1>{{phone.fieldname}}</h1>
         <h2><a href="tel:{{phone.number}}">{{phone.number}}</a></h2>
-        <hr>
         {{#each sfields}}
+        <hr>
         <h1>{{fieldname}}</h1>
         <h2>{{value}}</h2>
-        <hr>
         {{/each}}
+        {{#if bfields.values }}
+        <hr>
         <h1>{{bfields.fieldname}}</h1>
         <h2>{{bfields.values}}</h2>
+        {{/if}}
       </div>
     </div>
   </div>
-</div>
 </div>
 {{/each}}

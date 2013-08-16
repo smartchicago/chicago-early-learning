@@ -10,4 +10,4 @@ kill timeout 30
 
 chdir {{ app_path }}/python/ecep
 
-exec {{ env_path }}/bin/gunicorn_django -w 3 --log-file "{{ unicorn_log }}" -b "{{ unicorn_socket }}"
+exec {{ env_path }}/bin/gunicorn_django -w {{ gunicorn_workers }} --log-file "{{ unicorn_log }}" -b "{{ unicorn_socket }}"

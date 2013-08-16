@@ -34,8 +34,8 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
             }
             id = parseInt(id, 10);
             var cookie = favs.getCookie(),
-                idArray = cookie.split(',').map(function(x) { return parseInt(x, 10); });
-            return (idArray.indexOf(id) >= 0); 
+                idArray = $.map(cookie.split(','), function(x) { return parseInt(x, 10); });
+            return ($.inArray(id, idArray) >= 0); 
         },
 
         /* 
@@ -162,13 +162,13 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                 img = 'icon-star-empty';
                 favs.removeIdFromCookie(buttonId);
                 increment = -1;
-                $elt.attr('data-hint', gettext('Click to star location'));
+                $elt.attr('data-hint', gettext('Click to save to your list'));
             // toggle on
             } else {
                 img = 'icon-star';
                 favs.addIdToCookie(buttonId);
                 increment = 1;
-                $elt.attr('data-hint', gettext('Click to remove star from location'));
+                $elt.attr('data-hint', gettext('Click to remove from your list'));
             }
 
             buttonImg.attr('class', img);
@@ -220,15 +220,12 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
          * Initializes a share modal with the stored favorites information
          */
         initShareModal: function() {
-            // we talked about modifying this module to keep id state in memory in
-            // addition to using a cookie. when that's implemented, this function
-            // should be modified to use that in-memory data.
-            var ids = favs.getCookie() || '',
-                count = ids.split(',').length;
+            var ids = favs.getCookie(), 
+                count = ids ? ids.split(',').length : 0;
 
             $('#share-modal').trigger('init-modal', {
                 // the url is passed in to the sharing urls, so it must be absolute
-                url: document.location.origin + common.getUrl('starred', { locations: ids }),
+                url: common.getUrl('origin') + common.getUrl('starred', { locations: ids }),
                 title: 'I just starred ' + count + ' locations'
             });
         },

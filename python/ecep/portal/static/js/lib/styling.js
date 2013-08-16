@@ -4,24 +4,17 @@
  * Javascript for setting up stylings, etc. on pages
  ********************************************************/
 
-'use strict';
+define(['jquery'], function($) {
+    
+    'use strict';
 
-define(['./slidepanel'], function($) {
     $(document).ready(function(){
+        var th;
 
-        var th = $("#filter-options").height();
-        $(".locations-wrapper").css("top", th);
-        
         $(window).on("resize", function(){
             th = $("#filter-options").height();
             $(".locations-wrapper").css("top", th);
         });
-            
-        $('[data-slidepanel]').slidepanel({
-            orientation: 'right',
-            mode: 'overlay'
-        });
-            
         $('#filter-options').on('shown', function () {
             th = $("#filter-options").height();
             $(".locations-wrapper").animate({

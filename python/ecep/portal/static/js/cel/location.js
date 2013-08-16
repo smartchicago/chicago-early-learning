@@ -57,7 +57,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.isAccredited = function() {
         var isAccredited = false;
         $.each(this.data.sfields, function(key, value) {
-            if (value.fieldname === gettext("Accreditation") && value.value !== "None") {
+            if (value.fieldname === gettext("Accreditation") && value.value !== gettext('None')) {
                 isAccredited = true;
                 return false;
             }
@@ -74,7 +74,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.isSchool = function() {
         var isSchool = false;
         $.each(this.data.sfields, function(key, value) {
-            if (value.fieldname === gettext("Affiliations")) {
+            if (value.fieldname === gettext("Program Information")) {
                 if (value.value.indexOf("CPS Based") !== -1) {
                     isSchool = true;
                 } 
@@ -174,6 +174,23 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     };
 
     /*
+     * return a pretty print string describing the icon and location
+     */
+    Location.prototype.getIconDescription = function() {
+        var descriptions = {
+            center: gettext('Center'),
+            'center-starred': gettext('Starred Center'),
+            'center-accredited': gettext('Accredited Center'),
+            'center-accredited-starred': gettext('Starred Accredited Center'),
+            school: gettext('School'),
+            'school-starred': gettext('Starred School'),
+            'school-accredited': gettext('Accredited School'),
+            'school-accredited-starred': gettext('Starred Accredited School')
+        };
+        return descriptions[this.getIconKey()];
+    };
+
+    /*
      * Get location marker object
      */
     Location.prototype.getMarker = function() {
@@ -189,7 +206,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.setMarker = function(options) {
         var defaults = {
                 popup: true
-            };
+            },
             icon = this.getIcon(options),
             marker = this.getMarker();
         options = $.extend({}, defaults, options);
@@ -246,8 +263,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          * applied filters and bounding box of map
          */
         locationUpdate: function(map, locationLayer) {
-            var filters = this.getFilters(map);
-                that = this;
+            var that = this;
+            that.events.trigger('DataManager.locationUpdating');
+
+            var filters = that.getFilters(map);
             $.getJSON(common.getUrl('location-api'), filters, function(data) {
                 // Unfortunately we can't just blow away the locations here because that
                 // makes the popovers disappear every time you pan, so we have to do it
@@ -296,8 +315,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
          * Download topojson if not already downloaded.
          */
         neighborhoodUpdate: function() {
-            var that = this,
-                filters = that.getFilters();
+            var that = this;
+            that.events.trigger('DataManager.neighborhoodUpdating');
+
+            var filters = that.getFilters();
             $.when(
                 $.getJSON(common.getUrl('neighborhood-api'), filters, function(data) {
                     var neighborhoods = that.neighborhoods.data;
@@ -358,8 +379,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
 
         /* 
          * Available events:
+         * neighborhoodUpdating: 'DataManager.neighborhoodUpdating'
+         *      triggered when a neighborhood update begins, before the json request is sent
          * neighborhoodUpdated: 'DataManager.neighborhoodUpdated',
          *      triggered when neighborhood data is finished loading
+         * locationUpdating: 'DataManager.locationUpdating'
+         *      triggered when a location update begins, before the json request is sent
          * locationUpdated: 'DataManager.locationUpdated'
          *      triggered when location data is finished loading
          * filtersUpdated: 'DataManager.filtersChanged'

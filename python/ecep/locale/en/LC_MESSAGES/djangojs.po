@@ -1,14 +1,15 @@
 # English language translation strings for chicago-early-learning
 # Copyright (C) 2013 Azavea, Inc
 # This file is distributed under the same license as the chicago-early-learning package.
-# David Zwarg <dzwarg@azavea.com>, 2013.
+# David Zwarg <dzwarg@azavea.com>, Bennet Huber <bhuber@azavea.com>
+# Chris Brown <cbrown@azavea.com>, Andrew Fink <afink@azavea.com>, 2013.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 08:47-0500\n"
+"POT-Creation-Date: 2013-08-09 12:01-0500\n"
 "PO-Revision-Date: 2013-01-10 09:35-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -16,18 +17,74 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: portal/static/js/cel/pages/browse.js:180
-msgid "More"
+#: portal/static/js/cel/common.js:316
+msgid "Please enable geolocation services."
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:180
+#: portal/static/js/cel/favorites.js:165
+msgid "Click to star location"
+msgstr ""
+
+#: portal/static/js/cel/favorites.js:171
+msgid "Click to remove star from location"
+msgstr ""
+
+#: portal/static/js/cel/location.js:60
+msgid "Accreditation"
+msgstr ""
+
+#: portal/static/js/cel/location.js:77
+msgid "Program Information"
+msgstr ""
+
+#: portal/static/js/cel/location.js:203
+msgid "Details"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:189
+msgid "Neighborhood"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:190
+msgid "Locations"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:192
+msgid "Location"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:193
+msgid "More Information"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:240
 msgid "Less"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:235
-msgid "Number of Schools"
+#: portal/static/js/cel/pages/browse.js:241
+msgid "Click to show less information"
 msgstr ""
 
-#: portal/static/js/cel/pages/browse.js:235
+#: portal/static/js/cel/pages/browse.js:245
+msgid "More"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:246
+msgid "Click to show more information"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:271
+msgid "Click to hide filters"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:273
+msgid "Click to show filters"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:324
+msgid "Number of Locations"
+msgstr ""
+
+#: portal/static/js/cel/pages/browse.js:324
 msgid "Explore"
 msgstr ""

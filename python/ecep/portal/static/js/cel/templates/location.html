@@ -1,11 +1,12 @@
-<div class="favorite" data-key="{{item.key}}">
+<div class="favorite" data-key="{{item.key}}" itemscope itemtype="http://schema.org/EducationalOrganization">
   <div id="location-map" class="none single-location-map"></div>
   <a href="javascript:void(0)" class="none favs-close-button">&times;</a>
-  <h1 class="school-name">{{item.site_name}}</h1>
-  <p>{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</p>
-  {{#if item.url}}
+  <h1 class="school-name" itemprop="name">{{item.site_name}}</h1>
+  <p itemprop="address">{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</p>
   <ul class="website-phone">
-    <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank">{{item.url}}</a></li>
+    {{#if item.url}}
+    <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank" itemprop="url">{{item.url}}</a></li>
+    {{/if}}
     <a href="javascript:void(0)"
         class="none favs-toggle single-star pull-right" id="favs-toggle-loc-{{item.key}}"
         data-loc-id="{{item.key}}">
@@ -17,18 +18,19 @@
       Share
     </a>
   </ul>
-  {{/if}}
   <hr>
   <div class="school-details">
     <h1>{{phone.fieldname}}</h1>
-    <h2><a href="tel:{{phone.number}}">{{phone.number}}</a></h2>
+    <h2><a href="tel:{{phone.number}}" itemprop="telephone">{{phone.number}}</a></h2>
     <hr>
     {{#each sfields}}
       <h1>{{fieldname}}</h1>
       <h2>{{value}}</h2>
       <hr>
     {{/each}}
+    {{#if bfields.values }}
       <h1>{{bfields.fieldname}}</h1>
       <h2>{{bfields.values}}</h2>
+    {{/if}}
   </div>
 </div>

@@ -1,22 +1,16 @@
-# Spanish language translation strings for chicago-early-learning
-# Copyright (C) 2013 Azavea, Inc
-# This file is distributed under the same license as the chicago-early-learning package.
-# David Zwarg <dzwarg@azavea.com>, 2013.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 11:00-0500\n"
-"PO-Revision-Date: 2013-01-10 08:46-0600\n"
-"Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
-"<jbranigan@azavea.com>\n"
-"Language: es\n"
+"POT-Creation-Date: 2013-08-16 15:32-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Translate Toolkit 1.9.0\n"
 
 #: settings.py:45
 msgid "English"
@@ -26,76 +20,68 @@ msgstr "Inglés"
 msgid "Spanish"
 msgstr "Español"
 
-#: portal/models.py:185
-msgid "Affiliations"
-msgstr "Afiliación del centro/sede"
+#: portal/models.py:189
+msgid "None"
+msgstr ""
 
-#: portal/models.py:192
+#: portal/models.py:195
+msgid "Program Information"
+msgstr "Información del programa"
+
+#: portal/models.py:202
 msgid "Languages (other than English)"
 msgstr "Idiomas (excepto Inglés)"
 
-#: portal/models.py:195
-msgid "Program Duration"
-msgstr "Duración del programa"
+#: portal/models.py:207
+msgid "No Hours Listed"
+msgstr "Horario no indicado"
 
-#: portal/models.py:195
-msgid "Full Year"
-msgstr "Año completo"
+#: portal/models.py:209
+msgid "Duration/Hours"
+msgstr "Duración/horas"
 
-#: portal/models.py:195
-msgid "School Year"
-msgstr "Año Escolar"
-
-#: portal/models.py:198
+#: portal/models.py:215
 msgid "Weekday Availability"
-msgstr ""
+msgstr "Disponibilidad entre semana"
 
-#: portal/models.py:198
-msgid "Full Week"
-msgstr "Semana completa"
-
-#: portal/models.py:198
-msgid "Partial Week"
-msgstr "Semana parcial"
-
-#: portal/models.py:201
+#: portal/models.py:219
 msgid "Phone Number"
 msgstr "Número de teléfono"
 
-#: portal/models.py:208
-msgid "Quality Statement"
-msgstr "Declaración de calidad"
+#: portal/models.py:226
+msgid "Description"
+msgstr "Descripción"
 
-#: portal/models.py:217
+#: portal/models.py:235
 msgid "More"
 msgstr "Más"
 
-#: portal/models.py:217 portal/templatetags/portal_extras.py:30
+#: portal/models.py:235 portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr "Sitio web"
 
-#: portal/models.py:217
+#: portal/models.py:235
 msgid "Directions"
-msgstr "Indicaciones"
+msgstr "Dirección"
 
-#: portal/models.py:218 portal/templates/browse.html:43
+#: portal/models.py:236 portal/templates/browse.html:43
+#: portal/templates/starred.html:26
 msgid "Share"
-msgstr ""
+msgstr "Compartir"
 
-#: portal/models.py:225
-#, fuzzy
+#: portal/models.py:243
 msgid "Directions from Google"
-msgstr "Indicaciones"
+msgstr "Dirección usando Google"
 
-#: portal/models.py:225
+#: portal/models.py:243
 msgid "Click to show more information"
-msgstr ""
+msgstr "Haga clic para mostrar mas información"
 
-#: portal/models.py:226
+#: portal/models.py:244
 msgid "Click to star location"
-msgstr ""
+msgstr "Haga clic para guardar esta ubicación"
 
-#: portal/models.py:229
+#: portal/models.py:247
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -117,7 +103,7 @@ msgstr ""
 #: portal/sms.py:119
 msgid "Reply \"m\" or \"more\" to receive the next few pages"
 msgstr ""
-"Envíe una respuesta con \"m\" o \"more\" para recibir las páginas que siguen"
+"Envíe una respuesta con \"m\" o \"more\" para recibir las páginas siguientes"
 
 #: portal/sms.py:120
 #, python-format
@@ -149,47 +135,23 @@ msgstr ""
 msgid "(page %(current)d/%(total)d)"
 msgstr "(página %(current)d/%(total)d)"
 
-#: portal/views.py:365
+#: portal/views.py:369
 msgid "Explore"
 msgstr "Explorar"
 
-#: portal/views.py:366
-msgid "Click to see schools in this neighborhood"
-msgstr ""
-
-#: portal/views_v1.py:32
-msgid "Distance"
-msgstr "Distancia"
-
-#: portal/views_v1.py:33
-msgid "< 0.5 mi"
-msgstr "< 0.5 millas"
-
-#: portal/views_v1.py:34
-msgid "< 1 mi"
-msgstr "< 1 milla"
-
-#: portal/views_v1.py:35
-msgid "< 2 mi"
-msgstr "< 2 millas"
-
-#: portal/views_v1.py:36
-msgid "< 5 mi"
-msgstr "< 5 millas"
-
-#: portal/views_v1.py:37
-msgid "< 10 mi"
-msgstr "< 10 millas"
+#: portal/views.py:370
+msgid "Click to see locations in this neighborhood"
+msgstr "Haga clic para ver ubicaciones en este vecindario"
 
 #: portal/templates/about.html:9 portal/templates/browse.html:12
 #: portal/templates/faq-models.html:9 portal/templates/index.html:11
-#: portal/templates/location.html:12 portal/templates/search.html:9
-#: portal/templates/starred.html:12 templates/admin/base_site.html:15
+#: portal/templates/location.html:12 portal/templates/starred.html:12
+#: templates/admin/base_site.html:15
 msgid "Chicago Early Learning"
 msgstr "Chicago Early Learning"
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
-#: portal/templates/base.html:59
+#: portal/templates/base.html:75
 msgid "About"
 msgstr "Información acerca de nosotros"
 
@@ -290,85 +252,81 @@ msgstr ""
 "El Urban Education Lab (Laboratorio de Educación Urbana) de la Universidad "
 "de Chicago, un proyecto del Urban Education Institute (Instituto de "
 "Educación Urbana), busca mejorar los resultados educativos al proporcionar "
-"evidencia científica de qué estrategias son más eficaces y rentables, para "
-"quiénes y por qué."
+"evidencia científica sobre cuáles son las estrategias más eficaces y "
+"rentables, para quiénes y por qué."
 
-#: portal/templates/base-search.html:7
-msgid "Click to user your current location"
-msgstr ""
+#: portal/templates/base-search.html:11
+msgid "Click to use your current location"
+msgstr "Haga clic para usar su ubicación actual"
 
-#: portal/templates/base-search.html:9 portal/templates/index.html:23
-#: portal/templates/search.html:9
+#: portal/templates/base-search.html:17 portal/templates/index.html:24
 msgid "Search"
 msgstr "Buscar"
 
-#: portal/templates/base.html:58
-#, fuzzy
+#: portal/templates/base.html:74
 msgid "Text For Info"
 msgstr "Envíe texto para recibir info"
 
-#: portal/templates/base.html:60 portal/templates/faq-models.html:9
+#: portal/templates/base.html:76 portal/templates/faq-models.html:9
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
 
-#: portal/templates/base.html:62
+#: portal/templates/base.html:78
 msgid "Language"
 msgstr "Idioma"
 
-#: portal/templates/base.html:82
+#: portal/templates/base.html:104
 msgid "Want information via text?"
 msgstr "¿Desea recibir información por medio de un mensaje de texto?"
 
-#: portal/templates/base.html:85
+#: portal/templates/base.html:107
 msgid "Text your zip code to "
-msgstr ""
+msgstr "Envie un mensaje de texto con su código postal a"
 
-#: portal/templates/base.html:85
+#: portal/templates/base.html:107
 msgid " and we'll do the rest."
-msgstr ""
+msgstr "Y nosotros haremos el resto."
 
-#: portal/templates/base.html:93
+#: portal/templates/base.html:115
 msgid "Save and Share Permalink"
-msgstr ""
+msgstr "Guarde y comparta el enlace permanente"
 
-#: portal/templates/base.html:96
+#: portal/templates/base.html:118
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
+"Guarde el siguiente link, o compártalo con sus amigos, familiares o "
+"compañeros de trabajo."
 
 #: portal/templates/browse.html:40
 msgid "Click to hide filters"
-msgstr ""
+msgstr "Haga clic para ocultar los filtros"
 
 #: portal/templates/browse.html:40
-#, fuzzy
 msgid "Refine your search"
-msgstr "Búsqueda de dirección"
+msgstr "Refine su búsqueda"
 
 #: portal/templates/browse.html:42
-msgid "Click to view starred locations"
-msgstr ""
+msgid "Click to view your list"
+msgstr "Haga clic para ver su lista"
 
-#: portal/templates/browse.html:42
-#, fuzzy
+#: portal/templates/browse.html:42 portal/templates/starred.html:21
 msgid "Starred"
-msgstr "Inicio"
+msgstr "Guardado"
 
-#: portal/templates/browse.html:43
-msgid "Click to share starred schools"
-msgstr ""
+#: portal/templates/browse.html:43 portal/templates/starred.html:26
+msgid "Click to share your list"
+msgstr "Haga clic para compartir su lista"
 
-#: portal/templates/browse.html:69
-#, fuzzy
+#: portal/templates/browse.html:83
 msgid "Reset Search"
-msgstr "Búsqueda de dirección"
+msgstr "Vuelva a intentar su  búsqueda"
 
-#: portal/templates/index.html:20
+#: portal/templates/index.html:21
 msgid "Find the right school for your child."
-msgstr ""
+msgstr "Encuentre la escuela más adecuada para su hijo."
 
-#: portal/templates/index.html:21 portal/templates/index.html.py:30
-#, fuzzy
+#: portal/templates/index.html:22 portal/templates/index.html.py:31
 msgid ""
 "Welcome to the City of Chicago's Early Learning Portal. Here you can easily "
 "find early learning programs near your home or work. You can also compare "
@@ -376,61 +334,94 @@ msgid ""
 "Browse the FAQ page to learn more about different alternatives and how to "
 "enroll your child in a quality early learning program."
 msgstr ""
-"\n"
-"        <p>Bienvenido al portal de aprendizaje temprano de la ciudad de "
-"Chicago. Aquí podrá encontrar fácilmente programas de aprendizaje temprano "
-"cerca de su hogar o lugar de trabajo. También podrá comparar programas punto "
-"por punto para escoger la mejor opción para su hijo. Revise la página de "
-"preguntas frecuentes para informarse mejor sobre las diferentes alternativas "
-"y cómo inscribir a su hijo en un programa de aprendizaje temprano óptimo.</"
-"p> \n"
-"        "
+"Bienvenido al portal de aprendizaje temprano de la ciudad de Chicago. Aquí "
+"podrá encontrar fácilmente programas de aprendizaje temprano cerca de su "
+"hogar o lugar de trabajo. También podrá comparar programas punto por punto "
+"para escoger la mejor opción para su hijo. Revise la página de preguntas "
+"frecuentes para informarse mejor sobre las diferentes alternativas y cómo "
+"inscribir a su hijo en un programa de aprendizaje temprano óptimo"
 
-#: portal/templates/index.html:24
-msgid "Just start browsing"
-msgstr ""
+#: portal/templates/index.html:25
+msgid "Browse by Neighborhood"
+msgstr "Buscar por vecindario"
+
+#: portal/templates/index.html:35
+msgid "Find early learning centers near you."
+msgstr "Encuentre centros de aprendizaje temprano cerca de usted."
 
 #: portal/templates/index.html:36
-msgid "Find early learning centers near you."
-msgstr ""
-
-#: portal/templates/index.html:37
 msgid ""
 "Search by the address where you live or work to quickly find all of the "
 "early learning centers located near you. The results are shown in a list and "
 "on a map so you can find what you want the way you find it easiest."
 msgstr ""
+"Busque usando el domicilio de su casa o trabajo para encontrar rápidamente "
+"todos los centros de aprendizaje temprano ubicados cerca de usted. Los "
+"resultados son mostrados en una lista y un mapa, de manera que usted pueda "
+"encontrar lo que busca  de la manera más fácil. "
+
+#: portal/templates/index.html:43
+msgid "Browse locations by neighborhood."
+msgstr "Busque ubicaciones por vecindario"
 
 #: portal/templates/index.html:44
-msgid "Browse locations by neighborhood."
-msgstr ""
-
-#: portal/templates/index.html:45
 msgid ""
 "You can pick a neighborhood from the list or map if you don't want to search "
 "by address. You can also type a neighborhood or even a school name into the "
 "search bar to get there faster."
 msgstr ""
+"Usted puede escoger un vecindario directamente de la lista o el mapa, si no "
+"quiere buscarlo por dirección. Usted también puede escribir en el campo de "
+"búsqueda el nombre de un vecindario o, inclusive el nombre de una escuela "
+"para encontrarlo rápidamente."
+
+#: portal/templates/index.html:51
+msgid "Text for more info"
+msgstr "Envíe texto para recibir más info"
 
 #: portal/templates/index.html:52
-#, fuzzy
-msgid "Text for more info"
-msgstr "Envíe texto para recibir info"
-
-#: portal/templates/index.html:53
 msgid ""
 "Get details about locations near you with text messages. Simply send a zip "
-"code and follow the instructions on your phone."
+"code to "
 msgstr ""
+"Obtenga detalles acerca de las ubicaciones cerca de usted por medio de "
+"mensajes de texto. Simplemente envie el código postal a "
+
+#: portal/templates/index.html:52
+msgid " and follow the instructions on your phone."
+msgstr "Y siga las instrucciones en su teléfono."
+
+#: portal/templates/index.html:52
+msgid ""
+"If you’d like to talk to someone about your options, please call the "
+"Chicago: Ready to Learn! Hotline at "
+msgstr ""
+"Si usted quisiera hablar con alguien para consultar sobre sus opciones, por "
+"favor llame a Chicago: Ready to Learn! Línea directa al"
+
+#: portal/templates/index.html:59
+msgid "Refine your search to find exactly what you want."
+msgstr "Refine su búsqueda para encontrar exactamente lo que usted quiere."
 
 #: portal/templates/index.html:60
-msgid "Refine your search to find exactly what you want."
-msgstr ""
-
-#: portal/templates/index.html:61
 msgid ""
 "There are a number of ways to narrow down your search so you can see only "
 "the programs and schools you are interested in."
+msgstr ""
+"Hay diferentes formas para restringir su búsqueda de manera que usted puede "
+"ver sólo los programas y escuelas en las que está interesado"
+
+#: portal/templates/index.html:64
+msgid "Get Started!"
+msgstr "Head Start"
+
+#: portal/templates/starred.html:25
+#, fuzzy
+msgid "Clear Selections"
+msgstr "Dirección"
+
+#: portal/templates/starred.html:27
+msgid "Back"
 msgstr ""
 
 #: portal/templatetags/portal_extras.py:38
@@ -442,10 +433,11 @@ msgid "Chicago Early Learning Portal admin"
 msgstr "Chicago Early Learning Portal admin"
 
 #: templates/admin/login.html:24
+#, fuzzy
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
 msgstr[0] "Por favor corrija el siguiente error:"
-msgstr[1] "Por favor corrija los siguientes errores:"
+msgstr[1] "Por favor corrija el siguiente error:"
 
 #: templates/admin/login.html:40
 msgid "Username:"
@@ -463,15 +455,53 @@ msgstr "¿Ha olvidado su nombre de usuario o contraseña?"
 msgid "Log in"
 msgstr "Iniciar sesión"
 
-#, fuzzy
-#~ msgid "Quality Rating"
+#~ msgid "Please correct the errors below."
+#~ msgstr "Por favor corrija los siguientes errores:"
+
+#~ msgid "Affiliations"
+#~ msgstr "Afiliación del centro/sede"
+
+#~ msgid "Full Year"
+#~ msgstr "Año completo"
+
+#~ msgid "School Year"
+#~ msgstr "Año Escolar"
+
+#~ msgid "Full Week"
+#~ msgstr "Semana completa"
+
+#~ msgid "Partial Week"
+#~ msgstr "Semana parcial"
+
+#~ msgid "Quality Statement"
 #~ msgstr "Declaración de calidad"
+
+#~ msgid "Distance"
+#~ msgstr "Distancia"
+
+#~ msgid "< 0.5 mi"
+#~ msgstr "< 0.5 millas"
+
+#~ msgid "< 1 mi"
+#~ msgstr "< 1 milla"
+
+#~ msgid "< 2 mi"
+#~ msgstr "< 2 millas"
+
+#~ msgid "< 5 mi"
+#~ msgstr "< 5 millas"
+
+#~ msgid "< 10 mi"
+#~ msgstr "< 10 millas"
+
+#~ msgid "Quality Rating"
+#~ msgstr "Evaluación de calidad"
 
 #~ msgid "Accreditation"
 #~ msgstr "Acreditación"
 
 #~ msgid "Program Hours"
-#~ msgstr "Programas"
+#~ msgstr "Horario del Programa"
 
 #~ msgid "Full Day"
 #~ msgstr "Año completo"
@@ -493,9 +523,6 @@ msgstr "Iniciar sesión"
 
 #~ msgid "Home Visiting"
 #~ msgstr "Visitas a Domicilio"
-
-#~ msgid "Head Start"
-#~ msgstr "Head Start"
 
 #~ msgid "Early Head Start"
 #~ msgstr "Early Head Start"
@@ -533,13 +560,13 @@ msgstr "Iniciar sesión"
 #~ "Not Yet Rated&quot; does not make an indication about program quality."
 #~ msgstr ""
 #~ "El estado de Illinois está actualmente desarrollando un sistema universal "
-#~ "de calificación de calidad que ayudará a indicar la calidad de un "
-#~ "programa de un vistazo. Una vez que el sistema esté finalizado, se lo "
-#~ "incluirá aquí. En este momento, la etiqueta de “no calificado aún” no "
-#~ "proporciona ninguna indicación sobre la calidad del programa."
+#~ "de evaluación de calidad que ayudará a indicar la calidad de un programa "
+#~ "al momento. Una vez que el sistema esté finalizado, será incluido aquí. "
+#~ "Actualmente, la etiqueta de “no calificado aún” no proporciona ninguna "
+#~ "indicación sobre la calidad del programa."
 
 #~ msgid "Ratings"
-#~ msgstr "Calificaciones"
+#~ msgstr "Evaluaciones"
 
 #~ msgid "Not Yet Rated"
 #~ msgstr "No calificado aún"
@@ -556,9 +583,9 @@ msgstr "Iniciar sesión"
 #~ msgstr ""
 #~ "En el futuro, cada programa de aprendizaje temprano de Chicago recibirá "
 #~ "una calificación de calidad. Estas calificaciones ofrecerán una "
-#~ "indicación de la calidad de un programa de un vistazo. El sistema de "
-#~ "calificación de calidad del Estado está aún en proceso de desarrollo. En "
-#~ "este momento, la etiqueta de “no calificado aún” no indica nada sobre la "
+#~ "indicación de la calidad de un programa al momento. El sistema de "
+#~ "evaluación de calidad del Estado está aún en proceso de desarrollo. "
+#~ "Actualmente, la etiqueta de “no calificado aún” no indica nada sobre la "
 #~ "calidad del programa."
 
 #~ msgid "Accreditation:"
@@ -583,7 +610,7 @@ msgstr "Iniciar sesión"
 #~ msgstr "Comparacion"
 
 #~ msgid "Please select two or more locations to compare them."
-#~ msgstr "Seleccione dos o más centros para compararlos."
+#~ msgstr "Por favor seleccione dos o más centros para compararlos."
 
 #~ msgid "CEL"
 #~ msgstr "CEL"
@@ -615,19 +642,15 @@ msgstr "Iniciar sesión"
 #~ msgid "Your Location"
 #~ msgstr "Su ubicación"
 
-#~ msgctxt "user input"
+#~ msgctxt ""
 #~ msgid "Address"
 #~ msgstr "Dirección"
 
 #~ msgid "Text For More Info"
-#~ msgstr "Envíe texto para recibir info"
+#~ msgstr "Envíe texto para recibir más info"
 
 #~ msgid "Site Name"
 #~ msgstr "Nombre del centro"
-
-#~ msgctxt "field name"
-#~ msgid "Address"
-#~ msgstr "Dirección"
 
 #~ msgid "City"
 #~ msgstr "Ciudad"
@@ -665,7 +688,9 @@ msgstr "Iniciar sesión"
 #~ msgstr "Child‐Parent Center (Centro de Padres e Hijos)"
 
 #~ msgid "Child Care Assistance Program"
-#~ msgstr "Child Care Assistance Program (Programa de Asistencia Infantil)"
+#~ msgstr ""
+#~ "Child Care Assistance Program (Programa de Asistencia de Cuidados "
+#~ "Infantiles)"
 
 #~ msgid "Executive Director"
 #~ msgstr "Director ejecutivo"

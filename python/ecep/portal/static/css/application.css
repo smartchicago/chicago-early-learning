@@ -30,6 +30,10 @@ h1, h2, h3, h4 {
     margin-bottom: 20px;
 }
 
+.text-grey {
+    color: grey;
+}
+
 /*
  * Added because we defined a class close used elsewhere that overrides the margin-top of
  *  the default bootstrap elements.
@@ -227,7 +231,6 @@ h1, h2, h3, h4 {
         }
         .location button {
             float: right;
-            margin-top: -35px;
         }
         .location-test1 {
             margin-top: 0;
@@ -236,14 +239,16 @@ h1, h2, h3, h4 {
             font-family: "Helvetica", Arial, sans-serif;
         }
             #loc-icon {
-                margin-left: 65%;
-                margin-top: -30px;
-                float: left;
+                left: 65%;
+								margin-top: 3px;
+                position: absolute;
+                float: none;
             }
             #loc-dirs {
-                float: left;
-                margin-left: 75%;
-                margin-top: -30px;
+                left: 75%;
+								margin-top: 5px;
+                position: absolute;
+                float: none;
                 font-size: 13px;
                 font-weight: normal;
             }
@@ -308,6 +313,7 @@ h1, h2, h3, h4 {
             font-size: 16px;
             margin: 0;
             line-height: 16px;
+						padding-bottom: 4px; 
         }
         .accordion-inner h2 {
             font-size: 13px;
@@ -369,8 +375,8 @@ h1, h2, h3, h4 {
 
 .header-labels {
     font-family: "Helvetica", Arial, sans-serif;
-    color: #c2c2c2;
-    font-size: 11px;
+    color: #fff;
+    font-size: 17px;
 }
 
 .tooltip {
@@ -539,8 +545,8 @@ h1, h2, h3, h4 {
         padding: 3px 0;
     }
     .filters-inner label input {
-        margin-top: -2px;
-        margin-right: 3px;
+        margin-top: -3px;
+        margin-right: 7px;
     }
 
 
@@ -638,7 +644,7 @@ h1, h2, h3, h4 {
 }
 
 #header-dist {
-    padding-left: 408px;
+    padding-left: 350px;
 }
 
 .back-btn {
@@ -705,8 +711,21 @@ h1, h2, h3, h4 {
 }
 
 #filter-clear-all {
-    float: right;
-    margin-top: -37px;
+    float: left;
+    margin-top: 10px;
+}
+
+
+.filters-1,
+.filters-2,
+.filters-3,
+.filters-4 {
+	width: 25%;
+	float: left;
+}
+
+.filters-4 {
+	padding-bottom: 40px;
 }
 
 .btn-primary {
@@ -904,12 +923,15 @@ h1, h2, h3, h4 {
     }
     
     #faq-container .accordion-inner {
-        padding: 25px 15px 25px 35px;
+        padding: 25px 15px 25px 0px;
     }
     #faq-container .accordion-heading .accordion-toggle {
         font-family: "Montserrat", sans-serif;
         padding: 20px 0;
         color: #317DC1;
+    }
+		    #faq-container .accordion-heading .accordion-toggle:hover {
+        color: #155792;
     }
     #faq-container .accordion-inner {
         line-height: 1.8;
@@ -954,6 +976,10 @@ h1, h2, h3, h4 {
 
 .none {
     display: none;
+}
+
+.results-right.visible {
+    visibility: visible;
 }
 
 .favs-close-button {
@@ -1014,3 +1040,4 @@ h1, h2, h3, h4 {
         border: 1px solid #000;
         border: 1px solid rgba(0,0,0,0);
     }
+

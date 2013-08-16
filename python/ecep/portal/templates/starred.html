@@ -1,7 +1,7 @@
 {% extends "base-search.html" %}
 
 {% comment %}
-Copyright (c) 2012 Azavea, Inc.
+Copyright (c) 2012, 2013 Azavea, Inc.
 See LICENSE in the project root for copying permission
 {% endcomment %}
 
@@ -18,13 +18,13 @@ See LICENSE in the project root for copying permission
 <!-- Favorites top bar -->
 <div class="row faves-top">
     <div class="faves-left">
-        <h1>Starred (<span class="fav-count">0</span>)</h1>
+        <h1>{% trans "Starred" %} (<span class="fav-count">0</span>)</h1>
     </div>
 
     <div class="faves-right">
-        <a id="faves-clear" class="btn faves-option" href="#"><i class="icon-remove-circle"></i> Clear Selections</a>
-        <a id="faves-share" class="btn faves-option" href="#"><i class="icon-share"></i> Share</a>
-        <a class="btn faves-close pull-right" href="javascript:history.go(-1)"><i class="icon-arrow-left"></i> Back</a>
+        <a id="faves-clear" class="btn faves-option" href="#"><i class="icon-remove-circle"></i> {% trans "Clear Selections" %}</a>
+        <a id="faves-share" data-hint="{% trans 'Click to share your list' %}" class="btn faves-option hint--bottom" href="#"><i class="icon-share"></i> {% trans "Share" %}</a>
+        <button class="btn faves-close pull-right" onclick="javascript:history.go(-1)"><i class="icon-arrow-left"></i> {% trans "Back" %}</button>
     </div>
 </div>
 
