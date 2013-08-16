@@ -5,6 +5,7 @@
 *.swo
 *~
 python/ecep/static/*
+python/ecep/portal/static-prod
 python/ecep/local_settings.py
 
 # Generated config file for celery service

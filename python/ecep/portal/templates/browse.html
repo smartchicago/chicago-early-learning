@@ -56,28 +56,28 @@ See LICENSE in the project root for copying permission
           <div class="filters-1">
             {% for f in filters_1 %}   
               <label>
-                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
+                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{% trans f.1 %}
               </label>
             {% endfor %}
           </div>
           <div class="filters-2">
             {% for f in filters_2 %}   
               <label>
-                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
+                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{% trans f.1 %}
               </label>
             {% endfor %}
           </div>
           <div class="filters-3">
             {% for f in filters_3 %}   
               <label>
-                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
+                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{% trans f.1 %}
               </label>
             {% endfor %}
           </div>
           <div class="filters-4">
             {% for f in filters_4 %}
               <label>
-                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{{ f.1 }}
+                <input type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" />{% trans f.1 %}
               </label>
             {% endfor %}
             <button class="btn pull-right" id="filter-clear-all">{% trans "Reset Search" %}</button>
