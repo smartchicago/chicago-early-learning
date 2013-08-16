@@ -1,4 +1,4 @@
-# Copyright (c) 2012 Azavea, Inc.
+# Copyright (c) 2012, 2013 Azavea, Inc.
 # See LICENSE in the project root for copying permission
 
 from django.template import RequestContext
@@ -42,11 +42,15 @@ def search(request):
 
 def browse(request):
     fields = Location.get_filter_fields()
+    fields_len = len(fields)
+    filters_width = fields_len / 3
 
     # TODO: for now left/right split is kinda random, might want more control
     ctx = RequestContext(request, {
-        'filters_left': fields[:len(fields) / 2],
-        'filters_right': fields[len(fields) / 2:]
+        'filters_1': fields[:filters_width],
+        'filters_2': fields[filters_width:filters_width * 2],
+        'filters_3': fields[filters_width * 2:filters_width * 3],
+        'filters_4': fields[filters_width * 3:]
     })
 
     response = render_to_response('browse.html', context_instance=ctx)
@@ -310,7 +314,7 @@ def location_api(request, location_ids=None):
 
 
 def location(request, location_id=None):
-    ctx = RequestContext(request, {})
+    ctx = RequestContext(request, { 'loc': location_details(location_id) })
     response = render_to_response('location.html', context_instance=ctx)
     return response
 
@@ -363,7 +367,7 @@ def neighborhood_api(request):
         'id': n.pk,
         'center': n.get_center(),
         'explore': _('Explore'),
-        'tooltip': {'explore': _('Click to see schools in this neighborhood')}
+        'tooltip': {'explore': _('Click to see locations in this neighborhood')}
     } for n in counts]
 
     context = {'neighborhoods': count_list}

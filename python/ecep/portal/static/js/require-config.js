@@ -14,10 +14,9 @@ requirejs.config({
         Handlebars: '../lib/handlebars',
         async: '../lib/require-plugins/async',
         text: '../lib/require-plugins/text',
-        slidepanel: '../lib/slidepanel',
         topojson: '../lib/topojson',
-        styling: '../lib/styling',
         icons: '../lib/icons',
+        styling: '../lib/styling',
         history: '../lib/native.history'
     },
     shim: {
@@ -51,10 +50,6 @@ requirejs.config({
         },
         Handlebars: {
             exports: 'Handlebars'
-        },
-        slidepanel: {
-            deps: ['jquery'],
-            exports: '$'
         },
         topojson: {
             exports: 'topojson'

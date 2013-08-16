@@ -1,90 +1,187 @@
-# Spanish language translation strings for chicago-early-learning
-# Copyright (C) 2013 Azavea, Inc
-# This file is distributed under the same license as the chicago-early-learning package.
-# David Zwarg <dzwarg@azavea.com>, 2013.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.0\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 11:00-0500\n"
-"PO-Revision-Date: 2013-01-10 09:35-0600\n"
-"Last-Translator: David Zwarg <dzwarg@azavea.com>, John Branigan "
-"<jbranigan@azavea.com>\n"
-"Language: es\n"
+"POT-Creation-Date: 2013-08-16 15:32-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Translate Toolkit 1.9.0\n"
 
+#: portal/static-prod/js/cel/common.js:58
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static-prod/js/cel/pages/starred.js:84
+#: portal/static/js/cel/common.js:328
+msgid "Please enable geolocation services."
+msgstr "Por favor permita servicios de geolocalización"
+
+#: portal/static-prod/js/cel/favorites.js:9
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static-prod/js/cel/pages/starred.js:84
 #: portal/static/js/cel/favorites.js:165
-msgid "Click to star location"
-msgstr ""
+msgid "Click to save to your list"
+msgstr "Haga clic para guardarlo en su lista"
 
+#: portal/static-prod/js/cel/favorites.js:9
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static-prod/js/cel/pages/starred.js:84
 #: portal/static/js/cel/favorites.js:171
-msgid "Click to remove star from location"
-msgstr ""
+msgid "Click to remove from your list"
+msgstr "Haga clic para removerlo de su lista"
 
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
 #: portal/static/js/cel/location.js:60
 msgid "Accreditation"
 msgstr "Acreditación"
 
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/location.js:60
+msgid "None"
+msgstr "Ninguno"
+
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
 #: portal/static/js/cel/location.js:77
-msgid "Affiliations"
-msgstr "Afiliación del centro/sede"
+msgid "Program Information"
+msgstr "Información del Programa"
 
-#: portal/static/js/cel/location.js:203
-msgid "Details"
-msgstr ""
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/location.js:181
+msgid "Center"
+msgstr "Centro"
 
-#: portal/static/js/cel/pages/browse.js:155
-msgid "Neighborhood"
-msgstr ""
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/location.js:182
+msgid "Starred Center"
+msgstr "Centro guardado"
 
-#: portal/static/js/cel/pages/browse.js:156
-msgid "Schools"
-msgstr ""
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/location.js:183
+msgid "Accredited Center"
+msgstr "Centro de Acreditación"
 
-#: portal/static/js/cel/pages/browse.js:158
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/location.js:184
+msgid "Starred Accredited Center"
+msgstr "Centro Acreditado guardado"
+
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/location.js:185
 msgid "School"
-msgstr ""
+msgstr "Escuela"
 
-#: portal/static/js/cel/pages/browse.js:159
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/location.js:186
+msgid "Starred School"
+msgstr "Escuela guardada"
+
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/location.js:187
+msgid "Accredited School"
+msgstr "Escuela de Acreditación"
+
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/location.js:188
+msgid "Starred Accredited School"
+msgstr "Escuela Acreditada guardada"
+
+#: portal/static-prod/js/cel/location-marker.js:85
+#: portal/static-prod/js/cel/location.js:8
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/location.js:220
+msgid "Details"
+msgstr "Detalles"
+
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:189
+msgid "Neighborhood"
+msgstr "Vecindario"
+
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:190
+msgid "Locations"
+msgstr "Ubicaciones"
+
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:192
+msgid "Location"
+msgstr "Ubicación"
+
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:193
 msgid "More Information"
-msgstr ""
+msgstr "Más información"
 
-#: portal/static/js/cel/pages/browse.js:216
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:244
 msgid "Less"
 msgstr "Menos"
 
-#: portal/static/js/cel/pages/browse.js:217
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:245
 msgid "Click to show less information"
-msgstr ""
+msgstr "Haga clic para mostrar menos información"
 
-#: portal/static/js/cel/pages/browse.js:221
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:249
 msgid "More"
 msgstr "Más"
 
-#: portal/static/js/cel/pages/browse.js:222
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:250
 msgid "Click to show more information"
-msgstr ""
+msgstr "Haga clic para mostrar más información"
 
-#: portal/static/js/cel/pages/browse.js:231
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:275
 msgid "Click to hide filters"
-msgstr ""
+msgstr "Haga clic para ocultar filtros"
 
-#: portal/static/js/cel/pages/browse.js:233
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:277
 msgid "Click to show filters"
-msgstr ""
+msgstr "Haga clic para mostrar filtros"
 
-#: portal/static/js/cel/pages/browse.js:284
-msgid "Number of Schools"
-msgstr "Cantidad de escuelas"
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:328
+msgid "Number of Locations"
+msgstr "Número de Ubicaciones"
 
-#: portal/static/js/cel/pages/browse.js:284
+#: portal/static-prod/js/cel/pages/browse.js:96
+#: portal/static/js/cel/pages/browse.js:328
 msgid "Explore"
 msgstr "Explorar"
+
+#~ msgid "Affiliations"
+#~ msgstr "Afiliación del centro/sede"
 
 #~ msgid "Unknown URL endpoint \"%(name)s\""
 #~ msgstr "URL de destino desconocido"
@@ -127,4 +224,4 @@ msgstr "Explorar"
 #~ msgstr "Indicaciones adicionales de Google"
 
 #~ msgid "Please type in an address."
-#~ msgstr "Escriba una dirección"
+#~ msgstr "Por favor escriba una dirección"

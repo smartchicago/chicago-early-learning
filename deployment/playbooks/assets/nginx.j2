@@ -9,11 +9,16 @@ server {
   listen {{ http_port }} default_server;
   server_name _;
 
+  gzip on;
+  gzip_disable "MSIE [1-6]\.(?!.*SV1)";
+  gzip_comp_level {{ gzip_compression_level }};
+  gzip_types text/plain text/css application/json application/x-javascript text/javascript application/javascript;
 
   client_max_body_size 20M;
 
   location /static/ {
     alias {{ static_path }};
+    expires 604800;
   }
 
   location /media/ {

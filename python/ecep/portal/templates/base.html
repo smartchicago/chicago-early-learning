@@ -1,5 +1,5 @@
 {% comment %}
-Copyright (c) 2012 Azavea, Inc.
+Copyright (c) 2012, 2013 Azavea, Inc.
 See LICENSE in the project root for copying permission
 {% endcomment %}
 
@@ -30,6 +30,8 @@ See LICENSE in the project root for copying permission
     <link href='{% static "css/application.css" %}' rel="stylesheet">
     <!--[if lt IE 9]>
       <script src='{% static "js/lib/html5shiv.js" %}'></script>
+      <link href='{% static "css/lib/leaflet.ie.css" %}' rel="stylesheet">
+			<link href='{% static "css/lib/ie.css" %}' rel="stylesheet">
     <![endif]-->
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -41,6 +43,18 @@ See LICENSE in the project root for copying permission
     </script>
     {% block otherhead %}{% endblock %}
     <link href='{% static "css/lib/responsive.css" %}' rel="stylesheet">
+
+    <style>
+        /* 
+            This is a hack because there is no other simple way to ensure that the correct
+            background url is selected in all cases for this css style. 
+        */
+        /* spinner */
+        .ajax-spinner {
+            background: url("{% static "img/ajax-spinner.gif" %}") no-repeat center;
+            width: 100%;
+        }
+    </style>
 
   </head> 
   <body>
@@ -57,9 +71,9 @@ See LICENSE in the project root for copying permission
         <!-- Navbar RIGHT -->
         <div class="navbar-right">
           <ul class="nav">
-            <li><a href="#text-for-info" data-toggle="modal" data-r1024={% trans "Text For Info" %}><img src='{% static "img/icons/text-for-info.svg" %}' alt="Text For Info"></a></li>
-            <li><a href="{% url portal.views.about %}" data-r1024={% trans "About" %}><img src='{% static "img/icons/about.svg" %}' alt="About"></a></li>
-            <li><a href="{% url portal.views.faq %}" data-r1024={% trans "FAQ" %}><img src='{% static "img/icons/faq.svg" %}'></a></li>
+            <li><a href="#text-for-info" data-toggle="modal" data-r1024='{% trans "Text For Info" %}'><img src='{% static "img/icons/text-for-info.png" %}' alt="Text For Info"></a></li>
+            <li><a href="{% url portal.views.about %}" data-r1024={% trans "About" %}><img src='{% static "img/icons/about.png" %}' alt="About"></a></li>
+            <li><a href="{% url portal.views.faq %}" data-r1024={% trans "FAQ" %}><img src='{% static "img/icons/faq.png" %}'></a></li>
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="{% trans 'Language' %} <b class='caret'></b>">{{ LANGUAGE_CODE|upper }} <b class="caret"></b></a>
 

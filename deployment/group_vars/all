@@ -45,7 +45,7 @@ state: 'IL'
 latitude: 41.872524826406774
 longitude: -87.62077331542969
 
-zoom_threshold: 13
+zoom_threshold: 14
 
 autocomplete:
   swlat: 41
@@ -58,6 +58,8 @@ account_sid: 'None'
 account_auth: 'None'
 phone: 'None'
 sms_delay: None
+
+hotline_phone: '312.229.1690'
 
 simplify_epsilon: 0.0005
 
@@ -72,6 +74,8 @@ http_port: 80
 http_auth: 'off'
 http_password: ''
 http_user: ''
+
+gzip_compression_level: 6
 
 ## Git Settings ##
 git_url: https://github.com/smartchicago/chicago-early-learning
@@ -90,3 +94,8 @@ node_packages:
 rabbit_user: ecep
 rabbit_password: ecep
 queue_name: ecep
+
+## gunicorn settings ##
+
+gunicorn_workers: 3
+

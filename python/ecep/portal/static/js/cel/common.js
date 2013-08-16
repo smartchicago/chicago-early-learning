@@ -3,22 +3,36 @@
  * See http://requirejs.org/docs/api.html for details
  */
 
-define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'slidepanel', 'bootstrap', 
+define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 
         'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
 function($, L, Response, Handlebars) {
     'use strict';
 
-    //  TODO: export breakpoints if we continue to use response.js
-    var desktopBreakpoint = 1024;
-    
-    $(document).ready(function() {
+    var breakpoints = {
+        mobile: 420,
+        tablet: 767,
+        desktop: 1024
+    };
 
-        // collapse filter div on mobile
-        //  this is the manual way to do it. A bit hacky.
-        var width = $(document).width();
-        if (width >= desktopBreakpoint) {
-            $('#collapseFilters').addClass('in');
+    // Hide the address bar on mobile browsers
+    // Solution from: http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
+    function hideAddressBar() {
+        if(!window.location.hash) {
+            if(document.height < window.outerHeight) {
+                document.body.style.height = (window.outerHeight + 50) + 'px';
+            }
+            setTimeout(function() { 
+                window.scrollTo(0, 1); 
+            }, 50);
         }
+    }
+    $(window).on('load', function() {
+        if(!window.pageYOffset) { 
+            hideAddressBar(); 
+        } 
+    }).on('orientationchange', hideAddressBar);
+
+    $(document).ready(function() {
 
         // AUTOCOMPLETE
         var $autocomplete = $('.autocomplete-searchbox');
@@ -92,15 +106,17 @@ function($, L, Response, Handlebars) {
                 if (ui.item.type === 'location') {
                     window.location.href = getUrl(
                         'single-location', { location: ui.item.id });
+                    return;
                 } else if (ui.item.type === 'neighborhood') {
                     window.location.href = getUrl(
                         'browse', { type: 'neighborhood', neighborhood: ui.item.id });
+                    return;
                 } else if (ui.item.lat && ui.item.lon) {
                     window.location.href = getUrl(
                         'browse', { type: 'latlng', lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
+                    return;
                 }
             }
-            // default
             window.location.href = getUrl('browse');
         };
 
@@ -118,6 +134,7 @@ function($, L, Response, Handlebars) {
          * Submit the first autocomplete result on button click if none is populated
          */
         $('.autocomplete-submit').on('click', function(e) {
+            e.preventDefault();
             spoofSubmitAutocomplete();
         });
 
@@ -187,20 +204,15 @@ function($, L, Response, Handlebars) {
         // END AUTOCOMPLETE
     });
 
-    // Hide the address bar on mobile browsers
-    // TODO: More robust solution: http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
-    /*
-    window.addEventListener("load",function() {
-        setTimeout(function(){
-            window.scrollTo(0, 1);
-        }, 0);
-    });
-    */
-
-
     // Setup Response stuff
-    Response.create({ mode: 'markup', prefix: 'r', breakpoints: [0,480,767,desktopBreakpoint] });
-    Response.create({ mode: 'src',  prefix: 'src', breakpoints: [0,480,767,desktopBreakpoint] });
+    var breakpointsArray = [
+        0,
+        breakpoints.mobile,
+        breakpoints.tablet,
+        breakpoints.desktop
+    ];
+    Response.create({ mode: 'markup', prefix: 'r', breakpoints: breakpointsArray });
+    Response.create({ mode: 'src',  prefix: 'src', breakpoints: breakpointsArray });
 
     // Handlebars helpers
 
@@ -223,6 +235,10 @@ function($, L, Response, Handlebars) {
     var getUrl = function (name, opts) {
         var url = '';
         switch (name) {
+            case 'origin':
+                // IE < 9 doesn't define location.origin
+                return window.location.origin ||
+                    (window.location.protocol + "//" + window.location.host);
             case 'location-api':
                 // requires opts.locations to be comma separated string or
                 //      array of integers
@@ -241,19 +257,22 @@ function($, L, Response, Handlebars) {
                 return '/static/js/neighborhoods.json';
             case 'browse':
                 if (!opts) {
-                    return '/browse/';
+                    return '/search/';
                 }
                 switch (opts.type) {
                     case 'latlng':
-                        url = '/browse/?lat=' + opts.lat + '&lng=' + opts.lng;
+                        url = '/search/?lat=' + opts.lat + '&lng=' + opts.lng;
                         if (opts.zoom) {
                             url += '&zoom=' + opts.zoom;
                         }
                         return url;
+                    case 'geo-latlng':
+                        url = '/search/?geolat=' + opts.lat + '&geolng=' + opts.lng;
+                        return url;
                     case 'neighborhood':
-                        return '/browse/?neighborhood=' + opts.neighborhood;
+                        return '/search/?neighborhood=' + opts.neighborhood;
                     case 'location':
-                        return '/browse/?location=' + opts.location;
+                        return '/search/?location=' + opts.location;
                     default:
                         break;
                 }
@@ -294,12 +313,18 @@ function($, L, Response, Handlebars) {
     if ('geolocation' in navigator) {
         $(document).ready(function() {
             $('.geolocation-button').bind('click', function(e) {
+                e.preventDefault();
                 navigator.geolocation.getCurrentPosition(function(position) {                           
                     window.location.href = getUrl(
                         'browse',
-                        { type: 'latlng', lat: position.coords.latitude, lng: position.coords.longitude }
+                        { 
+                            type: 'geo-latlng', 
+                            lat: position.coords.latitude, 
+                            lng: position.coords.longitude
+                        }
                     );
                 }, function(e) {
+                    e.preventDefault();
                     alert(gettext('Please enable geolocation services.'));
                 });                                                                                     
             });
@@ -343,6 +368,8 @@ function($, L, Response, Handlebars) {
 
     return {
         getUrl: getUrl,
+
+        breakpoints: breakpoints, 
 
         // Stolen from _.js v1.5.1
         // https://github.com/jashkenas/underscore/blob/dc5a3fa0133b7000c36ba76a413139c63f646789/underscore.js

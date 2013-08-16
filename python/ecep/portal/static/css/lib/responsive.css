@@ -146,7 +146,7 @@
         width: 98%;
         width: auto;
         padding: 25px;
-        text-align: center;
+        text-align: left;
     }
         .container-custom    h1 {
             font-size: 29px;
@@ -402,6 +402,19 @@
     .share-btn {
         float: right;
     }
+		
+				.favorite {
+						padding: 35px 10px 35px 35px;
+            width: auto;
+						left: 0;
+						right: 0;
+        }
+				
+				#faq-container {
+					padding: 36px;
+					width: auto;
+				}
+
 
 }
 
@@ -507,7 +520,18 @@
         
         .single-share {
             content: "";
-        }
-
-
-}
+						float: right;
+						position: absolute;
+						top: 102px;
+						right: 10px;
+				}
+						
+		.filters-1,
+		.filters-2,
+		.filters-3,
+		.filters-4 {
+			width: 50%;
+			float: left;
+		}
+		
+ }

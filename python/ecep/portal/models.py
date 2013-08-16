@@ -1,4 +1,4 @@
-# Copyright (c) 2012 Azavea, Inc.
+# Copyright (c) 2012, 2013 Azavea, Inc.
 # See LICENSE in the project root for copying permission
 
 from django.contrib.gis.db import models
@@ -94,10 +94,8 @@ class Location(models.Model):
     objects = models.GeoManager()
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
-    display_include = {'ages', 'prg_hours', 'accred', 'accept_ccap',
-                       'is_home_visiting', 'is_hs', 'is_ehs', 'url',
-                       'is_full_day', 'is_part_day', 'is_full_week', 'is_part_week',
-                       'is_school_year', 'is_full_year', 'is_community_based', 'is_cps_based'}
+    display_include = {'ages', 'accred', 'accept_ccap', 'is_home_visiting', 'is_hs', 'is_ehs',
+                       'is_community_based', 'is_cps_based'}
 
     def __unicode__(self):
         return unicode(self.site_name)
@@ -169,7 +167,12 @@ class Location(models.Model):
 
         # Fields to include in Affiliation aggregate field
         affiliation_fields = [self._meta.get_field_by_name(name)[0] for name in
-                              ['is_community_based', 'is_cps_based', 'is_hs', 'is_ehs']]
+                              ['is_home_visiting', 'is_community_based', 'is_cps_based', 'is_hs', 'is_ehs']]
+        program_fields = [self._meta.get_field_by_name(name)[0] for name in
+                            ['is_full_year', 'is_school_year']]
+        week_fields = [self._meta.get_field_by_name(name)[0] for name in
+                            ['is_full_week', 'is_part_week', 'is_full_day', 'is_part_day']]
+
         aff_field_names = {f.get_attname() for f in affiliation_fields}
 
         for field in self._meta.fields:
@@ -180,12 +183,16 @@ class Location(models.Model):
             if self.is_true_bool_field(field):
                 bfields.append(field.verbose_name)
             elif self.is_simple_field(field):
-                kv = {'fieldname': _(field.verbose_name), 'value': field.value_from_object(self)}
+                value = field.value_from_object(self)
+                kv = {
+                        'fieldname': _(field.verbose_name), 
+                        'value': value if value else _("None")
+                }
                 sfields.append(kv)
 
         affiliation_values = [self.verbose_name(aff.get_attname()) for aff in affiliation_fields
                               if aff.value_from_object(self)]
-        sfields.append({'fieldname': _('Affiliations'),
+        sfields.append({'fieldname': _('Program Information'),
                         'value': ', '.join(affiliation_values) if affiliation_values else 'None'})
         
         # Combine Languages
@@ -194,11 +201,19 @@ class Location(models.Model):
         if languages != '':
             sfields.append({'fieldname': _('Languages (other than English)'), 'value': languages})
 
-        # Program Duration
-        sfields.append({'fieldname': _('Program Duration'), 'value': _('Full Year') if self.is_full_year else _('School Year')})
+        # Program Duration/Hours
+        program_values = [self.verbose_name(prg.get_attname()) for prg in program_fields
+                              if prg.value_from_object(self)]
+        program_hours = self.prg_hours if self.prg_hours else _("No Hours Listed")
+        program_values.append(program_hours)
+        sfields.append({'fieldname': _('Duration/Hours'), 
+                        'value': ', '.join(program_values) if program_values else 'None'})
 
-        # Week Duration
-        sfields.append({'fieldname': _('Weekday Availability'), 'value': _('Full Week') if self.is_full_week else _('Partial Week')})
+        # Weekday Avaialability
+        week_values = [self.verbose_name(wk.get_attname()) for wk in week_fields
+                              if wk.value_from_object(self)]
+        sfields.append({'fieldname': _('Weekday Availability'), 
+                        'value': ', '.join(week_values) if week_values else 'None'})
 
         # Phone
         phone = {'fieldname': _('Phone Number'), 'number': nicephone(self.phone)}
@@ -208,7 +223,7 @@ class Location(models.Model):
 
         # Quality Statement
         if self.q_stmt:
-            sfields.append({'fieldname': _('Quality Statement'), 'value': self.q_stmt})
+            sfields.append({'fieldname': _('Description'), 'value': self.q_stmt})
 
         bfields.sort()
         sfields.sort(key=lambda a: a['fieldname'])
@@ -221,7 +236,7 @@ class Location(models.Model):
                       'share': _('Share')}
 
         # More information for tooltip icon
-        accreditation = ['Accredited'] if self.accred else []
+        accreditation = ['Accredited'] if self.accred != 'None' else []
         accreditation.append('School' if self.is_cps_based else 'Center')
         
         # Tooltips - necessary for translations in handlebars template
