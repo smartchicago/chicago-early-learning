@@ -182,6 +182,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             // Set top margin so that list is not hidden by filters
             $locationWrapper.css("top", th);
 
+            // Remove css tooltips when on a touchscreen device                                         
+            if (common.isTouchscreen) {
+                $('[data-hint]').removeAttr('data-hint');
+            }
+
             // set header title
             var $headerFav = $('#header-fav'),
                 $headerDist = $('#header-dist');
@@ -223,7 +228,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 // always highlighted because the mouse will be over the accordion div for the click
                 loc.setIcon({ highlighted: true });
                 $locIcon.attr('src', common.getUrl(iconkey));
-                $locIcon.parent('a').attr('data-hint', loc.getIconDescription());
+                if (!common.isTouchscreen) {
+                    $locIcon.parent('a').attr('data-hint', loc.getIconDescription());
+                }
             });
 
             // Watch for hover events on the list so we can highlight both 
@@ -236,21 +243,27 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     iconkey = 'icon-' + loc.getIconKey(),
                     $locIcon = $('#loc-icon-' + key);
                 $locIcon.attr('src', common.getUrl(iconkey));
-                $locIcon.parent('a').attr('data-hint', loc.getIconDescription());
+                if (!common.isTouchscreen) {
+                    $locIcon.parent('a').attr('data-hint', loc.getIconDescription());
+                }
             }).on('show.bs.collapse', function(e) {
                 var $this = $(this),
                     $morelessbtn = $this.find('.more-less-btn'),
                     $directionsLink = $this.find('#loc-dirs');
                 $morelessbtn.html(gettext('Less'));
-                $morelessbtn.attr('data-hint', gettext('Click to show less information'));
+                if (!common.isTouchscreen) {
+                    $morelessbtn.attr('data-hint', gettext('Click to show less information'));
+                }
             }).on('hide.bs.collapse', function(e) {
                 var $this = $(this),
                     $morelessbtn = $this.find('.more-less-btn');
                 $morelessbtn.html(gettext('More'));
-                $morelessbtn.attr('data-hint', gettext('Click to show more information'));
+                if (!common.isTouchscreen) {
+                    $morelessbtn.attr('data-hint', gettext('Click to show more information'));
+                }
             });
             // feature detection: we only want hover events on non-touch devices 
-            if (!('ontouchstart' in document.documentElement)) {
+            if (!common.isTouchscreen) {
                 $locationContainer.on('mouseenter mouseleave', function(e) {
                     var $this = $(this),
                     key = $this.data('key'),
@@ -271,11 +284,13 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * Change tooltip when refining search
          */
         var refineListener = function(){
-            $('#collapseFilters').on('show.bs.collapse', function(e) { 
-                $('#refineBtn').attr('data-hint', gettext('Click to hide filters')); 
-            }).on('hide.bs.collapse', function(e) {
-                $('#refineBtn').attr('data-hint', gettext('Click to show filters'));
-            });
+            if (!common.isTouchscreen) {
+                $('#collapseFilters').on('show.bs.collapse', function(e) { 
+                    $('#refineBtn').attr('data-hint', gettext('Click to hide filters')); 
+                }).on('hide.bs.collapse', function(e) {
+                    $('#refineBtn').attr('data-hint', gettext('Click to show filters'));
+                });
+            }
         };
 
         /*
