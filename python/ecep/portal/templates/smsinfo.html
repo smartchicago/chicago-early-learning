@@ -1,0 +1,46 @@
+{% extends "base-search.html" %}
+
+{% comment %}
+Copyright (c) 2012, 2013 Azavea, Inc.
+See LICENSE in the project root for copying permission
+{% endcomment %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+
+{% block title %}{% trans "Chicago Early Learning" %}{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+<!-- Text-for-Info Modal -->
+<div class="tm61 container">
+
+  <div class="tm30 bm30">
+    <h1 class="tac">{% blocktrans %}Want information via text?{% endblocktrans %}</h3>
+    <p class="tac fs20">{% blocktrans %}Text your zip code to {% endblocktrans %}<a href="sms:{{ settings.TWILIO_PHONE }}">{{ settings.TWILIO_PHONE }}</a>{% blocktrans %} and we'll do the rest.{% endblocktrans %}</p>
+  </div>
+
+  <hr>
+
+  <div class="media">
+    <a class="pull-left"><img class="media-object" src="{% static 'img/cel3.png' %}"></a>
+    <div class="media-body">
+      <h3>{% blocktrans %}Text for more info{% endblocktrans %}</h1>
+      <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code to {% endblocktrans %}<a href="sms:{{ settings.TWILIO_PHONE }}">{{ settings.TWILIO_PHONE }}</a>{% blocktrans %} and follow the instructions on your phone.{% endblocktrans %}<br><br>{% blocktrans %}If you’d like to talk to someone about your options, please call the Chicago: Ready to Learn! Hotline at {% endblocktrans %}<a href="tel:{{ settings.HOTLINE_PHONE }}">{{ settings.HOTLINE_PHONE }}</a>.</p>
+    </div>
+  </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+require([], function() { });
+</script>
+{% endblock %}
+
