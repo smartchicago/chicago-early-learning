@@ -23,16 +23,16 @@ h1, h2, h3, h4 {
         font-weight: 300;
 }
 
-.bm20 {
-    margin-bottom: 20px;
-}
-.container {
-    margin-bottom: 20px;
-}
+.container { margin-bottom: 20px; }
 
-.text-grey {
-    color: grey;
-}
+/* Common Styles */
+.fs20 { font-size: 20px; }
+.tac { text-align: center; }
+.tm61 { margin-top: 61px; }
+.tm30 { margin-top: 30px; }
+.bm30 { margin-bottom: 30px; }
+.bm20 { margin-bottom: 20px; }
+.text-grey { color: grey; }
 
 /*
  * Added because we defined a class close used elsewhere that overrides the margin-top of
