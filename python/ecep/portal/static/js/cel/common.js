@@ -15,6 +15,8 @@ function($, L, Response, Handlebars) {
 				desktopalt: 1140
     };
 
+    var isTouchscreen = ('ontouchstart' in document.documentElement);
+
     // Hide the address bar on mobile browsers
     // Solution from: http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
     function hideAddressBar() {
@@ -27,7 +29,7 @@ function($, L, Response, Handlebars) {
             }, 50);
         }
     }
-    if ('ontouchstart' in document.documentElement) { 
+    if (isTouchscreen) { 
         $(window).on('load', function() {
             if(!window.pageYOffset) { 
                 hideAddressBar(); 
@@ -36,6 +38,11 @@ function($, L, Response, Handlebars) {
     }
 
     $(document).ready(function() {
+
+        // Remove css tooltips when on a touchscreen device
+        if (isTouchscreen) {
+            $('[data-hint]').removeAttr('data-hint');
+        }
 
         // AUTOCOMPLETE
         var $autocomplete = $('.autocomplete-searchbox');
@@ -374,6 +381,8 @@ function($, L, Response, Handlebars) {
         getUrl: getUrl,
 
         breakpoints: breakpoints, 
+
+        isTouchscreen: isTouchscreen,
 
         // Stolen from _.js v1.5.1
         // https://github.com/jashkenas/underscore/blob/dc5a3fa0133b7000c36ba76a413139c63f646789/underscore.js
