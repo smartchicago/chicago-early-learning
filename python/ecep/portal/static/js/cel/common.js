@@ -11,7 +11,8 @@ function($, L, Response, Handlebars) {
     var breakpoints = {
         mobile: 420,
         tablet: 767,
-        desktop: 1024
+        desktop: 1024,
+				desktopalt: 1140
     };
 
     // Hide the address bar on mobile browsers
@@ -209,7 +210,8 @@ function($, L, Response, Handlebars) {
         0,
         breakpoints.mobile,
         breakpoints.tablet,
-        breakpoints.desktop
+        breakpoints.desktop,
+				breakpoints.desktopalt
     ];
     Response.create({ mode: 'markup', prefix: 'r', breakpoints: breakpointsArray });
     Response.create({ mode: 'src',  prefix: 'src', breakpoints: breakpointsArray });

@@ -99,7 +99,7 @@ h1, h2, h3, h4 {
     height: 60px;
     }
     .navbar-left {
-        width: 65%;
+        width: 69%;
         float: left;
     }
     .navbar-right {
@@ -148,7 +148,7 @@ h1, h2, h3, h4 {
 
     #desktop-search {
         margin-top: 8px;
-        float: left;
+        float: right;
 				margin-left: 0px;
     }
         #desktop-search input {
