@@ -99,11 +99,10 @@ h1, h2, h3, h4 {
     height: 60px;
     }
     .navbar-left {
-        width: 65%;
         float: left;
     }
     .navbar-right {
-        width: 35%;
+        width: 435px;
         float: right;
     }
     .navbar .brand {

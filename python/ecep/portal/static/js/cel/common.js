@@ -26,11 +26,13 @@ function($, L, Response, Handlebars) {
             }, 50);
         }
     }
-    $(window).on('load', function() {
-        if(!window.pageYOffset) { 
-            hideAddressBar(); 
-        } 
-    }).on('orientationchange', hideAddressBar);
+    if ('ontouchstart' in document.documentElement) { 
+        $(window).on('load', function() {
+            if(!window.pageYOffset) { 
+                hideAddressBar(); 
+            } 
+        }).on('orientationchange', hideAddressBar);
+    }
 
     $(document).ready(function() {
 
