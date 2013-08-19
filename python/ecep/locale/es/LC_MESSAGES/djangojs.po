@@ -182,50 +182,50 @@ msgstr "Explorar"
 
 #: portal/static/js/cel/location.js:78
 msgid "CPS Based"
+msgstr "Escuelas Públicas de Chicago"
+
+msgid "Affiliations"
+msgstr "Afiliación del centro/sede"
+
+msgid "Unknown URL endpoint \"%(name)s\""
+msgstr "URL de destino desconocido"
+
+msgid "Filters"
+msgstr "Filtros"
+
+msgid "Select two locations to compare."
+msgstr "Seleccione dos centros para compararlos."
+
+msgid "Compare"
+msgstr "Comparar"
+
+msgid "User location is outside the service area."
+msgstr "La ubicación del usuario está fuera de la zona de servicio."
+
+msgid "User location cannot be found."
+msgstr "No se ha podido encontrar la ubicación del usuario."
+
+msgid ""
+"Sorry, the address:\n"
+"\n"
+"\"%(address)s\"\n"
+"\n"
+"Can't be found in the service area."
 msgstr ""
+"Lamentablemente la dirección:\n"
+"\n"
+"\"%(address)s\"\n"
+"\n"
+"no se ha podido encontrar en la zona de servicio."
 
-#~ msgid "Affiliations"
-#~ msgstr "Afiliación del centro/sede"
+msgid "Close"
+msgstr "Cerrar"
 
-#~ msgid "Unknown URL endpoint \"%(name)s\""
-#~ msgstr "URL de destino desconocido"
+msgid "Walking Directions"
+msgstr "Indicaciones para ir caminando"
 
-#~ msgid "Filters"
-#~ msgstr "Filtros"
+msgid "Additional Directions from Google"
+msgstr "Indicaciones adicionales de Google"
 
-#~ msgid "Select two locations to compare."
-#~ msgstr "Seleccione dos centros para compararlos."
-
-#~ msgid "Compare"
-#~ msgstr "Comparar"
-
-#~ msgid "User location is outside the service area."
-#~ msgstr "La ubicación del usuario está fuera de la zona de servicio."
-
-#~ msgid "User location cannot be found."
-#~ msgstr "No se ha podido encontrar la ubicación del usuario."
-
-#~ msgid ""
-#~ "Sorry, the address:\n"
-#~ "\n"
-#~ "\"%(address)s\"\n"
-#~ "\n"
-#~ "Can't be found in the service area."
-#~ msgstr ""
-#~ "Lamentablemente la dirección:\n"
-#~ "\n"
-#~ "\"%(address)s\"\n"
-#~ "\n"
-#~ "no se ha podido encontrar en la zona de servicio."
-
-#~ msgid "Close"
-#~ msgstr "Cerrar"
-
-#~ msgid "Walking Directions"
-#~ msgstr "Indicaciones para ir caminando"
-
-#~ msgid "Additional Directions from Google"
-#~ msgstr "Indicaciones adicionales de Google"
-
-#~ msgid "Please type in an address."
-#~ msgstr "Por favor escriba una dirección"
+msgid "Please type in an address."
+msgstr "Por favor escriba una dirección"
