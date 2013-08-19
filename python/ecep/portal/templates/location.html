@@ -49,7 +49,7 @@ See LICENSE in the project root for copying permission
         {% endfor %}
         {% if loc.bfields.values %}
           <h1>{{ loc.bfields.fieldname }}</h1>
-          <h2>{{ loc.bfields.values }}</h2>
+          <h2>{{ loc.bfields.values|join:", "}}</h2>
         {% endif %}
       </div>
     </div>
