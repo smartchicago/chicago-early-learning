@@ -256,7 +256,6 @@ msgstr ""
 "rentables, para quiénes y por qué."
 
 #: portal/templates/base-search.html:9
-#, fuzzy
 msgid "Enter an address/school"
 msgstr "Para comenzar, ingrese su dirección"
 
@@ -268,7 +267,6 @@ msgstr "Haga clic para usar su ubicación actual"
 msgid "Search"
 msgstr "Buscar"
 
-# msgstr "Envíe texto para recibir info"
 #: portal/templates/base.html:74
 msgid "Text For Info"
 msgstr "Texto para info"
