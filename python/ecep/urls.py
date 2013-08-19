@@ -42,6 +42,9 @@ urlpatterns = patterns(
         }),
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
+    # sms info page
+    url(r'^sms/?$', 'portal.views.smsinfo', name='sms-info'),
+
     # Location Views
     # Need to pass id to view for sitemap, but don't need to do anything with it since this is handled with javascript
     url(r'^location/(\d+)/$', 'portal.views.location', name='location-view'),

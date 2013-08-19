@@ -18,7 +18,7 @@ See LICENSE in the project root for copying permission
 <div class="container">
   <div class="row">
     <div class="favorite" data-key="{{ loc.item.key }}" itemscope itemtype="http://schema.org/EducationalOrganization">
-        <div id="location-map" data-lat="{{ loc.position.lat }}" data-lng="{{ loc.position.lng }}" class="single-location-map"></div>
+        <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>
       <a href="javascript:void(0)" class="none favs-close-button">&times;</a>
       <h1 class="school-name" itemprop="name">{{ loc.item.site_name }}</h1>
       <p itemprop="address">{{ loc.item.address }}, {{ loc.item.city }}, {{ loc.item.state }} {{ loc.item.zip }}</p>
@@ -31,12 +31,12 @@ See LICENSE in the project root for copying permission
             data-loc-id="{{ loc.item.key }}">
           <i class="icon-star-empty"></i>
         </a>
-        <a href="#" class="none btn pull-right single-share"
-            data-r1024="<i class='icon-share'></i>{{ loc.translations.share }}">
-          <i class="icon-share"></i>
-          Share
-        </a>
       </ul>
+			  <a href="#" class="none btn pull-right single-share" data-r1024="<i class='icon-share'></i>{{ loc.translations.share }}">
+       <i class="icon-share"></i>
+          Share
+      </a>
+			<br>
       <hr>
       <div class="school-details">
         <h1>{{ loc.phone.fieldname }}</h1>
@@ -49,7 +49,7 @@ See LICENSE in the project root for copying permission
         {% endfor %}
         {% if loc.bfields.values %}
           <h1>{{ loc.bfields.fieldname }}</h1>
-          <h2>{{ loc.bfields.values }}</h2>
+          <h2>{{ loc.bfields.values|join:", "}}</h2>
         {% endif %}
       </div>
     </div>
