@@ -33,6 +33,10 @@ def about(request):
     ctx = RequestContext(request, {})
     return render_to_response('about.html', context_instance=ctx)
 
+def smsinfo(request):
+    ctx = RequestContext(request, {})
+    return render_to_response('smsinfo.html', context_instance=ctx)
+
 
 def search(request):
     ctx = RequestContext(request, {})

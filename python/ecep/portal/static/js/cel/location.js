@@ -74,8 +74,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.isSchool = function() {
         var isSchool = false;
         $.each(this.data.sfields, function(key, value) {
-            if (value.fieldname === gettext("Program Information")) {
-                if (value.value.indexOf("CPS Based") !== -1) {
+            if (value.fieldname.toLowerCase() === gettext("Program Information").toLowerCase()) {
+                if (value.value.indexOf(gettext("CPS Based")) !== -1) {
                     isSchool = true;
                 } 
                 return false;

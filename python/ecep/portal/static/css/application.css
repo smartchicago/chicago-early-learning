@@ -6,9 +6,6 @@ body {
   margin: 0;
 }
 
-html, body {
-}
-
 input {
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
 }
@@ -23,15 +20,37 @@ h1, h2, h3, h4 {
         font-weight: 300;
 }
 
-.bm20 {
-    margin-bottom: 20px;
-}
-.container {
-    margin-bottom: 20px;
+.container { 
+    margin-bottom: 20px; 
 }
 
-.text-grey {
-    color: grey;
+/* Common Styles */
+.fs20 { 
+    font-size: 20px; 
+}
+
+.tac { 
+    text-align: center; 
+}
+
+.tm61 { 
+    margin-top: 61px; 
+}
+
+.tm30 { 
+    margin-top: 30px; 
+}
+
+.bm30 { 
+    margin-bottom: 30px; 
+}
+
+.bm20 { 
+    margin-bottom: 20px; 
+}
+
+.text-grey { 
+    color: grey; 
 }
 
 /*
@@ -64,117 +83,129 @@ h1, h2, h3, h4 {
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
     font-weight: 400;
 }
-    .navbar-inverse .brand, 
-    .navbar-inverse .nav > li > a {
-        color: #fff;
-        transition: 0.3s;
-        -webkit-transition: 0.3s;
-        -moz-transition: 0.3s;
-    }
-    .navbar-inverse .brand, 
-    .navbar-inverse .nav > li > a:hover {
-        color: #eece16;
-        transition: 0.3s;
-        -webkit-transition: 0.3s;
-        -moz-transition: 0.3s;
-    }
-        
-    .navbar-inverse .nav li.dropdown.open > .dropdown-toggle, 
-    .navbar-inverse .nav li.dropdown.active > .dropdown-toggle, 
-    .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
-        background-color: rgb(29,44,54);
-    }
 
-    .navbar-inverse .brand, 
-    .navbar-inverse .nav > li > a {
-        text-shadow: none;
-        color: #fff;
-    }
+.navbar-inverse .brand, 
+.navbar-inverse .nav > li > a {
+    color: #fff;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+}
 
-    .navbar-inverse .brand span {
-        color: #eece16;
-    }
+.navbar-inverse .brand, 
+.navbar-inverse .nav > li > a:hover {
+    color: #eece16;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+}
+    
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle, 
+.navbar-inverse .nav li.dropdown.active > .dropdown-toggle, 
+.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color: rgb(29,44,54);
+}
+
+.navbar-inverse .brand, 
+.navbar-inverse .nav > li > a {
+    text-shadow: none;
+    color: #fff;
+}
+
+.navbar-inverse .brand span {
+    color: #eece16;
+}
 
 .navbar-inner {
     height: 60px;
-    }
-    .navbar-left {
-        width: 65%;
-        float: left;
-    }
-    .navbar-right {
-        width: 35%;
-        float: right;
-    }
-    .navbar .brand {
-        margin: 0;
-        }
-        .navbar .brand span {
-            color: #EECF16;
-            font-weight: 700;
-        }
+}
 
-    .navbar .nav {
-        float: right;
-        margin: 10px 0;
-        font-size: 15px;
-    }
-    .navbar .nav img {
-        max-height: 20px;
-    }
-    
-    .modal-header .close {
-        font-size: 35px;
-    }
-    
-    .web-share {
-        width: 313px;
-    }
-    .favs-toggle i {
-        font-size: 24px;
-        position: relative;
-        left: -6px;
-        color: black;
-        }
-        .accordion-group .favs-toggle i {
-            top: -8px;
-        }
-    
+.navbar-left {
+    float: left;
+}
 
-    /* Search ------------ */
-    
-    .navbar .nav > li > a {
-        padding: 10px 10px 10px;
-    }
+.navbar-right {
+    width: 435px;
+    float: right;
+}
 
-    #desktop-search {
-        margin-top: 8px;
-        float: right;
-        margin-right: 0;
-    }
-        #desktop-search input {
-            left: 0;
-            right: 0;
-            width: auto;
-            font-size: 14px;
-            font-family: "Montserrat", Helvetica, Arial,sans-serif;
-            padding: 8px 10px 5px 10px;
-        }
-        #geolocation {
-            padding: 7px 8px 6px 8px;
-            font-size: 16px;
-        }
-        #searchBtn {
-            padding: 6px 10px 7px 10px;
-            margin-left: 5px;
-        }
-        #mobile-search {
-            display: none;
-        }
+.navbar .brand {
+    margin: 0;
+}
 
-        .btn {
-            padding: 6px 10px 5px 10px;
-        }
+.navbar .brand span {
+    color: #EECF16;
+    font-weight: 700;
+}
+
+.navbar .nav {
+    float: right;
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.navbar .nav img {
+    max-height: 20px;
+}
+
+.modal-header .close {
+    font-size: 35px;
+}
+
+.web-share {
+    width: 313px;
+}
+
+.favs-toggle i {
+    font-size: 24px;
+    position: relative;
+    left: -6px;
+    color: black;
+}
+
+.accordion-group .favs-toggle i {
+    top: -8px;
+}
+
+
+/* Search ------------ */
+
+.navbar .nav > li > a {
+    padding: 10px 10px 10px;
+}
+
+#desktop-search {
+    margin-top: 8px;
+    float: left;
+			margin-left: 0px;
+}
+
+#desktop-search input {
+    left: 0;
+    right: 0;
+    width: auto;
+    font-size: 14px;
+    font-family: "Montserrat", Helvetica, Arial,sans-serif;
+    padding: 8px 10px 5px 10px;
+}
+
+#geolocation {
+    padding: 7px 8px 6px 8px;
+    font-size: 16px;
+}
+
+#searchBtn {
+    padding: 6px 10px 7px 10px;
+    margin-left: 5px;
+}
+
+#mobile-search {
+    display: none;
+}
+
+.btn {
+    padding: 6px 10px 5px 10px;
+}
 
 
 /* Results --------------------- */
@@ -192,144 +223,168 @@ h1, h2, h3, h4 {
     -moz-box-shadow:    2px 0 4px rgba(0, 0, 0, 0.25);
     box-shadow:         2px 0 4px rgba(0, 0, 0, 0.25);
 }
-    .accordion-group {
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
-    }
-        .accordion {
-                margin-bottom: 0;
-        }
-    
-    .accordion-group {
-        border: none;
-        border-top: 1px solid #e5e5e5;
-    }
-    
-    .results-toolbar {
-        padding: 17px;
-        background: #eee;
-        border-right:    1px solid #cecece;
-        background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
-    }
-        #header-row {
-            background-color: #666;
-        }
-        .results-toolbar .btn-group {
-            float: right;
-        }
-    .location {
-        padding: 17px;
-        background: #f7f7f7;
-        border-bottom: 1px solid #DFDFDF;
-    }
-        .loc-icon {
-            position: relative;
-            float: left;
-            margin-top: -30px;
-            margin-left: 49%;
-        }
-        .location button {
-            float: right;
-        }
-        .location-test1 {
-            margin-top: 0;
-        }
-        .location h2 {
-            font-family: "Helvetica", Arial, sans-serif;
-        }
-            #loc-icon {
-                left: 65%;
-								margin-top: 3px;
-                position: absolute;
-                float: none;
-            }
-            #loc-dirs {
-                left: 75%;
-								margin-top: 5px;
-                position: absolute;
-                float: none;
-                font-size: 13px;
-                font-weight: normal;
-            }
-    #collapseFilters {
-                border-right: 1px solid #cecece;
-    }
-    
-    .truncate {
-        width: 300px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        }
-        .truncate:hover {
-            width: auto;
-            overflow: visible;
-            text-overflow: none;
-        }
-    
-    .accordion-heading h1 {
-        font-size: 16px;
-        padding: 0;
-        margin: 0;
-        line-height: 16px;
-    }
-    .accordion-heading h2 {
-        font-size: 13px;
-        padding: 0;
-        font-weight: normal;
-        margin: 0;
-        line-height: 16px;
-        color: #666;
-    }
-    .accordion-heading img {
-        float: left;
-        padding-right: 10px;
-        margin-top: 2px;
-    }
-    .accordion-heading {
 
-    }
-    .accordion-inner {
-        padding: 25px 15px 25px 60px;
-    }
-    .accordion-inner .accordion-left {
-        width: 70%;
-        float: left;
-        padding: 0 15px 25px 0;
-    }
-    .accordion-inner .accordion-right {
-        width: 23%;
-        float: right;
-    }
-        .accordion-inner .accordion-right button {
-            float: right;
-        }
-        .accordion-inner .accordion-right .btn {
-            text-align: center;
-            margin-bottom: 5px;
-        }
-        .accordion-inner h1 {
-            font-size: 16px;
-            margin: 0;
-            line-height: 16px;
-						padding-bottom: 4px; 
-        }
-        .accordion-inner h2 {
-            font-size: 13px;
-            padding: 0;
-            font-weight: normal;
-            margin: 0;
-            line-height: 24px;
-            color: #666;
-        }
-        .accordion-inner hr {
-            margin: 10px 0;
-        }
+.accordion-group {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
 
-    .location-item {
-        margin-top: -21px;
-    }
+.accordion {
+    margin-bottom: 0;
+}
+
+.accordion-group {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+}
+
+.results-toolbar {
+    padding: 17px;
+    background: #eee;
+    border-right:    1px solid #cecece;
+    background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+}
+
+#header-row {
+    background-color: #666;
+}
+
+.results-toolbar .btn-group {
+    float: right;
+}
+
+.location {
+    padding: 17px;
+    background: #f7f7f7;
+    border-bottom: 1px solid #DFDFDF;
+}
+
+.loc-icon {
+    position: relative;
+    float: left;
+    margin-top: -30px;
+    margin-left: 49%;
+}
+
+.location button {
+    float: right;
+}
+
+.location-test1 {
+    margin-top: 0;
+}
+
+.location h2 {
+    font-family: "Helvetica", Arial, sans-serif;
+}
+
+#loc-icon {
+    left: 65%;
+    margin-top: 3px;
+    position: absolute;
+    float: none;
+}
+
+#loc-dirs {
+    left: 75%;
+    margin-top: 5px;
+    position: absolute;
+    float: none;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+#collapseFilters {
+            border-right: 1px solid #cecece;
+}
+
+.truncate {
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.truncate:hover {
+    width: auto;
+    overflow: visible;
+    text-overflow: none;
+}
+
+.accordion-heading h1 {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    line-height: 16px;
+}
+
+.accordion-heading h2 {
+    font-size: 13px;
+    padding: 0;
+    font-weight: normal;
+    margin: 0;
+    line-height: 16px;
+    color: #666;
+}
+
+.accordion-heading img {
+    float: left;
+    padding-right: 10px;
+    margin-top: 2px;
+}
+
+.accordion-heading {
+
+}
+
+.accordion-inner {
+    padding: 25px 15px 25px 60px;
+}
+
+.accordion-inner .accordion-left {
+    width: 70%;
+    float: left;
+    padding: 0 15px 25px 0;
+}
+
+.accordion-inner .accordion-right {
+    width: 23%;
+    float: right;
+}
+
+.accordion-inner .accordion-right button {
+    float: right;
+}
+
+.accordion-inner .accordion-right .btn {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.accordion-inner h1 {
+    font-size: 16px;
+    margin: 0;
+    line-height: 16px;
+				padding-bottom: 4px; 
+}
+
+.accordion-inner h2 {
+    font-size: 13px;
+    padding: 0;
+    font-weight: normal;
+    margin: 0;
+    line-height: 24px;
+    color: #666;
+}
+
+.accordion-inner hr {
+    margin: 10px 0;
+}
+
+.location-item {
+    margin-top: -21px;
+}
 
 .results-right {
     left: 715px;
@@ -337,32 +392,35 @@ h1, h2, h3, h4 {
     position: absolute;
     height: 100%;
 }
-    #map {
-        margin-top: 0;
-        width: 100%;
-        position: absolute !important;
-        top: 0;
-        height: auto;
-        bottom: 0;
-        z-index: 0;
-    }
-    .leaflet-container .leaflet-control-zoom {
-            margin-top: 71px;
-    }
 
-    .accordion-heading a {
-        color: #000;
-        font-size: 16px;
-        font-weight: bold;
-        display: inline-block;
-    }
-    .accordion-heading a:hover {
-        text-decoration: none;
-    }
+#map {
+    margin-top: 0;
+    width: 100%;
+    position: absolute !important;
+    top: 0;
+    height: auto;
+    bottom: 0;
+    z-index: 0;
+}
 
-    .explore-btn {
-        margin-top: -20px !important;
-    }
+.leaflet-container .leaflet-control-zoom {
+        margin-top: 71px;
+}
+
+.accordion-heading a {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.accordion-heading a:hover {
+    text-decoration: none;
+}
+
+.explore-btn {
+    margin-top: -20px !important;
+}
 
 #filter-options {
     position: fixed;
@@ -383,9 +441,10 @@ h1, h2, h3, h4 {
     font-size: 14px;
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
 }
-    .tooltip-inner {
-            color: #eecf16;
-    }
+
+.tooltip-inner {
+    color: #eecf16;
+}
 
 .exportPDF {
     width: 11px !important;
@@ -428,56 +487,65 @@ h1, h2, h3, h4 {
     padding: 20px 20px 50px 20px;
     margin-top: 40px;
 }
-    .faves-left {
-        width: 25%;
-        margin-left: 15px;
-    }
-        .faves-left h1 {
-            font-size: 28px;
-        }
-    .faves-right {
-        width: 75%;
-        float: right;
-        margin-right: 15px;
-        margin-top: -60px;
-        padding: 15px;
-    }
-    .faves-option {
-        float: left;
-        margin-left: 10px;
-    }
-    .faves-close {
-        margin-right: 20px;
-    }
 
-    .fullwidth {
-        width: 100%;
-    }
+.faves-left {
+    width: 25%;
+    margin-left: 15px;
+}
 
-    .favorite h1 {
-        font-size: 16px;
-        margin: 0;
-        line-height: 15px;
-    }
-    .favorite h2 {
-        font-size: 13px;
-        padding: 0;
-        font-weight: normal;
-        margin: 0;
-        line-height: 16px;
-        color: #666;
-    }
-    .favorite hr {
-        margin: 12px 0;
-    }
-    .favorite p {
-        font-size: 14px;
-        font-weight: normal;
-    }
-    .website-phone {
-        list-style: none;
-        margin: 0;
-    }
+.faves-left h1 {
+    font-size: 28px;
+}
+
+.faves-right {
+    width: 75%;
+    float: right;
+    margin-right: 15px;
+    margin-top: -60px;
+    padding: 15px;
+}
+
+.faves-option {
+    float: left;
+    margin-left: 10px;
+}
+
+.faves-close {
+    margin-right: 20px;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.favorite h1 {
+    font-size: 16px;
+    margin: 0;
+    line-height: 15px;
+}
+
+.favorite h2 {
+    font-size: 13px;
+    padding: 0;
+    font-weight: normal;
+    margin: 0;
+    line-height: 16px;
+    color: #666;
+}
+
+.favorite hr {
+    margin: 12px 0;
+}
+
+.favorite p {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.website-phone {
+    list-style: none;
+    margin: 0;
+}
 
 /* Single School View */
 #location-map {
@@ -485,7 +553,6 @@ h1, h2, h3, h4 {
     margin-top: 75px;
     margin-bottom: 25px;
 }
-
 
 /* necessary to display leaflet
    icons above google map layer */
@@ -520,10 +587,11 @@ h1, h2, h3, h4 {
     background: #fff;
     margin-top: 108px;
 }
-    .cb_slide_panel.panel_left, 
-    .cb_slide_panel.panel_right {
-        width: 100%;
-    }
+
+.cb_slide_panel.panel_left, 
+.cb_slide_panel.panel_right {
+    width: 100%;
+}
 
 .small {
     font-size: 14px;
@@ -541,14 +609,15 @@ h1, h2, h3, h4 {
 .filters-inner {
     padding: 20px;
 }
-    .filters-inner label {
-        padding: 3px 0;
-    }
-    .filters-inner label input {
-        margin-top: -3px;
-        margin-right: 7px;
-    }
 
+.filters-inner label {
+    padding: 3px 0;
+}
+
+.filters-inner label input {
+    margin-top: -3px;
+    margin-right: 7px;
+}
 
 .cb_slide_panel h1 {
     text-shadow: none;
@@ -597,6 +666,7 @@ h1, h2, h3, h4 {
     float: left;
     padding-bottom: 20px;
 }
+
 .filters-right {
     width: 50%;
     float: right;
@@ -917,36 +987,42 @@ h1, h2, h3, h4 {
 #faq-container {
     margin-top: 55px;
 }
-    #faq-container h1 {
-        font-size: 32px;
-        margin-bottom: 35px;
-    }
-    
-    #faq-container .accordion-inner {
-        padding: 25px 15px 25px 0px;
-    }
-    #faq-container .accordion-heading .accordion-toggle {
-        font-family: "Montserrat", sans-serif;
-        padding: 20px 0;
-        color: #317DC1;
-    }
-		    #faq-container .accordion-heading .accordion-toggle:hover {
-        color: #155792;
-    }
-    #faq-container .accordion-inner {
-        line-height: 1.8;
-    }
-    #faq-container .accordion-group {
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
-        margin-bottom: 8px;
-        border: none;
-        border-bottom: 1px solid #e0e0e0;
-    }
-    .static-title {
-        margin-top: 55px;
-    }
+
+#faq-container h1 {
+    font-size: 32px;
+    margin-bottom: 35px;
+}
+
+#faq-container .accordion-inner {
+    padding: 25px 15px 25px 0px;
+}
+
+#faq-container .accordion-heading .accordion-toggle {
+    font-family: "Montserrat", sans-serif;
+    padding: 20px 0;
+    color: #317DC1;
+}
+
+#faq-container .accordion-heading .accordion-toggle:hover {
+    color: #155792;
+}
+
+#faq-container .accordion-inner {
+    line-height: 1.8;
+}
+
+#faq-container .accordion-group {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    border: none;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.static-title {
+    margin-top: 55px;
+}
     
 .location-icons {
     max-width: 18px;
@@ -985,8 +1061,8 @@ h1, h2, h3, h4 {
 .favs-close-button {
     float: right;
     font-size: 35px;
-        margin-top: 10px;
-        color: #c2c2c2;
+    margin-top: 10px;
+    color: #c2c2c2;
 }
 
 .favs-close-button:hover {
@@ -995,8 +1071,10 @@ h1, h2, h3, h4 {
 }
 
 .single-star {
-    margin-top: -28px;
-    margin-right: 90px;
+		margin-top: -24px;
+		position: relative;
+		float: right;
+		margin-left: 15px;
 }
 
 .description-mobile {
@@ -1009,35 +1087,37 @@ h1, h2, h3, h4 {
 .leaflet-popup-content-wrapper {
     border-radius: 4px;
 }
+
 .leaflet-popup-content {
     font-size: 14px;
     text-align: center;
 }
-    .leaflet-popup-content b {
-        font-family: "Montserrat", Helvetica, Arial, sans-serif;
-        color: #2C75AF;
-        font-size: 16px;
-    }
-    .leaflet-popup-content a {
-        padding-top: 10px;
-    }
 
-    .ui-autocomplete {
-        background-color: #fff;
-        font-family: "Montserrat", Helvetica, Arial, sans-serif;
-        font-size: 16px;
-        -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-        -moz-box-shadow:    2px 2px 5px rgba(0, 0, 0, 0.2);
-        box-shadow:         2px 2px 5px rgba(0, 0, 0, 0.2);
-        -webkit-border-radius: 0;
-        -moz-border-radius: 0;
-        border-radius: 0;
-    }
-    
-    .ui-menu-item a:hover {
-        color: #000;
-        background: #eee;
-        border: 1px solid #000;
-        border: 1px solid rgba(0,0,0,0);
-    }
+.leaflet-popup-content b {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    color: #2C75AF;
+    font-size: 16px;
+}
 
+.leaflet-popup-content a {
+    padding-top: 10px;
+}
+
+.ui-autocomplete {
+    background-color: #fff;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow:    2px 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow:         2px 2px 5px rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.ui-menu-item a:hover {
+    color: #000;
+    background: #eee;
+    border: 1px solid #000;
+    border: 1px solid rgba(0,0,0,0);
+}
