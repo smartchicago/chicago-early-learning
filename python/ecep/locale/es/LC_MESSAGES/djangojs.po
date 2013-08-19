@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-16 15:32-0500\n"
+"POT-Creation-Date: 2013-08-19 11:33-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 #: portal/static-prod/js/cel/location-marker.js:85
 #: portal/static-prod/js/cel/pages/browse.js:96
 #: portal/static-prod/js/cel/pages/starred.js:84
-#: portal/static/js/cel/common.js:328
+#: portal/static/js/cel/common.js:330
 msgid "Please enable geolocation services."
 msgstr "Por favor permita servicios de geolocalización"
 
@@ -179,6 +179,10 @@ msgstr "Número de Ubicaciones"
 #: portal/static/js/cel/pages/browse.js:328
 msgid "Explore"
 msgstr "Explorar"
+
+#: portal/static/js/cel/location.js:78
+msgid "CPS Based"
+msgstr ""
 
 #~ msgid "Affiliations"
 #~ msgstr "Afiliación del centro/sede"
