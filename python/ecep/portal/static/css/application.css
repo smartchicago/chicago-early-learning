@@ -149,8 +149,9 @@ h1, h2, h3, h4 {
 
     #desktop-search {
         margin-top: 8px;
-        float: right;
+        float: left;
         margin-right: 0;
+				margin-left: 57px;
     }
         #desktop-search input {
             left: 0;
