@@ -519,11 +519,8 @@
         }
         
         .single-share {
-            content: "";
-						float: right;
-						position: absolute;
-						top: 102px;
-						right: 10px;
+						float: left;
+						position: relative;
 				}
 						
 		.filters-1,
@@ -532,6 +529,16 @@
 		.filters-4 {
 			width: 50%;
 			float: left;
+		}
+		
+		.school-details {
+			clear: both;
+		}
+		.website-phone {
+			margin-bottom: 45px;
+		}
+		.single-star {
+			display: none !important;
 		}
 		
  }

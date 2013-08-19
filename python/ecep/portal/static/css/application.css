@@ -149,8 +149,8 @@ h1, h2, h3, h4 {
 
     #desktop-search {
         margin-top: 8px;
-        float: right;
-        margin-right: 0;
+        float: left;
+				margin-left: 0px;
     }
         #desktop-search input {
             left: 0;
@@ -985,8 +985,8 @@ h1, h2, h3, h4 {
 .favs-close-button {
     float: right;
     font-size: 35px;
-        margin-top: 10px;
-        color: #c2c2c2;
+    margin-top: 10px;
+    color: #c2c2c2;
 }
 
 .favs-close-button:hover {
@@ -995,8 +995,10 @@ h1, h2, h3, h4 {
 }
 
 .single-star {
-    margin-top: -28px;
-    margin-right: 90px;
+		margin-top: -24px;
+		position: relative;
+		float: right;
+		margin-left: 15px;
 }
 
 .description-mobile {
