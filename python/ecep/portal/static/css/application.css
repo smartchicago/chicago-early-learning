@@ -99,7 +99,6 @@ h1, h2, h3, h4 {
     height: 60px;
     }
     .navbar-left {
-        width: 69%;
         float: left;
     }
     .navbar-right {
@@ -116,7 +115,7 @@ h1, h2, h3, h4 {
     .navbar .nav {
         float: right;
         margin: 10px 0;
-        font-size: 13px;
+        font-size: 15px;
     }
     .navbar .nav img {
         max-height: 20px;
