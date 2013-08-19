@@ -46,7 +46,7 @@ h1, h2, h3, h4 {
 
 .navbar .brand {
     margin: 0;
-    font-size: 16px;
+    font-size: 15px;
     text-transform: uppercase;
     font-weight: 300;
 }
@@ -103,7 +103,7 @@ h1, h2, h3, h4 {
         float: left;
     }
     .navbar-right {
-        width: 35%;
+        width: 384px;
         float: right;
     }
     .navbar .brand {
@@ -117,7 +117,7 @@ h1, h2, h3, h4 {
     .navbar .nav {
         float: right;
         margin: 10px 0;
-        font-size: 15px;
+        font-size: 13px;
     }
     .navbar .nav img {
         max-height: 20px;
@@ -165,7 +165,7 @@ h1, h2, h3, h4 {
             font-size: 16px;
         }
         #searchBtn {
-            padding: 6px 10px 7px 10px;
+            padding: 6px 5px 7px 5px;
             margin-left: 5px;
         }
         #mobile-search {
