@@ -11,8 +11,11 @@ function($, L, Response, Handlebars) {
     var breakpoints = {
         mobile: 420,
         tablet: 767,
-        desktop: 1024
+        desktop: 1024,
+				desktopalt: 1140
     };
+
+    var isTouchscreen = ('ontouchstart' in document.documentElement);
 
     // Hide the address bar on mobile browsers
     // Solution from: http://mobile.tutsplus.com/tutorials/mobile-web-apps/remove-address-bar/
@@ -26,7 +29,7 @@ function($, L, Response, Handlebars) {
             }, 50);
         }
     }
-    if ('ontouchstart' in document.documentElement) { 
+    if (isTouchscreen) { 
         $(window).on('load', function() {
             if(!window.pageYOffset) { 
                 hideAddressBar(); 
@@ -35,6 +38,11 @@ function($, L, Response, Handlebars) {
     }
 
     $(document).ready(function() {
+
+        // Remove css tooltips when on a touchscreen device
+        if (isTouchscreen) {
+            $('[data-hint]').removeAttr('data-hint');
+        }
 
         // AUTOCOMPLETE
         var $autocomplete = $('.autocomplete-searchbox');
@@ -211,7 +219,8 @@ function($, L, Response, Handlebars) {
         0,
         breakpoints.mobile,
         breakpoints.tablet,
-        breakpoints.desktop
+        breakpoints.desktop,
+				breakpoints.desktopalt
     ];
     Response.create({ mode: 'markup', prefix: 'r', breakpoints: breakpointsArray });
     Response.create({ mode: 'src',  prefix: 'src', breakpoints: breakpointsArray });
@@ -372,6 +381,8 @@ function($, L, Response, Handlebars) {
         getUrl: getUrl,
 
         breakpoints: breakpoints, 
+
+        isTouchscreen: isTouchscreen,
 
         // Stolen from _.js v1.5.1
         // https://github.com/jashkenas/underscore/blob/dc5a3fa0133b7000c36ba76a413139c63f646789/underscore.js
