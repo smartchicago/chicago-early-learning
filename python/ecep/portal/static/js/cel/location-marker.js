@@ -26,7 +26,6 @@ define(['jquery', 'Leaflet', 'location',
             }
                 
             L.tileLayer.provider('Acetate.all').addTo(map);             // basemap 
-            map.panTo(latLng);
 
             if (favorites.isStarred(location_id)) {
                 favorites.toggle($star);

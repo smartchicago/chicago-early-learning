@@ -57,7 +57,7 @@ See LICENSE in the project root for copying permission
     </style>
 
   </head> 
-  <body>
+  <body lang="{{ LANGUAGE_CODE }}">
     <!-- Navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -71,7 +71,7 @@ See LICENSE in the project root for copying permission
         <!-- Navbar RIGHT -->
         <div class="navbar-right">
           <ul class="nav">
-            <li><a href="#text-for-info" data-toggle="modal" data-r1140='{% trans "Text For Info" %}'><img src='{% static "img/icons/text-for-info.png" %}' alt="Text For Info"></a></li>
+            <li><a href="{% url portal.views.smsinfo %}" data-r1140='{% trans "Text For Info" %}'><img src='{% static "img/icons/text-for-info.png" %}' alt="Text For Info"></a></li>
             <li><a href="{% url portal.views.about %}" data-r1140={% trans "About" %}><img src='{% static "img/icons/about.png" %}' alt="About"></a></li>
             <li><a href="{% url portal.views.faq %}" data-r1140={% trans "FAQ" %}><img src='{% static "img/icons/faq.png" %}'></a></li>
             <li class="dropdown">
@@ -96,17 +96,6 @@ See LICENSE in the project root for copying permission
     <![endif]-->
     </div>
     {% block content %}{% endblock %}
-
-    <!-- Text-for-Info Modal -->
-    <div id="text-for-info" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="textForInfo" aria-hidden="true">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="textForInfo">{% blocktrans %}Want information via text?{% endblocktrans %}</h3>
-      </div>
-      <div class="modal-body">
-        <p>{% blocktrans %}Text your zip code to {% endblocktrans %}<a href="sms:{{ settings.TWILIO_PHONE }}">{{ settings.TWILIO_PHONE }}</a>{% blocktrans %} and we'll do the rest.{% endblocktrans %}</p>
-      </div>
-    </div>
 
     <!-- Share Modal -->
     <div id="share-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="share-modal-label" aria-hidden="true">

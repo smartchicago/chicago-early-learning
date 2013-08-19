@@ -46,6 +46,14 @@
     }
 }
 
+@media (max-width: 1140px) {
+    .navbar-right {
+        width: 250px;
+        float: right;
+    }
+
+}
+
 /* Landscape phone to portrait tablet --------- */
 
 @media (max-width: 1023px) { 
