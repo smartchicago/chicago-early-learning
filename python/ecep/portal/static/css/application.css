@@ -150,7 +150,7 @@ h1, h2, h3, h4 {
     #desktop-search {
         margin-top: 8px;
         float: left;
-				margin-left: 8px;
+				margin-left: 0px;
     }
         #desktop-search input {
             left: 0;
