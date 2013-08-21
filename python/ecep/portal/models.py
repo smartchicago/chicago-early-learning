@@ -186,14 +186,14 @@ class Location(models.Model):
                 value = field.value_from_object(self)
                 kv = {
                         'fieldname': _(field.verbose_name), 
-                        'value': value if value else _("None")
+                        'value': value if value else _('None')
                 }
                 sfields.append(kv)
 
         affiliation_values = [self.verbose_name(aff.get_attname()) for aff in affiliation_fields
                               if aff.value_from_object(self)]
         sfields.append({'fieldname': _('Program Information'),
-                        'value': ', '.join(affiliation_values) if affiliation_values else 'None'})
+                        'value': ', '.join(affiliation_values) if affiliation_values else _('None')})
         
         # Combine Languages
         lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
@@ -207,13 +207,18 @@ class Location(models.Model):
         program_hours = self.prg_hours if self.prg_hours else _("No Hours Listed")
         program_values.append(program_hours)
         sfields.append({'fieldname': _('Duration/Hours'), 
-                        'value': ', '.join(program_values) if program_values else 'None'})
+                        'value': ', '.join(program_values) if program_values else _('None')})
 
         # Weekday Avaialability
         week_values = [self.verbose_name(wk.get_attname()) for wk in week_fields
                               if wk.value_from_object(self)]
         sfields.append({'fieldname': _('Weekday Availability'), 
-                        'value': ', '.join(week_values) if week_values else 'None'})
+                        'value': ', '.join(week_values) if week_values else _('None')})
+
+        # Quality Rating
+        q_rating = _(self.q_rating if self.q_rating else _('None'))
+        sfields.append({'fieldname': _('Quality Rating'), 'value': q_rating})
+                         
 
         # Phone
         phone = {'fieldname': _('Phone Number'), 'number': nicephone(self.phone)}
@@ -241,7 +246,8 @@ class Location(models.Model):
         
         # Tooltips - necessary for translations in handlebars template
         tooltip = {'directions': _('Directions from Google'), 'moreinfo': _('Click to show more information'),
-                   'star': _('Click to star location'), 'accreditation': ' '.join(accreditation)}
+                   'star': _('Click to star location'), 'accreditation': ' '.join(accreditation),
+                   'quality': q_rating}
         
         return {'item': item, 'phone': phone, 'sfields': sfields,
                 'bfields': {'fieldname': _('Other Features'), 'values': bfields},
