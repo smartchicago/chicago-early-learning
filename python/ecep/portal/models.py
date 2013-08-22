@@ -216,8 +216,9 @@ class Location(models.Model):
                         'value': ', '.join(week_values) if week_values else _('None')})
 
         # Quality Rating
-        q_rating = _(self.q_rating if self.q_rating else _('None'))
-        sfields.append({'fieldname': _('Quality Rating'), 'value': q_rating})
+        q_rating = self.q_rating if self.q_rating else 'None'
+        item['quality'] = q_rating.lower()
+        sfields.append({'fieldname': _('Quality Rating'), 'value': _(q_rating)})
                          
 
         # Phone

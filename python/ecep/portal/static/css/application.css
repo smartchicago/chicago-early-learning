@@ -285,13 +285,13 @@ h1, h2, h3, h4 {
     float: none;
 		font-size: 30px;
 }
-	/* Quality Icon classes */
-	.quality-None { color: #E4E4E4; }
-	.quality-Licensed { color: #0D6EC9; }
-	.quality-Bronze { color: #CF641D; }
-	.quality-Silver { color: #B6B6B6; }
-	.quality-Gold { color: #FFD600; }
 
+/* Quality Icon classes */
+#quality-icon.quality-none { color: #E4E4E4; }
+#quality-icon.quality-licensed { color: #0D6EC9; }
+#quality-icon.quality-bronze { color: #CF641D; }
+#quality-icon.quality-silver { color: #B6B6B6; }
+#quality-icon.quality-gold { color: #FFD600; }
 
 #loc-icon {
     left: 65%;
