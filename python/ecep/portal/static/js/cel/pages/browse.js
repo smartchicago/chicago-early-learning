@@ -187,6 +187,13 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 $('[data-hint]').removeAttr('data-hint');
             }
 
+            // set quality icons
+            $('.quality-icon').each(function(index) {
+                var $this = $(this),
+                    iconname = $this.data('img');
+                $this.attr('src', common.getUrl('icon-quality', {quality: iconname}));
+            });
+
             // set header title
             var $headerFav = $('#header-fav'),
                 $headerDist = $('#header-dist');

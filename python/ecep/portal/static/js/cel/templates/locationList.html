@@ -10,6 +10,11 @@
         <h1 class="truncate">{{item.site_name}}</h1>
         <h2 class="truncate">{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2>
       </a>
+      <a href="#" id="quality-icon" class="hideonmobile directions-icon hint--right"
+          data-hint="{{ translations.qrisrating }}: {{ translations.comingsoon }}">
+          <!-- data-hint="{{ translations.qrisrating }}: {{ tooltip.quality }}"> -->
+          <img data-img="quality-{{ item.quality }}" class="quality-icon" src='{{static "img/icons/quality-none.png"}}' />
+      </a>
       <a href="#" id="loc-icon" class="hideonmobile directions-icon hint--right"
           data-hint="{{tooltip.accreditation}}">
         <img id="loc-icon-{{item.key}}" class="location-icons"
