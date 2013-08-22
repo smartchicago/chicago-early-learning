@@ -280,10 +280,18 @@ h1, h2, h3, h4 {
 
 #quality-icon {
     left: 55%;
-    margin-top: 3px;
+    margin-top: 5px;
     position: absolute;
     float: none;
+		font-size: 30px;
 }
+	/* Quality Icon classes */
+	.quality-None { color: #E4E4E4; }
+	.quality-Licensed { color: #0D6EC9; }
+	.quality-Bronze { color: #CF641D; }
+	.quality-Silver { color: #B6B6B6; }
+	.quality-Gold { color: #FFD600; }
+
 
 #loc-icon {
     left: 65%;
