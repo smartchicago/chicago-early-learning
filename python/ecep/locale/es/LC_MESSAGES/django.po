@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-19 11:33-0500\n"
+"POT-Creation-Date: 2013-08-22 14:00-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,8 @@ msgstr "Inglés"
 msgid "Spanish"
 msgstr "Español"
 
-#: portal/models.py:189
+#: portal/models.py:189 portal/models.py:196 portal/models.py:210
+#: portal/models.py:216
 msgid "None"
 msgstr "Ninguno"
 
@@ -44,44 +45,58 @@ msgstr "Duración/horas"
 msgid "Weekday Availability"
 msgstr "Disponibilidad entre semana"
 
-#: portal/models.py:219
+#: portal/models.py:221
+msgid "Quality Rating"
+msgstr "Evaluación de calidad"
+
+#: portal/models.py:225
 msgid "Phone Number"
 msgstr "Número de teléfono"
 
-#: portal/models.py:226
+#: portal/models.py:232
 msgid "Description"
 msgstr "Descripción"
 
-#: portal/models.py:235
+#: portal/models.py:241
 msgid "More"
 msgstr "Más"
 
-#: portal/models.py:235 portal/templatetags/portal_extras.py:30
+#: portal/models.py:241 portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr "Sitio web"
 
-#: portal/models.py:235
+#: portal/models.py:241
 msgid "Directions"
 msgstr "Dirección"
 
-#: portal/models.py:236 portal/templates/browse.html:43
+#: portal/models.py:242 portal/templates/browse.html:43
 #: portal/templates/starred.html:26
 msgid "Share"
 msgstr "Compartir"
 
+#: portal/models.py:242
+#, fuzzy
+msgid "QRIS Rating"
+msgstr "Evaluaciones"
+
 #: portal/models.py:243
+#, fuzzy
+msgid "Coming Soon"
+msgstr "Comparación de centros"
+
+#: portal/models.py:250
 msgid "Directions from Google"
 msgstr "Dirección usando Google"
 
-#: portal/models.py:243
+#: portal/models.py:250
 msgid "Click to show more information"
 msgstr "Haga clic para mostrar mas información"
 
-#: portal/models.py:244
-msgid "Click to star location"
-msgstr "Haga clic para guardar esta ubicación"
+#: portal/models.py:251
+msgid "Click to save to your list"
+msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:247
+#: portal/models.py:255
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -135,18 +150,94 @@ msgstr ""
 msgid "(page %(current)d/%(total)d)"
 msgstr "(página %(current)d/%(total)d)"
 
-#: portal/views.py:369
+#: portal/translations.py:10
+msgid "Full Year"
+msgstr "Año completo"
+
+#: portal/translations.py:11
+msgid "School Year"
+msgstr "Año Escolar"
+
+#: portal/translations.py:12
+msgid "Full Week"
+msgstr "Semana completa"
+
+#: portal/translations.py:13
+msgid "Partial Week"
+msgstr "Semana parcial"
+
+#: portal/translations.py:14
+msgid "Full Day"
+msgstr "Año completo"
+
+#: portal/translations.py:15
+msgid "Part Day"
+msgstr "Parte del día"
+
+#: portal/translations.py:16
+msgid "Part Week"
+msgstr "Semana parcial"
+
+#: portal/translations.py:17
+msgid "Ages 0-3"
+msgstr "0‐3 años"
+
+#: portal/translations.py:18
+msgid "Ages 3-5"
+msgstr "3‐5 años"
+
+#: portal/translations.py:19
+msgid "Home Visiting"
+msgstr "Visitas a Domicilio"
+
+#: portal/translations.py:20
+msgid "Accepts CCAP"
+msgstr "Acepta CCAP"
+
+#: portal/translations.py:21
+msgid "CPS Based"
+msgstr "Escuelas Públicas de Chicago"
+
+#: portal/translations.py:22
+msgid "Community Based"
+msgstr "Organizaciones comunitarias"
+
+#: portal/translations.py:23
+msgid "Head Start"
+msgstr "Head Start"
+
+#: portal/translations.py:24
+msgid "Early Head Start"
+msgstr "Early Head Start"
+
+#: portal/translations.py:25
+msgid "Licensed"
+msgstr ""
+
+#: portal/translations.py:26
+msgid "Bronze"
+msgstr ""
+
+#: portal/translations.py:27
+msgid "Silver"
+msgstr ""
+
+#: portal/translations.py:28
+msgid "Gold"
+msgstr ""
+
+#: portal/views.py:373
 msgid "Explore"
 msgstr "Explorar"
 
-#: portal/views.py:370
+#: portal/views.py:374
 msgid "Click to see locations in this neighborhood"
 msgstr "Haga clic para ver ubicaciones en este vecindario"
 
 #: portal/templates/about.html:9 portal/templates/browse.html:12
 #: portal/templates/faq-models.html:9 portal/templates/index.html:11
-#: portal/templates/location.html:12 portal/templates/starred.html:12
-#: templates/admin/base_site.html:15
+#: portal/templates/location.html:12 portal/templates/smsinfo.html:12
+#: portal/templates/starred.html:12 templates/admin/base_site.html:15
 msgid "Chicago Early Learning"
 msgstr "Chicago Early Learning"
 
@@ -280,22 +371,10 @@ msgid "Language"
 msgstr "Idioma"
 
 #: portal/templates/base.html:104
-msgid "Want information via text?"
-msgstr "¿Desea recibir información por medio de un mensaje de texto?"
-
-#: portal/templates/base.html:107
-msgid "Text your zip code to "
-msgstr "Envie un mensaje de texto con su código postal a"
-
-#: portal/templates/base.html:107
-msgid " and we'll do the rest."
-msgstr "Y nosotros haremos el resto."
-
-#: portal/templates/base.html:115
 msgid "Save and Share Permalink"
 msgstr "Guarde y comparta el enlace permanente"
 
-#: portal/templates/base.html:118
+#: portal/templates/base.html:107
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -383,11 +462,11 @@ msgstr ""
 "búsqueda el nombre de un vecindario o, inclusive el nombre de una escuela "
 "para encontrarlo rápidamente."
 
-#: portal/templates/index.html:51
+#: portal/templates/index.html:51 portal/templates/smsinfo.html:31
 msgid "Text for more info"
 msgstr "Envíe texto para recibir más info"
 
-#: portal/templates/index.html:52
+#: portal/templates/index.html:52 portal/templates/smsinfo.html:32
 msgid ""
 "Get details about locations near you with text messages. Simply send a zip "
 "code to "
@@ -395,11 +474,11 @@ msgstr ""
 "Obtenga detalles acerca de las ubicaciones cerca de usted por medio de "
 "mensajes de texto. Simplemente envie el código postal a "
 
-#: portal/templates/index.html:52
+#: portal/templates/index.html:52 portal/templates/smsinfo.html:32
 msgid " and follow the instructions on your phone."
 msgstr "Y siga las instrucciones en su teléfono."
 
-#: portal/templates/index.html:52
+#: portal/templates/index.html:52 portal/templates/smsinfo.html:32
 msgid ""
 "If you’d like to talk to someone about your options, please call the "
 "Chicago: Ready to Learn! Hotline at "
@@ -422,6 +501,18 @@ msgstr ""
 #: portal/templates/index.html:64
 msgid "Get Started!"
 msgstr "Comenzar!"
+
+#: portal/templates/smsinfo.html:22
+msgid "Want information via text?"
+msgstr "¿Desea recibir información por medio de un mensaje de texto?"
+
+#: portal/templates/smsinfo.html:23
+msgid "Text your zip code to "
+msgstr "Envie un mensaje de texto con su código postal a"
+
+#: portal/templates/smsinfo.html:23
+msgid " and we'll do the rest."
+msgstr "Y nosotros haremos el resto."
 
 #: portal/templates/starred.html:25
 #, fuzzy
@@ -463,269 +554,221 @@ msgstr "¿Ha olvidado su nombre de usuario o contraseña?"
 msgid "Log in"
 msgstr "Iniciar sesión"
 
-msgid "Accepts CCAP"
-msgstr "Acepta CCAP"
+#~ msgid "Click to star location"
+#~ msgstr "Haga clic para guardar esta ubicación"
 
-msgid "Community Based"
-msgstr "Organizaciones comunitarias"
+#~ msgid "Please correct the errors below."
+#~ msgstr "Por favor corrija los siguientes errores:"
 
-msgid "CPS Based"
-msgstr "Escuelas Públicas de Chicago"
+#~ msgid "Affiliations"
+#~ msgstr "Afiliación del centro/sede"
 
-msgid "Please correct the errors below."
-msgstr "Por favor corrija los siguientes errores:"
+#~ msgid "Quality Statement"
+#~ msgstr "Declaración de calidad"
 
-msgid "Affiliations"
-msgstr "Afiliación del centro/sede"
+#~ msgid "Distance"
+#~ msgstr "Distancia"
 
-msgid "Full Year"
-msgstr "Año completo"
+#~ msgid "< 0.5 mi"
+#~ msgstr "< 0.5 millas"
 
-msgid "School Year"
-msgstr "Año Escolar"
+#~ msgid "< 1 mi"
+#~ msgstr "< 1 milla"
 
-msgid "Full Week"
-msgstr "Semana completa"
+#~ msgid "< 2 mi"
+#~ msgstr "< 2 millas"
 
-msgid "Partial Week"
-msgstr "Semana parcial"
+#~ msgid "< 5 mi"
+#~ msgstr "< 5 millas"
 
-msgid "Quality Statement"
-msgstr "Declaración de calidad"
+#~ msgid "< 10 mi"
+#~ msgstr "< 10 millas"
 
-msgid "Distance"
-msgstr "Distancia"
+#~ msgid "Accreditation"
+#~ msgstr "Acreditación"
 
-msgid "< 0.5 mi"
-msgstr "< 0.5 millas"
+#~ msgid "Program Hours"
+#~ msgstr "Horario del Programa"
 
-msgid "< 1 mi"
-msgstr "< 1 milla"
+#~ msgid "Ages Served"
+#~ msgstr "Edades para las que se presta servicio"
 
-msgid "< 2 mi"
-msgstr "< 2 millas"
+#~ msgid "About the Chicago Early Learning Portal"
+#~ msgstr ""
+#~ "Acerca del Chicago Early Learning Portal (Portal de Aprendizaje Temprano "
+#~ "de Chicago)"
 
-msgid "< 5 mi"
-msgstr "< 5 millas"
+#~ msgid "Partners and Sponsors"
+#~ msgstr "Socios y Patrocinadores"
 
-msgid "< 10 mi"
-msgstr "< 10 millas"
+#~ msgid "chicago early learning"
+#~ msgstr "chicago early learning"
 
-msgid "Quality Rating"
-msgstr "Evaluación de calidad"
+#~ msgid "Text for Info"
+#~ msgstr "Envíe texto para recibir info"
 
-msgid "Accreditation"
-msgstr "Acreditación"
+#~ msgid "Text for info"
+#~ msgstr "Envíe texto para recibir info"
 
-msgid "Program Hours"
-msgstr "Horario del Programa"
+#~ msgid "Filter"
+#~ msgstr "Filtro"
 
-msgid "Full Day"
-msgstr "Año completo"
+#~ msgid "Find Me"
+#~ msgstr "Encuéntreme"
 
-msgid "Part Day"
-msgstr "Parte del día"
+#~ msgid "Print"
+#~ msgstr "Imprimir"
 
-msgid "Part Week"
-msgstr "Semana parcial"
+#~ msgid ""
+#~ "The state of Illinois is currently developing a universal quality rating "
+#~ "system that will help indicate program quality at a glance. Once that "
+#~ "rating system is finalized, it will be included here. At this time, &quot;"
+#~ "Not Yet Rated&quot; does not make an indication about program quality."
+#~ msgstr ""
+#~ "El estado de Illinois está actualmente desarrollando un sistema universal "
+#~ "de evaluación de calidad que ayudará a indicar la calidad de un programa "
+#~ "al momento. Una vez que el sistema esté finalizado, será incluido aquí. "
+#~ "Actualmente, la etiqueta de “no calificado aún” no proporciona ninguna "
+#~ "indicación sobre la calidad del programa."
 
-msgid "Ages Served"
-msgstr "Edades para las que se presta servicio"
+#~ msgid "Not Yet Rated"
+#~ msgstr "No calificado aún"
 
-msgid "Ages 0-3"
-msgstr "0‐3 años"
+#~ msgid "What Is This?"
+#~ msgstr "¿Qué significa esto?"
 
-msgid "Ages 3-5"
-msgstr "3‐5 años"
+#~ msgid ""
+#~ "Eventually, every early learning program in Chicago will receive a "
+#~ "quality rating. These ratings will indicate program quality at a glance. "
+#~ "Currently, the state is still developing the quality rating system. At "
+#~ "this time, &quot;Not Yet Rated&quot; does not reveal anything about "
+#~ "program quality."
+#~ msgstr ""
+#~ "En el futuro, cada programa de aprendizaje temprano de Chicago recibirá "
+#~ "una calificación de calidad. Estas calificaciones ofrecerán una "
+#~ "indicación de la calidad de un programa al momento. El sistema de "
+#~ "evaluación de calidad del Estado está aún en proceso de desarrollo. "
+#~ "Actualmente, la etiqueta de “no calificado aún” no indica nada sobre la "
+#~ "calidad del programa."
 
-msgid "Home Visiting"
-msgstr "Visitas a Domicilio"
+#~ msgid "Accreditation:"
+#~ msgstr "Acreditación"
 
-msgid "Early Head Start"
-msgstr "Early Head Start"
+#~ msgid "Main Phone"
+#~ msgstr "Teléfono principal"
 
-msgid "About the Chicago Early Learning Portal"
-msgstr ""
-"Acerca del Chicago Early Learning Portal (Portal de Aprendizaje Temprano "
-"de Chicago)"
+#~ msgid "Alt. Phone"
+#~ msgstr "Tel. alternativo"
 
-msgid "Partners and Sponsors"
-msgstr "Socios y Patrocinadores"
+#~ msgid "Fax"
+#~ msgstr "Fax"
 
-msgid "chicago early learning"
-msgstr "chicago early learning"
+#~ msgid "Programs"
+#~ msgstr "Programas"
 
-msgid "Text for Info"
-msgstr "Envíe texto para recibir info"
+#~ msgid "Less Info"
+#~ msgstr "Menos información"
 
-msgid "Text for info"
-msgstr "Envíe texto para recibir info"
+#~ msgid "Comparing"
+#~ msgstr "Comparacion"
 
-msgid "Filter"
-msgstr "Filtro"
+#~ msgid "Please select two or more locations to compare them."
+#~ msgstr "Por favor seleccione dos o más centros para compararlos."
 
-msgid "Find Me"
-msgstr "Encuéntreme"
+#~ msgid "CEL"
+#~ msgstr "CEL"
 
-msgid "Print"
-msgstr "Imprimir"
+#~ msgid "Chicago Early Learning Portal"
+#~ msgstr "Chicago Early Learning Portal (Portal de Aprendizaje Temprano)"
 
-msgid ""
-"The state of Illinois is currently developing a universal quality rating "
-"system that will help indicate program quality at a glance. Once that "
-"rating system is finalized, it will be included here. At this time, &quot;"
-"Not Yet Rated&quot; does not make an indication about program quality."
-msgstr ""
-"El estado de Illinois está actualmente desarrollando un sistema universal "
-"de evaluación de calidad que ayudará a indicar la calidad de un programa "
-"al momento. Una vez que el sistema esté finalizado, será incluido aquí. "
-"Actualmente, la etiqueta de “no calificado aún” no proporciona ninguna "
-"indicación sobre la calidad del programa."
+#~ msgid "Enter an address to get started."
+#~ msgstr "Para comenzar, ingrese su dirección."
 
-msgid "Ratings"
-msgstr "Evaluaciones"
+#~ msgid "Permalink"
+#~ msgstr "Enlace permanente"
 
-msgid "Not Yet Rated"
-msgstr "No calificado aún"
+#~ msgid "Update"
+#~ msgstr "Actualizar"
 
-msgid "What Is This?"
-msgstr "¿Qué significa esto?"
+#~ msgid "All"
+#~ msgstr "Todos"
 
-msgid ""
-"Eventually, every early learning program in Chicago will receive a "
-"quality rating. These ratings will indicate program quality at a glance. "
-"Currently, the state is still developing the quality rating system. At "
-"this time, &quot;Not Yet Rated&quot; does not reveal anything about "
-"program quality."
-msgstr ""
-"En el futuro, cada programa de aprendizaje temprano de Chicago recibirá "
-"una calificación de calidad. Estas calificaciones ofrecerán una "
-"indicación de la calidad de un programa al momento. El sistema de "
-"evaluación de calidad del Estado está aún en proceso de desarrollo. "
-"Actualmente, la etiqueta de “no calificado aún” no indica nada sobre la "
-"calidad del programa."
+#~ msgid "From:"
+#~ msgstr "De:"
 
-msgid "Accreditation:"
-msgstr "Acreditación"
+#~ msgid "Your Location"
+#~ msgstr "Su ubicación"
 
-msgid "Main Phone"
-msgstr "Teléfono principal"
+#~ msgctxt ""
+#~ msgid "Address"
+#~ msgstr "Dirección"
 
-msgid "Alt. Phone"
-msgstr "Tel. alternativo"
+#~ msgid "Text For More Info"
+#~ msgstr "Envíe texto para recibir más info"
 
-msgid "Fax"
-msgstr "Fax"
+#~ msgid "Site Name"
+#~ msgstr "Nombre del centro"
 
-msgid "Programs"
-msgstr "Programas"
+#~ msgid "City"
+#~ msgstr "Ciudad"
 
-msgid "Less Info"
-msgstr "Menos información"
+#~ msgid "State"
+#~ msgstr "Estado"
 
-msgid "Comparing"
-msgstr "Comparacion"
+#~ msgid "Zip Code"
+#~ msgstr "Código postal (ZIP)"
 
-msgid "Please select two or more locations to compare them."
-msgstr "Por favor seleccione dos o más centros para compararlos."
+#~ msgid "Phone Number 2"
+#~ msgstr "Número de teléfono 2"
 
-msgid "CEL"
-msgstr "CEL"
+#~ msgid "Phone Number 3"
+#~ msgstr "Número de teléfono 3"
 
-msgid "Chicago Early Learning Portal"
-msgstr "Chicago Early Learning Portal (Portal de Aprendizaje Temprano)"
+#~ msgid "Fax Number"
+#~ msgstr "Número de fax"
 
-msgid "Enter an address to get started."
-msgstr "Para comenzar, ingrese su dirección."
+#~ msgid "Preschool for All/Prevention Initiative"
+#~ msgstr ""
+#~ "Preschool for All (Preescolar Para Todos)/ Prevention Initiative "
+#~ "(Iniciativa de Prevención)"
 
-msgid "Comparing Locations"
-msgstr "Comparación de centros"
+#~ msgid "Tuition-Based"
+#~ msgstr "Con pago de colegiatura"
 
-msgid "Permalink"
-msgstr "Enlace permanente"
+#~ msgid "Special Ed"
+#~ msgstr "Educación especial"
 
-msgid "Update"
-msgstr "Actualizar"
+#~ msgid "Montessori"
+#~ msgstr "Montessori"
 
-msgid "All"
-msgstr "Todos"
+#~ msgid "Child-Parent Center"
+#~ msgstr "Child‐Parent Center (Centro de Padres e Hijos)"
 
-msgid "From:"
-msgstr "De:"
+#~ msgid "Child Care Assistance Program"
+#~ msgstr ""
+#~ "Child Care Assistance Program (Programa de Asistencia de Cuidados "
+#~ "Infantiles)"
 
-msgid "Your Location"
-msgstr "Su ubicación"
+#~ msgid "Executive Director"
+#~ msgstr "Director ejecutivo"
 
-msgctxt ""
-msgid "Address"
-msgstr "Dirección"
+#~ msgid "Director/Principal"
+#~ msgstr "Director/rector"
 
-msgid "Text For More Info"
-msgstr "Envíe texto para recibir más info"
+#~ msgid "Eligibility Information"
+#~ msgstr "Información sobre requisitos"
 
-msgid "Site Name"
-msgstr "Nombre del centro"
+#~ msgid "Application and Selection Process"
+#~ msgstr "Proceso de presentación de solicitudes y selección"
 
-msgid "City"
-msgstr "Ciudad"
+#~ msgid "Program Schedule"
+#~ msgstr "Horario del programa"
 
-msgid "State"
-msgstr "Estado"
+#~ msgid "Program Size"
+#~ msgstr "Tamaño del programa"
 
-msgid "Zip Code"
-msgstr "Código postal (ZIP)"
+#~ msgid "Waitlist Situation"
+#~ msgstr "Situación de la lista de espera"
 
-msgid "Phone Number 2"
-msgstr "Número de teléfono 2"
-
-msgid "Phone Number 3"
-msgstr "Número de teléfono 3"
-
-msgid "Fax Number"
-msgstr "Número de fax"
-
-msgid "Preschool for All/Prevention Initiative"
-msgstr ""
-"Preschool for All (Preescolar Para Todos)/ Prevention Initiative "
-"(Iniciativa de Prevención)"
-
-msgid "Tuition-Based"
-msgstr "Con pago de colegiatura"
-
-msgid "Special Ed"
-msgstr "Educación especial"
-
-msgid "Montessori"
-msgstr "Montessori"
-
-msgid "Child-Parent Center"
-msgstr "Child‐Parent Center (Centro de Padres e Hijos)"
-
-msgid "Child Care Assistance Program"
-msgstr ""
-"Child Care Assistance Program (Programa de Asistencia de Cuidados "
-"Infantiles)"
-
-msgid "Executive Director"
-msgstr "Director ejecutivo"
-
-msgid "Director/Principal"
-msgstr "Director/rector"
-
-msgid "Eligibility Information"
-msgstr "Información sobre requisitos"
-
-msgid "Application and Selection Process"
-msgstr "Proceso de presentación de solicitudes y selección"
-
-msgid "Program Schedule"
-msgstr "Horario del programa"
-
-msgid "Program Size"
-msgstr "Tamaño del programa"
-
-msgid "Waitlist Situation"
-msgstr "Situación de la lista de espera"
-
-msgid "Geometry"
-msgstr "Geometría"
+#~ msgid "Geometry"
+#~ msgstr "Geometría"

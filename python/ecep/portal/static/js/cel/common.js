@@ -314,6 +314,12 @@ function($, L, Response, Handlebars) {
                 return '/static/img/leaflet-icons/center-accredited-starred.png';
             case 'icon-geolocation':
                 return '/static/img/leaflet-icons/geocode.png';
+            case 'icon-quality':
+                if (opts && opts.quality) {
+                    return '/static/img/icons/' + opts.quality + '.png';
+                } else {
+                    throw 'getUrl::Invalid Parameter: icon-quality requires opts.quality';
+                }
             default:
                 break;
         }
