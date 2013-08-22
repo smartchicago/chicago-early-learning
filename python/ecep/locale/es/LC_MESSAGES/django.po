@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-22 10:54-0500\n"
+"POT-Creation-Date: 2013-08-22 14:00-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,24 +79,24 @@ msgstr "Compartir"
 msgid "QRIS Rating"
 msgstr "Evaluaciones"
 
-#: portal/models.py:242
+#: portal/models.py:243
 #, fuzzy
 msgid "Coming Soon"
 msgstr "Comparación de centros"
 
-#: portal/models.py:249
+#: portal/models.py:250
 msgid "Directions from Google"
 msgstr "Dirección usando Google"
 
-#: portal/models.py:249
+#: portal/models.py:250
 msgid "Click to show more information"
 msgstr "Haga clic para mostrar mas información"
 
-#: portal/models.py:250
+#: portal/models.py:251
 msgid "Click to save to your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:254
+#: portal/models.py:255
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -149,6 +149,82 @@ msgstr ""
 #, python-format
 msgid "(page %(current)d/%(total)d)"
 msgstr "(página %(current)d/%(total)d)"
+
+#: portal/translations.py:10
+msgid "Full Year"
+msgstr "Año completo"
+
+#: portal/translations.py:11
+msgid "School Year"
+msgstr "Año Escolar"
+
+#: portal/translations.py:12
+msgid "Full Week"
+msgstr "Semana completa"
+
+#: portal/translations.py:13
+msgid "Partial Week"
+msgstr "Semana parcial"
+
+#: portal/translations.py:14
+msgid "Full Day"
+msgstr "Año completo"
+
+#: portal/translations.py:15
+msgid "Part Day"
+msgstr "Parte del día"
+
+#: portal/translations.py:16
+msgid "Part Week"
+msgstr "Semana parcial"
+
+#: portal/translations.py:17
+msgid "Ages 0-3"
+msgstr "0‐3 años"
+
+#: portal/translations.py:18
+msgid "Ages 3-5"
+msgstr "3‐5 años"
+
+#: portal/translations.py:19
+msgid "Home Visiting"
+msgstr "Visitas a Domicilio"
+
+#: portal/translations.py:20
+msgid "Accepts CCAP"
+msgstr "Acepta CCAP"
+
+#: portal/translations.py:21
+msgid "CPS Based"
+msgstr "Escuelas Públicas de Chicago"
+
+#: portal/translations.py:22
+msgid "Community Based"
+msgstr "Organizaciones comunitarias"
+
+#: portal/translations.py:23
+msgid "Head Start"
+msgstr "Head Start"
+
+#: portal/translations.py:24
+msgid "Early Head Start"
+msgstr "Early Head Start"
+
+#: portal/translations.py:25
+msgid "Licensed"
+msgstr ""
+
+#: portal/translations.py:26
+msgid "Bronze"
+msgstr ""
+
+#: portal/translations.py:27
+msgid "Silver"
+msgstr ""
+
+#: portal/translations.py:28
+msgid "Gold"
+msgstr ""
 
 #: portal/views.py:373
 msgid "Explore"
@@ -477,54 +553,6 @@ msgstr "¿Ha olvidado su nombre de usuario o contraseña?"
 #: templates/admin/login.html:55
 msgid "Log in"
 msgstr "Iniciar sesión"
-
-# THESE STRINGS NEED TO BE ADDED MANUALLY BECAUSE THEY ARE ADDED AS A VARIABLE
-msgid "Full Year"
-msgstr "Año completo"
-
-msgid "School Year"
-msgstr "Año Escolar"
-
-msgid "Full Week"
-msgstr "Semana completa"
-
-msgid "Partial Week"
-msgstr "Semana parcial"
-
-msgid "Full Day"
-msgstr "Año completo"
-
-msgid "Part Day"
-msgstr "Parte del día"
-
-msgid "Part Week"
-msgstr "Semana parcial"
-
-msgid "Ages 0-3"
-msgstr "0‐3 años"
-
-msgid "Ages 3-5"
-msgstr "3‐5 años"
-
-msgid "Home Visiting"
-msgstr "Visitas a Domicilio"
-
-msgid "Early Head Start"
-msgstr "Early Head Start"
-
-msgid "Accepts CCAP"
-msgstr "Acepta CCAP"
-
-msgid "CPS Based"
-msgstr "Escuelas Públicas de Chicago"
-
-msgid "Community Based"
-msgstr "Organizaciones comunitarias"
-
-msgid "Head Start"
-msgstr "Head Start"
-
-
 
 #~ msgid "Click to star location"
 #~ msgstr "Haga clic para guardar esta ubicación"

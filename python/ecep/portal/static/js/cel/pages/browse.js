@@ -191,7 +191,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             $('.quality-icon').each(function(index) {
                 var $this = $(this),
                     iconname = $this.data('img');
-                $this.attr('src', CEL.serverVars.staticRoot + 'img/icons/' + iconname + '.png');
+                $this.attr('src', common.getUrl('icon-quality', {quality: iconname}));
             });
 
             // set header title
