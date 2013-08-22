@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-22 14:00-0500\n"
+"POT-Creation-Date: 2013-08-22 15:46-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -405,6 +405,16 @@ msgstr "Haga clic para compartir su lista"
 msgid "Reset Search"
 msgstr "Vuelva a intentar su  búsqueda"
 
+#: portal/templates/browse.html:90
+#, fuzzy
+msgid "Community"
+msgstr "Organizaciones comunitarias"
+
+#: portal/templates/browse.html:91
+#, fuzzy
+msgid "Locations"
+msgstr "Su ubicación"
+
 #: portal/templates/index.html:21
 msgid "Find the right school for your child."
 msgstr "Encuentre la escuela más adecuada para su hijo."
@@ -425,12 +435,13 @@ msgstr ""
 "inscribir a su hijo en un programa de aprendizaje temprano óptimo"
 
 #: portal/templates/index.html:23
-msgid "Enter a school, neighborhood, or address"
+#, fuzzy
+msgid "Enter a school, community, or address"
 msgstr "Escriba el nombre de una escuela, vecindario, o dirección"
 
 #: portal/templates/index.html:25
-msgid "Browse by Neighborhood"
-msgstr "Buscar por vecindario"
+msgid "Browse by Community"
+msgstr ""
 
 #: portal/templates/index.html:35
 msgid "Find early learning centers near you."
@@ -448,14 +459,16 @@ msgstr ""
 "encontrar lo que busca  de la manera más fácil. "
 
 #: portal/templates/index.html:43
-msgid "Browse locations by neighborhood."
+#, fuzzy
+msgid "Browse locations by community."
 msgstr "Busque ubicaciones por vecindario"
 
 #: portal/templates/index.html:44
+#, fuzzy
 msgid ""
-"You can pick a neighborhood from the list or map if you don't want to search "
-"by address. You can also type a neighborhood or even a school name into the "
-"search bar to get there faster."
+"You can pick a community from the list or map if you don't want to search by "
+"address. You can also type a community or even a school name into the search "
+"bar to get there faster."
 msgstr ""
 "Usted puede escoger un vecindario directamente de la lista o el mapa, si no "
 "quiere buscarlo por dirección. Usted también puede escribir en el campo de "
@@ -553,6 +566,9 @@ msgstr "¿Ha olvidado su nombre de usuario o contraseña?"
 #: templates/admin/login.html:55
 msgid "Log in"
 msgstr "Iniciar sesión"
+
+#~ msgid "Browse by Neighborhood"
+#~ msgstr "Buscar por vecindario"
 
 #~ msgid "Click to star location"
 #~ msgstr "Haga clic para guardar esta ubicación"
@@ -695,9 +711,6 @@ msgstr "Iniciar sesión"
 
 #~ msgid "From:"
 #~ msgstr "De:"
-
-#~ msgid "Your Location"
-#~ msgstr "Su ubicación"
 
 #~ msgctxt ""
 #~ msgid "Address"

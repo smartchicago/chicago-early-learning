@@ -198,7 +198,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             var $headerFav = $('#header-fav'),
                 $headerDist = $('#header-dist');
             if (isNb) {
-                $headerFav.text(gettext('Neighborhood'));
+                $headerFav.text(gettext('Community'));
                 $headerDist.text(gettext('Locations'));
             } else {
                 $headerFav.text(gettext('Location'));
