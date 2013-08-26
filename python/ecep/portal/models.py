@@ -142,7 +142,14 @@ class Location(models.Model):
         ftype = field.get_internal_type()
         return ((ftype == 'CharField' or ftype == 'TextField'))
 
-    def get_context_dict(self):
+    def get_context_dict(self, short=False):
+        """Gets a context dictionary for rendering this object in templates
+
+        Performs a bunch of cleanup and filtering logic to format fields appropriately and
+        remove useless info
+
+        :param short: If true, a shorter version of the dict will be returned
+        """
         # Fix some ugly data
         if self.site_name.isupper():
             self.site_name = title(self.site_name)
@@ -169,9 +176,9 @@ class Location(models.Model):
         affiliation_fields = [self._meta.get_field_by_name(name)[0] for name in
                               ['is_home_visiting', 'is_community_based', 'is_cps_based', 'is_hs', 'is_ehs']]
         program_fields = [self._meta.get_field_by_name(name)[0] for name in
-                            ['is_full_year', 'is_school_year']]
+                         ['is_full_year', 'is_school_year']]
         week_fields = [self._meta.get_field_by_name(name)[0] for name in
-                            ['is_full_week', 'is_part_week', 'is_full_day', 'is_part_day']]
+                      ['is_full_week', 'is_part_week', 'is_full_day', 'is_part_day']]
 
         aff_field_names = {f.get_attname() for f in affiliation_fields}
 
@@ -185,8 +192,8 @@ class Location(models.Model):
             elif self.is_simple_field(field):
                 value = field.value_from_object(self)
                 kv = {
-                        'fieldname': _(field.verbose_name), 
-                        'value': value if value else _('None')
+                    'fieldname': _(field.verbose_name),
+                    'value': value if value else _('None')
                 }
                 sfields.append(kv)
 
@@ -194,7 +201,7 @@ class Location(models.Model):
                               if aff.value_from_object(self)]
         sfields.append({'fieldname': _('Program Information'),
                         'value': ', '.join(affiliation_values) if affiliation_values else _('None')})
-        
+
         # Combine Languages
         lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
         languages = ", ".join(lang_list)
@@ -203,23 +210,22 @@ class Location(models.Model):
 
         # Program Duration/Hours
         program_values = [self.verbose_name(prg.get_attname()) for prg in program_fields
-                              if prg.value_from_object(self)]
+                          if prg.value_from_object(self)]
         program_hours = self.prg_hours if self.prg_hours else _("No Hours Listed")
         program_values.append(program_hours)
-        sfields.append({'fieldname': _('Duration/Hours'), 
+        sfields.append({'fieldname': _('Duration/Hours'),
                         'value': ', '.join(program_values) if program_values else _('None')})
 
         # Weekday Avaialability
         week_values = [self.verbose_name(wk.get_attname()) for wk in week_fields
-                              if wk.value_from_object(self)]
-        sfields.append({'fieldname': _('Weekday Availability'), 
+                       if wk.value_from_object(self)]
+        sfields.append({'fieldname': _('Weekday Availability'),
                         'value': ', '.join(week_values) if week_values else _('None')})
 
         # Quality Rating
         q_rating = self.q_rating or 'None'
         item['quality'] = q_rating.lower()
         sfields.append({'fieldname': _('Quality Rating'), 'value': _(q_rating)})
-                         
 
         # Phone
         phone = {'fieldname': _('Phone Number'), 'number': nicephone(self.phone)}
@@ -228,7 +234,7 @@ class Location(models.Model):
         position = {'lng': self.geom[0], 'lat': self.geom[1]}
 
         # Quality Statement
-        if self.q_stmt:
+        if self.q_stmt and not short:
             sfields.append({'fieldname': _('Description'), 'value': self.q_stmt})
 
         bfields.sort()
@@ -239,18 +245,18 @@ class Location(models.Model):
         # This way we can do this with django and not have to worry about making a separate
         # handlebars helper
         trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
-                      'share': _('Share'), 'qrisrating': _('QRIS Rating'), 
+                      'share': _('Share'), 'qrisrating': _('QRIS Rating'),
                       'comingsoon': _('Coming Soon')}
 
         # More information for tooltip icon
         accreditation = ['Accredited'] if self.accred != 'None' else []
         accreditation.append('School' if self.is_cps_based else 'Center')
-        
+
         # Tooltips - necessary for translations in handlebars template
         tooltip = {'directions': _('Directions from Google'), 'moreinfo': _('Click to show more information'),
                    'star': _('Click to save to your list'), 'accreditation': ' '.join(accreditation),
                    'quality': q_rating}
-        
+
         return {'item': item, 'phone': phone, 'sfields': sfields,
                 'bfields': {'fieldname': _('Other Features'), 'values': bfields},
                 'position': position, 'translations': trans_dict, 'tooltip': tooltip}
