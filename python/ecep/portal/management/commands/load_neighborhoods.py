@@ -10,31 +10,43 @@ from portal.management.commands import export_topojson
 
 class Command(BaseCommand):
     """
-    Import shapefile of neighborhoods into database
+    Import shapefile of communities into database
+    Communities are simplified versions of neighborhoods and have the same properties
+
+    Data Source: https://data.cityofchicago.org/Facilities-Geographic-Boundaries/Boundaries-Community-Areas/i65m-w5fr
     """
 
     args = '<none>'
-    help = """This management command will load the neighborhood shapefile in the ecep/data/ directory
+    help = """This management command will load the communities shapefile in the ecep/data/ directory
     of this project using the portal.Neighborhood models of this django application"""
 
     def handle(self, *args, **options):
         """
-        Load neighborhood shapefile using LayerMapping; automatically checks projection,
+        Load community shapefile using LayerMapping; automatically checks projection,
         if necessary transforms to WSG 1984
         """
         neighborhood_mapping = {
             'boundary': 'MULTIPOLYGON',
-            'primary_name': 'PRI_NEIGH',
-            'secondary_name': 'SEC_NEIGH',
+            'primary_name': 'COMMUNITY',
+            'secondary_name': 'AREA_NUM_1',
         }
 
-        path_to_shp = 'data/chicago_neighborhoods/Neighborhoods_2012b.shp'
+        path_to_shp = 'data/chicago_communities/CommAreas.shp'
         lm = LayerMapping(Neighborhood, path_to_shp, neighborhood_mapping)
         self.check_neighborhood_table()
         lm.save(strict=True)
 
-        self.stdout.write('Successfully loaded %s neighborhoods from %s layer(s) into database\n'
+        self.stdout.write('Successfully loaded %s communities from %s layer(s) into database\n'
                           % (len(lm.ds[0]), lm.ds.layer_count))
+
+        # Change case of imported name strings from UPPER to Caps Case
+        communities = Neighborhood.objects.all()
+        for community in communities:
+            names = [name.capitalize() for name in community.primary_name.split()]
+            primary_name_caps = " ".join(names) 
+            self.stdout.write('Changing name %s ==> %s\n' % (community.primary_name, primary_name_caps))
+            community.primary_name = primary_name_caps
+            community.save()
 
         # Export topojson
         export_topojson.Command().handle()
