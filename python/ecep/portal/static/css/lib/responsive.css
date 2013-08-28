@@ -72,7 +72,8 @@
     }
 
     .accordion-heading #loc-icon,
-    .accordion-heading #loc-dirs {
+    .accordion-heading #loc-dirs,
+    .accordion-heading #quality-icon {
         display: none;
     }
 
