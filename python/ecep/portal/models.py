@@ -6,7 +6,7 @@ from portal.templatetags.portal_extras import nicephone
 from django.template.defaultfilters import title
 
 # Model fields need to be translated lazily
-from django.utils.translation import ugettext as _, ugettext_lazy as _l
+from django.utils.translation import ugettext as _, ugettext_lazy
 
 
 class Neighborhood(models.Model):
@@ -56,30 +56,30 @@ class Location(models.Model):
     state = models.CharField('State', max_length=2)
     zip = models.CharField('Zip Code', max_length=10)
     neighborhood = models.ForeignKey('Neighborhood', null=True)
-    phone = models.CharField(_l('Phone Number'), max_length=20, blank=True)
-    q_rating = models.CharField(_l('Quality Rating'), max_length=10, blank=True)
-    url = models.CharField(_l('Website'), max_length=256, blank=True)
-    q_stmt = models.TextField(_l('Quality Statement'), blank=True)
-    accred = models.CharField(_l('Accreditation'), max_length=100, blank=True)
-    prg_hours = models.CharField(_l('Program Hours'), max_length=50, blank=True)
-    is_full_day = models.NullBooleanField(_l('Full Day'))
-    is_part_day = models.NullBooleanField(_l('Part Day'))
-    is_full_week = models.NullBooleanField(_l('Full Week'))
-    is_part_week = models.NullBooleanField(_l('Part Week'))
-    is_school_year = models.NullBooleanField(_l('School Year'))
-    is_full_year = models.NullBooleanField(_l('Full Year'))
-    ages = models.CharField(_l('Ages Served'), max_length=50, blank=True)
-    is_age_lt_3 = models.NullBooleanField(_l('Ages 0-3'))
-    is_age_gt_3 = models.NullBooleanField(_l('Ages 3-5'))
+    phone = models.CharField(ugettext_lazy('Phone Number'), max_length=20, blank=True)
+    q_rating = models.CharField(ugettext_lazy('Quality Rating'), max_length=10, blank=True)
+    url = models.CharField(ugettext_lazy('Website'), max_length=256, blank=True)
+    q_stmt = models.TextField(ugettext_lazy('Quality Statement'), blank=True)
+    accred = models.CharField(ugettext_lazy('Accreditation'), max_length=100, blank=True)
+    prg_hours = models.CharField(ugettext_lazy('Program Hours'), max_length=50, blank=True)
+    is_full_day = models.NullBooleanField(ugettext_lazy('Full Day'))
+    is_part_day = models.NullBooleanField(ugettext_lazy('Part Day'))
+    is_full_week = models.NullBooleanField(ugettext_lazy('Full Week'))
+    is_part_week = models.NullBooleanField(ugettext_lazy('Part Week'))
+    is_school_year = models.NullBooleanField(ugettext_lazy('School Year'))
+    is_full_year = models.NullBooleanField(ugettext_lazy('Full Year'))
+    ages = models.CharField(ugettext_lazy('Ages Served'), max_length=50, blank=True)
+    is_age_lt_3 = models.NullBooleanField(ugettext_lazy('Ages 0-3'))
+    is_age_gt_3 = models.NullBooleanField(ugettext_lazy('Ages 3-5'))
     language_1 = models.CharField('Language 1 (other than English)', max_length=50, blank=True)
     language_2 = models.CharField('Language 2 (other than English)', max_length=50, blank=True)
     language_3 = models.CharField('Language 3 (other than English)', max_length=50, blank=True)
-    is_community_based = models.NullBooleanField(_l('Community Based'))
-    is_cps_based = models.NullBooleanField(_l('CPS Based'))
-    is_home_visiting = models.NullBooleanField(_l('Home Visiting'))
-    accept_ccap = models.NullBooleanField(_l('Accepts CCAP'))
-    is_hs = models.NullBooleanField(_l('Head Start'))
-    is_ehs = models.NullBooleanField(_l('Early Head Start'))
+    is_community_based = models.NullBooleanField(ugettext_lazy('Community Based'))
+    is_cps_based = models.NullBooleanField(ugettext_lazy('CPS Based'))
+    is_home_visiting = models.NullBooleanField(ugettext_lazy('Home Visiting'))
+    accept_ccap = models.NullBooleanField(ugettext_lazy('Accepts CCAP'))
+    is_hs = models.NullBooleanField(ugettext_lazy('Head Start'))
+    is_ehs = models.NullBooleanField(ugettext_lazy('Early Head Start'))
 
     # To get these placeholder fields to show up in the UI, replace
     # 'Placeholder 1' and 'Placeholder 2' in the lines below with
