@@ -164,6 +164,7 @@ See LICENSE in the project root for copying permission
                     nelng: {{ settings.AUTOCOMPLETE.NE_LNG|stringformat:'f' }}
                 },
                 staticRoot: '{% static "" %}',
+                language: '{{ LANGUAGE_CODE }}',
                 // settings.LANGUAGE_CODE instead of LANGUAGE_CODE because we want default, not
                 //      what is currently set
                 default_language: '{{ settings.LANGUAGE_CODE }}'    
