@@ -2,8 +2,9 @@
 <div class="accordion location-container" data-key="{{item.key}}">
   <div class="accordion-group" data-key="{{item.key}}">
     <div class="accordion-heading location">
-      <a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle hint--right"
-          data-hint="{{tooltip.star}}" data-loc-id="{{item.key}}">
+      <a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle hint--right ga-track"
+          data-hint="{{tooltip.star}}" data-loc-id="{{item.key}}"
+          data-ga-category="search" data-ga-action="Star Location">
         <i class="icon-star-empty"></i>
       </a>
       <a href="#collapseLoc{{@index}}"data-toggle="collapse" data-parent="#location{{@index}}" >
@@ -21,13 +22,14 @@
             src='{{static "img/leaflet-icons/center.png"}}' />
       </a> 
       <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"
-          id="loc-dirs" class="hideonmobile directions-icon hint--left" data-hint="{{tooltip.directions}}"
-          target="_blank">
+          id="loc-dirs" class="hideonmobile directions-icon hint--left ga-track" data-hint="{{tooltip.directions}}"
+          data-ga-category="search" data-ga-action="Get Directions" target="_blank">
         {{translations.directions}}
       </a>
       <button href="#collapseLoc{{@index}}"
-          id="moreBtn" class="btn btn-inverse more-less-btn hint--left"
-          data-hint="{{tooltip.moreinfo}}" data-toggle="collapse" data-parent="#location{{@index}}">
+          id="moreBtn" class="btn btn-inverse more-less-btn hint--left ga-track"
+          data-hint="{{tooltip.moreinfo}}" data-toggle="collapse" data-parent="#location{{@index}}"
+          data-ga-category="search" data-ga-action="More Button">
         {{translations.more}}
       </button>
       <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
@@ -36,11 +38,13 @@
   <div id="collapseLoc{{@index}}" class="accordion-body collapse">
     <div class="accordion-inner">
       <div class="accordion-right">
-          <a {{#if item.url}}href="{{item.url}}" {{/if}}class="btn input-block-level{{#unless item.url}} text-grey{{/unless}}" target="_blank">
+          <a {{#if item.url}}href="{{item.url}}" {{/if}}class="ga-track btn input-block-level{{#unless item.url}} text-grey{{/unless}}" 
+              data-ga-category="search" data-ga-action="Location Website" target="_blank">
           <i class="icon-globe"></i>
           {{translations.website}}
         </a>
-        <button class="btn input-block-level share-btn" data-key="{{item.key}}">
+        <button class="btn input-block-level share-btn ga-track" data-key="{{item.key}}"
+            data-ga-category="search" data-ga-action="Share Location">
           <i class="icon-share"></i>
           {{translations.share}}
         </button>
