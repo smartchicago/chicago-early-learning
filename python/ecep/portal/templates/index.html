@@ -20,9 +20,9 @@ See LICENSE in the project root for copying permission
       <div class="container-custom">
         <h1>{% blocktrans %}Find the right school for your child.{% endblocktrans %}</h1>
         <p class="description">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the FAQ page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
-        <input class="homepage-search autocomplete-searchbox" type="text" placeholder="{% blocktrans %}Enter a school, neighborhood, or address{% endblocktrans %}"> 
+        <input class="homepage-search autocomplete-searchbox" type="text" placeholder="{% blocktrans %}Enter a school, community, or address{% endblocktrans %}"> 
         <a class="btn btn-large get-started autocomplete-submit" href="#">{% trans "Search" %}</a><span class="intro-choice">or</span>  
-        <a class="btn btn-large get-started" href="{% url portal.views.browse %}">{% trans "Browse by Neighborhood" %}</a>
+        <a class="btn btn-large get-started" href="{% url portal.views.browse %}">{% trans "Browse by Community" %}</a>
       </div>
     </div>
 
@@ -40,8 +40,8 @@ See LICENSE in the project root for copying permission
       <div class="media">
           <a class="pull-right"><img class="media-object" src="{% static 'img/cel2.png' %}"></a>
         <div class="media-body">
-          <h1>{% blocktrans %}Browse locations by neighborhood.{% endblocktrans %}</h1>
-          <p>{% blocktrans %}You can pick a neighborhood from the list or map if you don't want to search by address. You can also type a neighborhood or even a school name into the search bar to get there faster.{% endblocktrans %}</p>
+          <h1>{% blocktrans %}Browse locations by community.{% endblocktrans %}</h1>
+          <p>{% blocktrans %}You can pick a community from the list or map if you don't want to search by address. You can also type a community or even a school name into the search bar to get there faster.{% endblocktrans %}</p>
         </div>
       </div>
       <hr>

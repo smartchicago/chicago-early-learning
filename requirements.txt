@@ -1,7 +1,11 @@
 django==1.4
 gdata==2.0.17
 geopy==0.95.1
-django-twilio==0.2
+# django-twilio 0.2 has a nasty bug where view handlers are sometimes called twice
+# when settings.DEBUG == False
+# 0.4 is completely borked with the current twilio API
+# This commit fixes the borked part of 0.4 and is the current head of master
+-e git+git://github.com/rdegges/django-twilio.git@1c020e2a7c6f4845e7309d7277380c8b76d38ba4#egg=django-twilio
 twilio==3.5.1
 django-rosetta==0.6.8
 django-celery==3.0.21
