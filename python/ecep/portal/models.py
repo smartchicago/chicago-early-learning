@@ -97,6 +97,8 @@ class Location(models.Model):
     display_include = {'ages', 'accred', 'accept_ccap', 'is_home_visiting', 'is_hs', 'is_ehs',
                        'is_community_based', 'is_cps_based'}
 
+    q_rating_translations = [_('Licensed'), _('Bronze'), _('Silver'), _('Gold')]
+
     def __unicode__(self):
         return unicode(self.site_name)
 
