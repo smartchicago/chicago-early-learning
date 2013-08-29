@@ -114,9 +114,9 @@ class Conversation(object):
     USAGE = _('To get this message text "h".\n' +
               'Text a 5 digit zipcode to get a list of nearby places.' +
               'Text a number on the list to get more information.')
-    ERROR =  _('Sorry, I didn\'t understand that. Please text "h" for instructions')
-    FATAL =  _('We\'re sorry, something went wrong with your request! Please try again')
-    MORE =   _('Reply "m" or "more" to receive the next few pages')
+    ERROR = _('Sorry, I didn\'t understand that. Please text "h" for instructions')
+    FATAL = _('We\'re sorry, something went wrong with your request! Please try again')
+    MORE  = _('Reply "m" or "more" to receive the next few pages')
     LIST_HEADER = _('Places near %s. Reply with program number for more info\n')
 
     # Properties
@@ -248,7 +248,7 @@ class Conversation(object):
                         {'zipcode': self.zipcode, 'length': length})
                 else:
                     l = Location.objects.get(pk=self.locations[idx])
-                    ctx = l.get_context_dict()
+                    ctx = l.get_context_dict(True)
                     body = render_to_string('location.sms', ctx).strip()
                     self.update_response(body)
             else:
