@@ -22,8 +22,14 @@ See LICENSE in the project root for copying permission
     </div>
 
     <div class="faves-right">
-        <a id="faves-clear" class="btn faves-option" href="#"><i class="icon-remove-circle"></i> {% trans "Clear Selections" %}</a>
-        <a id="faves-share" data-hint="{% trans 'Click to share your list' %}" class="btn faves-option hint--bottom" href="#"><i class="icon-share"></i> {% trans "Share" %}</a>
+        <a id="faves-clear" class="btn faves-option ga-track" href="#"
+            data-ga-category="starred" data-ga-action="Clear Selections">
+            <i class="icon-remove-circle"></i> {% trans "Clear Selections" %}
+        </a>
+        <a id="faves-share" data-hint="{% trans 'Click to share your list' %}" class="btn faves-option hint--bottom ga-track" href="#"
+            data-ga-category="starred" data-ga-action="Share Starred">
+            <i class="icon-share"></i> {% trans "Share" %}
+        </a>
         <button class="btn faves-close pull-right" onclick="javascript:history.go(-1)"><i class="icon-arrow-left"></i> {% trans "Back" %}</button>
     </div>
 </div>

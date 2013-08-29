@@ -37,12 +37,31 @@ function($, L, Response, Handlebars) {
         }).on('orientationchange', hideAddressBar);
     }
 
+    var gaTrackEvent = function($elt) {
+        var category = CEL.serverVars.language + '/' + $elt.data('ga-category'),
+            action = $elt.data('ga-action'),
+            opt_label = $elt.data('ga-label'),
+            opt_value = $elt.data('ga-value'),
+            opt_noninteraction = $elt.data('ga-noninteraction'),
+            data = ['_trackEvent', category, action];
+        // optional parameters
+        data.push(opt_label || undefined);
+        data.push(opt_value || undefined);
+        data.push(!!(opt_noninteraction));
+        _gaq.push(data);
+    };
+
     $(document).ready(function() {
 
         // Remove css tooltips when on a touchscreen device
         if (isTouchscreen) {
             $('[data-hint]').removeAttr('data-hint');
         }
+
+        // set up ga tracking
+        $('body').on('click', '*.ga-track', function(e) {
+            gaTrackEvent($(this));             
+        });
 
         // AUTOCOMPLETE
         var $autocomplete = $('.autocomplete-searchbox');
@@ -390,19 +409,7 @@ function($, L, Response, Handlebars) {
 
         isTouchscreen: isTouchscreen,
 
-        gaTrackEvent: function($elt) {
-            var category = CEL.serverVars.language + '/' + $elt.data('ga-category'),
-                action = $elt.data('ga-action'),
-                opt_label = $elt.data('ga-label'),
-                opt_value = $elt.data('ga-value'),
-                opt_noninteraction = $elt.data('ga-noninteraction'),
-                data = ['_trackEvent', category, action];
-            // optional parameters
-            data.push(opt_label || undefined);
-            data.push(opt_value || undefined);
-            data.push(!!(opt_noninteraction));
-            _gaq.push(data);
-        },
+        gaTrackEvent: gaTrackEvent,
 
         // Stolen from _.js v1.5.1
         // https://github.com/jashkenas/underscore/blob/dc5a3fa0133b7000c36ba76a413139c63f646789/underscore.js

@@ -240,11 +240,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 }
             });
 
-            // track clicks on any interesting elements in the results
-            $('.ga-track').on('click', function(e) {
-                common.gaTrackEvent($(this));   
-            });
-
             // Watch for hover events on the list so we can highlight both 
             // the list item and the icon on the map
             var $locationContainer = $('.location-container');

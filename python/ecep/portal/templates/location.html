@@ -19,7 +19,8 @@ See LICENSE in the project root for copying permission
   <div class="row">
     <div class="favorite" data-key="{{ loc.item.key }}" itemscope itemtype="http://schema.org/EducationalOrganization">
         <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>
-      <a href="javascript:void(0)" class="none favs-close-button">&times;</a>
+        <a href="javascript:void(0)" class="none favs-close-button ga-track"
+            data-ga-category="starred" data-ga-action="Remove Starred">&times;</a>
       <h1 class="school-name" itemprop="name">{{ loc.item.site_name }}</h1>
       <p itemprop="address">{{ loc.item.address }}, {{ loc.item.city }}, {{ loc.item.state }} {{ loc.item.zip }}</p>
       <ul class="website-phone">
@@ -27,20 +28,22 @@ See LICENSE in the project root for copying permission
         <li><i class="icon-globe"></i> <a href="{{ loc.item.url }}" target="_blank" itemprop="url">{{ loc.item.url }}</a></li>
         {% endif %}
         <a href="javascript:void(0)"
-            class="none favs-toggle single-star pull-right" id="favs-toggle-loc-{{ loc.item.key }}"
-            data-loc-id="{{ loc.item.key }}">
+            class="none favs-toggle single-star pull-right ga-track" id="favs-toggle-loc-{{ loc.item.key }}"
+            data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Star Single Location">
           <i class="icon-star-empty"></i>
         </a>
       </ul>
-			  <a href="#" class="none btn pull-right single-share" data-r1024="<i class='icon-share'></i>{{ loc.translations.share }}">
-       <i class="icon-share"></i>
-          Share
+      <a href="#" class="none btn pull-right single-share ga-track" data-r1024="<i class='icon-share'></i>{{ loc.translations.share }}"
+          data-ga-category="location" data-ga-action="Share Single Location">
+        <i class="icon-share"></i>Share
       </a>
 			<br>
       <hr>
       <div class="school-details">
         <h1>{{ loc.phone.fieldname }}</h1>
-        <h2><a href="tel:{{ loc.phone.number }}" itemprop="telephone">{{ loc.phone.number }}</a></h2>
+        <h2>
+          <a href="tel:{{ loc.phone.number }}" class="ga-track" itemprop="telephone" data-ga-category="location" data-ga-action="Telephone">{{ loc.phone.number }}</a>
+        </h2>
         <hr>
         {% for sfield in loc.sfields %}
           <h1>{{ sfield.fieldname }}</h1>
