@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-29 12:25-0500\n"
+"POT-Creation-Date: 2013-08-29 12:40-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,15 @@ msgstr "Inglés"
 msgid "Spanish"
 msgstr "Español"
 
-#: portal/models.py:59 portal/models.py:231
+#: portal/models.py:59 portal/models.py:233
 msgid "Phone Number"
 msgstr "Número de teléfono"
 
-#: portal/models.py:60 portal/models.py:228
+#: portal/models.py:60 portal/models.py:230
 msgid "Quality Rating"
 msgstr "Evaluación de calidad"
 
-#: portal/models.py:61 portal/models.py:247
+#: portal/models.py:61 portal/models.py:249
 #: portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr "Sitio web"
@@ -105,71 +105,87 @@ msgstr "Head Start"
 msgid "Early Head Start"
 msgstr "Early Head Start"
 
-#: portal/models.py:196 portal/models.py:203 portal/models.py:217
-#: portal/models.py:223
+#: portal/models.py:100
+msgid "Licensed"
+msgstr ""
+
+#: portal/models.py:100
+msgid "Bronze"
+msgstr ""
+
+#: portal/models.py:100
+msgid "Silver"
+msgstr ""
+
+#: portal/models.py:100
+msgid "Gold"
+msgstr ""
+
+#: portal/models.py:198 portal/models.py:205 portal/models.py:219
+#: portal/models.py:225
 msgid "None"
 msgstr "Ninguno"
 
-#: portal/models.py:202
+#: portal/models.py:204
 msgid "Program Information"
 msgstr "Información del programa"
 
-#: portal/models.py:209
+#: portal/models.py:211
 msgid "Languages (other than English)"
 msgstr "Idiomas (excepto Inglés)"
 
-#: portal/models.py:214
+#: portal/models.py:216
 msgid "No Hours Listed"
 msgstr "Horario no indicado"
 
-#: portal/models.py:216
+#: portal/models.py:218
 msgid "Duration/Hours"
 msgstr "Duración/horas"
 
-#: portal/models.py:222
+#: portal/models.py:224
 msgid "Weekday Availability"
 msgstr "Disponibilidad entre semana"
 
-#: portal/models.py:238
+#: portal/models.py:240
 msgid "Description"
 msgstr "Descripción"
 
-#: portal/models.py:247
+#: portal/models.py:249
 msgid "More"
 msgstr "Más"
 
-#: portal/models.py:247
+#: portal/models.py:249
 msgid "Directions"
 msgstr "Dirección"
 
-#: portal/models.py:248 portal/templates/browse.html:43
+#: portal/models.py:250 portal/templates/browse.html:43
 #: portal/templates/starred.html:26
 msgid "Share"
 msgstr "Compartir"
 
-#: portal/models.py:248
+#: portal/models.py:250
 #, fuzzy
 msgid "QRIS Rating"
 msgstr "Evaluaciones"
 
-#: portal/models.py:249
+#: portal/models.py:251
 #, fuzzy
 msgid "Coming Soon"
 msgstr "Comparación de centros"
 
-#: portal/models.py:256
+#: portal/models.py:258
 msgid "Directions from Google"
 msgstr "Dirección usando Google"
 
-#: portal/models.py:256
+#: portal/models.py:258
 msgid "Click to show more information"
 msgstr "Haga clic para mostrar mas información"
 
-#: portal/models.py:257
+#: portal/models.py:259
 msgid "Click to save to your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:261
+#: portal/models.py:263
 msgid "Other Features"
 msgstr "Otras Características"
 
