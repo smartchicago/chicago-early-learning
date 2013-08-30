@@ -350,6 +350,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             var popupContent = '<b>' + name + '</b><br>' + gettext('Number of Locations') + ': ' + numSchools + '<br><a class="neighborhood-popup" href="#">' + gettext('Explore') + '</a>',
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
 
+            var data = ['_trackEvent', CEL.serverVars.language + '/search', 'ExploreNeighborhood', name];
+            _gaq.push(data);
+
             $('.neighborhood-popup').on('click', function(e) {
                 map.setView([lat, lng], zoomSettings);
             });
