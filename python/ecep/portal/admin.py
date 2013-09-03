@@ -130,6 +130,153 @@ class LocationAdmin(admin.OSMGeoAdmin):
                                 'q_stmt']}),
     ]
 
+    def _delete_messages(self, request):
+        """
+        Helper method to delete messages currently queued.
+        Used to delete pending messages so that there are no
+        duplicates or prior to customize them.
+        """
+        existing_messages = messages.get_messages(request)
+        for counter, message in enumerate(existing_messages._queued_messages):
+            del existing_messages._queued_messages[counter]
 
+    class Media:
+        css = { 'all': ('css/admin-map.css',)}
+        js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' % (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE), 'js/admin-map.js', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+
+    def changelist_view(self, request, extra_context=None):
+        """
+        Override changelist_view in order to limit display of pending edits and pending additions
+        to Admin user
+        """
+        if request.user.is_superuser:
+            self.list_filter = [PendingEditsFilter, 'accepted'] + self.list_filter
+        return super(LocationAdmin,self).changelist_view(request, extra_context=None)
+
+    def get_urls(self):
+        """
+        Override of get_urls to add custom admin views to handle the following situations
+        - Reject pending updates
+        """
+        urls = super(LocationAdmin,self).get_urls()
+        location_urls = patterns('',
+                        url(r'^reject_updates/(\d+)/$', self.admin_site.admin_view(self.reject_updates), name='reject_updates'),
+        )
+        return location_urls + urls
+
+    def render_change_form(self, request, context, add=False, change=False, form_url='', obj=None):
+        """
+        Override rendering of change form in order to display custom warnings based on user type
+        and existing edits on the object.
+        """
+        response = super(LocationAdmin,self).render_change_form(request, context, add=False, change=False,
+                                                                form_url='', obj=None)
+        object_id = context.get('object_id', None)
+        if not object_id:
+            # We are in an add form then
+            return response
+        obj = Location.objects.filter(pk=context['object_id'])
+        edits = obj.locationedit_set.filter(pending=True)
+        if not request.user.is_superuser and len(edits) > 0:
+            # If not a review edit page (ie not superuser) and edits pending,
+            # warn user that edits will be overwritten
+            messages.warning(request, 'Warning! There are pending edits on this school. Any further edits on those fields will overwrite those edits.')
+        if request.user.is_superuser and len(edits.filter(edit_type='delete')) > 0:
+            # Warn admin that accepting changes will delete this object
+            messages.warning(request, 'Warning! Accepting changes without further edits will delete this school from the database.')
+        return response
+
+    def response_change(self, request, obj):
+        """
+        Override response_change in order to customize response messages for submitting changes for review
+        """
+        # Prevent warning messages from displaying twice when edit already exists
+        self._delete_messages(request)
+        if "_proposechanges" in request.POST:
+            self.message_user(request, 'Changes successfully added for %s, waiting for review by administrator.'
+                              % obj.site_name)
+            return HttpResponseRedirect(reverse('admin:portal_location_changelist'))
+        else:
+            return super(LocationAdmin,self).response_change(request, obj)
+
+    def response_add(self, request, obj, post_url_continue='../%s/'):
+        """
+        Override message response if user is not a superuser and only proposing to add a school
+        """
+        response = super(LocationAdmin,self).response_add(request, obj, post_url_continue='../%s/')
+        if not request.user.is_superuser:
+            self._delete_messages(request)
+            self.message_user(request, 'Submitted adding of %s for review by administrator.' % obj.site_name)
+        return response
+
+    def save_model(self, request, obj, form, change):
+        """
+        Override of save_model so that upon saving updates all pending edits are marked
+        as reviewed.
+
+        If a normal user tries to save/edit a location, this method creates
+        a set of LocationEdit objects that represent an edit for each fieldname.
+        """
+        if request.user.is_superuser:
+            if len(obj.locationedit_set.filter(pending=True, edit_type='delete')) > 0 and len(form.changed_data) == 0:
+                # If reviewing a proposed delete and reviewer did not change anything on the page
+                obj.delete()
+            else:
+                obj.accepted = True
+                super(LocationAdmin,self).save_model(request, obj, form, change)
+            obj.locationedit_set.update(pending=False)
+        else:
+            edit_type = 'update'
+            if obj.pk == None:
+                obj.accepted = False
+                edit_type = 'create'
+                obj.save()
+            for changed_data in form.changed_data:
+                # Set pending edits on those fields to pending=false (they are overwritten)
+                obj.locationedit_set.filter(fieldname=changed_data, pending=True).update(pending=False)
+                LocationEdit(user = request.user,
+                         location = obj,
+                         fieldname = changed_data,
+                         new_value = form.cleaned_data[changed_data],
+                         edit_type = edit_type).save()
+        
+    def delete_model(self, request, obj):
+        """
+        Override delete_model so that only super user can delete a location.
+
+        If a normal user tries to delete a location, creates a LocationEdit object
+        that represents a delete edit.
+        """
+        if request.user.is_superuser:
+            super(LocationAdmin,self).delete_model(request, obj)
+        else:
+            LocationEdit(user=request.user, location=obj, fieldname='',
+                         new_value='', edit_type='delete').save()
+
+    def delete_view(self, request, object_id, extra_context=None):
+        """
+        Override delete_view in order to display custom message to non-admins
+        """
+        resp = super(LocationAdmin,self).delete_view(request, object_id, extra_context=None)
+        if not request.user.is_superuser and 'post' in request.POST:
+            self._delete_messages(request)
+            obj = get_object_or_404(Location, pk=object_id)
+            self.message_user(request, 'Delete proposed for for %s, waiting for review by administrator.' % obj.site_name)
+        return resp
+
+    # Custom View #
+    def reject_updates(self, request, object_id):
+        """
+        Custom admin view to reject pending changes on an object.
+
+        Redirects to changelist view with message on how many pending changes were rejected.
+        """
+        obj = get_object_or_404(Location, pk=object_id)
+        num_pending_edits = obj.locationedit_set.filter(pending=True).count()
+        obj.locationedit_set.update(pending=False)
+        self.message_user(request, '%s pending edits rejected for %s.' %(num_pending_edits, obj.site_name))
+        return HttpResponseRedirect(reverse('admin:portal_location_changelist'))
+        
+
+    
 admin.site.register(Location, LocationAdmin)
-
