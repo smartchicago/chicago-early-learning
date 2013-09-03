@@ -102,14 +102,16 @@ class LocationForm(forms.ModelForm):
         
 class LocationAdmin(admin.OSMGeoAdmin):
 
-    class Media:
-        css = { 'all': ('css/admin-map.css',)}
-        js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' % (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE), 'js/admin-map.js', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
-
-    list_display = ('site_name', 'address', 'zip', 'phone', 'id', )
-    list_filter = ('is_hs', 'is_ehs', 'accept_ccap', 'is_cps_based', 'is_community_based',
+    # General Settings
+    # Template override that adds buttons to propose/accept changes
+    change_form_template = 'admin/portal/location/change_form.html'
+    delete_confirmation_template = 'admin/portal/location/delete_confirmation.html'
+    save_on_top = True
+    save_on_bottom = False
+    list_display = ['site_name', 'address', 'zip', 'phone', 'id', 'accepted']
+    list_filter = ['is_hs', 'is_ehs', 'accept_ccap', 'is_cps_based', 'is_community_based',
                    'is_age_lt_3', 'is_age_gt_3', 'is_full_day', 'is_full_week', 'is_full_year',
-                   'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting')
+                   'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting']
     search_fields = ['site_name', 'address', 'zip', 'language_1', 'language_2', 'language_3']
     readonly_fields = ['neighborhood']
     form = LocationForm
