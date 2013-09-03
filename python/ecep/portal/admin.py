@@ -37,9 +37,34 @@ class LocationForm(forms.ModelForm):
     """Form subclass for location model form to use custom widget for google map
     and a custom clean method to properly handle points passed in as strings
     """
-    
+
     geom = forms.CharField(label="Geocoded Point", widget=MapWidget())
     
+    def __init__(self, *args, **kwargs):
+        """
+        Override __init__ method to add custom classes to fields based on whether
+        or not the field has been edited and what type of edit was made.
+        """
+        super(LocationForm,self).__init__(*args, **kwargs)
+        edits = self.instance.locationedit_set.filter(pending=True)
+        bools = self.instance.get_boolean_fieldnames()
+
+        # Loop through edits and apply classes to fields for highlighting
+        for edit in edits.filter(edit_type='update'):
+            if edit.fieldname in bools:
+                edit.new_value = True if edit.new_value == 'True' else False
+            self.initial[edit.fieldname] = edit.new_value
+            field = self.fields[edit.fieldname]
+            field.widget.attrs['class'] = edit.edit_type
+        if edits.filter(edit_type='delete'):
+            # If edit type is delete, all fields are red
+            for field in self.fields.values():
+                field.widget.attrs['class'] = 'delete'
+        if edits.filter(edit_type='create'):
+            # If edit type is create, all fields are green
+            for field in self.fields.values():
+                field.widget.attrs['class'] = 'create'
+
     def get_point(self, geom_string):
         """Takes a geom_string from cleaned_data and converts it to a point
         object. If unable to convert, raises a validation error.
@@ -48,7 +73,6 @@ class LocationForm(forms.ModelForm):
         - `geom_string`: string returned by the 'geom' input from the LocationForm
         Takes the form of 'POINT (<LNG> <LAT>)'
         """
-
         try:
             split_geom_string = re.findall(r'([-.\w]+)', geom_string)
             lng = float(split_geom_string[1])
@@ -62,7 +86,6 @@ class LocationForm(forms.ModelForm):
         Need to create a Point object from string returned by form because
         of the way the map fills in the geocoded location form
         """
-
         self.cleaned_data = super(LocationForm, self).clean()
 
         try:
@@ -76,7 +99,6 @@ class LocationForm(forms.ModelForm):
 
     class Meta:
         model = Location
-
         
 class LocationAdmin(admin.OSMGeoAdmin):
 
