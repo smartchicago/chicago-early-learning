@@ -82,6 +82,9 @@ class Location(models.Model):
     is_hs = models.NullBooleanField(_l('Head Start'))
     is_ehs = models.NullBooleanField(_l('Early Head Start'))
 
+    # Keeps track of whether or not new locations have been approved by the admin
+    accepted = models.BooleanField(_l('Approved'), default=False)
+    
     # To get these placeholder fields to show up in the UI, replace
     # 'Placeholder 1' and 'Placeholder 2' in the lines below with
     # real labels, and add 'placeholder_1' and 'placeholder_2' to the
