@@ -4,6 +4,7 @@
 from django.contrib.gis.db import models
 from portal.templatetags.portal_extras import nicephone
 from django.template.defaultfilters import title
+from django.contrib.auth.models import User
 
 # Model fields need to be translated lazily
 from django.utils.translation import ugettext as _, ugettext_lazy as _l
@@ -283,4 +284,20 @@ class Location(models.Model):
                 self.neighborhood = neighborhoods[0]
 
         super(Location, self).save(*args, **kwargs)
+
+
+class LocationEdit(models.Model):
+    """
+    Model class that stores edits for locations
+    """
+    EDIT_TYPE_CHOICES = (('create', 'Create'), ('update', 'Update'), ('delete', 'Delete'))
+    
+    user = models.ForeignKey(User)
+    location = models.ForeignKey(Location)
+    fieldname = models.TextField()
+    new_value = models.TextField()
+    date_edited = models.DateTimeField(auto_now_add=True)
+    pending = models.BooleanField(default=True)
+    edit_type = models.CharField(max_length=6, choices=EDIT_TYPE_CHOICES)
+    accepted = models.BooleanField(default=False)
 
