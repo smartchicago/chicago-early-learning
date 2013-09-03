@@ -132,6 +132,13 @@ class Location(models.Model):
 
         return fields
 
+    def get_boolean_fieldnames(self):
+        """
+        Extracts list of boolean field names from model
+        """
+        fields = self._meta.fields
+        return [field.name for field in fields if field.get_internal_type() == 'NullBooleanField']
+        
     def is_true_bool_field(self, field):
         """
         Returns true if field is a boolean field and self.field is True
