@@ -193,7 +193,7 @@ class Conversation(object):
 
     def nearby_locations(self, zipcode, count=None):
         """Returns locations that fall inside zipcode"""
-        return Location.objects.filter(zip=zipcode)[:count]
+        return Location.objects.filter(zip=zipcode, accepted=True)[:count]
 
     def process_request(self, request):
         """
