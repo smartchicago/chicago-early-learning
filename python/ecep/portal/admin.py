@@ -1,13 +1,37 @@
 # Copyright (c) 2012, 2013 Azavea, Inc.
 # See LICENSE in the project root for copying permission
 
-from portal.models import Location
+from portal.models import Location, LocationEdit
 from django.contrib.gis import admin
 from django import forms
 from portal.widgets import MapWidget
 from django.contrib.gis.geos import Point
 import re
 from django.conf import settings
+from django.http import HttpResponseRedirect
+from django.conf.urls.defaults import patterns, url
+from django.shortcuts import get_object_or_404
+from django.contrib import messages
+from django.core.urlresolvers import reverse
+from django.contrib.admin import SimpleListFilter
+from django.utils.translation import ugettext_lazy as _
+
+class PendingEditsFilter(SimpleListFilter):
+    """
+    Adds a pending edits filter for location view
+    """
+    title = 'Pending Edits'
+    parameter_name = 'pending'
+
+    def lookups(self, request, model_admin):
+        return(
+            ('True', _('Yes')),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'True':
+            return queryset.filter(locationedit__pending=True).distinct()
+
 
 class LocationForm(forms.ModelForm):
     """Form subclass for location model form to use custom widget for google map
