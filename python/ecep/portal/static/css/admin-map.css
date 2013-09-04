@@ -16,3 +16,15 @@
     color: white;
     background-color: red;
 }
+
+.update {
+    background: yellow;
+}
+
+.delete {
+    background: #FF3030;
+}
+
+.create {
+    background: #ADFF2F;
+}

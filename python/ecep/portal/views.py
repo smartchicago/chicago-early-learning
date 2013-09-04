@@ -123,7 +123,7 @@ def portal_autocomplete(request, query):
     query -- autocomplete query to perform on the database
 
     """
-    locations = Location.objects.filter(site_name__icontains=query).values('id', 'site_name')
+    locations = Location.objects.filter(site_name__icontains=query, accepted=True).values('id', 'site_name')
     comparison = [TermDistance(location, 'location', 'site_name', query) for location in locations]
 
     neighborhoods = Neighborhood.objects.filter(primary_name__icontains=query).values('id', 'primary_name')
@@ -311,7 +311,7 @@ def location_api(request, location_ids=None):
     bool_filter, etag_hash = _make_location_filter(request.GET, etag_hash)
     item_filter &= bool_filter
 
-    location_contexts = [l.get_context_dict() for l in Location.objects.filter(item_filter)]
+    location_contexts = [l.get_context_dict() for l in Location.objects.filter(item_filter, accepted=True)]
     logger.debug('Retrieved %d location_contexts.' % len(location_contexts))
     context = {'locations': location_contexts}
     return _make_response(context, etag_hash)
@@ -355,7 +355,7 @@ def neighborhood_api(request):
     etag_hash = 'empty'
     nb_name = Neighborhood.__name__.lower()
     location_filter, etag_hash = _make_location_filter(request.GET, etag_hash)
-    locations = Location.objects.filter(location_filter)
+    locations = Location.objects.filter(location_filter, accepted=True)
 
     # List of dicts with keys nb_name and 'nbc_count'
     # The order_by() is important, as it prevents django from adding extra fields to the
