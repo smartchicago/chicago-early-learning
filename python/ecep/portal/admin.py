@@ -158,7 +158,9 @@ class LocationAdmin(admin.OSMGeoAdmin):
         Override changelist_view in order to limit display of pending edits and pending additions
         to Admin user
         """
-        if request.user.is_superuser:
+        extra_context = extra_context or {}
+        extra_context['is_edit_admin'] = self._is_edit_admin(request.user)
+        if self._is_edit_admin(request.user):
             self.list_filter = [PendingEditsFilter, 'accepted'] + self.list_filter
         return super(LocationAdmin,self).changelist_view(request, extra_context=None)
 
@@ -178,19 +180,21 @@ class LocationAdmin(admin.OSMGeoAdmin):
         Override rendering of change form in order to display custom warnings based on user type
         and existing edits on the object.
         """
+        context = context or {}
+        context['is_edit_admin'] = self._is_edit_admin(request.user)
         response = super(LocationAdmin,self).render_change_form(request, context, add=False, change=False,
                                                                 form_url='', obj=None)
         object_id = context.get('object_id', None)
         if not object_id:
             # We are in an add form then
             return response
-        obj = Location.objects.filter(pk=context['object_id'])
+        obj = Location.objects.get(pk=context['object_id'])
         edits = obj.locationedit_set.filter(pending=True)
-        if not request.user.is_superuser and len(edits) > 0:
+        if not self._is_edit_admin(request.user) and len(edits) > 0:
             # If not a review edit page (ie not superuser) and edits pending,
             # warn user that edits will be overwritten
             messages.warning(request, 'Warning! There are pending edits on this school. Any further edits on those fields will overwrite those edits.')
-        if request.user.is_superuser and len(edits.filter(edit_type='delete')) > 0:
+        if self._is_edit_admin(request.user) and len(edits.filter(edit_type='delete')) > 0:
             # Warn admin that accepting changes will delete this object
             messages.warning(request, 'Warning! Accepting changes without further edits will delete this school from the database.')
         return response
@@ -210,10 +214,10 @@ class LocationAdmin(admin.OSMGeoAdmin):
 
     def response_add(self, request, obj, post_url_continue='../%s/'):
         """
-        Override message response if user is not a superuser and only proposing to add a school
+        Override message response if user is not a member of approve_edit group and only proposing to add a school
         """
         response = super(LocationAdmin,self).response_add(request, obj, post_url_continue='../%s/')
-        if not request.user.is_superuser:
+        if not self._is_edit_admin(request.user):
             self._delete_messages(request)
             self.message_user(request, 'Submitted adding of %s for review by administrator.' % obj.site_name)
         return response
@@ -226,7 +230,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
         If a normal user tries to save/edit a location, this method creates
         a set of LocationEdit objects that represent an edit for each fieldname.
         """
-        if request.user.is_superuser:
+        if self._is_edit_admin(request.user):
             if len(obj.locationedit_set.filter(pending=True, edit_type='delete')) > 0 and len(form.changed_data) == 0:
                 # If reviewing a proposed delete and reviewer did not change anything on the page
                 obj.delete()
@@ -251,12 +255,12 @@ class LocationAdmin(admin.OSMGeoAdmin):
         
     def delete_model(self, request, obj):
         """
-        Override delete_model so that only super user can delete a location.
+        Override delete_model so that only user in approve_edit group can delete a location.
 
         If a normal user tries to delete a location, creates a LocationEdit object
         that represents a delete edit.
         """
-        if request.user.is_superuser:
+        if self._is_edit_admin(request.user):
             super(LocationAdmin,self).delete_model(request, obj)
         else:
             LocationEdit(user=request.user, location=obj, fieldname='',
@@ -266,8 +270,10 @@ class LocationAdmin(admin.OSMGeoAdmin):
         """
         Override delete_view in order to display custom message to non-admins
         """
+        extra_context = extra_context or {}
+        extra_context['is_edit_admin'] = self._is_edit_admin(request.user)
         resp = super(LocationAdmin,self).delete_view(request, object_id, extra_context=None)
-        if not request.user.is_superuser and 'post' in request.POST:
+        if not self._is_edit_admin(request.user) and 'post' in request.POST:
             self._delete_messages(request)
             obj = get_object_or_404(Location, pk=object_id)
             self.message_user(request, 'Delete proposed for for %s, waiting for review by administrator.' % obj.site_name)
