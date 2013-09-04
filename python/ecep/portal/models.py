@@ -83,7 +83,7 @@ class Location(models.Model):
     is_ehs = models.NullBooleanField(ugettext_lazy('Early Head Start'))
 
     # Keeps track of whether or not new locations have been approved by the admin
-    accepted = models.BooleanField(_l('Approved'), default=False)
+    accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
     
     # To get these placeholder fields to show up in the UI, replace
     # 'Placeholder 1' and 'Placeholder 2' in the lines below with
