@@ -107,19 +107,19 @@ msgstr "Early Head Start"
 
 #: portal/models.py:100
 msgid "Licensed"
-msgstr ""
+msgstr "Autorizado"
 
 #: portal/models.py:100
 msgid "Bronze"
-msgstr ""
+msgstr "Bronce"
 
 #: portal/models.py:100
 msgid "Silver"
-msgstr ""
+msgstr "Plata"
 
 #: portal/models.py:100
 msgid "Gold"
-msgstr ""
+msgstr "Oro"
 
 #: portal/models.py:198 portal/models.py:205 portal/models.py:219
 #: portal/models.py:225
@@ -454,7 +454,7 @@ msgstr "Escriba el nombre de una escuela, vecindario, o dirección"
 
 #: portal/templates/index.html:25
 msgid "Browse by Community"
-msgstr ""
+msgstr "Buscar por Comunidad"
 
 #: portal/templates/index.html:35
 msgid "Find early learning centers near you."
