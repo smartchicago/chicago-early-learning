@@ -19,7 +19,7 @@
         </ul>
     {% endif %}
 {% else %}
-    {% if user.is_superuser %}        
+    {% if is_edit_admin %}        
         <p>{% blocktrans with escaped_object=object %}Are you sure you want to delete the {{ object_name }} "{{ escaped_object }}"?{% endblocktrans %}</p>
     {% else %}
         <p>{% blocktrans with escaped_object=object %}Are you sure you want to propose deleting the {{ object_name }} "{{ escaped_object }}"?{% endblocktrans %}</p>
