@@ -1,6 +1,6 @@
 {% load i18n %}
 <div class="submit-row">
-{% if user.is_superuser %}
+{% if is_edit_admin %}
 <input type="submit" value="{% trans 'Accept Changes' %}" class="default" name="_save" />
 <button><a href="{% url admin:reject_updates object_id %}">{% trans 'Reject All Pending Changes' %}</a></button>
 {% else %}
