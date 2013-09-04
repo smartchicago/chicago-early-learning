@@ -4,6 +4,7 @@
 from django.contrib.gis.db import models
 from portal.templatetags.portal_extras import nicephone
 from django.template.defaultfilters import title
+from django.contrib.auth.models import User
 
 # Model fields need to be translated lazily
 from django.utils.translation import ugettext as _, ugettext_lazy
@@ -81,6 +82,9 @@ class Location(models.Model):
     is_hs = models.NullBooleanField(ugettext_lazy('Head Start'))
     is_ehs = models.NullBooleanField(ugettext_lazy('Early Head Start'))
 
+    # Keeps track of whether or not new locations have been approved by the admin
+    accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
+    
     # To get these placeholder fields to show up in the UI, replace
     # 'Placeholder 1' and 'Placeholder 2' in the lines below with
     # real labels, and add 'placeholder_1' and 'placeholder_2' to the
@@ -130,6 +134,13 @@ class Location(models.Model):
 
         return fields
 
+    def get_boolean_fieldnames(self):
+        """
+        Extracts list of boolean field names from model
+        """
+        fields = self._meta.fields
+        return [field.name for field in fields if field.get_internal_type() == 'NullBooleanField']
+        
     def is_true_bool_field(self, field):
         """
         Returns true if field is a boolean field and self.field is True
@@ -285,4 +296,20 @@ class Location(models.Model):
                 self.neighborhood = neighborhoods[0]
 
         super(Location, self).save(*args, **kwargs)
+
+
+class LocationEdit(models.Model):
+    """
+    Model class that stores edits for locations
+    """
+    EDIT_TYPE_CHOICES = (('create', 'Create'), ('update', 'Update'), ('delete', 'Delete'))
+    
+    user = models.ForeignKey(User)
+    location = models.ForeignKey(Location)
+    fieldname = models.TextField()
+    new_value = models.TextField()
+    date_edited = models.DateTimeField(auto_now_add=True)
+    pending = models.BooleanField(default=True)
+    edit_type = models.CharField(max_length=6, choices=EDIT_TYPE_CHOICES)
+    accepted = models.BooleanField(default=False)
 
