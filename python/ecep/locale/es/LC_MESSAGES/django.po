@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-29 12:40-0500\n"
+"POT-Creation-Date: 2013-09-04 17:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,172 +20,178 @@ msgstr "Inglés"
 msgid "Spanish"
 msgstr "Español"
 
-#: portal/models.py:59 portal/models.py:233
+#: portal/admin.py:28
+msgid "Yes"
+msgstr ""
+
+#: portal/models.py:60 portal/models.py:244
 msgid "Phone Number"
 msgstr "Número de teléfono"
 
-#: portal/models.py:60 portal/models.py:230
+#: portal/models.py:61 portal/models.py:241
 msgid "Quality Rating"
 msgstr "Evaluación de calidad"
 
-#: portal/models.py:61 portal/models.py:249
+#: portal/models.py:62 portal/models.py:260
 #: portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr "Sitio web"
 
-#: portal/models.py:62
+#: portal/models.py:63
 msgid "Quality Statement"
 msgstr "Declaración de calidad"
 
-#: portal/models.py:63
+#: portal/models.py:64
 msgid "Accreditation"
 msgstr "Acreditación"
 
-#: portal/models.py:64
+#: portal/models.py:65
 msgid "Program Hours"
 msgstr "Horario del Programa"
 
-#: portal/models.py:65
+#: portal/models.py:66
 msgid "Full Day"
 msgstr "Año completo"
 
-#: portal/models.py:66
+#: portal/models.py:67
 msgid "Part Day"
 msgstr "Parte del día"
 
-#: portal/models.py:67
+#: portal/models.py:68
 msgid "Full Week"
 msgstr "Semana completa"
 
-#: portal/models.py:68
+#: portal/models.py:69
 msgid "Part Week"
 msgstr "Semana parcial"
 
-#: portal/models.py:69
+#: portal/models.py:70
 msgid "School Year"
 msgstr "Año Escolar"
 
-#: portal/models.py:70
+#: portal/models.py:71
 msgid "Full Year"
 msgstr "Año completo"
 
-#: portal/models.py:71
+#: portal/models.py:72
 msgid "Ages Served"
 msgstr "Edades para las que se presta servicio"
 
-#: portal/models.py:72
+#: portal/models.py:73
 msgid "Ages 0-3"
 msgstr "0‐3 años"
 
-#: portal/models.py:73
+#: portal/models.py:74
 msgid "Ages 3-5"
 msgstr "3‐5 años"
 
-#: portal/models.py:77
+#: portal/models.py:78
 msgid "Community Based"
 msgstr "Organizaciones comunitarias"
 
-#: portal/models.py:78
+#: portal/models.py:79
 msgid "CPS Based"
 msgstr "Escuelas Públicas de Chicago"
 
-#: portal/models.py:79
+#: portal/models.py:80
 msgid "Home Visiting"
 msgstr "Visitas a Domicilio"
 
-#: portal/models.py:80
+#: portal/models.py:81
 msgid "Accepts CCAP"
 msgstr "Acepta CCAP"
 
-#: portal/models.py:81
+#: portal/models.py:82
 msgid "Head Start"
 msgstr "Head Start"
 
-#: portal/models.py:82
+#: portal/models.py:83
 msgid "Early Head Start"
 msgstr "Early Head Start"
 
-#: portal/models.py:100
+#: portal/models.py:86
+msgid "Approved"
+msgstr ""
+
+#: portal/models.py:104
 msgid "Licensed"
 msgstr "Autorizado"
 
-#: portal/models.py:100
+#: portal/models.py:104
 msgid "Bronze"
 msgstr "Bronce"
 
-#: portal/models.py:100
+#: portal/models.py:104
 msgid "Silver"
 msgstr "Plata"
 
-#: portal/models.py:100
+#: portal/models.py:104
 msgid "Gold"
 msgstr "Oro"
 
-#: portal/models.py:198 portal/models.py:205 portal/models.py:219
-#: portal/models.py:225
+#: portal/models.py:209 portal/models.py:216 portal/models.py:230
+#: portal/models.py:236
 msgid "None"
 msgstr "Ninguno"
 
-#: portal/models.py:204
+#: portal/models.py:215
 msgid "Program Information"
 msgstr "Información del programa"
 
-#: portal/models.py:211
+#: portal/models.py:222
 msgid "Languages (other than English)"
 msgstr "Idiomas (excepto Inglés)"
 
-#: portal/models.py:216
+#: portal/models.py:227
 msgid "No Hours Listed"
 msgstr "Horario no indicado"
 
-#: portal/models.py:218
+#: portal/models.py:229
 msgid "Duration/Hours"
 msgstr "Duración/horas"
 
-#: portal/models.py:224
+#: portal/models.py:235
 msgid "Weekday Availability"
 msgstr "Disponibilidad entre semana"
 
-#: portal/models.py:240
+#: portal/models.py:251
 msgid "Description"
 msgstr "Descripción"
 
-#: portal/models.py:249
+#: portal/models.py:260
 msgid "More"
 msgstr "Más"
 
-#: portal/models.py:249
+#: portal/models.py:260
 msgid "Directions"
 msgstr "Dirección"
 
-#: portal/models.py:250 portal/templates/browse.html:43
-#: portal/templates/starred.html:26
+#: portal/models.py:261 portal/templates/browse.html:52
+#: portal/templates/starred.html:31
 msgid "Share"
 msgstr "Compartir"
 
-#: portal/models.py:250
-#, fuzzy
+#: portal/models.py:261
 msgid "QRIS Rating"
 msgstr "Evaluaciones"
 
-#: portal/models.py:251
-#, fuzzy
+#: portal/models.py:262
 msgid "Coming Soon"
 msgstr "Comparación de centros"
 
-#: portal/models.py:258
+#: portal/models.py:269
 msgid "Directions from Google"
 msgstr "Dirección usando Google"
 
-#: portal/models.py:258
+#: portal/models.py:269
 msgid "Click to show more information"
 msgstr "Haga clic para mostrar mas información"
 
-#: portal/models.py:259
+#: portal/models.py:270
 msgid "Click to save to your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:263
+#: portal/models.py:274
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -398,33 +404,31 @@ msgstr ""
 msgid "Click to hide filters"
 msgstr "Haga clic para ocultar los filtros"
 
-#: portal/templates/browse.html:40
+#: portal/templates/browse.html:43
 msgid "Refine your search"
 msgstr "Refine su búsqueda"
 
-#: portal/templates/browse.html:42
+#: portal/templates/browse.html:46
 msgid "Click to view your list"
 msgstr "Haga clic para ver su lista"
 
-#: portal/templates/browse.html:42 portal/templates/starred.html:21
+#: portal/templates/browse.html:48 portal/templates/starred.html:21
 msgid "Starred"
 msgstr "Guardado"
 
-#: portal/templates/browse.html:43 portal/templates/starred.html:26
+#: portal/templates/browse.html:51 portal/templates/starred.html:29
 msgid "Click to share your list"
 msgstr "Haga clic para compartir su lista"
 
-#: portal/templates/browse.html:83
+#: portal/templates/browse.html:98
 msgid "Reset Search"
 msgstr "Vuelva a intentar su  búsqueda"
 
-#: portal/templates/browse.html:90
-#, fuzzy
+#: portal/templates/browse.html:105
 msgid "Community"
 msgstr "Organizaciones comunitarias"
 
-#: portal/templates/browse.html:91
-#, fuzzy
+#: portal/templates/browse.html:106
 msgid "Locations"
 msgstr "Su ubicación"
 
@@ -448,7 +452,6 @@ msgstr ""
 "inscribir a su hijo en un programa de aprendizaje temprano óptimo"
 
 #: portal/templates/index.html:23
-#, fuzzy
 msgid "Enter a school, community, or address"
 msgstr "Escriba el nombre de una escuela, vecindario, o dirección"
 
@@ -472,12 +475,10 @@ msgstr ""
 "encontrar lo que busca  de la manera más fácil. "
 
 #: portal/templates/index.html:43
-#, fuzzy
 msgid "Browse locations by community."
 msgstr "Busque ubicaciones por vecindario"
 
 #: portal/templates/index.html:44
-#, fuzzy
 msgid ""
 "You can pick a community from the list or map if you don't want to search by "
 "address. You can also type a community or even a school name into the search "
@@ -540,12 +541,11 @@ msgstr "Envie un mensaje de texto con su código postal a"
 msgid " and we'll do the rest."
 msgstr "Y nosotros haremos el resto."
 
-#: portal/templates/starred.html:25
-#, fuzzy
+#: portal/templates/starred.html:27
 msgid "Clear Selections"
 msgstr "Dirección"
 
-#: portal/templates/starred.html:27
+#: portal/templates/starred.html:33
 msgid "Back"
 msgstr "Regresar"
 
@@ -558,7 +558,6 @@ msgid "Chicago Early Learning Portal admin"
 msgstr "Chicago Early Learning Portal admin"
 
 #: templates/admin/login.html:24
-#, fuzzy
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
 msgstr[0] "Por favor corrija el siguiente error:"
@@ -579,6 +578,54 @@ msgstr "¿Ha olvidado su nombre de usuario o contraseña?"
 #: templates/admin/login.html:55
 msgid "Log in"
 msgstr "Iniciar sesión"
+
+#: templates/admin/portal/location/change_form_buttons.html:4
+msgid "Accept Changes"
+msgstr "Acepta CCAP"
+
+#: templates/admin/portal/location/change_form_buttons.html:5
+msgid "Reject All Pending Changes"
+msgstr ""
+
+#: templates/admin/portal/location/change_form_buttons.html:7
+msgid "Submit Changes for Review"
+msgstr ""
+
+#: templates/admin/portal/location/change_form_buttons.html:9
+msgid "Delete"
+msgstr ""
+
+#: templates/admin/portal/location/delete_confirmation.html:6
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
+"related objects, but your account doesn't have permission to delete the "
+"following types of objects:"
+msgstr ""
+
+#: templates/admin/portal/location/delete_confirmation.html:14
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
+msgstr ""
+
+#: templates/admin/portal/location/delete_confirmation.html:23
+#, python-format
+msgid ""
+"Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"?"
+msgstr ""
+
+#: templates/admin/portal/location/delete_confirmation.html:25
+#, python-format
+msgid ""
+"Are you sure you want to propose deleting the %(object_name)s "
+"\"%(escaped_object)s\"?"
+msgstr ""
+
+#: templates/admin/portal/location/delete_confirmation.html:30
+msgid "Yes, I'm sure"
+msgstr ""
 
 #~ msgid "Partial Week"
 #~ msgstr "Semana parcial"
