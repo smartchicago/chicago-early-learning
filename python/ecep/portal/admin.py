@@ -109,7 +109,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
     save_on_top = True
     save_on_bottom = False
     list_display = ['site_name', 'address', 'zip', 'phone', 'id', 'accepted']
-    list_filter = ['is_hs', 'is_ehs', 'accept_ccap', 'is_cps_based', 'is_community_based',
+    base_list_filter = ['is_hs', 'is_ehs', 'accept_ccap', 'is_cps_based', 'is_community_based',
                    'is_age_lt_3', 'is_age_gt_3', 'is_full_day', 'is_full_week', 'is_full_year',
                    'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting']
     search_fields = ['site_name', 'address', 'zip', 'language_1', 'language_2', 'language_3']
@@ -160,6 +160,9 @@ class LocationAdmin(admin.OSMGeoAdmin):
         """
         extra_context = extra_context or {}
         extra_context['is_edit_admin'] = self._is_edit_admin(request.user)
+        # Need to set list_filter each time else PendingEdits gets added
+        # multiple times
+        self.list_filter = self.base_list_filter
         if self._is_edit_admin(request.user):
             self.list_filter = [PendingEditsFilter, 'accepted'] + self.list_filter
         return super(LocationAdmin,self).changelist_view(request, extra_context=None)
