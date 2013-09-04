@@ -248,11 +248,11 @@ class LocationAdmin(admin.OSMGeoAdmin):
             for changed_data in form.changed_data:
                 # Set pending edits on those fields to pending=false (they are overwritten)
                 obj.locationedit_set.filter(fieldname=changed_data, pending=True).update(pending=False)
-                LocationEdit(user = request.user,
-                         location = obj,
-                         fieldname = changed_data,
-                         new_value = form.cleaned_data[changed_data],
-                         edit_type = edit_type).save()
+                LocationEdit(user=request.user,
+                         location=obj,
+                         fieldname=changed_data,
+                         new_value=form.cleaned_data[changed_data],
+                         edit_type=edit_type).save()
         
     def delete_model(self, request, obj):
         """
