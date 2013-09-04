@@ -140,6 +140,15 @@ class LocationAdmin(admin.OSMGeoAdmin):
         for counter, message in enumerate(existing_messages._queued_messages):
             del existing_messages._queued_messages[counter]
 
+    def _is_edit_admin(self, user):
+        """
+        Helper function to check whether a user belongs to group
+        with with edit admin privileges.
+
+        Returns true if user is superuser or part of group approve_edit.
+        """
+        return user.is_superuser or len(user.groups.filter(name='approve_edit')) > 0
+
     class Media:
         css = { 'all': ('css/admin-map.css',)}
         js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' % (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE), 'js/admin-map.js', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
