@@ -170,8 +170,9 @@ class LocationAdmin(admin.OSMGeoAdmin):
         - Reject pending updates
         """
         urls = super(LocationAdmin,self).get_urls()
-        location_urls = patterns('',
-                        url(r'^reject_updates/(\d+)/$', self.admin_site.admin_view(self.reject_updates), name='reject_updates'),
+        location_urls = patterns(
+            '',
+            url(r'^reject_updates/(\d+)/$', self.admin_site.admin_view(self.reject_updates), name='reject_updates'),
         )
         return location_urls + urls
 
@@ -205,7 +206,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
         """
         # Prevent warning messages from displaying twice when edit already exists
         self._delete_messages(request)
-        if "_proposechanges" in request.POST:
+        if '_proposechanges' in request.POST:
             self.message_user(request, 'Changes successfully added for %s, waiting for review by administrator.'
                               % obj.site_name)
             return HttpResponseRedirect(reverse('admin:portal_location_changelist'))
@@ -216,7 +217,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
         """
         Override message response if user is not a member of approve_edit group and only proposing to add a school
         """
-        response = super(LocationAdmin,self).response_add(request, obj, post_url_continue='../%s/')
+        response = super(LocationAdmin,self).response_add(request, obj, post_url_continue=post_url_continue)
         if not self._is_edit_admin(request.user):
             self._delete_messages(request)
             self.message_user(request, 'Submitted adding of %s for review by administrator.' % obj.site_name)
