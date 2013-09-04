@@ -185,7 +185,7 @@ msgstr "Escuelas Públicas de Chicago"
 
 #: portal/static/js/cel/pages/browse.js:201
 msgid "Community"
-msgstr ""
+msgstr "Communidad"
 
 #~ msgid "Affiliations"
 #~ msgstr "Afiliación del centro/sede"
