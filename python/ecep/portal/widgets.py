@@ -19,8 +19,8 @@ class MapWidget(widgets.HiddenInput):
         """
         
         widget = super(MapWidget, self).render(name, value, attrs)
-        return mark_safe("""<input name="geom" readonly="readonly" value="%s" type="text" id="id_geom" size="60">
+        return mark_safe("""<input name="geom" readonly="readonly" value="%s" type="text" id="id_geom" size="60" class="%s">
                          <br>
                          <input type="button" value="Geocode Address" onclick=ecepAdmin.geocodeAddress()>
                          (<a onclick=ecepAdmin.mapHelp() href="#">?</a>)
-                         <div id='map-help'></div><div id="map">%s</div>""" % (value, widget))
+                         <div id='map-help'></div><div id="map">%s</div>""" % (value, self.attrs.get('class', None), widget))
