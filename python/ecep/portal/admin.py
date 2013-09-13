@@ -39,7 +39,14 @@ class LocationForm(forms.ModelForm):
     """
 
     geom = forms.CharField(label="Geocoded Point", widget=MapWidget())
-    
+    q_rating = forms.ChoiceField(label="Quality Rating",
+                                 choices=(('', 'Select a rating'),
+                                          ('licensed', 'Licensed'),
+                                          ('bronze', 'Bronze'),
+                                          ('silver', 'Silver'),
+                                          ('gold', 'Gold')),
+                                 required=False)
+
     def __init__(self, *args, **kwargs):
         """
         Override __init__ method to add custom classes to fields based on whether
@@ -68,7 +75,7 @@ class LocationForm(forms.ModelForm):
     def get_point(self, geom_string):
         """Takes a geom_string from cleaned_data and converts it to a point
         object. If unable to convert, raises a validation error.
-        
+
         Arguments:
         - `geom_string`: string returned by the 'geom' input from the LocationForm
         Takes the form of 'POINT (<LNG> <LAT>)'
@@ -80,7 +87,7 @@ class LocationForm(forms.ModelForm):
             return Point(lng, lat)
         except (IndexError, ValueError):
             raise forms.ValidationError("Invalid point specified for location")
-    
+
     def clean(self):
         """
         Need to create a Point object from string returned by form because
@@ -99,7 +106,7 @@ class LocationForm(forms.ModelForm):
 
     class Meta:
         model = Location
-        
+
 class LocationAdmin(admin.OSMGeoAdmin):
 
     # General Settings
@@ -127,7 +134,8 @@ class LocationAdmin(admin.OSMGeoAdmin):
                                 ('is_hs', 'is_ehs'), 'accept_ccap']}),
         ('Other',   {'fields': [('ages', 'prg_hours', 'accred'),
                                 ('language_1', 'language_2', 'language_3'),
-                                'q_stmt']}),
+                                'q_stmt',
+                                'q_rating', ]}),
     ]
 
     def _delete_messages(self, request):
@@ -256,7 +264,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
                          fieldname=changed_data,
                          new_value=form.cleaned_data[changed_data],
                          edit_type=edit_type).save()
-        
+
     def delete_model(self, request, obj):
         """
         Override delete_model so that only user in approve_edit group can delete a location.
@@ -295,7 +303,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
         obj.locationedit_set.update(pending=False)
         self.message_user(request, '%s pending edits rejected for %s.' %(num_pending_edits, obj.site_name))
         return HttpResponseRedirect(reverse('admin:portal_location_changelist'))
-        
 
-    
+
+
 admin.site.register(Location, LocationAdmin)
