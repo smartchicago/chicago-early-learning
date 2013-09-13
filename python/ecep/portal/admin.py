@@ -290,7 +290,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
         """
         extra_context = extra_context or {}
         extra_context['is_edit_admin'] = self._is_edit_admin(request.user)
-        resp = super(LocationAdmin,self).delete_view(request, object_id, extra_context=None)
+        resp = super(LocationAdmin,self).delete_view(request, object_id, extra_context=extra_context)
         if not self._is_edit_admin(request.user) and 'post' in request.POST:
             self._delete_messages(request)
             obj = get_object_or_404(Location, pk=object_id)
