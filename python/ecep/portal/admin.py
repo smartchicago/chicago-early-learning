@@ -201,7 +201,11 @@ class LocationAdmin(admin.OSMGeoAdmin):
         object_id = context.get('object_id', None)
         if not object_id:
             # We are in an add form then
+            context['show_save_as_new'] = True
             return response
+        else:
+            context['show_save'] = True
+            context['show_delete'] = True
         obj = Location.objects.get(pk=context['object_id'])
         edits = obj.locationedit_set.filter(pending=True)
         if not self._is_edit_admin(request.user) and len(edits) > 0:
