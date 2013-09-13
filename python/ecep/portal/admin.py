@@ -46,6 +46,8 @@ class LocationForm(forms.ModelForm):
                                           ('silver', 'Silver'),
                                           ('gold', 'Gold')),
                                  required=False)
+    site_name = forms.CharField(max_length=100,
+                                widget=forms.TextInput(attrs={'size':'50'}))
 
     def __init__(self, *args, **kwargs):
         """
