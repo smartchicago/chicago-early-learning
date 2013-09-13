@@ -309,6 +309,18 @@ class LocationAdmin(admin.OSMGeoAdmin):
         self.message_user(request, '%s pending edits rejected for %s.' %(num_pending_edits, obj.site_name))
         return HttpResponseRedirect(reverse('admin:portal_location_changelist'))
 
+    def get_actions(self, request):
+        """
+        Override get_actions() to disable batch delete action for non-admins.
+        Batch deleting bypasses the confirmation mechanisms we put in place and
+        a large batch delete would be difficult for the admin to effectively
+        review.
+        """
+        actions = super(admin.OSMGeoAdmin, self).get_actions(request)
+        if (not self._is_edit_admin(request.user) and 'delete_selected' in actions):
+            del actions['delete_selected']
+        return actions
+
 
 
 admin.site.register(Location, LocationAdmin)
