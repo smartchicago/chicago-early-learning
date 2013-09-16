@@ -39,7 +39,15 @@ class LocationForm(forms.ModelForm):
     """
 
     geom = forms.CharField(label="Geocoded Point", widget=MapWidget())
-    
+    q_rating = forms.ChoiceField(label=_('Quality Rating'),
+                                 choices=(('', _('Select a rating')),
+                                          ('licensed', _('Licensed')),
+                                          ('bronze', _('Bronze')),
+                                          ('silver', _('Silver')),
+                                          ('gold', _('Gold'))),
+                                 required=False)
+    site_name = forms.CharField(widget=forms.TextInput(attrs={'size':'50'}))
+
     def __init__(self, *args, **kwargs):
         """
         Override __init__ method to add custom classes to fields based on whether
@@ -68,7 +76,7 @@ class LocationForm(forms.ModelForm):
     def get_point(self, geom_string):
         """Takes a geom_string from cleaned_data and converts it to a point
         object. If unable to convert, raises a validation error.
-        
+
         Arguments:
         - `geom_string`: string returned by the 'geom' input from the LocationForm
         Takes the form of 'POINT (<LNG> <LAT>)'
@@ -80,7 +88,7 @@ class LocationForm(forms.ModelForm):
             return Point(lng, lat)
         except (IndexError, ValueError):
             raise forms.ValidationError("Invalid point specified for location")
-    
+
     def clean(self):
         """
         Need to create a Point object from string returned by form because
@@ -99,7 +107,7 @@ class LocationForm(forms.ModelForm):
 
     class Meta:
         model = Location
-        
+
 class LocationAdmin(admin.OSMGeoAdmin):
 
     # General Settings
@@ -127,7 +135,8 @@ class LocationAdmin(admin.OSMGeoAdmin):
                                 ('is_hs', 'is_ehs'), 'accept_ccap']}),
         ('Other',   {'fields': [('ages', 'prg_hours', 'accred'),
                                 ('language_1', 'language_2', 'language_3'),
-                                'q_stmt']}),
+                                'q_stmt',
+                                'q_rating', ]}),
     ]
 
     def _delete_messages(self, request):
@@ -191,7 +200,11 @@ class LocationAdmin(admin.OSMGeoAdmin):
         object_id = context.get('object_id', None)
         if not object_id:
             # We are in an add form then
+            context['show_save_as_new'] = True
             return response
+        else:
+            context['show_save'] = True
+            context['show_delete'] = True
         obj = Location.objects.get(pk=context['object_id'])
         edits = obj.locationedit_set.filter(pending=True)
         if not self._is_edit_admin(request.user) and len(edits) > 0:
@@ -256,7 +269,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
                          fieldname=changed_data,
                          new_value=form.cleaned_data[changed_data],
                          edit_type=edit_type).save()
-        
+
     def delete_model(self, request, obj):
         """
         Override delete_model so that only user in approve_edit group can delete a location.
@@ -276,7 +289,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
         """
         extra_context = extra_context or {}
         extra_context['is_edit_admin'] = self._is_edit_admin(request.user)
-        resp = super(LocationAdmin,self).delete_view(request, object_id, extra_context=None)
+        resp = super(LocationAdmin,self).delete_view(request, object_id, extra_context=extra_context)
         if not self._is_edit_admin(request.user) and 'post' in request.POST:
             self._delete_messages(request)
             obj = get_object_or_404(Location, pk=object_id)
@@ -295,7 +308,19 @@ class LocationAdmin(admin.OSMGeoAdmin):
         obj.locationedit_set.update(pending=False)
         self.message_user(request, '%s pending edits rejected for %s.' %(num_pending_edits, obj.site_name))
         return HttpResponseRedirect(reverse('admin:portal_location_changelist'))
-        
 
-    
+    def get_actions(self, request):
+        """
+        Override get_actions() to disable batch delete action for non-admins.
+        Batch deleting bypasses the confirmation mechanisms we put in place and
+        a large batch delete would be difficult for the admin to effectively
+        review.
+        """
+        actions = super(admin.OSMGeoAdmin, self).get_actions(request)
+        if (not self._is_edit_admin(request.user) and 'delete_selected' in actions):
+            del actions['delete_selected']
+        return actions
+
+
+
 admin.site.register(Location, LocationAdmin)
