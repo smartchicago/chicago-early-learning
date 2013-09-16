@@ -101,7 +101,7 @@ class Location(models.Model):
     display_include = {'ages', 'accred', 'accept_ccap', 'is_home_visiting', 'is_hs', 'is_ehs',
                        'is_community_based', 'is_cps_based'}
 
-    q_rating_translations = [_('Licensed'), _('Bronze'), _('Silver'), _('Gold')]
+    q_rating_translations = [_('None'), _('Licensed'), _('Bronze'), _('Silver'), _('Gold')]
 
     def __unicode__(self):
         return unicode(self.site_name)
@@ -236,8 +236,13 @@ class Location(models.Model):
                         'value': ', '.join(week_values) if week_values else _('None')})
 
         # Quality Rating
-        q_rating = self.q_rating or 'None'
-        item['quality'] = q_rating.lower()
+        # default empty db entry to coming soon so we don't have to modify code when CEL chooses 
+        #   to implement this. No q_rating is explicitly set as 'None' in the database and will 
+        #   be properly displayed in the UI as long as the db field is set to 'None'    
+        # key for displayed image, not to be translated
+        item['quality'] = self.q_rating.lower() or 'none'
+        # translatable displayed text
+        q_rating = self.q_rating or 'Coming Soon'
         sfields.append({'fieldname': _('Quality Rating'), 'value': _(q_rating)})
 
         # Phone
@@ -258,8 +263,7 @@ class Location(models.Model):
         # This way we can do this with django and not have to worry about making a separate
         # handlebars helper
         trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
-                      'share': _('Share'), 'qrisrating': _('QRIS Rating'),
-                      'comingsoon': _('Coming Soon')}
+                      'share': _('Share'), 'qrisrating': _('QRIS Rating')}
 
         # More information for tooltip icon
         accreditation = ['Accredited'] if self.accred != 'None' else []
@@ -268,7 +272,7 @@ class Location(models.Model):
         # Tooltips - necessary for translations in handlebars template
         tooltip = {'directions': _('Directions from Google'), 'moreinfo': _('Click to show more information'),
                    'star': _('Click to save to your list'), 'accreditation': ' '.join(accreditation),
-                   'quality': q_rating}
+                   'quality': _(q_rating)}
 
         return {'item': item, 'phone': phone, 'sfields': sfields,
                 'bfields': {'fieldname': _('Other Features'), 'values': bfields},
