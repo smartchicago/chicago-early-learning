@@ -1,12 +1,16 @@
 # Copyright (c) 2012, 2013 Azavea, Inc.
 # See LICENSE in the project root for copying permission
 
+import re
+import csv
+from datetime import datetime
+from django.template.defaultfilters import slugify
+
 from portal.models import Location, LocationEdit
 from django.contrib.gis import admin
 from django import forms
 from portal.widgets import MapWidget
 from django.contrib.gis.geos import Point
-import re
 from django.conf import settings
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponseForbidden
 from django.conf.urls import patterns, url
@@ -193,7 +197,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
             '',
             url(r'^export_locations$',
                 self.admin_site.admin_view(self.export_locations),
-                name='reject_updates'),
+                name='export_locations'),
             url(r'^reject_updates/(\d+)/$',
                 self.admin_site.admin_view(self.reject_updates),
                 name='reject_updates'),
@@ -330,11 +334,26 @@ class LocationAdmin(admin.OSMGeoAdmin):
         """
         if not self._is_edit_admin(request.user):
             return HttpResponseForbidden(
-                'You do not have permission to export th locations database.  '
+                'You do not have permission to export the locations database.  '
                 'Please contact your administrator'
             )
             pass
-        response = HttpResponse({'foo': 'bar'})
+
+        #return HttpResponse('hi there')
+        filename = slugify('%s_location_export' % str(datetime.now().date())) + '.csv'
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="%s";' % filename
+        response.write(u'\ufeff'.encode('utf8')) # BOM for excel
+
+        result = Location.objects.all()
+        header = next(result.values().iterator()).keys()
+        writer = csv.DictWriter(response, header)
+        writer.writeheader()
+
+        for row in result.values():
+            writer.writerow({unicode(k): unicode(v).encode('utf-8') for k, v in row.items()})
+
+        response.flush()
         return response
 
     def get_actions(self, request):

@@ -16,7 +16,7 @@
         {% if is_edit_admin %}
           <li>
             <!--TODO: fix link, add check for permissions -->
-            <a href="{% url admin:portal_location_add %}{% if is_popup %}?_popup=1{% endif %}" class="exportlink">
+            <a href="{% url admin:export_locations %}{% if is_popup %}?_popup=1{% endif %}" class="exportlink">
               {% blocktrans with cl.opts.verbose_name as name %}Export {{ name }}s{% endblocktrans %}
             </a>
           </li>
