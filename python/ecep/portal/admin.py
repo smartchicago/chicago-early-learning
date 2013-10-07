@@ -8,13 +8,14 @@ from portal.widgets import MapWidget
 from django.contrib.gis.geos import Point
 import re
 from django.conf import settings
-from django.http import HttpResponseRedirect
-from django.conf.urls.defaults import patterns, url
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponseForbidden
+from django.conf.urls import patterns, url
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.contrib.admin import SimpleListFilter
 from django.utils.translation import ugettext_lazy as _
+
 
 class PendingEditsFilter(SimpleListFilter):
     """
@@ -47,14 +48,14 @@ class LocationForm(forms.ModelForm):
                                           ('Silver', _('Silver')),
                                           ('Gold', _('Gold'))),
                                  required=False)
-    site_name = forms.CharField(widget=forms.TextInput(attrs={'size':'50'}))
+    site_name = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}))
 
     def __init__(self, *args, **kwargs):
         """
         Override __init__ method to add custom classes to fields based on whether
         or not the field has been edited and what type of edit was made.
         """
-        super(LocationForm,self).__init__(*args, **kwargs)
+        super(LocationForm, self).__init__(*args, **kwargs)
         edits = self.instance.locationedit_set.filter(pending=True)
         bools = self.instance.get_boolean_fieldnames()
 
@@ -109,18 +110,20 @@ class LocationForm(forms.ModelForm):
     class Meta:
         model = Location
 
+
 class LocationAdmin(admin.OSMGeoAdmin):
 
     # General Settings
     # Template override that adds buttons to propose/accept changes
     change_form_template = 'admin/portal/location/change_form.html'
+    change_list_template = 'admin/portal/location/change_list.html'
     delete_confirmation_template = 'admin/portal/location/delete_confirmation.html'
     save_on_top = True
     save_on_bottom = False
     list_display = ['site_name', 'address', 'zip', 'phone', 'id', 'accepted']
     base_list_filter = ['is_hs', 'is_ehs', 'accept_ccap', 'is_cps_based', 'is_community_based',
-                   'is_age_lt_3', 'is_age_gt_3', 'is_full_day', 'is_full_week', 'is_full_year',
-                   'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting']
+                        'is_age_lt_3', 'is_age_gt_3', 'is_full_day', 'is_full_week', 'is_full_year',
+                        'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting']
     search_fields = ['site_name', 'address', 'zip', 'language_1', 'language_2', 'language_3']
     readonly_fields = ['neighborhood']
     form = LocationForm
@@ -160,8 +163,11 @@ class LocationAdmin(admin.OSMGeoAdmin):
         return user.is_superuser or len(user.groups.filter(name='approve_edit')) > 0
 
     class Media:
-        css = { 'all': ('css/admin-map.css',)}
-        js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' % (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE), 'js/admin-map.js', "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+        css = {'all': ('css/admin-map.css',)}
+        js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' %
+              (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE),
+              'js/admin-map.js',
+              "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
 
     def changelist_view(self, request, extra_context=None):
         """
@@ -175,17 +181,22 @@ class LocationAdmin(admin.OSMGeoAdmin):
         self.list_filter = self.base_list_filter
         if self._is_edit_admin(request.user):
             self.list_filter = [PendingEditsFilter, 'accepted'] + self.list_filter
-        return super(LocationAdmin,self).changelist_view(request, extra_context=None)
+        return super(LocationAdmin, self).changelist_view(request, extra_context=extra_context)
 
     def get_urls(self):
         """
         Override of get_urls to add custom admin views to handle the following situations
         - Reject pending updates
         """
-        urls = super(LocationAdmin,self).get_urls()
+        urls = super(LocationAdmin, self).get_urls()
         location_urls = patterns(
             '',
-            url(r'^reject_updates/(\d+)/$', self.admin_site.admin_view(self.reject_updates), name='reject_updates'),
+            url(r'^export_locations$',
+                self.admin_site.admin_view(self.export_locations),
+                name='reject_updates'),
+            url(r'^reject_updates/(\d+)/$',
+                self.admin_site.admin_view(self.reject_updates),
+                name='reject_updates'),
         )
         return location_urls + urls
 
@@ -196,8 +207,8 @@ class LocationAdmin(admin.OSMGeoAdmin):
         """
         context = context or {}
         context['is_edit_admin'] = self._is_edit_admin(request.user)
-        response = super(LocationAdmin,self).render_change_form(request, context, add=False, change=False,
-                                                                form_url='', obj=None)
+        response = super(LocationAdmin, self).render_change_form(request, context, add=False, change=False,
+                                                                 form_url='', obj=None)
         object_id = context.get('object_id', None)
         if not object_id:
             # We are in an add form then
@@ -228,13 +239,13 @@ class LocationAdmin(admin.OSMGeoAdmin):
                               % obj.site_name)
             return HttpResponseRedirect(reverse('admin:portal_location_changelist'))
         else:
-            return super(LocationAdmin,self).response_change(request, obj)
+            return super(LocationAdmin, self).response_change(request, obj)
 
     def response_add(self, request, obj, post_url_continue='../%s/'):
         """
         Override message response if user is not a member of approve_edit group and only proposing to add a school
         """
-        response = super(LocationAdmin,self).response_add(request, obj, post_url_continue=post_url_continue)
+        response = super(LocationAdmin, self).response_add(request, obj, post_url_continue=post_url_continue)
         if not self._is_edit_admin(request.user):
             self._delete_messages(request)
             self.message_user(request, 'Submitted adding of %s for review by administrator.' % obj.site_name)
@@ -254,11 +265,11 @@ class LocationAdmin(admin.OSMGeoAdmin):
                 obj.delete()
             else:
                 obj.accepted = True
-                super(LocationAdmin,self).save_model(request, obj, form, change)
+                super(LocationAdmin, self).save_model(request, obj, form, change)
             obj.locationedit_set.update(pending=False)
         else:
             edit_type = 'update'
-            if obj.pk == None:
+            if obj.pk is None:
                 obj.accepted = False
                 edit_type = 'create'
                 obj.save()
@@ -266,10 +277,10 @@ class LocationAdmin(admin.OSMGeoAdmin):
                 # Set pending edits on those fields to pending=false (they are overwritten)
                 obj.locationedit_set.filter(fieldname=changed_data, pending=True).update(pending=False)
                 LocationEdit(user=request.user,
-                         location=obj,
-                         fieldname=changed_data,
-                         new_value=form.cleaned_data[changed_data],
-                         edit_type=edit_type).save()
+                             location=obj,
+                             fieldname=changed_data,
+                             new_value=form.cleaned_data[changed_data],
+                             edit_type=edit_type).save()
 
     def delete_model(self, request, obj):
         """
@@ -279,7 +290,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
         that represents a delete edit.
         """
         if self._is_edit_admin(request.user):
-            super(LocationAdmin,self).delete_model(request, obj)
+            super(LocationAdmin, self).delete_model(request, obj)
         else:
             LocationEdit(user=request.user, location=obj, fieldname='',
                          new_value='', edit_type='delete').save()
@@ -290,7 +301,7 @@ class LocationAdmin(admin.OSMGeoAdmin):
         """
         extra_context = extra_context or {}
         extra_context['is_edit_admin'] = self._is_edit_admin(request.user)
-        resp = super(LocationAdmin,self).delete_view(request, object_id, extra_context=extra_context)
+        resp = super(LocationAdmin, self).delete_view(request, object_id, extra_context=extra_context)
         if not self._is_edit_admin(request.user) and 'post' in request.POST:
             self._delete_messages(request)
             obj = get_object_or_404(Location, pk=object_id)
@@ -307,8 +318,24 @@ class LocationAdmin(admin.OSMGeoAdmin):
         obj = get_object_or_404(Location, pk=object_id)
         num_pending_edits = obj.locationedit_set.filter(pending=True).count()
         obj.locationedit_set.update(pending=False)
-        self.message_user(request, '%s pending edits rejected for %s.' %(num_pending_edits, obj.site_name))
+        self.message_user(request,
+                          '%s pending edits rejected for %s.' % (num_pending_edits, obj.site_name))
         return HttpResponseRedirect(reverse('admin:portal_location_changelist'))
+
+    def export_locations(self, request):
+        """
+        Custom admin view to export the locations table
+
+        Returns a csv file of the locations table, or 403 if the user is not an edit admin
+        """
+        if not self._is_edit_admin(request.user):
+            return HttpResponseForbidden(
+                'You do not have permission to export th locations database.  '
+                'Please contact your administrator'
+            )
+            pass
+        response = HttpResponse({'foo': 'bar'})
+        return response
 
     def get_actions(self, request):
         """
@@ -321,7 +348,6 @@ class LocationAdmin(admin.OSMGeoAdmin):
         if (not self._is_edit_admin(request.user) and 'delete_selected' in actions):
             del actions['delete_selected']
         return actions
-
 
 
 admin.site.register(Location, LocationAdmin)
