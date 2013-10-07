@@ -339,7 +339,6 @@ class LocationAdmin(admin.OSMGeoAdmin):
             )
             pass
 
-        #return HttpResponse('hi there')
         filename = slugify('%s_location_export' % str(datetime.now().date())) + '.csv'
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="%s";' % filename
