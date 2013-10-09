@@ -84,7 +84,7 @@ class Location(models.Model):
 
     # Keeps track of whether or not new locations have been approved by the admin
     accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
-    
+
     # To get these placeholder fields to show up in the UI, replace
     # 'Placeholder 1' and 'Placeholder 2' in the lines below with
     # real labels, and add 'placeholder_1' and 'placeholder_2' to the
@@ -101,7 +101,13 @@ class Location(models.Model):
     display_include = {'ages', 'accred', 'accept_ccap', 'is_home_visiting', 'is_hs', 'is_ehs',
                        'is_community_based', 'is_cps_based'}
 
-    q_rating_translations = [_('None'), _('Licensed'), _('Bronze'), _('Silver'), _('Gold')]
+    q_rating_translations = [
+        ugettext_lazy('None'),
+        ugettext_lazy('Licensed'),
+        ugettext_lazy('Bronze'),
+        ugettext_lazy('Silver'),
+        ugettext_lazy('Gold')
+    ]
 
     def __unicode__(self):
         return unicode(self.site_name)
@@ -140,7 +146,7 @@ class Location(models.Model):
         """
         fields = self._meta.fields
         return [field.name for field in fields if field.get_internal_type() == 'NullBooleanField']
-        
+
     def is_true_bool_field(self, field):
         """
         Returns true if field is a boolean field and self.field is True
@@ -236,9 +242,9 @@ class Location(models.Model):
                         'value': ', '.join(week_values) if week_values else _('None')})
 
         # Quality Rating
-        # default empty db entry to coming soon so we don't have to modify code when CEL chooses 
-        #   to implement this. No q_rating is explicitly set as 'None' in the database and will 
-        #   be properly displayed in the UI as long as the db field is set to 'None'    
+        # default empty db entry to coming soon so we don't have to modify code when CEL chooses
+        #   to implement this. No q_rating is explicitly set as 'None' in the database and will
+        #   be properly displayed in the UI as long as the db field is set to 'None'
         # key for displayed image, not to be translated
         item['quality'] = self.q_rating.lower() or 'none'
         # translatable displayed text
@@ -307,7 +313,7 @@ class LocationEdit(models.Model):
     Model class that stores edits for locations
     """
     EDIT_TYPE_CHOICES = (('create', 'Create'), ('update', 'Update'), ('delete', 'Delete'))
-    
+
     user = models.ForeignKey(User)
     location = models.ForeignKey(Location)
     fieldname = models.TextField()

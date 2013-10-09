@@ -1,0 +1,27 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_static admin_list %}
+{% load admin_urls %}
+
+{% block object-tools %}
+  {% if has_add_permission or has_export_permission %}
+    <ul class="object-tools">
+      {% block object-tools-items %}
+        {% if has_add_permission %}
+          <li>
+            <a href="{% url admin:portal_location_add %}{% if is_popup %}?_popup=1{% endif %}" class="addlink">
+              {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+            </a>
+          </li>
+        {% endif %}
+        {% if is_edit_admin %}
+          <li>
+            <!--TODO: fix link, add check for permissions -->
+            <a href="{% url admin:export_locations %}{% if is_popup %}?_popup=1{% endif %}" class="exportlink">
+              {% blocktrans with cl.opts.verbose_name as name %}Export {{ name }}s{% endblocktrans %}
+            </a>
+          </li>
+        {% endif %}
+      {% endblock %}
+    </ul>
+  {% endif %}
+{% endblock %}
