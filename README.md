@@ -41,7 +41,7 @@ http://www.examiner.com/article/mayor-emanuel-unveils-online-early-learning-port
 This web application is designed to be deployed using [Ansbile](http://www.ansibleworks.com/) and developed locally with [vagrant](http://www.vagrantup.com).
 
 Requirements:
-* vagrant (version 1.2.2)
+* vagrant (version 1.3.0+)
 * ansible (version 1.2.2)
 
 Development instructions:
