@@ -13,8 +13,8 @@
   - command: touch /etc/nginx/.htpasswd
 
   - name: Creating User/Password to sign into staging server
-    command: htpasswd -b /etc/nginx/.htpasswd ${http_user} ${http_password}
-    only_if: "'${http_password}' != '' and '${http_user}' != ''"
+    command: htpasswd -b /etc/nginx/.htpasswd {{http_user}} {{http_password}}
+    when: "'{{http_password}}' != '' and '{{http_user}}' != ''"
 
   - name: Write nginx config file
     template: src=assets/nginx.j2 dest=/etc/nginx/sites-available/ecep.conf

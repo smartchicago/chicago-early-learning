@@ -53,8 +53,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "deployment/playbooks/all.yml"
-    # Note: If running vagrant < 1.3.0, you may need to change this to ansible.inventory_file 
     ansible.inventory_path = "deployment/hosts"
+    ansible.limit = "all"
   end
 
 end
