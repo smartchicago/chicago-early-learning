@@ -18,5 +18,6 @@ config/django-celery.local.config
 *mo
 
 hosts
+deployment/host_vars
 .vagrant/
 thumbs.db
