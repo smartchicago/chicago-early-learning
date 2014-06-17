@@ -41,9 +41,9 @@ See LICENSE in the project root for copying permission
       <hr>
       <div class="school-details">
         <h1>{{ loc.phone.fieldname }}</h1>
-        <h2>
+        <p>
           <a href="tel:{{ loc.phone.number }}" class="ga-track" itemprop="telephone" data-ga-category="location" data-ga-action="Telephone">{{ loc.phone.number }}</a>
-        </h2>
+        </p>
         <hr>
         {% for sfield in loc.sfields %}
           <h1>{{ sfield.fieldname }}</h1>
@@ -52,7 +52,7 @@ See LICENSE in the project root for copying permission
         {% endfor %}
         {% if loc.bfields.values %}
           <h1>{{ loc.bfields.fieldname }}</h1>
-          <h2>{{ loc.bfields.values|join:", "}}</h2>
+          <div>{{ loc.bfields.values|join:", "}}</div>
         {% endif %}
       </div>
     </div>
