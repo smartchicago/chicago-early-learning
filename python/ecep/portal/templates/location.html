@@ -47,7 +47,7 @@ See LICENSE in the project root for copying permission
         <hr>
         {% for sfield in loc.sfields %}
           <h1>{{ sfield.fieldname }}</h1>
-          <h2>{{ sfield.value }}</h2>
+          {{ sfield.value|linebreaks }}
           <hr>
         {% endfor %}
         {% if loc.bfields.values %}
