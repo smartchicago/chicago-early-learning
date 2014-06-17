@@ -21,7 +21,7 @@
 
   - name: Load FAQ Data into Django
     command: "{{env_path}}/bin/python {{app_path}}/python/ecep/manage.py loaddata {{item}}"
-    when: sync_ecep_database
+    when: sync_ecep_database == 'True'
     with_items:
        - faq
 
