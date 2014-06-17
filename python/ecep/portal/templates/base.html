@@ -132,12 +132,16 @@ See LICENSE in the project root for copying permission
     <script src='{% static "js/require.js" %}'></script>
     <script src='{% static "js/require-config.js" %}'></script>
     <script>
+        var inDevelopment = {{ settings.DEBUG|yesno:"true,false" }},
+            version = 1;
+
         requirejs.config({
             //By default load any module IDs from js/lib
             // TODO: enable build in release mode once we start actually doing it
             //baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
                 //'{% static "js/cel" %}' : '{% static "js/cel-build" %}')
-            baseUrl: '{% static "js/cel" %}'
+            baseUrl: '{% static "js/cel" %}',
+            urlArgs: "v=" + ((inDevelopment) ? (new Date()).getTime() : version)
         });
          
         // Cheat to win, make a global object
