@@ -142,7 +142,7 @@ function($, L, Response, Handlebars) {
                     return;
                 } else if (ui.item.lat && ui.item.lon) {
                     window.location.href = getUrl(
-                        'browse', { type: 'latlng', lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
+                        'browse', { type: 'geo-latlng', lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
                     return;
                 }
             }
