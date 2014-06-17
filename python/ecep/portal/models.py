@@ -60,7 +60,7 @@ class Location(models.Model):
     phone = models.CharField(ugettext_lazy('Phone Number'), max_length=20, blank=True)
     q_rating = models.CharField(ugettext_lazy('Quality Rating'), max_length=10, blank=True)
     url = models.CharField(ugettext_lazy('Website'), max_length=256, blank=True)
-    q_stmt = models.TextField(ugettext_lazy('Quality Statement'), blank=True)
+    q_stmt = models.TextField(ugettext_lazy('Description'), blank=True)
     accred = models.CharField(ugettext_lazy('Accreditation'), max_length=100, blank=True)
     prg_hours = models.CharField(ugettext_lazy('Program Hours'), max_length=50, blank=True)
     is_full_day = models.NullBooleanField(ugettext_lazy('Full Day'))

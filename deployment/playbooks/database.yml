@@ -21,15 +21,15 @@
     postgresql_user: name=ecep password=ecep role_attr_flags=CREATEDB,NOSUPERUSER state=present
 
   - name: Run postgis setup commands
-    command: psql -d template_postgis -f ${item}
-    only_if: ${createdb_template_postgis.changed}
+    command: psql -d template_postgis -f {{item}}
+    when: createdb_template_postgis == 'True'
     with_items:
-      - ${postgis_path}/postgis.sql
-      - ${postgis_path}/spatial_ref_sys.sql
+      - "{{postgis_path}}/postgis.sql"
+      - "{{postgis_path}}/spatial_ref_sys.sql"
    
   - name: Set template_postgis as template
     command: psql -c "update pg_database set datistemplate='t', datallowconn='f' where datname='template_postgis';"
-    only_if: ${createdb_template_postgis.changed}
+    when: createdb_template_postgis == 'True'
   
   - name: Create ecep database
     postgresql_db: db=ecep state=present encoding=UTF-8 template=template_postgis
@@ -37,5 +37,5 @@
 
   - name: Alter ecep database tables/permissions
     command: psql -d ecep -c "alter table spatial_ref_sys owner to ecep; alter table geometry_columns owner to ecep; alter view geography_columns owner to ecep; create schema ecep authorization ecep; GRANT ALL ON TABLE geometry_columns TO ecep; GRANT ALL ON TABLE spatial_ref_sys TO ecep;"
-    only_if: ${createdb_ecep.changed}
+    when: createdb_ecep == 'True'
 

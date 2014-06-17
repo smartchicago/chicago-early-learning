@@ -53,7 +53,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "deployment/playbooks/all.yml"
-    ansible.inventory_file = "deployment/hosts"
+    ansible.inventory_path = "deployment/hosts"
+    ansible.limit = "all"
   end
 
 end
