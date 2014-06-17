@@ -21,3 +21,4 @@ hosts
 deployment/host_vars
 .vagrant/
 thumbs.db
+.DS_Store
