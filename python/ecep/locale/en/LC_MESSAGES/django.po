@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-09 12:02-0500\n"
+"POT-Creation-Date: 2014-06-18 17:18+0000\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -25,59 +25,174 @@ msgstr ""
 msgid "Spanish"
 msgstr ""
 
-#: portal/models.py:192
-msgid "Program Information"
+#: portal/admin.py:33
+msgid "Yes"
 msgstr ""
 
-#: portal/models.py:199
-msgid "Languages (other than English)"
+#: portal/admin.py:47 portal/models.py:61 portal/models.py:252
+msgid "Quality Rating"
 msgstr ""
 
-#: portal/models.py:205
-msgid "Duration/Hours"
+#: portal/admin.py:48
+msgid "Select a rating"
 msgstr ""
 
-#: portal/models.py:211
-msgid "Weekday Availability"
+#: portal/admin.py:49 portal/models.py:105 portal/models.py:215
+#: portal/models.py:222 portal/models.py:236 portal/models.py:242
+msgid "None"
 msgstr ""
 
-#: portal/models.py:215
+#: portal/admin.py:50 portal/models.py:106
+msgid "Licensed"
+msgstr ""
+
+#: portal/admin.py:51 portal/models.py:107
+msgid "Bronze"
+msgstr ""
+
+#: portal/admin.py:52 portal/models.py:108
+msgid "Silver"
+msgstr ""
+
+#: portal/admin.py:53 portal/models.py:109
+msgid "Gold"
+msgstr ""
+
+#: portal/models.py:60 portal/models.py:255
 msgid "Phone Number"
 msgstr ""
 
-#: portal/models.py:222
-msgid "Description"
-msgstr ""
-
-#: portal/models.py:231
-msgid "More"
-msgstr ""
-
-#: portal/models.py:231 portal/templatetags/portal_extras.py:30
+#: portal/models.py:62 portal/models.py:271
+#: portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr ""
 
-#: portal/models.py:231
+#: portal/models.py:63 portal/models.py:262
+msgid "Description"
+msgstr ""
+
+#: portal/models.py:64
+msgid "Accreditation"
+msgstr ""
+
+#: portal/models.py:65
+msgid "Program Hours"
+msgstr ""
+
+#: portal/models.py:66
+msgid "Full Day"
+msgstr ""
+
+#: portal/models.py:67
+msgid "Part Day"
+msgstr ""
+
+#: portal/models.py:68
+msgid "Full Week"
+msgstr ""
+
+#: portal/models.py:69
+msgid "Part Week"
+msgstr ""
+
+#: portal/models.py:70
+msgid "School Year"
+msgstr ""
+
+#: portal/models.py:71
+msgid "Full Year"
+msgstr ""
+
+#: portal/models.py:72
+msgid "Ages Served"
+msgstr ""
+
+#: portal/models.py:73
+msgid "Ages 0-3"
+msgstr ""
+
+#: portal/models.py:74
+msgid "Ages 3-5"
+msgstr ""
+
+#: portal/models.py:78
+msgid "Community Based"
+msgstr ""
+
+#: portal/models.py:79
+msgid "CPS Based"
+msgstr ""
+
+#: portal/models.py:80
+msgid "Home Visiting"
+msgstr ""
+
+#: portal/models.py:81
+msgid "Accepts CCAP"
+msgstr ""
+
+#: portal/models.py:82
+msgid "Head Start"
+msgstr ""
+
+#: portal/models.py:83
+msgid "Early Head Start"
+msgstr ""
+
+#: portal/models.py:86
+msgid "Approved"
+msgstr ""
+
+#: portal/models.py:221
+msgid "Program Information"
+msgstr ""
+
+#: portal/models.py:228
+msgid "Languages (other than English)"
+msgstr ""
+
+#: portal/models.py:233
+msgid "No Hours Listed"
+msgstr ""
+
+#: portal/models.py:235
+msgid "Duration/Hours"
+msgstr ""
+
+#: portal/models.py:241
+msgid "Weekday Availability"
+msgstr ""
+
+#: portal/models.py:271
+msgid "More"
+msgstr ""
+
+#: portal/models.py:271
 msgid "Directions"
 msgstr ""
 
-#: portal/models.py:232 portal/templates/browse.html:43
+#: portal/models.py:272 portal/templates/browse.html:52
+#: portal/templates/starred.html:31
 msgid "Share"
 msgstr ""
 
-#: portal/models.py:239
+#: portal/models.py:272
+msgid "QRIS Rating"
+msgstr ""
+
+#: portal/models.py:279
 msgid "Directions from Google"
 msgstr ""
 
-#: portal/models.py:239
+#: portal/models.py:279
 msgid "Click to show more information"
 msgstr ""
 
-#: portal/models.py:240
-msgid "Click to star location"
+#: portal/models.py:280
+msgid "Click to save to your list"
 msgstr ""
 
-#: portal/models.py:243
+#: portal/models.py:284
 msgid "Other Features"
 msgstr ""
 
@@ -122,23 +237,23 @@ msgstr ""
 msgid "(page %(current)d/%(total)d)"
 msgstr ""
 
-#: portal/views.py:365
+#: portal/views.py:373
 msgid "Explore"
 msgstr ""
 
-#: portal/views.py:366
+#: portal/views.py:374
 msgid "Click to see locations in this neighborhood"
 msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/browse.html:12
 #: portal/templates/faq-models.html:9 portal/templates/index.html:11
-#: portal/templates/location.html:12 portal/templates/starred.html:12
-#: templates/admin/base_site.html:15
+#: portal/templates/location.html:12 portal/templates/smsinfo.html:12
+#: portal/templates/starred.html:12 templates/admin/base_site.html:15
 msgid "Chicago Early Learning"
 msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
-#: portal/templates/base.html:62
+#: portal/templates/base.html:75
 msgid "About"
 msgstr ""
 
@@ -210,43 +325,35 @@ msgid ""
 "effective, for whom, and why."
 msgstr ""
 
+#: portal/templates/base-search.html:9
+msgid "Enter an address/school"
+msgstr ""
+
 #: portal/templates/base-search.html:11
-msgid "Click to user your current location"
+msgid "Click to use your current location"
 msgstr ""
 
 #: portal/templates/base-search.html:17 portal/templates/index.html:24
 msgid "Search"
 msgstr ""
 
-#: portal/templates/base.html:61
+#: portal/templates/base.html:74
 msgid "Text For Info"
 msgstr ""
 
-#: portal/templates/base.html:63 portal/templates/faq-models.html:9
+#: portal/templates/base.html:76 portal/templates/faq-models.html:9
 msgid "FAQ"
 msgstr ""
 
-#: portal/templates/base.html:65
+#: portal/templates/base.html:78
 msgid "Language"
 msgstr ""
 
-#: portal/templates/base.html:91
-msgid "Want information via text?"
-msgstr ""
-
-#: portal/templates/base.html:94
-msgid "Text your zip code to "
-msgstr ""
-
-#: portal/templates/base.html:94
-msgid " and we'll do the rest."
-msgstr ""
-
-#: portal/templates/base.html:102
+#: portal/templates/base.html:104
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:105
+#: portal/templates/base.html:107
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -255,24 +362,32 @@ msgstr ""
 msgid "Click to hide filters"
 msgstr ""
 
-#: portal/templates/browse.html:40
+#: portal/templates/browse.html:43
 msgid "Refine your search"
 msgstr ""
 
-#: portal/templates/browse.html:42
-msgid "Click to view starred locations"
+#: portal/templates/browse.html:46
+msgid "Click to view your list"
 msgstr ""
 
-#: portal/templates/browse.html:42
-msgid "Starred"
+#: portal/templates/browse.html:48 portal/templates/starred.html:21
+msgid "Favorites"
 msgstr ""
 
-#: portal/templates/browse.html:43
-msgid "Click to share starred schools"
+#: portal/templates/browse.html:51 portal/templates/starred.html:29
+msgid "Click to share your list"
 msgstr ""
 
-#: portal/templates/browse.html:69
+#: portal/templates/browse.html:98
 msgid "Reset Search"
+msgstr ""
+
+#: portal/templates/browse.html:105
+msgid "Community"
+msgstr ""
+
+#: portal/templates/browse.html:106
+msgid "Locations"
 msgstr ""
 
 #: portal/templates/index.html:21
@@ -288,8 +403,12 @@ msgid ""
 "enroll your child in a quality early learning program."
 msgstr ""
 
+#: portal/templates/index.html:23
+msgid "Enter a school, community, or address"
+msgstr ""
+
 #: portal/templates/index.html:25
-msgid "Browse by Neighborhood"
+msgid "Browse by Community"
 msgstr ""
 
 #: portal/templates/index.html:35
@@ -304,31 +423,31 @@ msgid ""
 msgstr ""
 
 #: portal/templates/index.html:43
-msgid "Browse locations by neighborhood."
+msgid "Browse locations by community."
 msgstr ""
 
 #: portal/templates/index.html:44
 msgid ""
-"You can pick a neighborhood from the list or map if you don't want to search "
-"by address. You can also type a neighborhood or even a school name into the "
-"search bar to get there faster."
+"You can pick a community from the list or map if you don't want to search by "
+"address. You can also type a community or even a school name into the search "
+"bar to get there faster."
 msgstr ""
 
-#: portal/templates/index.html:51
+#: portal/templates/index.html:51 portal/templates/smsinfo.html:34
 msgid "Text for more info"
 msgstr ""
 
-#: portal/templates/index.html:52
+#: portal/templates/index.html:52 portal/templates/smsinfo.html:35
 msgid ""
 "Get details about locations near you with text messages. Simply send a zip "
 "code to "
 msgstr ""
 
-#: portal/templates/index.html:52
+#: portal/templates/index.html:52 portal/templates/smsinfo.html:35
 msgid " and follow the instructions on your phone."
 msgstr ""
 
-#: portal/templates/index.html:52
+#: portal/templates/index.html:52 portal/templates/smsinfo.html:35
 msgid ""
 "If you’d like to talk to someone about your options, please call the "
 "Chicago: Ready to Learn! Hotline at "
@@ -346,6 +465,26 @@ msgstr ""
 
 #: portal/templates/index.html:64
 msgid "Get Started!"
+msgstr ""
+
+#: portal/templates/smsinfo.html:22
+msgid "Want information via text?"
+msgstr ""
+
+#: portal/templates/smsinfo.html:24
+msgid "Text your zip code to "
+msgstr ""
+
+#: portal/templates/smsinfo.html:26
+msgid " and we'll do the rest."
+msgstr ""
+
+#: portal/templates/starred.html:27
+msgid "Clear Selections"
+msgstr ""
+
+#: portal/templates/starred.html:33
+msgid "Back"
 msgstr ""
 
 #: portal/templatetags/portal_extras.py:38
@@ -376,4 +515,66 @@ msgstr ""
 
 #: templates/admin/login.html:55
 msgid "Log in"
+msgstr ""
+
+#: templates/admin/portal/location/change_form_buttons.html:5
+msgid "Accept Changes"
+msgstr ""
+
+#: templates/admin/portal/location/change_form_buttons.html:6
+msgid "Reject All Pending Changes"
+msgstr ""
+
+#: templates/admin/portal/location/change_form_buttons.html:8
+msgid "Save new"
+msgstr ""
+
+#: templates/admin/portal/location/change_form_buttons.html:11
+msgid "Submit Changes for Review"
+msgstr ""
+
+#: templates/admin/portal/location/change_form_buttons.html:13
+msgid "Delete"
+msgstr ""
+
+#: templates/admin/portal/location/change_list.html:12
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: templates/admin/portal/location/change_list.html:20
+#, python-format
+msgid "Export %(name)ss"
+msgstr ""
+
+#: templates/admin/portal/location/delete_confirmation.html:6
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
+"related objects, but your account doesn't have permission to delete the "
+"following types of objects:"
+msgstr ""
+
+#: templates/admin/portal/location/delete_confirmation.html:14
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
+msgstr ""
+
+#: templates/admin/portal/location/delete_confirmation.html:23
+#, python-format
+msgid ""
+"Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"?"
+msgstr ""
+
+#: templates/admin/portal/location/delete_confirmation.html:25
+#, python-format
+msgid ""
+"Are you sure you want to propose deleting the %(object_name)s "
+"\"%(escaped_object)s\"?"
+msgstr ""
+
+#: templates/admin/portal/location/delete_confirmation.html:30
+msgid "Yes, I'm sure"
 msgstr ""

@@ -159,13 +159,13 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
 
             // toggle off
             if ($elt.hasClass(opts.selectedClass)) {
-                img = 'icon-star-empty';
+                img = 'icon-heart-empty';
                 favs.removeIdFromCookie(buttonId);
                 increment = -1;
                 $elt.attr('data-hint', gettext('Click to save to your list'));
             // toggle on
             } else {
-                img = 'icon-star';
+                img = 'icon-heart';
                 favs.addIdToCookie(buttonId);
                 increment = 1;
                 $elt.attr('data-hint', gettext('Click to remove from your list'));
@@ -225,7 +225,7 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
 
             $('#share-modal').trigger('init-modal', {
                 // the url is passed in to the sharing urls, so it must be absolute
-                url: common.getUrl('origin') + common.getUrl('starred', { locations: ids }),
+                url: common.getUrl('origin') + common.getUrl('favorites', { locations: ids }),
                 title: 'I just starred ' + count + ' locations'
             });
         },

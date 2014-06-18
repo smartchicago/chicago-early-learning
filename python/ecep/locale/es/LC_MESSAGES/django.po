@@ -413,8 +413,8 @@ msgid "Click to view your list"
 msgstr "Haga clic para ver su lista"
 
 #: portal/templates/browse.html:48 portal/templates/starred.html:21
-msgid "Starred"
-msgstr "Guardado"
+msgid "Favorites"
+msgstr "Favoritos"
 
 #: portal/templates/browse.html:51 portal/templates/starred.html:29
 msgid "Click to share your list"
@@ -632,9 +632,6 @@ msgstr ""
 
 #~ msgid "Browse by Neighborhood"
 #~ msgstr "Buscar por vecindario"
-
-#~ msgid "Click to star location"
-#~ msgstr "Haga clic para guardar esta ubicación"
 
 #~ msgid "Please correct the errors below."
 #~ msgstr "Por favor corrija los siguientes errores:"
