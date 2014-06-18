@@ -309,8 +309,8 @@ function($, L, Response, Handlebars) {
                 break;
             case 'single-location':
                 return '/location/' + opts.location + '/';
-            case 'starred':
-                url = '/starred/';
+            case 'favorites':
+                url = '/favorites/';
                 if (opts && opts.locations) {
                     url += opts.locations.toString() + '/';
                 }
@@ -400,6 +400,13 @@ function($, L, Response, Handlebars) {
 
         // display the modal
         $modal.modal('show');
+    });
+
+    // Handlebars Helpers
+    Handlebars.registerHelper('breaklines', function(text) {
+        text = Handlebars.Utils.escapeExpression(text);
+        text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
+        return new Handlebars.SafeString(text);
     });
 
     return {
