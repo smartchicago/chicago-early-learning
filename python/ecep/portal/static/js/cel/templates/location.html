@@ -25,12 +25,12 @@
     <hr>
     {{#each sfields}}
       <h1>{{fieldname}}</h1>
-      <h2>{{value}}</h2>
+      {{breaklines value}}
       <hr>
     {{/each}}
     {{#if bfields.values }}
       <h1>{{bfields.fieldname}}</h1>
-      <h2>{{bfields.values}}</h2>
+      <div>{{breaklines bfields.values}}</div>
     {{/if}}
   </div>
 </div>
