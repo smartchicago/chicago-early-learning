@@ -18,7 +18,7 @@ See LICENSE in the project root for copying permission
 <!-- Favorites top bar -->
 <div class="row faves-top">
     <div class="faves-left">
-        <h1>{% trans "Starred" %} (<span class="fav-count">0</span>)</h1>
+        <h1>{% trans "Favorites" %} (<span class="fav-count">0</span>)</h1>
     </div>
 
     <div class="faves-right">
@@ -27,7 +27,7 @@ See LICENSE in the project root for copying permission
             <i class="icon-remove-circle"></i> {% trans "Clear Selections" %}
         </a>
         <a id="faves-share" data-hint="{% trans 'Click to share your list' %}" class="btn faves-option hint--bottom ga-track" href="#"
-            data-ga-category="starred" data-ga-action="Share Starred">
+            data-ga-category="starred" data-ga-action="Share Favorites">
             <i class="icon-share"></i> {% trans "Share" %}
         </a>
         <button class="btn faves-close pull-right" onclick="javascript:history.go(-1)"><i class="icon-arrow-left"></i> {% trans "Back" %}</button>

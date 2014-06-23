@@ -68,8 +68,8 @@ msgstr "Centro"
 #: portal/static-prod/js/cel/location.js:8
 #: portal/static-prod/js/cel/pages/browse.js:96
 #: portal/static/js/cel/location.js:182
-msgid "Starred Center"
-msgstr "Centro guardado"
+msgid "Favorite Center"
+msgstr "Centro Favorita"
 
 #: portal/static-prod/js/cel/location-marker.js:85
 #: portal/static-prod/js/cel/location.js:8
@@ -82,8 +82,8 @@ msgstr "Centro de Acreditación"
 #: portal/static-prod/js/cel/location.js:8
 #: portal/static-prod/js/cel/pages/browse.js:96
 #: portal/static/js/cel/location.js:184
-msgid "Starred Accredited Center"
-msgstr "Centro Acreditado guardado"
+msgid "Favorite Accredited Center"
+msgstr "Centro Acreditado Favorita"
 
 #: portal/static-prod/js/cel/location-marker.js:85
 #: portal/static-prod/js/cel/location.js:8
@@ -96,8 +96,8 @@ msgstr "Escuela"
 #: portal/static-prod/js/cel/location.js:8
 #: portal/static-prod/js/cel/pages/browse.js:96
 #: portal/static/js/cel/location.js:186
-msgid "Starred School"
-msgstr "Escuela guardada"
+msgid "Favorite School"
+msgstr "Escuela Favorita"
 
 #: portal/static-prod/js/cel/location-marker.js:85
 #: portal/static-prod/js/cel/location.js:8
@@ -110,8 +110,8 @@ msgstr "Escuela de Acreditación"
 #: portal/static-prod/js/cel/location.js:8
 #: portal/static-prod/js/cel/pages/browse.js:96
 #: portal/static/js/cel/location.js:188
-msgid "Starred Accredited School"
-msgstr "Escuela Acreditada guardada"
+msgid "Favorite Accredited School"
+msgstr "Escuela Acreditada Favorita"
 
 #: portal/static-prod/js/cel/location-marker.js:85
 #: portal/static-prod/js/cel/location.js:8
@@ -178,6 +178,10 @@ msgstr "Número de Ubicaciones"
 #: portal/static/js/cel/pages/browse.js:350
 msgid "Explore"
 msgstr "Explorar"
+
+#: portal/static/js/cel/pages/starred.js:65
+msgid "No Favorite Locations"
+msgstr "No Hay Ubicaciones Favoritas"
 
 #: portal/static/js/cel/location.js:78
 msgid "CPS Based"

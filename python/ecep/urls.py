@@ -51,6 +51,7 @@ urlpatterns = patterns(
 
     # Starred Location Views
     url(r'^starred/?[0-9,]*/$', 'portal.views.starred'),
+    url(r'^favorites/?[0-9,]*/$', 'portal.views.starred'),
 
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', js_info_dict),
