@@ -1,4 +1,4 @@
-django==1.4
+django==1.4.13
 gdata==2.0.17
 geopy==0.95.1
 # django-twilio 0.2 has a nasty bug where view handlers are sometimes called twice
