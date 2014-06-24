@@ -19,6 +19,7 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.contrib.admin import SimpleListFilter
 from django.utils.translation import ugettext_lazy as _
+from modeltranslation.admin import TranslationAdmin
 
 
 class PendingEditsFilter(SimpleListFilter):
@@ -115,7 +116,7 @@ class LocationForm(forms.ModelForm):
         model = Location
 
 
-class LocationAdmin(admin.OSMGeoAdmin):
+class LocationAdmin(admin.OSMGeoAdmin,TranslationAdmin):
 
     # General Settings
     # Template override that adds buttons to propose/accept changes
