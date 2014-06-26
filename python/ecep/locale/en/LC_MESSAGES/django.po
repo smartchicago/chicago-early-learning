@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-18 17:18+0000\n"
+"POT-Creation-Date: 2014-06-26 19:38+0000\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -25,36 +25,36 @@ msgstr ""
 msgid "Spanish"
 msgstr ""
 
-#: portal/admin.py:33
+#: portal/admin.py:34
 msgid "Yes"
 msgstr ""
 
-#: portal/admin.py:47 portal/models.py:61 portal/models.py:252
+#: portal/admin.py:48 portal/models.py:61 portal/models.py:252
 msgid "Quality Rating"
 msgstr ""
 
-#: portal/admin.py:48
+#: portal/admin.py:49
 msgid "Select a rating"
 msgstr ""
 
-#: portal/admin.py:49 portal/models.py:105 portal/models.py:215
+#: portal/admin.py:50 portal/models.py:105 portal/models.py:215
 #: portal/models.py:222 portal/models.py:236 portal/models.py:242
 msgid "None"
 msgstr ""
 
-#: portal/admin.py:50 portal/models.py:106
+#: portal/admin.py:51 portal/models.py:106
 msgid "Licensed"
 msgstr ""
 
-#: portal/admin.py:51 portal/models.py:107
+#: portal/admin.py:52 portal/models.py:107
 msgid "Bronze"
 msgstr ""
 
-#: portal/admin.py:52 portal/models.py:108
+#: portal/admin.py:53 portal/models.py:108
 msgid "Silver"
 msgstr ""
 
-#: portal/admin.py:53 portal/models.py:109
+#: portal/admin.py:54 portal/models.py:109
 msgid "Gold"
 msgstr ""
 
@@ -356,6 +356,14 @@ msgstr ""
 #: portal/templates/base.html:107
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
+msgstr ""
+
+#: portal/templates/base.html:120
+msgid "Send us feedback about the website"
+msgstr ""
+
+#: portal/templates/base.html:120
+msgid "Feedback"
 msgstr ""
 
 #: portal/templates/browse.html:40

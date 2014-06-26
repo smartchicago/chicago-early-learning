@@ -833,3 +833,11 @@ msgstr ""
 
 #~ msgid "Geometry"
 #~ msgstr "Geometría"
+
+#: portal/templates/base.html:120
+msgid "Feedback"
+msgstr "¿Qué opinas?"
+
+#: portal/templates/base.html:120
+msgid "Send us feedback about the website"
+msgstr "Envíenos sus comentarios sobre el sitio web"
