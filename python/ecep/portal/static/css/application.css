@@ -1135,3 +1135,15 @@ h1, h2, h3, h4 {
     border: 1px solid #000;
     border: 1px solid rgba(0,0,0,0);
 }
+
+/* Feedback */
+.feedback {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 1;
+}
+
+.feedback i {
+    margin-right: 5px;
+}
