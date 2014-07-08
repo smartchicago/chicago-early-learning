@@ -82,6 +82,7 @@ class Location(models.Model):
     is_hs = models.NullBooleanField(ugettext_lazy('Head Start'))
     is_ehs = models.NullBooleanField(ugettext_lazy('Early Head Start'))
     open_house = models.TextField(ugettext_lazy('Open House'), blank=True)
+    curriculum = models.TextField(ugettext_lazy('Curriculum'), blank=True)
 
     # Keeps track of whether or not new locations have been approved by the admin
     accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
@@ -100,7 +101,7 @@ class Location(models.Model):
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
     display_include = {'ages', 'accred', 'accept_ccap', 'is_home_visiting', 'is_hs', 'is_ehs',
-                       'is_community_based', 'is_cps_based', 'open_house',}
+                       'is_community_based', 'is_cps_based', 'open_house', 'curriculum',}
 
     # List of fields that should be hidden when left blank
     hide_if_none = {'open_house',}
@@ -109,7 +110,7 @@ class Location(models.Model):
             'open_house',
             'accred', 'ages', 'description', 'duration_hours', 
             'weekday_availability', 'languages', 'program_info',
-            'quality_rating'
+            'curriculum', 'quality_rating'
         ]))
 
 

@@ -156,7 +156,7 @@ class LocationAdmin(admin.OSMGeoAdmin,TranslationAdmin):
                                 ('accept_ccap', 'is_home_visiting')]}),
         ('Other',   {'fields': [('ages', 'prg_hours', 'accred'),
                                 ('language_1', 'language_2', 'language_3'),
-                                'q_stmt', 'open_house',
+                                'q_stmt', 'open_house', 'curriculum',
                                 'q_rating',]}),
     ]
 

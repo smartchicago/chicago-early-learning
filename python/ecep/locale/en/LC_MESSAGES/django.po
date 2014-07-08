@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-08 15:01+0000\n"
+"POT-Creation-Date: 2014-07-08 16:06+0000\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: portal/admin.py:50 portal/models.py:61 portal/models.py:273
+#: portal/admin.py:50 portal/models.py:61 portal/models.py:274
 msgid "Quality Rating"
 msgstr ""
 
@@ -37,37 +37,37 @@ msgstr ""
 msgid "Select a rating"
 msgstr ""
 
-#: portal/admin.py:52 portal/models.py:117 portal/models.py:230
-#: portal/models.py:238 portal/models.py:255 portal/models.py:262
+#: portal/admin.py:52 portal/models.py:118 portal/models.py:231
+#: portal/models.py:239 portal/models.py:256 portal/models.py:263
 msgid "None"
 msgstr ""
 
-#: portal/admin.py:53 portal/models.py:118
+#: portal/admin.py:53 portal/models.py:119
 msgid "Licensed"
 msgstr ""
 
-#: portal/admin.py:54 portal/models.py:119
+#: portal/admin.py:54 portal/models.py:120
 msgid "Bronze"
 msgstr ""
 
-#: portal/admin.py:55 portal/models.py:120
+#: portal/admin.py:55 portal/models.py:121
 msgid "Silver"
 msgstr ""
 
-#: portal/admin.py:56 portal/models.py:121
+#: portal/admin.py:56 portal/models.py:122
 msgid "Gold"
 msgstr ""
 
-#: portal/models.py:60 portal/models.py:277
+#: portal/models.py:60 portal/models.py:278
 msgid "Phone Number"
 msgstr ""
 
-#: portal/models.py:62 portal/models.py:293
+#: portal/models.py:62 portal/models.py:294
 #: portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr ""
 
-#: portal/models.py:63 portal/models.py:284
+#: portal/models.py:63 portal/models.py:285
 msgid "Description"
 msgstr ""
 
@@ -143,60 +143,64 @@ msgstr ""
 msgid "Open House"
 msgstr ""
 
-#: portal/models.py:87
+#: portal/models.py:85
+msgid "Curriculum"
+msgstr ""
+
+#: portal/models.py:88
 msgid "Approved"
 msgstr ""
 
-#: portal/models.py:237
+#: portal/models.py:238
 msgid "Program Information"
 msgstr ""
 
-#: portal/models.py:245
+#: portal/models.py:246
 msgid "Languages (other than English)"
 msgstr ""
 
-#: portal/models.py:251
+#: portal/models.py:252
 msgid "No Hours Listed"
 msgstr ""
 
-#: portal/models.py:254
+#: portal/models.py:255
 msgid "Duration/Hours"
 msgstr ""
 
-#: portal/models.py:261
+#: portal/models.py:262
 msgid "Weekday Availability"
 msgstr ""
 
-#: portal/models.py:293
+#: portal/models.py:294
 msgid "More"
 msgstr ""
 
-#: portal/models.py:293
+#: portal/models.py:294
 msgid "Directions"
 msgstr ""
 
-#: portal/models.py:294 portal/templates/browse.html:52
+#: portal/models.py:295 portal/templates/browse.html:52
 #: portal/templates/starred.html:31
 msgid "Share"
 msgstr ""
 
-#: portal/models.py:294
+#: portal/models.py:295
 msgid "QRIS Rating"
 msgstr ""
 
-#: portal/models.py:301
+#: portal/models.py:302
 msgid "Directions from Google"
 msgstr ""
 
-#: portal/models.py:301
+#: portal/models.py:302
 msgid "Click to show more information"
 msgstr ""
 
-#: portal/models.py:302
+#: portal/models.py:303
 msgid "Click to save to your list"
 msgstr ""
 
-#: portal/models.py:306
+#: portal/models.py:307
 msgid "Other Features"
 msgstr ""
 

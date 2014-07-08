@@ -845,3 +845,7 @@ msgstr "Envíenos sus comentarios sobre el sitio web"
 #: portal/models.py:84
 msgid "Open House"
 msgstr "Puertas Abiertas"
+
+#: portal/models.py:85
+msgid "Curriculum"
+msgstr "Plan de Estudios"
