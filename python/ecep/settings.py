@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'faq',
     'rosetta',
     'djcelery',
+    'redactor',
 )
 
 

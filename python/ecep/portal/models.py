@@ -81,6 +81,7 @@ class Location(models.Model):
     accept_ccap = models.NullBooleanField(ugettext_lazy('Accepts CCAP'))
     is_hs = models.NullBooleanField(ugettext_lazy('Head Start'))
     is_ehs = models.NullBooleanField(ugettext_lazy('Early Head Start'))
+    open_house = models.TextField(ugettext_lazy('Open House'), blank=True)
 
     # Keeps track of whether or not new locations have been approved by the admin
     accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
@@ -99,7 +100,18 @@ class Location(models.Model):
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
     display_include = {'ages', 'accred', 'accept_ccap', 'is_home_visiting', 'is_hs', 'is_ehs',
-                       'is_community_based', 'is_cps_based'}
+                       'is_community_based', 'is_cps_based', 'open_house',}
+
+    # List of fields that should be hidden when left blank
+    hide_if_none = {'open_house',}
+
+    display_order = dict((k,v) for v,k in enumerate([
+            'open_house',
+            'accred', 'ages', 'description', 'duration_hours', 
+            'weekday_availability', 'languages', 'program_info',
+            'quality_rating'
+        ]))
+
 
     q_rating_translations = [
         ugettext_lazy('None'),
@@ -210,35 +222,43 @@ class Location(models.Model):
                 bfields.append(field.verbose_name)
             elif self.is_simple_field(field):
                 value = field.value_from_object(self)
-                kv = {
-                    'fieldname': _(field.verbose_name),
-                    'value': value if value else _('None')
-                }
-                sfields.append(kv)
+                hide_field = fname in self.hide_if_none and not value
+                if not hide_field:
+                    kv = {
+                        'key': fname,
+                        'fieldname': _(field.verbose_name),
+                        'value': value if value else _('None')
+                    }
+                    sfields.append(kv)
 
         affiliation_values = [self.verbose_name(aff.get_attname()) for aff in affiliation_fields
                               if aff.value_from_object(self)]
-        sfields.append({'fieldname': _('Program Information'),
+        sfields.append({'key': 'program_info',
+                        'fieldname': _('Program Information'),
                         'value': ', '.join(affiliation_values) if affiliation_values else _('None')})
 
         # Combine Languages
         lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
         languages = ", ".join(lang_list)
         if languages != '':
-            sfields.append({'fieldname': _('Languages (other than English)'), 'value': languages})
+            sfields.append({'key': 'languages', 
+                            'fieldname': _('Languages (other than English)'), 
+                            'value': languages})
 
         # Program Duration/Hours
         program_values = [self.verbose_name(prg.get_attname()) for prg in program_fields
                           if prg.value_from_object(self)]
         program_hours = self.prg_hours if self.prg_hours else _("No Hours Listed")
         program_values.append(program_hours)
-        sfields.append({'fieldname': _('Duration/Hours'),
+        sfields.append({'key': 'duration_hours',
+                        'fieldname': _('Duration/Hours'),
                         'value': ', '.join(program_values) if program_values else _('None')})
 
         # Weekday Avaialability
         week_values = [self.verbose_name(wk.get_attname()) for wk in week_fields
                        if wk.value_from_object(self)]
-        sfields.append({'fieldname': _('Weekday Availability'),
+        sfields.append({'key': 'weekday_availability',
+                        'fieldname': _('Weekday Availability'),
                         'value': ', '.join(week_values) if week_values else _('None')})
 
         # Quality Rating
@@ -249,7 +269,9 @@ class Location(models.Model):
         item['quality'] = self.q_rating.lower() or 'none'
         # translatable displayed text
         q_rating = self.q_rating or 'Coming Soon'
-        sfields.append({'fieldname': _('Quality Rating'), 'value': _(q_rating)})
+        sfields.append({'key': 'quality_rating',
+                        'fieldname': _('Quality Rating'), 
+                        'value': _(q_rating)})
 
         # Phone
         phone = {'fieldname': _('Phone Number'), 'number': nicephone(self.phone)}
@@ -259,10 +281,10 @@ class Location(models.Model):
 
         # Quality Statement
         if self.q_stmt and not short:
-            sfields.append({'fieldname': _('Description'), 'value': self.q_stmt})
+            sfields.append({'key': 'description', 'fieldname': _('Description'), 'value': self.q_stmt})
 
         bfields.sort()
-        sfields.sort(key=lambda a: a['fieldname'])
+        sfields.sort(key=lambda a: self.display_order[a['key']])
 
         # Translation
         # Adding a dictionary with strings that need to be translated in the handlebars template

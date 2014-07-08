@@ -19,6 +19,8 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.contrib.admin import SimpleListFilter
 from django.utils.translation import ugettext_lazy as _
+from django.db import models
+from redactor.widgets import AdminRedactorEditor
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -132,6 +134,15 @@ class LocationAdmin(admin.OSMGeoAdmin,TranslationAdmin):
     search_fields = ['site_name', 'address', 'zip', 'language_1', 'language_2', 'language_3']
     readonly_fields = ['neighborhood']
     form = LocationForm
+    formfield_overrides = {
+        models.TextField: {'widget': AdminRedactorEditor(
+            include_jquery=False,
+            redactor_settings={
+                'buttons': ['link'],
+                'tabSpaces': 0,
+            },
+        )},
+    }
     fieldsets = [
         (None,      {'fields': ['site_name', 'neighborhood']}),
         ('Address', {'fields': [('address', 'city'), ('state', 'zip'), 'geom']}),
@@ -145,8 +156,8 @@ class LocationAdmin(admin.OSMGeoAdmin,TranslationAdmin):
                                 ('accept_ccap', 'is_home_visiting')]}),
         ('Other',   {'fields': [('ages', 'prg_hours', 'accred'),
                                 ('language_1', 'language_2', 'language_3'),
-                                'q_stmt',
-                                'q_rating', ]}),
+                                'q_stmt', 'open_house',
+                                'q_rating',]}),
     ]
 
     def _delete_messages(self, request):
