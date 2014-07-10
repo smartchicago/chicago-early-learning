@@ -213,13 +213,24 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         if (marker) {
             marker.setIcon(icon);
         } else {
-            this.mapMarker = new L.Marker(this.getLatLng(), { icon: icon });
+            marker = this.mapMarker = new L.Marker(this.getLatLng(), { icon: icon });
             if (options.popup === true) {
-                var popupText = '<b>{{item.site_name}}</b><br>{{item.address}}<br>' +
-                                '<a href="' + common.getUrl('single-location', { location: this.getId() }) + 
-                                '">' + gettext('Details') + '</a>',
-                    popupTemplate = Handlebars.compile(popupText);
-                this.mapMarker.bindPopup(popupTemplate(this.data), {key: this.getId()});
+                var locId = this.getId(),
+                    data = this.data;
+                
+                marker.on('click', function (e) {
+                    var isStarred = favorites.isStarred(locId),
+                        icon = isStarred ? 'icon-heart' : 'icon-heart-empty',
+                        hint = isStarred ? 'tooltip.unstar' : 'tooltip.star',
+                        selected = isStarred ? 'favs-button-selected' : '',
+                        popupText = '<b>{{item.site_name}}</b><br>{{item.address}}<br>' +
+                                '<a href="' + common.getUrl('single-location', { location: locId }) + 
+                                '">' + gettext('Details') + '</a>' +
+                                '<a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle ' + selected + ' hint--top ga-track" data-hint="{{' + hint + '}}" data-loc-id="{{item.key}}" data-ga-category="search" data-ga-action="Favorite Location"><i class="' + icon + '"></i></a>',
+                        popupTemplate = Handlebars.compile(popupText);
+
+                    marker.bindPopup(popupTemplate(data), {key: locId});
+                });
             }
         }
     };

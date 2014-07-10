@@ -1105,6 +1105,7 @@ h1, h2, h3, h4 {
 .leaflet-popup-content {
     font-size: 14px;
     text-align: center;
+    padding: 10px;
 }
 
 .leaflet-popup-content b {
@@ -1115,6 +1116,22 @@ h1, h2, h3, h4 {
 
 .leaflet-popup-content a {
     padding-top: 10px;
+}
+
+.leaflet-popup-content .favs-toggle {
+    position: absolute;
+    top: 2px;
+    left: 7px;
+    padding: 0;
+}
+
+.leaflet-popup-content .favs-toggle i {
+    font-size: 20px;
+    color: #ccc;
+}
+
+.leaflet-popup-content .favs-toggle i:hover {
+    color: #999;
 }
 
 .ui-autocomplete {

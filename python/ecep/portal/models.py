@@ -300,7 +300,7 @@ class Location(models.Model):
 
         # Tooltips - necessary for translations in handlebars template
         tooltip = {'directions': _('Directions from Google'), 'moreinfo': _('Click to show more information'),
-                   'star': _('Click to save to your list'), 'accreditation': ' '.join(accreditation),
+                   'star': _('Click to save to your list'), 'unstar': _('Click to remove from your list'), 'accreditation': ' '.join(accreditation),
                    'quality': _(q_rating)}
 
         return {'item': item, 'phone': phone, 'sfields': sfields,

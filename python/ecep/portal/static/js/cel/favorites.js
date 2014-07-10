@@ -151,10 +151,11 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                     selectedClass: 'favs-button-selected'
                 }, 
                 opts = $.extend({}, defaults, options),
-                buttonImg = $elt.children('i'),
                 buttonId = $elt.attr(opts.idAttribute),
                 img = '',
                 increment = 0,
+                $siblings = $('[' + opts.idAttribute + '=' + buttonId + ']'),
+                buttonImg = $siblings.children('i'),
                 $favbutton;
 
             // toggle off
@@ -162,17 +163,17 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                 img = 'icon-heart-empty';
                 favs.removeIdFromCookie(buttonId);
                 increment = -1;
-                $elt.attr('data-hint', gettext('Click to save to your list'));
+                $siblings.attr('data-hint', gettext('Click to save to your list'));
             // toggle on
             } else {
                 img = 'icon-heart';
                 favs.addIdToCookie(buttonId);
                 increment = 1;
-                $elt.attr('data-hint', gettext('Click to remove from your list'));
+                $siblings.attr('data-hint', gettext('Click to remove from your list'));
             }
 
             buttonImg.attr('class', img);
-            $elt.toggleClass(opts.selectedClass);
+            $siblings.toggleClass(opts.selectedClass);
             $favbutton = $('.fav-count');
             $favbutton.html(parseInt($favbutton.html(), 10) + increment);
         },
@@ -181,19 +182,20 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
          * Adds a click listener for toggling a favorite on/off to the button specified 
          *      in the options object.
          */
-        addToggleListener: function(options) {
-            var defaults = {
-                    button: '.faves-add'
-                },
-                opts = $.extend({}, defaults, options),
-                self = favs,
-                button = $(opts.button);
+        // addToggleListener: function(options) {
+        //     var defaults = {
+        //             button: '.faves-add'
+        //         },
+        //         opts = $.extend({}, defaults, options),
+        //         self = favs,
+        //         button = $(opts.button);
 
-            // toggle the button/cookie state
-            button.on('click', function(e) {
-                self.toggle($(this));
-            });
-        },
+        //     // toggle the button/cookie state
+        //     button.on('click', function(e) {
+        //         e.preventDefault()
+        //         self.toggle($(this));
+        //     });
+        // },
 
         /*
          * Adds a click listener to the specified selector for clearing all favorites

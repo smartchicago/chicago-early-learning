@@ -218,16 +218,20 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             });
 
             favorites.syncUI();
-            favorites.addToggleListener({
-                button: '.favs-toggle'
-            });
+            // favorites.addToggleListener({
+            //     button: '.favs-toggle'
+            // });
 
             /**
              * Watch for favorite events, if there is one, then setIcon again
              */
-            $('.favs-toggle').on('click', function(e) {
-                var $this = $(this),
-                    key = $this.data('loc-id'),
+            $('body').off('click.favs').on('click.favs', '.favs-toggle', function(e) {
+                var $this = $(this);
+
+                // Toggle all favorites
+                favorites.toggle($this);
+
+                var key = $this.data('loc-id'),
                     loc = dm.locations[key],
                     iconkey = 'icon-' + loc.getIconKey(),
                     $locIcon = $('#loc-icon-' + key);
