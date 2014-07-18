@@ -334,6 +334,7 @@
         
     .container-custom .description-mobile {
             display: block;
+            margin-bottom: 30px;
         }
         
         .autocomplete-submit {
@@ -447,9 +448,19 @@
         padding: 20px 0 0;
     }
 
-    .ready-to-learn {
+    .navbar .ready-to-learn {
         font-size: 11px;
         line-height: 1.3em;
+    }
+
+    #featurettes .ready-to-learn {
+        font-size: 14px;
+    }
+
+    #featurettes .ready-to-learn .pull-left {
+        display: block;
+        float: none;
+        margin: 0 auto 20px;
     }
 }
 

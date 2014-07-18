@@ -19,9 +19,6 @@
     width: 970px;
     margin: 0 auto;
 }
-#featurettes {
-    margin-top: 15px;
-}
 	#featurettes .media img {
 		border: 1px solid #c2c2c2;
 		-webkit-border-radius: 4px;
@@ -34,6 +31,25 @@
    #featurettes hr {
     margin: 40px 0;
   }
+
+  #featurettes .ready-to-learn {
+    background-color: #ffd;
+    border: 1px dashed #ccc;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.4em;
+    margin: 40px 0;
+  }
+
+  #featurettes .ready-to-learn p {
+    margin: 0;
+  }
+
+  #featurettes .ready-to-learn img {
+    width: 300px;
+    margin-right: 20px;
+  }
+
 .jumbotron .get-started,
 .get-started {
     padding: 20px 35px;

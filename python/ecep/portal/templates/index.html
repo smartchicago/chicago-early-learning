@@ -27,40 +27,48 @@ See LICENSE in the project root for copying permission
 
     <div class="container-custom" id="featurettes">
 		
-		<p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the FAQ page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>	<br><br>
-      <div class="media">
-          <a class="pull-left"><img class="media-object" src="{% static 'img/cel1.png' %}"></a>
-        <div class="media-body">
-          <h1>{% blocktrans %}Find early learning centers near you.{% endblocktrans %}</h1>
-          <p>{% blocktrans %}Search by the address where you live or work to quickly find all of the early learning centers located near you. The results are shown in a list and on a map so you can find what you want the way you find it easiest.{% endblocktrans %}</p>
-        </div>
+  		<p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the FAQ page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
+
+      {% with "tel:3122291690" as rtl_url %}
+      <div class="ready-to-learn">
+        <img class="pull-left" src="{% static 'img/logos/ready-to-learn.png' %}" alt="Ready to Learn logo">
+        <p>{% blocktrans %}Call the Chicago: Ready to Learn! Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a> to find out more information about programs that best meet your family's needs. Accepting applications year round. !Se habla Español!{% endblocktrans %}</p>
       </div>
-      <hr>
-      <div class="media">
-          <a class="pull-right"><img class="media-object" src="{% static 'img/cel2.png' %}"></a>
-        <div class="media-body">
-          <h1>{% blocktrans %}Browse locations by community.{% endblocktrans %}</h1>
-          <p>{% blocktrans %}You can pick a community from the list or map if you don't want to search by address. You can also type a community or even a school name into the search bar to get there faster.{% endblocktrans %}</p>
+      {% endwith %}
+
+        <div class="media">
+            <a class="pull-left"><img class="media-object" src="{% static 'img/cel1.png' %}"></a>
+          <div class="media-body">
+            <h1>{% blocktrans %}Find early learning centers near you.{% endblocktrans %}</h1>
+            <p>{% blocktrans %}Search by the address where you live or work to quickly find all of the early learning centers located near you. The results are shown in a list and on a map so you can find what you want the way you find it easiest.{% endblocktrans %}</p>
+          </div>
         </div>
-      </div>
-      <hr>
-      <div class="media">
-          <a class="pull-left"><img class="media-object" src="{% static 'img/cel3.png' %}"></a>
-        <div class="media-body">
-          <h1>{% blocktrans %}Text for more info{% endblocktrans %}</h1>
-          <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code to {% endblocktrans %}<a href="sms:{{ settings.TWILIO_PHONE }}">{{ settings.TWILIO_PHONE }}</a>{% blocktrans %} and follow the instructions on your phone.{% endblocktrans %}<br><br>{% blocktrans %}If you’d like to talk to someone about your options, please call the Chicago: Ready to Learn! Hotline at {% endblocktrans %}<a href="tel:{{ settings.HOTLINE_PHONE }}">{{ settings.HOTLINE_PHONE }}</a>.</p>
+        <hr>
+        <div class="media">
+            <a class="pull-right"><img class="media-object" src="{% static 'img/cel2.png' %}"></a>
+          <div class="media-body">
+            <h1>{% blocktrans %}Browse locations by community.{% endblocktrans %}</h1>
+            <p>{% blocktrans %}You can pick a community from the list or map if you don't want to search by address. You can also type a community or even a school name into the search bar to get there faster.{% endblocktrans %}</p>
+          </div>
         </div>
-      </div>
-      <hr>
-      <div class="media">
-          <a class="pull-right"><img class="media-object" src="{% static 'img/cel4.png' %}"></a>
-        <div class="media-body">
-          <h1>{% blocktrans %}Refine your search to find exactly what you want.{% endblocktrans %}</h1>
-          <p>{% blocktrans %}There are a number of ways to narrow down your search so you can see only the programs and schools you are interested in.{% endblocktrans %}</p>
+        <hr>
+        <div class="media">
+            <a class="pull-left"><img class="media-object" src="{% static 'img/cel3.png' %}"></a>
+          <div class="media-body">
+            <h1>{% blocktrans %}Text for more info{% endblocktrans %}</h1>
+            <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code to {% endblocktrans %}<a href="sms:{{ settings.TWILIO_PHONE }}">{{ settings.TWILIO_PHONE }}</a>{% blocktrans %} and follow the instructions on your phone.{% endblocktrans %}<br><br>{% blocktrans %}If you’d like to talk to someone about your options, please call the Chicago: Ready to Learn! Hotline at {% endblocktrans %}<a href="tel:{{ settings.HOTLINE_PHONE }}">{{ settings.HOTLINE_PHONE }}</a>.</p>
+          </div>
         </div>
-      </div>
-      <hr>
-      <a class="btn btn-large get-started" href="{% url portal.views.browse %}" style="margin: 0 auto 20px; width: 200px; display: block;">{% trans "Get Started!" %}</a>
+        <hr>
+        <div class="media">
+            <a class="pull-right"><img class="media-object" src="{% static 'img/cel4.png' %}"></a>
+          <div class="media-body">
+            <h1>{% blocktrans %}Refine your search to find exactly what you want.{% endblocktrans %}</h1>
+            <p>{% blocktrans %}There are a number of ways to narrow down your search so you can see only the programs and schools you are interested in.{% endblocktrans %}</p>
+          </div>
+        </div>
+        <hr>
+        <a class="btn btn-large get-started" href="{% url portal.views.browse %}" style="margin: 0 auto 20px; width: 200px; display: block;">{% trans "Get Started!" %}</a>
     </div>
 {% endblock %}
 
