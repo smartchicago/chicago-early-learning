@@ -8,7 +8,7 @@
 }
 .jumbotron {
     position: relative;
-    padding: 40px 0;
+    padding: 60px 0 40px;
     color: #424142;
     background: #c2c2c2;
     background: url(../img/banner.jpg);

@@ -138,7 +138,7 @@
     }
     .results-left {
         width: 100%;
-        margin-top: 111px;
+        margin-top: 148px;
         position: fixed;
     }
     .accordion-inner .accordion-right,
@@ -355,7 +355,7 @@
         }
 
         .jumbotron {
-            padding: 0;
+            padding: 10px 0 0;
         }
 
         .leaflet-container .leaflet-control-zoom {
@@ -441,6 +441,15 @@
     }
     .span6 {
         width: auto;
+    }
+
+    .jumbotron {
+        padding: 20px 0 0;
+    }
+
+    .ready-to-learn {
+        font-size: 11px;
+        line-height: 1.3em;
     }
 }
 

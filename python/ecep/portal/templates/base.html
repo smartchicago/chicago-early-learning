@@ -85,16 +85,21 @@ See LICENSE in the project root for copying permission
               </ul>
             </li>
           </ul>
-      </div>
+        </div>
 	{% block navbar %}{% endblock %}
       </div>
-    <!--[if lt IE 8]>
-      <div class="alert alert-error text-center">
-        <button type="button" class="close iealert-close" data-dismiss="alert">&times;</button>
-        <strong>Warning!</strong> Your web browser is not supported. Please upgrade for a better experience. 
-      </div>
-    <![endif]-->
+        <!--[if lt IE 8]>
+          <div class="alert alert-error text-center">
+            <button type="button" class="close iealert-close" data-dismiss="alert">&times;</button>
+            <strong>Warning!</strong> Your web browser is not supported. Please upgrade for a better experience. 
+          </div>
+        <![endif]-->
+
+        {% with "tel:3122291690" as rtl_url %}
+        <div class="ready-to-learn">{% blocktrans %}For application information please call the Chicago: Ready to Learn! Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a>{% endblocktrans %}</div>
+        {% endwith %}
     </div>
+
     {% block content %}{% endblock %}
 
     <!-- Share Modal -->

@@ -34,7 +34,7 @@ h1, h2, h3, h4 {
 }
 
 .tm61 { 
-    margin-top: 61px; 
+    margin-top: 90px; 
 }
 
 .tm30 { 
@@ -79,7 +79,8 @@ h1, h2, h3, h4 {
 
 .navbar-inverse .navbar-inner {
     background: #424142;
-    border-bottom: 1px solid #333;
+    border-bottom: none;
+    /*border-bottom: 1px solid #333;*/
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
     font-weight: 400;
 }
@@ -167,6 +168,21 @@ h1, h2, h3, h4 {
     top: -8px;
 }
 
+/* Ready to Learn ------------ */
+
+.navbar .ready-to-learn {
+    padding: 5px 10px;
+    background: #317DC1;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navbar .ready-to-learn > a {
+    color: #eece16;
+    white-space: nowrap;
+}
+
 
 /* Search ------------ */
 
@@ -213,7 +229,7 @@ h1, h2, h3, h4 {
     width: 715px;
     position: fixed;
     left: 0;
-    margin-top: 61px;
+    margin-top: 85px;
     overflow: hidden;
     top: 0;
     bottom: 0;
@@ -564,7 +580,7 @@ h1, h2, h3, h4 {
 /* Single School View */
 #location-map {
     height: 250px;
-    margin-top: 75px;
+    margin-top: 105px;
     margin-bottom: 25px;
 }
 
@@ -591,7 +607,7 @@ h1, h2, h3, h4 {
 
 #about-title {
     padding-left: 35px;
-    margin-top: 110px;
+    margin-top: 140px;
 }
 
 
@@ -999,7 +1015,7 @@ h1, h2, h3, h4 {
 }
 
 #faq-container {
-    margin-top: 55px;
+    margin-top: 85px;
 }
 
 #faq-container h1 {
