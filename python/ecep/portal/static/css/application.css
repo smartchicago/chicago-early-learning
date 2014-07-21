@@ -126,7 +126,7 @@ h1, h2, h3, h4 {
 }
 
 .navbar-right {
-    width: 435px;
+    /*width: 435px;*/
     float: right;
 }
 
