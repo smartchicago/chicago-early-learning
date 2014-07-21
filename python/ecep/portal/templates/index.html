@@ -29,46 +29,34 @@ See LICENSE in the project root for copying permission
 		
   		<p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the FAQ page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
 
-      {% with "tel:3122291690" as rtl_url %}
+      {% with rtl_url="tel:3122291690" sms_url="tel:7738861819" %}
       <div class="ready-to-learn">
         <img class="pull-left" src="{% static 'img/logos/ready-to-learn.png' %}" alt="Ready to Learn logo">
         <p>{% blocktrans %}Call the Chicago: Ready to Learn! Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a> to find out more information about programs that best meet your family's needs. Accepting applications year round. !Se habla Español!{% endblocktrans %}</p>
       </div>
-      {% endwith %}
 
-        <div class="media">
-            <a class="pull-left"><img class="media-object" src="{% static 'img/cel1.png' %}"></a>
-          <div class="media-body">
-            <h1>{% blocktrans %}Find early learning centers near you.{% endblocktrans %}</h1>
-            <p>{% blocktrans %}Search by the address where you live or work to quickly find all of the early learning centers located near you. The results are shown in a list and on a map so you can find what you want the way you find it easiest.{% endblocktrans %}</p>
-          </div>
-        </div>
-        <hr>
-        <div class="media">
-            <a class="pull-right"><img class="media-object" src="{% static 'img/cel2.png' %}"></a>
-          <div class="media-body">
-            <h1>{% blocktrans %}Browse locations by community.{% endblocktrans %}</h1>
-            <p>{% blocktrans %}You can pick a community from the list or map if you don't want to search by address. You can also type a community or even a school name into the search bar to get there faster.{% endblocktrans %}</p>
-          </div>
-        </div>
-        <hr>
-        <div class="media">
-            <a class="pull-left"><img class="media-object" src="{% static 'img/cel3.png' %}"></a>
-          <div class="media-body">
-            <h1>{% blocktrans %}Text for more info{% endblocktrans %}</h1>
-            <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code to {% endblocktrans %}<a href="sms:{{ settings.TWILIO_PHONE }}">{{ settings.TWILIO_PHONE }}</a>{% blocktrans %} and follow the instructions on your phone.{% endblocktrans %}<br><br>{% blocktrans %}If you’d like to talk to someone about your options, please call the Chicago: Ready to Learn! Hotline at {% endblocktrans %}<a href="tel:{{ settings.HOTLINE_PHONE }}">{{ settings.HOTLINE_PHONE }}</a>.</p>
-          </div>
-        </div>
-        <hr>
-        <div class="media">
-            <a class="pull-right"><img class="media-object" src="{% static 'img/cel4.png' %}"></a>
-          <div class="media-body">
-            <h1>{% blocktrans %}Refine your search to find exactly what you want.{% endblocktrans %}</h1>
-            <p>{% blocktrans %}There are a number of ways to narrow down your search so you can see only the programs and schools you are interested in.{% endblocktrans %}</p>
-          </div>
-        </div>
-        <hr>
-        <a class="btn btn-large get-started" href="{% url portal.views.browse %}" style="margin: 0 auto 20px; width: 200px; display: block;">{% trans "Get Started!" %}</a>
+      <ul class="info clearfix">
+        <li>
+          <h2>{% blocktrans %}Find & Compare{% endblocktrans %}</h2>
+          <p><a href="{% url portal.views.browse %}"><img src="{% static 'img/cel5.png' %}"></a></p>
+          <p>{% blocktrans %}Search by the address where you live or work to quickly find all the early learning programs located near you. Refind your search to find the features you most care about. Choose your "favorites" and compare them on a list.{% endblocktrans %}</p>
+          <p><a href="{% url portal.views.browse %}">{% blocktrans %}Find and compare locations now{% endblocktrans %} &raquo;</a></p>
+        </li>
+
+        <li>
+          <h2>{% blocktrans %}Text For Info{% endblocktrans %}</h2>
+          <p><img src="{% static 'img/cel3.png' %}"></p>
+          <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code to <a href="{{ sms_url }}">(773) 886-1819</a> and follow the instructions on your phone. If you'd like to talk to someone about your options, please call the Chicago: Ready to Learn! Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a>.{% endblocktrans %}</p>
+        </li>
+
+        <li>
+          <h2>{% blocktrans %}Keep In Touch{% endblocktrans %}</h2>
+          <p><a href="http://eepurl.com/X9ZPf"><img src="{% static 'img/cel6.png' %}"></a></p>
+          <p>{% blocktrans %}Keep in touch with Chicago Early Learning! Sign up to receive timely updates about enrollment deadlines, early learning resources in your area and new features from Chicago Early Learning. We look forward to staying in touch with you.{% endblocktrans %}</p>
+          <p><a href="http://eepurl.com/X9ZPf">{% blocktrans %}Sign up for our mailing list{% endblocktrans %} &raquo;</a></p>
+        </li>
+      </ul>
+      {% endwith %}
     </div>
 {% endblock %}
 
