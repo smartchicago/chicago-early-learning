@@ -93,22 +93,23 @@ input.homepage-search {
     margin-left: 20px;
     margin-right: 17px;
 }
-.media img {
-    box-shadow: 3px 3px 0 rgba(0,0,0,.25);
-    border: 1px solid #CCC;
-    margin-right: 35px;
-    max-width: none;
+
+.info {
+    list-style: none;
+    margin: 0;
     padding: 0;
 }
 
-.media-body h1 {
-    color: #317DC1;
-    font-size: 32px;
-}
-.media-body p {
-    line-height: 1.5;
-    padding-top: 10px;
-    font-size: 18px;
-    color: #686868;
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
-}
+    .info h2 {
+        font-size: 18px;
+        line-height: 1.2em;
+    }
+
+    .info li {
+        float: left;
+        width: 28.865%;
+        margin: 0 3.298%;
+    }
+
+    .info li:first-of-type { margin-left: 0; }
+    .info li:last-of-type { margin-right: 0; }
