@@ -397,6 +397,23 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             $toggleMapBtnIcon.toggleClass('icon-globe icon-list');
         };
 
+        /**
+         * Function that turns query string parameters into a object
+         */
+         var qs2Obj = function () {
+            var qs = document.URL.split('?')[1],
+                vars = {};
+            if(qs){
+                var pairs = qs.split('&');
+                for(var i = 0; i < pairs.length; i++){
+                    var parts = pairs[i].split('=');
+                    vars[parts[0]] = decodeURIComponent(parts[1] || '');
+                }
+            }
+
+            return vars;
+         };
+
 
         /******************************************************
          *                    Bind events                     *
@@ -455,7 +472,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             init: function() {
                 var state = getMapState(),
                     historyState = History.getState().data,
-                    zoom = state.isGeolocated ? CEL.serverVars.zoomSettings : defaultZoom;
+                    zoom = state.isGeolocated ? CEL.serverVars.zoomSettings : defaultZoom,
+                    qs = qs2Obj(),
+                    label = qs.label;
                 map = new L.map('map').setView(state.point, zoom);   // Initialize Leaflet map
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
@@ -467,6 +486,15 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                         iconUrl: common.getUrl('icon-geolocation')
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
+
+                    if (label) {
+                        geolocatedMarker.on('click', function (e) {
+                            var popupText = '<b>Current Search Location</b><p>{{ label }}</p>',
+                                popupTemplate = Handlebars.compile(popupText);
+
+                            geolocatedMarker.bindPopup(popupTemplate({label: label}));
+                        });
+                    }
 
                     var width = $(document).width();
                     if (width < common.breakpoints.desktop) {

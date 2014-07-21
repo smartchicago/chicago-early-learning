@@ -142,7 +142,7 @@ function($, L, Response, Handlebars) {
                     return;
                 } else if (ui.item.lat && ui.item.lon) {
                     window.location.href = getUrl(
-                        'browse', { type: 'geo-latlng', lat: ui.item.lat, lng: ui.item.lon, zoom: 14 });
+                        'browse', { type: 'geo-latlng', lat: ui.item.lat, lng: ui.item.lon, zoom: 14, label: ui.item.label });
                     return;
                 }
             }
@@ -297,7 +297,7 @@ function($, L, Response, Handlebars) {
                         }
                         return url;
                     case 'geo-latlng':
-                        url = '/search/?geolat=' + opts.lat + '&geolng=' + opts.lng;
+                        url = '/search/?geolat=' + opts.lat + '&geolng=' + opts.lng + '&label=' + opts.label;
                         return url;
                     case 'neighborhood':
                         return '/search/?neighborhood=' + opts.neighborhood;
