@@ -30,7 +30,7 @@ urlpatterns = patterns(
     url(r'^search/$', 'portal.views.browse', name='browse'),
 
     # portal autocomplete api
-    url(r'^api/autocomplete/(?P<query>\S+)/$', 'portal.views.portal_autocomplete'),
+    url(r'^api/autocomplete/$', 'portal.views.portal_autocomplete'),
 
     # Telephony
     url(r'^sms/handler/?$', Sms.as_view()),

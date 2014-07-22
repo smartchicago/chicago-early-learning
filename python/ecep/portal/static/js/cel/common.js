@@ -185,7 +185,8 @@ function($, L, Response, Handlebars) {
             source: function(request, response) {
                 var self = this;
                 $.ajax({
-                    url: '/api/autocomplete/' + encodeURIComponent(request.term),
+                    url: '/api/autocomplete/',
+                    data: {query: request.term},
                     success: function(json) {
                         if (!json || !json.response) {
                             return;

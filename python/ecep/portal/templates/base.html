@@ -139,7 +139,7 @@ See LICENSE in the project root for copying permission
     <script src='{% static "js/require-config.js" %}'></script>
     <script>
         var inDevelopment = {{ settings.DEBUG|yesno:"true,false" }},
-            version = 5;
+            version = 6;
 
         requirejs.config({
             //By default load any module IDs from js/lib
