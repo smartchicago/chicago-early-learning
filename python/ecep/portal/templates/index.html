@@ -46,7 +46,7 @@ See LICENSE in the project root for copying permission
 
         <li>
           <h2>{% blocktrans %}Text For Info{% endblocktrans %}</h2>
-          <p><img src="{% static 'img/cel3.png' %}"></p>
+          <p><a href="{% url portal.views.smsinfo %}"><img src="{% static 'img/cel3.png' %}"></a></p>
           <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code to <a href="{{ sms_url }}">(773) 886-1819</a> and follow the instructions on your phone. If you'd like to talk to someone about your options, please call the Chicago: Ready to Learn! Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a>.{% endblocktrans %}</p>
         </li>
 
