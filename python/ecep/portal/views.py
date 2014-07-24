@@ -318,7 +318,7 @@ def location_api(request, location_ids=None):
     return _make_response(context, etag_hash)
 
 
-def location(request, location_id=None):
+def location(request, location_id=None, slug=None):
     ctx = RequestContext(request, { 'loc': location_details(location_id) })
     response = render_to_response('location.html', context_instance=ctx)
     return response

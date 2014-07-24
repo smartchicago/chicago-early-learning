@@ -4,6 +4,7 @@
 
 from django.contrib import sitemaps
 from django.core.urlresolvers import reverse
+from django.template.defaultfilters import slugify
 
 from portal.models import Location
 
@@ -19,7 +20,7 @@ class LocationSiteMap(sitemaps.Sitemap):
         return Location.objects.all()
 
     def location(self, item):
-        return reverse('location-view', args=(item.id,))
+        return reverse('location-view', args=(item.id, slugify(item.site_name)))
 
 
 class StaticViewSitemap(sitemaps.Sitemap):
