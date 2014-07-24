@@ -224,7 +224,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                         hint = isStarred ? 'tooltip.unstar' : 'tooltip.star',
                         selected = isStarred ? 'favs-button-selected' : '',
                         popupText = '<b>{{item.site_name}}</b><br>{{item.address}}<br>' +
-                                '<a href="' + common.getUrl('single-location', { location: locId }) + 
+                                '<a href="' + common.getUrl('single-location', { location: locId, slug: common.slugify(data.item.site_name) }) + 
                                 '">' + gettext('Details') + '</a>' +
                                 '<a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle ' + selected + ' hint--top ga-track" data-hint="{{' + hint + '}}" data-loc-id="{{item.key}}" data-ga-category="search" data-ga-action="Favorite Location"><i class="' + icon + '"></i></a>',
                         popupTemplate = Handlebars.compile(popupText);

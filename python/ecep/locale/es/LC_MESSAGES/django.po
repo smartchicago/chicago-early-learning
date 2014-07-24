@@ -379,7 +379,7 @@ msgstr "Buscar"
 
 #: portal/templates/base.html:74
 msgid "Text For Info"
-msgstr "Texto para info"
+msgstr "Texto Para Info"
 
 #: portal/templates/base.html:76 portal/templates/faq-models.html:9
 msgid "FAQ"

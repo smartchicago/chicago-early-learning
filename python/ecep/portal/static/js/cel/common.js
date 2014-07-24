@@ -134,7 +134,7 @@ function($, L, Response, Handlebars) {
             if (ui.item) {
                 if (ui.item.type === 'location') {
                     window.location.href = getUrl(
-                        'single-location', { location: ui.item.id });
+                        'single-location', { location: ui.item.id, slug: slugify(ui.item.label) });
                     return;
                 } else if (ui.item.type === 'neighborhood') {
                     window.location.href = getUrl(
@@ -308,7 +308,7 @@ function($, L, Response, Handlebars) {
                 }
                 break;
             case 'single-location':
-                return '/location/' + opts.location + '/';
+                return '/location/' + opts.location + '/' + opts.slug + '/';
             case 'favorites':
                 url = '/favorites/';
                 if (opts && opts.locations) {
@@ -343,6 +343,15 @@ function($, L, Response, Handlebars) {
                 break;
         }
         throw 'Unknown URL endpoint';
+    };
+
+    var slugify = function(text) {
+      return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+        .replace(/^-+/, '')             // Trim - from start of text
+        .replace(/-+$/, '');            // Trim - from end of text
     };
 
     // geolocation                                                                                  
@@ -404,6 +413,8 @@ function($, L, Response, Handlebars) {
 
     return {
         getUrl: getUrl,
+
+        slugify: slugify,
 
         breakpoints: breakpoints, 
 
