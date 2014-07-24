@@ -69,7 +69,7 @@ msgstr "Centro"
 #: portal/static-prod/js/cel/pages/browse.js:96
 #: portal/static/js/cel/location.js:182
 msgid "Favorite Center"
-msgstr "Centro Favorita"
+msgstr "Centro Favorito"
 
 #: portal/static-prod/js/cel/location-marker.js:85
 #: portal/static-prod/js/cel/location.js:8
@@ -83,7 +83,7 @@ msgstr "Centro de Acreditación"
 #: portal/static-prod/js/cel/pages/browse.js:96
 #: portal/static/js/cel/location.js:184
 msgid "Favorite Accredited Center"
-msgstr "Centro Acreditado Favorita"
+msgstr "Centro Acreditado Favorito"
 
 #: portal/static-prod/js/cel/location-marker.js:85
 #: portal/static-prod/js/cel/location.js:8

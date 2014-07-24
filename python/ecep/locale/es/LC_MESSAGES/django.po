@@ -837,7 +837,7 @@ msgstr ""
 
 #: portal/templates/base.html:120
 msgid "Feedback"
-msgstr "¿Qué opinas?"
+msgstr "Sugerencias"
 
 #: portal/templates/base.html:120
 msgid "Send us feedback about the website"
