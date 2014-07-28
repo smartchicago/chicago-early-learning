@@ -48,7 +48,6 @@
 
 @media (max-width: 1140px) {
     .navbar-right {
-        width: 250px;
         float: right;
     }
 
@@ -138,7 +137,7 @@
     }
     .results-left {
         width: 100%;
-        margin-top: 111px;
+        margin-top: 148px;
         position: fixed;
     }
     .accordion-inner .accordion-right,
@@ -334,6 +333,7 @@
         
     .container-custom .description-mobile {
             display: block;
+            margin-bottom: 30px;
         }
         
         .autocomplete-submit {
@@ -355,7 +355,7 @@
         }
 
         .jumbotron {
-            padding: 0;
+            padding: 10px 0 0;
         }
 
         .leaflet-container .leaflet-control-zoom {
@@ -441,6 +441,32 @@
     }
     .span6 {
         width: auto;
+    }
+
+    .jumbotron {
+        padding: 20px 0 0;
+    }
+
+    .navbar .ready-to-learn {
+        font-size: 11px;
+        line-height: 1.3em;
+    }
+
+    #featurettes .ready-to-learn {
+        font-size: 14px;
+    }
+
+    #featurettes .ready-to-learn .pull-left {
+        display: block;
+        float: none;
+        margin: 0 auto 20px;
+    }
+
+    .info li {
+        float: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
     }
 }
 

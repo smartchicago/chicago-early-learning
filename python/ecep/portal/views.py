@@ -102,7 +102,7 @@ def setlang(request, language):
     return response
 
 
-def portal_autocomplete(request, query):
+def portal_autocomplete(request):
     """ Return as json Location & Neighborhood names that match query
 
     Make query against the database for Locations and Neighborhoods with
@@ -123,6 +123,7 @@ def portal_autocomplete(request, query):
     query -- autocomplete query to perform on the database
 
     """
+    query = request.GET.get('query', '').strip()
     locations = Location.objects.filter(site_name__icontains=query, accepted=True).values('id', 'site_name')
     comparison = [TermDistance(location, 'location', 'site_name', query) for location in locations]
 

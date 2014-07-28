@@ -8,7 +8,7 @@
 }
 .jumbotron {
     position: relative;
-    padding: 40px 0;
+    padding: 60px 0 40px;
     color: #424142;
     background: #c2c2c2;
     background: url(../img/banner.jpg);
@@ -18,9 +18,6 @@
 .container-custom {
     width: 970px;
     margin: 0 auto;
-}
-#featurettes {
-    margin-top: 15px;
 }
 	#featurettes .media img {
 		border: 1px solid #c2c2c2;
@@ -34,6 +31,25 @@
    #featurettes hr {
     margin: 40px 0;
   }
+
+  #featurettes .ready-to-learn {
+    background-color: #ffd;
+    border: 1px dashed #ccc;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.4em;
+    margin: 40px 0 30px;
+  }
+
+  #featurettes .ready-to-learn p {
+    margin: 0;
+  }
+
+  #featurettes .ready-to-learn img {
+    width: 300px;
+    margin-right: 20px;
+  }
+
 .jumbotron .get-started,
 .get-started {
     padding: 20px 35px;
@@ -57,7 +73,7 @@
     transition: 0s;
 }
 .jumbotron p {
-    margin: 25px 0 70px 0;
+    margin: 25px 0;
     font-size: 18px;
     line-height: 1.4;
 }
@@ -68,7 +84,7 @@ input.homepage-search {
     border: none;
     font-size: 18px;
     margin-right: 10px;
-    width: 400px;
+    width: 600px;
     text-shadow: none;
     border: 1px solid #c2c2c2;
 }
@@ -77,22 +93,23 @@ input.homepage-search {
     margin-left: 20px;
     margin-right: 17px;
 }
-.media img {
-    box-shadow: 3px 3px 0 rgba(0,0,0,.25);
-    border: 1px solid #CCC;
-    margin-right: 35px;
-    max-width: none;
+
+.info {
+    list-style: none;
+    margin: 0 0 40px 0;
     padding: 0;
 }
 
-.media-body h1 {
-    color: #317DC1;
-    font-size: 32px;
-}
-.media-body p {
-    line-height: 1.5;
-    padding-top: 10px;
-    font-size: 18px;
-    color: #686868;
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
-}
+    .info h2 {
+        font-size: 18px;
+        line-height: 1.2em;
+    }
+
+    .info li {
+        float: left;
+        width: 28.865%;
+        margin: 0 3.298%;
+    }
+
+    .info li:first-of-type { margin-left: 0; }
+    .info li:last-of-type { margin-right: 0; }
