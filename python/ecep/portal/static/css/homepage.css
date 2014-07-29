@@ -9,16 +9,19 @@
 .jumbotron {
     position: relative;
     padding: 60px 0 40px;
-    color: #424142;
-    background: #c2c2c2;
-    background: url(../img/banner.jpg);
-    background-opacity: 0.8;
+    color: white;
+    background: url(../img/boylearn.jpg) right center no-repeat #eee;
     background-size: cover;
 }
 .container-custom {
     width: 970px;
     margin: 0 auto;
 }
+    
+    .masthead-content {
+        width: 560px;
+    }
+
 	#featurettes .media img {
 		border: 1px solid #c2c2c2;
 		-webkit-border-radius: 4px;
@@ -84,7 +87,7 @@ input.homepage-search {
     border: none;
     font-size: 18px;
     margin-right: 10px;
-    width: 600px;
+    width: 360px;
     text-shadow: none;
     border: 1px solid #c2c2c2;
 }
