@@ -12,6 +12,8 @@ See LICENSE in the project root for copying permission
 {% block title %}{{ loc.item.site_name }} - {{ loc.item.neighborhood }} - {% trans "Chicago Early Learning" %}{% endblock %}
 
 {% block otherhead %}
+<meta name="description" content="{{ loc.item.description }}">
+
 <meta property="og:title" content="{{ loc.item.site_name }}">
 <meta property="og:type" content="school">
 <meta property="og:latitude" content="{{ loc.position.lat|stringformat:"f" }}">
