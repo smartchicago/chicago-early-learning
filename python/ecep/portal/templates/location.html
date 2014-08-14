@@ -9,7 +9,7 @@ See LICENSE in the project root for copying permission
 {% load staticfiles %}
 {% load portal_extras %}
 
-{% block title %}{{ loc.item.site_name }} | {% trans "Chicago Early Learning" %}{% endblock %}
+{% block title %}{{ loc.item.site_name }} - {{ loc.item.neighborhood }} - {% trans "Chicago Early Learning" %}{% endblock %}
 
 {% block otherhead %}
 <meta property="og:title" content="{{ loc.item.site_name }}">
