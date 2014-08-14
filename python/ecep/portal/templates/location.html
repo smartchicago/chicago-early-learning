@@ -9,9 +9,11 @@ See LICENSE in the project root for copying permission
 {% load staticfiles %}
 {% load portal_extras %}
 
-{% block title %}{{ loc.item.site_name }} | {% trans "Chicago Early Learning" %}{% endblock %}
+{% block title %}{{ loc.item.site_name }} - {{ loc.item.neighborhood }} - {% trans "Chicago Early Learning" %}{% endblock %}
 
 {% block otherhead %}
+<meta name="description" content="{{ loc.item.description }}">
+
 <meta property="og:title" content="{{ loc.item.site_name }}">
 <meta property="og:type" content="school">
 <meta property="og:latitude" content="{{ loc.position.lat|stringformat:"f" }}">
@@ -32,7 +34,12 @@ See LICENSE in the project root for copying permission
         <a href="javascript:void(0)" class="none favs-close-button ga-track"
             data-ga-category="starred" data-ga-action="Remove Favorite">&times;</a>
       <h1 class="school-name" itemprop="name">{{ loc.item.site_name }}</h1>
-      <p itemprop="address">{{ loc.item.address }}, {{ loc.item.city }}, {{ loc.item.state }} {{ loc.item.zip }}</p>
+      <p itemprop="address">
+        <span itemprop="streetAddress">{{ loc.item.address }}</span>, 
+        <span itemprop="addressLocality">{{ loc.item.city }}</span>, 
+        <span itemprop="addressRegion">{{ loc.item.state }}</span> 
+        <span itemprop="postalCode">{{ loc.item.zip }}</span>
+      </p>
       <ul class="website-phone">
         {% if loc.item.url %}
         <li><i class="icon-globe"></i> <a href="{{ loc.item.url }}" target="_blank" itemprop="url">{{ loc.item.url }}</a></li>
