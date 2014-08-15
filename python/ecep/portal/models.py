@@ -196,8 +196,6 @@ class Location(models.Model):
                 'zip': self.zip,
                 'url': self.url,
                 'state': self.state,
-                'neighborhood': self.neighborhood,
-                'description': self.q_stmt,
                 'key': self.pk,}
 
         # simple fields to present -- these are the attributes that have text content
