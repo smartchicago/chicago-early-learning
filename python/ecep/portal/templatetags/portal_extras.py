@@ -1,6 +1,7 @@
 # Copyright (c) 2012, 2013 Azavea, Inc.
 # See LICENSE in the project root for copying permission
 
+import re
 from django import template
 from django.template.defaultfilters import stringfilter
 from django.utils.html import conditional_escape
@@ -8,7 +9,6 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 
 register = template.Library()
-
 
 @register.filter(is_safe=True)
 @stringfilter
@@ -36,7 +36,6 @@ def nicemail(url, niceflag, autoescape=None):
     Generate a link to 'Email' if niceflag is set.
     """
     return niceurl(url, niceflag, _('Email'), 'mailto:', autoescape)
-
 
 def niceurl(url, niceflag, shortname, prefix, autoescape=None):
     """
@@ -70,6 +69,15 @@ def niceurl(url, niceflag, shortname, prefix, autoescape=None):
     tag = '<a href="%s">%s</a>' % (esc(realurl), esc(label),)
     return mark_safe(tag)
 
+@register.filter(is_safe=True)
+def telurl(tel):
+    """
+    Creates a 'tel:' link from a phone number
+    """
+    unformatted = re.sub(r'[^\d]+', '', tel)
+    formatted = nicephone(unformatted)
+    tag = '<a href="tel:%s">%s</a>' % (unformatted, formatted)
+    return mark_safe(tag)
 
 @register.filter(is_safe=True)
 def url_target_blank(text):
