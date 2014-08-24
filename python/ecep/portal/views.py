@@ -22,7 +22,6 @@ from django.utils.translation import ugettext as _
 
 logger = logging.getLogger(__name__)
 
-
 def index(request):
     ctx = RequestContext(request, {})
     response = render_to_response('index.html', context_instance=ctx)
