@@ -22,9 +22,11 @@ from twilio.twiml import Response
 from twilio.rest import TwilioRestClient
 from django_twilio.decorators import twilio_view
 from celery import chain, task
+from geopy import geocoders
+from django.contrib.gis.measure import D
+from django.contrib.gis.geos import GEOSGeometry
 
 logger = logging.getLogger(__name__)
-
 
 def myassert(condition, msg=""):
     """Same as assert, but doesn't pay attention to __debug__"""
@@ -192,8 +194,20 @@ class Conversation(object):
             self.current_state &= ~Conversation.State.INTERRUPTED
 
     def nearby_locations(self, zipcode, count=None):
-        """Returns locations that fall inside zipcode"""
-        return Location.objects.filter(zip=zipcode, accepted=True)[:count]
+        """
+            Returns locations that fall inside zipcode.
+            If we can't find any in that zipcode, look within a 3-mile radius.
+        """
+        locations = Location.objects.filter(zip=zipcode, accepted=True)[:count]
+        if len(locations) == 0:
+            try:
+                geocoder = geocoders.GoogleV3()
+                address, (lat, lng) = geocoder.geocode(zipcode, exactly_one=True)
+                origin = GEOSGeometry('POINT(%f %f)' % (lng, lat,)) 
+                locations = Location.objects.filter(geom__distance_lte=(origin, D(mi=3))).distance(origin).order_by('distance')[:8]
+            except:
+                pass
+        return locations
 
     def process_request(self, request):
         """
