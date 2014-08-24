@@ -862,13 +862,12 @@ msgstr "Para información acerca de la aplicación, por favor llamar al Chicago:
 #: portal/templates/index.html:36
 #, python-format
 msgid ""
-"Call the <a href=\"%(rtl_url)s\">Chicago: Ready to Learn!</a> Hotline at <a "
-"href=\"%(rtl_tel)s\">(312) 229-1690</a> to find out more information about "
-"programs that best meet your family's needs. Accepting applications year "
-"round. !Se habla Español!"
+"Call the <a href=\"%(rtl_url)s\">Chicago: Ready to Learn!</a> Hotline at "
+"%(rtl_tel)s to find out more information about programs that best meet your "
+"family's needs. Accepting applications year round. !Se habla Español!"
 msgstr ""
-"Llame al <a href=\"%(rtl_url)s\">Chicago: Listo para Aprender!</a> Al <a href=\"%(rtl_tel)s\">(312) "
-"229-1690</a>, línea de acceso directo para obtener mas información acerca de los programas "
+"Llame al <a href=\"%(rtl_url)s\">Chicago: Listo para Aprender!</a> Al "
+"%(rtl_tel)s, línea de acceso directo para obtener mas información acerca de los programas "
 "que mas se adapten a las necesidades de su familia. Se aceptan aplicaciones durante todo el año. Hablamos Español!"
 
 #: portal/templates/index.html:39
@@ -892,15 +891,14 @@ msgstr "Encuentre y compare ubicaciones ahora"
 #, python-format
 msgid ""
 "Get details about locations near you with text messages. Simply send a zip "
-"code to <a href=\"%(sms_tel)s\">(773) 886-1819</a> and follow the "
-"instructions on your phone. If you'd like to talk to someone about your "
-"options, please call the Chicago: Ready to Learn! Hotline at <a href="
-"\"%(rtl_tel)s\">(312) 229-1690</a>."
+"code to %(sms_tel)s and follow the instructions on your phone. If you'd like "
+"to talk to someone about your options, please call the Chicago: Ready to "
+"Learn! Hotline at %(rtl_tel)s."
 msgstr ""
 "Obtenga detalles acerca de lugares cerca de usted con mensajes de texto. "
-"Simplemente envíe el código postal al <a href=\"%(sms_tel)s\">(773) 886-1819</a> y siga las instrucciones que aparecen en "
+"Simplemente envíe el código postal al %(sms_tel)s y siga las instrucciones que aparecen en "
 "el teléfono. Si desea hablar con alguien acerca de sus opciones, por favor llamar a Chicago: "
-"Listos para Aprender! al <a href=\"%(rtl_tel)s\">(312) 229-1690</a> línea de acceso directo"
+"Listos para Aprender! al %(rtl_tel)s línea de acceso directo"
 
 #: portal/templates/base.html:88 portal/templates/index.html:52
 msgid "Keep In Touch"

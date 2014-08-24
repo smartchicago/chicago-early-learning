@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-28 15:22+0000\n"
+"POT-Creation-Date: 2014-08-24 09:04-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -249,20 +249,20 @@ msgstr ""
 msgid "(page %(current)d/%(total)d)"
 msgstr ""
 
-#: portal/views.py:374
+#: portal/views.py:379
 msgid "Explore"
 msgstr ""
 
-#: portal/views.py:375
+#: portal/views.py:380
 msgid "Click to see locations in this neighborhood"
 msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
-#: portal/templates/base.html:76
+#: portal/templates/base.html:75
 msgid "About"
 msgstr ""
 
-#: portal/templates/about.html:9 portal/templates/base.html:12
+#: portal/templates/about.html:9 portal/templates/base.html:11
 #: portal/templates/browse.html:12 portal/templates/faq-models.html:9
 #: portal/templates/location.html:12 portal/templates/smsinfo.html:12
 #: portal/templates/starred.html:12 templates/admin/base_site.html:15
@@ -345,43 +345,43 @@ msgstr ""
 msgid "Click to use your current location"
 msgstr ""
 
-#: portal/templates/base-search.html:17 portal/templates/index.html:23
+#: portal/templates/base-search.html:17 portal/templates/index.html:24
 msgid "Search"
 msgstr ""
 
-#: portal/templates/base.html:12
+#: portal/templates/base.html:11
 msgid "Find early learning programs near your home or work."
 msgstr ""
 
-#: portal/templates/base.html:75 portal/templates/index.html:46
+#: portal/templates/base.html:74 portal/templates/index.html:47
 #: portal/templates/smsinfo.html:12
 msgid "Text For Info"
 msgstr ""
 
-#: portal/templates/base.html:77 portal/templates/faq-models.html:9
+#: portal/templates/base.html:76 portal/templates/faq-models.html:9
 msgid "FAQ"
 msgstr ""
 
-#: portal/templates/base.html:79
+#: portal/templates/base.html:78
 msgid "Language"
 msgstr ""
 
-#: portal/templates/base.html:88 portal/templates/index.html:52
+#: portal/templates/base.html:87 portal/templates/index.html:53
 msgid "Keep In Touch"
 msgstr ""
 
-#: portal/templates/base.html:101
+#: portal/templates/base.html:100
 #, python-format
 msgid ""
 "For application information please call the Chicago: Ready to Learn! Hotline "
 "at <a href=\"%(rtl_url)s\">(312) 229-1690</a>"
 msgstr ""
 
-#: portal/templates/base.html:111
+#: portal/templates/base.html:110
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:114
+#: portal/templates/base.html:113
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -423,11 +423,11 @@ msgstr ""
 msgid "Locations"
 msgstr ""
 
-#: portal/templates/index.html:20
+#: portal/templates/index.html:21
 msgid "Find the right program for your child."
 msgstr ""
 
-#: portal/templates/index.html:21 portal/templates/index.html.py:29
+#: portal/templates/index.html:22 portal/templates/index.html.py:30
 #, python-format
 msgid ""
 "Welcome to the City of Chicago's Early Learning Portal. Here you can easily "
@@ -438,45 +438,43 @@ msgid ""
 "learning program."
 msgstr ""
 
-#: portal/templates/index.html:22
+#: portal/templates/index.html:23
 msgid "Enter a school, community, or address"
 msgstr ""
 
-#: portal/templates/index.html:34
+#: portal/templates/index.html:35
 #, python-format
 msgid ""
-"Call the <a href=\"%(rtl_url)s\">Chicago: Ready to Learn!</a> Hotline at <a "
-"href=\"%(rtl_tel)s\">(312) 229-1690</a> to find out more information about "
-"programs that best meet your family's needs. Accepting applications year "
-"round. !Se habla Español!"
+"Call the <a href=\"%(rtl_url)s\">Chicago: Ready to Learn!</a> Hotline at "
+"%(rtl_tel)s to find out more information about programs that best meet your "
+"family's needs. Accepting applications year round. !Se habla Español!"
 msgstr ""
 
-#: portal/templates/index.html:39
+#: portal/templates/index.html:40
 msgid "Find & Compare"
 msgstr ""
 
-#: portal/templates/index.html:41
+#: portal/templates/index.html:42
 msgid ""
 "Search by the address where you live or work to quickly find all the early "
 "learning programs located near you. Refine your search to find the features "
 "you most care about. Choose your \"favorites\" and compare them on a list."
 msgstr ""
 
-#: portal/templates/index.html:42
+#: portal/templates/index.html:43
 msgid "Find and compare locations now"
 msgstr ""
 
-#: portal/templates/index.html:48
+#: portal/templates/index.html:49
 #, python-format
 msgid ""
 "Get details about locations near you with text messages. Simply send a zip "
-"code to <a href=\"%(sms_tel)s\">(773) 886-1819</a> and follow the "
-"instructions on your phone. If you'd like to talk to someone about your "
-"options, please call the Chicago: Ready to Learn! Hotline at <a href="
-"\"%(rtl_tel)s\">(312) 229-1690</a>."
+"code to %(sms_tel)s and follow the instructions on your phone. If you'd like "
+"to talk to someone about your options, please call the Chicago: Ready to "
+"Learn! Hotline at %(rtl_tel)s."
 msgstr ""
 
-#: portal/templates/index.html:54
+#: portal/templates/index.html:55
 msgid ""
 "Keep in touch with Chicago Early Learning! Sign up to receive timely updates "
 "about enrollment deadlines, early learning resources in your area and new "
@@ -484,7 +482,7 @@ msgid ""
 "with you."
 msgstr ""
 
-#: portal/templates/index.html:55
+#: portal/templates/index.html:56
 msgid "Sign up for our mailing list"
 msgstr ""
 
