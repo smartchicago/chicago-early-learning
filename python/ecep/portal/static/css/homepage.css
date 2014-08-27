@@ -13,6 +13,17 @@
     background: url(../img/boylearn.jpg) right center no-repeat #eee;
     background-size: cover;
 }
+
+    .jumbotron a {
+        color: #FFC;
+        border-bottom: 1px dotted #FFC;
+    }
+    .jumbotron a:hover {
+        color: #FF9;
+        border-bottom: 1px dotted #FF9;
+        text-decoration: none;
+    }
+
 .container-custom {
     width: 970px;
     margin: 0 auto;
@@ -20,6 +31,7 @@
     
     .masthead-content {
         width: 560px;
+        max-width: 100%;
     }
 
 	#featurettes .media img {
