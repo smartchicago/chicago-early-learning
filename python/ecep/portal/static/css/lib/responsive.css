@@ -121,6 +121,14 @@
     .navbar .nav {
         margin: 10px 0;
     }
+    .navbar .nav > li img {
+        display: inline;
+    }
+
+    .navbar .nav > li span {
+        display: none;
+    }
+    
     .results-right {
         visibility: hidden;
         top: 111px;
