@@ -146,6 +146,7 @@ h1, h2, h3, h4 {
 }
 
 .navbar .nav img {
+    display: none;
     max-height: 20px;
 }
 
