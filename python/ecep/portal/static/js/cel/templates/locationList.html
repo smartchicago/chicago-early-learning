@@ -12,7 +12,7 @@
         <h2>
           {{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}<br>
           {{#each sfields}}
-            {{#if_eq this.key 'weekday_availability'}}{{this.value}}, {{/if_eq}}
+            {{#if_eq this.key 'weekday_availability'}}{{this.value}}<br>{{/if_eq}}
             {{#if_eq this.key 'program_info'}}{{this.value}}{{/if_eq}}
           {{/each}}
         </h2>

@@ -926,3 +926,6 @@ msgstr "Encuentre programas de educación temprana cerca de su casa y trabajo."
 #: portal/templates/browse.html:12
 msgid "Browse Locations"
 msgstr "Explore Ubicaciones"
+
+msgid "More Filters"
+msgstr "Más Filtros"

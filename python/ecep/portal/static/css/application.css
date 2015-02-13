@@ -165,9 +165,9 @@ h1, h2, h3, h4 {
     color: black;
 }
 
-.accordion-group .favs-toggle i {
+/*.accordion-group .favs-toggle i {
     top: -8px;
-}
+}*/
 
 /* Ready to Learn ------------ */
 
@@ -449,6 +449,7 @@ h1, h2, h3, h4 {
     font-size: 16px;
     font-weight: bold;
     display: inline-block;
+    vertical-align: middle;
 }
 
 .accordion-heading a:hover {
@@ -665,16 +666,24 @@ h1, h2, h3, h4 {
     float: left;
 }
 
+.filters-list {
+    margin-bottom: 0;
+}
+
 .filters-list li {
     width: 33.33%;
+}
+
+.filters-options {
+    margin-top: 15px;
 }
 
 .filters-options li {
     margin-right: 20px;
 }
 
-.filters-more {
-    display: none;
+#filters-more ul {
+    border-top: none;
 }
 
 #filter-clear-all {
