@@ -36,12 +36,8 @@ See LICENSE in the project root for copying permission
   <!-- Results Toolbar -->
   <div class="accordion" id="filter-options">
     <div class="accordion-group" id="toolbar-main">
-      <div class="accordion-heading results-toolbar">
-          <button class="btn btn-primary hint--bottom ga-track" data-hint="{%trans 'Click to hide filters' %}" 
-              data-toggle="collapse" data-parent="#filters" href="#collapseFilters" id="refineBtn"
-              data-ga-category="search" data-ga-action="Show/Hide Filters">
-              {% trans "Refine your search" %} <i class="icon-right-open icon-white"></i>
-          </button> 
+      <div class="accordion-heading results-toolbar clearfix">
+        <strong class="refine">{% trans "Refine your search" %}</strong>
         <div class="btn-group">
             <a class="btn starred-btn hint--bottom" data-hint="{% trans 'Click to view your list' %}" href="{% url portal.views.starred %}" 
                 data-r1023="<i class='icon-heart'></i> Favorites (<span class='fav-count'>0</span>)">
@@ -60,43 +56,36 @@ See LICENSE in the project root for copying permission
           </ul>
         </div>
       </div>
+      <div id="collapseFilters">
+        <div class="filters-inner clearfix">
+          <ul class="filters-list clearfix">
+            {% for f in filters_main %}
+              <li>
+                <label>
+                  <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" 
+                    data-ga-category="search" data-ga-action="filter" data-ga-label="{{ f.1 }}"/>{% trans f.1 %}
+                </label>
+              </li>
+            {% endfor %}
+          </ul>
 
-      <div id="collapseFilters" class="accordion-body collapse">
-        <div class="accordion-inner filters-inner">
-          <div class="filters-1">
-            {% for f in filters_1 %}   
-              <label>
-                <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" 
-                  data-ga-category="search" data-ga-action="filter" data-ga-label="{{ f.1 }}"/>{% trans f.1 %}
-              </label>
+          <ul class="filters-list filters-more clearfix">
+            {% for f in filters_more %}
+              <li>
+                <label>
+                  <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" 
+                    data-ga-category="search" data-ga-action="filter" data-ga-label="{{ f.1 }}"/>{% trans f.1 %}
+                </label>
+              </li>
             {% endfor %}
-          </div>
-          <div class="filters-2">
-            {% for f in filters_2 %}   
-              <label>
-                <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" 
-                data-ga-category="search" data-ga-action="filter" data-ga-label="{{ f.1 }}"/>{% trans f.1 %}
-              </label>
-            {% endfor %}
-          </div>
-          <div class="filters-3">
-            {% for f in filters_3 %}   
-              <label>
-                <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" 
-                  data-ga-category="search" data-ga-action="filter" data-ga-label="{{ f.1 }}"/>{% trans f.1 %}
-              </label>
-            {% endfor %}
-          </div>
-          <div class="filters-4">
-            {% for f in filters_4 %}
-              <label>
-                <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" 
-                  data-ga-category="search" data-ga-action="filter" data-ga-label="{{ f.1 }}"/>{% trans f.1 %}
-              </label>
-            {% endfor %}
-            <button class="btn pull-right ga-track" id="filter-clear-all"
-                data-ga-category="search" data-ga-action="Reset Search">{% trans "Reset Search" %}</button>
-          </div>
+          </ul>
+
+          <ul class="filters-options">
+            <li><button class="btn pull-right ga-track" id="filters-show-more"
+                  data-ga-category="search" data-ga-action="More Filters">{% trans "More Filters" %}</button></li>
+            <li><button class="btn pull-right ga-track" id="filter-clear-all"
+                  data-ga-category="search" data-ga-action="Reset Search">{% trans "Reset Search" %}</button></li>
+          </ul>
         </div>
       </div>
     </div>
