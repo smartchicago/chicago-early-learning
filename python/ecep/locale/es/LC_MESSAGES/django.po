@@ -263,7 +263,7 @@ msgstr "Chicago Early Learning"
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
 #: portal/templates/base.html:75
 msgid "About"
-msgstr "Información acerca de nosotros"
+msgstr "Sobre Nosotros"
 
 #: portal/templates/about.html:27
 msgid "City of Chicago"
