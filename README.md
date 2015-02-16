@@ -92,6 +92,13 @@ This command will deploy to your staging server defined in the hosts file, setti
 * Use the Django admin forms to modify/add questions as necessary
 * Run './manage.py dumpdata faq.Question > portal/fixtures/question.json'
 * Commit the modified json file
+* 
+## Contributing 
+We welcome contributions to the application. A few guidelines:
+
+Fork this repository
+Create a topic branch
+Open a pull request with a concise description of the change. Bonus points for a screenshot.
 
 ## Support
 
