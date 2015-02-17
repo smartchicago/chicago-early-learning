@@ -12,8 +12,8 @@
         <h2>
           {{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}<br>
           {{#each sfields}}
-            {{#if_eq this.key 'weekday_availability'}}{{this.value}}<br>{{/if_eq}}
-            {{#if_eq this.key 'program_info'}}{{this.value}}{{/if_eq}}
+            {{#if_eq this.key 'weekday_availability'}}{{#if_not_eq this.value 'None'}}{{this.value}}<br>{{/if_not_eq}}{{/if_eq}}
+            {{#if_eq this.key 'program_info'}}{{#if_not_eq this.value 'None'}}{{this.value}}{{/if_not_eq}}{{/if_eq}}
           {{/each}}
         </h2>
       </a>

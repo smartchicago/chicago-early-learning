@@ -273,6 +273,20 @@ function($, L, Response, Handlebars) {
 
 
     /**
+     * Helper for doing string inequality
+     * @param { first var to compare } a
+     * @param { second var to compare } b
+     * @return { boolean }
+     */
+    Handlebars.registerHelper('if_not_eq', function(a, b, opts) {
+        if(a != b) {
+            return opts.fn(this);
+        } else {
+            return opts.inverse(this);
+        }
+    });
+
+    /**
      * Central api for getting urls for the app
      * @param { logical name of the endpoint } name
      * @param { Options for creating the url, depends on name } opts
