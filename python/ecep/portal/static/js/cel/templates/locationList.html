@@ -9,7 +9,13 @@
       </a>
       <a href="#collapseLoc{{@index}}"data-toggle="collapse" data-parent="#location{{@index}}" >
         <h1 class="truncate">{{item.site_name}}</h1>
-        <h2 class="truncate">{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</h2>
+        <h2>
+          {{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}<br>
+          {{#each sfields}}
+            {{#if_eq this.key 'weekday_availability'}}{{#if_not_eq this.value 'None'}}{{this.value}}<br>{{/if_not_eq}}{{/if_eq}}
+            {{#if_eq this.key 'program_info'}}{{#if_not_eq this.value 'None'}}{{this.value}}{{/if_not_eq}}{{/if_eq}}
+          {{/each}}
+        </h2>
       </a>
       <a href="#" id="quality-icon" class="hideonmobile directions-icon hint--right"
           data-hint="{{ translations.qrisrating }}: {{ tooltip.quality }}">

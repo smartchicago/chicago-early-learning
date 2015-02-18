@@ -257,6 +257,34 @@ function($, L, Response, Handlebars) {
         return CEL.serverVars.staticRoot + url;
     });
 
+    /**
+     * Helper for doing string equality
+     * @param { first var to compare } a
+     * @param { second var to compare } b
+     * @return { boolean }
+     */
+    Handlebars.registerHelper('if_eq', function(a, b, opts) {
+        if(a == b) {
+            return opts.fn(this);
+        } else {
+            return opts.inverse(this);
+        }
+    });
+
+
+    /**
+     * Helper for doing string inequality
+     * @param { first var to compare } a
+     * @param { second var to compare } b
+     * @return { boolean }
+     */
+    Handlebars.registerHelper('if_not_eq', function(a, b, opts) {
+        if(a != b) {
+            return opts.fn(this);
+        } else {
+            return opts.inverse(this);
+        }
+    });
 
     /**
      * Central api for getting urls for the app

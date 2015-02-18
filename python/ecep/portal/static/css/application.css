@@ -165,9 +165,9 @@ h1, h2, h3, h4 {
     color: black;
 }
 
-.accordion-group .favs-toggle i {
+/*.accordion-group .favs-toggle i {
     top: -8px;
-}
+}*/
 
 /* Ready to Learn ------------ */
 
@@ -262,6 +262,12 @@ h1, h2, h3, h4 {
     background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
 }
 
+.results-toolbar .refine {
+    float: left;
+    font-size: 18px;
+    line-height: 33px;
+}
+
 #header-row {
     background-color: #666;
 }
@@ -346,7 +352,7 @@ h1, h2, h3, h4 {
 .accordion-heading h1 {
     font-size: 16px;
     padding: 0;
-    margin: 0;
+    margin: 0 0 3px;
     line-height: 16px;
 }
 
@@ -443,6 +449,7 @@ h1, h2, h3, h4 {
     font-size: 16px;
     font-weight: bold;
     display: inline-block;
+    vertical-align: middle;
 }
 
 .accordion-heading a:hover {
@@ -650,6 +657,39 @@ h1, h2, h3, h4 {
     margin-right: 7px;
 }
 
+.filters-inner ul {
+    margin-left: 0;
+    list-style: none;
+}
+
+.filters-inner li {
+    float: left;
+}
+
+.filters-list {
+    margin-bottom: 0;
+}
+
+.filters-list li {
+    width: 33.33%;
+}
+
+.filters-options {
+    margin-top: 15px;
+}
+
+.filters-options li {
+    margin-right: 20px;
+}
+
+#filters-more ul {
+    border-top: none;
+}
+
+#filter-clear-all {
+    float: none;
+}
+
 .cb_slide_panel h1 {
     text-shadow: none;
     color: #000;
@@ -809,24 +849,6 @@ h1, h2, h3, h4 {
     text-align: justify;
     padding-right: 40px;
     max-width: 510px;
-}
-
-#filter-clear-all {
-    float: left;
-    margin-top: 10px;
-}
-
-
-.filters-1,
-.filters-2,
-.filters-3,
-.filters-4 {
-	width: 25%;
-	float: left;
-}
-
-.filters-4 {
-	padding-bottom: 40px;
 }
 
 .btn-primary {
