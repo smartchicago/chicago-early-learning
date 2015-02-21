@@ -10,8 +10,8 @@ See LICENSE in the project root for copying permission
 {{ item.site_name }}
 {{ item.address }}
 {{ item.city }}, {{ item.state }} {{ item.zip }}
-{% if item.phone1 %}{{ item|verbose_name:"phone1" }}: {{ item.phone1|nicephone }}
-{% endif %}{% if item.fax %}{{ item|verbose_name:"fax" }}: {{ item.fax|nicephone }}
+{% if phone %}{{ phone.number }}
+{% endif %}{% if item.url %}{{ item.url }}
 {% endif %}{% if bfields and bfields.values %}{{ bfields.fieldname }}: {% for b in bfields.values %}{{ b }}{% if not forloop.last %}, {% endif %}{% endfor %}
 {% endif %}{% for s in sfields %}{% if s.value %}{{ s.fieldname }}: {{ s.value }}
 {% endif %}{% endfor %}
