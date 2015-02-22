@@ -238,6 +238,7 @@ class Conversation(object):
 
                 response = Conversation.LIST_HEADER % zipcode
                 response += "\n".join(schools_list)
+                response += "\nReply with the number of the program to learn more about that location."
                 self.update_response(response)
             else:
                 self.update_response(_("Sorry, I couldn't find any schools in %(zipcode)s" % {'zipcode': zipcode}))
