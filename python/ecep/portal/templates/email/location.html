@@ -1,0 +1,15 @@
+<h2>Inquiry from:</h2>
+<ul>
+{% for key, value in info.items %}
+  <li>{{key}}: {{value}}</li>
+{% endfor %}
+</ul>
+
+<h2>Regarding:</h2>
+<ul>
+{% for location in locations %}
+  <li>
+    {{ location }}
+  </li>
+{% endfor %}
+</ul>

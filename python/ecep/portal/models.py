@@ -83,7 +83,7 @@ class Location(models.Model):
     is_ehs = models.NullBooleanField(ugettext_lazy('Early Head Start'))
     open_house = models.TextField(ugettext_lazy('Open House'), blank=True)
     curriculum = models.TextField(ugettext_lazy('Curriculum'), blank=True)
-    email = models.EmailField(null=True)
+    email = models.EmailField()
 
     # Keeps track of whether or not new locations have been approved by the admin
     accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
@@ -197,7 +197,8 @@ class Location(models.Model):
                 'zip': self.zip,
                 'url': self.url,
                 'state': self.state,
-                'key': self.pk,}
+                'key': self.pk,
+                'email': self.email,}
 
         # simple fields to present -- these are the attributes that have text content
         sfields = []
@@ -293,7 +294,7 @@ class Location(models.Model):
         # This way we can do this with django and not have to worry about making a separate
         # handlebars helper
         trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
-                      'share': _('Share'), 'qrisrating': _('QRIS Rating')}
+                      'share': _('Share'), 'qrisrating': _('QRIS Rating'), 'contact': _('Compare and Contact')}
 
         # More information for tooltip icon
         accreditation = ['Accredited'] if self.accred != 'None' else []
@@ -331,7 +332,6 @@ class Location(models.Model):
 
         super(Location, self).save(*args, **kwargs)
 
-
 class LocationEdit(models.Model):
     """
     Model class that stores edits for locations
@@ -347,3 +347,32 @@ class LocationEdit(models.Model):
     edit_type = models.CharField(max_length=6, choices=EDIT_TYPE_CHOICES)
     accepted = models.BooleanField(default=False)
 
+class Contact(models.Model):
+    CHILD_AGE_CHOICES = [
+        ('0-2', '0-2'),
+        ('3-5', '3-5'),
+        ('5-up', '5 & Up'),
+    ]
+
+    location = models.ForeignKey(Location)
+
+    email = models.EmailField()
+    first_name = models.CharField(ugettext_lazy('First Name'), max_length=50)
+    last_name = models.CharField(ugettext_lazy('Last Name'), max_length=50)
+    phone = models.CharField(ugettext_lazy('Phone Number'), max_length=20, blank=True)
+    address_1 = models.CharField(ugettext_lazy('Address 1'), max_length=75)
+    address_2 = models.CharField(ugettext_lazy('Address 2'), max_length=75, blank=True)
+    city = models.CharField(ugettext_lazy('City'), max_length=75)
+    state = models.CharField(ugettext_lazy('State'), max_length=2)
+    zip = models.CharField(ugettext_lazy('Zip Code'), max_length=10)
+
+    child_1 = models.CharField(ugettext_lazy('Child 1\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
+    child_2 = models.CharField(ugettext_lazy('Child 2\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
+    child_3 = models.CharField(ugettext_lazy('Child 3\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
+    child_4 = models.CharField(ugettext_lazy('Child 4\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
+    child_5 = models.CharField(ugettext_lazy('Child 5\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
+    
+    message = models.TextField(blank=True)
+
+    class Meta:
+        unique_together = (("location", "email"),)

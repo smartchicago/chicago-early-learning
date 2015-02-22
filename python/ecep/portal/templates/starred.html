@@ -17,25 +17,37 @@ See LICENSE in the project root for copying permission
 {% block content %}
 <!-- Favorites top bar -->
 <div class="row faves-top">
-    <div class="faves-left">
-        <h1>{% trans "Favorites" %} (<span class="fav-count">0</span>)</h1>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h1>{% trans "Compare and Contact" %} (<span class="fav-count">0</span>)</h1>
+                <p>{% blocktrans %}Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.{% endblocktrans %}</p>   
+            </div>
 
-    <div class="faves-right">
-        <a id="faves-clear" class="btn faves-option ga-track" href="#"
-            data-ga-category="starred" data-ga-action="Clear Selections">
-            <i class="icon-remove-circle"></i> {% trans "Clear Selections" %}
-        </a>
-        <a id="faves-share" data-hint="{% trans 'Click to share your list' %}" class="btn faves-option hint--bottom ga-track" href="#"
-            data-ga-category="starred" data-ga-action="Share Favorites">
-            <i class="icon-share"></i> {% trans "Share" %}
-        </a>
-        <button class="btn faves-close pull-right" onclick="javascript:history.go(-1)"><i class="icon-arrow-left"></i> {% trans "Back" %}</button>
+            <div class="span12 actions">
+                <a href="#" data-hint="{% trans 'Contact all of the selections in your list' %}" class="btn btn-primary faves-option faves-contact hint--bottom ga-track" href="#"
+                    data-ga-category="starred" data-ga-action="Contact Favorites">
+                    <i class="icon-mail"></i> {% trans "Contact" %}
+                </a>
+                <a id="faves-share" data-hint="{% trans 'Click to share your list' %}" class="btn faves-option hint--bottom ga-track" href="#"
+                    data-ga-category="starred" data-ga-action="Share Favorites">
+                    <i class="icon-share"></i> {% trans "Share" %}
+                </a>
+                <a id="faves-clear" class="btn faves-option ga-track" href="#"
+                    data-ga-category="starred" data-ga-action="Clear Selections">
+                    <i class="icon-remove-circle"></i> {% trans "Clear Selections" %}
+                </a>
+                <button class="btn faves-close faves-option" onclick="javascript:history.go(-1)"><i class="icon-arrow-left"></i> {% trans "Back to Search Results" %}</button>
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- Favorite list -->
-<div class="container">
+<div class="container container-faves">
 </div>
 {% endblock %}
 

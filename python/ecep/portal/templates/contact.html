@@ -1,0 +1,40 @@
+{% extends "base-search.html" %}
+
+{% comment %}
+Copyright (c) 2012, 2013 Azavea, Inc.
+See LICENSE in the project root for copying permission
+{% endcomment %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+{% load bootstrap_tags %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block content %}
+  <div id="contact-content" class="container">
+    <div class="row">
+      <form id="contact-form" class="form form-horizontal span8 offset2" method="POST">
+        <h2>{% trans "Contact" %}</h2>
+        <p>{% blocktrans %}Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.{% endblocktrans %}</p>
+        <ul>
+          {% for l in locations %}
+            <li>{{ l.item.site_name }} </li>
+          {% endfor %}
+        </ul>
+        <br>
+          {{ form|as_bootstrap }}
+          {% csrf_token %}
+          <div class="form-actions">
+            <input type="submit" class="btn btn-primary" value="Submit">
+          </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

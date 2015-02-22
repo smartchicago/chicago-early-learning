@@ -6,7 +6,7 @@ import csv
 from datetime import datetime
 from django.template.defaultfilters import slugify
 
-from portal.models import Location, LocationEdit
+from portal.models import Location, LocationEdit, Contact
 from django.contrib.gis import admin
 from django import forms
 from portal.widgets import MapWidget

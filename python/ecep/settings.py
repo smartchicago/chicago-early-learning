@@ -5,7 +5,6 @@
 import os
 import djcelery
 
-
 djcelery.setup_loader()
 BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 
@@ -129,6 +128,8 @@ INSTALLED_APPS = (
     'rosetta',
     'djcelery',
     'redactor',
+    'django_forms_bootstrap',
+    'djrill',
 )
 
 
@@ -157,6 +158,12 @@ TEMPLATE_DIRS = (
 LOCALE_PATHS = (
     (SITE_ROOT + '/locale/'),
 )
+
+# Email
+if MANDRILL_API_KEY:
+    EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # setup logging
 try:

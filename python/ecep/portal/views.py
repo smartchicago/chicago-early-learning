@@ -6,7 +6,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.cache import cache_control
-from models import Location, Neighborhood
+from models import Location, Neighborhood, Contact
+from tasks import send_emails
+from forms import ContactForm
 import logging
 import hashlib
 from faq.models import Topic, Question
@@ -49,10 +51,61 @@ def browse(request):
     # TODO: for now left/right split is kinda random, might want more control
     ctx = RequestContext(request, {
         'filters_main': fields[:6],
-        'filters_more': fields[6:]
+        'filters_more': fields[6:],
     })
 
     response = render_to_response('browse.html', context_instance=ctx)
+    return response
+
+def contact(request, location_ids):
+    location_ids = location_ids.split(',')
+    all_locations = Location.objects.filter(pk__in=location_ids, accepted=True)
+
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+
+            # Figure out which locations have already been contacted
+            existing_locations_ids = Contact.objects.filter(email=cd['email'], location__in=location_ids).values_list('location', flat=True)
+            new_locations_ids = [l.pk for l in all_locations if l.pk not in existing_locations_ids]
+            
+            if len(new_locations_ids) > 0:
+                # Create Contact objects for the new locations
+                Contact.objects.bulk_create([
+                    Contact(
+                        email=cd['email'],
+                        first_name=cd['first_name'],
+                        last_name=cd['last_name'],
+                        phone=cd['phone'],
+                        address_1=cd['address_1'],
+                        address_2=cd['address_2'],
+                        city=cd['city'],
+                        state=cd['state'],
+                        zip=cd['zip'],
+                        child_1=cd['child_1'],
+                        child_2=cd['child_2'],
+                        child_3=cd['child_3'],
+                        child_4=cd['child_4'],
+                        child_5=cd['child_5'],
+                        message=cd['message'],
+                        location_id=lid
+                    ) for lid in new_locations_ids
+                ])       
+
+                # Send emails to the inquirer and locations
+                send_emails.delay(cd, new_locations_ids)
+
+            # Redirect to the thanks page
+            return HttpResponseRedirect('/contact-thanks/?new=%s&existing=%s' % (','.join([str(i) for i in new_locations_ids]), ','.join([str(i) for i in existing_locations_ids])))
+    else:
+        form = ContactForm()
+
+    ctx = RequestContext(request, { 
+        'locations': [l.get_context_dict() for l in all_locations],
+        'form': form,
+    })
+    response = render_to_response('contact.html', context_instance=ctx)
     return response
 
 
@@ -263,7 +316,6 @@ def _make_response(context, etag_hash):
 
     return rsp
 
-
 def location_details(location_id):
     """
     Helper method that gets all the fields for a specific location.
@@ -318,7 +370,7 @@ def location(request, location_id=None, slug=None):
     ctx = RequestContext(request, { 
         'loc': location_details(location_id),
         'loc_description': loc.q_stmt,
-        'loc_neighborhood': loc.neighborhood,
+        'loc_neighborhood': loc.neighborhood
     })
     response = render_to_response('location.html', context_instance=ctx)
     return response

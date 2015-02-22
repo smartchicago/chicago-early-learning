@@ -341,7 +341,11 @@ function($, L, Response, Handlebars) {
                 }
                 break;
             case 'single-location':
-                return '/location/' + opts.location + '/' + opts.slug + '/';
+                url = '/location/' + opts.location + '/';
+                if (opts.slug) {
+                    url += opts.slug + '/';
+                }
+                return url;
             case 'favorites':
                 url = '/favorites/';
                 if (opts && opts.locations) {
