@@ -128,3 +128,24 @@ input.homepage-search {
 
     .info li:first-of-type { margin-left: 0; }
     .info li:last-of-type { margin-right: 0; }
+
+/* Announcement */
+.announcement {
+    color: white;
+    background-color: black;
+    background-color: rgba(0,0,0,0.6);
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+    .announcement h3 {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #ffd;
+    }
+
+    .announcement p {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
