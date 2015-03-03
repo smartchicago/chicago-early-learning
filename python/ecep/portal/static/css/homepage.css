@@ -133,8 +133,8 @@ input.homepage-search {
 /* Announcement */
 .announcement {
     color: white;
-    background-color: black;
-    background-color: rgba(0,0,0,0.6);
+    background-color: #317DC1;
+    background-color: rgba(49,125,193,0.7);
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
