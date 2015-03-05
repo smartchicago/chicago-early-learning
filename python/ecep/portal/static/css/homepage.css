@@ -6,6 +6,7 @@
     margin-top: 61px;
     color: #fff;
 }
+
 .jumbotron {
     position: relative;
     padding: 60px 0 40px;
@@ -89,7 +90,7 @@
 }
 .jumbotron p {
     margin: 25px 0;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.4;
 }
 
@@ -128,3 +129,56 @@ input.homepage-search {
 
     .info li:first-of-type { margin-left: 0; }
     .info li:last-of-type { margin-right: 0; }
+
+/* Announcement */
+.announcement {
+    color: white;
+    background-color: #317DC1;
+    background-color: rgba(49,125,193,0.7);
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+    
+    .announcement strong { color: #ffd; }
+
+    .announcement h3 {
+        font-size: 18px;
+        line-height: 1.2em;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #ffd;
+    }
+
+    .announcement p {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+.announcement-mobile {
+    display: none;
+    background: #317DC1;
+    color: white;
+    padding: 10px;
+}
+
+    .announcement-mobile h3 {
+        margin-top: 10px;
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: 1em;
+    }
+
+    .announcement-mobile a {
+        color: #ffd;
+        border-bottom: 1px dotted #ffd;
+    }
+
+    .announcement-mobile a:hover {
+        text-decoration: none;
+        color: #ff9;
+        border-bottom: 1px solid #ff9;
+    }    
+
+    .announcement-mobile h3,
+    .announcement-mobile strong { color: #ffd; }

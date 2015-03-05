@@ -10,7 +10,7 @@ See LICENSE in the project root for copying permission
 {% load portal_extras %}
 
 {% block otherhead %}
-    <link href="{% static 'css/homepage.css' %}" rel="stylesheet">
+    <link href="{% static 'css/homepage.css' %}?v=2015030401" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -20,6 +20,13 @@ See LICENSE in the project root for copying permission
       <div class="container-custom">
         <div class="masthead-content">
           <h1>{% blocktrans %}Find the right program for your child.{% endblocktrans %}</h1>
+          <div class="announcement">
+            <h3>Ready…Set…Enroll!</h3>
+            <p><strong>March 2 - May 1, 2015</strong></p>
+            <p>Chicago Public Schools is now accepting preschool applications <a href="http://cps.edu/readytolearn">Click here</a>.</p>
+            <p>Head Start, Early Head Start enrollment is yearlong.</p>
+          </div>
+
           <p class="description">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
           <input class="homepage-search autocomplete-searchbox" type="text" placeholder="{% blocktrans %}Enter a school, community, or address{% endblocktrans %}"> 
           <a class="btn btn-large get-started autocomplete-submit" href="#">{% trans "Search" %}</a>
@@ -28,6 +35,12 @@ See LICENSE in the project root for copying permission
     </div>
 
     <div class="container-custom" id="featurettes">
+      <div class="announcement-mobile">
+        <h3>Ready…Set…Enroll!</h3>
+        <p><strong>March 2 - May 1, 2015</strong></p>
+        <p>Chicago Public Schools is now accepting preschool applications <a href="http://cps.edu/readytolearn">Click here</a>.</p>
+        <p>Head Start, Early Head Start enrollment is yearlong.</p>
+      </div>
 		
   		<p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
 
