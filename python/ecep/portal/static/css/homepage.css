@@ -169,5 +169,16 @@ input.homepage-search {
         line-height: 1em;
     }
 
+    .announcement-mobile a {
+        color: #ffd;
+        border-bottom: 1px dotted #ffd;
+    }
+
+    .announcement-mobile a:hover {
+        text-decoration: none;
+        color: #ff9;
+        border-bottom: 1px solid #ff9;
+    }    
+
     .announcement-mobile h3,
     .announcement-mobile strong { color: #ffd; }
