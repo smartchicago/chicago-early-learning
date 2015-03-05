@@ -154,3 +154,20 @@ input.homepage-search {
         margin-top: 0;
         margin-bottom: 10px;
     }
+
+.announcement-mobile {
+    display: none;
+    background: #317DC1;
+    color: white;
+    padding: 10px;
+}
+
+    .announcement-mobile h3 {
+        margin-top: 10px;
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: 1em;
+    }
+
+    .announcement-mobile h3,
+    .announcement-mobile strong { color: #ffd; }

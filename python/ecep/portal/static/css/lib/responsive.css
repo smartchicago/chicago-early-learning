@@ -335,11 +335,13 @@
         border: none;
     }
 
-    .container-custom .description {
+    .container-custom .description,
+    .container-custom .announcement {
             display: none;
         }
         
-    .container-custom .description-mobile {
+    .container-custom .description-mobile,
+    .container-custom .announcement-mobile {
             display: block;
             margin-bottom: 30px;
         }
