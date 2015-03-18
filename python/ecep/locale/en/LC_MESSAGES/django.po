@@ -435,7 +435,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/index.html:29 portal/templates/index.html.py:46
-msgid "Head Start, Early Head Start enrollment is yearlong."
+msgid "Head Start, Early Head Start enrollment is year long."
 msgstr ""
 
 #: portal/templates/index.html:33 portal/templates/index.html.py:50

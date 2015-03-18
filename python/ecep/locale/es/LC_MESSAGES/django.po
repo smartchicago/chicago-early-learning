@@ -479,7 +479,7 @@ msgstr ""
 "preescolar ahora. <a href=\"%(rtl_url)s\">Haga clic aquí</a>."
 
 #: portal/templates/index.html:29 portal/templates/index.html.py:46
-msgid "Head Start, Early Head Start enrollment is yearlong."
+msgid "Head Start, Early Head Start enrollment is year long."
 msgstr ""
 "La inscripción para Headstart, Early Head Start es durante todo el año."
 
