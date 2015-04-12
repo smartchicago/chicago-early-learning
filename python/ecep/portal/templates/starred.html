@@ -9,7 +9,7 @@ See LICENSE in the project root for copying permission
 {% load staticfiles %}
 {% load portal_extras %}
 
-{% block title %}{% trans "Favorites" %} - {% trans "Chicago Early Learning" %}{% endblock %}
+{% block title %}{% trans "Compare and Contact" %} - {% trans "Chicago Early Learning" %}{% endblock %}
 
 {% block otherhead %}
 {% endblock %}
@@ -21,10 +21,11 @@ See LICENSE in the project root for copying permission
         <div class="row">
             <div class="span12">
                 <h1>{% trans "Compare and Contact" %} (<span class="fav-count">0</span>)</h1>
-                <p>{% blocktrans %}Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.{% endblocktrans %}</p>   
+                <p>{% blocktrans %}Compare early learning programs side-by-side to select the highest quality option for your child. Add more programs by going back to your search results.{% endblocktrans %}</p> 
+
+                <p>{% blocktrans %}Press the “Contact” button to contact all of the selections on your list to learn more about each location. These locations will respond to you by phone or email within 3 business days.{% endblocktrans %}</p>
+
+                <p>{% blocktrans %}Press “Back to Search Results” to add more locations you are interested in.{% endblocktrans %}</p>   
             </div>
 
             <div class="span12 actions">

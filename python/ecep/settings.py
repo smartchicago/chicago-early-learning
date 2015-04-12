@@ -160,9 +160,10 @@ LOCALE_PATHS = (
 )
 
 # Email
-if MANDRILL_API_KEY:
+try:
+    MANDRILL_API_KEY
     EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
-else:
+except NameError:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # setup logging

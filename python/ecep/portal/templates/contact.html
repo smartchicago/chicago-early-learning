@@ -10,6 +10,8 @@ See LICENSE in the project root for copying permission
 {% load portal_extras %}
 {% load bootstrap_tags %}
 
+{% block title %}{% trans "Contact" %} - {% trans "Chicago Early Learning" %}{% endblock %}
+
 {% block otherhead %}
 {% endblock %}
 
@@ -18,13 +20,13 @@ See LICENSE in the project root for copying permission
     <div class="row">
       <form id="contact-form" class="form form-horizontal span8 offset2" method="POST">
         <h2>{% trans "Contact" %}</h2>
-        <p>{% blocktrans %}Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.{% endblocktrans %}</p>
+        <p>{% blocktrans %}Fill out the form below to contact these locations from your list. Staff at these locations will then contact you to provide additional information about their programs and enrollment.{% endblocktrans %}</p>
         <ul>
           {% for l in locations %}
             <li>{{ l.item.site_name }} </li>
           {% endfor %}
         </ul>
+        <p><em>{% blocktrans %}Note: Required fields are in <strong>bold</strong>.{% endblocktrans %}</em></p>
         <br>
           {{ form|as_bootstrap }}
           {% csrf_token %}
