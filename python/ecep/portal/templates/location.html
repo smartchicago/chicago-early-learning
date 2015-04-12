@@ -50,18 +50,10 @@ See LICENSE in the project root for copying permission
           <li>
             <a href="javascript:void(0)"
                 class="favs-toggle single-star ga-track" id="favs-toggle-loc-{{ loc.item.key }}"
-                data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Favorite Single Location">
-              <i class="icon-heart-empty"></i>
+                data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Compare & Contact Single Location">
+              <i class="icon-mail-1"></i>
             </a>
           </li>
-          {% if loc.item.email %}
-          <li>
-            <a href="{% url portal.views.contact loc.item.key %}" class="btn single-email ga-track" data-r1024="<i class='icon-mail'></i>{{ loc.translations.email }}"
-                data-ga-category="location" data-ga-action="Email">
-              <i class="icon-mail"></i>Email
-            </a>
-          </li>
-          {% endif %}
           <li>
             <a href="#" class="btn single-share ga-track" data-r1024="<i class='icon-share'></i>{{ loc.translations.share }}"
                 data-ga-category="location" data-ga-action="Share Single Location">

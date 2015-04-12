@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 
 @task()
 def send_emails(inquirer_info, location_ids):
-  default_email = 'smarziano@cct.org'
   locations = Location.objects.filter(pk__in=location_ids)
   messages = []
 
@@ -21,7 +20,7 @@ def send_emails(inquirer_info, location_ids):
       'locations': locations,
     }))
   i_subject = "You contacted %d Chicago Early Learning locations" % len(locations)
-  i_message = mail.EmailMessage(i_subject, i_template, default_email, [inquirer_info['email']])
+  i_message = mail.EmailMessage(i_subject, i_template, settings.DEFAULT_FROM_EMAIL, [inquirer_info['email']])
   i_message.content_subtype = "html"
   messages.append(i_message)
 
@@ -35,7 +34,7 @@ def send_emails(inquirer_info, location_ids):
         'locations': l,
       }))
     l_subject = "Chicago Early Learning inquiry from %s %s" % (inquirer_info['first_name'], inquirer_info['last_name'])
-    l_message = mail.EmailMessage(l_subject, l_template, default_email, [default_email], headers={'Reply-To': inquirer_info['first_name']})
+    l_message = mail.EmailMessage(l_subject, l_template, inquirer_info['email'], [e], headers={'Reply-To': inquirer_info['first_name']})
     l_message.content_subtype = "html"
     messages.append(l_message)
 

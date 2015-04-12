@@ -380,5 +380,29 @@ class LocationAdmin(admin.OSMGeoAdmin,TranslationAdmin):
             del actions['delete_selected']
         return actions
 
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'phone', 'zip', 'location', 'is_cps_based', 'created')
+    list_filter = ['location__is_cps_based',]
+    search_fields = ['first_name', 'last_name', 'email','location__site_name']
+
+    def name(self, obj):
+        return "%s %s" % (obj.first_name, obj.last_name)
+
+    def is_cps_based(self, obj):
+        return obj.location.is_cps_based
+    is_cps_based.boolean = True
+
+    def get_readonly_fields(self, request, obj=None):
+        if request.user.is_superuser:
+            return []
+        else:
+            return [f.name for f in self.model._meta.fields]
+
+    def get_actions(self, request):
+        actions = super(ContactAdmin, self).get_actions(request)
+        if not request.user.is_superuser and 'delete_selected' in actions:
+            actions.pop('delete_selected')
+        return actions
 
 admin.site.register(Location, LocationAdmin)
+admin.site.register(Contact, ContactAdmin)

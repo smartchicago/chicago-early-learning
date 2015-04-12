@@ -365,6 +365,7 @@ class Contact(models.Model):
     city = models.CharField(ugettext_lazy('City'), max_length=75)
     state = models.CharField(ugettext_lazy('State'), max_length=2)
     zip = models.CharField(ugettext_lazy('Zip Code'), max_length=10)
+    created = models.DateTimeField(auto_now_add=True)
 
     child_1 = models.CharField(ugettext_lazy('Child 1\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
     child_2 = models.CharField(ugettext_lazy('Child 2\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)

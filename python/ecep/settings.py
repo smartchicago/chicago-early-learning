@@ -160,6 +160,7 @@ LOCALE_PATHS = (
 )
 
 # Email
+DEFAULT_FROM_EMAIL = 'earlylearning@smartchicagocollaborative.org'
 try:
     MANDRILL_API_KEY
     EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
