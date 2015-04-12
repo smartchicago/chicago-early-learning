@@ -975,18 +975,6 @@ msgstr ""
 #~ msgid "Send us feedback about the website"
 #~ msgstr "Envíenos sus comentarios sobre el sitio web"
 
-#: portal/templates/base.html:12
-msgid "Find early learning programs near your home or work."
-msgstr "Encuentre programas de educación temprana cerca de su casa y trabajo."
-
-#: portal/templates/browse.html:12
-msgid "Browse Locations"
-msgstr "Explore Ubicaciones"
-
-msgid "More Filters"
-msgstr "Más Filtros"
-
 #: portal/models.py:297 portal/templates/browse.html:44
 msgid "Compare and Contact"
 msgstr ""
->>>>>>> WIP.
