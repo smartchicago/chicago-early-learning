@@ -49,6 +49,13 @@ define(['jquery', 'Leaflet', 'location',
                 $star.on('click', function(e) {
                     favorites.toggle($star);
                     loc.setMarker();
+
+                    // If the user toggled it on, redirect them
+                    if ($star.hasClass('favs-button-selected') && $star.data('redirect')) {
+                        setTimeout(function () {
+                            window.location = $star.data('redirect');
+                        }, 300);
+                    }
                 });
             });
         });

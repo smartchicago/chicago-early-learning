@@ -9,7 +9,7 @@ See LICENSE in the project root for copying permission
 {% load staticfiles %}
 {% load portal_extras %}
 
-{% block title %}{% trans "Favorites" %} - {% trans "Chicago Early Learning" %}{% endblock %}
+{% block title %}{% trans "Compare and Contact" %} - {% trans "Chicago Early Learning" %}{% endblock %}
 
 {% block otherhead %}
 {% endblock %}
@@ -17,25 +17,38 @@ See LICENSE in the project root for copying permission
 {% block content %}
 <!-- Favorites top bar -->
 <div class="row faves-top">
-    <div class="faves-left">
-        <h1>{% trans "Favorites" %} (<span class="fav-count">0</span>)</h1>
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h1>{% trans "Compare and Contact" %} (<span class="fav-count">0</span>)</h1>
+                <p>{% blocktrans %}Compare early learning programs side-by-side to select the highest quality option for your child. Add more programs by going back to your search results.{% endblocktrans %}</p> 
 
-    <div class="faves-right">
-        <a id="faves-clear" class="btn faves-option ga-track" href="#"
-            data-ga-category="starred" data-ga-action="Clear Selections">
-            <i class="icon-remove-circle"></i> {% trans "Clear Selections" %}
-        </a>
-        <a id="faves-share" data-hint="{% trans 'Click to share your list' %}" class="btn faves-option hint--bottom ga-track" href="#"
-            data-ga-category="starred" data-ga-action="Share Favorites">
-            <i class="icon-share"></i> {% trans "Share" %}
-        </a>
-        <button class="btn faves-close pull-right" onclick="javascript:history.go(-1)"><i class="icon-arrow-left"></i> {% trans "Back" %}</button>
+                <p>{% blocktrans %}Press the “Contact” button to contact all of the selections on your list to learn more about each location. These locations will respond to you by phone or email within 3 business days.{% endblocktrans %}</p>
+
+                <p>{% blocktrans %}Press “Back to Search Results” to add more locations you are interested in.{% endblocktrans %}</p>   
+            </div>
+
+            <div class="span12 actions">
+                <a href="#" data-hint="{% trans 'Contact all of the selections in your list' %}" class="btn btn-primary faves-option faves-contact hint--bottom ga-track" href="#"
+                    data-ga-category="starred" data-ga-action="Contact Favorites">
+                    <i class="icon-mail"></i> {% trans "Contact" %}
+                </a>
+                <a id="faves-share" data-hint="{% trans 'Click to share your list' %}" class="btn faves-option hint--bottom ga-track" href="#"
+                    data-ga-category="starred" data-ga-action="Share Favorites">
+                    <i class="icon-share"></i> {% trans "Share" %}
+                </a>
+                <a id="faves-clear" class="btn faves-option ga-track" href="#"
+                    data-ga-category="starred" data-ga-action="Clear Selections">
+                    <i class="icon-remove-circle"></i> {% trans "Clear Selections" %}
+                </a>
+                <button class="btn faves-close faves-option" onclick="javascript:history.go(-1)"><i class="icon-arrow-left"></i> {% trans "Back to Search Results" %}</button>
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- Favorite list -->
-<div class="container">
+<div class="container container-faves">
 </div>
 {% endblock %}
 

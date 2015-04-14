@@ -160,13 +160,13 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
 
             // toggle off
             if ($elt.hasClass(opts.selectedClass)) {
-                img = 'icon-heart-empty';
+                img = 'icon-mail-1';
                 favs.removeIdFromCookie(buttonId);
                 increment = -1;
                 $siblings.attr('data-hint', gettext('Click to save to your list'));
             // toggle on
             } else {
-                img = 'icon-heart';
+                img = 'icon-mail';
                 favs.addIdToCookie(buttonId);
                 increment = 1;
                 $siblings.attr('data-hint', gettext('Click to remove from your list'));

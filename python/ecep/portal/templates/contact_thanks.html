@@ -1,0 +1,29 @@
+{% extends "base-search.html" %}
+
+{% comment %}
+Copyright (c) 2012, 2013 Azavea, Inc.
+See LICENSE in the project root for copying permission
+{% endcomment %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+{% load bootstrap_tags %}
+
+{% block title %}{% trans "Thank you" %} - {% trans "Chicago Early Learning" %}{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block content %}
+  <div id="contact-content" class="container">
+    <div class="row">
+      <div class="form span8 offset2">
+        <p>{% blocktrans %}Thank you for submitting our form! Your request has been sent, and you should expect to hear back within 3 business days.{% endblocktrans %}</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

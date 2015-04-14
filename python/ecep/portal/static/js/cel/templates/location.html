@@ -1,23 +1,25 @@
 <div class="favorite" data-key="{{item.key}}" itemscope itemtype="http://schema.org/EducationalOrganization">
   <div id="location-map" class="none single-location-map"></div>
   <a href="javascript:void(0)" class="none favs-close-button">&times;</a>
-  <h1 class="school-name" itemprop="name">{{item.site_name}}</h1>
-  <p itemprop="address">{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</p>
-  <ul class="website-phone">
-    {{#if item.url}}
-    <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank" itemprop="url">{{item.url}}</a></li>
-    {{/if}}
-    <a href="javascript:void(0)"
-        class="none favs-toggle single-star pull-right" id="favs-toggle-loc-{{item.key}}"
-        data-loc-id="{{item.key}}">
-      <i class="icon-heart-empty"></i>
-    </a>
-    <a href="#" class="none btn pull-right single-share"
-        data-r1024="<i class='icon-share'></i>{{translations.share}}">
-      <i class="icon-share"></i>
-      Share
-    </a>
-  </ul>
+  <div class="clearfix">
+    <h1 class="school-name" itemprop="name">{{item.site_name}}</h1>
+    <p itemprop="address">{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</p>
+    <ul class="website-phone">
+      {{#if item.url}}
+      <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank" itemprop="url">{{item.url}}</a></li>
+      {{/if}}
+      <a href="javascript:void(0)"
+          class="none favs-toggle single-star pull-right" id="favs-toggle-loc-{{item.key}}"
+          data-loc-id="{{item.key}}">
+        <i class="icon-heart-empty"></i>
+      </a>
+      <a href="#" class="none btn pull-right single-share"
+          data-r1024="<i class='icon-share'></i>{{translations.share}}">
+        <i class="icon-share"></i>
+        Share
+      </a>
+    </ul>
+  </div>
   <hr>
   <div class="school-details">
     <h1>{{phone.fieldname}}</h1>

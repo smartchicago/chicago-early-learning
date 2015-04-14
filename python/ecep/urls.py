@@ -45,9 +45,14 @@ urlpatterns = patterns(
     # sms info page
     url(r'^sms/?$', 'portal.views.smsinfo', name='sms-info'),
 
+    # Contact
+    url(r'^contact/(?P<location_ids>[0-9,]*)/$', 'portal.views.contact', name='contact'),
+    url(r'^contact-thanks/$', direct_to_template, {'template': 'contact_thanks.html'}),
+
     # Location Views
     # Need to pass id to view for sitemap, but don't need to do anything with it since this is handled with javascript
     url(r'^location/(\d+)/$', 'portal.views.location', name='location-view'),
+    url(r'^location/(?P<location_id>\d+)/(?P<slug>[\w-]+)/$', 'portal.views.location', name='location-view'),
     url(r'^location/(?P<location_id>\d+)/(?P<slug>[\w-]+)/$', 'portal.views.location', name='location-view'),
 
     # Starred Location Views

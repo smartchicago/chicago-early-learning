@@ -220,7 +220,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                 
                 marker.on('click', function (e) {
                     var isStarred = favorites.isStarred(locId),
-                        icon = isStarred ? 'icon-heart' : 'icon-heart-empty',
+                        icon = isStarred ? 'icon-mail' : 'icon-mail-1',
                         hint = isStarred ? 'tooltip.unstar' : 'tooltip.star',
                         selected = isStarred ? 'favs-button-selected' : '',
                         popupText = '<b>{{item.site_name}}</b><br>{{item.address}}<br>' +
