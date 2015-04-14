@@ -133,9 +133,11 @@ function($, L, Response, Handlebars) {
          */
         var submitAutocomplete = function(ui) {
             if (ui.item) {
+                var slug = ui.item.label ? slugify(ui.item.label) : '';
+
                 if (ui.item.type === 'location') {
                     window.location.href = getUrl(
-                        'single-location', { location: ui.item.id, slug: slugify(ui.item.label) });
+                        'single-location', { location: ui.item.id, slug: slug });
                     return;
                 } else if (ui.item.type === 'neighborhood') {
                     window.location.href = getUrl(
@@ -154,10 +156,14 @@ function($, L, Response, Handlebars) {
          *  Spoof the jquery ui select function ui object using the input element data attributes
          */
         var spoofSubmitAutocomplete = function() {
-            var ui = {
-                item: $autocomplete.data()
-            };
-            submitAutocomplete(ui);
+            if ($autocomplete.data().id) {
+                var ui = {
+                    item: $autocomplete.data()
+                };
+                submitAutocomplete(ui);
+            } else {
+                window.location = "/search/?lq=" + $autocomplete.val();
+            }
         };
 
         /* 
@@ -174,6 +180,7 @@ function($, L, Response, Handlebars) {
          */
         $autocomplete.on('keyup', function(e) {
             if (e.which === 13) {
+                e.preventDefault();
                 spoofSubmitAutocomplete();
             }
         });

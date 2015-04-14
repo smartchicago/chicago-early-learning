@@ -2,7 +2,7 @@
 # See LICENSE in the project root for copying permission
 
 from django.template import RequestContext
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.cache import cache_control
@@ -21,6 +21,7 @@ import json
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
 from django.utils.translation import ugettext as _
+from django.template.defaultfilters import slugify
 
 logger = logging.getLogger(__name__)
 
@@ -38,14 +39,15 @@ def smsinfo(request):
     ctx = RequestContext(request, {})
     return render_to_response('smsinfo.html', context_instance=ctx)
 
-
-def search(request):
-    ctx = RequestContext(request, {})
-    response = render_to_response('search.html', context_instance=ctx)
-    return response
-
-
 def browse(request):
+    # If a search query was passed in, see if we can find a matching location
+    query = request.GET.get('lq', '').strip()
+    if query:
+        locations = Location.objects.filter(site_name__icontains=query, accepted=True).values('id', 'site_name')
+        if len(locations) > 0:
+            loc = locations[0]
+            return redirect('location-view', location_id=loc['id'], slug=slugify(loc['site_name']))
+
     fields = Location.get_filter_fields()
 
     # TODO: for now left/right split is kinda random, might want more control
