@@ -604,7 +604,12 @@ h1, h2, h3, h4 {
 
 .actions li:first-of-type { margin-left: 0; }
 .actions .single-share { margin-top: 0; }
-.actions .favs-toggle { line-height: 35px; }
+
+.actions .favs-toggle,
+.actions .favs-toggle i { 
+    font-size: 14px;
+    line-height: 20px;
+}
 
 /* Single School View */
 #location-map {
