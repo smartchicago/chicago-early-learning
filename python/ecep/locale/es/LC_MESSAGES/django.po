@@ -974,3 +974,16 @@ msgstr ""
 
 #~ msgid "Send us feedback about the website"
 #~ msgstr "Envíenos sus comentarios sobre el sitio web"
+
+#: portal/models.py:297 portal/templates/browse.html:44
+msgid "Compare and Contact"
+msgstr ""
+
+#: portal/templates/index.html:30
+#, python-format
+msgid ""
+"Apply at one of the Chicago: Ready to Learn! Application Fairs on April 18 "
+"&amp; 25. <a href=\"http://cps.edu/Schools/EarlyChildhood/Documents/RTL"
+"%%20Application%%20Fairs%%20Flyer.pdf\">Click here for more information.</a>"
+msgstr ""
+"Aplique para un programa preescolar en una de las ferias de Chicago: Ready to Learn! en 18 abril y 25 abril. <a href=\"http://cps.edu/Schools/EarlyChildhood/Documents/RTL%%20Spanish%%20Application%%20Fairs%%20Flyer%%203-24-15.pdf\">Haga clic aquí para más información.</a>"

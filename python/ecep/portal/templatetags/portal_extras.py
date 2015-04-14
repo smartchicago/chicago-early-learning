@@ -80,6 +80,16 @@ def telurl(tel):
     return mark_safe(tag)
 
 @register.filter(is_safe=True)
+def smsurl(tel):
+    """
+    Creates a 'sms:' link from a phone number
+    """
+    unformatted = re.sub(r'[^\d]+', '', tel)
+    formatted = nicephone(unformatted)
+    tag = '<a href="sms:%s">%s</a>' % (unformatted, formatted)
+    return mark_safe(tag)
+
+@register.filter(is_safe=True)
 def url_target_blank(text):
     """
     Opens links in new window.

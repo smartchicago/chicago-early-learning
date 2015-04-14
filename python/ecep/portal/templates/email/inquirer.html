@@ -1,0 +1,14 @@
+<p>Thank you for using ChicagoEarlyLearning.org. You have requested that the following programs contact you about their early childhood programs. You should expect to hear back within 3 business days.</p>
+
+{% regroup locations by is_cps_based as location_type_list %}
+{% for location_type in location_type_list %}
+  <h3>{% if location_type.grouper %}Chicago Public School-Based Programs{% else %}Community-Based Agencies{% endif %}</h3>
+
+  <ul>
+  {% for location in location_type.list %}
+    <li>
+      {{ location }}
+    </li>
+  {% endfor %}
+  </ul>
+{% endfor %}

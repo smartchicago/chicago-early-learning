@@ -5,7 +5,7 @@
       <a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle hint--right ga-track"
           data-hint="{{tooltip.star}}" data-loc-id="{{item.key}}"
           data-ga-category="search" data-ga-action="Favorite Location">
-        <i class="icon-heart-empty"></i>
+        <i class="icon-mail-1"></i>
       </a>
       <a href="#collapseLoc{{@index}}"data-toggle="collapse" data-parent="#location{{@index}}" >
         <h1 class="truncate">{{item.site_name}}</h1>
@@ -43,10 +43,15 @@
   <div id="collapseLoc{{@index}}" class="accordion-body collapse">
     <div class="accordion-inner">
       <div class="accordion-right">
-          <a {{#if item.url}}href="{{item.url}}" {{/if}}class="ga-track btn input-block-level{{#unless item.url}} text-grey{{/unless}}" 
+        <a {{#if item.url}}href="{{item.url}}" {{/if}}class="ga-track btn input-block-level{{#unless item.url}} text-grey{{/unless}}" 
               data-ga-category="search" data-ga-action="Location Website" target="_blank">
           <i class="icon-globe"></i>
           {{translations.website}}
+        </a>
+        <a href="#" class="btn input-block-level single-contact ga-track" data-key="{{item.key}}"
+            data-ga-category="search" data-ga-action="Email">
+          <i class="icon-mail"></i>
+          {{translations.contact}}
         </a>
         <button class="btn input-block-level share-btn ga-track" data-key="{{item.key}}"
             data-ga-category="search" data-ga-action="Share Location">

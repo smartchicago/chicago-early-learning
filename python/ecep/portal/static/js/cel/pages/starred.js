@@ -12,7 +12,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
             // Draw the Handlebars template for a location 
             function drawStarredLocations(data) {
                 var template = Handlebars.compile(html),
-                    container = $('.container'),
+                    container = $('.container-faves'),
                     $starred = $('<div></div>'),
                     numLocations = data.locations.length,
                     divRowHtml = '<div class="row bm20"></div>',
@@ -45,7 +45,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                             key = $favorite.data('key');
     
                         favorites.removeIdFromCookie(key);
-                        $.getJSON(common.getUrl('location-api', { locations: favorites.getCookie() }), drawStarredLocations);
+                        location.reload();
                     });
                 }
             }
@@ -60,9 +60,14 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
 
             if (regexResult || cookie) {
                 starredIds = regexResult ? regexResult[1] : cookie;
-                $.getJSON(common.getUrl('location-api', { locations: starredIds }), drawStarredLocations);
+                $.getJSON(common.getUrl('location-api', { locations: starredIds }), function (results) {
+                    drawStarredLocations(results);
+
+                    $('.faves-contact')
+                        .show().attr("href", "/contact/" + starredIds + "/");
+                });
             } else {
-                $('.container').html(gettext('No Favorite Locations'));
+                $('.container-faves').html(gettext('No Favorite Locations'));
             }
 
             favorites.addClearListener();

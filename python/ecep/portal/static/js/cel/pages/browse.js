@@ -559,6 +559,13 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     e.preventDefault();
                 });
 
+                // For the Contact button in locationList
+                $('body').on('click', '.single-contact', function () {
+                    var id = $(this).data('key');
+                    $("#favs-toggle-loc-" + id).trigger('click');
+                    return false;
+                });
+
                 displayMap();
                 refineListener();
             }
