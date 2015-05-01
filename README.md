@@ -63,7 +63,7 @@ This will create a new Ubuntu 12.04 virtual machine using vagrant. Within the vi
 * Create a django local_settings.py file
 * Sync the Django models with the database
 
-Open up a browser to http://localhost:8080/ and you should see the application running.
+Open up a browser to http://localhost:8088/ and you should see the application running.
 
 After the VM is set up you will need to create a super user to sign into the admin interface. You can do the following from a terminal in the chicago-early-learning directory:
 
@@ -72,7 +72,7 @@ After the VM is set up you will need to create a super user to sign into the adm
     cd /cel/app/python/ecep
     python manage.py createsuperuser
 
-You will now be able sign into the admin interface at http://localhost:8080/admin
+You will now be able sign into the admin interface at http://localhost:8088/admin
 
 To deploy to another server you will need to modify the `hosts` file `deployment/hosts` and the Ansible playbooks to deploy. This should require little more than setting up credentials for the new host for ssh access from the provisioning computer and modifying those files.
 
@@ -92,8 +92,8 @@ This command will deploy to your staging server defined in the hosts file, setti
 * Use the Django admin forms to modify/add questions as necessary
 * Run './manage.py dumpdata faq.Question > portal/fixtures/question.json'
 * Commit the modified json file
-* 
-## Contributing 
+*
+## Contributing
 We welcome contributions to the application. A few guidelines:
 
 Fork this repository
