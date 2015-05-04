@@ -8,6 +8,8 @@ import djcelery
 djcelery.setup_loader()
 BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Django settings for ecep project.
 
 DEBUG = True
@@ -133,6 +135,11 @@ INSTALLED_APPS = (
 )
 
 
+DJANGO_JENKINS = False
+LOGFILE = os.path.join(BASE_DIR, 'django.log')
+SMS_DELAY = None
+GA_KEY = ''
+
 # ----------------------------------------------------------------
 # Everything after here depends on local_settings.py
 
@@ -147,16 +154,11 @@ if DJANGO_JENKINS:
     INSTALLED_APPS = tuple(ia)
 
 # setup path settings
-try:
-    SITE_ROOT
-except NameError:
-    SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
-
 TEMPLATE_DIRS = (
-    (SITE_ROOT + '/templates/'),
+    os.path.join(BASE_DIR, 'templates'),
 )
 LOCALE_PATHS = (
-    (SITE_ROOT + '/locale/'),
+    os.path.join(BASE_DIR, 'locale'),
 )
 
 # Email
