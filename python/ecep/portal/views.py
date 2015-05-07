@@ -25,6 +25,7 @@ from django.template.defaultfilters import slugify
 
 logger = logging.getLogger(__name__)
 
+
 def index(request):
     ctx = RequestContext(request, {})
     response = render_to_response('index.html', context_instance=ctx)
@@ -35,9 +36,11 @@ def about(request):
     ctx = RequestContext(request, {})
     return render_to_response('about.html', context_instance=ctx)
 
+
 def smsinfo(request):
     ctx = RequestContext(request, {})
     return render_to_response('smsinfo.html', context_instance=ctx)
+
 
 def browse(request):
     # If a search query was passed in, see if we can find a matching location
@@ -59,6 +62,7 @@ def browse(request):
     response = render_to_response('browse.html', context_instance=ctx)
     return response
 
+
 def contact(request, location_ids):
     location_ids = location_ids.split(',')
     all_locations = Location.objects.filter(pk__in=location_ids, accepted=True)
@@ -71,7 +75,7 @@ def contact(request, location_ids):
             # Figure out which locations have already been contacted
             existing_locations_ids = Contact.objects.filter(email=cd['email'], location__in=location_ids).values_list('location', flat=True)
             new_locations_ids = [l.pk for l in all_locations if l.pk not in existing_locations_ids]
-            
+
             if len(new_locations_ids) > 0:
                 # Create Contact objects for the new locations
                 Contact.objects.bulk_create([
@@ -93,7 +97,7 @@ def contact(request, location_ids):
                         message=cd['message'],
                         location_id=lid
                     ) for lid in new_locations_ids
-                ])       
+                ])
 
                 # Send emails to the inquirer and locations
                 send_emails.delay(cd, new_locations_ids)
@@ -103,7 +107,7 @@ def contact(request, location_ids):
     else:
         form = ContactForm()
 
-    ctx = RequestContext(request, { 
+    ctx = RequestContext(request, {
         'locations': [l.get_context_dict() for l in all_locations],
         'form': form,
     })
@@ -199,6 +203,7 @@ class TermDistance:
         django ValueQuerySet against an arbitrary term
 
     """
+
     def __init__(self, obj, objtype, field, term):
         """Initialize TermDistance class
 
@@ -302,6 +307,7 @@ class LazyEncoder(json.JSONEncoder):
 
     Taken from: http://khamidou.com/django-translation-in-json.html
     """
+
     def default(self, obj):
         if isinstance(obj, Promise):
             return force_unicode(obj)
@@ -369,7 +375,7 @@ def location_api(request, location_ids=None):
 
 def location(request, location_id=None, slug=None):
     loc = get_object_or_404(Location, id=location_id)
-    ctx = RequestContext(request, { 
+    ctx = RequestContext(request, {
         'loc': location_details(location_id),
         'loc_description': loc.q_stmt,
         'loc_neighborhood': loc.neighborhood
@@ -433,7 +439,6 @@ def neighborhood_api(request):
     return _make_response(context, etag_hash)
 
 
-## Starred Location Views
 def starred(request):
     """
     Render starred locations page for as many favorites as are set in url or cookie
