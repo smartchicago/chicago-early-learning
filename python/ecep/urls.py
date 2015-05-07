@@ -14,13 +14,15 @@ js_info_dict = {
     'packages': ('portal',),
 }
 
+from portal import views as portal_views
+
 sitemaps = {'location': LocationSiteMap, 'static': StaticViewSitemap}
 
 urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
-    url(r'^$', 'portal.views.index', name='index'),
-    url(r'^about$', 'portal.views.about', name='about'),
+    url(r'^$', portal_views.Index.as_view(), name='index'),
+    url(r'^about$', portal_views.About.as_view(), name='about'),
     url(
         r'^robots\.txt$',
         TemplateView.as_view(template_name='robots.txt', content_type="text/plain"),
@@ -46,7 +48,7 @@ urlpatterns = patterns(
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
     # sms info page
-    url(r'^sms/?$', 'portal.views.smsinfo', name='sms-info'),
+    url(r'^sms/?$', portal_views.SMSInfo.as_view(), name='sms-info'),
 
     # Contact
     url(r'^contact/(?P<location_ids>[0-9,]*)/$', 'portal.views.contact', name='contact'),
@@ -62,8 +64,16 @@ urlpatterns = patterns(
     url(r'^location/(?P<location_id>\d+)/(?P<slug>[\w-]+)/$', 'portal.views.location', name='location-view'),
 
     # Starred Location Views
-    url(r'^starred/?[0-9,]*/$', 'portal.views.starred', name='starred'),
-    url(r'^favorites/?[0-9,]*/$', 'portal.views.starred', name='favorites'),
+    url(
+        r'^starred/?[0-9,]*/$',
+        portal_views.Starred.as_view(),
+        name='starred',
+    ),
+    url(
+        r'^favorites/?[0-9,]*/$',
+        portal_views.Starred.as_view(),
+        name='favorites',
+    ),
 
     # i18n
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', kwargs=js_info_dict, name='javascript-catalog'),
