@@ -4,7 +4,7 @@
 import os, sys
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ecep.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 
 sys.path.append(sys.path[0] + '/ecep')
 

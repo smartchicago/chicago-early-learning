@@ -154,6 +154,30 @@ GA_KEY = ''
 
 # Import local_settings.py
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': LOGFILE,
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['logfile'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'portal.views': {
+            'handlers': ['logfile'],
+            'level': 'DEBUG',
+            'propagate': True,
+        }
+    }
+}
+
 from local_settings import *
 
 if DJANGO_JENKINS:
@@ -177,32 +201,4 @@ try:
     EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 except NameError:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# setup logging
-try:
-    LOGGING
-except NameError:
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'handlers': {
-            'logfile': {
-                'level': 'DEBUG',
-                'class': 'logging.handlers.RotatingFileHandler',
-                'filename': LOGFILE,
-            }
-        },
-        'loggers': {
-            'django.request': {
-                'handlers': ['logfile'],
-                'level': 'DEBUG',
-                'propagate': True,
-            },
-            'portal.views': {
-                'handlers': ['logfile'],
-                'level': 'DEBUG',
-                'propagate': True,
-            }
-        }
-    }
 
