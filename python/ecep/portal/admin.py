@@ -118,7 +118,7 @@ class LocationForm(forms.ModelForm):
         model = Location
 
 
-class LocationAdmin(admin.OSMGeoAdmin,TranslationAdmin):
+class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
 
     # General Settings
     # Template override that adds buttons to propose/accept changes
@@ -157,7 +157,7 @@ class LocationAdmin(admin.OSMGeoAdmin,TranslationAdmin):
         ('Other',   {'fields': [('ages', 'prg_hours', 'accred'),
                                 ('language_1', 'language_2', 'language_3'),
                                 'q_stmt', 'open_house', 'curriculum',
-                                'q_rating',]}),
+                                'q_rating', ]}),
     ]
 
     def _delete_messages(self, request):
@@ -355,7 +355,7 @@ class LocationAdmin(admin.OSMGeoAdmin,TranslationAdmin):
         filename = slugify('%s_location_export' % str(datetime.now().date())) + '.csv'
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="%s";' % filename
-        response.write(u'\ufeff'.encode('utf8')) # BOM for excel
+        response.write(u'\ufeff'.encode('utf8'))  # BOM for excel
 
         result = Location.objects.all()
         header = next(result.values().iterator()).keys()
@@ -380,10 +380,18 @@ class LocationAdmin(admin.OSMGeoAdmin,TranslationAdmin):
             del actions['delete_selected']
         return actions
 
+
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'phone', 'zip', 'location', 'is_cps_based', 'created')
-    list_filter = ['location__is_cps_based',]
-    search_fields = ['first_name', 'last_name', 'email','location__site_name']
+    list_display = (
+        'name', 'email', 'phone', 'zip', 'location', 'is_cps_based', 'created'
+    )
+    list_filter = ['location__is_cps_based']
+    search_fields = [
+        'first_name',
+        'last_name',
+        'email',
+        'location__site_name',
+    ]
 
     def name(self, obj):
         return "%s %s" % (obj.first_name, obj.last_name)

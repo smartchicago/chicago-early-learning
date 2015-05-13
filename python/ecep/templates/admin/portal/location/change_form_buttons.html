@@ -3,13 +3,13 @@
 {% if is_edit_admin %}
     {% if show_save %}
     <input type="submit" value="{% trans 'Accept Changes' %}" class="default" name="_save" />
-    <button><a href="{% url admin:reject_updates object_id %}">{% trans 'Reject All Pending Changes' %}</a></button>
+    <button><a href="{% url 'admin:reject_updates' object_id %}">{% trans 'Reject All Pending Changes' %}</a></button>
     {% elif show_save_as_new %}
     <input type="submit" class="default" value="{% trans 'Save new' %}" name="_saveasnew" {{ onclick_attrib }}/>
     {% endif %}
 {% else %}
 <input type="submit" value="{% trans 'Submit Changes for Review' %}" class="default" name="_proposechanges" />
 {% endif %}
-{% if show_delete %}<p class="deletelink-box"><a href="{% url admin:portal_location_delete object_id %}" class="deletelink">{% trans "Delete" %}</a></p>
+{% if show_delete %}<p class="deletelink-box"><a href="{% url 'admin:portal_location_delete' object_id %}" class="deletelink">{% trans "Delete" %}</a></p>
 {% endif %}
 </div>
