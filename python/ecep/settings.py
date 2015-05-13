@@ -41,10 +41,10 @@ LANGUAGE_CODE = 'en'
 
 # The languages supported in the application.
 # This lambda function only serves to mark the names as being i18n'd
-ugettext = lambda s: s
+ugettext_lazy = lambda s: s
 LANGUAGES = (
-    ('en', ugettext('English')),
-    ('es', ugettext('Spanish')),
+    ('en', ugettext_lazy('English')),
+    ('es', ugettext_lazy('Spanish')),
 )
 
 SITE_ID = 1

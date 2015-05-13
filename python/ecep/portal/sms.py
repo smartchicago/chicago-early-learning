@@ -16,7 +16,7 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from models import Location
 from twilio.twiml import Response
 from twilio.rest import TwilioRestClient
@@ -203,7 +203,7 @@ class Conversation(object):
             try:
                 geocoder = geocoders.GoogleV3()
                 address, (lat, lng) = geocoder.geocode(zipcode, exactly_one=True)
-                origin = GEOSGeometry('POINT(%f %f)' % (lng, lat,)) 
+                origin = GEOSGeometry('POINT(%f %f)' % (lng, lat,))
                 locations = Location.objects.filter(geom__distance_lte=(origin, D(mi=3))).distance(origin).order_by('distance')[:8]
             except:
                 pass

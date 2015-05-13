@@ -15,7 +15,7 @@ from django.db.models import Count, Q
 from django.contrib.gis.geos import Polygon
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 
 from faq.models import Topic, Question
