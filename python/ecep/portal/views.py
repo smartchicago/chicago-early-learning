@@ -11,7 +11,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.cache import cache_control
 from django.views.generic import TemplateView
 from django.utils.translation import check_for_language
-from django.utils import simplejson
 from django.db.models import Count, Q
 from django.contrib.gis.geos import Polygon
 from django.utils.functional import Promise
@@ -215,7 +214,7 @@ def portal_autocomplete(request):
         "response": sorted_comparisons
     }
 
-    return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+    return HttpResponse(json.dumps(data), mimetype='application/json')
 
 
 class TermDistance(object):

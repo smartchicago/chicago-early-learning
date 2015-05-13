@@ -9,10 +9,11 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from django.core.urlresolvers import reverse
+
 from portal.sms import Sms
 from portal.admin import LocationForm
 from django import forms
-import pprint
 
 
 class SimpleTest(TestCase):
@@ -100,3 +101,26 @@ class CustomAdminForm(TestCase):
             self.test_form.clean()
         except forms.ValidationError:
             self.assertFail('Should be able to save a valid point from the LocationForm')
+
+
+class ViewTests(TestCase):
+
+    def test_index(self):
+        url = reverse('index')
+        res = self.client.get(url)
+        self.assertEqual(res.status_code, 200)
+
+    def test_about(self):
+        url = reverse('about')
+        res = self.client.get(url)
+        self.assertEqual(res.status_code, 200)
+
+    def test_sms_info(self):
+        url = reverse('sms-info')
+        res = self.client.get(url)
+        self.assertEqual(res.status_code, 200)
+
+    def test_browse(self):
+        url = reverse('browse')
+        res = self.client.get(url)
+        self.assertEqual(res.status_code, 200)
