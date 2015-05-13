@@ -78,7 +78,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # List of callables that know how to import templates from various sources.
@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.gis',
     'django.contrib.sitemaps',
+    'compressor',
     'portal',
     'portal.sms',           # This is necessary for the celery worker to respond to messages
     'django_twilio',
@@ -148,6 +149,9 @@ DJANGO_JENKINS = False
 LOGFILE = os.path.join(BASE_DIR, 'django.log')
 SMS_DELAY = None
 GA_KEY = ''
+
+# django-compressor settings
+COMPRESS_ENABLED = True
 
 # ----------------------------------------------------------------
 # Everything after here depends on local_settings.py

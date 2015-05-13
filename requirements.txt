@@ -19,6 +19,8 @@ kombu==2.5.16
 librabbitmq==1.0.1
 psycopg2==2.6
 python-dateutil==2.2
+django-compressor==1.5
+slimit==0.8.1
 pytz==2015.4
 simplejson==3.3.0
 six==1.7.2

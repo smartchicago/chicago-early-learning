@@ -1,11 +1,4 @@
-{% comment %}
-Copyright (c) 2012, 2013 Azavea, Inc.
-See LICENSE in the project root for copying permission
-{% endcomment %}
-{% load i18n %}
-{% load staticfiles %}
-{% load static %}
-<!DOCTYPE html>
+<!DOCTYPE html>{% load i18n staticfiles static compress %}
 <html>
   <head>
     <title>{% block title %}{% trans "Chicago Early Learning" %} - {% trans "Find early learning programs near your home or work." %}{% endblock %}</title>
@@ -22,12 +15,26 @@ See LICENSE in the project root for copying permission
     <link rel="apple-touch-icon-precomposed" href='{% static "img/apple-touch-icon-57-precomposed.png" %}'>
     <link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
 
+    {% compress css %}
     <link href='{% static "css/lib/hint.min.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
+    <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
+    <style>
+        /*
+            This is a hack because there is no other simple way to ensure that the correct
+            background url is selected in all cases for this css style.
+        */
+        /* spinner */
+        .ajax-spinner {
+            background: url("{% static "img/ajax-spinner.gif" %}") no-repeat center;
+            width: 100%;
+        }
+    </style>
+    {% endcompress %}
     <!--[if lt IE 9]>
       <script src='{% static "js/lib/html5shiv.js" %}'></script>
       <link href='{% static "css/lib/leaflet.ie.css" %}' rel="stylesheet">
@@ -42,19 +49,7 @@ See LICENSE in the project root for copying permission
         });
     </script>
     {% block otherhead %}{% endblock %}
-    <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
 
-    <style>
-        /*
-            This is a hack because there is no other simple way to ensure that the correct
-            background url is selected in all cases for this css style.
-        */
-        /* spinner */
-        .ajax-spinner {
-            background: url("{% static "img/ajax-spinner.gif" %}") no-repeat center;
-            width: 100%;
-        }
-    </style>
 
   </head>
   <body lang="{{ LANGUAGE_CODE }}">
@@ -124,6 +119,8 @@ See LICENSE in the project root for copying permission
     </div>
 
     <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+
+    {% compress js %}
     <script type="text/javascript">
     (function() {
         var ga = document.createElement('script');
@@ -137,6 +134,7 @@ See LICENSE in the project root for copying permission
 
     <script src='{% static "js/require.js" %}'></script>
     <script src='{% static "js/require-config.js" %}'></script>
+    {% endcompress %}
     <script>
         var inDevelopment = {{ settings.DEBUG|yesno:"true,false" }},
             version = 9;
