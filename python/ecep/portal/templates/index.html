@@ -29,16 +29,6 @@ See LICENSE in the project root for copying permission
     </div>
 
     <div class="container-custom" id="featurettes">
-      {% with rtl_url="http://cps.edu/readytolearn" %}
-      <div class="announcement-mobile">
-        <h3>Ready…Set…Enroll!</h3>
-        <p><strong>March 2 - May 1, 2015</strong></p>
-        <p>{% blocktrans %}Chicago Public Schools is now accepting preschool applications. <a href="{{ rtl_url }}">Click here</a>.{% endblocktrans %}</p>
-        <p>{% blocktrans %}Head Start, Early Head Start enrollment is year long.{% endblocktrans %}</p>
-        <p>{% blocktrans %}Apply at one of the Chicago: Ready to Learn! Application Fairs on April 18 &amp; 25. <a href="http://cps.edu/Schools/EarlyChildhood/Documents/RTL%20Application%20Fairs%20Flyer.pdf">Click here for more information.</a>{% endblocktrans %}</p>
-      </div>
-      {% endwith %}
-
   		<p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
 
       {% with rtl_url="http://www.cps.edu/schools/earlychildhood/pages/earlychildhood.aspx" rtl_tel=settings.HOTLINE_PHONE|telurl sms_tel=settings.TWILIO_PHONE|telurl %}
