@@ -109,7 +109,7 @@ class Location(models.Model):
 
     display_order = dict((k,v) for v,k in enumerate([
             'open_house',
-            'accred', 'ages', 'description', 'duration_hours', 
+            'accred', 'ages', 'description', 'duration_hours',
             'weekday_availability', 'languages', 'program_info',
             'curriculum', 'quality_rating'
         ]))
@@ -244,8 +244,8 @@ class Location(models.Model):
         lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
         languages = ", ".join(lang_list)
         if languages != '':
-            sfields.append({'key': 'languages', 
-                            'fieldname': _('Languages (other than English)'), 
+            sfields.append({'key': 'languages',
+                            'fieldname': _('Languages (other than English)'),
                             'value': languages})
 
         # Program Duration/Hours
@@ -273,7 +273,7 @@ class Location(models.Model):
         # translatable displayed text
         q_rating = self.q_rating or 'Coming Soon'
         sfields.append({'key': 'quality_rating',
-                        'fieldname': _('Quality Rating'), 
+                        'fieldname': _('Quality Rating'),
                         'value': _(q_rating)})
 
         # Phone
@@ -372,7 +372,7 @@ class Contact(models.Model):
     child_3 = models.CharField(ugettext_lazy('Child 3\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
     child_4 = models.CharField(ugettext_lazy('Child 4\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
     child_5 = models.CharField(ugettext_lazy('Child 5\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
-    
+
     message = models.TextField(blank=True)
 
     class Meta:

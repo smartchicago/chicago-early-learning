@@ -1,8 +1,10 @@
 # Copyright (c) 2012, 2013 Azavea, Inc.
 # See LICENSE in the project root for copying permission
-
+from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
+from django.conf.urls.static import static
+
 from portal.sms import Sms, Conversation, SmsCallback
 from django.views.generic import TemplateView, RedirectView
 from sitemap import LocationSiteMap, StaticViewSitemap
@@ -98,3 +100,7 @@ urlpatterns += i18n_patterns(
     # Neighborhood API
     url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),
 )
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)

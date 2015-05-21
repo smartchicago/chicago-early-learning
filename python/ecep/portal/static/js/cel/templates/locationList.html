@@ -25,7 +25,7 @@
           data-hint="{{tooltip.accreditation}}">
         <img id="loc-icon-{{item.key}}" class="location-icons"
             src='{{static "img/leaflet-icons/center.png"}}' />
-      </a> 
+      </a>
       <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"
           id="loc-dirs" class="hideonmobile directions-icon hint--left ga-track" data-hint="{{tooltip.directions}}"
           data-ga-category="search" data-ga-action="Get Directions" target="_blank">
@@ -43,7 +43,7 @@
   <div id="collapseLoc{{@index}}" class="accordion-body collapse">
     <div class="accordion-inner">
       <div class="accordion-right">
-        <a {{#if item.url}}href="{{item.url}}" {{/if}}class="ga-track btn input-block-level{{#unless item.url}} text-grey{{/unless}}" 
+        <a {{#if item.url}}href="{{item.url}}" {{/if}}class="ga-track btn input-block-level{{#unless item.url}} text-grey{{/unless}}"
               data-ga-category="search" data-ga-action="Location Website" target="_blank">
           <i class="icon-globe"></i>
           {{translations.website}}
