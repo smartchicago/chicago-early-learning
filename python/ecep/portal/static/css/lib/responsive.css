@@ -1,6 +1,6 @@
 /* Large Desktop ------------------------------ */
 
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
     .cb_slide_panel {
         background: #fff;
         margin-top: 61px;
@@ -10,7 +10,7 @@
 
 /* Portrait tablet to landscape and desktop --- */
 
-@media (min-width: 767px) and (max-width: 978px) { 
+@media (min-width: 767px) and (max-width: 978px) {
     body {
         overflow: hidden;
     }
@@ -55,8 +55,8 @@
 
 /* Landscape phone to portrait tablet --------- */
 
-@media (max-width: 1023px) { 
-    
+@media (max-width: 1023px) {
+
     #toggleListBtn {
         margin-top: -2px;
         font-size: 16px;
@@ -76,9 +76,9 @@
         display: none;
     }
 
-    .hint:hover:before, 
-    .hint:hover:after, 
-    [data-hint]:hover:before, 
+    .hint:hover:before,
+    .hint:hover:after,
+    [data-hint]:hover:before,
     [data-hint]:hover:after {
         visibility: hidden;
         opacity: 0;
@@ -111,7 +111,7 @@
     .web-share {
         width: 50%;
     }
-    
+
     .navbar .navbar-right {
         width: 80%;
     }
@@ -128,7 +128,7 @@
     .navbar .nav > li span {
         display: none;
     }
-    
+
     .results-right {
         visibility: hidden;
         top: 111px;
@@ -170,11 +170,11 @@
         .media {
             margin: 0;
         }
-        .media > .pull-left { 
+        .media > .pull-left {
             float: none;
             margin-right: 0;
         }
-        .media > .pull-right { 
+        .media > .pull-right {
             float: none;
         }
         .media img {
@@ -247,7 +247,7 @@
         #location3 {
             margin-top: 44px;
         }
-        
+
         #filter-options {
             position: relative;
             width: 100%;
@@ -321,7 +321,7 @@
     #header-dist {
         display: none;
     }
-    
+
     .mobile-chevron {
         right: 20px;
         margin-top: -30px;
@@ -339,13 +339,13 @@
     .container-custom .announcement {
             display: none;
         }
-        
+
     .container-custom .description-mobile,
     .container-custom .announcement-mobile {
             display: block;
             margin-bottom: 30px;
         }
-        
+
         .autocomplete-submit {
             display: none;
         }
@@ -371,23 +371,23 @@
         .leaflet-container .leaflet-control-zoom {
             margin-top: 31px;
         }
-        
+
         .locations-wrapper {
-            overflow-y: scroll; 
+            overflow-y: scroll;
             overflow-x: hidden;
             /* enable native scrolling on mobile */
             -webkit-overflow-scrolling: touch;
         }
-        
+
         .location .span2 {
             margin-top: 0;
             margin-right: 0;
         }
-        
+
         .hideonmobile {
             display: none;
         }
-        
+
         .about-content {
             text-align: center;
         }
@@ -407,22 +407,22 @@
         #about-title {
             padding-left: 0;
         }
-        
+
         .fullwidth {
             width: 100% !important;
         }
-        
+
             .accordion-right {
         width: 100%;
     }
-		
+
 				.favorite {
 						padding: 35px 10px 35px 35px;
             width: auto;
 						left: 0;
 						right: 0;
         }
-				
+
 				#faq-container {
 					padding: 36px;
 					width: auto;
@@ -482,16 +482,20 @@
     .website-phone {
         margin-bottom: 20px;
     }
+
+    .filters-options li {
+        margin-right: 15px;
+    }
 }
 
 
 /* Landscape phones and down ------------------ */
 
-@media (max-width: 480px) { 
+@media (max-width: 480px) {
     #logo {
         max-width: 45px !important;
     }
-    
+
     .accordion-right {
         width: 100%;
     }
@@ -501,7 +505,7 @@
     .share-btn {
         float: right;
     }
-    
+
     .filters-left,
     .filters-right {
         float: none;
@@ -556,16 +560,16 @@
         .leaflet-container .leaflet-control-zoom {
             margin-top: 31px;
         }
-        
+
         .fave-star {
             display: none;
         }
-        
+
         .single-share {
 						float: left;
 						position: relative;
 				}
-						
+
 		.filters-1,
 		.filters-2,
 		.filters-3,
@@ -573,8 +577,9 @@
 			width: 50%;
 			float: left;
 		}
-		
+
 		.school-details {
 			clear: both;
 		}
+
  }
