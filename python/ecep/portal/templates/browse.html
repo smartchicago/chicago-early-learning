@@ -87,9 +87,25 @@ See LICENSE in the project root for copying permission
                   data-ga-category="search" data-ga-action="Reset Search">{% trans "Reset Search" %}</button></li>
             <li><button class="acordion-toggle btn pull-right ga-track" id="filters-show-more" data-toggle="collapse" data-target="#filters-more"
                   data-ga-category="search" data-ga-action="More Filters">{% trans "More Filters" %}</button></li>
-            <li><img src="{% static "img/leaflet-icons/center.png" %}"> &ndash; <strong>Community-based</strong></li>
-            <li><img src="{% static "img/leaflet-icons/school.png" %}"> &ndash; <strong>CPS-based</strong></li>
           </ul>
+        </div>
+        <div class="row">
+          <table class="map-key">
+            <tbody>
+              <tr>
+                <td><img src="{% static "img/leaflet-icons/center.png" %}"></td>
+                <td><img src="{% static "img/leaflet-icons/school.png" %}"></td>
+                <td><img src="{% static "img/leaflet-icons/school-starred.png" %}"></td>
+                <td><i class="icon-star-empty"></i></td>
+              </tr>
+              <tr>
+                <td class="map-key-text"><strong>{% trans "Community based" %}</strong></td>
+                <td class="map-key-text"><strong>{% trans "CPS based" %}</strong></td>
+                <td class="map-key-text"><strong>{% trans "Chosen Compare &amp; Contact Locations" %}</strong></td>
+                <td class="map-key-text"><strong>{% trans "Locations with nation accreditation" %}</strong></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
