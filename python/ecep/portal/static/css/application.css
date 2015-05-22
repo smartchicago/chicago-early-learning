@@ -704,34 +704,50 @@ h1, h2, h3, h4 {
     margin-top: 15px;
 }
 
+.filters-options ul {
+    float: left;
+}
+
 .filters-options li {
-    margin-right: 20px;
+    margin-right: 30px;
+    text-align: center;
+}
+
+.filters-options li.accredited {
+    padding-top: 15px;
+}
+
+.filters-options li.accredited br {
+    margin-top: 90px;
+}
+
+.filters-options li.accredited i {
+    font-size: 22px;
+    color: white;
+    background: #266998;
+    padding: 10px;
+}
+
+.fitlers-options li.accredited strong {
+    clear: both;
+}
+
+.filters-options strong {
+    font-size: 12px;
 }
 
 #filters-more ul {
     border-top: none;
 }
 
-#filter-clear-all {
+#filters-show-more {
     float: none;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.map-key {
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-bottom: 20px;
-}
-
-.map-key td {
-    text-align: center;
-}
-
-.map-key td i {
-    font-size: 22px;
-}
-
-.map-key-text {
-    padding-top: 10px;
+#filter-clear-all {
+    margin-top: 20px;
 }
 
 .cb_slide_panel h1 {
