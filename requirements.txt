@@ -1,4 +1,4 @@
-Django==1.4.20
+Django==1.7.7
 amqp==1.0.13
 anyjson==0.3.3
 argparse==1.2.1
@@ -6,23 +6,25 @@ billiard==2.7.3.34
 celery==3.0.24
 django-celery==3.0.21
 -e git://github.com/bhuber/django-faq.git@c7d052401b571599c76b18477e596c031c5b1fb9#egg=django_faq-master
-django-modeltranslation==0.7.3
-django-rosetta==0.6.8
--e git://github.com/rdegges/django-twilio.git@1c020e2a7c6f4845e7309d7277380c8b76d38ba4#egg=django_twilio-dev
+django-modeltranslation==0.9
+django-rosetta==0.7.6
+goslate==1.4.0
+django-twilio==0.8
 -e git://github.com/mazelife/django-redactoreditor.git@222bbe364d2fb1445ffb185644716d171f11cc98#egg=django_redactoreditor-master
 gdata==2.0.17
 geopy==0.95.1
-gunicorn==17.5
+gunicorn==19.3.0
 httplib2==0.9
 kombu==2.5.16
 librabbitmq==1.0.1
-psycopg2==2.5.1
+psycopg2==2.6
 python-dateutil==2.2
-pytz==2014.4
+django-compressor==1.5
+slimit==0.8.1
+pytz==2015.4
 simplejson==3.3.0
 six==1.7.2
 twilio==3.5.1
-unittest2==0.5.1
 vectorformats==0.1
 mock==1.0.1
 wsgiref==0.1.2

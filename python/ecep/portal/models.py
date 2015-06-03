@@ -101,19 +101,22 @@ class Location(models.Model):
     objects = models.GeoManager()
 
     # List of simple/boolean fields that should be displayed by Location renderers/views
-    display_include = {'ages', 'accred', 'accept_ccap', 'is_home_visiting', 'is_hs', 'is_ehs',
-                       'is_community_based', 'is_cps_based', 'open_house', 'curriculum',}
+    display_include = {
+        'ages', 'accred', 'accept_ccap', 'is_home_visiting', 'is_hs', 'is_ehs',
+        'is_community_based', 'is_cps_based', 'open_house', 'curriculum',
+    }
 
     # List of fields that should be hidden when left blank
-    hide_if_none = {'open_house', 'curriculum',}
+    hide_if_none = {
+        'open_house', 'curriculum',
+    }
 
-    display_order = dict((k,v) for v,k in enumerate([
+    display_order = dict((k, v) for v, k in enumerate([
             'open_house',
-            'accred', 'ages', 'description', 'duration_hours', 
+            'accred', 'ages', 'description', 'duration_hours',
             'weekday_availability', 'languages', 'program_info',
             'curriculum', 'quality_rating'
         ]))
-
 
     q_rating_translations = [
         ugettext_lazy('None'),
@@ -191,14 +194,16 @@ class Location(models.Model):
         if self.city.isupper():
             self.city = title(self.city)
 
-        item = {'address': self.address,
-                'city': self.city,
-                'site_name': self.site_name,
-                'zip': self.zip,
-                'url': self.url,
-                'state': self.state,
-                'key': self.pk,
-                'email': self.email,}
+        item = {
+            'address': self.address,
+            'city': self.city,
+            'site_name': self.site_name,
+            'zip': self.zip,
+            'url': self.url,
+            'state': self.state,
+            'key': self.pk,
+            'email': self.email,
+        }
 
         # simple fields to present -- these are the attributes that have text content
         sfields = []
@@ -209,15 +214,21 @@ class Location(models.Model):
         # Fields to include in Affiliation aggregate field
         affiliation_fields = [self._meta.get_field_by_name(name)[0] for name in
                               ['is_home_visiting', 'is_community_based', 'is_cps_based', 'is_hs', 'is_ehs']]
-        program_fields = [self._meta.get_field_by_name(name)[0] for name in
-                         ['is_full_year', 'is_school_year']]
-        week_fields = [self._meta.get_field_by_name(name)[0] for name in
-                      ['is_full_week', 'is_part_week', 'is_full_day', 'is_part_day']]
+        program_fields = [
+            self._meta.get_field_by_name(name)[0] for name in
+            ['is_full_year', 'is_school_year']
+        ]
+
+        week_fields = [
+            self._meta.get_field_by_name(name)[0] for name in
+            ['is_full_week', 'is_part_week', 'is_full_day', 'is_part_day']
+        ]
 
         aff_field_names = {f.get_attname() for f in affiliation_fields}
 
         for field in self._meta.fields:
             fname = field.get_attname()
+
             if not fname in self.display_include or fname in aff_field_names:
                 continue
 
@@ -244,8 +255,8 @@ class Location(models.Model):
         lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
         languages = ", ".join(lang_list)
         if languages != '':
-            sfields.append({'key': 'languages', 
-                            'fieldname': _('Languages (other than English)'), 
+            sfields.append({'key': 'languages',
+                            'fieldname': _('Languages (other than English)'),
                             'value': languages})
 
         # Program Duration/Hours
@@ -273,7 +284,7 @@ class Location(models.Model):
         # translatable displayed text
         q_rating = self.q_rating or 'Coming Soon'
         sfields.append({'key': 'quality_rating',
-                        'fieldname': _('Quality Rating'), 
+                        'fieldname': _('Quality Rating'),
                         'value': _(q_rating)})
 
         # Phone
@@ -332,6 +343,7 @@ class Location(models.Model):
 
         super(Location, self).save(*args, **kwargs)
 
+
 class LocationEdit(models.Model):
     """
     Model class that stores edits for locations
@@ -346,6 +358,7 @@ class LocationEdit(models.Model):
     pending = models.BooleanField(default=True)
     edit_type = models.CharField(max_length=6, choices=EDIT_TYPE_CHOICES)
     accepted = models.BooleanField(default=False)
+
 
 class Contact(models.Model):
     CHILD_AGE_CHOICES = [
@@ -372,7 +385,7 @@ class Contact(models.Model):
     child_3 = models.CharField(ugettext_lazy('Child 3\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
     child_4 = models.CharField(ugettext_lazy('Child 4\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
     child_5 = models.CharField(ugettext_lazy('Child 5\'s Age'), max_length=6, choices=CHILD_AGE_CHOICES, blank=True)
-    
+
     message = models.TextField(blank=True)
 
     class Meta:

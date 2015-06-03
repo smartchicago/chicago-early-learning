@@ -20,37 +20,37 @@ h1, h2, h3, h4 {
         font-weight: 300;
 }
 
-.container { 
-    margin-bottom: 20px; 
+.container {
+    margin-bottom: 20px;
 }
 
 /* Common Styles */
-.fs20 { 
-    font-size: 20px; 
+.fs20 {
+    font-size: 20px;
 }
 
-.tac { 
-    text-align: center; 
+.tac {
+    text-align: center;
 }
 
-.tm61 { 
-    margin-top: 90px; 
+.tm61 {
+    margin-top: 90px;
 }
 
-.tm30 { 
-    margin-top: 30px; 
+.tm30 {
+    margin-top: 30px;
 }
 
-.bm30 { 
-    margin-bottom: 30px; 
+.bm30 {
+    margin-bottom: 30px;
 }
 
-.bm20 { 
-    margin-bottom: 20px; 
+.bm20 {
+    margin-bottom: 20px;
 }
 
-.text-grey { 
-    color: grey; 
+.text-grey {
+    color: grey;
 }
 
 /*
@@ -85,7 +85,7 @@ h1, h2, h3, h4 {
     font-weight: 400;
 }
 
-.navbar-inverse .brand, 
+.navbar-inverse .brand,
 .navbar-inverse .nav > li > a {
     color: #fff;
     transition: 0.3s;
@@ -93,21 +93,21 @@ h1, h2, h3, h4 {
     -moz-transition: 0.3s;
 }
 
-.navbar-inverse .brand, 
+.navbar-inverse .brand,
 .navbar-inverse .nav > li > a:hover {
     color: #eece16;
     transition: 0.3s;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
 }
-    
-.navbar-inverse .nav li.dropdown.open > .dropdown-toggle, 
-.navbar-inverse .nav li.dropdown.active > .dropdown-toggle, 
+
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
+.navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
     background-color: rgb(29,44,54);
 }
 
-.navbar-inverse .brand, 
+.navbar-inverse .brand,
 .navbar-inverse .nav > li > a {
     text-shadow: none;
     color: #fff;
@@ -403,7 +403,7 @@ h1, h2, h3, h4 {
     font-size: 16px;
     margin: 0;
     line-height: 16px;
-				padding-bottom: 4px; 
+				padding-bottom: 4px;
 }
 
 .accordion-inner h2 {
@@ -499,13 +499,13 @@ h1, h2, h3, h4 {
     height: 10px;
     z-index: 9999;
 }
- 
+
 ::-webkit-scrollbar-track {
         background-color: rgb(248, 248, 248);
     border-radius: 0;
     border: 1px solid #eee;
 }
- 
+
 ::-webkit-scrollbar-thumb {
   background-color: rgb(190, 190, 190);
     border: 1px solid rgb(180, 180, 180);
@@ -515,7 +515,7 @@ h1, h2, h3, h4 {
 
 /* Favorites ----------------------- */
 
-.toolbar-fav {    
+.toolbar-fav {
     color: #fff !important;
 }
 
@@ -526,7 +526,7 @@ h1, h2, h3, h4 {
     margin-top: 90px;
 }
 
-.faves-top .actions { 
+.faves-top .actions {
     margin-top: 20px;
 }
 
@@ -606,7 +606,7 @@ h1, h2, h3, h4 {
 .actions .single-share { margin-top: 0; }
 
 .actions .favs-toggle,
-.actions .favs-toggle i { 
+.actions .favs-toggle i {
     font-size: 14px;
     line-height: 20px;
 }
@@ -652,7 +652,7 @@ h1, h2, h3, h4 {
     margin-top: 108px;
 }
 
-.cb_slide_panel.panel_left, 
+.cb_slide_panel.panel_left,
 .cb_slide_panel.panel_right {
     width: 100%;
 }
@@ -704,16 +704,46 @@ h1, h2, h3, h4 {
     margin-top: 15px;
 }
 
+.filters-options ul {
+    float: left;
+}
+
 .filters-options li {
-    margin-right: 20px;
+    margin-right: 30px;
+    text-align: center;
+}
+
+.filters-options li.accredited {
+    padding-top: 15px;
+}
+
+.filters-options li.accredited br {
+    margin-top: 90px;
+}
+
+.filters-options li.accredited i {
+    font-size: 22px;
+    color: white;
+    background: #266998;
+    padding: 10px;
+}
+
+.filters-options strong {
+    font-size: 12px;
 }
 
 #filters-more ul {
     border-top: none;
 }
 
-#filter-clear-all {
+#filters-show-more {
     float: none;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#filter-clear-all {
+    margin-top: 20px;
 }
 
 .cb_slide_panel h1 {
@@ -1102,7 +1132,7 @@ h1, h2, h3, h4 {
 .static-title {
     margin-top: 55px;
 }
-    
+
 .location-icons {
     max-width: 18px;
 }
@@ -1120,7 +1150,7 @@ h1, h2, h3, h4 {
     text-overflow: ellipsis;
     overflow: hidden;
 }
-    
+
 .fc-webicon { display: inline-block; padding: 7px 5px; background-size: 100%; width: 21px; height: 17px; text-align: left; -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; margin-bottom: 5px; color: #F1F2F2; }
 .fc-webicon:hover { color: white; margin: -1px 0 1px; -moz-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25); -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25); }
 

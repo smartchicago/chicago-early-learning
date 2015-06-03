@@ -1,114 +1,126 @@
 # Copyright (c) 2012, 2013 Azavea, Inc.
 # See LICENSE in the project root for copying permission
 
-from django.template import RequestContext
-from django.shortcuts import render_to_response, get_object_or_404, redirect
+import logging
+import hashlib
+import json
+
+from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.cache import cache_control
+from django.views.generic import TemplateView
+from django.utils.translation import check_for_language
+from django.db.models import Count, Q
+from django.contrib.gis.geos import Polygon
+from django.utils.functional import Promise
+from django.utils.encoding import force_unicode
+from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import slugify
+
+from faq.models import Topic, Question
+
 from models import Location, Neighborhood, Contact
 from tasks import send_emails
 from forms import ContactForm
-import logging
-import hashlib
-from faq.models import Topic, Question
-from django.utils.translation import check_for_language
-from django.utils import simplejson
-from django.db.models import Count, Q
-from django.contrib.gis.geos import Polygon
 from operator import attrgetter
-import json
-from django.utils.functional import Promise
-from django.utils.encoding import force_unicode
-from django.utils.translation import ugettext as _
-from django.template.defaultfilters import slugify
 
 logger = logging.getLogger(__name__)
 
-def index(request):
-    ctx = RequestContext(request, {})
-    response = render_to_response('index.html', context_instance=ctx)
-    return response
+
+class Index(TemplateView):
+    template_name = "index.html"
 
 
-def about(request):
-    ctx = RequestContext(request, {})
-    return render_to_response('about.html', context_instance=ctx)
+class About(TemplateView):
+    template_name = "about.html"
 
-def smsinfo(request):
-    ctx = RequestContext(request, {})
-    return render_to_response('smsinfo.html', context_instance=ctx)
+
+class SMSInfo(TemplateView):
+    template_name = 'smsinfo.html'
+
 
 def browse(request):
     # If a search query was passed in, see if we can find a matching location
     query = request.GET.get('lq', '').strip()
     if query:
-        locations = Location.objects.filter(site_name__icontains=query, accepted=True).values('id', 'site_name')
+        locations = Location.objects.filter(
+            site_name__icontains=query,
+            accepted=True
+        ).values(
+            'id',
+            'site_name',
+        )
+
         if len(locations) > 0:
             loc = locations[0]
-            return redirect('location-view', location_id=loc['id'], slug=slugify(loc['site_name']))
+            return redirect(
+                'location-view',
+                location_id=loc['id'],
+                slug=slugify(loc['site_name']),
+            )
 
     fields = Location.get_filter_fields()
 
-    # TODO: for now left/right split is kinda random, might want more control
-    ctx = RequestContext(request, {
+    return render(request, 'browse.html', {
         'filters_main': fields[:6],
         'filters_more': fields[6:],
     })
 
-    response = render_to_response('browse.html', context_instance=ctx)
-    return response
 
 def contact(request, location_ids):
     location_ids = location_ids.split(',')
     all_locations = Location.objects.filter(pk__in=location_ids, accepted=True)
 
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
+    form = ContactForm(request.POST or None)
 
-            # Figure out which locations have already been contacted
-            existing_locations_ids = Contact.objects.filter(email=cd['email'], location__in=location_ids).values_list('location', flat=True)
-            new_locations_ids = [l.pk for l in all_locations if l.pk not in existing_locations_ids]
-            
-            if len(new_locations_ids) > 0:
-                # Create Contact objects for the new locations
-                Contact.objects.bulk_create([
-                    Contact(
-                        email=cd['email'],
-                        first_name=cd['first_name'],
-                        last_name=cd['last_name'],
-                        phone=cd['phone'],
-                        address_1=cd['address_1'],
-                        address_2=cd['address_2'],
-                        city=cd['city'],
-                        state=cd['state'],
-                        zip=cd['zip'],
-                        child_1=cd['child_1'],
-                        child_2=cd['child_2'],
-                        child_3=cd['child_3'],
-                        child_4=cd['child_4'],
-                        child_5=cd['child_5'],
-                        message=cd['message'],
-                        location_id=lid
-                    ) for lid in new_locations_ids
-                ])       
+    if form.is_valid():
+        cd = form.cleaned_data
 
-                # Send emails to the inquirer and locations
-                send_emails.delay(cd, new_locations_ids)
+        # Figure out which locations have already been contacted
+        existing_locations_ids = Contact.objects.filter(
+            email=cd['email'],
+            location__in=location_ids
+        ).values_list(
+            'location',
+            flat=True,
+        )
 
-            # Redirect to the thanks page
-            return HttpResponseRedirect('/contact-thanks/?new=%s&existing=%s' % (','.join([str(i) for i in new_locations_ids]), ','.join([str(i) for i in existing_locations_ids])))
-    else:
-        form = ContactForm()
+        new_locations_ids = [l.pk for l in all_locations if l.pk not in existing_locations_ids]
 
-    ctx = RequestContext(request, { 
+        if len(new_locations_ids) > 0:
+            # Create Contact objects for the new locations
+            Contact.objects.bulk_create([
+                Contact(
+                    email=cd['email'],
+                    first_name=cd['first_name'],
+                    last_name=cd['last_name'],
+                    phone=cd['phone'],
+                    address_1=cd['address_1'],
+                    address_2=cd['address_2'],
+                    city=cd['city'],
+                    state=cd['state'],
+                    zip=cd['zip'],
+                    child_1=cd['child_1'],
+                    child_2=cd['child_2'],
+                    child_3=cd['child_3'],
+                    child_4=cd['child_4'],
+                    child_5=cd['child_5'],
+                    message=cd['message'],
+                    location_id=lid
+                ) for lid in new_locations_ids
+            ])
+
+            # Send emails to the inquirer and locations
+            send_emails.delay(cd, new_locations_ids)
+
+        # Redirect to the thanks page
+        return HttpResponseRedirect('/contact-thanks/?new=%s&existing=%s' % (','.join([str(i) for i in new_locations_ids]), ','.join([str(i) for i in existing_locations_ids])))
+
+    return render(request, 'contact.html', {
         'locations': [l.get_context_dict() for l in all_locations],
         'form': form,
     })
-    response = render_to_response('contact.html', context_instance=ctx)
-    return response
 
 
 class TopicWrapper(object):
@@ -126,20 +138,20 @@ class TopicWrapper(object):
 
 
 def faq(request):
-    tpl = 'faq-models.html'
-
     # get the language of the request
     lang = request.LANGUAGE_CODE
 
     # get the topics in this language
     topics = Topic.objects.filter(slug__startswith=lang + '-')
-    if topics.count() == 0:
-        topics = Topic.objects.filter(slug__startswith=settings.LANGUAGE_CODE[0:2] + '-')
 
-    ctx = RequestContext(request, {
+    if topics.count() == 0:
+        topics = Topic.objects.filter(
+            slug__startswith=settings.LANGUAGE_CODE[0:2] + '-',
+        )
+
+    return render(request, 'faq-models.html', {
         'topics': [TopicWrapper(t, request) for t in topics],
     })
-    return render_to_response(tpl, context_instance=ctx)
 
 
 def setlang(request, language):
@@ -174,10 +186,23 @@ def portal_autocomplete(request):
 
     """
     query = request.GET.get('query', '').strip()
-    locations = Location.objects.filter(site_name__icontains=query, accepted=True).values('id', 'site_name')
+    locations = Location.objects.filter(
+        site_name__icontains=query,
+        accepted=True,
+    ).values(
+        'id',
+        'site_name',
+    )
+
     comparison = [TermDistance(location, 'location', 'site_name', query) for location in locations]
 
-    neighborhoods = Neighborhood.objects.filter(primary_name__icontains=query).values('id', 'primary_name')
+    neighborhoods = Neighborhood.objects.filter(
+        primary_name__icontains=query
+    ).values(
+        'id',
+        'primary_name',
+    )
+
     comparison.extend([TermDistance(neighborhood, 'neighborhood', 'primary_name', query)
                        for neighborhood in neighborhoods])
 
@@ -189,16 +214,17 @@ def portal_autocomplete(request):
         "response": sorted_comparisons
     }
 
-    return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+    return HttpResponse(json.dumps(data), mimetype='application/json')
 
 
-class TermDistance:
+class TermDistance(object):
     """ TermDistance utility class for portal autocomplete
 
     Use a pseudo-hamming distance to compare a string field of the
         django ValueQuerySet against an arbitrary term
 
     """
+
     def __init__(self, obj, objtype, field, term):
         """Initialize TermDistance class
 
@@ -302,6 +328,7 @@ class LazyEncoder(json.JSONEncoder):
 
     Taken from: http://khamidou.com/django-translation-in-json.html
     """
+
     def default(self, obj):
         if isinstance(obj, Promise):
             return force_unicode(obj)
@@ -309,7 +336,10 @@ class LazyEncoder(json.JSONEncoder):
 
 
 def _make_response(context, etag_hash):
-    rsp = HttpResponse(json.dumps(context, cls=LazyEncoder), content_type="application/json")
+    rsp = HttpResponse(
+        json.dumps(context, cls=LazyEncoder),
+        content_type="application/json",
+    )
 
     if etag_hash:
         md5 = hashlib.md5()
@@ -317,6 +347,7 @@ def _make_response(context, etag_hash):
         rsp['Etag'] = md5.hexdigest()
 
     return rsp
+
 
 def location_details(location_id):
     """
@@ -369,13 +400,11 @@ def location_api(request, location_ids=None):
 
 def location(request, location_id=None, slug=None):
     loc = get_object_or_404(Location, id=location_id)
-    ctx = RequestContext(request, { 
+    return render(request, 'location.html', {
         'loc': location_details(location_id),
         'loc_description': loc.q_stmt,
         'loc_neighborhood': loc.neighborhood
     })
-    response = render_to_response('location.html', context_instance=ctx)
-    return response
 
 
 def location_position(request, location_id):
@@ -417,8 +446,12 @@ def neighborhood_api(request):
     # query and borking the group-by statement.
     # See
     # https://docs.djangoproject.com/en/1.4/topics/db/aggregation/#interaction-with-default-ordering-or-order-by
-    count_by_nbh = locations.values(nb_name).annotate(nbc_count=Count(nb_name)).order_by()
+    count_by_nbh = locations.values(nb_name).annotate(
+        nbc_count=Count(nb_name)
+    ).order_by()
+
     nbh_pk_to_count = {n[nb_name]: n['nbc_count'] for n in count_by_nbh if n[nb_name]}
+
     counts = Neighborhood.objects.all().order_by('primary_name')
     count_list = [{
         'name': n.primary_name,
@@ -433,11 +466,6 @@ def neighborhood_api(request):
     return _make_response(context, etag_hash)
 
 
-## Starred Location Views
-def starred(request):
-    """
-    Render starred locations page for as many favorites as are set in url or cookie
-    """
-    ctx = RequestContext(request, {})
-    response = render_to_response('starred.html', context_instance=ctx)
-    return response
+class Starred(TemplateView):
+    template_name = 'starred.html'
+

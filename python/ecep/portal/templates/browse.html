@@ -39,11 +39,11 @@ See LICENSE in the project root for copying permission
       <div class="results-toolbar clearfix">
         <strong class="refine">{% trans "Refine your search" %}</strong>
         <div class="btn-group">
-            <a class="btn starred-btn hint--bottom" data-hint="{% trans 'Click to view your list' %}" href="{% url portal.views.starred %}" 
+            <a class="btn starred-btn hint--bottom" data-hint="{% trans 'Click to view your list' %}" href="{% url 'starred' %}"
                 data-r1023="<i class='icon-mail'></i> Compare and Contact (<span class='fav-count'>0</span>)">
                 <i class="icon-mail"></i> {% trans 'Compare and Contact' %} (<span class="fav-count">0</span>)
             </a>
-            <button id="share-favorites-btn" class="btn hint--left ga-track" 
+            <button id="share-favorites-btn" class="btn hint--left ga-track"
                 data-ga-category="search" data-ga-action="Share Favorites" data-hint="{% trans 'Click to share your list' %}">
                 <i class="icon-share"></i>{% trans 'Share' %}
             </button>
@@ -62,7 +62,7 @@ See LICENSE in the project root for copying permission
             {% for f in filters_main %}
               <li>
                 <label>
-                  <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" 
+                  <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}"
                     data-ga-category="search" data-ga-action="filter" data-ga-label="{{ f.1 }}"/>{% trans f.1 %}
                 </label>
               </li>
@@ -74,7 +74,7 @@ See LICENSE in the project root for copying permission
               {% for f in filters_more %}
                 <li>
                   <label>
-                    <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}" 
+                    <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}"
                       data-ga-category="search" data-ga-action="filter" data-ga-label="{{ f.1 }}"/>{% trans f.1 %}
                   </label>
                 </li>
@@ -83,10 +83,16 @@ See LICENSE in the project root for copying permission
           </div>
 
           <ul class="filters-options">
-            <li><button class="btn pull-right ga-track" id="filter-clear-all"
-                  data-ga-category="search" data-ga-action="Reset Search">{% trans "Reset Search" %}</button></li>
-            <li><button class="acordion-toggle btn pull-right ga-track" id="filters-show-more" data-toggle="collapse" data-target="#filters-more"
-                  data-ga-category="search" data-ga-action="More Filters">{% trans "More Filters" %}</button></li>
+            <li>
+                <button class="acordion-toggle btn ga-track" id="filters-show-more" data-toggle="collapse" data-target="#filters-more"
+                  data-ga-category="search" data-ga-action="More Filters">{% trans "More Filters" %}</button><br>
+                <button class="btn ga-track" id="filter-clear-all"
+                  data-ga-category="search" data-ga-action="Reset Search">{% trans "Reset Search" %}</button>
+            </li>
+            <li><img src="{% static "img/leaflet-icons/center.png" %}"><br><strong>{% trans "Community based" %}</strong></li>
+            <li><img src="{% static "img/leaflet-icons/school.png" %}"><br><strong>{% trans "CPS based" %}</strong></li>
+            <li><img src="{% static "img/leaflet-icons/school-starred.png" %}"><br><strong>{% trans "Compare &amp; Contact" %}<br>{% trans "Locations" %}</strong></li>
+            <li><img src="{% static "img/leaflet-icons/center-accredited.png" %}"><br><strong>{% trans "Nationally Accredited" %}</strong></li>
           </ul>
         </div>
       </div>
@@ -101,7 +107,7 @@ See LICENSE in the project root for copying permission
 
   <div class="locations-wrapper ajax-spinner">
     <!-- Location -->
-  </div>  
+  </div>
 </div> <!-- end results left -->
 
 <!-- MAP -->

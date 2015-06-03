@@ -47,7 +47,7 @@ msgstr ""
 
 #: portal/static/js/cel/location.js:181
 msgid "Center"
-msgstr ""
+msgstr "Community-based"
 
 #: portal/static/js/cel/location.js:182
 msgid "Favorite Center"
@@ -55,27 +55,27 @@ msgstr ""
 
 #: portal/static/js/cel/location.js:183
 msgid "Accredited Center"
-msgstr ""
+msgstr "Accredited Community-based"
 
 #: portal/static/js/cel/location.js:184
 msgid "Favorite Accredited Center"
-msgstr ""
+msgstr "Favorite Accredited Community-based"
 
 #: portal/static/js/cel/location.js:185
 msgid "School"
-msgstr ""
+msgstr "CPS-based"
 
 #: portal/static/js/cel/location.js:186
 msgid "Favorite School"
-msgstr ""
+msgstr "Favorite CPS-based"
 
 #: portal/static/js/cel/location.js:187
 msgid "Accredited School"
-msgstr ""
+msgstr "Accredited CPS-based"
 
 #: portal/static/js/cel/location.js:188
 msgid "Favorite Accredited School"
-msgstr ""
+msgstr "Favorite Accredited CPS-based"
 
 #: portal/static/js/cel/location.js:220
 msgid "Details"

@@ -4,9 +4,9 @@
  ********************************************************/
 
 
-define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html', 
+define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html',
         'topojson', 'icons', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire,
-        'leaflet-providers', 'history', 'styling'], 
+        'leaflet-providers', 'history', 'styling'],
     function($, L, Handlebars, neighborhoodList, locationList, topojson, icons, favorites, location, common) {
 
         'use strict';
@@ -46,7 +46,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             autocompleteLocationId,
             autocompleteNeighborhoodId,
             updateUrl = null,                   // Updates the url to reflect page state
-            ajaxTimeoutId,                        
+            ajaxTimeoutId,
             spinnerDelayMillis = 500,
             $locationWrapper;                   // Store div wrapper for results on left side
 
@@ -63,7 +63,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 layer.on('click', function(e) {
                     neighborhoodPan(feature.properties.primary_name,
                         feature.properties.num_schools,
-                        feature.properties.center.lat, 
+                        feature.properties.center.lat,
                         feature.properties.center.lng,
                         false);
                 });
@@ -72,7 +72,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
         /*
          * Set map pan/zoom centered on a neighborhood/location if requested in the url
-         */ 
+         */
         var setAutocompleteLocation = function() {
             if (isAutocompleteSet) {
                 if (autocompleteLocationId) {
@@ -81,7 +81,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     loc.setIcon({ highlighted: true });
                     locationPan(pos.lat, pos.lng);
                 } else if (autocompleteNeighborhoodId) {
-                    var value = dm.neighborhoods.data[autocompleteNeighborhoodId]; 
+                    var value = dm.neighborhoods.data[autocompleteNeighborhoodId];
                     map.setView([value.center.lat, value.center.lng], zoomSettings);
                 }
                 isAutocompleteSet = false;
@@ -120,7 +120,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     dm.neighborhoodUpdate();
                 }
             }
-            
+
             // Don't want this to fire on page load since it will screw w/ history, so
             // disable it the first time through.
             if (updateUrl) {
@@ -135,7 +135,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     History.pushState(
                         {
                             isGeolocated: false,
-                            filtersVisible: filtersVisible 
+                            filtersVisible: filtersVisible
                         },
                         null,
                         common.getUrl(
@@ -153,7 +153,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * @param {Type of current layer, see layerType} dataType
          */
         var listResults = function(data, dataType) {
-            var isNb = (dataType === layerType.neighborhood), 
+            var isNb = (dataType === layerType.neighborhood),
                 html = (isNb ? neighborhoodList : locationList),
                 dataList,
                 template = Handlebars.compile(html),
@@ -182,7 +182,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             // Set top margin so that list is not hidden by filters
             $locationWrapper.css("top", th);
 
-            // Remove css tooltips when on a touchscreen device                                         
+            // Remove css tooltips when on a touchscreen device
             if (common.isTouchscreen) {
                 $('[data-hint]').removeAttr('data-hint');
             }
@@ -212,7 +212,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 $('#share-modal').trigger('init-modal', {
                     // the url is passed in to the sharing urls, so it must be absolute
                     url: common.getUrl('origin') +
-                            common.getUrl('single-location', { location: key }), 
+                            common.getUrl('single-location', { location: key }),
                     title: 'Check out this early learning program'
                 });
             });
@@ -244,7 +244,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 }
             });
 
-            // Watch for hover events on the list so we can highlight both 
+            // Watch for hover events on the list so we can highlight both
             // the list item and the icon on the map
             var $locationContainer = $('.location-container');
             $locationContainer.each(function(index) {
@@ -273,7 +273,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     $morelessbtn.attr('data-hint', gettext('Click to show more information'));
                 }
             });
-            // feature detection: we only want hover events on non-touch devices 
+            // feature detection: we only want hover events on non-touch devices
             if (!common.isTouchscreen) {
                 $locationContainer.on('mouseenter mouseleave', function(e) {
                     var $this = $(this),
@@ -296,16 +296,18 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          */
         var refineListener = function(){
             if (!common.isTouchscreen) {
-                $('#collapseFilters').on('show.bs.collapse', function(e) { 
-                    $('#refineBtn').attr('data-hint', gettext('Click to hide filters')); 
+                $('#collapseFilters').on('show.bs.collapse', function(e) {
+                    $('#filters-show-more').html(gettext('Less Filters'));
+                    $('#refineBtn').attr('data-hint', gettext('Click to hide filters'));
                 }).on('hide.bs.collapse', function(e) {
                     $('#refineBtn').attr('data-hint', gettext('Click to show filters'));
+                    $('#filters-show-more').html(gettext('More Filters'));
                 });
             }
         };
 
         /*
-         * Get map state from DOM and override defaults if necessary 
+         * Get map state from DOM and override defaults if necessary
          */
         var getMapState = function() {
             var lat = $map.data('lat') || latSettings,
@@ -314,10 +316,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 geolng = $map.data('geolng'),
                 isGeolocated = false;
             if (geolat && geolng) {
-                lat = geolat; 
+                lat = geolat;
                 lng = geolng;
                 isGeolocated = true;
-            } 
+            }
             return { point: [lat, lng], isGeolocated: isGeolocated };
         };
 
@@ -350,7 +352,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     // zoom user in
                     map.setZoom(zoomSettings - 3);
                 }
-            }            
+            }
             var popupContent = '<b>' + name + '</b><br>' + gettext('Number of Locations') + ': ' + numSchools + '<br><a class="neighborhood-popup" href="#">' + gettext('Explore') + '</a>',
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
 
@@ -364,7 +366,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
         /*
          * Pans to location and zooms to reasonable level if current view is too far out
-         */ 
+         */
         var locationPan = function(lat, lng) {
             map.panTo([lat, lng]);
             if (map.getZoom() < zoomSettings) {
@@ -376,13 +378,13 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
         /**
          * Function that handles pans to neighborhood when clicking on accordion group
-         * 
+         *
          * Mostly just a wrapper around neighborhoodPan
          */
         var panHandler = function() {
             $(listItemSelector).click(function() {
                 var $this = $(this);
-                neighborhoodPan($this.data('name'), $this.data('schools'), 
+                neighborhoodPan($this.data('name'), $this.data('schools'),
                                 $this.data('lat'), $this.data('lng'), true);
             });
         };
@@ -479,7 +481,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
                 map.addLayer(popupLayer);
 
-                // draw marker for geolocated point 
+                // draw marker for geolocated point
                 //      and open the map if on mobile
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
@@ -541,19 +543,19 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
                 // remove all highlighting when a location popup is closed
                 map.on('popupclose', function() {
-                    $('.location-container.highlight').removeClass('highlight');                           
+                    $('.location-container.highlight').removeClass('highlight');
                 });
 
                 // set up social sharing for the top button (next to favorites)
                 $('#share-favorites-btn').on('click', favorites.initShareModal);
-                
+
                 // Bind filtering click handlers
                 $filters.on('click', function() { dm.onFilterChange(); });
                 $filterClearAll.on('click', function() {
                     $filters.prop('checked', false);
                     dm.onFilterChange();
                 });
-                
+
                 $('#toggleMapBtn').click(function(e) {
                     mapToggle();
                     e.preventDefault();

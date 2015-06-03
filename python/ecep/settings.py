@@ -41,10 +41,10 @@ LANGUAGE_CODE = 'en'
 
 # The languages supported in the application.
 # This lambda function only serves to mark the names as being i18n'd
-ugettext = lambda s: s
+ugettext_lazy = lambda s: s
 LANGUAGES = (
-    ('en', ugettext('English')),
-    ('es', ugettext('Spanish')),
+    ('en', ugettext_lazy('English')),
+    ('es', ugettext_lazy('Spanish')),
 )
 
 SITE_ID = 1
@@ -78,7 +78,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # List of callables that know how to import templates from various sources.
@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.gis',
     'django.contrib.sitemaps',
+    'compressor',
     'portal',
     'portal.sms',           # This is necessary for the celery worker to respond to messages
     'django_twilio',
@@ -149,10 +150,37 @@ LOGFILE = os.path.join(BASE_DIR, 'django.log')
 SMS_DELAY = None
 GA_KEY = ''
 
+# django-compressor settings
+COMPRESS_ENABLED = True
+
 # ----------------------------------------------------------------
 # Everything after here depends on local_settings.py
 
 # Import local_settings.py
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': LOGFILE,
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['logfile'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'portal.views': {
+            'handlers': ['logfile'],
+            'level': 'DEBUG',
+            'propagate': True,
+        }
+    }
+}
 
 from local_settings import *
 
@@ -177,32 +205,4 @@ try:
     EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 except NameError:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# setup logging
-try:
-    LOGGING
-except NameError:
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-        'handlers': {
-            'logfile': {
-                'level': 'DEBUG',
-                'class': 'logging.handlers.RotatingFileHandler',
-                'filename': LOGFILE,
-            }
-        },
-        'loggers': {
-            'django.request': {
-                'handlers': ['logfile'],
-                'level': 'DEBUG',
-                'propagate': True,
-            },
-            'portal.views': {
-                'handlers': ['logfile'],
-                'level': 'DEBUG',
-                'propagate': True,
-            }
-        }
-    }
 
