@@ -7,7 +7,7 @@ from django.template.defaultfilters import title
 from django.contrib.auth.models import User
 
 # Model fields need to be translated lazily
-from django.utils.translation import ugettext_lazy as _, ugettext_lazy
+from django.utils.translation import ugettext as _, ugettext_lazy
 
 
 class Neighborhood(models.Model):
@@ -59,12 +59,12 @@ class Location(models.Model):
     GOLD = 'Gold'
 
     Q_RATING_CHOICES = (
-        (EMPTY, _('Select a rating')),
-        (NONE, _('None')),
-        (LICENSED, _('Licensed')),
-        (BRONZE, _('Bronze')),
-        (SILVER, _('Silver')),
-        (GOLD, _('Gold')),
+        (EMPTY, ugettext_lazy('Select a rating')),
+        (NONE, ugettext_lazy('None')),
+        (LICENSED, ugettext_lazy('Licensed')),
+        (BRONZE, ugettext_lazy('Bronze')),
+        (SILVER, ugettext_lazy('Silver')),
+        (GOLD, ugettext_lazy('Gold')),
     )
 
     site_name = models.CharField('Site Name', max_length=100)
