@@ -47,14 +47,6 @@ class LocationForm(forms.ModelForm):
     """
 
     geom = forms.CharField(label="Geocoded Point", widget=MapWidget())
-    q_rating = forms.ChoiceField(label=_('Quality Rating'),
-                                 choices=(('', _('Select a rating')),
-                                          ('None', _('None')),
-                                          ('Licensed', _('Licensed')),
-                                          ('Bronze', _('Bronze')),
-                                          ('Silver', _('Silver')),
-                                          ('Gold', _('Gold'))),
-                                 required=False)
     site_name = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}))
 
     def __init__(self, *args, **kwargs):

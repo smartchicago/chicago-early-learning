@@ -7,7 +7,7 @@ from django.template.defaultfilters import title
 from django.contrib.auth.models import User
 
 # Model fields need to be translated lazily
-from django.utils.translation import ugettext as _, ugettext_lazy
+from django.utils.translation import ugettext_lazy as _, ugettext_lazy
 
 
 class Neighborhood(models.Model):
@@ -51,6 +51,22 @@ class Neighborhood(models.Model):
 class Location(models.Model):
     """Model for school locations in Chicago
     """
+    EMPTY = ''
+    NONE = 'None'
+    LICENSED = 'Licensed'
+    BRONZE = 'Bronze'
+    SILVER = 'Silver'
+    GOLD = 'Gold'
+
+    Q_RATING_CHOICES = (
+        (EMPTY, _('Select a rating')),
+        (NONE, _('None')),
+        (LICENSED, _('Licensed')),
+        (BRONZE, _('Bronze')),
+        (SILVER, _('Silver')),
+        (GOLD, _('Gold')),
+    )
+
     site_name = models.CharField('Site Name', max_length=100)
     address = models.CharField('Address', max_length=75)
     city = models.CharField('City', max_length=75)
@@ -58,7 +74,7 @@ class Location(models.Model):
     zip = models.CharField('Zip Code', max_length=10)
     neighborhood = models.ForeignKey('Neighborhood', null=True)
     phone = models.CharField(ugettext_lazy('Phone Number'), max_length=20, blank=True)
-    q_rating = models.CharField(ugettext_lazy('Quality Rating'), max_length=10, blank=True)
+    q_rating = models.CharField(ugettext_lazy('Quality Rating'), choices=Q_RATING_CHOICES, max_length=10, blank=True)
     url = models.CharField(ugettext_lazy('Website'), max_length=256, blank=True)
     q_stmt = models.TextField(ugettext_lazy('Description'), blank=True)
     accred = models.CharField(ugettext_lazy('Accreditation'), max_length=100, blank=True)
