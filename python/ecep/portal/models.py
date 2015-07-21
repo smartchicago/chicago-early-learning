@@ -77,6 +77,7 @@ class Location(models.Model):
     q_rating = models.CharField(ugettext_lazy('Quality Rating'), choices=Q_RATING_CHOICES, max_length=10, blank=True)
     url = models.CharField(ugettext_lazy('Website'), max_length=256, blank=True)
     q_stmt = models.TextField(ugettext_lazy('Description'), blank=True)
+    enrollment = models.TextField(ugettext_lazy('Enrollment Process'), blank=True)
     accred = models.CharField(ugettext_lazy('Accreditation'), max_length=100, blank=True)
     prg_hours = models.CharField(ugettext_lazy('Program Hours'), max_length=50, blank=True)
     is_full_day = models.NullBooleanField(ugettext_lazy('Full Day'))
@@ -129,7 +130,7 @@ class Location(models.Model):
 
     display_order = dict((k, v) for v, k in enumerate([
             'open_house',
-            'accred', 'ages', 'description', 'duration_hours',
+            'accred', 'ages', 'description', 'enrollment', 'duration_hours',
             'weekday_availability', 'languages', 'program_info',
             'curriculum', 'quality_rating'
         ]))
@@ -312,6 +313,9 @@ class Location(models.Model):
         # Quality Statement
         if self.q_stmt and not short:
             sfields.append({'key': 'description', 'fieldname': _('Description'), 'value': self.q_stmt})
+
+        if self.enrollment and not short:
+            sfields.append({'key': 'enrollment', 'fieldname': _('Enroll Now!'), 'value': self.enrollment})
 
         bfields.sort()
         sfields.sort(key=lambda a: self.display_order[a['key']])
