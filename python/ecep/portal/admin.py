@@ -46,7 +46,6 @@ class LocationForm(forms.ModelForm):
     and a custom clean method to properly handle points passed in as strings
     """
 
-    geom = forms.CharField(label="Geocoded Point", widget=MapWidget())
     site_name = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}))
 
     def __init__(self, *args, **kwargs):
@@ -112,6 +111,10 @@ class LocationForm(forms.ModelForm):
 
 class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
 
+    default_lon = -9754167.445328873
+    default_lat = 5143294.85337356
+    default_zoom = 9
+
     # General Settings
     # Template override that adds buttons to propose/accept changes
     change_form_template = 'admin/portal/location/change_form.html'
@@ -119,10 +122,10 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
     delete_confirmation_template = 'admin/portal/location/delete_confirmation.html'
     save_on_top = True
     save_on_bottom = False
-    list_display = ['site_name', 'address', 'zip', 'phone', 'email', 'id', 'accepted', 'q_rating']
+    list_display = ['site_name', 'address', 'zip', 'phone', 'email', 'id', 'accepted', 'q_rating', 'site_type']
     base_list_filter = ['is_hs', 'is_ehs', 'accept_ccap', 'is_cps_based', 'is_community_based',
                         'is_age_lt_3', 'is_age_gt_3', 'is_full_day', 'is_full_week', 'is_full_year',
-                        'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting', 'q_rating']
+                        'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting', 'q_rating', 'site_type']
     search_fields = ['site_name', 'address', 'zip', 'language_1', 'language_2', 'language_3']
     readonly_fields = ['neighborhood']
     form = LocationForm
@@ -136,7 +139,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
         )},
     }
     fieldsets = [
-        (None,      {'fields': ['site_name', 'neighborhood']}),
+        (None,      {'fields': ['site_name', 'site_type', 'neighborhood']}),
         ('Address', {'fields': [('address', 'city'), ('state', 'zip'), 'geom']}),
         ('Contact', {'fields': ['phone', 'url', 'email']}),
         ('Hours/Duration', {'fields': [('is_full_day', 'is_part_day'),

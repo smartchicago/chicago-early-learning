@@ -67,7 +67,13 @@ class Location(models.Model):
         (GOLD, ugettext_lazy('Gold')),
     )
 
+    LOCATION_TYPE_CHOICES = (
+        (0, 'Normal Location'),
+        (1, 'Application Site'),
+    )
+
     site_name = models.CharField('Site Name', max_length=100)
+    site_type = models.IntegerField('Site Type', default=0, choices=LOCATION_TYPE_CHOICES)
     address = models.CharField('Address', max_length=75)
     city = models.CharField('City', max_length=75)
     state = models.CharField('State', max_length=2)
