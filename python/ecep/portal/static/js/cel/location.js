@@ -77,7 +77,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             if (value.fieldname.toLowerCase() === gettext("Program Information").toLowerCase()) {
                 if (value.value.indexOf(gettext("CPS Based")) !== -1) {
                     isSchool = true;
-                } 
+                }
                 return false;
             }
         });
@@ -90,23 +90,23 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     Location.prototype.getIcon = function(options) {
         options = options || {};
 
-        var scaleDimensions = function(option, scale) {                                                        
+        var scaleDimensions = function(option, scale) {
             scale = parseFloat(scale);
             if (isNaN(scale)) {
                 return;
             }
-            option[0] = Math.round(option[0] * scale);                                                                          
-            option[1] = Math.round(option[1] * scale);                                                                          
-        };                                                                                          
+            option[0] = Math.round(option[0] * scale);
+            option[1] = Math.round(option[1] * scale);
+        };
 
-        var setHighlighted = function(options) {                                                         
+        var setHighlighted = function(options) {
             var scale = 1.25;
-            scaleDimensions(options.iconSize, scale);                                                
-            scaleDimensions(options.shadowSize, scale);                                              
-            scaleDimensions(options.iconAnchor, scale);                                              
-            scaleDimensions(options.shadowAnchor, scale);                                            
-            scaleDimensions(options.popupAnchor, scale);                                             
-            options.iconUrl = options.iconUrl.replace(".png", "@2x.png");                                             
+            scaleDimensions(options.iconSize, scale);
+            scaleDimensions(options.shadowSize, scale);
+            scaleDimensions(options.iconAnchor, scale);
+            scaleDimensions(options.shadowAnchor, scale);
+            scaleDimensions(options.popupAnchor, scale);
+            options.iconUrl = options.iconUrl.replace(".png", "@2x.png");
             options.shadowUrl = options.shadowUrl.replace(".png", "@2x.png");
             return options;
         };
@@ -163,10 +163,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         }
     };
 
-    /* 
-     * get the icon key used in getIcon and the iconcache 
+    /*
+     * get the icon key used in getIcon and the iconcache
      */
     Location.prototype.getIconKey = function() {
+        // Handle special Enrollment center icons
+        if(this.data.item.type == 1) {
+            return 'enrollment';
+        }
         var key = this.isSchool() ? 'school' : 'center';
         key += this.isAccredited() ? '-accredited' : '';
         key += this.isStarred() ? '-starred' : '';
@@ -217,7 +221,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             if (options.popup === true) {
                 var locId = this.getId(),
                     data = this.data;
-                
+
                 marker.on('click', function (e) {
                     var isStarred = favorites.isStarred(locId),
                         icon = isStarred ? 'icon-mail' : 'icon-mail-1',
@@ -225,7 +229,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                         selected = isStarred ? 'favs-button-selected' : '',
                         popupText = '<b>{{item.site_name}}</b><br>{{item.address}}<br>' +
                                     '{{#each sfields}}{{#if_eq this.key "weekday_availability"}}{{#if_not_eq this.value "None"}}<small>{{this.value}}</small><br>{{/if_not_eq}}{{/if_eq}}{{#if_eq this.key "program_info"}}{{#if_not_eq this.value "None"}}<small>{{this.value}}{{/if_not_eq}}</small>{{/if_eq}}{{/each}}<br>' +
-                                '<a href="' + common.getUrl('single-location', { location: locId, slug: common.slugify(data.item.site_name) }) + 
+                                '<a href="' + common.getUrl('single-location', { location: locId, slug: common.slugify(data.item.site_name) }) +
                                 '">' + gettext('Details') + '</a>' +
                                 '<a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle ' + selected + ' hint--top ga-track" data-hint="{{' + hint + '}}" data-loc-id="{{item.key}}" data-ga-category="search" data-ga-action="Favorite Location"><i class="' + icon + '"></i></a>',
                         popupTemplate = Handlebars.compile(popupText);
@@ -344,7 +348,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                 that.events.trigger('DataManager.neighborhoodUpdated');
             });
         },
-    
+
         /*
          * Get geojson for the neighborhoods and store in DataManager
          */
@@ -378,7 +382,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             if (map && map.getBounds) {
                 opts.bbox = map.getBounds().toBBoxString();
             }
-            
+
             return opts;
         },
 
@@ -389,7 +393,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         locations: null,
         neighborhoods: null,    // Has one key 'data' with a list of neighborhood objects
 
-        /* 
+        /*
          * Available events:
          * neighborhoodUpdating: 'DataManager.neighborhoodUpdating'
          *      triggered when a neighborhood update begins, before the json request is sent

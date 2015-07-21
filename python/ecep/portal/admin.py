@@ -73,37 +73,37 @@ class LocationForm(forms.ModelForm):
             for field in self.fields.values():
                 field.widget.attrs['class'] = 'create'
 
-    def get_point(self, geom_string):
-        """Takes a geom_string from cleaned_data and converts it to a point
-        object. If unable to convert, raises a validation error.
-
-        Arguments:
-        - `geom_string`: string returned by the 'geom' input from the LocationForm
-        Takes the form of 'POINT (<LNG> <LAT>)'
-        """
-        try:
-            split_geom_string = re.findall(r'([-.\w]+)', geom_string)
-            lng = float(split_geom_string[1])
-            lat = float(split_geom_string[2])
-            return Point(lng, lat)
-        except (IndexError, ValueError):
-            raise forms.ValidationError("Invalid point specified for location")
-
-    def clean(self):
-        """
-        Need to create a Point object from string returned by form because
-        of the way the map fills in the geocoded location form
-        """
-        self.cleaned_data = super(LocationForm, self).clean()
-
-        try:
-            self.cleaned_data['geom'] = self.get_point(self.cleaned_data['geom'])
-            return self.cleaned_data
-        except forms.ValidationError:
-            # Need to pass a dummy point if invalid, or we get a 500 error
-            # This point does not get saved, nothing happens to it
-            self.cleaned_data['geom'] = Point(0, 0)
-            raise forms.ValidationError("Invalid point specified for location")
+#    def get_point(self, geom_string):
+#        """Takes a geom_string from cleaned_data and converts it to a point
+#        object. If unable to convert, raises a validation error.
+#
+#        Arguments:
+#        - `geom_string`: string returned by the 'geom' input from the LocationForm
+#        Takes the form of 'POINT (<LNG> <LAT>)'
+#        """
+#        try:
+#            split_geom_string = re.findall(r'([-.\w]+)', geom_string)
+#            lng = float(split_geom_string[1])
+#            lat = float(split_geom_string[2])
+#            return Point(lng, lat)
+#        except (IndexError, ValueError):
+#            raise forms.ValidationError("Invalid point specified for location")
+#
+#    def clean(self):
+#        """
+#        Need to create a Point object from string returned by form because
+#        of the way the map fills in the geocoded location form
+#        """
+#        self.cleaned_data = super(LocationForm, self).clean()
+#
+#        try:
+#            self.cleaned_data['geom'] = self.get_point(self.cleaned_data['geom'])
+#            return self.cleaned_data
+#        except forms.ValidationError:
+#            # Need to pass a dummy point if invalid, or we get a 500 error
+#            # This point does not get saved, nothing happens to it
+#            self.cleaned_data['geom'] = Point(0, 0)
+#            raise forms.ValidationError("Invalid point specified for location")
 
     class Meta:
         model = Location

@@ -226,6 +226,7 @@ class Location(models.Model):
             'state': self.state,
             'key': self.pk,
             'email': self.email,
+            'type': self.site_type,
         }
 
         # simple fields to present -- these are the attributes that have text content
