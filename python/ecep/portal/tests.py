@@ -79,20 +79,14 @@ class CustomAdminForm(TestCase):
 
     def test_saving_empy_point(self):
         """Test that clean method correctly throws a validation error if no point in form"""
-        try:
-            self.test_form.clean()
-            self.assertFail('Should be able to save a point from a string')
-        except forms.ValidationError:
-            pass
+        self.test_form.clean()
+        self.assertFalse(self.test_form.is_valid())
 
     def test_saving_invalid_point(self):
         """Test that clean method correctly throws a validation error if point is gibberish"""
         self.test_form.cleaned_data['geom'] = 'gibberish'
-        try:
-            self.test_form.clean()
-            self.assertFail('Should not be able to save a point of gibberish')
-        except forms.ValidationError:
-            pass
+        self.test_form.clean()
+        self.assertFalse(self.test_form.is_valid())
 
     def test_saving_valid_point(self):
         """Test that clean method correctly handles a well-formatted Point"""
