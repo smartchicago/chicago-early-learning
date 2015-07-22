@@ -227,6 +227,8 @@ class Location(models.Model):
             'key': self.pk,
             'email': self.email,
             'type': self.site_type,
+            'age_lt_3': self.is_age_lt_3,
+            'age_gt_3': self.is_age_gt_3,
         }
 
         # simple fields to present -- these are the attributes that have text content
