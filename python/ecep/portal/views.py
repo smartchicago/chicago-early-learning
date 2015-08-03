@@ -400,10 +400,19 @@ def location_api(request, location_ids=None):
 
 def location(request, location_id=None, slug=None):
     loc = get_object_or_404(Location, id=location_id)
+    print loc.is_enrollment
     return render(request, 'location.html', {
         'loc': location_details(location_id),
         'loc_description': loc.q_stmt,
-        'loc_neighborhood': loc.neighborhood
+        'loc_neighborhood': loc.neighborhood,
+        'enrollment_hide': [  # hide values for enrollment centers
+            'accred',
+            'weekday_availability',
+            'program_info',
+            'quality_rating',
+            'duration_hours',
+            'ages',
+        ]
     })
 
 

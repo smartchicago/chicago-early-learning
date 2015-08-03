@@ -158,6 +158,13 @@ class Location(models.Model):
         """
         return unicode(self._meta.get_field_by_name(field)[0].verbose_name)
 
+    @property
+    def is_enrollment(self):
+        if self.site_type == 1:
+            return True
+        else:
+            return False
+
     @staticmethod
     def get_filter_fields():
         """
@@ -229,6 +236,8 @@ class Location(models.Model):
             'type': self.site_type,
             'age_lt_3': self.is_age_lt_3,
             'age_gt_3': self.is_age_gt_3,
+            'site_type': self.site_type,
+            'is_enrollment': self.is_enrollment,
         }
 
         # simple fields to present -- these are the attributes that have text content
