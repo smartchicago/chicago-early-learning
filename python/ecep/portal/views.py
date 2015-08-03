@@ -400,7 +400,6 @@ def location_api(request, location_ids=None):
 
 def location(request, location_id=None, slug=None):
     loc = get_object_or_404(Location, id=location_id)
-    print loc.is_enrollment
     return render(request, 'location.html', {
         'loc': location_details(location_id),
         'loc_description': loc.q_stmt,

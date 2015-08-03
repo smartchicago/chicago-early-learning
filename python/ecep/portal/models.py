@@ -238,6 +238,7 @@ class Location(models.Model):
             'age_gt_3': self.is_age_gt_3,
             'site_type': self.site_type,
             'is_enrollment': self.is_enrollment,
+            'duration_hours': self.prg_hours,
         }
 
         # simple fields to present -- these are the attributes that have text content
