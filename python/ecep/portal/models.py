@@ -333,9 +333,6 @@ class Location(models.Model):
         if self.q_stmt and not short:
             sfields.append({'key': 'description', 'fieldname': _('Description'), 'value': self.q_stmt})
 
-        if self.enrollment and not short:
-            sfields.append({'key': 'enrollment', 'fieldname': _('Enroll Now!'), 'value': self.enrollment})
-
         bfields.sort()
         sfields.sort(key=lambda a: self.display_order[a['key']])
 

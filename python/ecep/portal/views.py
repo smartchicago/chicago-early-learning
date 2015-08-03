@@ -404,6 +404,7 @@ def location(request, location_id=None, slug=None):
         'loc': location_details(location_id),
         'loc_description': loc.q_stmt,
         'loc_neighborhood': loc.neighborhood,
+        'location': loc,
         'enrollment_hide': [  # hide values for enrollment centers
             'accred',
             'weekday_availability',

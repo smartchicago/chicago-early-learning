@@ -70,6 +70,12 @@ See LICENSE in the project root for copying permission
           <a href="tel:{{ loc.phone.number }}" class="ga-track" itemprop="telephone" data-ga-category="location" data-ga-action="Telephone">{{ loc.phone.number }}</a>
         </p>
         <hr>
+        {% if location.enrollment %}
+        <h1>Enroll Now!</h1>
+        <p>
+        {{ location.enrollment|safe }}
+        </p>
+        {% endif %}
         {% for sfield in loc.sfields %}
 
           {% if loc.item.is_enrollment %}
