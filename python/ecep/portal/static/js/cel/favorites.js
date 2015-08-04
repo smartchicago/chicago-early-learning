@@ -1,6 +1,6 @@
-/********************************************************                                           
- * Copyright (c) 2013 Azavea, Inc.                                                                  
- * See LICENSE in the project root for copying permission                                           
+/********************************************************
+ * Copyright (c) 2013 Azavea, Inc.
+ * See LICENSE in the project root for copying permission
  * Module for working with starred locations
  *  add/remove locations and add
  *      listeners for sharing/clearing/toggling favorites
@@ -35,11 +35,11 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
             id = parseInt(id, 10);
             var cookie = favs.getCookie(),
                 idArray = $.map(cookie.split(','), function(x) { return parseInt(x, 10); });
-            return ($.inArray(id, idArray) >= 0); 
+            return ($.inArray(id, idArray) >= 0);
         },
 
-        /* 
-         * Given a location id, adds the location id to the correct cookie 
+        /*
+         * Given a location id, adds the location id to the correct cookie
          */
         addIdToCookie: function(id) {
             if (!id) {
@@ -56,7 +56,7 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                 idArray = cookieString.split(',');
                 arrayLen = idArray.length;
                 idExists = false;
-   
+
                 // only add id if it doesn't exist in the cookie already
                 for (var i = 0; i < arrayLen; i++) {
                     if (id == idArray[i]) {
@@ -77,8 +77,8 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
             $.cookie(cookie.name, cookieString, cookie.options);
         },
 
-        /* 
-         * Given a location id, removes the location id from the correct cookie 
+        /*
+         * Given a location id, removes the location id from the correct cookie
          */
         removeIdFromCookie: function(id) {
             if (!id) {
@@ -103,14 +103,14 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                     idArray.splice(i, 1);
                 }
             }
-            
+
             cookieString = idArray.join(',');
             $.cookie(cookie.name, cookieString, cookie.options);
         },
 
         /*
          * Sync the view with a set cookie on page load
-         *  
+         *
          * Properly sets buttons for all starred locations
          */
         syncUI: function(options) {
@@ -122,14 +122,14 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                 opts = $.extend({}, defaults, options),
                 self = favs,
                 cookie = favs.getCookie(),
-                starredIds, 
-                starredIdsLength, 
+                starredIds,
+                starredIdsLength,
                 starredId;
 
             starredIds = cookie ? cookie.split(',') : [];
             starredIdsLength = starredIds.length;
             starredId = 0;
-            
+
             // toggle any buttons for starred locations to on state
             for (var i = 0; i < starredIdsLength; i++) {
                 starredId = starredIds[i];
@@ -149,7 +149,7 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                     imgpath: '/static/img/icons/',
                     idAttribute: 'data-loc-id',
                     selectedClass: 'favs-button-selected'
-                }, 
+                },
                 opts = $.extend({}, defaults, options),
                 buttonId = $elt.attr(opts.idAttribute),
                 img = '',
@@ -179,7 +179,7 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
         },
 
         /*
-         * Adds a click listener for toggling a favorite on/off to the button specified 
+         * Adds a click listener for toggling a favorite on/off to the button specified
          *      in the options object.
          */
         // addToggleListener: function(options) {
@@ -222,7 +222,7 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
          * Initializes a share modal with the stored favorites information
          */
         initShareModal: function() {
-            var ids = favs.getCookie(), 
+            var ids = favs.getCookie(),
                 count = ids ? ids.split(',').length : 0;
 
             $('#share-modal').trigger('init-modal', {

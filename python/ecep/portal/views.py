@@ -9,7 +9,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.cache import cache_control
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from django.utils.translation import check_for_language
 from django.db.models import Count, Q
 from django.contrib.gis.geos import Polygon
@@ -403,7 +403,16 @@ def location(request, location_id=None, slug=None):
     return render(request, 'location.html', {
         'loc': location_details(location_id),
         'loc_description': loc.q_stmt,
-        'loc_neighborhood': loc.neighborhood
+        'loc_neighborhood': loc.neighborhood,
+        'location': loc,
+        'enrollment_hide': [  # hide values for enrollment centers
+            'accred',
+            'weekday_availability',
+            'program_info',
+            'quality_rating',
+            'duration_hours',
+            'ages',
+        ]
     })
 
 
@@ -469,3 +478,8 @@ def neighborhood_api(request):
 class Starred(TemplateView):
     template_name = 'starred.html'
 
+
+class EnrollCommunityPlan(DetailView):
+    """ Display customized printable enrollment plan """
+    template_name = 'enroll-plan-community.html'
+    model = Location

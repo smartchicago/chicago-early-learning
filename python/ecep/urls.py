@@ -59,6 +59,10 @@ urlpatterns = patterns(
         TemplateView.as_view(template_name='contact_thanks.html'),
     ),
 
+    # Enroll
+    url(r'enroll/?$', TemplateView.as_view(template_name='enroll.html'), name='enroll'),
+    url(r'enroll/plan/(?P<pk>\d+)/$', portal_views.EnrollCommunityPlan.as_view(), name='enroll-plan'),
+
     # Location Views
     # Need to pass id to view for sitemap, but don't need to do anything with it since this is handled with javascript
     url(r'^location/(\d+)/$', 'portal.views.location', name='location-view'),

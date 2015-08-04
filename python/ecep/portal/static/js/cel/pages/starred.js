@@ -1,15 +1,16 @@
 /********************************************************
  * Copyright (c) 2013 Azavea, Inc.
  * See LICENSE in the project root for copying permission
- * JavaScript for the starred locations page 
+ * JavaScript for the starred locations page
  ********************************************************/
 
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorites', 'Handlebars'], 
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorites', 'Handlebars'],
     function($, L, html, common, favorites, Handlebars) {
         'use strict';
 
         $(document).ready(function() {
-            // Draw the Handlebars template for a location 
+
+            // Draw the Handlebars template for a location
             function drawStarredLocations(data) {
                 var template = Handlebars.compile(html),
                     container = $('.container-faves'),
@@ -30,12 +31,12 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                 }
 
                 // attach in single dom operation
-                container.html($starred);     
+                container.html($starred);
 
                 // Remove map and share button for each location
                 $('.fav-count').html(numLocations);
 
-                
+
                 // add close buttons and click listener if we are displaying cookie locations
                 //      else hide because this was a shared link and the "remove" functionality
                 //      does not make sense
@@ -43,7 +44,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                     $('.favs-close-button').removeClass('none').on('click', function(e) {
                         var $favorite = $(this).parent(),
                             key = $favorite.data('key');
-    
+
                         favorites.removeIdFromCookie(key);
                         location.reload();
                     });
@@ -51,9 +52,9 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
             }
 
             // get location ids:
-            // url --> string :: /starred/12,13,54/  --> "12,13,54" 
+            // url --> string :: /starred/12,13,54/  --> "12,13,54"
             //      -- or --
-            // cookie string 
+            // cookie string
             var cookie = favorites.getCookie(),
                 regexResult = /([0-9,]+)/.exec(window.location.pathname),
                 starredIds = "";
@@ -70,8 +71,28 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                 $('.container-faves').html(gettext('No Favorite Locations'));
             }
 
+            if(regexResult) {
+                var initial_ids = regexResult[1].split(',');
+                $.each(initial_ids, function(i, value) {
+                    favorites.addIdToCookie(value);
+                });
+            }
+
             favorites.addClearListener();
             favorites.addShareListener();
+
+            // Handle back button logic.  If there is a history.length greater than 2,
+            // take them to /search/ otherwise do history.go(-1)
+            $('#back-button').on('click', function(e) {
+                if(regexResult) {
+                    var url = window.location.protocol + '//' + window.location.host + '/search/'
+                    window.location.href = url;
+                }
+                else {
+                    window.history.go(-1);
+                }
+            });
+
         });
     }
 );

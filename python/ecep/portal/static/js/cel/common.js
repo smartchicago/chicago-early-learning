@@ -3,8 +3,8 @@
  * See http://requirejs.org/docs/api.html for details
  */
 
-define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap', 
-        'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire], 
+define(['jquery', 'Leaflet', '../lib/response', 'Handlebars', 'bootstrap',
+        'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire],
 function($, L, Response, Handlebars) {
     'use strict';
 
@@ -24,16 +24,16 @@ function($, L, Response, Handlebars) {
             if(document.height < window.outerHeight) {
                 document.body.style.height = (window.outerHeight + 50) + 'px';
             }
-            setTimeout(function() { 
-                window.scrollTo(0, 1); 
+            setTimeout(function() {
+                window.scrollTo(0, 1);
             }, 50);
         }
     }
-    if (isTouchscreen) { 
+    if (isTouchscreen) {
         $(window).on('load', function() {
-            if(!window.pageYOffset) { 
-                hideAddressBar(); 
-            } 
+            if(!window.pageYOffset) {
+                hideAddressBar();
+            }
         }).on('orientationchange', hideAddressBar);
     }
 
@@ -60,7 +60,7 @@ function($, L, Response, Handlebars) {
 
         // set up ga tracking
         $('body').on('click', '*.ga-track', function(e) {
-            gaTrackEvent($(this));             
+            gaTrackEvent($(this));
         });
 
         // AUTOCOMPLETE
@@ -77,12 +77,12 @@ function($, L, Response, Handlebars) {
                 southWest = new google.maps.LatLng(acSettings.swlat, acSettings.swlng),
                 bounds = new google.maps.LatLngBounds(southWest, northEast);
 
-            geocoder.geocode( 
+            geocoder.geocode(
                 {
                     address: request.term,
                     bounds: bounds,
                     region: 'US'
-                }, 
+                },
                 function(results, status) {
                     var cleanedResults = [],
                         result,
@@ -166,7 +166,7 @@ function($, L, Response, Handlebars) {
             }
         };
 
-        /* 
+        /*
          * Submit the first autocomplete result on button click if none is populated
          */
         $('.autocomplete-submit').on('click', function(e) {
@@ -174,7 +174,7 @@ function($, L, Response, Handlebars) {
             spoofSubmitAutocomplete();
         });
 
-        /* 
+        /*
          * Submit the first autocomplete result on enter if no result is populated
          * This also overrides the functionality in the select callback below
          */
@@ -316,7 +316,7 @@ function($, L, Response, Handlebars) {
                 }
                 return url;
             case 'neighborhood-api':
-                return '/' + ($.cookie('django_language') || CEL.serverVars.default_language) + 
+                return '/' + ($.cookie('django_language') || CEL.serverVars.default_language) +
                     '/api/neighborhood/';
             case 'neighborhoods-topo':
                 return '/static/js/neighborhoods-topo.json';
@@ -377,6 +377,8 @@ function($, L, Response, Handlebars) {
                 return '/static/img/leaflet-icons/center-accredited-starred.png';
             case 'icon-geolocation':
                 return '/static/img/leaflet-icons/geocode.png';
+            case 'icon-enrollment':
+                return '/static/img/leaflet-icons/appsite.png';
             case 'icon-quality':
                 if (opts && opts.quality) {
                     return '/static/img/icons/' + opts.quality + '.png';
@@ -398,24 +400,24 @@ function($, L, Response, Handlebars) {
         .replace(/-+$/, '');            // Trim - from end of text
     };
 
-    // geolocation                                                                                  
+    // geolocation
     if ('geolocation' in navigator) {
         $(document).ready(function() {
             $('.geolocation-button').bind('click', function(e) {
                 e.preventDefault();
-                navigator.geolocation.getCurrentPosition(function(position) {                           
+                navigator.geolocation.getCurrentPosition(function(position) {
                     window.location.href = getUrl(
                         'browse',
-                        { 
-                            type: 'geo-latlng', 
-                            lat: position.coords.latitude, 
+                        {
+                            type: 'geo-latlng',
+                            lat: position.coords.latitude,
                             lng: position.coords.longitude
                         }
                     );
                 }, function(e) {
                     e.preventDefault();
                     alert(gettext('Please enable geolocation services.'));
-                });                                                                                     
+                });
             });
         });
     } else {
@@ -426,7 +428,7 @@ function($, L, Response, Handlebars) {
     // The options argument must be an object that contains both a url and a title,
     // which are used to construct the appropriate sharing links.
     $('#share-modal').on('init-modal', function(e, options) {
-        // a lot of these urls won't work when passing 'localhost' urls, but once we 
+        // a lot of these urls won't work when passing 'localhost' urls, but once we
         // move to a publically accessible url, they will work just fine
         var templates = {
                 mail: 'mailto:?body={{ url }}&subject={{ title }}',
@@ -460,7 +462,7 @@ function($, L, Response, Handlebars) {
 
         slugify: slugify,
 
-        breakpoints: breakpoints, 
+        breakpoints: breakpoints,
 
         isTouchscreen: isTouchscreen,
 

@@ -22,7 +22,7 @@ define(['./Leaflet'], function(L) {
         homeIcon: L.icon({
             iconUrl: '/static/img/leaflet-icons/marker-home.png',
             shadowUrl: '/static/img/leaflet-icons/marker-shadow.png',
-            
+
             iconSize:     [35, 45], // size of the icon
             shadowSize:   [41, 41], // size of the shadow
             iconAnchor:   [10, 60], // point of the icon which will correspond to marker's location
@@ -32,7 +32,7 @@ define(['./Leaflet'], function(L) {
         highlightIcon: L.icon({
             iconUrl: '/static/img/leaflet-icons/marker-highlight.png',
             shadowUrl: '/static/img/leaflet-icons/marker-shadow.png',
-            
+
             iconSize:     [35, 45], // size of the icon
             shadowSize:   [41, 41], // size of the shadow
             iconAnchor:   [10, 60], // point of the icon which will correspond to marker's location

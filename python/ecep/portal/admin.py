@@ -46,7 +46,6 @@ class LocationForm(forms.ModelForm):
     and a custom clean method to properly handle points passed in as strings
     """
 
-    geom = forms.CharField(label="Geocoded Point", widget=MapWidget())
     site_name = forms.CharField(widget=forms.TextInput(attrs={'size': '50'}))
 
     def __init__(self, *args, **kwargs):
@@ -74,43 +73,47 @@ class LocationForm(forms.ModelForm):
             for field in self.fields.values():
                 field.widget.attrs['class'] = 'create'
 
-    def get_point(self, geom_string):
-        """Takes a geom_string from cleaned_data and converts it to a point
-        object. If unable to convert, raises a validation error.
-
-        Arguments:
-        - `geom_string`: string returned by the 'geom' input from the LocationForm
-        Takes the form of 'POINT (<LNG> <LAT>)'
-        """
-        try:
-            split_geom_string = re.findall(r'([-.\w]+)', geom_string)
-            lng = float(split_geom_string[1])
-            lat = float(split_geom_string[2])
-            return Point(lng, lat)
-        except (IndexError, ValueError):
-            raise forms.ValidationError("Invalid point specified for location")
-
-    def clean(self):
-        """
-        Need to create a Point object from string returned by form because
-        of the way the map fills in the geocoded location form
-        """
-        self.cleaned_data = super(LocationForm, self).clean()
-
-        try:
-            self.cleaned_data['geom'] = self.get_point(self.cleaned_data['geom'])
-            return self.cleaned_data
-        except forms.ValidationError:
-            # Need to pass a dummy point if invalid, or we get a 500 error
-            # This point does not get saved, nothing happens to it
-            self.cleaned_data['geom'] = Point(0, 0)
-            raise forms.ValidationError("Invalid point specified for location")
+#    def get_point(self, geom_string):
+#        """Takes a geom_string from cleaned_data and converts it to a point
+#        object. If unable to convert, raises a validation error.
+#
+#        Arguments:
+#        - `geom_string`: string returned by the 'geom' input from the LocationForm
+#        Takes the form of 'POINT (<LNG> <LAT>)'
+#        """
+#        try:
+#            split_geom_string = re.findall(r'([-.\w]+)', geom_string)
+#            lng = float(split_geom_string[1])
+#            lat = float(split_geom_string[2])
+#            return Point(lng, lat)
+#        except (IndexError, ValueError):
+#            raise forms.ValidationError("Invalid point specified for location")
+#
+#    def clean(self):
+#        """
+#        Need to create a Point object from string returned by form because
+#        of the way the map fills in the geocoded location form
+#        """
+#        self.cleaned_data = super(LocationForm, self).clean()
+#
+#        try:
+#            self.cleaned_data['geom'] = self.get_point(self.cleaned_data['geom'])
+#            return self.cleaned_data
+#        except forms.ValidationError:
+#            # Need to pass a dummy point if invalid, or we get a 500 error
+#            # This point does not get saved, nothing happens to it
+#            self.cleaned_data['geom'] = Point(0, 0)
+#            raise forms.ValidationError("Invalid point specified for location")
 
     class Meta:
         model = Location
 
 
 class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
+
+    default_lon = -9754167.445328873
+    default_lat = 5143294.85337356
+    default_zoom = 9
 
     # General Settings
     # Template override that adds buttons to propose/accept changes
@@ -119,10 +122,10 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
     delete_confirmation_template = 'admin/portal/location/delete_confirmation.html'
     save_on_top = True
     save_on_bottom = False
-    list_display = ['site_name', 'address', 'zip', 'phone', 'email', 'id', 'accepted', 'q_rating']
+    list_display = ['site_name', 'address', 'zip', 'phone', 'email', 'id', 'accepted', 'q_rating', 'site_type']
     base_list_filter = ['is_hs', 'is_ehs', 'accept_ccap', 'is_cps_based', 'is_community_based',
                         'is_age_lt_3', 'is_age_gt_3', 'is_full_day', 'is_full_week', 'is_full_year',
-                        'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting', 'q_rating']
+                        'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting', 'q_rating', 'site_type']
     search_fields = ['site_name', 'address', 'zip', 'language_1', 'language_2', 'language_3']
     readonly_fields = ['neighborhood']
     form = LocationForm
@@ -136,7 +139,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
         )},
     }
     fieldsets = [
-        (None,      {'fields': ['site_name', 'neighborhood']}),
+        (None,      {'fields': ['site_name', 'site_type', 'neighborhood']}),
         ('Address', {'fields': [('address', 'city'), ('state', 'zip'), 'geom']}),
         ('Contact', {'fields': ['phone', 'url', 'email']}),
         ('Hours/Duration', {'fields': [('is_full_day', 'is_part_day'),
@@ -148,7 +151,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
                                 ('accept_ccap', 'is_home_visiting')]}),
         ('Other',   {'fields': [('ages', 'prg_hours', 'accred'),
                                 ('language_1', 'language_2', 'language_3'),
-                                'q_stmt', 'open_house', 'curriculum',
+                                'q_stmt', 'enrollment', 'open_house', 'curriculum',
                                 'q_rating', ]}),
     ]
 
@@ -374,6 +377,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
 
 
 class ContactAdmin(admin.ModelAdmin):
+    change_list_template = 'admin/portal/contact/change_list.html'
     list_display = (
         'name', 'email', 'phone', 'zip', 'location', 'is_cps_based', 'created'
     )
@@ -403,6 +407,67 @@ class ContactAdmin(admin.ModelAdmin):
         if not request.user.is_superuser and 'delete_selected' in actions:
             actions.pop('delete_selected')
         return actions
+
+    def get_urls(self):
+        """
+        Override of get_urls to add custom admin views to export
+        """
+        urls = super(ContactAdmin, self).get_urls()
+        location_urls = patterns(
+            '',
+            url(r'^export_contacts$',
+                self.admin_site.admin_view(self.export_contacts),
+                name='export_contacts'),
+        )
+        return location_urls + urls
+
+    def _is_edit_admin(self, user):
+        """
+        Helper function to check whether a user belongs to group
+        with with edit admin privileges.
+
+        Returns true if user is superuser or part of group approve_edit.
+        """
+        return user.is_superuser or len(user.groups.filter(name='approve_edit')) > 0
+
+    def changelist_view(self, request, extra_context=None):
+        """
+        Override changelist_view in order to limit display of pending edits and pending additions
+        to Admin user
+        """
+        extra_context = extra_context or {}
+        extra_context['is_edit_admin'] = self._is_edit_admin(request.user)
+        return super(ContactAdmin, self).changelist_view(request, extra_context=extra_context)
+
+    def export_contacts(self, request):
+        """
+        Custom admin view to export the Contacts table
+
+        Returns a csv file of the locations table, or 403 if the user is not
+        an edit admin
+        """
+        if not self._is_edit_admin(request.user):
+            return HttpResponseForbidden(
+                'You do not have permission to export the locations database.  '
+                'Please contact your administrator'
+            )
+            pass
+
+        filename = slugify('%s_contact_export' % str(datetime.now().date())) + '.csv'
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="%s";' % filename
+        response.write(u'\ufeff'.encode('utf8'))  # BOM for excel
+
+        result = Contact.objects.all()
+        header = next(result.values().iterator()).keys()
+        writer = csv.DictWriter(response, header)
+        writer.writeheader()
+
+        for row in result.values():
+            writer.writerow({unicode(k): unicode(v).encode('utf-8') for k, v in row.items()})
+
+        response.flush()
+        return response
 
 admin.site.register(Location, LocationAdmin)
 admin.site.register(Contact, ContactAdmin)

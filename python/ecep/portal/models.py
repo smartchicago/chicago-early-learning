@@ -67,7 +67,13 @@ class Location(models.Model):
         (GOLD, ugettext_lazy('Gold')),
     )
 
+    LOCATION_TYPE_CHOICES = (
+        (0, 'Normal Location'),
+        (1, 'Application Site'),
+    )
+
     site_name = models.CharField('Site Name', max_length=100)
+    site_type = models.IntegerField('Site Type', default=0, choices=LOCATION_TYPE_CHOICES)
     address = models.CharField('Address', max_length=75)
     city = models.CharField('City', max_length=75)
     state = models.CharField('State', max_length=2)
@@ -77,6 +83,7 @@ class Location(models.Model):
     q_rating = models.CharField(ugettext_lazy('Quality Rating'), choices=Q_RATING_CHOICES, max_length=10, blank=True)
     url = models.CharField(ugettext_lazy('Website'), max_length=256, blank=True)
     q_stmt = models.TextField(ugettext_lazy('Description'), blank=True)
+    enrollment = models.TextField(ugettext_lazy('Enrollment Process'), blank=True)
     accred = models.CharField(ugettext_lazy('Accreditation'), max_length=100, blank=True)
     prg_hours = models.CharField(ugettext_lazy('Program Hours'), max_length=50, blank=True)
     is_full_day = models.NullBooleanField(ugettext_lazy('Full Day'))
@@ -129,7 +136,7 @@ class Location(models.Model):
 
     display_order = dict((k, v) for v, k in enumerate([
             'open_house',
-            'accred', 'ages', 'description', 'duration_hours',
+            'accred', 'ages', 'description', 'enrollment', 'duration_hours',
             'weekday_availability', 'languages', 'program_info',
             'curriculum', 'quality_rating'
         ]))
@@ -150,6 +157,13 @@ class Location(models.Model):
         Given the name of field, returns the verbose_name property for it
         """
         return unicode(self._meta.get_field_by_name(field)[0].verbose_name)
+
+    @property
+    def is_enrollment(self):
+        if self.site_type == 1:
+            return True
+        else:
+            return False
 
     @staticmethod
     def get_filter_fields():
@@ -219,8 +233,12 @@ class Location(models.Model):
             'state': self.state,
             'key': self.pk,
             'email': self.email,
+            'type': self.site_type,
             'age_lt_3': self.is_age_lt_3,
             'age_gt_3': self.is_age_gt_3,
+            'site_type': self.site_type,
+            'is_enrollment': self.is_enrollment,
+            'duration_hours': self.prg_hours,
         }
 
         # simple fields to present -- these are the attributes that have text content

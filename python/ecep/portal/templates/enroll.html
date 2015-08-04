@@ -1,0 +1,61 @@
+{% extends "base-search.html" %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% comment %}
+Copyright (c) 2012, 2013 Azavea, Inc.
+See LICENSE in the project root for copying permission
+{% endcomment %}
+
+{% block title %}{% trans "Enroll" %} - {% trans "Chicago Early Learning" %}{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block content %}
+<div class="container tm61">
+  <div class="row">
+    <div class="span12">
+      <h1>Enrolling in Chicago: Ready to Learn! early learning programs is easy.</h1>
+
+      <h2>First, find an enrollment site near you.</h2>
+
+      <p>For <strong>community-based</strong> programs, enroll directly at your preferred provider's location. Navigate the Chicago Early Learning Portal to identify a provider that will suit your needs, or call the Chicago: Ready to Learn! hotline at <a href="tel:13122291690">(312) 229-1690</a> for one-on-one assistance.</p>
+
+      <p>For <strong>CPS school-based</strong> programs, apply at any of the following child-friendly locations:</p>
+
+      <ul>
+        <li>Loop, 42 W. Madison Street, 9:00 AM - 5:00 PM</li>
+        <li>Colman, 4655 S. Dearborn Street, 9:00 AM - 5:00 PM</li>
+        <li>Hall Mall, 4638 W. Diversey Avenue, 8:00 AM - 5:00 PM</li>
+      </ul>
+
+      <p><em>All sites are open until 7:00 PM on Wednesdays!</em></p>
+
+      <p>Visit <a href="http://cps.edu/readytolearn">cps.edu/readytolearn</a> to learn more about school based enrollment, including additional enrollment opportunities and what to bring.</p>
+
+      <p>Call the Chicago: Ready to Learn! Hotline at <a href="tel:13122291690">(312) 229-1690</a> for one-on-one assistance.</p>
+
+      <h2>Next, visit your program's site to begin the process of enrolling your child!</h2>
+
+      <p>A specialist will be there to walk you through the process step-by-step. Many people find it helpful to make a plan to visit an enrollment site.</p>
+
+      <h2>That’s it! Ready to get started?</h2>
+
+      <p>Join nearly 40,000 Chicago children participating in early learning programs. Classes are starting soon…</p>
+      <p>
+        1) Give us a call or a visit;<br />
+        2) Discuss options with a specialist;<br />
+        3) Enroll your child for preschool today!<br />
+      </p>
+
+      <p>One-on-one guidance: Call the Chicago: Ready to Learn! Hotline at
+      <a href="tel:13122291690">(312) 229-1690</a>. ¡Se habla Español!</p>
+
+      <p><a href="{% url 'browse' %}">Click here to find programs!</a></p>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+

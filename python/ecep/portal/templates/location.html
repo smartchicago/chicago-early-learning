@@ -35,9 +35,9 @@ See LICENSE in the project root for copying permission
             data-ga-category="starred" data-ga-action="Remove Favorite">&times;</a>
       <h1 class="school-name" itemprop="name">{{ loc.item.site_name }}</h1>
       <p itemprop="address">
-        <span itemprop="streetAddress">{{ loc.item.address }}</span>, 
-        <span itemprop="addressLocality">{{ loc.item.city }}</span>, 
-        <span itemprop="addressRegion">{{ loc.item.state }}</span> 
+        <span itemprop="streetAddress">{{ loc.item.address }}</span>,
+        <span itemprop="addressLocality">{{ loc.item.city }}</span>,
+        <span itemprop="addressRegion">{{ loc.item.state }}</span>
         <span itemprop="postalCode">{{ loc.item.zip }}</span>
       </p>
       <div class="clearfix">
@@ -70,10 +70,25 @@ See LICENSE in the project root for copying permission
           <a href="tel:{{ loc.phone.number }}" class="ga-track" itemprop="telephone" data-ga-category="location" data-ga-action="Telephone">{{ loc.phone.number }}</a>
         </p>
         <hr>
+        {% if location.enrollment %}
+        <h1>Enroll Now!</h1>
+        <p>
+        {{ location.enrollment|safe }}
+        </p>
+        {% endif %}
         {% for sfield in loc.sfields %}
+
+          {% if loc.item.is_enrollment %}
+            {% if sfield.key not in enrollment_hide %}
+              <h1>{{ sfield.fieldname }}</h1>
+              {{ sfield.value|safe }}
+              <hr>
+            {% endif %}
+          {% else %}
           <h1>{{ sfield.fieldname }}</h1>
           {{ sfield.value|safe }}
           <hr>
+          {% endif %}
         {% endfor %}
         {% if loc.bfields.values %}
           <h1>{{ loc.bfields.fieldname }}</h1>
