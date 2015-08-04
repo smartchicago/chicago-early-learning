@@ -25,7 +25,7 @@ See LICENSE in the project root for copying permission
 
                 <p>{% blocktrans %}Press the “Contact” button to contact all of the selections on your list to learn more about each location. These locations will respond to you by phone or email within 3 business days.{% endblocktrans %}</p>
 
-                <p>{% blocktrans %}Press “Back to Search Results” to add more locations you are interested in.{% endblocktrans %}</p>
+                <p>{% blocktrans %}Press “Back to Search" to add more locations you are interested in.{% endblocktrans %}</p>
             </div>
 
             <div class="span12 actions">
@@ -41,7 +41,7 @@ See LICENSE in the project root for copying permission
                     data-ga-category="starred" data-ga-action="Clear Selections">
                     <i class="icon-remove-circle"></i> {% trans "Clear Selections" %}
                 </a>
-                <a class="btn faves-close faves-option" id="back-button"href="{% url 'browse' %}"><i class="icon-arrow-left" ></i> {% trans "Back to Search" %}</a>
+                <button class="btn faves-close faves-option" id="back-button"><i class="icon-arrow-left" ></i> {% trans "Back to Search" %}</button>
             </div>
         </div>
     </div>
