@@ -1,0 +1,220 @@
+<!DOCTYPE html>{% load i18n staticfiles static compress %}
+<html>
+  <head>
+    <title>{% block title %}{% trans "Chicago Early Learning" %} - {% trans "Find early learning programs near your home or work." %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="google-site-verification" content="c_0AMwlpIq4b4OQfRjbMWhsfk2Mv8DStFiNf3HkXLCA" />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href='{% static "img/apple-touch-icon-144-precomposed.png" %}'>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href='{% static "img/apple-touch-icon-114-precomposed.png" %}'>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href='{% static "img/apple-touch-icon-72-precomposed.png" %}'>
+    <link rel="apple-touch-icon-precomposed" href='{% static "img/apple-touch-icon-57-precomposed.png" %}'>
+    <link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
+
+    {% compress css %}
+    <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
+    <style>
+      #outer {
+        border: 1px solid #33cc33;
+        margin-top: 50px;
+        font-size: 1.5em;
+        margin-bottom: 50px;
+      }
+
+      #outer p {
+        text-align: center;
+        line-height: 1.5em;
+      }
+
+      #outer p.row-label {
+        text-align: right;
+      }
+
+      .green {
+        color: #33cc33;
+      }
+
+      .big {
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
+      .row-padding {
+        padding: 25px;
+      }
+
+      .field-row {
+        margin-top: 50px;
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+
+      .fake-field {
+        float: left;
+        width: 600px;
+        border-bottom: 1px solid #33cc33;
+        padding: 5px;
+      }
+
+      .help-text {
+        float: left;
+        width: 600px;
+        font-style: italic;
+        font-size: .75em;
+        text-align: center;
+        margin-top: 5px;
+      }
+
+      .header-row {
+        margin-top: 25px;
+      }
+
+      #header-box {
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid #33cc33;
+        margin-bottom: 30px;
+      }
+
+      #header-box h2 {
+        color: blue;
+        text-align: center;
+        font-size: 1.2em;
+      }
+
+      .header-image {
+        text-align: center;
+        margin-left: 10px;
+      }
+
+      .footer {
+        background: #bdd7ee;
+        margin: 0;
+        padding: 25px;
+        text-align: center;
+      }
+    </style>
+    {% endcompress %}
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', '{{ ga_key }}']);
+        _gaq.push(['_trackPageview', '{{ request.path }}']);
+        _gaq.push(function() {
+            _gat._createTracker('{{ ga_key }}', 'outlinkTracker');
+        });
+    </script>
+    <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
+  </head>
+
+  <body lang="{{ LANGUAGE_CODE }}">
+    <div class="container" id="outer">
+
+      <div class="row header-row">
+        <div class="span1">&nbsp;</div>
+        <div class="span2">
+          <img src="{% static "img/logos/cps.jpg" %}" />
+        </div>
+        <div class="span4">
+          <div id="header-box">
+            <h2>CHICAGO:</h2>
+            <p class="big green">READY TO LEARN!</p>
+          </div>
+        </div>
+        <div class="span2 header-image">
+          <img src="{% static "img/logos/headstart-logo.png" %}" width="100"/>
+        </div>
+        <div class="span3 header-image">
+          <img src="{% static "img/logos/coc.jpg" %}" width="100"/>
+        </div>
+      </div>
+      <div class="row row-padding">
+        <div class="span1">&nbsp;</div>
+        <div class="span10">
+          <p>
+          Many people find it helpful to <span class="big green">make a plan</span>
+          to enroll their child in preschool. You can make your plan here.
+          </p>
+        </div>
+        <div class="span1">&nbsp;</div>
+      </div>
+
+      <div class="row field-row">
+        <div class="span3">
+          <p class="row-label">My site is:</p>
+        </div>
+        <div class="span8">
+          <span class="fake-field">{{ object.site_name }}</span>
+        </div>
+      </div>
+
+      <div class="row field-row">
+        <div class="span3">
+          <p class="row-label">It is located at:</p>
+        </div>
+        <div class="span8">
+          <span class="fake-field">{{ object.address }}</span>
+        </div>
+      </div>
+
+      <div class="row field-row">
+        <div class="span3">
+          <p class="row-label">It's hours are:</p>
+        </div>
+        <div class="span8">
+          <span class="fake-field">{{ object.prg_hours }}</span>
+        </div>
+      </div>
+
+      <div class="row field-row">
+        <div class="span3">
+          <p class="row-label">I will visit on:</p>
+        </div>
+        <div class="span8">
+          <span class="fake-field">&nbsp;</span>
+          <span class="help-text">Day of Week / Month / Day at Time</span>
+        </div>
+      </div>
+
+      <div class="row field-row">
+        <div class="span3">
+          <p class="row-label">My child will:</p>
+        </div>
+        <div class="span8">
+          <span class="fake-field">&nbsp;</span>
+          <span class="help-text">(come with me, stay with friend, etc)</span>
+        </div>
+      </div>
+
+      <div class="row field-row">
+        <div class="span3">
+          <p class="row-label">I will get there by:</p>
+        </div>
+        <div class="span8">
+          <span class="fake-field">&nbsp;</span>
+          <span class="help-text">(CTA, walking, car, friend, etc)</span>
+        </div>
+      </div>
+
+      <div class="row field-row">
+        <div class="span3">
+          <p class="row-label">Questions?<br />Call:</p>
+        </div>
+        <div class="span8">
+          <span class="fake-field" style="text-align: center">(312) 229-1690</span>
+          <span class="help-text">(Chicago: Ready to Learn Hoteline)</span>
+        </div>
+      </div>
+
+      <div class="row footer">
+        <div class="span12">
+          <h2>Print and place this on your refrigerator.</h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
