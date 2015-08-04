@@ -10,18 +10,6 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
 
         $(document).ready(function() {
 
-            // Handle back button logic.  If there is a history.length greater than 2,
-            // take them to /search/ otherwise do history.go(-1)
-            $('#back-button').on('click', function(e) {
-                if(history.length > 2) {
-                    window.history.go(-1);
-                }
-                else {
-                    var url = window.location.protocol + '//' + window.location.host + '/search/'
-                    window.location.href = url;
-                }
-            });
-
             // Draw the Handlebars template for a location
             function drawStarredLocations(data) {
                 var template = Handlebars.compile(html),
@@ -92,6 +80,18 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
 
             favorites.addClearListener();
             favorites.addShareListener();
+
+            // Handle back button logic.  If there is a history.length greater than 2,
+            // take them to /search/ otherwise do history.go(-1)
+            $('#back-button').on('click', function(e) {
+                if(regexResult) {
+                    var url = window.location.protocol + '//' + window.location.host + '/search/'
+                    window.location.href = url;
+                }
+                else {
+                    window.history.go(-1);
+                }
+            });
 
         });
     }
