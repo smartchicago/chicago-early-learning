@@ -71,10 +71,22 @@ See LICENSE in the project root for copying permission
         </p>
         <hr>
         {% if location.enrollment %}
-        <h1>Enroll Now!</h1>
-        <p>
-        {{ location.enrollment|safe }}
-        </p>
+          <h1>Enroll Now!</h1>
+          {% if location.is_cps_based %}
+          <p>
+            <p>Visit a child-friendly location near you:</p>
+            <ul>
+              <li><strong>Loop</strong> 42 W. Madison Street Hours: 9:00 AM - 5:00 PM</li>
+              <li><strong>Colman</strong> 4655 S. Dearborn Street Hours: 9:00 AM - 5:00 PM</li>
+              <li><strong>Hall Mall</strong> 4638 W. Diversey Avenue Hours 8:00 AM - 5:00 PM</li>
+            </ul>
+            <p>Many people find it helpful to make a plan to visit.</p>
+          </p>
+          {% else %}
+          <p>
+          {{ location.enrollment|safe }}
+          </p>
+          {% endif %}
         {% endif %}
         {% for sfield in loc.sfields %}
 
