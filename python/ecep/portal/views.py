@@ -479,6 +479,11 @@ class Starred(TemplateView):
     template_name = 'starred.html'
 
 
+def enroll_plan(request, pk):
+    location = get_object_or_404(Location, pk=pk)
+    return render(request, 'enroll-plan-community.html', {'object': location})
+
+
 class EnrollCommunityPlan(DetailView):
     """ Display customized printable enrollment plan """
     template_name = 'enroll-plan-community.html'
