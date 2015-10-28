@@ -16,11 +16,12 @@
     <link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
 
     {% compress css %}
-    <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
+    <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet" media="all">
     <style>
+      #print {margin-top: 10px;}
       #outer {
         border: 1px solid #33cc33;
-        margin-top: 50px;
+        margin-top: 30px;
         font-size: 1.5em;
         margin-bottom: 50px;
       }
@@ -121,8 +122,15 @@
   </head>
 
   <body lang="{{ LANGUAGE_CODE }}">
-    <div class="container" id="outer">
+    <div class="container" id="print">
+      <div class="row">
+        <div class="span4 offset4">
+          <button class="btn btn-large btn-block" onclick="window.print()">Print this page</button>
+        </div>
+      </div>
+    </div>
 
+    <div class="container" id="outer">
       <div class="row header-row">
         <div class="span1">&nbsp;</div>
         <div class="span2">
@@ -261,7 +269,7 @@
         <div class="span12">
           <h2>Print and place this on your refrigerator.</h2>
           <h3>Want us to send you a reminder for your visit? Sign up here:</h3>
-          <h3>http://j.mp/ChiEnroll</h3>
+          <h3><a href="http://j.mp/ChiEnroll">http://j.mp/ChiEnroll</a></h3>
         </div>
       </div>
     </div>
