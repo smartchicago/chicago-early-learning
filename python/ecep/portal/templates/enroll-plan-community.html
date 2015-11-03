@@ -122,13 +122,6 @@
   </head>
 
   <body lang="{{ LANGUAGE_CODE }}">
-    <div class="container" id="print">
-      <div class="row">
-        <div class="span4 offset4">
-          <button class="btn btn-large btn-block" onclick="window.print()">Print this page</button>
-        </div>
-      </div>
-    </div>
 
     <div class="container" id="outer">
       <div class="row header-row">
@@ -267,9 +260,16 @@
 
       <div class="row footer">
         <div class="span12">
-          <h2>Print and place this on your refrigerator.</h2>
-          <h3>Want us to send you a reminder for your visit? Sign up here:</h3>
-          <h3><a href="http://j.mp/ChiEnroll">http://j.mp/ChiEnroll</a></h3>
+          <div class="row">
+            <div class="span2 offset5">
+              <button class="btn btn-large btn-block" onclick="window.print()">Print</button>
+            </div>
+          </div>
+          <div class="row">
+            <h2>Print and place this on your refrigerator.</h2>
+            <h3>Want us to send you a reminder for your visit? Sign up here:</h3>
+            <h3><a href="http://j.mp/ChiEnroll">http://j.mp/ChiEnroll</a></h3>
+          </div>
         </div>
       </div>
     </div>
