@@ -1,0 +1,23 @@
+/* Enroll Plan Page Print Styles */
+
+.container {
+    width: 8in;
+} 
+
+body {
+    font-size: 10px;
+}
+
+a, a:after { content: normal !important; }
+
+.top-margin {
+    display: none;
+}
+
+.row {
+    margin-top: 10px;
+}
+
+.field-row {
+    margin-top: 200px;
+}
