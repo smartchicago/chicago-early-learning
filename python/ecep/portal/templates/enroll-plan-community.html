@@ -16,11 +16,13 @@
     <link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
 
     {% compress css %}
-    <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
+    <link href='{% static "css/lib/bootstrap-335.min.css" %}' rel="stylesheet" media="all">
+    <link href='{% static "css/enroll-print.css" %}' rel="stylesheet" media="print">
+    <!--
     <style>
       #outer {
         border: 1px solid #33cc33;
-        margin-top: 50px;
+        margin-top: 30px;
         font-size: 1.5em;
         margin-bottom: 50px;
       }
@@ -41,10 +43,6 @@
       .big {
         font-size: 1.1em;
         font-weight: bold;
-      }
-
-      .row-padding {
-        padding: 25px;
       }
 
       .field-row {
@@ -88,17 +86,93 @@
 
       .header-image {
         text-align: center;
-        margin-left: 10px;
       }
 
       .footer {
         background: #bdd7ee;
-        margin: 0;
-        margin-top: 25px;
-        padding: 25px;
         text-align: center;
       }
+      
+      .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+        border-top: 0px;
+      }
+
     </style>
+    -->
+    <style media="all">
+      #outer {
+        border: 1px solid #33cc33;
+        margin-top: 5px;
+        font-size: 1.5em;
+        margin-bottom: 5px;
+      }
+
+      .footer {
+        background-color: #bdd7ee;
+        text-align: center;
+      }
+
+      .header-row {
+        margin-top: 20px;
+      }
+
+      #header-box {
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid #33cc33;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+
+      #header-box h2 {
+        color: blue;
+        font-size: 1.2em;
+      }
+
+      .top-margin {
+        margin-top: 15px;
+      }
+
+      .green {
+        color: #33cc33;
+      }
+
+      .big {
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
+      .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+        border-top: 0px;
+        padding: 0px;
+      }
+
+      .fake-field {
+        float: left;
+        width: 100%;
+        border-bottom: 1px solid #33cc33;
+        padding: 5px;
+      }
+
+      .field-row {
+        margin-top: 10px;
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+
+      .help-text {
+        font-style: italic;
+        font-size: .75em;
+        text-align: center;
+        margin-top: 5px;
+      }
+
+      .pad {
+        margin-top: 25px;
+      }
+
+    </style>
+
     {% endcompress %}
 
     <script type="text/javascript">
@@ -113,29 +187,42 @@
   </head>
 
   <body lang="{{ LANGUAGE_CODE }}">
+
     <div class="container" id="outer">
+      
+      <div class="row footer">
+        <div class="row top-margin">
+          <div class="col-xs-4 col-xs-offset-4">
+            <button class="btn btn-lg btn-primary btn-block active" onclick="window.print()">Print</button>
+          </div>
+        </div>
+        <div class="row">
+          <h2>Print and place this on your refrigerator.</h2>
+          <h3>Want us to send you a reminder for your visit? Sign up here:</h3>
+          <h3><a href="http://j.mp/ChiEnroll">http://j.mp/ChiEnroll</a></h3>
+        </div>
+      </div>
 
       <div class="row header-row">
-        <div class="span1">&nbsp;</div>
-        <div class="span2">
-          <img src="{% static "img/logos/cps.jpg" %}" />
+        <div class="col-xs-2">
+          <img class="center-block" src="{% static 'img/logos/cps.jpg' %}" />
         </div>
-        <div class="span4">
+        <div class="col-xs-2 header-image">
+          <img class="center-block" src="{% static 'img/logos/headstart-logo.png' %}" width="100"/>
+        </div>
+        <div class="col-xs-4">
           <div id="header-box">
             <h2>CHICAGO:</h2>
             <p class="big green">READY TO LEARN!</p>
           </div>
         </div>
-        <div class="span2 header-image">
-          <img src="{% static "img/logos/headstart-logo.png" %}" width="100"/>
-        </div>
-        <div class="span3 header-image">
-          <img src="{% static "img/logos/coc.jpg" %}" width="100"/>
+        <div class="col-xs-4 header-image">
+          <img class="center-block" src="{% static 'img/logos/coc.jpg' %}" width="100"/>
         </div>
       </div>
-      <div class="row row-padding">
-        <div class="span1">&nbsp;</div>
-        <div class="span10">
+      <div class="row">
+        <div class="col-xs-1">&nbsp;</div>
+        <div class="col-xs-10">
           <p>
           Many people find it helpful to <span class="big green">make a plan</span>
           to enroll their child in preschool. You can make your plan here.
@@ -144,78 +231,113 @@
         <div class="span1">&nbsp;</div>
       </div>
 
+      {% if object.is_community_based %}
       <div class="row field-row">
-        <div class="span3">
-          <p class="row-label">My site is:</p>
+        <div class="col-xs-3">
+          <p class="text-right">My site is:</p>
         </div>
-        <div class="span8">
+        <div class="col-xs-8">
           <span class="fake-field">{{ object.site_name }}</span>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="span3">
-          <p class="row-label">It is located at:</p>
+        <div class="col-xs-3">
+          <p class="text-right">It is located at:</p>
         </div>
-        <div class="span8">
+        <div class="col-xs-8">
           <span class="fake-field">{% firstof object.address '&nbsp;' %}</span>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="span3">
-          <p class="row-label">It's hours are:</p>
+        <div class="col-xs-3">
+          <p class="text-right">It's hours are:</p>
         </div>
-        <div class="span8">
+        <div class="col-xs-8">
           <span class="fake-field">{% firstof object.prg_hours '&nbsp;' %}</span>
         </div>
       </div>
+      {% elif object.is_cps_based %}
 
       <div class="row field-row">
-        <div class="span3">
-          <p class="row-label">I will visit on:</p>
+        <div class="col-xs-3">
+          <p class="text-right">My site is:</p>
         </div>
-        <div class="span8">
-          <span class="fake-field">&nbsp;</span>
-          <span class="help-text">Day of Week / Month / Day at Time</span>
+        <div class="col-xs-8">
+          <span class="fake-field">Any CPS School-Based Application Site</span>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="span3">
-          <p class="row-label">My child will:</p>
+        <div class="col-xs-3">
+          <p class="text-right">My location is:</p>
         </div>
-        <div class="span8">
+        <div class="col-xs-8 col-xs-offset-3">
+          <table class="table">
+            <tr>
+              <th></th>
+              <th>Open Weekdays</th>
+            </tr>
+            <tr>
+              <td><strong>Loop</strong>, 42 W. Madison Street</td>
+              <td>9:00 AM - 5:00 PM</td>
+            </tr>
+            <tr>
+              <td><strong>Colman</strong>, 4655 S. Dearborn St.</td>
+              <td>9:00 AM - 5:00 PM</td>
+            </tr>
+            <tr>
+              <td><strong>Hall Mall</strong>, 4638 W. Diversey Ave.</td>
+              <td>8:00 AM - 5:00 PM</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="row field-row">
+        <div class="col-xs-3">
+          <p class="text-right">I will visit on:</p>
+        </div>
+        <div class="col-xs-8">
           <span class="fake-field">&nbsp;</span>
-          <span class="help-text">(come with me, stay with friend, etc)</span>
+          <p class="help-text text-center">Day of Week / Month / Day at Time</p>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="span3">
-          <p class="row-label">I will get there by:</p>
+        <div class="col-xs-3">
+          <p class="text-right">My child will:</p>
         </div>
-        <div class="span8">
+        <div class="col-xs-8">
           <span class="fake-field">&nbsp;</span>
-          <span class="help-text">(CTA, walking, car, friend, etc)</span>
+          <p class="help-text text-center">(come with me, stay with friend, etc)</p>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="span3">
-          <p class="row-label">Questions?<br />Call:</p>
+        <div class="col-xs-3">
+          <p class="text-right">I will get there by:</p>
         </div>
-        <div class="span8">
+        <div class="col-xs-8">
+          <span class="fake-field">&nbsp;</span>
+          <p class="help-text text-center">(CTA, walking, car, friend, etc)</p>
+        </div>
+      </div>
+
+      <div class="row field-row">
+        <div class="col-xs-3">
+          <p class="text-right">Questions?<br />Call:</p>
+        </div>
+        <div class="col-xs-8">
           <span class="fake-field" style="text-align: center">(312) 229-1690</span>
-          <span class="help-text">(Chicago: Ready to Learn Hoteline)</span>
+          <p class="help-text text-center">(Chicago: Ready to Learn Hoteline)</p>
         </div>
       </div>
 
-      <div class="row footer">
-        <div class="span12">
-          <h2>Print and place this on your refrigerator.</h2>
-        </div>
-      </div>
+      <div class="pad"></div>
+
     </div>
   </body>
 </html>
