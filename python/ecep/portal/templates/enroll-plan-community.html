@@ -144,6 +144,7 @@
 
       .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
         border-top: 0px;
+        padding: 0px;
       }
 
       .fake-field {
@@ -191,7 +192,7 @@
       
       <div class="row footer">
         <div class="row top-margin">
-          <div class="col-md-4 col-md-offset-4">
+          <div class="col-xs-4 col-xs-offset-4">
             <button class="btn btn-lg btn-primary btn-block active" onclick="window.print()">Print</button>
           </div>
         </div>
@@ -203,25 +204,25 @@
       </div>
 
       <div class="row header-row">
-        <div class="col-md-2">
+        <div class="col-xs-2">
           <img class="center-block" src="{% static 'img/logos/cps.jpg' %}" />
         </div>
-        <div class="col-md-2 header-image">
+        <div class="col-xs-2 header-image">
           <img class="center-block" src="{% static 'img/logos/headstart-logo.png' %}" width="100"/>
         </div>
-        <div class="col-md-4">
+        <div class="col-xs-4">
           <div id="header-box">
             <h2>CHICAGO:</h2>
             <p class="big green">READY TO LEARN!</p>
           </div>
         </div>
-        <div class="col-md-4 header-image">
+        <div class="col-xs-4 header-image">
           <img class="center-block" src="{% static 'img/logos/coc.jpg' %}" width="100"/>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-1">&nbsp;</div>
-        <div class="col-md-10">
+        <div class="col-xs-1">&nbsp;</div>
+        <div class="col-xs-10">
           <p>
           Many people find it helpful to <span class="big green">make a plan</span>
           to enroll their child in preschool. You can make your plan here.
@@ -232,47 +233,47 @@
 
       {% if object.is_community_based %}
       <div class="row field-row">
-        <div class="col-md-3">
+        <div class="col-xs-3">
           <p class="text-right">My site is:</p>
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-8">
           <span class="fake-field">{{ object.site_name }}</span>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="col-md-3">
+        <div class="col-xs-3">
           <p class="text-right">It is located at:</p>
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-8">
           <span class="fake-field">{% firstof object.address '&nbsp;' %}</span>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="col-md-3">
+        <div class="col-xs-3">
           <p class="text-right">It's hours are:</p>
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-8">
           <span class="fake-field">{% firstof object.prg_hours '&nbsp;' %}</span>
         </div>
       </div>
       {% elif object.is_cps_based %}
 
       <div class="row field-row">
-        <div class="col-md-3">
+        <div class="col-xs-3">
           <p class="text-right">My site is:</p>
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-8">
           <span class="fake-field">Any CPS School-Based Application Site</span>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="col-md-3">
+        <div class="col-xs-3">
           <p class="text-right">My location is:</p>
         </div>
-        <div class="col-md-8 col-md-offset-3">
+        <div class="col-xs-8 col-xs-offset-3">
           <table class="table">
             <tr>
               <th></th>
@@ -296,40 +297,40 @@
       {% endif %}
 
       <div class="row field-row">
-        <div class="col-md-3">
+        <div class="col-xs-3">
           <p class="text-right">I will visit on:</p>
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-8">
           <span class="fake-field">&nbsp;</span>
           <p class="help-text text-center">Day of Week / Month / Day at Time</p>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="col-md-3">
+        <div class="col-xs-3">
           <p class="text-right">My child will:</p>
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-8">
           <span class="fake-field">&nbsp;</span>
           <p class="help-text text-center">(come with me, stay with friend, etc)</p>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="col-md-3">
+        <div class="col-xs-3">
           <p class="text-right">I will get there by:</p>
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-8">
           <span class="fake-field">&nbsp;</span>
           <p class="help-text text-center">(CTA, walking, car, friend, etc)</p>
         </div>
       </div>
 
       <div class="row field-row">
-        <div class="col-md-3">
+        <div class="col-xs-3">
           <p class="text-right">Questions?<br />Call:</p>
         </div>
-        <div class="col-md-8">
+        <div class="col-xs-8">
           <span class="fake-field" style="text-align: center">(312) 229-1690</span>
           <p class="help-text text-center">(Chicago: Ready to Learn Hoteline)</p>
         </div>
