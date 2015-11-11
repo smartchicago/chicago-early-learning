@@ -1,11 +1,5 @@
 <!DOCTYPE html>{% load i18n staticfiles static compress %}
 <html>
-    <!-- start Mixpanel -->
-    <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
-        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
-        mixpanel.init("63ea510fd57ec90f213150dbca2a95d0");
-    </script>
-    <!-- end Mixpanel -->
   <head>
     <title>{% block title %}{% trans "Chicago Early Learning" %} - {% trans "Find early learning programs near your home or work." %}{% endblock %}</title>
     <meta charset="utf-8">
@@ -14,13 +8,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="google-site-verification" content="c_0AMwlpIq4b4OQfRjbMWhsfk2Mv8DStFiNf3HkXLCA" />
 
-    <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href='{% static "img/apple-touch-icon-144-precomposed.png" %}'>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href='{% static "img/apple-touch-icon-114-precomposed.png" %}'>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href='{% static "img/apple-touch-icon-72-precomposed.png" %}'>
-    <link rel="apple-touch-icon-precomposed" href='{% static "img/apple-touch-icon-57-precomposed.png" %}'>
-    <link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
-
     {% compress css %}
     <link href='{% static "css/lib/hint.min.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
@@ -28,6 +15,15 @@
     <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
+    <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href='{% static "img/apple-touch-icon-144-precomposed.png" %}'>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href='{% static "img/apple-touch-icon-114-precomposed.png" %}'>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href='{% static "img/apple-touch-icon-72-precomposed.png" %}'>
+    <link rel="apple-touch-icon-precomposed" href='{% static "img/apple-touch-icon-57-precomposed.png" %}'>
+    <link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
+
     <style>
         /*
             This is a hack because there is no other simple way to ensure that the correct
@@ -54,7 +50,12 @@
         });
     </script>
     {% block otherhead %}{% endblock %}
-    <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
+        <!-- start Mixpanel -->
+    <script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+        for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+        mixpanel.init("63ea510fd57ec90f213150dbca2a95d0");
+    </script>
+    <!-- end Mixpanel -->
 
 
   </head>
@@ -64,7 +65,7 @@
       <div class="navbar-inner">
         <!-- Navbar LEFT -->
         <div class="navbar-left">
-          <a class="brand" href="{% url 'index' %}" data-r1024="<img src='{% static "img/logo.png" %}' class='logo' alt='CEL'></object> <span>Chicago</span> Early Learning">
+          <a class="brand" href="{% url 'index' %}" data-r1024="<img src='{% static 'img/logo.png' %}' class='logo' alt='CEL'></object> <span>Chicago</span> Early Learning">
             <img src='{% static "img/logo.png" %}' class="logo" alt='CEL'>
           </a>
         {% block searchform %}{% endblock %}
@@ -75,17 +76,18 @@
             <li><a href="{% url 'sms-info' %}"><img src='{% static "img/icons/text-for-info.png" %}' alt="Text For Info" aria-hidden="true"><span>{% trans "Text For Info" %}</span></a></li>
             <li><a href="{% url 'about' %}"><img src='{% static "img/icons/about.png" %}' alt="About" aria-hidden="true"><span>{% trans "About" %}</span></a></li>
             <li><a href="{% url 'faq' %}"><img src='{% static "img/icons/faq.png" %}' alt="FAQ" aria-hidden="true"><span>{% trans "FAQ" %}</span></a></li>
-            <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-r767="{% trans 'Language' %} <b class='caret'></b>">{{ LANGUAGE_CODE|upper }} <b class="caret"></b></a>
 
-              <ul class="dropdown-menu pull-right">
-                {% get_static_prefix as STATIC_PREFIX %}
-                {% for lang in LANGUAGES %}
-                <li><a class="langlink" href="{% url 'setlang' language=lang.0 %}" data-lang="{{ lang.0 }}"><img src='{{ STATIC_PREFIX }}img/{{ lang.0 }}.png' />&nbsp;&nbsp;{% trans lang.1 %}</a></li>
-                {% endfor %}
-              </ul>
-            </li>
             <li><a href="http://eepurl.com/X9ZPf"><img src='{% static "img/icons/email.png" %}' alt="Keep In Touch" aria-hidden="true"><span>{% trans "Keep In Touch" %}</span></a></li>
+
+            {% if LANGUAGE_CODE == 'en' %}
+            <li><a href="{% url 'setlang' language=LANGUAGES.1.0 %}" data-lang="{{ LANGUAGES.1.0 }}"><img src='{{ STATIC_PREFIX }}img/{{ LANGUAGES.1.0 }}.png' />Español</a></li>
+
+            {% elif LANGUAGE_CODE == 'es' %}
+            <li><a href="{% url 'setlang' language=LANGUAGES.0.0 %}" data-lang="{{ LANGUAGES.0.0 }}"><img src='{{ STATIC_PREFIX }}img/{{ LANGUAGES.0.0 }}.png' />English</a></li>
+            {% endif %}
+
+            </li>
+
           </ul>
         </div>
 	{% block navbar %}{% endblock %}
