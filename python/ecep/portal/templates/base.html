@@ -8,6 +8,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="google-site-verification" content="c_0AMwlpIq4b4OQfRjbMWhsfk2Mv8DStFiNf3HkXLCA" />
 
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href='{% static "img/apple-touch-icon-144-precomposed.png" %}'>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href='{% static "img/apple-touch-icon-114-precomposed.png" %}'>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href='{% static "img/apple-touch-icon-72-precomposed.png" %}'>
+    <link rel="apple-touch-icon-precomposed" href='{% static "img/apple-touch-icon-57-precomposed.png" %}'>
+    <link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
+
     {% compress css %}
     <link href='{% static "css/lib/hint.min.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
@@ -15,14 +22,6 @@
     <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
-    <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href='{% static "img/apple-touch-icon-144-precomposed.png" %}'>
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href='{% static "img/apple-touch-icon-114-precomposed.png" %}'>
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href='{% static "img/apple-touch-icon-72-precomposed.png" %}'>
-    <link rel="apple-touch-icon-precomposed" href='{% static "img/apple-touch-icon-57-precomposed.png" %}'>
-    <link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
 
     <style>
         /*
@@ -55,6 +54,7 @@
         for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
         mixpanel.init("63ea510fd57ec90f213150dbca2a95d0");
     </script>
+    <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
     <!-- end Mixpanel -->
 
 
@@ -65,9 +65,8 @@
       <div class="navbar-inner">
         <!-- Navbar LEFT -->
         <div class="navbar-left">
-          <a class="brand" href="{% url 'index' %}" data-r1024="<img src='{% static 'img/logo.png' %}' class='logo' alt='CEL'></object> <span>Chicago</span> Early Learning">
-            <img src='{% static "img/logo.png" %}' class="logo" alt='CEL'>
-          </a>
+          <a class="brand brand-sm" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' class="logo" alt='CEL'></a>
+          <a class="brand brand-lg" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' class="logo" alt='CEL'><span>Chicago</span> Early Learning</a>
         {% block searchform %}{% endblock %}
         </div>
         <!-- Navbar RIGHT -->
@@ -80,10 +79,12 @@
             <li><a href="http://eepurl.com/X9ZPf"><img src='{% static "img/icons/email.png" %}' alt="Keep In Touch" aria-hidden="true"><span>{% trans "Keep In Touch" %}</span></a></li>
 
             {% if LANGUAGE_CODE == 'en' %}
-            <li><a href="{% url 'setlang' language=LANGUAGES.1.0 %}" data-lang="{{ LANGUAGES.1.0 }}"><img src='{{ STATIC_PREFIX }}img/{{ LANGUAGES.1.0 }}.png' />Español</a></li>
+            <li class="lg"><a href="{% url 'setlang' language=LANGUAGES.1.0 %}" data-lang="{{ LANGUAGES.1.0 }}">Español</a></li>
+            <li class="sm"><a href="{% url 'setlang' language=LANGUAGES.1.0 %}" data-lang="{{ LANGUAGES.1.0 }}">ES</a></li>
 
             {% elif LANGUAGE_CODE == 'es' %}
-            <li><a href="{% url 'setlang' language=LANGUAGES.0.0 %}" data-lang="{{ LANGUAGES.0.0 }}"><img src='{{ STATIC_PREFIX }}img/{{ LANGUAGES.0.0 }}.png' />English</a></li>
+            <li class="lg"><a href="{% url 'setlang' language=LANGUAGES.0.0 %}" data-lang="{{ LANGUAGES.0.0 }}">English</a></li>
+            <li class="sm"><a href="{% url 'setlang' language=LANGUAGES.0.0 %}" data-lang="{{ LANGUAGES.0.0 }}">EN</a></li>
             {% endif %}
 
             </li>
