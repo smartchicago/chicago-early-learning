@@ -1015,7 +1015,7 @@ h1, h2, h3, h4 {
 .btn-locate-main.active,
 .btn-locate-main.disabled,
 .btn-locate-main[disabled] {
-    color: #9D9D9D;
+    color: #A3A3A3;
     background-color: #DEDEDE;
     *background-color: #003bb3;
 }

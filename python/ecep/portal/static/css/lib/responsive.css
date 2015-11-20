@@ -156,10 +156,11 @@
         left: 0px;
         height: auto;
         bottom: 0;
-        }
-        #map {
-            left: 0px;
-        }
+    }
+
+    #map {
+        left: 0px;
+    }
 
     #moreBtn {
         display: none;
@@ -180,44 +181,43 @@
         padding: 25px 15px;
     }
     .container-custom {
-        width: 98%;
         width: auto;
         padding: 25px;
         text-align: left;
     }
-        .container-custom    h1 {
-            font-size: 29px;
-        }
-        .media {
-            margin: 0;
-        }
-        .media > .pull-left {
-            float: none;
-            margin-right: 0;
-        }
-        .media > .pull-right {
-            float: none;
-        }
-        .media img {
-            width: 100%;
-            margin: 0 auto;
-            padding: 0;
-            max-width: 300px;
-        }
-        .media-body h1 {
-            font-size: 24px;
-            margin-top: 20px;
-            margin-bottom: 0;
-            line-height: 28px;
-        }
-        .media-body p {
-            font-size: 14px;
-        }
+
+    .container-custom    h1 {
+        font-size: 29px;
+    }
+    .media {
+        margin: 0;
+    }
+    .media > .pull-left {
+        float: none;
+        margin-right: 0;
+    }
+    .media > .pull-right {
+        float: none;
+    }
+    .media img {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        max-width: 300px;
+    }
+    .media-body h1 {
+        font-size: 24px;
+        margin-top: 20px;
+        margin-bottom: 0;
+        line-height: 28px;
+    }
+    .media-body p {
+        font-size: 14px;
+    }
 
     #desktop-search {
         display: none;
     }
-
 
     #mobile-search {
         width: 100%;
@@ -225,64 +225,65 @@
         padding-bottom: 10px;
         clear: both;
     }
-        #mobile-search input {
-            width: auto;
-            right: 57px;
-            left: 93px;
-            top: 66px;
-            position: absolute;
-            display: block;
-            font-size: 13px;
-            padding: 5px 10px 6px;
-            -moz-box-shadow: none !important;
-            -webkit-box-shadow: none !important;
-            box-shadow: none !important;
-        }
-        #mobile-search .btn-group {
-            float: right;
-            top: 62px;
-            right: 10px;
-            position: absolute;
-        }
-        #refineSearch {
-            margin-left: 10px;
-            margin-right: 8px;
-            margin-top: 4px;
-            width: 20px;
-            padding: 6px 8px 5px;
-            }
-            #refineSearch + .input-prepend {
-                margin-top: 6px
-            }
 
-        .results-toolbar {
-            display: none;
+    #mobile-search input {
+        width: auto;
+        right: 57px;
+        left: 93px;
+        top: 66px;
+        position: absolute;
+        display: block;
+        font-size: 13px;
+        padding: 5px 10px 6px;
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+    }
+    #mobile-search .btn-group {
+        float: right;
+        top: 62px;
+        right: 10px;
+        position: absolute;
+    }
+    #refineSearch {
+        margin-left: 10px;
+        margin-right: 8px;
+        margin-top: 4px;
+        width: 20px;
+        padding: 6px 8px 5px;
         }
-        .filters-inner {
-            padding: 15px;
-            max-height: 300px;
-            overflow: auto;
-        }
-        #location1 {
-            margin-top: 44px;
-        }
-        #location3 {
-            margin-top: 44px;
+        #refineSearch + .input-prepend {
+            margin-top: 6px
         }
 
-        #filter-options {
-            position: relative;
-            width: 100%;
-            background-color: #fff;
-            border: none;
-        }
-        .favorite {
-            width: 100%;
-            border-top: 2px solid red;
-        }
-        .directions-icon {
-            display: none;
-        }
+    .results-toolbar {
+        display: none;
+    }
+    .filters-inner {
+        padding: 15px;
+        max-height: 300px;
+        overflow: auto;
+    }
+    #location1 {
+        margin-top: 44px;
+    }
+    #location3 {
+        margin-top: 44px;
+    }
+
+    #filter-options {
+        position: relative;
+        width: 100%;
+        background-color: #fff;
+        border: none;
+    }
+    .favorite {
+        width: 100%;
+        border-top: 2px solid red;
+    }
+    .directions-icon {
+        display: none;
+    }
 
     .cb_slide_panel {
         background: #fff;
@@ -318,12 +319,6 @@
     .jumbotron .get-started {
         padding: 10px;
         font-size: 12px;
-    }
-    .jumbotron .homepage-search {
-        padding: 10px;
-        width: 215px;
-        font-size: 12px;
-        margin-right: 0;
     }
 
     .explore-btn {
@@ -364,79 +359,89 @@
 
     .container-custom .description-mobile,
     .container-custom .announcement-mobile {
-            display: block;
-            margin-bottom: 30px;
-        }
-
-        .autocomplete-submit {
-            display: none;
-        }
-
-        .jumbotron .homepage-search {
-            padding: 10px;
-            width: 92%;
-            font-size: 12px;
-        }
-        .intro-choice {
-            display: none;
-        }
-
-        .get-started {
-            width: 92%;
-            margin-bottom: 10px;
-        }
-
-        .jumbotron {
-            padding: 10px 0 0;
-        }
-
-        .leaflet-container .leaflet-control-zoom {
-            margin-top: 31px;
-        }
-
-        .locations-wrapper {
-            overflow-y: scroll;
-            overflow-x: hidden;
-            /* enable native scrolling on mobile */
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .location .span2 {
-            margin-top: 0;
-            margin-right: 0;
-        }
-
-        .hideonmobile {
-            display: none;
-        }
-
-        .about-content {
-            text-align: center;
-        }
-        .about-content .media-heading {
-            text-align: left;
-        }
-        .about-content p {
-            text-align: left;
-            max-width: none;
-            padding: 0;
-        }
-        .about-content img {
-            max-width: 200px;
-            padding-bottom: 25px;
-            padding-right: 0 !important;
-        }
-        #about-title {
-            padding-left: 0;
-        }
-
-        .fullwidth {
-            width: 100% !important;
-        }
-
-            .accordion-right {
-        width: 100%;
+        display: block;
+        margin-bottom: 30px;
     }
+
+    .autocomplete-submit {
+        display: none;
+    }
+
+    .container-custom .homepage-search {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 20px;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .jumbotron .btn-locate-main {
+        padding: 10px;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .intro-choice {
+        display: none;
+    }
+
+    .get-started {
+        width: 92%;
+        margin-bottom: 10px;
+    }
+
+    .jumbotron {
+        padding: 10px 0 0;
+    }
+
+    .leaflet-container .leaflet-control-zoom {
+        margin-top: 31px;
+    }
+
+    .locations-wrapper {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        /* enable native scrolling on mobile */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .location .span2 {
+        margin-top: 0;
+        margin-right: 0;
+    }
+
+    .hideonmobile {
+        display: none;
+    }
+
+    .about-content {
+        text-align: center;
+    }
+    .about-content .media-heading {
+        text-align: left;
+    }
+    .about-content p {
+        text-align: left;
+        max-width: none;
+        padding: 0;
+    }
+    .about-content img {
+        max-width: 200px;
+        padding-bottom: 25px;
+        padding-right: 0 !important;
+    }
+    #about-title {
+        padding-left: 0;
+    }
+
+    .fullwidth {
+        width: 100% !important;
+    }
+
+        .accordion-right {
+    width: 100%;
+}
 
 				.favorite {
 						padding: 35px 10px 35px 35px;
@@ -549,9 +554,12 @@
         font-size: 12px;
         width: 92%;
     }
-    .jumbotron .homepage-search {
-        padding: 10px;
-        width: 92%;
+    .container-custom .homepage-search {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 20px;
+        width: 100%;
         font-size: 12px;
     }
 
