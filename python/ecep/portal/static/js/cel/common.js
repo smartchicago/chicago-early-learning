@@ -401,6 +401,8 @@ function($, L, Response, Handlebars) {
     };
 
     // geolocation
+    //
+    // Navbar Geolocation
     if ('geolocation' in navigator) {
         $(document).ready(function() {
             $('.geolocation-button').bind('click', function(e) {
@@ -423,6 +425,26 @@ function($, L, Response, Handlebars) {
     } else {
         $('.geolocation-button').hide();
     }
+
+    // Homepage Geolocation
+    $(document).ready(function() {
+        $('#locate-main').bind('click', function(e) {
+            e.preventDefault();
+            navigator.geolocation.getCurrentPosition(function(position) {
+                window.location.href = getUrl(
+                    'browse',
+                    {
+                        type: 'geo-latlng',
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    }
+                );
+            }, function(e) {
+                e.preventDefault();
+                alert(gettext('Please enable geolocation services.'));
+            });
+        });
+    });
 
     // Set up social sharing behavior
     // The options argument must be an object that contains both a url and a title,

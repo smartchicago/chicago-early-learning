@@ -29,9 +29,23 @@ See LICENSE in the project root for copying permission
             <p>Questions about the enrollment process? Click <a href="/enroll/">here</a> to learn more.</p>
           </div>
 
-          <input class="homepage-search autocomplete-searchbox" type="text" placeholder="{% blocktrans %}Enter a school, community, or address{% endblocktrans %}">
-          <a class="btn btn-large get-started autocomplete-submit" href="#">{% trans "Search" %}</a>
         </div>
+
+        <input class="homepage-search autocomplete-searchbox" type="text" placeholder="{% blocktrans %}Enter an address, community, or zip code{% endblocktrans %}">
+        <button type="submit" id="search-main" class="btn btn-search-main autocomplete-submit">
+          <i class="icon-search"></i>
+          {% trans 'Search' %}
+        </button>
+        <button type="submit" id="locate-main" class="btn btn-locate-main">
+          <i class="icon-target"></i>
+          {% trans 'Use your current location' %}
+        </button>
+
+        <!-- 
+        <a class="btn btn-large get-started autocomplete-submit" href="#">{% trans "Search" %}</a>
+        <a class="btn btn-large get-started autocomplete-submit" href="#">{% trans "Search" %}</a>
+        -->
+
       </div>
     </div>
 
