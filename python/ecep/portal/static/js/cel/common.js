@@ -12,7 +12,7 @@ function($, L, Response, Handlebars) {
         mobile: 420,
         tablet: 767,
         desktop: 1024,
-				desktopalt: 1140
+		desktopalt: 1140
     };
 
     var isTouchscreen = ('ontouchstart' in document.documentElement);
@@ -64,182 +64,102 @@ function($, L, Response, Handlebars) {
         });
 
         // AUTOCOMPLETE
+
+        // New Autocomplete Testing:
+
         var $autocomplete = $('.autocomplete-searchbox');
 
-        // autocomplete helper function that makes the request to
-        //  the google maps geocoder API
-        function getGeocoderAddresses(request, response) {
-            var geocoder = new google.maps.Geocoder(),
-                acSettings = CEL.serverVars.autocomplete,
-                // Static bounds. Ideally these lat/lng pairs should be set to be slightly larger
-                //      than the bounding box of all Locations in the database.
-                northEast = new google.maps.LatLng(acSettings.nelat, acSettings.nelng),
-                southWest = new google.maps.LatLng(acSettings.swlat, acSettings.swlng),
-                bounds = new google.maps.LatLngBounds(southWest, northEast);
-
-            geocoder.geocode(
-                {
-                    address: request.term,
-                    bounds: bounds,
-                    region: 'US'
-                },
-                function(results, status) {
-                    var cleanedResults = [],
-                        result,
-                        lat,
-                        lon,
-                        resultLocation,
-                        likelyResult,
-                        $element = $('.autocomplete-searchbox');
-
-                    for (var i in results) {
-                        result = results[i];
-                        lat = result.geometry.location.lat();
-                        lon = result.geometry.location.lng();
-                        resultLocation = new google.maps.LatLng(lat, lon);
-                        if (bounds.contains(resultLocation)) {
-                            cleanedResults.push({
-                                lat: lat,
-                                lon: lon,
-                                label: result.formatted_address,
-                                value: result.formatted_address
-                            });
-                        }
-                    }
-                    if (cleanedResults.length === 0) {
-                        cleanedResults.push({
-                            label: "No Results",
-                            value: "No Results"
-                        });
-                    } else {
-                        // push first result to input element
-                        //      just like in autocomplete success handler below
-                        likelyResult = cleanedResults[0];
-                        $element.data({
-                            lat: likelyResult.lat,
-                            lon: likelyResult.lon,
-                            label: likelyResult.label
-                        });
-                    }
-                    response(cleanedResults);
-                }
-             );
-        }
-
-        /*
-         * Sets window.location.href to appropriate value based on selected autocomplete result
-         * See: http://api.jqueryui.com/autocomplete/#event-select
-         *      for details on the ui object
-         */
-        var submitAutocomplete = function(ui) {
-            if (ui.item) {
-                var slug = ui.item.label ? slugify(ui.item.label) : '';
-
-                if (ui.item.type === 'location') {
-                    window.location.href = getUrl(
-                        'single-location', { location: ui.item.id, slug: slug });
-                    return;
-                } else if (ui.item.type === 'neighborhood') {
-                    window.location.href = getUrl(
-                        'browse', { type: 'neighborhood', neighborhood: ui.item.id });
-                    return;
-                } else if (ui.item.lat && ui.item.lon) {
-                    window.location.href = getUrl(
-                        'browse', { type: 'geo-latlng', lat: ui.item.lat, lng: ui.item.lon, zoom: 14, label: ui.item.label });
-                    return;
-                }
-            }
-            window.location.href = getUrl('browse');
-        };
-
-        /*
-         *  Spoof the jquery ui select function ui object using the input element data attributes
-         */
-        var spoofSubmitAutocomplete = function() {
-            if ($autocomplete.data().id) {
-                var ui = {
-                    item: $autocomplete.data()
-                };
-                submitAutocomplete(ui);
-            } else {
-                window.location = "/search/?lq=" + $autocomplete.val();
-            }
-        };
-
-        /*
-         * Submit the first autocomplete result on button click if none is populated
-         */
-        $('.autocomplete-submit').on('click', function(e) {
-            e.preventDefault();
-            spoofSubmitAutocomplete();
-        });
-
-        /*
-         * Submit the first autocomplete result on enter if no result is populated
-         * This also overrides the functionality in the select callback below
-         */
-        $autocomplete.on('keyup', function(e) {
-            if (e.which === 13) {
-                e.preventDefault();
-                spoofSubmitAutocomplete();
-            }
-        });
-
-        /*
-         * Autocomplete widget setup and all relevant callbacks
-         */
+        // JQuery $().autocomplete() function handles all interaction with
+        // the input and composing the dropdown
         var autocomplete = $autocomplete.autocomplete({
+            minLength: 1,
             source: function(request, response) {
-                var self = this;
-                $.ajax({
-                    url: '/api/autocomplete/',
-                    data: {query: request.term},
-                    success: function(json) {
-                        if (!json || !json.response) {
-                            return;
-                        }
-                        var data = json.response;
-                        if (data.length > 0) {
-                            // push first result as data attrs of the input element
-                            //      so we can access it externally
-                            var likelyResult = data[0];
-                            $('.autocomplete-searchbox').data({
-                                id: likelyResult.id,
-                                type: likelyResult.type
-                            });
-                            // use returned schools and neighborhoods
-                            response($.map(data, function(value) {
-                                return {
-                                    id: value.id,
-                                    type: value.type,
-                                    label: value.name,
-                                    value: value.name
-                                };
-                            }));
-                        } else {
-                            getGeocoderAddresses(request, response);
-                        }
-                    },
-                    error: function(e, status, error) {
-                        getGeocoderAddresses(request, response);
-                    }
-                });
+                getAutocompletePlaces(request, response);
             },
             select: function(event, ui) {
-                submitAutocomplete(ui);
+                var place_id = ui.item.place_id;
+                selectPlace(place_id);
             },
             focus: function(event, ui) {
-                // mirror data to the input element so the proper item is submitted
-                $('.autocomplete-searchbox').data({
-                    id: ui.item.id,
-                    type: ui.item.type,
-                    lat: ui.item.lat,
-                    lon: ui.item.lon
+                var selection = ui.item
+                $autocomplete.data({
+                    label: selection.label,
+                    place_id: selection.place_id
                 });
-            },
-            minLength: 2        // do not make a request until we have typed two chars
+                console.log($autocomplete.data());
+            }
         });
+
+        // Calls the Places API to populate the dropdown
+        // Returns array of possible matches
+
+        function getAutocompletePlaces(request, response) {
+
+            var input_term = 'Chicago IL ' + request.term;
+            var service = new google.maps.places.AutocompleteService();
+            service.getPlacePredictions({
+                input: input_term,
+                types: ['geocode'],
+                componentRestrictions: {
+                    country: 'us'
+                }
+            }, function(predictions, status) {
+                var cleanedResults = [];
+                if (predictions === null) {
+                    cleanedResults = [];
+                } else {
+                    cleanedResults = predictions.map(function(obj) {
+                        var rObj = {};
+                        rObj['label'] = obj.description;
+                        rObj['place_id'] = obj.place_id;
+                        return rObj;
+                    });
+                    var likelyResult = cleanedResults[0];
+                    $autocomplete.data({
+                        label: likelyResult.label,
+                        place_id: likelyResult.place_id
+                    });
+                    console.log($autocomplete.data());
+                }
+                response(cleanedResults);
+            });
+        }
+
+        function selectPlace(place_id) {
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({'placeId': place_id}, function(results, status) {
+                var result = results[0];
+                var lat = result.geometry.location.lat()
+                var lng = result.geometry.location.lng();
+                redirectToMap(lat, lng)
+            });
+        }
+
+        function redirectToMap(lat, lng) {
+            window.location.href = getUrl(
+                'browse',
+                {
+                    type: 'geo-latlng',
+                    lat: lat,
+                    lng: lng,
+                    zoom: 14
+                }
+            );
+            return;
+        }
+
+        // Enter Press
+        $('.autocomplete-submit').on('click', function(e) {
+            e.preventDefault();
+            var place_id = $autocomplete.data().place_id;
+            selectPlace(place_id);
+        });
+
+        // Button Press
+
+        // 
         // END AUTOCOMPLETE
+        //
     });
 
     // Setup Response stuff
