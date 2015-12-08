@@ -24,8 +24,12 @@ define(['jquery', 'Leaflet', 'location',
             if (width >= common.breakpoints.desktop) {
                 $('.favs-toggle').show();
             }
-                
-            L.tileLayer.provider('Acetate.all').addTo(map);             // basemap 
+            
+            // basemap 
+            L.tileLayer.provider('MapBox', {
+                     id: 'mapbox.streets-basic',
+                    accessToken: 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg'
+                }).addTo(map);
 
             if (favorites.isStarred(location_id)) {
                 favorites.toggle($star);
