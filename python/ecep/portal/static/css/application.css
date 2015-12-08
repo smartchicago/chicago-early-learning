@@ -492,27 +492,6 @@ h1, h2, h3, h4 {
     background-color: #FFFBCC;
 }
 
-/* Scrollbars ---------------------- */
-
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-    z-index: 9999;
-}
-
-::-webkit-scrollbar-track {
-        background-color: rgb(248, 248, 248);
-    border-radius: 0;
-    border: 1px solid #eee;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgb(190, 190, 190);
-    border: 1px solid rgb(180, 180, 180);
-    border-radius: 5px;
-}
-
-
 /* Favorites ----------------------- */
 
 .toolbar-fav {
