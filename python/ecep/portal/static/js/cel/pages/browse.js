@@ -477,8 +477,13 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     zoom = state.isGeolocated ? CEL.serverVars.zoomSettings : defaultZoom,
                     qs = qs2Obj(),
                     label = qs.label;
+
+                var accessToken = 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg';
+                var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + accessToken,
+                    {attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>'});
+
                 map = new L.map('map').setView(state.point, zoom);   // Initialize Leaflet map
-                L.tileLayer.provider('Acetate.all').addTo(map);             // basemap
+                map.addLayer(mapboxTiles);
                 map.addLayer(popupLayer);
 
                 // draw marker for geolocated point
