@@ -148,14 +148,20 @@ function($, L, Response, Handlebars) {
             return;
         }
 
-        // Enter Press
+        // Button Press
         $('.autocomplete-submit').on('click', function(e) {
             e.preventDefault();
             var place_id = $autocomplete.data().place_id;
             selectPlace(place_id);
         });
 
-        // Button Press
+        // Enter Press
+        $autocomplete.keypress(function (e) {
+            if (e.keyCode == 13) {
+                var place_id = $autocomplete.data().place_id;
+                selectPlace(place_id);
+            }
+        });
 
         // 
         // END AUTOCOMPLETE
