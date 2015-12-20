@@ -1261,22 +1261,15 @@ h1, h2, h3, h4 {
 }
 
 .ui-autocomplete {
-    background-color: #fff;
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
     font-size: 16px;
-    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow:    2px 2px 5px rgba(0, 0, 0, 0.2);
-    box-shadow:         2px 2px 5px rgba(0, 0, 0, 0.2);
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
 }
 
-.ui-menu-item a:hover {
-    color: #000;
-    background: #eee;
-    border: 1px solid #000;
-    border: 1px solid rgba(0,0,0,0);
+.ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
 }
 
 /* Contact */

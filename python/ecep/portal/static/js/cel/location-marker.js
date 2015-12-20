@@ -13,6 +13,11 @@ define(['jquery', 'Leaflet', 'location',
          * for location. Use google maps layer for leaflet.
          */
         $(document).ready(function() {
+
+            var accessToken = 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg';
+            var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + accessToken,
+                {attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>'});
+
             var location_id = /(\d+)/.exec(window.location.pathname)[1],
                 url = common.getUrl('location-api', { locations: location_id }),
                 width = $(document).width(),
@@ -21,15 +26,11 @@ define(['jquery', 'Leaflet', 'location',
                 map = new L.Map('location-map', { center: latLng, zoom: 13, dragging: false }),
                 $star = $('.favs-toggle');
 
+            map.addLayer(mapboxTiles);
+
             if (width >= common.breakpoints.desktop) {
                 $('.favs-toggle').show();
             }
-            
-            // basemap 
-            L.tileLayer.provider('MapBox', {
-                     id: 'mapbox.streets-basic',
-                    accessToken: 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg'
-                }).addTo(map);
 
             if (favorites.isStarred(location_id)) {
                 favorites.toggle($star);
