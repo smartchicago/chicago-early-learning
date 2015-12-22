@@ -222,6 +222,13 @@ h1, h2, h3, h4 {
 
 .btn {
     padding: 6px 10px 5px 10px;
+    white-space: normal;
+}
+
+.btn.disabled,
+.btn[disabled] {
+  opacity: 0.85;
+  filter: alpha(opacity=85);
 }
 
 /* Results --------------------- */

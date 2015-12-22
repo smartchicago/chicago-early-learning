@@ -128,6 +128,7 @@ function($, L, Response, Handlebars) {
 
         function getAutocompletePlaces(request, response) {
 
+            $('.error-message').css('visibility', 'hidden');
             var input_term = 'Chicago IL ' + request.term;
             var service = new google.maps.places.AutocompleteService();
             service.getPlacePredictions({
@@ -153,31 +154,58 @@ function($, L, Response, Handlebars) {
                 var localResults = getAutocompleteLocations(request.term);
                 var allResults = cleanedResults.concat(localResults);
 
-                var likelyResult = allResults[0];
+                if (allResults[0]) {
+                    var likelyResult = allResults[0];
                     $autocomplete.data({
                         label: likelyResult.label,
                         place_id: likelyResult.place_id,
                         category: likelyResult.category
                     });
+                } else {
+                    $autocomplete.data({
+                        label: 'None',
+                        place_id: 'None',
+                        category: 'None'
+                    });
+                }
+
+                console.log($autocomplete.data().place_id);
 
                 response(allResults);
             });
         }
 
         function selectPlace(place_id, category) {
-            if (category == 'Addresses') {
-                var geocoder = new google.maps.Geocoder();
-                geocoder.geocode({'placeId': place_id}, function(results, status) {
-                    var result = results[0];
-                    var lat = result.geometry.location.lat();
-                    var lng = result.geometry.location.lng();
-                    redirectToMap(lat, lng);
-                });
-            } else {
-                redirectToLocation(place_id);
+
+            switch (category) {
+                case 'None':
+                    $('.error-message').css('visibility', 'visible');
+                    break;
+                case 'Addresses':
+                    var geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({'placeId': place_id}, function(results, status) {
+                        var result = results[0];
+                        var lat = result.geometry.location.lat();
+                        var lng = result.geometry.location.lng();
+                        redirectToMap(lat, lng);
+                    });
+                    break;
+                case 'Locations':
+                    redirectToLocation(place_id);
+                    break;
+                default:
+                    redirectToDefaultMap();
+                    break;
             }
         }
 
+        // No input, default map at neighborhood-view level
+        function redirectToDefaultMap() {
+            window.location.href = getUrl('browse');
+            return;
+        }
+
+        // Specific Address
         function redirectToMap(lat, lng) {
             window.location.href = getUrl(
                 'browse',
@@ -191,6 +219,7 @@ function($, L, Response, Handlebars) {
             return;
         }
 
+        // Location Pages
         function redirectToLocation(place_id) {
             window.location.href = getUrl('single-location', { location: place_id });
             return;
@@ -232,7 +261,8 @@ function($, L, Response, Handlebars) {
         $('.autocomplete-submit').on('click', function(e) {
             e.preventDefault();
             var place_id = $autocomplete.data().place_id;
-            selectPlace(place_id);
+            var category = $autocomplete.data().category;
+            selectPlace(place_id, category);
         });
 
         // Enter Press
@@ -240,12 +270,12 @@ function($, L, Response, Handlebars) {
             if (e.keyCode == 13) {
                 var place_id = $autocomplete.data().place_id;
                 var category = $autocomplete.data().category;
-                selectPlace(place_id);
+                selectPlace(place_id, category);
             }
         });
 
         // 
-        // END AUTOCOMPLET
+        // END AUTOCOMPLETE
         //
     });
 
