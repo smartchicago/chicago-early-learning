@@ -65,14 +65,48 @@ function($, L, Response, Handlebars) {
 
         // AUTOCOMPLETE
 
-        // New Autocomplete Testing:
+        // Fetch Location names 
+        var location_list;
+
+        $.getJSON(getUrl('location-json'), function (data) {
+            location_list = data;
+        });
+
+
+        // Configure Autocomplete widget to use Categories
+        // Distinguish between Addresses and Locations
+        // Code lifted from <jqueryui.com/autocomplete/#categories>
+
+        $.widget("custom.catcomplete", $.ui.autocomplete, {
+            _create: function() {
+                this._super();
+                this.widget().menu( "option", "items", "> :not(.ui-autocomplete-category)");
+            },
+            _renderMenu: function( ul, items ) {
+                var that = this,
+                    currentCategory = "";
+                $.each( items, function( index, item ) {
+                    var li;
+                    if ( item.category != currentCategory ) {
+                        ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>");
+                        currentCategory = item.category;
+                    }
+                    li = that._renderItemData( ul, item );
+                    if ( item.category ) {
+                        li.attr("aria-label", item.category + " : " + item.label);
+                    }
+                });
+            }
+        });
+
+        // Autocomplete dropdown widget:
 
         var $autocomplete = $('.autocomplete-searchbox');
 
         // JQuery $().autocomplete() function handles all interaction with
         // the input and composing the dropdown
-        var autocomplete = $autocomplete.autocomplete({
-            minLength: 1,
+        var autocomplete = $autocomplete.catcomplete({
+            minLength: 3,
             source: function(request, response) {
                 getAutocompletePlaces(request, response);
             },
@@ -86,7 +120,6 @@ function($, L, Response, Handlebars) {
                     label: selection.label,
                     place_id: selection.place_id
                 });
-                console.log($autocomplete.data());
             }
         });
 
@@ -95,6 +128,7 @@ function($, L, Response, Handlebars) {
 
         function getAutocompletePlaces(request, response) {
 
+            $('.error-message').css('visibility', 'hidden');
             var input_term = 'Chicago IL ' + request.term;
             var service = new google.maps.places.AutocompleteService();
             service.getPlacePredictions({
@@ -112,29 +146,66 @@ function($, L, Response, Handlebars) {
                         var rObj = {};
                         rObj['label'] = obj.description;
                         rObj['place_id'] = obj.place_id;
+                        rObj['category'] = 'Addresses';
                         return rObj;
                     });
-                    var likelyResult = cleanedResults[0];
+                }
+                // Concat results from Google with local filter:
+                var localResults = getAutocompleteLocations(request.term);
+                var allResults = cleanedResults.concat(localResults);
+
+                if (allResults[0]) {
+                    var likelyResult = allResults[0];
                     $autocomplete.data({
                         label: likelyResult.label,
-                        place_id: likelyResult.place_id
+                        place_id: likelyResult.place_id,
+                        category: likelyResult.category
                     });
-                    console.log($autocomplete.data());
+                } else {
+                    $autocomplete.data({
+                        label: 'None',
+                        place_id: 'None',
+                        category: 'None'
+                    });
                 }
-                response(cleanedResults);
+
+                console.log($autocomplete.data().place_id);
+
+                response(allResults);
             });
         }
 
-        function selectPlace(place_id) {
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({'placeId': place_id}, function(results, status) {
-                var result = results[0];
-                var lat = result.geometry.location.lat()
-                var lng = result.geometry.location.lng();
-                redirectToMap(lat, lng)
-            });
+        function selectPlace(place_id, category) {
+
+            switch (category) {
+                case 'None':
+                    $('.error-message').css('visibility', 'visible');
+                    break;
+                case 'Addresses':
+                    var geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({'placeId': place_id}, function(results, status) {
+                        var result = results[0];
+                        var lat = result.geometry.location.lat();
+                        var lng = result.geometry.location.lng();
+                        redirectToMap(lat, lng);
+                    });
+                    break;
+                case 'Locations':
+                    redirectToLocation(place_id);
+                    break;
+                default:
+                    redirectToDefaultMap();
+                    break;
+            }
         }
 
+        // No input, default map at neighborhood-view level
+        function redirectToDefaultMap() {
+            window.location.href = getUrl('browse');
+            return;
+        }
+
+        // Specific Address
         function redirectToMap(lat, lng) {
             window.location.href = getUrl(
                 'browse',
@@ -148,14 +219,60 @@ function($, L, Response, Handlebars) {
             return;
         }
 
-        // Enter Press
+        // Location Pages
+        function redirectToLocation(place_id) {
+            window.location.href = getUrl('single-location', { location: place_id });
+            return;
+        }
+
+        // Customized autocomplete.filter function, nearly identical to existing
+        // function, with additional logic to 'bubble up' results that start with
+        // the given search term to the top of the list, the rest of the results
+        // returned in alphabetical order. 
+        //
+        // See https://github.com/jquery/jquery-ui/blob/master/ui/widgets/autocomplete.js
+        // for original filtering function.
+
+        function getAutocompleteLocations(term) {
+            var startswith_results;
+            var remaining_results;
+            var array = location_list;
+            var matcher_beginning = new RegExp( ("^" + $.ui.autocomplete.escapeRegex(term)), "i");
+            var matcher_all = new RegExp( $.ui.autocomplete.escapeRegex(term), "i" );
+            
+            startswith_results = $.grep( array, function(value) {
+                return matcher_beginning.test( value.label || value.value || value );
+            });
+            console.log(startswith_results);
+            remaining_results = $.grep( array, function(value) {
+                return (matcher_all.test( value.label || value.value || value ) && !(matcher_beginning.test( value.label || value.value || value )));
+            });
+
+            var results = startswith_results.concat(remaining_results);
+
+            // Only return the first 10 results:
+            if (results.length > 10) {
+                results = results.slice(0, 10);
+            }
+            return results;
+        }
+
+        // Button Press
         $('.autocomplete-submit').on('click', function(e) {
             e.preventDefault();
             var place_id = $autocomplete.data().place_id;
-            selectPlace(place_id);
+            var category = $autocomplete.data().category;
+            selectPlace(place_id, category);
         });
 
-        // Button Press
+        // Enter Press
+        $autocomplete.keypress(function (e) {
+            if (e.keyCode == 13) {
+                var place_id = $autocomplete.data().place_id;
+                var category = $autocomplete.data().category;
+                selectPlace(place_id, category);
+            }
+        });
 
         // 
         // END AUTOCOMPLETE
@@ -273,6 +390,8 @@ function($, L, Response, Handlebars) {
                     url += opts.slug + '/';
                 }
                 return url;
+            case 'location-json':
+                return '/api/location/json/'
             case 'favorites':
                 url = '/favorites/';
                 if (opts && opts.locations) {
