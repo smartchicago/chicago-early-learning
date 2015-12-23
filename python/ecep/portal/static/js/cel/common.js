@@ -51,6 +51,106 @@ function($, L, Response, Handlebars) {
         _gaq.push(data);
     };
 
+    /**
+    * Central api for getting urls for the app
+    * @param { logical name of the endpoint } name
+    * @param { Options for creating the url, depends on name } opts
+    * @return { URL string for request }
+    */
+    var getUrl = function (name, opts) {
+        var url = '';
+        switch (name) {
+            case 'origin':
+                // IE < 9 doesn't define location.origin
+                return window.location.origin ||
+                    (window.location.protocol + "//" + window.location.host);
+            case 'location-api':
+                // requires opts.locations to be comma separated string or
+                //      array of integers
+                url = '/' + ($.cookie('django_language') || CEL.serverVars.default_language) +
+                    '/api/location/';
+                if (opts && opts.locations) {
+                    url += opts.locations.toString() + '/';
+                }
+                return url;
+            case 'neighborhood-api':
+                return '/' + ($.cookie('django_language') || CEL.serverVars.default_language) +
+                    '/api/neighborhood/';
+            case 'neighborhoods-topo':
+                return '/static/js/neighborhoods-topo.json';
+            case 'neighborhoods-geojson':
+                return '/static/js/neighborhoods.json';
+            case 'browse':
+                if (!opts) {
+                    return '/search/';
+                }
+                switch (opts.type) {
+                    case 'latlng':
+                        url = '/search/?lat=' + opts.lat + '&lng=' + opts.lng;
+                        if (opts.zoom) {
+                            url += '&zoom=' + opts.zoom;
+                        }
+                        return url;
+                    case 'geo-latlng':
+                        url = '/search/?geolat=' + opts.lat + '&geolng=' + opts.lng;
+                        if (opts.label) {
+                            url += '&label=' + opts.label;
+                        }
+                        return url;
+                    case 'neighborhood':
+                        return '/search/?neighborhood=' + opts.neighborhood;
+                    case 'location':
+                        return '/search/?location=' + opts.location;
+                    default:
+                        break;
+                }
+                break;
+            case 'single-location':
+                url = '/location/' + opts.location + '/';
+                if (opts.slug) {
+                    url += opts.slug + '/';
+                }
+                return url;
+            case 'location-json':
+                return '/api/location/json/'
+            case 'favorites':
+                url = '/favorites/';
+                if (opts && opts.locations) {
+                    url += opts.locations.toString() + '/';
+                }
+                return url;
+            case 'icon-school':
+                return '/static/img/leaflet-icons/school.png';
+            case 'icon-school-accredited':
+                return '/static/img/leaflet-icons/school-accredited.png';
+            case 'icon-school-starred':
+                return '/static/img/leaflet-icons/school-starred.png';
+            case 'icon-school-accredited-starred':
+                return '/static/img/leaflet-icons/school-accredited-starred.png';
+            case 'icon-center':
+                return '/static/img/leaflet-icons/center.png';
+            case 'icon-center-accredited':
+                return '/static/img/leaflet-icons/center-accredited.png';
+            case 'icon-center-starred':
+                return '/static/img/leaflet-icons/center-starred.png';
+            case 'icon-center-accredited-starred':
+                return '/static/img/leaflet-icons/center-accredited-starred.png';
+            case 'icon-geolocation':
+                return '/static/img/leaflet-icons/geocode.png';
+            case 'icon-enrollment':
+                return '/static/img/leaflet-icons/appsite.png';
+            case 'icon-quality':
+                if (opts && opts.quality) {
+                    return '/static/img/icons/' + opts.quality + '.png';
+                } else {
+                    throw 'getUrl::Invalid Parameter: icon-quality requires opts.quality';
+                }
+            default:
+                break;
+        }
+        throw 'Unknown URL endpoint';
+    };
+
     $(document).ready(function() {
 
         // Remove css tooltips when on a touchscreen device
@@ -330,106 +430,6 @@ function($, L, Response, Handlebars) {
             return opts.inverse(this);
         }
     });
-
-    /**
-     * Central api for getting urls for the app
-     * @param { logical name of the endpoint } name
-     * @param { Options for creating the url, depends on name } opts
-     * @return { URL string for request }
-     */
-    var getUrl = function (name, opts) {
-        var url = '';
-        switch (name) {
-            case 'origin':
-                // IE < 9 doesn't define location.origin
-                return window.location.origin ||
-                    (window.location.protocol + "//" + window.location.host);
-            case 'location-api':
-                // requires opts.locations to be comma separated string or
-                //      array of integers
-                url = '/' + ($.cookie('django_language') || CEL.serverVars.default_language) +
-                    '/api/location/';
-                if (opts && opts.locations) {
-                    url += opts.locations.toString() + '/';
-                }
-                return url;
-            case 'neighborhood-api':
-                return '/' + ($.cookie('django_language') || CEL.serverVars.default_language) +
-                    '/api/neighborhood/';
-            case 'neighborhoods-topo':
-                return '/static/js/neighborhoods-topo.json';
-            case 'neighborhoods-geojson':
-                return '/static/js/neighborhoods.json';
-            case 'browse':
-                if (!opts) {
-                    return '/search/';
-                }
-                switch (opts.type) {
-                    case 'latlng':
-                        url = '/search/?lat=' + opts.lat + '&lng=' + opts.lng;
-                        if (opts.zoom) {
-                            url += '&zoom=' + opts.zoom;
-                        }
-                        return url;
-                    case 'geo-latlng':
-                        url = '/search/?geolat=' + opts.lat + '&geolng=' + opts.lng;
-                        if (opts.label) {
-                            url += '&label=' + opts.label;
-                        }
-                        return url;
-                    case 'neighborhood':
-                        return '/search/?neighborhood=' + opts.neighborhood;
-                    case 'location':
-                        return '/search/?location=' + opts.location;
-                    default:
-                        break;
-                }
-                break;
-            case 'single-location':
-                url = '/location/' + opts.location + '/';
-                if (opts.slug) {
-                    url += opts.slug + '/';
-                }
-                return url;
-            case 'location-json':
-                return '/api/location/json/'
-            case 'favorites':
-                url = '/favorites/';
-                if (opts && opts.locations) {
-                    url += opts.locations.toString() + '/';
-                }
-                return url;
-            case 'icon-school':
-                return '/static/img/leaflet-icons/school.png';
-            case 'icon-school-accredited':
-                return '/static/img/leaflet-icons/school-accredited.png';
-            case 'icon-school-starred':
-                return '/static/img/leaflet-icons/school-starred.png';
-            case 'icon-school-accredited-starred':
-                return '/static/img/leaflet-icons/school-accredited-starred.png';
-            case 'icon-center':
-                return '/static/img/leaflet-icons/center.png';
-            case 'icon-center-accredited':
-                return '/static/img/leaflet-icons/center-accredited.png';
-            case 'icon-center-starred':
-                return '/static/img/leaflet-icons/center-starred.png';
-            case 'icon-center-accredited-starred':
-                return '/static/img/leaflet-icons/center-accredited-starred.png';
-            case 'icon-geolocation':
-                return '/static/img/leaflet-icons/geocode.png';
-            case 'icon-enrollment':
-                return '/static/img/leaflet-icons/appsite.png';
-            case 'icon-quality':
-                if (opts && opts.quality) {
-                    return '/static/img/icons/' + opts.quality + '.png';
-                } else {
-                    throw 'getUrl::Invalid Parameter: icon-quality requires opts.quality';
-                }
-            default:
-                break;
-        }
-        throw 'Unknown URL endpoint';
-    };
 
     var slugify = function(text) {
       return text.toString().toLowerCase()
