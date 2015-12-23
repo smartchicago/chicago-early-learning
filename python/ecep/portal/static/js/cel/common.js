@@ -112,7 +112,8 @@ function($, L, Response, Handlebars) {
             },
             select: function(event, ui) {
                 var place_id = ui.item.place_id;
-                selectPlace(place_id);
+                var category = ui.item.category;
+                selectPlace(place_id, category);
             },
             focus: function(event, ui) {
                 var selection = ui.item
