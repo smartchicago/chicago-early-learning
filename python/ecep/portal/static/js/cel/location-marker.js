@@ -28,6 +28,7 @@ define(['jquery', 'Leaflet', 'location',
 
             map.addLayer(mapboxTiles);
 
+
             if (width >= common.breakpoints.desktop) {
                 $('.favs-toggle').show();
             }
