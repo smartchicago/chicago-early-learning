@@ -24,6 +24,7 @@ urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
     url(r'^$', portal_views.Index.as_view(), name='index'),
+    url(r'^test$', portal_views.Test.as_view(), name='test'),
     url(r'^about$', portal_views.About.as_view(), name='about'),
     url(
         r'^robots\.txt$',
@@ -100,6 +101,7 @@ urlpatterns += i18n_patterns(
     # Location API
     url(r'^api/location/(?P<location_ids>[0-9,]*)/$', 'portal.views.location_api'),
     url(r'^api/location/$', 'portal.views.location_api'),
+    url(r'^api/location/json/$', 'portal.views.location_json_api'),
 
     # Neighborhood API
     url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),

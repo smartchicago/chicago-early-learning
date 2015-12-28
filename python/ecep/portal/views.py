@@ -7,7 +7,7 @@ import json
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views.decorators.cache import cache_control
 from django.views.generic import TemplateView, DetailView
 from django.utils.translation import check_for_language
@@ -30,6 +30,10 @@ logger = logging.getLogger(__name__)
 
 class Index(TemplateView):
     template_name = "index.html"
+
+
+class Test(TemplateView):
+    template_name = "test.html"
 
 
 class About(TemplateView):
@@ -414,6 +418,25 @@ def location(request, location_id=None, slug=None):
             'ages',
         ]
     })
+
+
+def location_json_api(request):
+    """
+
+    API Endpoint for returning a full JSON list of names and IDs of schools and locations
+    for use in the homepage search bar autocomplete dropdown.
+
+    """
+    locs = Location.objects.all().values('site_name', 'id').order_by('site_name')
+    loc_list = list(locs)
+
+    for location in loc_list:
+        location['label'] = location.pop('site_name')
+        location['place_id'] = location.pop('id')
+        location['category'] = 'Locations'
+
+    return JsonResponse(loc_list, safe=False)
+
 
 
 def location_position(request, location_id):

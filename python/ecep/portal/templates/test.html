@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+
+{% block otherhead %}
+    <link href="{% static 'css/homepage.css' %}?v=2015030401" rel="stylesheet">
+    <script type="text/javascript">
+
+    </script>
+{% endblock %}
+
+{% block content %}
+	<div class="masthead">
+		<div class="container-custom">
+			<input class="homepage-search test" type="text" placeholder="{% blocktrans %}Enter a school name{% endblocktrans %}">
+		</div>
+	</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

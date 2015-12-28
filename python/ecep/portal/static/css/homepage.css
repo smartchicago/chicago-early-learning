@@ -140,9 +140,9 @@ input.homepage-search {
     margin-bottom: 20px;
 }
     
-    .announcement strong { color: #ffd; }
+.announcement strong { color: #ffd; }
 
-    .announcement h3 {
+.announcement h3 {
         font-size: 18px;
         line-height: 1.2em;
         margin-top: 0;
@@ -150,7 +150,7 @@ input.homepage-search {
         color: #ffd;
     }
 
-    .announcement p {
+.announcement p {
         margin-top: 0;
         margin-bottom: 10px;
     }
@@ -162,23 +162,45 @@ input.homepage-search {
     padding: 10px;
 }
 
-    .announcement-mobile h3 {
+.announcement-mobile h3 {
         margin-top: 10px;
         margin-bottom: 0;
         font-size: 16px;
         line-height: 1em;
     }
 
-    .announcement-mobile a {
+.announcement-mobile a {
         color: #ffd;
         border-bottom: 1px dotted #ffd;
     }
 
-    .announcement-mobile a:hover {
+.announcement-mobile a:hover {
         text-decoration: none;
         color: #ff9;
         border-bottom: 1px solid #ff9;
     }    
 
-    .announcement-mobile h3,
-    .announcement-mobile strong { color: #ffd; }
+.announcement-mobile h3,
+.announcement-mobile strong { color: #ffd; }
+
+.error-message {
+    color: white;
+    background-color: #bd362f;
+    opacity: 0.85;
+    width: 400px;
+    padding: 10px;
+    margin-top: 5px;
+    visibility: hidden;
+}
+
+.error-message p {
+        margin-top: 5px;
+        margin-bottom: 0;
+}
+
+.error-message h3 {
+        font-size: 18px;
+        line-height: 1.2em;
+        margin-top: 0;
+        margin-bottom: 0;
+}
