@@ -439,21 +439,21 @@
         width: 100% !important;
     }
 
-        .accordion-right {
-    width: 100%;
-}
+    .accordion-right {
+        width: 100%;
+    }
 
-				.favorite {
-						padding: 35px 10px 35px 35px;
-            width: auto;
-						left: 0;
-						right: 0;
-        }
+    .favorite {
+        padding: 35px 10px 35px 35px;
+        width: auto;
+        left: 0;
+        right: 0;
+    }
 
-				#faq-container {
-					padding: 36px;
-					width: auto;
-				}
+    #faq-container {
+        padding: 36px;
+        width: auto;
+    }
 
 
 }
@@ -554,6 +554,7 @@
         font-size: 12px;
         width: 92%;
     }
+    
     .container-custom .homepage-search {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -563,53 +564,63 @@
         font-size: 12px;
     }
 
+    .error-message {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
     .results-left .span2 {
         float: right;
         right: 0;
         margin-top: 0px;
         width: auto;
     }
+    
     #header-fav {
         width: 100%;
     }
+    
     #header-dist {
         padding-left: 0;
         float: right;
         padding-right: 10px;
         display: none;
     }
-        .get-started {
-            width: 92%;
-            margin-bottom: 10px;
-        }
+    
+    .get-started {
+        width: 92%;
+        margin-bottom: 10px;
+    }
 
-        #toggleMapBtn {
-            margin-top: 4px;
-        }
+    #toggleMapBtn {
+        margin-top: 4px;
+    }
 
-        .leaflet-container .leaflet-control-zoom {
-            margin-top: 31px;
-        }
+    .leaflet-container .leaflet-control-zoom {
+        margin-top: 31px;
+    }
 
-        .fave-star {
-            display: none;
-        }
+    .fave-star {
+        display: none;
+    }
 
-        .single-share {
-						float: left;
-						position: relative;
-				}
+    .single-share {
+                    float: left;
+                    position: relative;
+            }
 
-		.filters-1,
-		.filters-2,
-		.filters-3,
-		.filters-4 {
-			width: 50%;
-			float: left;
-		}
+    .filters-1,
+    .filters-2,
+    .filters-3,
+    .filters-4 {
+        width: 50%;
+        float: left;
+    }
 
-		.school-details {
-			clear: both;
-		}
+    .school-details {
+        clear: both;
+    }
 
- }
+}
