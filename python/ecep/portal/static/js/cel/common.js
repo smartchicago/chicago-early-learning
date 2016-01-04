@@ -481,9 +481,9 @@ function($, L, Response, Handlebars) {
                     }
                 );
             }, function(e) {
-                e.preventDefault();
                 alert(gettext('Please enable geolocation services.'));
             });
+            return false;
         });
     });
 
