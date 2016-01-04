@@ -364,6 +364,7 @@ function($, L, Response, Handlebars) {
             var place_id = $autocomplete.data().place_id;
             var category = $autocomplete.data().category;
             selectPlace(place_id, category);
+            return false;
         });
 
         // Enter Press
@@ -480,9 +481,9 @@ function($, L, Response, Handlebars) {
                     }
                 );
             }, function(e) {
-                e.preventDefault();
                 alert(gettext('Please enable geolocation services.'));
             });
+            return false;
         });
     });
 
