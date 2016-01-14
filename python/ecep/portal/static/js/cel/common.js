@@ -245,7 +245,7 @@ function($, L, Response, Handlebars) {
                 } else {
                     cleanedResults = predictions.map(function(obj) {
                         var rObj = {};
-                        rObj['label'] = obj.description;
+                        rObj['label'] = obj.description.replace(", United States", "");
                         rObj['place_id'] = obj.place_id;
                         rObj['category'] = 'Addresses';
                         return rObj;
@@ -269,9 +269,6 @@ function($, L, Response, Handlebars) {
                         category: 'None'
                     });
                 }
-
-                console.log($autocomplete.data().place_id);
-
                 response(allResults);
             });
         }
