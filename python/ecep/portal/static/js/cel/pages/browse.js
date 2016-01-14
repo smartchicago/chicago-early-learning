@@ -490,9 +490,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 //      and open the map if on mobile
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
-                        iconUrl: common.getUrl('icon-geolocation')
+                        iconUrl: common.getUrl('icon-geolocation'),
+                        iconAnchor: [17, 45]
                     });
-                    geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
+                    geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map).setZIndexOffset(1000);
 
                     if (label) {
                         geolocatedMarker.on('click', function (e) {
