@@ -18,7 +18,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             $collapseFilters = $('#collapseFilters'),
             listItemSelector = '.locations-wrapper .accordion-group',
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
-            defaultZoom = $map.data('zoom') || 10,
+            defaultZoom = 15,
             latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
             lngSettings = CEL.serverVars.lngSettings,
             geolocatedIcon,
@@ -40,6 +40,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
             popupLayer = new L.LayerGroup(),    // Popup Layer
+            legend = L.control({position: 'bottomright'}), 
             currentLayer = layerType.none,      // Layer being currently displayed
             dm = new location.DataManager($filters),    // DataManager object
             isAutocompleteSet = true,
@@ -70,6 +71,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             }
         });
 
+        // Initialize Legend object for location layers
+
+        legend.onAdd = function (map) {
+            return $('.legend').get(0);
+        }
+
         /*
          * Set map pan/zoom centered on a neighborhood/location if requested in the url
          */
@@ -94,6 +101,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * and after a change in zoom level. Listens to the dm.neighborhoodUpdated and
          * dm.locationUpdated events to modify the view.
          */
+
+        // This code is monstrous and needlessly complicated. 
+        // Streamline this code, along with the way the map is constructed.
+        // - ajb, 19 Jan 2016
         var displayMap = common.debounce(function(e) {
             var zoomLevel = map.getZoom(),
                 mapCenter = map.getCenter();
@@ -453,6 +464,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             if (currentLayer !== layerType.location) {
                 currentLayer = layerType.location;
                 popupLayer.clearLayers();
+                map.addControl(legend);
             }
 
             map.removeLayer(neighborhoodLayer);
@@ -474,7 +486,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             init: function() {
                 var state = getMapState(),
                     historyState = History.getState().data,
-                    zoom = state.isGeolocated ? CEL.serverVars.zoomSettings : defaultZoom,
+                    zoom = defaultZoom,
                     qs = qs2Obj(),
                     label = qs.label;
 
