@@ -1,7 +1,3 @@
-/********************************************************
- * Copyright (c) 2013 Azavea, Inc.
- * See LICENSE in the project root for copying permission
- ********************************************************/
 
 
 define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html',
@@ -184,6 +180,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
             $.each(dataList, function(key, value) {
                 var item = isNb ? value : value.data;
+                console.log(item);
                 handlebarsData.push(item);
             });
 

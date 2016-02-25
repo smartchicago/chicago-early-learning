@@ -1,8 +1,3 @@
-/********************************************************
- * Copyright (c) 2013 Azavea, Inc.
- * See LICENSE in the project root for copying permission
- * Requires: google-maps-api-v3; jquery; leaflet;
- ********************************************************/
 
 define(['jquery', 'Leaflet', 'location',
        'common', 'favorites', CEL.serverVars.gmapRequire, 'leaflet-providers'], 

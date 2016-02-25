@@ -159,7 +159,6 @@ h1, h2, h3, h4 {
 }
 
 .favs-toggle i {
-    font-size: 24px;
     position: relative;
     left: -6px;
     color: black;
@@ -234,7 +233,7 @@ h1, h2, h3, h4 {
 /* Results --------------------- */
 
 .results-left {
-    width: 715px;
+    width: 35%;
     position: fixed;
     left: 0;
     margin-top: 90px;
@@ -289,11 +288,12 @@ h1, h2, h3, h4 {
     border-bottom: 1px solid #DFDFDF;
 }
 
-.loc-icon {
-    position: relative;
-    float: left;
-    margin-top: -30px;
-    margin-left: 49%;
+#program-info {
+    display: inline-block;
+}
+
+#loc-icon {
+    display: inline-block;
 }
 
 .location button {
@@ -308,14 +308,6 @@ h1, h2, h3, h4 {
     font-family: "Helvetica", Arial, sans-serif;
 }
 
-#quality-icon {
-    left: 55%;
-    margin-top: 5px;
-    position: absolute;
-    float: none;
-		font-size: 30px;
-}
-
 /* Quality Icon classes */
 #quality-icon.quality-none { color: #E4E4E4; }
 #quality-icon.quality-licensed { color: #0D6EC9; }
@@ -323,24 +315,8 @@ h1, h2, h3, h4 {
 #quality-icon.quality-silver { color: #B6B6B6; }
 #quality-icon.quality-gold { color: #FFD600; }
 
-#loc-icon {
-    left: 65%;
-    margin-top: 3px;
-    position: absolute;
-    float: none;
-}
-
-#loc-dirs {
-    left: 75%;
-    margin-top: 5px;
-    position: absolute;
-    float: none;
-    font-size: 13px;
-    font-weight: normal;
-}
-
 #collapseFilters {
-            border-right: 1px solid #cecece;
+    border-right: 1px solid #cecece;
 }
 
 .truncate {
@@ -357,25 +333,26 @@ h1, h2, h3, h4 {
 }
 
 .accordion-heading h1 {
-    font-size: 16px;
+    font-size: 20px;
     padding: 0;
     margin: 0 0 3px;
-    line-height: 16px;
+    line-height: 22px;
+    display: inline-block;
 }
 
 .accordion-heading h2 {
-    font-size: 13px;
+    font-size: 16px;
     padding: 0;
     font-weight: normal;
     margin: 0;
-    line-height: 16px;
+    line-height: 20px;
     color: #666;
 }
 
 .accordion-heading img {
     float: left;
-    padding-right: 10px;
-    margin-top: 2px;
+    padding-left: 6px;
+    margin-bottom: 2px;
 }
 
 .accordion-heading {
@@ -410,7 +387,7 @@ h1, h2, h3, h4 {
     font-size: 16px;
     margin: 0;
     line-height: 16px;
-				padding-bottom: 4px;
+	padding-bottom: 4px;
 }
 
 .accordion-inner h2 {
@@ -426,19 +403,37 @@ h1, h2, h3, h4 {
     margin: 10px 0;
 }
 
+.location-info {
+    display: inline-block;
+    width:50%;
+}
+
+.location-buttons {
+    display: inline-block;
+    width:45%;
+    vertical-align: top;
+}
+
+.location-list-button {
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
 .location-item {
     margin-top: -21px;
 }
 
+
 .results-right {
-    left: 715px;
+    left: 35%;
     right: 0;
     position: absolute;
     height: 100%;
 }
 
 #map {
-    margin-top: 0;
+    margin-top: 90px;
     width: 100%;
     position: absolute !important;
     top: 0;
@@ -447,15 +442,10 @@ h1, h2, h3, h4 {
     z-index: 0;
 }
 
-.leaflet-container .leaflet-control-zoom {
-        margin-top: 97px;
-}
-
 .accordion-heading a {
     color: #000;
     font-size: 16px;
     font-weight: bold;
-    display: inline-block;
     vertical-align: middle;
 }
 
@@ -469,7 +459,7 @@ h1, h2, h3, h4 {
 
 #filter-options {
     position: fixed;
-    width: 715px;
+    width: 35%;
     background-color: #fff;
     border-bottom: 0;
     z-index: 9999;
@@ -615,12 +605,6 @@ h1, h2, h3, h4 {
 .actions li:first-of-type { margin-left: 0; }
 .actions .single-share { margin-top: 0; }
 
-.actions .favs-toggle,
-.actions .favs-toggle i {
-    font-size: 14px;
-    line-height: 20px;
-}
-
 /* Single School View */
 #location-map {
     height: 250px;
@@ -699,15 +683,16 @@ h1, h2, h3, h4 {
 }
 
 .filters-inner li {
-    float: left;
 }
 
 .filters-list {
     margin-bottom: 0;
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
 }
 
 .filters-list li {
-    width: 33.33%;
 }
 
 .filters-options {
@@ -848,10 +833,6 @@ h1, h2, h3, h4 {
 
 #header-name {
     padding-left: 17px;
-}
-
-#header-dist {
-    padding-left: 350px;
 }
 
 .back-btn {
@@ -1283,7 +1264,6 @@ h1, h2, h3, h4 {
 }
 
 .leaflet-popup-content .favs-toggle i {
-    font-size: 20px;
     color: #ccc;
 }
 
