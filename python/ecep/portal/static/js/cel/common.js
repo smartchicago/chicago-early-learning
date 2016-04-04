@@ -119,6 +119,8 @@ function($, L, Response, Handlebars) {
                     url += opts.locations.toString() + '/';
                 }
                 return url;
+            case 'starred':
+                return '/starred';
             case 'icon-school':
                 return '/static/img/leaflet-icons/school.png';
             case 'icon-school-accredited':
@@ -480,6 +482,15 @@ function($, L, Response, Handlebars) {
             }, function(e) {
                 alert(gettext('Please enable geolocation services.'));
             });
+            return false;
+        });
+    });
+
+    // Link to Compare & Contact page via button
+    $(document).ready(function() {
+        $('#compare-favorites-btn').bind('click', function(e) {
+            e.preventDefault();
+            window.location.href = getUrl('starred');
             return false;
         });
     });
