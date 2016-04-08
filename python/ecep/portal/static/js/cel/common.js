@@ -51,6 +51,13 @@ function($, L, Response, Handlebars) {
         _gaq.push(data);
     };
 
+    var isRetinaDisplay = function() {
+        if (window.matchMedia) {
+            var mq = window.matchMedia("only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen  and (min-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx)");
+            return (mq && mq.matches || (window.devicePixelRatio > 1)); 
+        }
+    }
+
     /**
     * Central api for getting urls for the app
     * @param { logical name of the endpoint } name
@@ -343,7 +350,6 @@ function($, L, Response, Handlebars) {
             startswith_results = $.grep( array, function(value) {
                 return matcher_beginning.test( value.label || value.value || value );
             });
-            console.log(startswith_results);
             remaining_results = $.grep( array, function(value) {
                 return (matcher_all.test( value.label || value.value || value ) && !(matcher_beginning.test( value.label || value.value || value )));
             });
@@ -529,6 +535,9 @@ function($, L, Response, Handlebars) {
     });
 
     return {
+
+        isRetinaDisplay: isRetinaDisplay,
+
         getUrl: getUrl,
 
         slugify: slugify,

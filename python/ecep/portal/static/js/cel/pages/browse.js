@@ -14,7 +14,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             $collapseFilters = $('#collapseFilters'),
             listItemSelector = '.locations-wrapper .accordion-group',
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
-            defaultZoom = 15,
+            defaultZoom = 10,
             latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
             lngSettings = CEL.serverVars.lngSettings,
             geolocatedIcon,
@@ -180,7 +180,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
             $.each(dataList, function(key, value) {
                 var item = isNb ? value : value.data;
-                console.log(item);
                 handlebarsData.push(item);
             });
 
@@ -327,6 +326,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 lat = geolat;
                 lng = geolng;
                 isGeolocated = true;
+                // This is hacky, but it's the best way right now to override the
+                // defaultZoom, without doing whatever insanity was going on 
+                // before this.
+                defaultZoom = 15; 
             }
             return { point: [lat, lng], isGeolocated: isGeolocated };
         };
@@ -485,11 +488,18 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     historyState = History.getState().data,
                     zoom = defaultZoom,
                     qs = qs2Obj(),
-                    label = qs.label;
+                    label = qs.label,
+                    mapboxURL = '';
+
+                if (common.isRetinaDisplay()) {
+                    mapboxURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}@2x.png?access_token='
+                } else {
+                    mapboxURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token='
+                }
 
                 var accessToken = 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg';
-                var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + accessToken,
-                    {attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>', detectRetina: true});
+                var mapboxTiles = L.tileLayer(mapboxURL + accessToken,
+                    {attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>'});
 
                 map = new L.map('map').setView(state.point, zoom);   // Initialize Leaflet map
                 map.addLayer(mapboxTiles);
