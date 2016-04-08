@@ -6,9 +6,7 @@
       <!-- Location Info --> 
       <div class="location-info">
 
-          <!-- Very Long Site Name We're gonna keep typing shit until it's the longest thing on the page -->
-          <h1 id="site-name">{{item.site_name}}<a href="#" id="quality-icon" class="hideonmobile hint--right" data-hint="{{ translations.qrisrating }}: {{tooltip.quality }}"><img data-img="quality-{{ item.quality }}" class="quality-icon" src='{{static "img/icons/quality-none.png"}}' /></h1>
-        </a>
+        <h1 id="site-name">{{item.site_name}}<a href="#" id="quality-icon" class="hideonmobile hint--right" data-hint="{{ translations.qrisrating }}: {{tooltip.quality }}"><img data-img="quality-{{ item.quality }}" class="quality-icon" src='{{static "img/icons/quality-none.png"}}' /></a></h1>
         <div>
           <h2 id="location-address">{{item.address}}, {{item.zip}}</h2>
           {{#each sfields}}
