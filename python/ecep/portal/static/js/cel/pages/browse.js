@@ -14,7 +14,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             $collapseFilters = $('#collapseFilters'),
             listItemSelector = '.locations-wrapper .accordion-group',
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
-            defaultZoom = 15,
+            defaultZoom = 10,
             latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
             lngSettings = CEL.serverVars.lngSettings,
             geolocatedIcon,
@@ -180,7 +180,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
             $.each(dataList, function(key, value) {
                 var item = isNb ? value : value.data;
-                console.log(item);
                 handlebarsData.push(item);
             });
 
@@ -327,6 +326,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 lat = geolat;
                 lng = geolng;
                 isGeolocated = true;
+                // This is hacky, but it's the best way right now to override the
+                // defaultZoom, without doing whatever insanity was going on 
+                // before this.
+                defaultZoom = 15; 
             }
             return { point: [lat, lng], isGeolocated: isGeolocated };
         };

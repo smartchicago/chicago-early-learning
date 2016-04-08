@@ -350,7 +350,6 @@ function($, L, Response, Handlebars) {
             startswith_results = $.grep( array, function(value) {
                 return matcher_beginning.test( value.label || value.value || value );
             });
-            console.log(startswith_results);
             remaining_results = $.grep( array, function(value) {
                 return (matcher_all.test( value.label || value.value || value ) && !(matcher_beginning.test( value.label || value.value || value )));
             });
