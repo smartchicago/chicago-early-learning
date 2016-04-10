@@ -329,6 +329,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 // This is hacky, but it's the best way right now to override the
                 // defaultZoom, without doing whatever insanity was going on 
                 // before this.
+
+                // This doesn't work once you move the map. Fix it. - ajb, 9 Apr 2016
                 defaultZoom = 15; 
             }
             return { point: [lat, lng], isGeolocated: isGeolocated };
