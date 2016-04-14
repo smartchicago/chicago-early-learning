@@ -41,7 +41,11 @@ class About(TemplateView):
 
 
 class SMSInfo(TemplateView):
-    template_name = 'smsinfo.html'
+    template_name = "smsinfo.html"
+
+class Updates(TemplateView):
+    template_name = "updates.html"
+
 
 
 def browse(request):
