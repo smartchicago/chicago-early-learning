@@ -234,17 +234,23 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
              */
             $('body').off('click.favs').on('click.favs', '.favs-toggle', function(e) {
                 var $this = $(this);
-
                 // Toggle all favorites
                 favorites.toggle($this);
 
                 var key = $this.data('loc-id'),
                     loc = dm.locations[key],
                     iconkey = 'icon-' + loc.getIconKey(),
-                    $locIcon = $('#loc-icon-' + key);
+                    $locIcon = $('#loc-icon-' + key),
+                    highlighted = false;
+
+                if ($this.is('button')) {
+                    highlighted = true;
+                }
 
                 // always highlighted because the mouse will be over the accordion div for the click
-                loc.setIcon({ highlighted: true });
+                // ^^ this is actually untrue. Don't set the icon highlighted **if** selecting from
+                // the map tooltip, only from the left-hand results lift. - ajb 14 Apr 2016
+                loc.setIcon({ highlighted: highlighted });
                 $locIcon.attr('src', common.getUrl(iconkey));
                 if (!common.isTouchscreen) {
                     $locIcon.parent('a').attr('data-hint', loc.getIconDescription());
