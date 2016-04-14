@@ -513,6 +513,10 @@
     .filters-options li {
         margin-right: 15px;
     }
+
+    .legend {
+        display: none;
+    }
 }
 
 

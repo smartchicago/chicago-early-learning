@@ -148,7 +148,7 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
             var defaults = {
                     imgpath: '/static/img/icons/',
                     idAttribute: 'data-loc-id',
-                    selectedClass: 'favs-button-selected active'
+                    selectedClass: 'favs-button-selected'
                 },
                 opts = $.extend({}, defaults, options),
                 buttonId = $elt.attr(opts.idAttribute),

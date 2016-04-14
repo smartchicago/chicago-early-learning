@@ -14,7 +14,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             $collapseFilters = $('#collapseFilters'),
             listItemSelector = '.locations-wrapper .accordion-group',
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
-            defaultZoom = 10,
+            defaultZoom = 11,
             latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
             lngSettings = CEL.serverVars.lngSettings,
             geolocatedIcon,
@@ -234,17 +234,23 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
              */
             $('body').off('click.favs').on('click.favs', '.favs-toggle', function(e) {
                 var $this = $(this);
-
                 // Toggle all favorites
                 favorites.toggle($this);
 
                 var key = $this.data('loc-id'),
                     loc = dm.locations[key],
                     iconkey = 'icon-' + loc.getIconKey(),
-                    $locIcon = $('#loc-icon-' + key);
+                    $locIcon = $('#loc-icon-' + key),
+                    highlighted = false;
+
+                if ($this.is('button')) {
+                    highlighted = true;
+                }
 
                 // always highlighted because the mouse will be over the accordion div for the click
-                loc.setIcon({ highlighted: true });
+                // ^^ this is actually untrue. Don't set the icon highlighted **if** selecting from
+                // the map tooltip, only from the left-hand results lift. - ajb 14 Apr 2016
+                loc.setIcon({ highlighted: highlighted });
                 $locIcon.attr('src', common.getUrl(iconkey));
                 if (!common.isTouchscreen) {
                     $locIcon.parent('a').attr('data-hint', loc.getIconDescription());
@@ -317,19 +323,23 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * Get map state from DOM and override defaults if necessary
          */
         var getMapState = function() {
+
             var lat = $map.data('lat') || latSettings,
                 lng = $map.data('lng') || lngSettings,
                 geolat = $map.data('geolat'),
                 geolng = $map.data('geolng'),
                 isGeolocated = false;
+
+            if ($map.data('zoom')) {
+                defaultZoom = $map.data('zoom');
+            } else if ($map.data('lat') || geolat) {
+                defaultZoom = 15;
+            }
+
             if (geolat && geolng) {
                 lat = geolat;
                 lng = geolng;
                 isGeolocated = true;
-                // This is hacky, but it's the best way right now to override the
-                // defaultZoom, without doing whatever insanity was going on 
-                // before this.
-                defaultZoom = 15; 
             }
             return { point: [lat, lng], isGeolocated: isGeolocated };
         };

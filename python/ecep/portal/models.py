@@ -88,13 +88,13 @@ class Location(models.Model):
     prg_hours = models.CharField(ugettext_lazy('Program Hours'), max_length=50, blank=True)
     is_full_day = models.NullBooleanField(ugettext_lazy('Full Day'))
     is_part_day = models.NullBooleanField(ugettext_lazy('Part Day'))
-    is_full_week = models.NullBooleanField(ugettext_lazy('Full Week'))
-    is_part_week = models.NullBooleanField(ugettext_lazy('Part Week'))
+    is_age_lt_3 = models.NullBooleanField(ugettext_lazy('Ages 0-3'))
+    is_age_gt_3 = models.NullBooleanField(ugettext_lazy('Ages 3-5'))
     is_school_year = models.NullBooleanField(ugettext_lazy('School Year'))
     is_full_year = models.NullBooleanField(ugettext_lazy('Full Year'))
     ages = models.CharField(ugettext_lazy('Ages Served'), max_length=50, blank=True)
-    is_age_lt_3 = models.NullBooleanField(ugettext_lazy('Ages 0-3'))
-    is_age_gt_3 = models.NullBooleanField(ugettext_lazy('Ages 3-5'))
+    is_full_week = models.NullBooleanField(ugettext_lazy('Full Week'))
+    is_part_week = models.NullBooleanField(ugettext_lazy('Part Week'))
     language_1 = models.CharField('Language 1 (other than English)', max_length=50, blank=True)
     language_2 = models.CharField('Language 2 (other than English)', max_length=50, blank=True)
     language_3 = models.CharField('Language 3 (other than English)', max_length=50, blank=True)
@@ -341,7 +341,7 @@ class Location(models.Model):
         # This way we can do this with django and not have to worry about making a separate
         # handlebars helper
         trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
-                      'share': _('Share'), 'qrisrating': _('QRIS Rating'), 'contact': _('Compare and Contact')}
+                      'share': _('Share'), 'qrisrating': _('QRIS Rating'), 'contact': _('Compare and Apply')}
 
         # More information for tooltip icon
         accreditation = ['Accredited'] if self.accred != 'None' else []

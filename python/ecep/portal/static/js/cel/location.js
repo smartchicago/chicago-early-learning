@@ -246,10 +246,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                         '">' + gettext('Details') + '</a>' +
                         '<a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle ' + selected + ' hint--top ga-track" data-hint="{{' + hint + '}}" data-loc-id="{{item.key}}" data-ga-category="search" data-ga-action="Favorite Location"><i class="' + icon + '"></i></a></div>';
                     var popupTemplate = Handlebars.compile(popupText);
-                    // I cannot for the life of me figure out why the map is not panning vertically for 
-                    // popups. This autoPanPadding setting seems to make it work. ¯\_(ツ)_/¯ 
-                    // - ajb, 18 Jan 2016
-                    marker.bindPopup(popupTemplate(data), {key: locId, autoPanPadding: [10, 100]});
+
+                    var popup = L.popup()
+                        .setContent(popupTemplate(data));
+
+                    marker.bindPopup(popup);
                 });
             }
         }
