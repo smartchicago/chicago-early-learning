@@ -153,6 +153,7 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                 opts = $.extend({}, defaults, options),
                 buttonId = $elt.attr(opts.idAttribute),
                 img = '',
+                active = '',
                 increment = 0,
                 $siblings = $('[' + opts.idAttribute + '=' + buttonId + ']'),
                 buttonImg = $siblings.children('i'),

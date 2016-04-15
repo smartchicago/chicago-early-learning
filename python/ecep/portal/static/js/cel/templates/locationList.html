@@ -2,77 +2,48 @@
 <div class="accordion location-container" data-key="{{item.key}}">
   <div class="accordion-group" data-key="{{item.key}}">
     <div class="accordion-heading location">
-      <a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle hint--right ga-track"
-          data-hint="{{tooltip.star}}" data-loc-id="{{item.key}}"
-          data-ga-category="search" data-ga-action="Favorite Location">
-        <i class="icon-mail-1"></i>
-      </a>
-      <a href="#collapseLoc{{@index}}"data-toggle="collapse" data-parent="#location{{@index}}" >
-        <h1 class="truncate">{{item.site_name}}</h1>
-        <h2>
-          {{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}<br>
+
+      <!-- Location Info --> 
+      <div class="location-info">
+
+        <h1 id="site-name">{{item.site_name}}<a href="#" id="quality-icon" class="hideonmobile hint--right" data-hint="{{ translations.qrisrating }}: {{tooltip.quality }}"><img data-img="quality-{{ item.quality }}" class="quality-icon" src='{{static "img/icons/quality-none.png"}}' /></a></h1>
+        <div>
+          <h2 id="location-address">{{item.address}}, {{item.zip}}</h2>
           {{#each sfields}}
-            {{#if_eq this.key 'weekday_availability'}}{{#if_not_eq this.value 'None'}}{{this.value}}<br>{{/if_not_eq}}{{/if_eq}}
-            {{#if_eq this.key 'program_info'}}{{#if_not_eq this.value 'None'}}{{this.value}}{{/if_not_eq}}{{/if_eq}}
+          {{#if_eq this.key 'weekday_availability'}}{{#if_not_eq this.value 'None'}}<h2 id="weekday-availability">{{this.value}}</h2>{{/if_not_eq}}{{/if_eq}}
+          {{#if_eq this.key 'program_info'}}{{#if_not_eq this.value 'None'}}<h2 id="program-info">{{this.value}}</h2>{{/if_not_eq}}{{/if_eq}}
           {{/each}}
-        </h2>
-      </a>
-      <a href="#" id="quality-icon" class="hideonmobile directions-icon hint--right"
-          data-hint="{{ translations.qrisrating }}: {{ tooltip.quality }}">
-          <img data-img="quality-{{ item.quality }}" class="quality-icon" src='{{static "img/icons/quality-none.png"}}' />
-      </a>
-      <a href="#" id="loc-icon" class="hideonmobile directions-icon hint--right"
-          data-hint="{{tooltip.accreditation}}">
-        <img id="loc-icon-{{item.key}}" class="location-icons"
-            src='{{static "img/leaflet-icons/center.png"}}' />
-      </a>
-      <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"
-          id="loc-dirs" class="hideonmobile directions-icon hint--left ga-track" data-hint="{{tooltip.directions}}"
-          data-ga-category="search" data-ga-action="Get Directions" target="_blank">
-        {{translations.directions}}
-      </a>
-      <button href="#collapseLoc{{@index}}"
-          id="moreBtn" class="btn btn-inverse more-less-btn hint--left ga-track"
-          data-hint="{{tooltip.moreinfo}}" data-toggle="collapse" data-parent="#location{{@index}}"
-          data-ga-category="search" data-ga-action="More Button">
-        {{translations.more}}
-      </button>
-      <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
-    </div>
-  </div>
-  <div id="collapseLoc{{@index}}" class="accordion-body collapse">
-    <div class="accordion-inner">
-      <div class="accordion-right">
-        <a {{#if item.url}}href="{{item.url}}" {{/if}}class="ga-track btn input-block-level{{#unless item.url}} text-grey{{/unless}}"
-              data-ga-category="search" data-ga-action="Location Website" target="_blank">
-          <i class="icon-globe"></i>
-          {{translations.website}}
-        </a>
-        <a href="#" class="btn input-block-level single-contact ga-track" data-key="{{item.key}}"
-            data-ga-category="search" data-ga-action="Email">
-          <i class="icon-mail"></i>
-          {{translations.contact}}
-        </a>
-        <button class="btn input-block-level share-btn ga-track" data-key="{{item.key}}"
-            data-ga-category="search" data-ga-action="Share Location">
-          <i class="icon-share"></i>
-          {{translations.share}}
-        </button>
+          <a href="#" id="loc-icon" class="hideonmobile directions-icon hint--right" data-hint="{{tooltip.accreditation}}">
+            <img id="loc-icon-{{item.key}}" class="location-icons" src='{{static "img/leaflet-icons/center.png"}}' />
+          </a>
+        </div>
       </div>
-      <div class="accordion-left">
-        <h1>{{phone.fieldname}}</h1>
-        <h2><a href="tel:{{phone.number}}">{{phone.number}}</a></h2>
-        {{#each sfields}}
-        <hr>
-        <h1>{{fieldname}}</h1>
-        {{{value}}}
-        {{/each}}
-        {{#if bfields.values }}
-        <hr>
-        <h1>{{bfields.fieldname}}</h1>
-        <div>{{bfields.values}}</div>
-        {{/if}}
+
+
+      <!-- Location Actions --> 
+      <div class="location-buttons">
+
+        <form action="/location/{{item.key}}/">
+          <button class="btn location-list-button" type="submit"><i class="icon-info-circled"></i> More Info</button>
+        </form>
+        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"><button class="btn location-list-button" type="submit"><i class="icon-road-1"></i> {{translations.directions}}</button></a>
+        <button id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}" class="btn location-list-button favs-toggle"><i class="icon-mail-1"></i> {{translations.contact}}</button>
+        <!--
+        <a href="/location/{{item.key}}/" class="btn location-list-button"><i class="icon-exclamation-sign"></i> More Info</a>
+        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"
+            id="loc-dirs" class="btn location-list-button hideonmobile hint--right ga-track" data-hint="{{tooltip.directions}}"
+            data-ga-category="search" data-ga-action="Get Directions" target="_blank"><i class="icon-road-1"></i> {{translations.directions}}
+        </a>
+        <span class="mobile-chevron"><i class="icon-chevron-right"></i></span>
+        <a href="#" id="favs-toggle-loc-{{item.key}}" class="btn location-list-button favs-toggle hint--right ga-track"
+            data-hint="{{tooltip.star}}" data-loc-id="{{item.key}}"
+            data-ga-category="search" data-ga-action="Favorite Location">
+          <i class="icon-mail-1"></i>{{translations.contact}}</a>
+
+        --> 
+
       </div>
+
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 14:44-0600\n"
+"POT-Creation-Date: 2016-01-04 16:11-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -449,8 +449,8 @@ msgstr "Para comenzar, ingrese su dirección"
 msgid "Click to use your current location"
 msgstr "Haga clic para usar su ubicación actual"
 
-#: portal/templates/base-search.html:17 portal/templates/index.html:35
-#: portal/templates/index.html.py:36
+#: portal/templates/base-search.html:17 portal/templates/index.html:37
+#: portal/templates/index.html.py:49 portal/templates/index.html:50
 msgid "Search"
 msgstr "Buscar"
 
@@ -458,7 +458,7 @@ msgstr "Buscar"
 msgid "Find early learning programs near your home or work."
 msgstr "Encuentre programas de educación temprana cerca de su casa y trabajo."
 
-#: portal/templates/base.html:75 portal/templates/index.html:65
+#: portal/templates/base.html:75 portal/templates/index.html:80
 #: portal/templates/smsinfo.html:12
 msgid "Text For Info"
 msgstr "Texto Para Info"
@@ -467,7 +467,7 @@ msgstr "Texto Para Info"
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
 
-#: portal/templates/base.html:79 portal/templates/index.html:71
+#: portal/templates/base.html:79 portal/templates/index.html:86
 msgid "Keep In Touch"
 msgstr "Mantengase En Contacto"
 
@@ -578,7 +578,7 @@ msgstr ""
 msgid "Find the right program for your child."
 msgstr "Encuentre el programa adecuado para su hijo."
 
-#: portal/templates/index.html:25 portal/templates/index.html.py:43
+#: portal/templates/index.html:25 portal/templates/index.html.py:58
 #, python-format
 msgid ""
 "Welcome to the City of Chicago's Early Learning Portal. Here you can easily "
@@ -602,7 +602,11 @@ msgstr ""
 msgid "Enter an address, community, or zip code"
 msgstr "Escriba el nombre de una escuela, vecindario, o dirección"
 
-#: portal/templates/index.html:53
+#: portal/templates/index.html:41
+msgid "Use your current location"
+msgstr "Usar su ubicación actual"
+
+#: portal/templates/index.html:68
 #, python-format
 msgid ""
 "Call the <a href=\"%(rtl_url)s\">Chicago: Ready to Learn!</a> Hotline at "
@@ -614,11 +618,11 @@ msgstr ""
 "los programas que mas se adapten a las necesidades de su familia. Se aceptan "
 "aplicaciones durante todo el año. Hablamos Español!"
 
-#: portal/templates/index.html:58
+#: portal/templates/index.html:73
 msgid "Find & Compare"
 msgstr "Busque y Compare"
 
-#: portal/templates/index.html:60
+#: portal/templates/index.html:75
 msgid ""
 "Search by the address where you live or work to quickly find all the early "
 "learning programs located near you. Refine your search to find the features "
@@ -629,11 +633,11 @@ msgstr ""
 "usted. Afine su búsqueda para así encontrar las características que mas le "
 "interesen. Escoja sus \"favoritos\" y compárelos con la lista."
 
-#: portal/templates/index.html:61
+#: portal/templates/index.html:76
 msgid "Find and compare locations now"
 msgstr "Encuentre y compare ubicaciones ahora"
 
-#: portal/templates/index.html:67
+#: portal/templates/index.html:82
 #, python-format
 msgid ""
 "Get details about locations near you with text messages. Simply send a zip "
@@ -647,7 +651,7 @@ msgstr ""
 "opciones, por favor llamar a Chicago: Listos para Aprender! al %(rtl_tel)s "
 "línea de acceso directo"
 
-#: portal/templates/index.html:73
+#: portal/templates/index.html:88
 msgid ""
 "Keep in touch with Chicago Early Learning! Sign up to receive timely updates "
 "about enrollment deadlines, early learning resources in your area and new "
@@ -659,7 +663,7 @@ msgstr ""
 "recursos para aprendizaje temprano en su área y todo lo nuevo de Chicago "
 "Aprendizaje Temprano. Esperamos poder estar en contacto con usted"
 
-#: portal/templates/index.html:74
+#: portal/templates/index.html:89
 msgid "Sign up for our mailing list"
 msgstr "Suscríbase a nuestra lista de correo"
 
@@ -731,11 +735,15 @@ msgstr "Dirección"
 msgid "Back to Search"
 msgstr "Vuelva a intentar su  búsqueda"
 
-#: portal/views.py:470
+#: portal/templates/test.html:17
+msgid "Enter a school name"
+msgstr ""
+
+#: portal/views.py:493
 msgid "Explore"
 msgstr "Explorar"
 
-#: portal/views.py:471
+#: portal/views.py:494
 msgid "Click to see locations in this neighborhood"
 msgstr "Haga clic para ver ubicaciones en este vecindario"
 

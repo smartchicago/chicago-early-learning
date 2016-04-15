@@ -1,7 +1,3 @@
-/********************************************************
- * Copyright (c) 2013 Azavea, Inc.
- * See LICENSE in the project root for copying permission
- ********************************************************/
 
 
 define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html',
@@ -18,7 +14,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             $collapseFilters = $('#collapseFilters'),
             listItemSelector = '.locations-wrapper .accordion-group',
             zoomSettings = CEL.serverVars.zoomSettings,   // setting for zoom transition
-            defaultZoom = $map.data('zoom') || 10,
+            defaultZoom = 11,
             latSettings = CEL.serverVars.latSettings,    // lng + lat settings for initial view
             lngSettings = CEL.serverVars.lngSettings,
             geolocatedIcon,
@@ -40,6 +36,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
             popupLayer = new L.LayerGroup(),    // Popup Layer
+            legend = L.control({position: 'bottomright'}), 
             currentLayer = layerType.none,      // Layer being currently displayed
             dm = new location.DataManager($filters),    // DataManager object
             isAutocompleteSet = true,
@@ -70,6 +67,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             }
         });
 
+        // Initialize Legend object for location layers
+
+        legend.onAdd = function (map) {
+            return $('.legend').get(0);
+        }
+
         /*
          * Set map pan/zoom centered on a neighborhood/location if requested in the url
          */
@@ -94,6 +97,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * and after a change in zoom level. Listens to the dm.neighborhoodUpdated and
          * dm.locationUpdated events to modify the view.
          */
+
+        // This code is monstrous and needlessly complicated. 
+        // Streamline this code, along with the way the map is constructed.
+        // - ajb, 19 Jan 2016
         var displayMap = common.debounce(function(e) {
             var zoomLevel = map.getZoom(),
                 mapCenter = map.getCenter();
@@ -227,17 +234,23 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
              */
             $('body').off('click.favs').on('click.favs', '.favs-toggle', function(e) {
                 var $this = $(this);
-
                 // Toggle all favorites
                 favorites.toggle($this);
 
                 var key = $this.data('loc-id'),
                     loc = dm.locations[key],
                     iconkey = 'icon-' + loc.getIconKey(),
-                    $locIcon = $('#loc-icon-' + key);
+                    $locIcon = $('#loc-icon-' + key),
+                    highlighted = false;
+
+                if ($this.is('button')) {
+                    highlighted = true;
+                }
 
                 // always highlighted because the mouse will be over the accordion div for the click
-                loc.setIcon({ highlighted: true });
+                // ^^ this is actually untrue. Don't set the icon highlighted **if** selecting from
+                // the map tooltip, only from the left-hand results lift. - ajb 14 Apr 2016
+                loc.setIcon({ highlighted: highlighted });
                 $locIcon.attr('src', common.getUrl(iconkey));
                 if (!common.isTouchscreen) {
                     $locIcon.parent('a').attr('data-hint', loc.getIconDescription());
@@ -310,11 +323,19 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * Get map state from DOM and override defaults if necessary
          */
         var getMapState = function() {
+
             var lat = $map.data('lat') || latSettings,
                 lng = $map.data('lng') || lngSettings,
                 geolat = $map.data('geolat'),
                 geolng = $map.data('geolng'),
                 isGeolocated = false;
+
+            if ($map.data('zoom')) {
+                defaultZoom = $map.data('zoom');
+            } else if ($map.data('lat') || geolat) {
+                defaultZoom = 15;
+            }
+
             if (geolat && geolng) {
                 lat = geolat;
                 lng = geolng;
@@ -453,6 +474,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             if (currentLayer !== layerType.location) {
                 currentLayer = layerType.location;
                 popupLayer.clearLayers();
+                map.addControl(legend);
             }
 
             map.removeLayer(neighborhoodLayer);
@@ -474,12 +496,19 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             init: function() {
                 var state = getMapState(),
                     historyState = History.getState().data,
-                    zoom = state.isGeolocated ? CEL.serverVars.zoomSettings : defaultZoom,
+                    zoom = defaultZoom,
                     qs = qs2Obj(),
-                    label = qs.label;
+                    label = qs.label,
+                    mapboxURL = '';
+
+                if (common.isRetinaDisplay()) {
+                    mapboxURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}@2x.png?access_token='
+                } else {
+                    mapboxURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token='
+                }
 
                 var accessToken = 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg';
-                var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + accessToken,
+                var mapboxTiles = L.tileLayer(mapboxURL + accessToken,
                     {attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>'});
 
                 map = new L.map('map').setView(state.point, zoom);   // Initialize Leaflet map
@@ -490,9 +519,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 //      and open the map if on mobile
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
-                        iconUrl: common.getUrl('icon-geolocation')
+                        iconUrl: common.getUrl('icon-geolocation'),
+                        iconAnchor: [17, 45]
                     });
-                    geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map);
+                    geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map).setZIndexOffset(1000);
 
                     if (label) {
                         geolocatedMarker.on('click', function (e) {
