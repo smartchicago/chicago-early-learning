@@ -176,7 +176,7 @@ function($, L, Response, Handlebars) {
 
         // Fetch Location names 
         var location_list;
-
+        console.log(getUrl('location-json'));
         $.getJSON(getUrl('location-json'), function (data) {
             location_list = data;
         });
@@ -343,7 +343,7 @@ function($, L, Response, Handlebars) {
         function getAutocompleteLocations(term) {
             var startswith_results;
             var remaining_results;
-            var array = location_list;
+            var array = ['']; //location_list;
             var matcher_beginning = new RegExp( ("^" + $.ui.autocomplete.escapeRegex(term)), "i");
             var matcher_all = new RegExp( $.ui.autocomplete.escapeRegex(term), "i" );
             
