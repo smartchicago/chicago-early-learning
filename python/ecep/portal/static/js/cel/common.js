@@ -179,8 +179,8 @@ function($, L, Response, Handlebars) {
 
         var json_url = window.location.protocol + '//' + window.location.hostname + '/api/location/json/';
         console.log(json_url);
-        
-        $.get(json_url, function (data) {
+
+        $.get('https://chicagoearlylearning.org/api/location/json/', function (data) {
             location_list = data;
             console.log(location_list);
         }, 'json');
