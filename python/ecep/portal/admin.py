@@ -176,7 +176,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
 
     class Media:
         css = {'all': ('css/admin-map.css',)}
-        js = ('http://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' %
+        js = ('https://maps.googleapis.com/maps/api/js?key=%s&sensor=false&language=%s' %
               (settings.GOOGLE_MAPS_KEY, settings.LANGUAGE_CODE),
               'js/admin-map.js',
               "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")

@@ -9,9 +9,17 @@ define(['jquery', 'Leaflet', 'location',
          */
         $(document).ready(function() {
 
+            var mapboxURL = '';
+
+            if (common.isRetinaDisplay()) {
+                mapboxURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}@2x.png?access_token='
+            } else {
+                mapboxURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token='
+            }
+
             var accessToken = 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg';
-            var mapboxTiles = L.tileLayer('https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + accessToken,
-                    {attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>', detectRetina: true});
+            var mapboxTiles = L.tileLayer(mapboxURL + accessToken,
+                    {attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>'});
 
             var location_id = /(\d+)/.exec(window.location.pathname)[1],
                 url = common.getUrl('location-api', { locations: location_id }),

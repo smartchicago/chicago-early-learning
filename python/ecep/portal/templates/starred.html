@@ -37,8 +37,7 @@ See LICENSE in the project root for copying permission
                     data-ga-category="starred" data-ga-action="Share Favorites">
                     <i class="icon-share"></i> {% trans "Share" %}
                 </a>
-                <a id="faves-clear" class="btn faves-option ga-track" href="#"
-                    data-ga-category="starred" data-ga-action="Clear Selections">
+                <a id="faves-clear" class="btn faves-option ga-track" href='{% url "browse" %}' data-ga-category="starred" data-ga-action="Clear Selections">
                     <i class="icon-remove-circle"></i> {% trans "Clear Selections" %}
                 </a>
                 <button class="btn faves-close faves-option" id="back-button"><i class="icon-arrow-left" ></i> {% trans "Back to Search" %}</button>
