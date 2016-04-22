@@ -118,7 +118,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             shadowUrl: '/static/img/leaflet-icons/marker-shadow.png',
             iconSize: [50, 50],
             shadowSize: [41, 41],
-            iconAnchor: [17, 45],
+            iconAnchor: [25, 50],
             shadowAnchor: [10, 41],
             popupAnchor: [0, -60]
         };
@@ -240,13 +240,17 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                             enrollmentInsertion = enrollmentInsertion + hours + "<br />";
                         }
                     }
-                    var popupText = '<b>{{item.site_name}}</b><br>{{item.address}}<br>' + enrollmentInsertion +
+                    var popupText = '<div><b>{{item.site_name}}</b><br>{{item.address}}<br>' + enrollmentInsertion +
                         '{{#each sfields}}{{#if_eq this.key "weekday_availability"}}{{#if_not_eq this.value "None"}}<small>{{this.value}}</small><br>{{/if_not_eq}}{{/if_eq}}{{#if_eq this.key "program_info"}}{{#if_not_eq this.value "None"}}<small>{{this.value}}{{/if_not_eq}}</small>{{/if_eq}}{{/each}}<br>' +
                         '<a href="' + common.getUrl('single-location', { location: locId, slug: common.slugify(data.item.site_name) }) +
                         '">' + gettext('Details') + '</a>' +
-                        '<a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle ' + selected + ' hint--top ga-track" data-hint="{{' + hint + '}}" data-loc-id="{{item.key}}" data-ga-category="search" data-ga-action="Favorite Location"><i class="' + icon + '"></i></a>';
+                        '<a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle ' + selected + ' hint--top ga-track" data-hint="{{' + hint + '}}" data-loc-id="{{item.key}}" data-ga-category="search" data-ga-action="Favorite Location"><i class="' + icon + '"></i></a></div>';
                     var popupTemplate = Handlebars.compile(popupText);
-                    marker.bindPopup(popupTemplate(data), {key: locId});
+
+                    var popup = L.popup()
+                        .setContent(popupTemplate(data));
+
+                    marker.bindPopup(popup);
                 });
             }
         }

@@ -51,6 +51,13 @@ function($, L, Response, Handlebars) {
         _gaq.push(data);
     };
 
+    var isRetinaDisplay = function() {
+        if (window.matchMedia) {
+            var mq = window.matchMedia("only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen  and (min-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx)");
+            return (mq && mq.matches || (window.devicePixelRatio > 1)); 
+        }
+    }
+
     /**
     * Central api for getting urls for the app
     * @param { logical name of the endpoint } name
@@ -119,6 +126,8 @@ function($, L, Response, Handlebars) {
                     url += opts.locations.toString() + '/';
                 }
                 return url;
+            case 'starred':
+                return '/starred';
             case 'icon-school':
                 return '/static/img/leaflet-icons/school.png';
             case 'icon-school-accredited':
@@ -245,7 +254,7 @@ function($, L, Response, Handlebars) {
                 } else {
                     cleanedResults = predictions.map(function(obj) {
                         var rObj = {};
-                        rObj['label'] = obj.description;
+                        rObj['label'] = obj.description.replace(", United States", "");
                         rObj['place_id'] = obj.place_id;
                         rObj['category'] = 'Addresses';
                         return rObj;
@@ -269,9 +278,6 @@ function($, L, Response, Handlebars) {
                         category: 'None'
                     });
                 }
-
-                console.log($autocomplete.data().place_id);
-
                 response(allResults);
             });
         }
@@ -344,7 +350,6 @@ function($, L, Response, Handlebars) {
             startswith_results = $.grep( array, function(value) {
                 return matcher_beginning.test( value.label || value.value || value );
             });
-            console.log(startswith_results);
             remaining_results = $.grep( array, function(value) {
                 return (matcher_all.test( value.label || value.value || value ) && !(matcher_beginning.test( value.label || value.value || value )));
             });
@@ -487,6 +492,15 @@ function($, L, Response, Handlebars) {
         });
     });
 
+    // Link to Compare & Contact page via button
+    $(document).ready(function() {
+        $('#compare-favorites-btn').bind('click', function(e) {
+            e.preventDefault();
+            window.location.href = getUrl('starred');
+            return false;
+        });
+    });
+
     // Set up social sharing behavior
     // The options argument must be an object that contains both a url and a title,
     // which are used to construct the appropriate sharing links.
@@ -495,7 +509,7 @@ function($, L, Response, Handlebars) {
         // move to a publically accessible url, they will work just fine
         var templates = {
                 mail: 'mailto:?body={{ url }}&subject={{ title }}',
-                facebook: 'http://facebook.com/sharer.php?s=100&p[url]={{ url }}&p[title]={{ title }}',
+                facebook: 'https://facebook.com/sharer.php?s=100&p[url]={{ url }}&p[title]={{ title }}',
                 twitter: 'https://twitter.com/share?text={{ title }}%20{{ url }}',
 
                 // looks like google recently broke their permalink that allows adding text:
@@ -521,6 +535,9 @@ function($, L, Response, Handlebars) {
     });
 
     return {
+
+        isRetinaDisplay: isRetinaDisplay,
+
         getUrl: getUrl,
 
         slugify: slugify,
