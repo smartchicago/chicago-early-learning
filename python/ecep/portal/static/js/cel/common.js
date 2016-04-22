@@ -176,10 +176,10 @@ function($, L, Response, Handlebars) {
 
         // Fetch Location names 
         var location_list;
-        $.getJSON('/api/location/json/', function (data) {
+        $.get('/api/location/json/', function (data) {
             location_list = data;
             console.log(location_list);
-        });
+        }, 'json');
 
 
         // Configure Autocomplete widget to use Categories
