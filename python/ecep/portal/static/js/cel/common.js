@@ -176,8 +176,11 @@ function($, L, Response, Handlebars) {
 
         // Fetch Location names 
         var location_list;
-        console.log(window.location.protocol);
-        $.get('/api/location/json/', function (data) {
+
+        var json_url = window.location.protocol + '//' + window.location.hostname + '/api/location/json/';
+        console.log(json_url);
+        
+        $.get(json_url, function (data) {
             location_list = data;
             console.log(location_list);
         }, 'json');
