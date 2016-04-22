@@ -509,7 +509,7 @@ function($, L, Response, Handlebars) {
         // move to a publically accessible url, they will work just fine
         var templates = {
                 mail: 'mailto:?body={{ url }}&subject={{ title }}',
-                facebook: 'http://facebook.com/sharer.php?s=100&p[url]={{ url }}&p[title]={{ title }}',
+                facebook: 'https://facebook.com/sharer.php?s=100&p[url]={{ url }}&p[title]={{ title }}',
                 twitter: 'https://twitter.com/share?text={{ title }}%20{{ url }}',
 
                 // looks like google recently broke their permalink that allows adding text:
