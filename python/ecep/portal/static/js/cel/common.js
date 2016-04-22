@@ -176,9 +176,9 @@ function($, L, Response, Handlebars) {
 
         // Fetch Location names 
         var location_list;
-        console.log(getUrl('location-json'));
-        $.getJSON(getUrl('location-json'), function (data) {
+        $.getJSON(getUrl('https://www.chicagoearlylearning.org/en/api/location/json/'), function (data) {
             location_list = data;
+            console.log(location_list);
         });
 
 
