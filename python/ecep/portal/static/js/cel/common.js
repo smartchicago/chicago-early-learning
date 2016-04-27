@@ -119,7 +119,7 @@ function($, L, Response, Handlebars) {
                 }
                 return url;
             case 'location-json':
-                return '/api/location/json/'
+                return '/en/api/location/json/'
             case 'favorites':
                 url = '/favorites/';
                 if (opts && opts.locations) {
@@ -176,11 +176,7 @@ function($, L, Response, Handlebars) {
 
         // Fetch Location names 
         var location_list;
-
-        var json_url = window.location.protocol + '//' + window.location.hostname + '/api/location/json/';
-        console.log(json_url);
-
-        $.get('https://chicagoearlylearning.org/api/location/json/', function (data) {
+        $.get(getUrl('location-json'), function (data) {
             location_list = data;
             console.log(location_list);
         }, 'json');
@@ -347,7 +343,7 @@ function($, L, Response, Handlebars) {
         function getAutocompleteLocations(term) {
             var startswith_results;
             var remaining_results;
-            var array = ['']; //location_list;
+            var array = location_list;
             var matcher_beginning = new RegExp( ("^" + $.ui.autocomplete.escapeRegex(term)), "i");
             var matcher_all = new RegExp( $.ui.autocomplete.escapeRegex(term), "i" );
             
