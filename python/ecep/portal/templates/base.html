@@ -172,8 +172,8 @@
                 lngSettings: '{{ settings.LONGITUDE|stringformat:'f' }}',
                 zoomSettings: '{{ settings.ZOOM_THRESHOLD }}',
                 gmapKey: '{{ settings.GOOGLE_MAPS_KEY }}',
-                gmapRequire: 'async!http://maps.googleapis.com/maps/api/js?key=' +
-                    '{{ settings.GOOGLE_MAPS_KEY }}' + '&sensor=false' + '&libraries=places',
+                gmapRequire: 'async!https://maps.googleapis.com/maps/api/js?key=' +
+                    '{{ settings.GOOGLE_MAPS_KEY }}' + '&libraries=places',
                 autocomplete: {
                     swlat: {{ settings.AUTOCOMPLETE.SW_LAT|stringformat:'f' }},
                     swlng: {{ settings.AUTOCOMPLETE.SW_LNG|stringformat:'f' }},
