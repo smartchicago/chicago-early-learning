@@ -152,7 +152,7 @@
  
     .results-right {
         visibility: hidden;
-        top: 111px;
+        top: 148px;
         left: 0px;
         height: auto;
         bottom: 0;
@@ -171,7 +171,7 @@
         margin-top: 148px;
         position: fixed;
     }
-    
+
     .accordion-inner .accordion-right,
     .accordion-inner .accordion-left {
         width: 100%;
