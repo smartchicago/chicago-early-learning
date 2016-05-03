@@ -71,9 +71,6 @@
         z-index: 99;
     }
 
-    .accordion-heading .favs-toggle {
-        display: none;
-    }
 
     .accordion-heading #loc-icon,
     .accordion-heading #loc-dirs,
@@ -152,13 +149,14 @@
  
     .results-right {
         visibility: hidden;
-        top: 111px;
+        top: 148px;
         left: 0px;
         height: auto;
         bottom: 0;
     }
 
     #map {
+        margin-top: 0px;
         left: 0px;
     }
 
@@ -170,6 +168,7 @@
         margin-top: 148px;
         position: fixed;
     }
+
     .accordion-inner .accordion-right,
     .accordion-inner .accordion-left {
         width: 100%;
