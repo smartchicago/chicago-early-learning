@@ -71,9 +71,6 @@
         z-index: 99;
     }
 
-    .accordion-heading .favs-toggle {
-        display: none;
-    }
 
     .accordion-heading #loc-icon,
     .accordion-heading #loc-dirs,
