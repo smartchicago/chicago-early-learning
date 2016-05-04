@@ -79,7 +79,7 @@ h1, h2, h3, h4 {
 
 .navbar-inverse .navbar-inner {
     background: #424142;
-    border-bottom: none;
+    border: none;
     /*border-bottom: 1px solid #333;*/
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -171,17 +171,26 @@ h1, h2, h3, h4 {
 /* Ready to Learn ------------ */
 
 .navbar .ready-to-learn {
-    padding: 5px 10px;
     background: #317DC1;
     color: white;
     font-weight: bold;
     text-align: center;
+    height: 40px;
 }
 
-.navbar .ready-to-learn > a {
+.navbar .ready-to-learn a {
     color: #eece16;
     white-space: nowrap;
 }
+
+.ready-to-learn span {
+    position: relative;
+    top: 25%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 
 /* Search ------------ */
 
@@ -192,7 +201,7 @@ h1, h2, h3, h4 {
 #desktop-search {
     margin-top: 8px;
     float: left;
-			margin-left: 0px;
+	margin-left: 0px;
 }
 
 #desktop-search input {
@@ -235,7 +244,7 @@ h1, h2, h3, h4 {
     width: 40%;
     position: fixed;
     left: 0;
-    margin-top: 90px;
+    top: 100px;
     overflow: hidden;
     top: 0;
     bottom: 0;

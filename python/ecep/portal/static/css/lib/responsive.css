@@ -477,6 +477,11 @@
         padding: 20px 0 0;
     }
 
+    .navbar .ready-to-learn {
+        font-size: 13px;
+        line-height: 1.3em;
+    }
+
     #featurettes .ready-to-learn {
         font-size: 14px;
     }
