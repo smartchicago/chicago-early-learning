@@ -79,7 +79,7 @@ h1, h2, h3, h4 {
 
 .navbar-inverse .navbar-inner {
     background: #424142;
-    border: none;
+    border-bottom: none;
     /*border-bottom: 1px solid #333;*/
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
     font-weight: 400;
