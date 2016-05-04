@@ -443,7 +443,7 @@
     }
 
     .favorite {
-        padding: 35px 10px 35px 35px;
+        padding: 25px 20px 20px 20px;
         width: auto;
         left: 0;
         right: 0;
@@ -475,11 +475,6 @@
 
     .jumbotron {
         padding: 20px 0 0;
-    }
-
-    .navbar .ready-to-learn {
-        font-size: 11px;
-        line-height: 1.3em;
     }
 
     #featurettes .ready-to-learn {
