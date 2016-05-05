@@ -183,9 +183,9 @@ h1, h2, h3, h4 {
     white-space: nowrap;
 }
 
-.ready-to-learn span {
+.navbar .ready-to-learn span {
     position: relative;
-    top: 25%;
+    top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);

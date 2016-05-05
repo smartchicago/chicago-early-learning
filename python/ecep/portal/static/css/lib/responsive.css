@@ -181,7 +181,7 @@
     }
     .container-custom {
         width: auto;
-        padding: 0px 25px;
+        padding: 25px;
         text-align: left;
     }
 
@@ -316,7 +316,7 @@
     }
 
     .jumbotron .get-started {
-        padding: 10px;
+        padding: 0;
         font-size: 12px;
     }
 
@@ -391,7 +391,7 @@
     }
 
     .jumbotron {
-        padding: 10px 0 0;
+        padding: 0;
     }
 
     .leaflet-container .leaflet-control-zoom {
@@ -474,7 +474,7 @@
     }
 
     .jumbotron {
-        padding: 20px 0 0;
+        padding: 0;
     }
 
     .navbar .ready-to-learn {
