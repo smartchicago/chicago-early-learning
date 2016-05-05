@@ -240,18 +240,21 @@ h1, h2, h3, h4 {
 
 /* Results --------------------- */
 
+.browse-container {
+    position: fixed;
+    top: 101px;
+    width: 100%;
+    bottom:0
+}
+
 .results-left {
     width: 40%;
     position: fixed;
     left: 0;
-    top: 100px;
     overflow: hidden;
     top: 0;
     bottom: 0;
-        z-index: 1001;
-    -webkit-box-shadow: 2px 0 4px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow:    2px 0 4px rgba(0, 0, 0, 0.25);
-    box-shadow:         2px 0 4px rgba(0, 0, 0, 0.25);
+    z-index: 1001;
 }
 
 .accordion-group {
@@ -446,7 +449,6 @@ h1, h2, h3, h4 {
 }
 
 #map {
-    margin-top: 90px;
     width: 100%;
     position: absolute !important;
     top: 0;
