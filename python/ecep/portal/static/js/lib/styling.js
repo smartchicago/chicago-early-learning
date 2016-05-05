@@ -11,32 +11,33 @@ define(['jquery'], function($) {
     $(document).ready(function(){
         var th;
 
+        
         $(window).on("resize", function(){
             th = $("#filter-options").height();
-            $(".locations-wrapper").css("top", th);
+            $(".results-left").css("top", th);
         });
         $('#filter-options').on('shown', function () {
             th = $("#filter-options").height();
-            $(".locations-wrapper").animate({
+            $(".results-left").animate({
                 top: th 
             }, 175);
         });
             
         $('#filter-options').on('hidden', function () {
             th = $("#filter-options").height();
-            $(".locations-wrapper").animate({
+            $(".results-left").animate({
                 top: th
             }, 0);
         });
             
         $('#refineSearch').on('shown', function () {
-            $(".locations-wrapper").animate({
+            $(".results-left").animate({
                 top: th 
             }, 175);
         });
             
         $('#refineSearch').on('hidden', function () {
-            $(".locations-wrapper").animate({
+            $(".results-left").animate({
                 top: 0
             }, 0);
         });

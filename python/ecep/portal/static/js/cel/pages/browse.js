@@ -165,7 +165,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 dataList,
                 template = Handlebars.compile(html),
                 handlebarsData = [],
-                th = $("#filter-options").height() + $("#hrow").height();
+                th = 0;
                 console.log(th);
 
             // Sort everything by name ascending
@@ -187,8 +187,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             window.clearTimeout(ajaxTimeoutId);
             $locationWrapper.empty().append(template(handlebarsData)).removeClass('ajax-spinner');
 
-            // Set top margin so that list is not hidden by filters
-            $locationWrapper.css("top", th);
 
             // Remove css tooltips when on a touchscreen device
             if (common.isTouchscreen) {

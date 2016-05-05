@@ -176,6 +176,8 @@ h1, h2, h3, h4 {
     font-weight: bold;
     text-align: center;
     height: 40px;
+    display: table;
+    width: 100%
 }
 
 .navbar .ready-to-learn a {
@@ -184,11 +186,8 @@ h1, h2, h3, h4 {
 }
 
 .navbar .ready-to-learn span {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    display: table-cell;
+    vertical-align: middle;
 }
 
 
@@ -249,12 +248,13 @@ h1, h2, h3, h4 {
 
 .results-left {
     width: 40%;
-    position: fixed;
+    position: absolute;
     left: 0;
     overflow: hidden;
-    top: 0;
+    top: 218px;
     bottom: 0;
     z-index: 1001;
+    border-right: 1px solid #cecece;
 }
 
 .accordion-group {
@@ -286,8 +286,19 @@ h1, h2, h3, h4 {
     margin: 0;
 }
 
-#header-row {
-    background-color: #666;
+.locations-header {
+    background-color: #424142;
+    height: 30px;
+    color: #fff;
+    font-size: 17px;
+    display: table;
+    width: 100%;
+}
+
+.locations-header span {
+    padding-left: 5px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .results-toolbar .btn-group {
@@ -328,10 +339,8 @@ h1, h2, h3, h4 {
 #quality-icon.quality-gold { color: #FFD600; }
 
 #filter-options {
-    border-right: 1px solid #cecece;
     background-color: #fff;
     border-bottom: 0;
-    z-index: 9999;
     margin-bottom: 0;
 }
 
@@ -428,6 +437,8 @@ h1, h2, h3, h4 {
     display: inline-block;
     width:45%;
     vertical-align: top;
+    position: relative;
+    right:0;
 }
 
 .location-list-button {
@@ -442,6 +453,7 @@ h1, h2, h3, h4 {
 
 
 .results-right {
+    top: 0;
     left: 40%;
     right: 0;
     position: absolute;
@@ -674,6 +686,15 @@ h1, h2, h3, h4 {
         cursor: pointer;
 }
 
+.filters {
+    border-right: 1px solid #cecece;
+    border-bottom: 1px solid #cecece;
+    position: absolute;
+    top: 0;
+    width: 40%;
+    z-index: 9999;
+}
+
 .filters-inner {
     padding: 20px;
 }
@@ -846,18 +867,6 @@ h1, h2, h3, h4 {
     margin-top: -3px;
 }
 
-.header-row {
-    background: rgb(85,85,85);
-    color: #fff;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    border-bottom: 1px solid #333;
-}
-
-.header-labels {
-    padding: 0;
-    margin: 0;
-}
 .header-labels li {
     display: inline;
 }
@@ -907,7 +916,7 @@ h1, h2, h3, h4 {
 }
 
 .locations-wrapper {
-    top: 0;
+    top: 30px;
     position: absolute;
     overflow: auto;
     bottom: 0;
