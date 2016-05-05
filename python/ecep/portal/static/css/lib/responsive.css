@@ -149,10 +149,14 @@
  
     .results-right {
         visibility: hidden;
-        top: 148px;
+        top: 0;
         left: 0px;
         height: auto;
         bottom: 0;
+    }
+
+    .browse-container {
+        top: 151px;
     }
 
     #map {
@@ -164,9 +168,9 @@
         display: none;
     }
     .results-left {
+        top: 0;
         width: 100%;
-        margin-top: 148px;
-        position: fixed;
+        position: absolute;
     }
 
     .accordion-inner .accordion-right,
