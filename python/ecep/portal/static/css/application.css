@@ -554,12 +554,14 @@ h1, h2, h3, h4 {
 
 .starred-entry {
     display: inline-block;
-    width: 275px;
+    width: 280px;
     margin: 20px;
+    vertical-align: top;
 }
 
 .container-faves {
     padding-top: 40px;
+    margin: 0 5px 0;
 }
 
 .faves-left {
