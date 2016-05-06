@@ -541,15 +541,25 @@ h1, h2, h3, h4 {
     color: #fff !important;
 }
 
-.faves-top {
-    padding: 20px;
-    width: 100%;
-    padding: 20px 20px 50px 20px;
-    margin-top: 90px;
+.starred-container {
+    position: relative;
+    top: 101px;
+    width: 970px;
+    margin: 0 auto;
 }
 
-.faves-top .actions {
-    margin-top: 20px;
+.contact-text {
+    padding: 20px;
+}
+
+.starred-entry {
+    display: inline-block;
+    width: 275px;
+    margin: 
+}
+
+.container-faves {
+    padding-top: 40px;
 }
 
 .faves-left {

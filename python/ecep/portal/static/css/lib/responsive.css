@@ -94,12 +94,13 @@
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
-        }
-        .truncate:hover {
-            width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+    }
+    
+    .truncate:hover {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
     .navbar-inner {
         max-height: 110px;
@@ -289,8 +290,8 @@
     }
     .favorite {
         width: 100%;
-        border-top: 2px solid red;
     }
+
     .directions-icon {
         display: none;
     }
@@ -454,7 +455,7 @@
     }
 
     .favorite {
-        padding: 25px 20px 20px 20px;
+        padding: 20px;
         width: auto;
         left: 0;
         right: 0;
@@ -465,6 +466,13 @@
         width: auto;
     }
 
+    .starred-container {
+        width: 100%;
+    }
+    
+    .contact-text {
+        padding: 0 20px 20px 20px;
+    }
 
 }
 
@@ -634,3 +642,5 @@
     }
 
 }
+
+
