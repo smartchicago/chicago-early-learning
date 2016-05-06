@@ -555,7 +555,7 @@ h1, h2, h3, h4 {
 .starred-entry {
     display: inline-block;
     width: 275px;
-    margin: 
+    margin: 20px;
 }
 
 .container-faves {
