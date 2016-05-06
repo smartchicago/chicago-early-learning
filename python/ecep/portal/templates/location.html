@@ -27,86 +27,88 @@ See LICENSE in the project root for copying permission
 {% endblock %}
 
 {% block content %}
-<div class="favorite" data-key="{{ loc.item.key }}" itemscope itemtype="http://schema.org/EducationalOrganization">
-    <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>
-    <a href="javascript:void(0)" class="none favs-close-button ga-track"
-        data-ga-category="starred" data-ga-action="Remove Favorite">&times;</a>
-  <h1 class="school-name" itemprop="name">{{ loc.item.site_name }}</h1>
-  <p itemprop="address">
-    <span itemprop="streetAddress">{{ loc.item.address }}</span>,
-    <span itemprop="addressLocality">{{ loc.item.city }}</span>,
-    <span itemprop="addressRegion">{{ loc.item.state }}</span>
-    <span itemprop="postalCode">{{ loc.item.zip }}</span>
-  </p>
-  <div class="clearfix">
-    <ul class="website-phone">
-      {% if loc.item.url %}
-      <li><i class="icon-globe"></i> <a href="{{ loc.item.url }}" target="_blank" itemprop="url">{{ loc.item.url }}</a></li>
-      {% endif %}
-    </ul>
-    <ul class="actions">
-      <li>
-        <a href="javascript:void(0)"
-            class="btn favs-toggle single-star ga-track" id="favs-toggle-loc-{{ loc.item.key }}"
-            data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Compare & Contact Single Location" data-redirect="/favorites/">
-          <i class="icon-mail-1"></i> Compare &amp; Contact
-        </a>
-      </li>
-      <li>
-        <a href="#" class="btn single-share ga-track" data-r1024="<i class='icon-share'></i>{{ loc.translations.share }}"
-            data-ga-category="location" data-ga-action="Share Single Location">
-          <i class="icon-share"></i>Share
-        </a>
-      </li>
-    </ul>
-  </div>
-	<br>
-  <hr>
-  <div class="school-details">
-    <h1>{{ loc.phone.fieldname }}</h1>
-    <p>
-      <a href="tel:{{ loc.phone.number }}" class="ga-track" itemprop="telephone" data-ga-category="location" data-ga-action="Telephone">{{ loc.phone.number }}</a>
+<div class="container">
+  <div class="favorite" data-key="{{ loc.item.key }}" itemscope itemtype="http://schema.org/EducationalOrganization">
+      <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>
+      <a href="javascript:void(0)" class="none favs-close-button ga-track"
+          data-ga-category="starred" data-ga-action="Remove Favorite">&times;</a>
+    <h1 class="school-name" itemprop="name">{{ loc.item.site_name }}</h1>
+    <p itemprop="address">
+      <span itemprop="streetAddress">{{ loc.item.address }}</span>,
+      <span itemprop="addressLocality">{{ loc.item.city }}</span>,
+      <span itemprop="addressRegion">{{ loc.item.state }}</span>
+      <span itemprop="postalCode">{{ loc.item.zip }}</span>
     </p>
-    <hr>
-    
-      <h1>Enroll Now!</h1>
-      {% if location.is_cps_based %}
-        <p>
-          <p>Visit a child-friendly location near you:</p>
-          <ul>
-            <li><strong>Loop</strong> 42 W. Madison Street Hours: 9:00 AM - 5:00 PM</li>
-            <li><strong>Colman</strong> 4655 S. Dearborn Street Hours: 9:00 AM - 5:00 PM</li>
-            <li><strong>Hall Mall</strong> 4638 W. Diversey Avenue Hours 8:00 AM - 5:00 PM</li>
-          </ul>
-        </p>
-      {% elif location.is_community_based %}
-        <p>Visit this location to begin the enrollment process.</p>
-      {% endif %}
-        <p>Many people find it helpful to make a plan to visit. You can make your plan <a href="{% url 'enroll-plan' location.pk %}">here</a>.</p>
-        <hr>
-
-    {% if location.enrollment %}
-      <p>{{ location.enrollment|safe }}</p>
-    {% endif %}
-
-    {% for sfield in loc.sfields %}
-
-      {% if loc.item.is_enrollment %}
-        {% if sfield.key not in enrollment_hide %}
-          <h1>{{ sfield.fieldname }}</h1>
-          {{ sfield.value|safe }}
-          <hr>
+    <div class="clearfix">
+      <ul class="website-phone">
+        {% if loc.item.url %}
+        <li><i class="icon-globe"></i> <a href="{{ loc.item.url }}" target="_blank" itemprop="url">{{ loc.item.url }}</a></li>
         {% endif %}
-      {% else %}
-      <h1>{{ sfield.fieldname }}</h1>
-      {{ sfield.value|safe }}
+      </ul>
+      <ul class="actions">
+        <li>
+          <a href="javascript:void(0)"
+              class="btn favs-toggle single-star ga-track" id="favs-toggle-loc-{{ loc.item.key }}"
+              data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Compare & Contact Single Location" data-redirect="/favorites/">
+            <i class="icon-mail-1"></i> Compare &amp; Contact
+          </a>
+        </li>
+        <li>
+          <a href="#" class="btn single-share ga-track" data-r1024="<i class='icon-share'></i>{{ loc.translations.share }}"
+              data-ga-category="location" data-ga-action="Share Single Location">
+            <i class="icon-share"></i>Share
+          </a>
+        </li>
+      </ul>
+    </div>
+  	<br>
+    <hr>
+    <div class="school-details">
+      <h1>{{ loc.phone.fieldname }}</h1>
+      <p>
+        <a href="tel:{{ loc.phone.number }}" class="ga-track" itemprop="telephone" data-ga-category="location" data-ga-action="Telephone">{{ loc.phone.number }}</a>
+      </p>
       <hr>
+      
+        <h1>Enroll Now!</h1>
+        {% if location.is_cps_based %}
+          <p>
+            <p>Visit a child-friendly location near you:</p>
+            <ul>
+              <li><strong>Loop</strong> 42 W. Madison Street Hours: 9:00 AM - 5:00 PM</li>
+              <li><strong>Colman</strong> 4655 S. Dearborn Street Hours: 9:00 AM - 5:00 PM</li>
+              <li><strong>Hall Mall</strong> 4638 W. Diversey Avenue Hours 8:00 AM - 5:00 PM</li>
+            </ul>
+          </p>
+        {% elif location.is_community_based %}
+          <p>Visit this location to begin the enrollment process.</p>
+        {% endif %}
+          <p>Many people find it helpful to make a plan to visit. You can make your plan <a href="{% url 'enroll-plan' location.pk %}">here</a>.</p>
+          <hr>
+
+      {% if location.enrollment %}
+        <p>{{ location.enrollment|safe }}</p>
       {% endif %}
-    {% endfor %}
-    {% if loc.bfields.values %}
-      <h1>{{ loc.bfields.fieldname }}</h1>
-      <div>{{ loc.bfields.values|join:", "}}</div>
-    {% endif %}
+
+      {% for sfield in loc.sfields %}
+
+        {% if loc.item.is_enrollment %}
+          {% if sfield.key not in enrollment_hide %}
+            <h1>{{ sfield.fieldname }}</h1>
+            {{ sfield.value|safe }}
+            <hr>
+          {% endif %}
+        {% else %}
+        <h1>{{ sfield.fieldname }}</h1>
+        {{ sfield.value|safe }}
+        <hr>
+        {% endif %}
+      {% endfor %}
+      {% if loc.bfields.values %}
+        <h1>{{ loc.bfields.fieldname }}</h1>
+        <div>{{ loc.bfields.values|join:", "}}</div>
+      {% endif %}
+    </div>
   </div>
 </div>
 {% endblock %}
