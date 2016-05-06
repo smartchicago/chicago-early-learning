@@ -15,19 +15,12 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                 var template = Handlebars.compile(html),
                     container = $('.container-faves'),
                     $starred = $('<div></div>'),
-                    numLocations = data.locations.length,
-                    divRowHtml = '<div class="row bm20"></div>',
-                    $divRow = $(divRowHtml);
+                    numLocations = data.locations.length;
 
                 for (var i = 0; i < numLocations; i++) {
                     var loc = data.locations[i];
-                    var $location = $(template(loc)).addClass("span4");
-                    $divRow.append($location);
-
-                    if ((i + 1) % 3 === 0 || i === numLocations - 1) {
-                        $starred.append($divRow);
-                        $divRow = $(divRowHtml);
-                    }
+                    var $location = $(template(loc)).addClass("starred-entry");
+                    $starred.append($location);
                 }
 
                 // attach in single dom operation

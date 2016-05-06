@@ -171,17 +171,25 @@ h1, h2, h3, h4 {
 /* Ready to Learn ------------ */
 
 .navbar .ready-to-learn {
-    padding: 5px 10px;
     background: #317DC1;
     color: white;
     font-weight: bold;
     text-align: center;
+    height: 40px;
+    display: table;
+    width: 100%
 }
 
-.navbar .ready-to-learn > a {
+.navbar .ready-to-learn a {
     color: #eece16;
     white-space: nowrap;
 }
+
+.navbar .ready-to-learn span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 
 /* Search ------------ */
 
@@ -192,7 +200,7 @@ h1, h2, h3, h4 {
 #desktop-search {
     margin-top: 8px;
     float: left;
-			margin-left: 0px;
+	margin-left: 0px;
 }
 
 #desktop-search input {
@@ -231,18 +239,22 @@ h1, h2, h3, h4 {
 
 /* Results --------------------- */
 
+.browse-container {
+    position: fixed;
+    top: 101px;
+    width: 100%;
+    bottom:0
+}
+
 .results-left {
     width: 40%;
-    position: fixed;
+    position: absolute;
     left: 0;
-    margin-top: 90px;
     overflow: hidden;
-    top: 0;
+    top: 218px;
     bottom: 0;
-        z-index: 1001;
-    -webkit-box-shadow: 2px 0 4px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow:    2px 0 4px rgba(0, 0, 0, 0.25);
-    box-shadow:         2px 0 4px rgba(0, 0, 0, 0.25);
+    z-index: 1001;
+    border-right: 1px solid #cecece;
 }
 
 .accordion-group {
@@ -274,8 +286,19 @@ h1, h2, h3, h4 {
     margin: 0;
 }
 
-#header-row {
-    background-color: #666;
+.locations-header {
+    background-color: #424142;
+    height: 30px;
+    color: #fff;
+    font-size: 17px;
+    display: table;
+    width: 100%;
+}
+
+.locations-header span {
+    padding-left: 5px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .results-toolbar .btn-group {
@@ -316,10 +339,8 @@ h1, h2, h3, h4 {
 #quality-icon.quality-gold { color: #FFD600; }
 
 #filter-options {
-    border-right: 1px solid #cecece;
     background-color: #fff;
     border-bottom: 0;
-    z-index: 9999;
     margin-bottom: 0;
 }
 
@@ -416,6 +437,8 @@ h1, h2, h3, h4 {
     display: inline-block;
     width:45%;
     vertical-align: top;
+    position: relative;
+    right:0;
 }
 
 .location-list-button {
@@ -430,6 +453,7 @@ h1, h2, h3, h4 {
 
 
 .results-right {
+    top: 0;
     left: 40%;
     right: 0;
     position: absolute;
@@ -437,7 +461,6 @@ h1, h2, h3, h4 {
 }
 
 #map {
-    margin-top: 90px;
     width: 100%;
     position: absolute !important;
     top: 0;
@@ -518,15 +541,27 @@ h1, h2, h3, h4 {
     color: #fff !important;
 }
 
-.faves-top {
-    padding: 20px;
-    width: 100%;
-    padding: 20px 20px 50px 20px;
-    margin-top: 90px;
+.starred-container {
+    position: relative;
+    top: 101px;
+    width: 970px;
+    margin: 0 auto;
 }
 
-.faves-top .actions {
-    margin-top: 20px;
+.contact-text {
+    padding: 20px;
+}
+
+.starred-entry {
+    display: inline-block;
+    width: 280px;
+    margin: 20px;
+    vertical-align: top;
+}
+
+.container-faves {
+    padding-top: 40px;
+    margin: 0 5px 0;
 }
 
 .faves-left {
@@ -661,6 +696,15 @@ h1, h2, h3, h4 {
 
 .accordion-group.neighborhood {
         cursor: pointer;
+}
+
+.filters {
+    border-right: 1px solid #cecece;
+    border-bottom: 1px solid #cecece;
+    position: absolute;
+    top: 0;
+    width: 40%;
+    z-index: 9999;
 }
 
 .filters-inner {
@@ -835,18 +879,6 @@ h1, h2, h3, h4 {
     margin-top: -3px;
 }
 
-.header-row {
-    background: rgb(85,85,85);
-    color: #fff;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    border-bottom: 1px solid #333;
-}
-
-.header-labels {
-    padding: 0;
-    margin: 0;
-}
 .header-labels li {
     display: inline;
 }
@@ -896,7 +928,7 @@ h1, h2, h3, h4 {
 }
 
 .locations-wrapper {
-    top: 0;
+    top: 30px;
     position: absolute;
     overflow: auto;
     bottom: 0;

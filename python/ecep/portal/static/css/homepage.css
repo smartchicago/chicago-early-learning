@@ -1,29 +1,29 @@
 /* Homepage ------------------------ */
 
 .masthead {
-    padding: 70px 0 80px;
+    padding: 70px 0 20px;
     margin-bottom: 0;
-    margin-top: 61px;
+    margin-top: 101px;
     color: #fff;
 }
 
 .jumbotron {
     position: relative;
-    padding: 60px 0 40px;
+    padding-top: 20px;
     color: white;
     background: url(../img/boylearn.jpg) right center no-repeat #eee;
     background-size: cover;
 }
 
-    .jumbotron a {
-        color: #FFC;
-        border-bottom: 1px dotted #FFC;
-    }
-    .jumbotron a:hover {
-        color: #FF9;
-        border-bottom: 1px dotted #FF9;
-        text-decoration: none;
-    }
+.jumbotron a {
+    color: #FFC;
+    border-bottom: 1px dotted #FFC;
+}
+.jumbotron a:hover {
+    color: #FF9;
+    border-bottom: 1px dotted #FF9;
+    text-decoration: none;
+}
 
 .container-custom {
     width: 970px;

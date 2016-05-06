@@ -94,12 +94,13 @@
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
-        }
-        .truncate:hover {
-            width: 100%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+    }
+    
+    .truncate:hover {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
     .navbar-inner {
         max-height: 110px;
@@ -149,10 +150,14 @@
  
     .results-right {
         visibility: hidden;
-        top: 148px;
+        top: 0;
         left: 0px;
         height: auto;
         bottom: 0;
+    }
+
+    .browse-container {
+        top: 151px;
     }
 
     #map {
@@ -164,9 +169,10 @@
         display: none;
     }
     .results-left {
+        top: 0;
         width: 100%;
-        margin-top: 148px;
-        position: fixed;
+        position: absolute;
+        border: none;
     }
 
     .accordion-inner .accordion-right,
@@ -258,6 +264,12 @@
     .results-toolbar {
         display: none;
     }
+
+    .filters {
+        width: 100%;
+        border: none;
+    }
+
     .filters-inner {
         padding: 15px;
         max-height: 300px;
@@ -278,8 +290,8 @@
     }
     .favorite {
         width: 100%;
-        border-top: 2px solid red;
     }
+
     .directions-icon {
         display: none;
     }
@@ -316,7 +328,7 @@
     }
 
     .jumbotron .get-started {
-        padding: 10px;
+        padding: 0;
         font-size: 12px;
     }
 
@@ -391,7 +403,7 @@
     }
 
     .jumbotron {
-        padding: 10px 0 0;
+        padding: 0;
     }
 
     .leaflet-container .leaflet-control-zoom {
@@ -443,7 +455,8 @@
     }
 
     .favorite {
-        padding: 35px 10px 35px 35px;
+        padding: 20px;
+        margin: 0;
         width: auto;
         left: 0;
         right: 0;
@@ -454,6 +467,17 @@
         width: auto;
     }
 
+    .starred-container {
+        width: 100%;
+    }
+
+    .container-faves {
+        margin: 0;
+    }
+    
+    .contact-text {
+        padding: 10px 20px 20px 20px;
+    }
 
 }
 
@@ -474,11 +498,11 @@
     }
 
     .jumbotron {
-        padding: 20px 0 0;
+        padding: 0;
     }
 
     .navbar .ready-to-learn {
-        font-size: 11px;
+        font-size: 13px;
         line-height: 1.3em;
     }
 
@@ -507,10 +531,6 @@
 
     .website-phone {
         margin-bottom: 20px;
-    }
-
-    .filters-options li {
-        margin-right: 15px;
     }
 
     .legend {
@@ -627,3 +647,5 @@
     }
 
 }
+
+
