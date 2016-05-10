@@ -165,7 +165,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 dataList,
                 template = Handlebars.compile(html),
                 handlebarsData = [],
-                th = $("#filter-options").height();
+                th = 0;
+                console.log(th);
 
             // Sort everything by name ascending
             dataList = $.map(data, function(v, k) {
@@ -186,8 +187,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             window.clearTimeout(ajaxTimeoutId);
             $locationWrapper.empty().append(template(handlebarsData)).removeClass('ajax-spinner');
 
-            // Set top margin so that list is not hidden by filters
-            $locationWrapper.css("top", th);
 
             // Remove css tooltips when on a touchscreen device
             if (common.isTouchscreen) {
@@ -307,9 +306,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
         /**
          * Change tooltip when refining search
          */
-        var refineListener = function(){
+        var refineListener = function() {
             if (!common.isTouchscreen) {
-                $('#collapseFilters').on('show.bs.collapse', function(e) {
+                $('#filters-more').on('show.bs.collapse', function(e) {
                     $('#filters-show-more').html(gettext('Less Filters'));
                     $('#refineBtn').attr('data-hint', gettext('Click to hide filters'));
                 }).on('hide.bs.collapse', function(e) {
@@ -540,6 +539,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 }
 
                 // add class 'in' to set filters state if requested by history and were on desktop
+                // 
+                // This seems to be partially outdated? I don't think there's any chevron in use any
+                // more; still trying to parse how the show/hide filters on mobile works. These are
+                // the only references to '#refineBtn' in the app. 
+                //  - ajb, 3 May 2016
+                //
                 $(document).ready(function() {
                     var width = $(document).width(),
                         $refineBtn = $('#refineBtn');

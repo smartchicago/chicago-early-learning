@@ -14,7 +14,7 @@
 
 
 <form class="navbar-form" id="mobile-search">
-  <a class="btn pull-left btn-primary" id="refineSearch" data-toggle="collapse" data-parent="#filters" href="#collapseFilters"><i class="icon-filter"></i></a>
+  <a class="btn pull-left btn-primary" id="refineSearch" data-toggle="collapse" href="#collapseFilters"><i class="icon-filter"></i></a>
 
 <div class="input-prepend">
   <button class="btn btn-standard2 geolocation-button" id="toggleListBtn"><i class="icon-target"></i></button>
@@ -27,27 +27,15 @@
 
 {% block content %}
 
-<div class="results-left">
-  <!-- Results Toolbar -->
-  <div id="filter-options">
-    <div id="toolbar-main">
-      <p class="refine">{% trans "Refine your search" %}</p>
-      <div id="collapseFilters" class="accordion">
-        <div class="filters-inner clearfix">
-          <ul class="filters-list clearfix">
-            {% for f in filters_main %}
-              <li>
-                <label>
-                  <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}"
-                    data-ga-category="search" data-ga-action="filter" data-ga-label="{{ f.1 }}"/>{% trans f.1 %}
-                </label>
-              </li>
-            {% endfor %}
-          </ul>
-
-          <div id="filters-more" class="collapse">
-            <ul class="accordion-group filters-list clearfix">
-              {% for f in filters_more %}
+<div class="browse-container">
+  <div class="filters">
+    <div id="filter-options">
+      <div id="toolbar-main">
+        <div id="collapseFilters" class="accordion collapse">
+          <p class="refine">{% trans "Refine your search" %}</p>
+          <div class="filters-inner clearfix">
+            <ul class="filters-list clearfix">
+              {% for f in filters_main %}
                 <li>
                   <label>
                     <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}"
@@ -56,57 +44,70 @@
                 </li>
               {% endfor %}
             </ul>
-          </div>
 
-          <ul class="filters-options">
-            <li>
-              <button class="acordion-toggle btn ga-track" id="filters-show-more" data-toggle="collapse" data-target="#filters-more" data-ga-category="search" data-ga-action="More Filters">{% trans "More Filters" %}</button>
-              <button class="btn ga-track" id="filter-clear-all" data-ga-category="search" data-ga-action="Reset Search">{% trans "Reset Search" %}</button>
-              <button id="compare-favorites-btn" class="btn starred-btn hint--bottom" data-hint="{% trans 'Click to view your list' %}"><i class="icon-mail"></i> {% trans 'Compare and Contact' %} (<span class="fav-count">0</span>)</button>
-            </li>
-          </ul>
-          <ul class="dropdown-menu pull-right">
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Google+</a></li>
-            <li class="divider"></li>
-            <li><a href="#"><i class="icon-file"></i><i class="icon-share-alt"></i> Export PDF</a></li>
-          </ul>
+            <div id="filters-more" class="collapse">
+              <ul class="accordion-group filters-list clearfix">
+                {% for f in filters_more %}
+                  <li>
+                    <label>
+                      <input class="ga-track" type="checkbox" value="false" name="{{ f.0 }}" id="{{ f.0 }}"
+                        data-ga-category="search" data-ga-action="filter" data-ga-label="{{ f.1 }}"/>{% trans f.1 %}
+                    </label>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            <ul class="filters-options">
+              <li>
+                <button class="acordion-toggle btn ga-track" id="filters-show-more" data-toggle="collapse" data-target="#filters-more" data-ga-category="search" data-ga-action="More Filters">{% trans "More Filters" %}</button>
+                <button class="btn ga-track" id="filter-clear-all" data-ga-category="search" data-ga-action="Reset Search">{% trans "Reset Search" %}</button>
+                <button id="compare-favorites-btn" class="btn starred-btn hint--bottom" data-hint="{% trans 'Click to view your list' %}"><i class="icon-mail"></i> {% trans 'Compare and Contact' %} (<span class="fav-count">0</span>)</button>
+              </li>
+            </ul>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Google+</a></li>
+              <li class="divider"></li>
+              <li><a href="#"><i class="icon-file"></i><i class="icon-share-alt"></i> Export PDF</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-    <div class="header-row">
-      <ul class="header-labels">
-          <li id="header-fav">{% trans "Community" %}</li>
-      </ul>
+  </div>
+  <div class="results-left">
+    <!-- Results Toolbar -->
+    <div class="locations-header">
+      <span id="header-fav">{% trans "Community" %}</span>
     </div>
+    <div class="locations-wrapper ajax-spinner">
+
+      <!-- Location -->
+    </div>
+  </div> <!-- end results left -->
+
+  <!-- MAP -->
+  <div class="results-right">
+      <div id="map" class="ga-track"
+          {% if request.GET.geolat %} data-geolat="{{ request.GET.geolat }}"{% endif %}
+          {% if request.GET.geolng %} data-geolng="{{ request.GET.geolng }}"{% endif %}
+          {% if request.GET.lat %} data-lat="{{ request.GET.lat }}"{% endif %}
+          {% if request.GET.lng %} data-lng="{{ request.GET.lng }}"{% endif %}
+          {% if request.GET.zoom %} data-zoom="{{ request.GET.zoom }}"{% endif %}
+          {% if request.GET.neighborhood %} data-neighborhood-id="{{ request.GET.neighborhood }}"{% endif %}
+          {% if request.GET.location %} data-location-id="{{ request.GET.location }}"{% endif %}
+          data-ga-category="search" data-ga-action="Map Click"></div>
   </div>
 
-  <div class="locations-wrapper ajax-spinner">
-    <!-- Location -->
+  <div class="legend">
+    <div class="legend-entry"><img class="legend-icon" src="{% static "img/leaflet-icons/center.png" %}"><h4>{% trans "Community based" %}<h4></div>
+    <div class="legend-entry"><img class="legend-icon" src="{% static "img/leaflet-icons/school.png" %}"><h4>{% trans "CPS based" %}<h4></div>
+    <div class="legend-entry"><img class="legend-icon" src="{% static "img/leaflet-icons/center-accredited.png" %}"><h4>{% trans "Nationally Accredited" %}<h4></div>
+    <div class="legend-entry"><img class="legend-icon" src="{% static "img/leaflet-icons/school-starred.png" %}"><h4>{% trans "Compare &amp; Contact" %}<h4></div>
   </div>
-</div> <!-- end results left -->
-
-<!-- MAP -->
-<div class="results-right">
-    <div id="map" class="ga-track"
-        {% if request.GET.geolat %} data-geolat="{{ request.GET.geolat }}"{% endif %}
-        {% if request.GET.geolng %} data-geolng="{{ request.GET.geolng }}"{% endif %}
-        {% if request.GET.lat %} data-lat="{{ request.GET.lat }}"{% endif %}
-        {% if request.GET.lng %} data-lng="{{ request.GET.lng }}"{% endif %}
-        {% if request.GET.zoom %} data-zoom="{{ request.GET.zoom }}"{% endif %}
-        {% if request.GET.neighborhood %} data-neighborhood-id="{{ request.GET.neighborhood }}"{% endif %}
-        {% if request.GET.location %} data-location-id="{{ request.GET.location }}"{% endif %}
-        data-ga-category="search" data-ga-action="Map Click"></div>
 </div>
-
-<div class="legend">
-  <div class="legend-entry"><img class="legend-icon" src="{% static "img/leaflet-icons/center.png" %}"><h4>{% trans "Community based" %}<h4></div>
-  <div class="legend-entry"><img class="legend-icon" src="{% static "img/leaflet-icons/school.png" %}"><h4>{% trans "CPS based" %}<h4></div>
-  <div class="legend-entry"><img class="legend-icon" src="{% static "img/leaflet-icons/center-accredited.png" %}"><h4>{% trans "Nationally Accredited" %}<h4></div>
-  <div class="legend-entry"><img class="legend-icon" src="{% static "img/leaflet-icons/school-starred.png" %}"><h4>{% trans "Compare &amp; Contact" %}<h4></div>
-</div>
-
 
 {% endblock %}
 
