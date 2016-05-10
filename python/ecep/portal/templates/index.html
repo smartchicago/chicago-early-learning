@@ -55,7 +55,7 @@ See LICENSE in the project root for copying permission
 
     <div class="container-custom" id="featurettes">
 
-      
+
       <div class="announcement-mobile">
         <h3>Apply Today!</h3>
         <p>Application for Fall 2016 preschool enrollment is now open, click <a href="{% url 'updates' %}">here</a> to apply.</p>
@@ -63,12 +63,6 @@ See LICENSE in the project root for copying permission
       </div>
 
       <p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
-
-      {% with rtl_url="http://www.cps.edu/schools/earlychildhood/pages/earlychildhood.aspx" rtl_tel=settings.HOTLINE_PHONE|telurl sms_tel=settings.TWILIO_PHONE|telurl %}
-      <div class="ready-to-learn">
-        <img class="pull-left" src="{% static 'img/logos/ready-to-learn.png' %}" alt="Ready to Learn logo">
-        <p>{% blocktrans %}Call the <a href="{{ rtl_url }}">Chicago: Ready to Learn!</a> Hotline at {{ rtl_tel }} to find out more information about programs that best meet your family's needs. Accepting applications year round. !Se habla Español!{% endblocktrans %}</p>
-      </div>
 
       <ul class="info clearfix">
         <li>
