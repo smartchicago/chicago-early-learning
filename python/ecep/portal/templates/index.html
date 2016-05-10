@@ -64,6 +64,8 @@ See LICENSE in the project root for copying permission
 
       <p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
 
+      {% with rtl_url="http://www.cps.edu/schools/earlychildhood/pages/earlychildhood.aspx" rtl_tel=settings.HOTLINE_PHONE|telurl sms_tel=settings.TWILIO_PHONE|telurl %}
+
       <ul class="info clearfix">
         <li>
           <h2>{% blocktrans %}Find & Compare{% endblocktrans %}</h2>
