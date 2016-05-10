@@ -100,7 +100,7 @@ class Location(models.Model):
     language_3 = models.CharField('Language 3 (other than English)', max_length=50, blank=True)
     is_community_based = models.NullBooleanField(ugettext_lazy('Community Based'))
     is_cps_based = models.NullBooleanField(ugettext_lazy('CPS Based'))
-    is_home_visiting = models.NullBooleanField(ugettext_lazy('Home Visiting'))
+    is_home_visiting = models.NullBooleanField(ugettext_lazy('Offers Home Visiting'))
     accept_ccap = models.NullBooleanField(ugettext_lazy('Accepts CCAP'))
     is_hs = models.NullBooleanField(ugettext_lazy('Head Start'))
     is_ehs = models.NullBooleanField(ugettext_lazy('Early Head Start'))
