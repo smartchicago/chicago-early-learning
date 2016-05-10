@@ -163,11 +163,16 @@ input.homepage-search {
 }
 
 .announcement-mobile h3 {
-        margin-top: 10px;
+        margin-top: 0;
         margin-bottom: 0;
         font-size: 16px;
         line-height: 1em;
     }
+
+.announcement-mobile p {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
 
 .announcement-mobile a {
         color: #ffd;
