@@ -57,7 +57,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                 $.getJSON(common.getUrl('location-api', { locations: starredIds }), function (results) {
                     drawStarredLocations(results);
 
-                    $('.faves-contact')
+                    $('#faves-contact')
                         .show().attr("href", "/contact/" + starredIds + "/");
                 });
             } else {
