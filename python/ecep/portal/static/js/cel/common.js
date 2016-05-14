@@ -178,7 +178,6 @@ function($, L, Response, Handlebars) {
         var location_list;
         $.get(getUrl('location-json'), function (data) {
             location_list = data;
-            console.log(location_list);
         }, 'json');
 
 
