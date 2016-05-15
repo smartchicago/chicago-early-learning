@@ -619,8 +619,7 @@ h1, h2, h3, h4 {
 
 .favorite h1 {
     font-size: 16px;
-    margin: 0;
-    line-height: 15px;
+    line-height: 16px;
 }
 
 .favorite h2 {
@@ -637,6 +636,7 @@ h1, h2, h3, h4 {
 }
 
 .favorite p {
+
     font-size: 14px;
     font-weight: normal;
 }
@@ -954,6 +954,7 @@ h1, h2, h3, h4 {
 .locations-wrapper {
     top: 30px;
     position: absolute;
+    overflow-y: scroll;
     bottom: 0;
     width: 100%;
 }

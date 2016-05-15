@@ -75,13 +75,30 @@ See LICENSE in the project root for copying permission
 
       {% if fields.ages_served and not loc.item.is_enrollment %}
         <h1>Ages Served</h1>
-        {{ fields.ages_served|safe }}
+          <p>{% if location.is_age_lt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} Ages 0 to 3</p>
+          <p>{% if location.is_age_gt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} Ages 3 to 5</p>
         <hr>
       {% endif %}
 
       {% if fields.duration_and_hours and not loc.item.is_enrollment %}
         <h1>Duration and Hours</h1>
-        {{ fields.duration_and_hours|safe }}
+          {% if location.prg_hours %}<p>{{ location.prg_hours }}</p>{% else %}<p>No Hours Listed</p>{% endif %}
+          
+          {% if location.is_full_day and location.is_part_day %}
+            <p>Full Day, Part Day</p>
+          {% elif location.is_full_day %}
+            <p>Full Day</p>
+          {% elif location.is_part_day %}
+            <p>Part Day</p>
+          {% endif %}
+
+          {% if location.is_full_week and location.is_part_week %}
+            <p>Full Week, Part Week</p>
+          {% elif location.is_full_week %}
+            <p>Full Week</p>
+          {% elif location.is_part_week %}
+            <p>Part Week</p>
+          {% endif %}
         <hr>
       {% endif %}
 
