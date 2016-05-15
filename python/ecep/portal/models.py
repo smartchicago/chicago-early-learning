@@ -301,7 +301,7 @@ class Location(models.Model):
         program_hours = self.prg_hours if self.prg_hours else _("No Hours Listed")
         program_values.append(program_hours)
         sfields.append({'key': 'duration_hours',
-                        'fieldname': _('Duration/Hours'),
+                        'fieldname': _('Duration and Hours'),
                         'value': ', '.join(program_values) if program_values else _('None')})
 
         # Weekday Avaialability

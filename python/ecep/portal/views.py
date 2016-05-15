@@ -407,21 +407,31 @@ def location_api(request, location_ids=None):
 
 
 def location(request, location_id=None, slug=None):
-    loc = get_object_or_404(Location, id=location_id)
+    location = get_object_or_404(Location, id=location_id)
+    loc = location_details(location_id)
+    fields = clean_context_dict(loc)
+
+
     return render(request, 'location.html', {
-        'loc': location_details(location_id),
-        'loc_description': loc.q_stmt,
-        'loc_neighborhood': loc.neighborhood,
-        'location': loc,
-        'enrollment_hide': [  # hide values for enrollment centers
-            'accred',
-            'weekday_availability',
-            'program_info',
-            'quality_rating',
-            'duration_hours',
-            'ages',
-        ]
+        'loc': loc,
+        'loc_description': location.q_stmt,
+        'loc_neighborhood': location.neighborhood,
+        'location': location,
+        'fields': fields
     })
+
+def clean_context_dict(context_dict):
+
+    fields = {}
+    for field in context_dict['sfields']:
+        key = field['fieldname'].lower()
+        key = key.replace(' ', '_')
+        fields[key] = field['value']
+
+    bfields = context_dict['bfields']
+    fields['other_features'] = bfields['values']
+
+    return fields
 
 
 def location_json_api(request):
