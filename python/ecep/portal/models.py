@@ -301,7 +301,7 @@ class Location(models.Model):
         program_hours = self.prg_hours if self.prg_hours else _("No Hours Listed")
         program_values.append(program_hours)
         sfields.append({'key': 'duration_hours',
-                        'fieldname': _('Duration/Hours'),
+                        'fieldname': _('Duration and Hours'),
                         'value': ', '.join(program_values) if program_values else _('None')})
 
         # Weekday Avaialability
@@ -341,7 +341,7 @@ class Location(models.Model):
         # This way we can do this with django and not have to worry about making a separate
         # handlebars helper
         trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
-                      'share': _('Share'), 'qrisrating': _('QRIS Rating'), 'contact': _('Compare and Contact')}
+                      'share': _('Share'), 'qrisrating': _('QRIS Rating'), 'contact': _('Compare and Apply')}
 
         # More information for tooltip icon
         accreditation = ['Accredited'] if self.accred != 'None' else []

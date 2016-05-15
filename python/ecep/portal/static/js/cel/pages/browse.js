@@ -166,7 +166,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 template = Handlebars.compile(html),
                 handlebarsData = [],
                 th = 0;
-                console.log(th);
 
             // Sort everything by name ascending
             dataList = $.map(data, function(v, k) {
