@@ -250,7 +250,6 @@ h1, h2, h3, h4 {
     width: 40%;
     position: absolute;
     left: 0;
-    overflow: hidden;
     top: 218px;
     bottom: 0;
     z-index: 1001;
@@ -955,9 +954,7 @@ h1, h2, h3, h4 {
 .locations-wrapper {
     top: 30px;
     position: absolute;
-    overflow: auto;
     bottom: 0;
-    z-index: -1;
     width: 100%;
 }
 
