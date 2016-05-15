@@ -234,6 +234,8 @@ class Location(models.Model):
             'key': self.pk,
             'email': self.email,
             'type': self.site_type,
+            'full_day': self.is_full_day,
+            'part_day': self.is_part_day,
             'age_lt_3': self.is_age_lt_3,
             'age_gt_3': self.is_age_gt_3,
             'site_type': self.site_type,
