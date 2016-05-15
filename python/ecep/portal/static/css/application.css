@@ -16,8 +16,8 @@ h1, h2, h3, h4 {
 }
 
 .btn {
-        font-family: "Montserrat", Helvetica, Arial, sans-serif;
-        font-weight: 300;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 300;
 }
 
 .container {
@@ -564,7 +564,7 @@ h1, h2, h3, h4 {
 }
 
 .starred-actions .contact-button {
-    width: 35%;
+    width: 61%;
     display: inline-block;
 }
 
