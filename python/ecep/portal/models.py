@@ -106,7 +106,7 @@ class Location(models.Model):
     is_ehs = models.NullBooleanField(ugettext_lazy('Early Head Start'))
     open_house = models.TextField(ugettext_lazy('Open House'), blank=True)
     curriculum = models.TextField(ugettext_lazy('Curriculum'), blank=True)
-    email = models.EmailField()
+    email = models.EmailField(blank=True)
 
     # Keeps track of whether or not new locations have been approved by the admin
     accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
