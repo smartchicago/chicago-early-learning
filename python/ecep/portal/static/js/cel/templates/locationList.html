@@ -11,19 +11,27 @@
           <h2 id="location-address">{{item.address}}, {{item.zip}}</h2>
           {{#if item.age_lt_3}}
             {{#if item.age_gt_3}}
-              <h2 id="ages"> Serves ages 0 to 3, 3 to 5</h2>
+              <h2 id="ages">Serves ages 0 to 3, 3 to 5</h2>
             {{else}}
-              <h2 id="ages"> Serves ages 0 to 3</h2>
+              <h2 id="ages">Serves ages 0 to 3</h2>
             {{/if}}
           {{else}}
             {{#if item.age_gt_3}}
-              <h2 id="ages"> Serves ages 3 to 5</h2>
+              <h2 id="ages">Serves ages 3 to 5</h2>
+            {{/if}}
+          {{/if}}
+          {{#if item.full_day}}
+            {{#if item.part_day}}
+              <h2 id="ages">Full Day, Part Day</h2>
+            {{else}}
+              <h2 id="ages">Full Day</h2>
+            {{/if}}
+          {{else}}
+            {{#if item.age_gt_3}}
+              <h2 id="ages">Part Day</h2>
             {{/if}}
           {{/if}}
 
-          {{#each sfields}}
-          {{#if_eq this.key 'weekday_availability'}}{{#if_not_eq this.value 'None'}}<h2 id="weekday-availability">{{this.value}}</h2>{{/if_not_eq}}{{/if_eq}}
-          {{/each}}
         </div>
       </div>
 
