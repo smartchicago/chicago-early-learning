@@ -9,13 +9,29 @@
         <h1 id="site-name">{{item.site_name}}<a href="#" id="quality-icon" class="hideonmobile hint--right" data-hint="{{ translations.qrisrating }}: {{tooltip.quality }}"><img data-img="quality-{{ item.quality }}" class="quality-icon" src='{{static "img/icons/quality-none.png"}}' /></a></h1>
         <div>
           <h2 id="location-address">{{item.address}}, {{item.zip}}</h2>
-          {{#each sfields}}
-          {{#if_eq this.key 'weekday_availability'}}{{#if_not_eq this.value 'None'}}<h2 id="weekday-availability">{{this.value}}</h2>{{/if_not_eq}}{{/if_eq}}
-          {{#if_eq this.key 'program_info'}}{{#if_not_eq this.value 'None'}}<h2 id="program-info">{{this.value}}</h2>{{/if_not_eq}}{{/if_eq}}
-          {{/each}}
-          <a href="#" id="loc-icon" class="hideonmobile directions-icon hint--right" data-hint="{{tooltip.accreditation}}">
-            <img id="loc-icon-{{item.key}}" class="location-icons" src='{{static "img/leaflet-icons/center.png"}}' />
-          </a>
+          {{#if item.age_lt_3}}
+            {{#if item.age_gt_3}}
+              <h2 id="ages">Serves ages 0 - 3, 3 - 5</h2>
+            {{else}}
+              <h2 id="ages">Serves ages 0 - 3</h2>
+            {{/if}}
+          {{else}}
+            {{#if item.age_gt_3}}
+              <h2 id="ages">Serves ages 3 - 5</h2>
+            {{/if}}
+          {{/if}}
+          {{#if item.full_day}}
+            {{#if item.part_day}}
+              <h2 id="ages">Full Day, Part Day</h2>
+            {{else}}
+              <h2 id="ages">Full Day</h2>
+            {{/if}}
+          {{else}}
+            {{#if item.age_gt_3}}
+              <h2 id="ages">Part Day</h2>
+            {{/if}}
+          {{/if}}
+
         </div>
       </div>
 
@@ -26,8 +42,8 @@
         <form action="/location/{{item.key}}/">
           <button class="btn location-list-button" type="submit"><i class="icon-info-circled"></i> More Info</button>
         </form>
-        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"><button class="btn location-list-button" type="submit"><i class="icon-road-1"></i> {{translations.directions}}</button></a>
-        <button id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}" class="btn location-list-button favs-toggle"><i class="icon-mail-1"></i> {{translations.contact}}</button>
+        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"><button class="btn location-list-button hint--left" type="submit" data-hint="{{tooltip.directions}}"><i class="icon-road-1"></i> {{translations.directions}}</button></a>
+        <button id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}" class="btn location-list-button favs-toggle hint--left" data-hint="{{tooltip.star}}"><i class="icon-mail-1"></i> {{translations.contact}}</button>
         <!--
         <a href="/location/{{item.key}}/" class="btn location-list-button"><i class="icon-exclamation-sign"></i> More Info</a>
         <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"
