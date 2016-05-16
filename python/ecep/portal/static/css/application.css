@@ -16,8 +16,8 @@ h1, h2, h3, h4 {
 }
 
 .btn {
-        font-family: "Montserrat", Helvetica, Arial, sans-serif;
-        font-weight: 300;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 300;
 }
 
 .container {
@@ -564,7 +564,7 @@ h1, h2, h3, h4 {
 }
 
 .starred-actions .contact-button {
-    width: 35%;
+    width: 61%;
     display: inline-block;
 }
 
@@ -1211,44 +1211,32 @@ h1, h2, h3, h4 {
     *background-color: #003bb3;
 }
 
-#faq-container {
-    margin-top: 85px;
+.faq-container {
+    position: relative;
+    top: 101px;
+    width: 970px;
+    margin: 0 auto;
+    padding-bottom: 150px;
 }
 
-#faq-container h1 {
+
+.faq-container h1 {
     font-size: 32px;
-    margin-bottom: 35px;
 }
 
-#faq-container .accordion-inner {
-    padding: 25px 15px 25px 0px;
+.faq-container h2 {
+    font-size: 20px;
 }
 
-#faq-container .accordion-heading .accordion-toggle {
-    font-family: "Montserrat", sans-serif;
-    padding: 20px 0;
-    color: #317DC1;
+.anchor{
+      display: block;
+      height: 101px; /*same height as header*/
+      margin-top: -101px; /*same height as header*/
+      visibility: hidden;
 }
 
-#faq-container .accordion-heading .accordion-toggle:hover {
-    color: #155792;
-}
-
-#faq-container .accordion-inner {
-    line-height: 1.8;
-}
-
-#faq-container .accordion-group {
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    margin-bottom: 8px;
-    border: none;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.static-title {
-    margin-top: 55px;
+.topic {
+    padding-top: 15px;
 }
 
 .location-icons {

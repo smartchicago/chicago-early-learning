@@ -21,26 +21,30 @@ See LICENSE in the project root for copying permission
         <h1>{% trans "Compare and Apply" %} (<span class="fav-count">0</span>)</h1>
         <p>{% blocktrans %}Compare early learning programs side-by-side to select the highest quality option for your child. Add more programs by going back to your search results.{% endblocktrans %}</p>
 
-        <p>{% blocktrans %}Press the “Contact” button to contact all of the selections on your list to learn more about each location. These locations will respond to you by phone or email within 3 business days.{% endblocktrans %}</p>
+        <p>{% blocktrans %}Press the “Apply” button to complete an application form for your top two site preferences. Children must be three or four years old by September 1, 2016 to use this application for preschool programs (Ages 3 - 5).{% endblocktrans %}</p>
+
+        <p>{% blocktrans %}If you are looking to enroll in a program immediately or have a child that will not yet be three years old in the Fall, please contact the early childhood program directly.{% endblocktrans %}</p>
 
         <p>{% blocktrans %}Press “Back to Search" to add more locations you are interested in.{% endblocktrans %}</p>
+
     </div>
 
     <div class="starred-actions">
 
         <div class="contact-button">
-            <a href="#" data-hint="{% trans 'Contact all of the selections in your list' %}" class="btn faves-option btn-success btn-block hint--bottom ga-track" href="#" data-ga-category="starred" data-ga-action="Contact Favorites"><i class="icon-mail"></i> {% trans "Contact" %}</a>
+            <a href="https://apply.chicagoearlylearning.org/earlybird/#/" class="btn btn-large faves-option btn-success btn-block hint--bottom ga-track" href="#" data-ga-category="starred" data-ga-action="Contact Favorites"><i class="icon-mail"></i> {% trans "Apply" %}</a>
         </div>
-        <div class="share-button">
-            <a id="faves-share" data-hint="{% trans 'Click to share your list' %}" class="btn btn-block faves-option hint--bottom ga-track" href="#" data-ga-category="starred" data-ga-action="Share Favorites"><i class="icon-share"></i> {% trans "Share" %}</a>
+        <div class="other-buttons">
+            <div class="share-button">
+                <a id="faves-share" class="btn btn-block faves-option hint--bottom ga-track" href="#" data-ga-category="starred" data-ga-action="Share Favorites"><i class="icon-share"></i> {% trans "Share" %}</a>
+            </div>
+            <div class="clear-button">
+                <a id="faves-clear" class="btn btn-block faves-option ga-track" href='{% url "browse" %}' data-ga-category="starred" data-ga-action="Clear Selections"><i class="icon-remove-circle"></i> {% trans "Clear Selections" %}</a>
+            </div>
+            <div class="return-button">
+                <button class="btn btn-block faves-close faves-option" id="back-button"><i class="icon-arrow-left" ></i> {% trans "Back to Search" %}</button>
+            </div>
         </div>
-        <div class="clear-button">
-            <a id="faves-clear" class="btn btn-block faves-option ga-track" href='{% url "browse" %}' data-ga-category="starred" data-ga-action="Clear Selections"><i class="icon-remove-circle"></i> {% trans "Clear Selections" %}</a>
-        </div>
-        <div class="return-button">
-            <button class="btn btn-block faves-close faves-option" id="back-button"><i class="icon-arrow-left" ></i> {% trans "Back to Search" %}</button>
-        </div>
-
     </div>
 
     <!-- Favorite list -->

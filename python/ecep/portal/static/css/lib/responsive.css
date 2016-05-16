@@ -476,22 +476,22 @@
     }
 
     .starred-actions .contact-button {
-        width: 45%;
+        width: 80%;
         display: inline-block;
     }
 
     .starred-actions .share-button {
-        width: 45%;
+        width: 80%;
         display: inline-block;
     }
 
     .starred-actions .clear-button {
-        width: 45%;
+        width: 80%;
         display: inline-block;
     }
 
     .starred-actions .return-button {
-        width: 45%;
+        width: 80%;
     }        
 
     .container-faves {

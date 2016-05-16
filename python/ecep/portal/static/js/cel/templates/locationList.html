@@ -11,13 +11,13 @@
           <h2 id="location-address">{{item.address}}, {{item.zip}}</h2>
           {{#if item.age_lt_3}}
             {{#if item.age_gt_3}}
-              <h2 id="ages">Serves ages 0 to 3, 3 to 5</h2>
+              <h2 id="ages">Serves ages 0 - 3, 3 - 5</h2>
             {{else}}
-              <h2 id="ages">Serves ages 0 to 3</h2>
+              <h2 id="ages">Serves ages 0 - 3</h2>
             {{/if}}
           {{else}}
             {{#if item.age_gt_3}}
-              <h2 id="ages">Serves ages 3 to 5</h2>
+              <h2 id="ages">Serves ages 3 - 5</h2>
             {{/if}}
           {{/if}}
           {{#if item.full_day}}
