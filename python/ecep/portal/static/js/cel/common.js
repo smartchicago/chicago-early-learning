@@ -261,7 +261,7 @@ function($, L, Response, Handlebars) {
                 }
                 // Concat results from Google with local filter:
                 var localResults = getAutocompleteLocations(request.term);
-                var allResults = cleanedResults.concat(localResults);
+                var allResults = localResults.concat(cleanedResults);
 
                 if (allResults[0]) {
                     var likelyResult = allResults[0];
