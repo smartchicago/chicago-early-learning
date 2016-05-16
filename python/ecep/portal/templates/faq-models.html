@@ -10,16 +10,11 @@ See LICENSE in the project root for copying permission
 
 {% block otherhead %}
 <!-- custom head tags go here -->
-<style type="text/css">
-    .faq-list > div {
-        margin-top: 1.25em;
-    }
-</style>
 {% endblock %}
 
 {% block content %}
 
-<div class="container" id="faq-container">
+<div class="faq-container">
 
 {% comment %}
 http://twitter.github.com/bootstrap/javascript.html#collapse
@@ -29,7 +24,46 @@ If we want to actually group questions by topic, we'll need to modify this a bit
 {% endcomment %}
 
 {% autoescape off %}
+    <span class="anchor" id="top"></span>
+    <div class="contents">
+        <h1>{% trans 'Frequently Asked Questions' %}</h1>
+    {% for t in topics %}
+        <h1 class="topic"><a href="#{{t.topic.slug}}">{{ t.topic.name }}</a></h1>
+        {% for q in t.questions %}
+        <h2 class="question"><a href="#{{q.slug}}">{{ q.text }}</a></h2>
+        {% endfor %}
+    {% endfor %}
+    </div>
 
+    {% for t in topics %}
+        <span class="anchor" id="{{t.topic.slug}}"></span>
+        <div id="{{t.topic.slug}}">
+            <h1 class="topic">{{ t.topic.name }}</h1>
+            
+            {% for q in t.questions %}
+                <span class="anchor" id="{{ q.slug }}"></span>
+                <div class="question">
+                    <h2>{{ q.text }}</h2>
+                    {{ q.answer }}
+                    <p><a href="#top">Return to top</a><p>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 {% for t in topics %}
     <h1 class="static-title">{{ t.topic.name }}</h1>
     <div class="faq-topic accordion" id="topic{{ forloop.counter }}">
@@ -54,19 +88,8 @@ If we want to actually group questions by topic, we'll need to modify this a bit
         </div>
     </div>
 {% endfor %}
+-->
+
 {% endautoescape %}
 </div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-require(['jquery'], function($) {
-    $(document).ready(function() { 
-        $('#faq-link').addClass('active');
-        if (window.location.hash != '') {
-            $('a[href="' + window.location.hash + '"]').parent().next().collapse('show');
-        }
-    });
-});
-</script>
 {% endblock %}

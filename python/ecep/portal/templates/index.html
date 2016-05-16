@@ -21,13 +21,13 @@ See LICENSE in the project root for copying permission
         <div class="masthead-content">
           <h1>{% blocktrans %}Find the right program for your child.{% endblocktrans %}</h1>
 
+          <div class="announcement">
+            <h3>Apply Today!</h3>
+            <p>Application for Fall 2016 preschool enrollment is now open, click <a href="https://apply.chicagoearlylearning.org/earlybird/#/">here</a> to apply.</p>
+            <p>Questions? Refer to our <a href="{{ faq_url }}">FAQ guide</a> for more info.</p>
+          </div>
 
           <p class="description">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
-
-          <div class="announcement">
-            <h3>Application for Fall 2016 enrollment is starting soon!</h3>
-            <p>Interested in receiving updates about the application process? Sign up <a href="{% url 'updates' %}">here</a>.</p>
-          </div>
 
         </div>
 
@@ -55,18 +55,16 @@ See LICENSE in the project root for copying permission
 
     <div class="container-custom" id="featurettes">
 
-      <p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
 
       <div class="announcement-mobile">
-        <h3>Application for Fall 2016 enrollment is starting soon!</h3>
-        <p>Interested in receiving updates about the application process? Sign up <a href="{% url 'updates' %}">here</a>.</p>
+        <h3>Apply Today!</h3>
+        <p>Application for Fall 2016 preschool enrollment is now open, click <a href="https://apply.chicagoearlylearning.org/earlybird/#/">here</a> to apply.</p>
+        <p>Questions? Refer to our <a href="{{ faq_url }}">FAQ guide</a> for more info.</p>
       </div>
 
+      <p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
+
       {% with rtl_url="http://www.cps.edu/schools/earlychildhood/pages/earlychildhood.aspx" rtl_tel=settings.HOTLINE_PHONE|telurl sms_tel=settings.TWILIO_PHONE|telurl %}
-      <div class="ready-to-learn">
-        <img class="pull-left" src="{% static 'img/logos/ready-to-learn.png' %}" alt="Ready to Learn logo">
-        <p>{% blocktrans %}Call the <a href="{{ rtl_url }}">Chicago: Ready to Learn!</a> Hotline at {{ rtl_tel }} to find out more information about programs that best meet your family's needs. Accepting applications year round. !Se habla Español!{% endblocktrans %}</p>
-      </div>
 
       <ul class="info clearfix">
         <li>
@@ -79,7 +77,7 @@ See LICENSE in the project root for copying permission
         <li>
           <h2>{% blocktrans %}Text For Info{% endblocktrans %}</h2>
           <p><a href="{% url 'sms-info' %}"><img src="{% static 'img/cel3.png' %}"></a></p>
-          <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code to {{ sms_tel }} and follow the instructions on your phone. If you'd like to talk to someone about your options, please call the Chicago: Ready to Learn! Hotline at {{ rtl_tel }}.{% endblocktrans %}</p>
+          <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code to {{ sms_tel }} and follow the instructions on your phone. If you'd like to talk to someone about your options, please call the Chicago Early Learning Hotline at {{ rtl_tel }}.{% endblocktrans %}</p>
         </li>
 
         <li>

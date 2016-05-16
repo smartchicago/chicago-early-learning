@@ -86,8 +86,8 @@ class Location(models.Model):
     enrollment = models.TextField(ugettext_lazy('Enrollment Process'), blank=True)
     accred = models.CharField(ugettext_lazy('Accreditation'), max_length=100, blank=True)
     prg_hours = models.CharField(ugettext_lazy('Program Hours'), max_length=50, blank=True)
-    is_age_lt_3 = models.NullBooleanField(ugettext_lazy('Ages 0-3'))
-    is_age_gt_3 = models.NullBooleanField(ugettext_lazy('Ages 3-5'))
+    is_age_lt_3 = models.NullBooleanField(ugettext_lazy('Ages 0 - 3'))
+    is_age_gt_3 = models.NullBooleanField(ugettext_lazy('Ages 3 - 5'))
     is_full_day = models.NullBooleanField(ugettext_lazy('Full Day'))
     is_part_day = models.NullBooleanField(ugettext_lazy('Part Day'))
     is_school_year = models.NullBooleanField(ugettext_lazy('School Year'))
@@ -106,7 +106,7 @@ class Location(models.Model):
     is_ehs = models.NullBooleanField(ugettext_lazy('Early Head Start'))
     open_house = models.TextField(ugettext_lazy('Open House'), blank=True)
     curriculum = models.TextField(ugettext_lazy('Curriculum'), blank=True)
-    email = models.EmailField()
+    email = models.EmailField(blank=True)
 
     # Keeps track of whether or not new locations have been approved by the admin
     accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
@@ -234,6 +234,8 @@ class Location(models.Model):
             'key': self.pk,
             'email': self.email,
             'type': self.site_type,
+            'full_day': self.is_full_day,
+            'part_day': self.is_part_day,
             'age_lt_3': self.is_age_lt_3,
             'age_gt_3': self.is_age_gt_3,
             'site_type': self.site_type,
@@ -301,7 +303,7 @@ class Location(models.Model):
         program_hours = self.prg_hours if self.prg_hours else _("No Hours Listed")
         program_values.append(program_hours)
         sfields.append({'key': 'duration_hours',
-                        'fieldname': _('Duration/Hours'),
+                        'fieldname': _('Duration and Hours'),
                         'value': ', '.join(program_values) if program_values else _('None')})
 
         # Weekday Avaialability
@@ -341,7 +343,7 @@ class Location(models.Model):
         # This way we can do this with django and not have to worry about making a separate
         # handlebars helper
         trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
-                      'share': _('Share'), 'qrisrating': _('QRIS Rating'), 'contact': _('Compare and Contact')}
+                      'share': _('Share'), 'qrisrating': _('QRIS Rating'), 'contact': _('Compare and Apply')}
 
         # More information for tooltip icon
         accreditation = ['Accredited'] if self.accred != 'None' else []
