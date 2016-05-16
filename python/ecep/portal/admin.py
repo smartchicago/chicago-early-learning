@@ -114,6 +114,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
     default_lon = -9754167.445328873
     default_lat = 5143294.85337356
     default_zoom = 9
+    openlayers_url = 'js/lib/openlayers.js'
 
     # General Settings
     # Template override that adds buttons to propose/accept changes
