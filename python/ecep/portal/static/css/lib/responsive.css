@@ -462,9 +462,9 @@
         right: 0;
     }
 
-    #faq-container {
-        padding: 36px;
+    .faq-container {
         width: auto;
+        padding: 20px;
     }
 
     .starred-container {
