@@ -58,6 +58,11 @@
 
 }
 
+/* -- Dumb Exception for Spanish Language Navbar Overflow issue -- */
+@media (max-width: 1200px) {
+    
+}
+
 /* Landscape phone to portrait tablet --------- */
 
 @media (max-width: 1023px) {
