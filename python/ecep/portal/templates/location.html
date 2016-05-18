@@ -76,7 +76,7 @@ See LICENSE in the project root for copying permission
         <hr>
       {% endif %}
 
-      {% if fields.ages_served and not loc.item.is_enrollment %}
+      {% if not loc.item.is_enrollment %}
         <h1>Ages Served</h1>
           <p>{% if location.is_age_lt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} Ages 0 - 3</p>
           <p>{% if location.is_age_gt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} Ages 3 - 5</p>
@@ -91,7 +91,7 @@ See LICENSE in the project root for copying permission
         <hr>
       {% endif %}
 
-      {% if fields.duration_and_hours and not loc.item.is_enrollment %}
+      {% if location.prg_hours and not loc.item.is_enrollment %}
         <h1>Duration and Hours</h1>
           {% if location.prg_hours %}<p>{{ location.prg_hours }}</p>{% else %}<p>No Hours Listed</p>{% endif %}
           
@@ -113,15 +113,15 @@ See LICENSE in the project root for copying permission
         <hr>
       {% endif %}
 
-      {% if fields.program_information and not loc.item.is_enrollment %}
+      {% if not loc.item.is_enrollment %}
         <h1>Program Information</h1>
-          {% if location.is_cps_based %}<p>CPS Based</p>{% endif %}
-          {% if location.is_community_based %}<p>Community Based</p>{% endif %}
-          {% if location.is_hs %}<p>Head Start</p>{% endif %}
-          {% if location.is_ehs %}<p>Early Head Start</p>{% endif %}
+          {% if location.is_cps_based %}<p>{% trans 'CPS Based' %}</p>{% endif %}
+          {% if location.is_community_based %}<p>{% trans 'Community Based' %}</p>{% endif %}
+          {% if location.is_hs %}<p>{% trans 'Head Start' %}</p>{% endif %}
+          {% if location.is_ehs %}<p>{% trans 'Early Head Start' %}</p>{% endif %}
           {% if location.is_home_visiting %}
-            <p>Offers Home Visiting</p>
-            <p><em>If you are interested in enrolling your child in this home visiting program please contact this site directly.</em></p>
+            <p>{% trans 'Offers Home Visiting' %}</p>
+            <p><em>{% trans 'If you are interested in enrolling your child in this home visiting program please contact this site directly.' %}</em></p>
           {% endif %}
         <hr>
       {% endif %}
@@ -138,9 +138,9 @@ See LICENSE in the project root for copying permission
         <hr>
       {% endif %}
 
-      {% if fields.accreditation and not loc.item.is_enrollment %}
+      {% if location.accred and not loc.item.is_enrollment %}
         <h1>Accreditation</h1>
-        {{ fields.accreditation|safe }}
+        {{ location.accred }}
         <hr>
       {% endif %}
 
