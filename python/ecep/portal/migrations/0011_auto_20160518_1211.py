@@ -12,7 +12,7 @@ def populate_enrollment_info(apps, schema_editor):
 
     for loc in Location.objects.all():
         if loc.is_cps_based:
-            loc.enrollment_en = """<p>Visit a child-friendly location near you:</p><ul><li><strong>Loop</strong> 42 W. Madison Street Hours: 9:00 AM - 5:00 PM</li><li><strong>Colman</strong> 4655 S. Dearborn Street Hours: 9:00 AM - 5:00 PM</li><li><strong>Hall Mall</strong> 4638 W. Diversey Avenue Hours 8:00 AM - 5:00 PM</li></ul><p>All sites are open until 7:00 PM on Wednesdays!</p><p>Many people find it helpful to make a plan to visit. You can make your plan <a href="/static/files/enrollment-plan-cps.pdf">here</a>.</p>"""
+            loc.enrollment_en = """<p>Chicago Public Schools early childhood school based preschool programs work to ensure children ages 3 and 4 years old, particularly those most in need, have access to high-quality programs. Schools are committed to creating an engaging, developmentally appropriate learning environment that supports and respects the unique potential of each individual child through best professional practices, parent engagement, and community involvement.</p>"""
             loc.save()
 
 
