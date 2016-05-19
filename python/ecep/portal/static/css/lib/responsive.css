@@ -48,6 +48,10 @@
     .navbar .nav > li.sm { display: none; }
     .navbar .nav > li.lg { display: inline; }
 
+}
+
+/* -- Dumb Exception for Spanish Language Navbar Overflow issue -- */
+@media (min-width: 1201px) {
     .navbar .navbar-left > a.brand-sm {
         display: none;
     }
@@ -55,12 +59,16 @@
     .navbar .navbar-left > a.brand-lg {
         display: inline;
     }
-
 }
 
-/* -- Dumb Exception for Spanish Language Navbar Overflow issue -- */
 @media (max-width: 1200px) {
-    
+    .navbar .navbar-left > a.brand-sm {
+        display: inline;
+    }
+
+    .navbar .navbar-left > a.brand-lg {
+        display: none;
+    }
 }
 
 /* Landscape phone to portrait tablet --------- */
