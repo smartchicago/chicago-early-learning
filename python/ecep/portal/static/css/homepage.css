@@ -29,6 +29,7 @@
     width: 970px;
     margin: 0 auto;
 }
+
     
     .masthead-content {
         width: 560px;
@@ -208,4 +209,14 @@ input.homepage-search {
         line-height: 1.2em;
         margin-top: 0;
         margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+    #homepage-logo-small { display: none; }
+    #homepage-logo-large { display: inline; }
+}
+
+@media (max-width: 1023px) {
+    #homepage-logo-small { display: inline; }
+    #homepage-logo-large { display: none; }
 }

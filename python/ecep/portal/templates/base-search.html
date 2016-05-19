@@ -3,6 +3,8 @@
 {% load i18n %}
 {% load staticfiles %}
 {% load static %}
+<a class="brand brand-sm" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' class="logo" alt='CEL'></a>
+<a class="brand brand-lg" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' class="logo" alt='CEL'><span>Chicago</span> Early Learning</a>
 <form class="navbar-form" id="desktop-search">
   <div class="input-append">
     <input id="appendedInputButton" class="autocomplete-searchbox" type="text"

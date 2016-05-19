@@ -61,28 +61,13 @@ h1, h2, h3, h4 {
     margin-top: 0;
 }
 
-/* Navbar ---------------------- */
+/* Branding -------------------- */
 
 .navbar .brand {
     margin: 0;
     font-size: 15px;
     text-transform: uppercase;
     font-weight: 300;
-}
-
-.logo {
-    width: 40px;
-    height: 40px;
-    padding-right: 15px;
-    min-width: 40px;
-}
-
-.navbar-inverse .navbar-inner {
-    background: #424142;
-    border-bottom: none;
-    /*border-bottom: 1px solid #333;*/
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
-    font-weight: 400;
 }
 
 .navbar-inverse .brand,
@@ -101,12 +86,6 @@ h1, h2, h3, h4 {
     -moz-transition: 0.3s;
 }
 
-.navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
-.navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
-.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
-    background-color: rgb(29,44,54);
-}
-
 .navbar-inverse .brand,
 .navbar-inverse .nav > li > a {
     text-shadow: none;
@@ -116,6 +95,46 @@ h1, h2, h3, h4 {
 .navbar-inverse .brand span {
     color: #eece16;
 }
+
+.navbar .brand {
+    margin: 0;
+}
+
+.navbar .brand span {
+    color: #EECF16;
+    font-weight: 700;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    padding-right: 15px;
+    min-width: 40px;
+}
+
+#homepage-logo-small,
+#homepage-logo-large {
+    display: none;
+}
+
+/* Navbar ---------------------- */
+
+
+.navbar-inverse .navbar-inner {
+    background: #424142;
+    border-bottom: none;
+    /*border-bottom: 1px solid #333;*/
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
+.navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
+.navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
+    background-color: rgb(29,44,54);
+}
+
+
 
 .navbar-inner {
     height: 60px;
@@ -128,15 +147,6 @@ h1, h2, h3, h4 {
 .navbar-right {
     /*width: 435px;*/
     float: right;
-}
-
-.navbar .brand {
-    margin: 0;
-}
-
-.navbar .brand span {
-    color: #EECF16;
-    font-weight: 700;
 }
 
 .navbar .nav {

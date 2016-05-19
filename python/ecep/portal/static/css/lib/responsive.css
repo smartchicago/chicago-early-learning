@@ -139,14 +139,6 @@
         width: 20%;
     }
 
-    .navbar .navbar-left > a.brand-sm {
-        display: inline;
-    }
-
-    .navbar .navbar-left > a.brand-lg {
-        display: none;
-    }
-
     .navbar .nav {
         margin: 10px 0;
     }
