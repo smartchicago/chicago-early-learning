@@ -210,3 +210,13 @@ input.homepage-search {
         margin-top: 0;
         margin-bottom: 0;
 }
+
+@media (min-width: 1024px) {
+    #homepage-logo-small { display: none; }
+    #homepage-logo-large { display: inline; }
+}
+
+@media (max-width: 1023px) {
+    #homepage-logo-small { display: inline; }
+    #homepage-logo-large { display: none; }
+}
