@@ -56,9 +56,6 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                 starredIds = regexResult ? regexResult[1] : cookie;
                 $.getJSON(common.getUrl('location-api', { locations: starredIds }), function (results) {
                     drawStarredLocations(results);
-
-                    $('#faves-contact')
-                        .show().attr("href", "/contact/" + starredIds + "/");
                 });
             } else {
                 $('.container-faves').html(gettext('No Favorite Locations'));

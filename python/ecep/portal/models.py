@@ -294,7 +294,7 @@ class Location(models.Model):
         languages = ", ".join(lang_list)
         if languages != '':
             sfields.append({'key': 'languages',
-                            'fieldname': _('Languages (other than English)'),
+                            'fieldname': _('Languages'),
                             'value': languages})
 
         # Program Duration/Hours
