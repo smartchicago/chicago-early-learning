@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 13:53-0500\n"
+"POT-Creation-Date: 2016-05-24 14:42-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -627,7 +627,7 @@ msgstr ""
 
 #: portal/templates/starred.html:25
 msgid ""
-"Press the “Apply” button to complete an application form for your top "
+"Press the “Apply“ button to complete an application form for your top "
 "<b>two</b> site preferences or call the Chicago Early Learning Hotline at"
 msgstr ""
 
