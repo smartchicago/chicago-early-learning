@@ -103,6 +103,9 @@ function($, L, Response, Handlebars) {
                         if (opts.label) {
                             url += '&label=' + opts.label;
                         }
+                        if (opts.zoom) {
+                            url += '&zoom=' + opts.zoom;
+                        }
                         return url;
                     case 'neighborhood':
                         return '/search/?neighborhood=' + opts.neighborhood;
@@ -221,7 +224,8 @@ function($, L, Response, Handlebars) {
             select: function(event, ui) {
                 var place_id = ui.item.place_id;
                 var category = ui.item.category;
-                selectPlace(place_id, category);
+                var types = ui.item.types;
+                selectPlace(place_id, category, types);
             },
             focus: function(event, ui) {
                 var selection = ui.item
@@ -256,6 +260,7 @@ function($, L, Response, Handlebars) {
                         rObj['label'] = obj.description.replace(", United States", "");
                         rObj['place_id'] = obj.place_id;
                         rObj['category'] = 'Addresses';
+                        rObj['types'] = obj.types;
                         return rObj;
                     });
                 }
@@ -281,7 +286,7 @@ function($, L, Response, Handlebars) {
             });
         }
 
-        function selectPlace(place_id, category) {
+        function selectPlace(place_id, category, types) {
 
             switch (category) {
                 case 'None':
@@ -293,7 +298,15 @@ function($, L, Response, Handlebars) {
                         var result = results[0];
                         var lat = result.geometry.location.lat();
                         var lng = result.geometry.location.lng();
-                        redirectToMap(lat, lng);
+
+                        var zoom = 15;
+                        var isPostalCode = types.indexOf('postal_code');
+                        var isNeighborhood = types.indexOf('neighborhood');
+
+                        if (isPostalCode != -1 || isNeighborhood != -1) {
+                            zoom = 14;
+                        }
+                        redirectToMap(lat, lng, zoom);
                     });
                     break;
                 case 'Locations':
@@ -312,14 +325,14 @@ function($, L, Response, Handlebars) {
         }
 
         // Specific Address
-        function redirectToMap(lat, lng) {
+        function redirectToMap(lat, lng, zoom) {
             window.location.href = getUrl(
                 'browse',
                 {
                     type: 'geo-latlng',
                     lat: lat,
                     lng: lng,
-                    zoom: 14
+                    zoom: zoom
                 }
             );
             return;
@@ -367,7 +380,8 @@ function($, L, Response, Handlebars) {
             e.preventDefault();
             var place_id = $autocomplete.data().place_id;
             var category = $autocomplete.data().category;
-            selectPlace(place_id, category);
+            var types = $autocomplete.data().types;
+            selectPlace(place_id, category, types);
             return false;
         });
 
@@ -376,7 +390,8 @@ function($, L, Response, Handlebars) {
             if (e.keyCode == 13) {
                 var place_id = $autocomplete.data().place_id;
                 var category = $autocomplete.data().category;
-                selectPlace(place_id, category);
+                var types = $autocomplete.data().types;
+                selectPlace(place_id, category, types);
             }
         });
 
