@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-23 14:55-0500\n"
+"POT-Creation-Date: 2016-05-24 14:42-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -576,6 +576,16 @@ msgstr ""
 msgid "Languages (other than English)"
 msgstr ""
 
+#: portal/templates/location.html:153
+msgid ""
+"Are you a <b>provider</b> who works at this early learning center and needs "
+"to make changes to information on this page?"
+msgstr ""
+
+#: portal/templates/location.html:153
+msgid "Click here!"
+msgstr ""
+
 #: portal/templates/smsinfo.html:22
 msgid "Want information via text?"
 msgstr ""
@@ -617,7 +627,7 @@ msgstr ""
 
 #: portal/templates/starred.html:25
 msgid ""
-"Press the “Apply” button to complete an application form for your top "
+"Press the “Apply“ button to complete an application form for your top "
 "<b>two</b> site preferences or call the Chicago Early Learning Hotline at"
 msgstr ""
 
