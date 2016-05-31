@@ -4,8 +4,6 @@
 import logging
 import hashlib
 import json
-import csv
-import urllib2
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
@@ -527,35 +525,3 @@ class EnrollCommunityPlan(DetailView):
     """ Display customized printable enrollment plan """
     template_name = 'enroll-plan-community.html'
     model = Location
-
-
-def location_csv(request):
-
-    response = HttpResponse(content_type="text/csv")
-    response['Content-Disposition'] = 'attachment; filename="locations.csv"'
-
-    l = Location.objects.all()[:10]
-    headers = ['Location ID', 'Site Name', 'Address', 'City', 'State', 'Zip Code', 'Neighborhood', 'Phone', 'Description', 'Full Day', 'Part Day']
-    
-    writer = csv.DictWriter(response, fieldnames=headers)
-    writer.writeheader()
-
-    for location in l:
-        writer.writerow({
-                'Location ID' : location.id,
-                'Site Name': location.site_name,
-                'Address' : location.address,
-                'City' : location.city,
-                'State' : location.state,
-                'Zip Code' : location.zip,
-                'Neighborhood' : location.neighborhood,
-                'Phone' : location.phone,
-                'Description' : 'Location Description in English',
-                'Full Day' : location.is_full_day,
-                'Part Day' : location.is_part_day,
-            })
-
-    return response
-
-
-

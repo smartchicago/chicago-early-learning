@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-27 11:22-0500\n"
+"POT-Creation-Date: 2016-05-24 14:42-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -136,31 +136,27 @@ msgstr ""
 msgid "Program Hours"
 msgstr ""
 
-#: portal/models.py:89 portal/templates/location.html:84
+#: portal/models.py:89
 msgid "Ages 0 - 3"
 msgstr ""
 
-#: portal/models.py:90 portal/templates/location.html:88
+#: portal/models.py:90
 msgid "Ages 3 - 5"
 msgstr ""
 
-#: portal/models.py:91 portal/templates/location.html:99
-#: portal/templates/location.html.py:101
+#: portal/models.py:91
 msgid "Full Day"
 msgstr ""
 
-#: portal/models.py:92 portal/templates/location.html:99
-#: portal/templates/location.html.py:103
+#: portal/models.py:92
 msgid "Part Day"
 msgstr ""
 
-#: portal/models.py:93 portal/templates/location.html:107
-#: portal/templates/location.html.py:111
+#: portal/models.py:93
 msgid "School Year"
 msgstr ""
 
-#: portal/models.py:94 portal/templates/location.html:107
-#: portal/templates/location.html.py:109
+#: portal/models.py:94
 msgid "Full Year"
 msgstr ""
 
@@ -672,11 +668,11 @@ msgstr ""
 msgid "Updates"
 msgstr ""
 
-#: portal/views.py:509
+#: portal/views.py:507
 msgid "Explore"
 msgstr ""
 
-#: portal/views.py:510
+#: portal/views.py:508
 msgid "Click to see locations in this neighborhood"
 msgstr ""
 
