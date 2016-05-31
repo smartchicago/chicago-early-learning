@@ -558,5 +558,4 @@ def location_csv(request):
     return response
 
 
-def parse_location_csv(request):
 
