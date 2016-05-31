@@ -146,7 +146,7 @@ See LICENSE in the project root for copying permission
 
       {% if location.q_rating and not loc.item.is_enrollment %}
         <h1>{% trans 'Quality Rating' %}</h1>
-        {{ location.q_rating|safe }}
+        {{ location.get_q_rating_display }}
         <hr>
       {% endif %}
 
