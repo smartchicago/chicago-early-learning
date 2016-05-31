@@ -90,7 +90,7 @@ urlpatterns = patterns(
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 
     # Example CSV
-    url(r'^locations\.csv$', 'portal.views.location_csv'),
+    # url(r'^locations\.csv$', 'portal.views.location_csv'),
 )
 
 urlpatterns += i18n_patterns(
