@@ -26,7 +26,7 @@ define(['jquery', 'Leaflet', 'location',
                 width = $(document).width(),
                 $map = $('#location-map'),
                 latLng = new L.LatLng($map.data('lat'), $map.data('lng')),
-                map = new L.Map('location-map', { center: latLng, zoom: 13, dragging: false }),
+                map = new L.Map('location-map', { center: latLng, zoom: 13, dragging: false, scrollWheelZoom: false }),
                 $star = $('.favs-toggle');
 
             map.addLayer(mapboxTiles);
