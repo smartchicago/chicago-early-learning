@@ -78,14 +78,14 @@ See LICENSE in the project root for copying permission
 
       {% if not loc.item.is_enrollment %}
         <h1>{% trans 'Ages Served' %}</h1>
-          <p>{% if location.is_age_lt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} {% trans 'Ages 0 - 3' %}</p>
-          <p>{% if location.is_age_gt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} {% trans 'Ages 3 - 5' %}</p>
+          <p>{% if location.is_age_lt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} Ages 0 - 3</p>
+          <p>{% if location.is_age_gt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} Ages 3 - 5</p>
           {% if location.is_age_lt_3 %}
-            <p><em><b>{% trans 'Ages 0 - 3' %}:</b> {% trans 'If your child will be younger than 3 years old prior to September 1, 2016, there are infant/toddler programs available. Please contact the site directly for enrollment information for these programs.' %}</em><p>
+            <p><em><b>Ages 0 - 3:</b> If your child will be younger than 3 years old prior to September 1, 2016, there are infant/toddler programs available. Please contact the site directly for enrollment information for these programs.</em><p>
           {% endif %}
           {% if location.is_age_gt_3 %}
             {% with "tel:3122291690" as rtl_url %}
-            <p><em><b>{% trans 'Ages 3 - 5' %}:</b> {% trans 'If your child is 3 or 4 years old prior to September 1, 2016, your child will be eligible for preschool programs. <b>Click <a href="https://apply.chicagoearlylearning.org/earlybird/#/" target="_blank">here</a> to fill out an application for two preferred sites or call the Chicago Early Learning Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a> for assistance.' %}</b></em></p>
+            <p><em><b>Ages 3 - 5:</b> If your child is 3 or 4 years old prior to September 1, 2016, your child will be eligible for preschool programs. <b>Click <a href="https://apply.chicagoearlylearning.org/earlybird/#/" target="_blank">here</a> to fill out an application for two preferred sites or call the Chicago Early Learning Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a> for assistance.</b></em></p>
             {% endwith %}
           {% endif %}
         <hr>
@@ -96,19 +96,19 @@ See LICENSE in the project root for copying permission
           {% if location.prg_hours %}<p>{{ location.prg_hours }}</p>{% else %}<p>No Hours Listed</p>{% endif %}
           
           {% if location.is_full_day and location.is_part_day %}
-            <p>{% trans 'Full Day'%}, {% trans 'Part Day' %}</p>
+            <p>Full Day, Part Day</p>
           {% elif location.is_full_day %}
-            <p>{% trans 'Full Day' %}</p>
+            <p>Full Day</p>
           {% elif location.is_part_day %}
-            <p>{% trans 'Part Day' %}</p>
+            <p>Part Day</p>
           {% endif %}
 
           {% if location.is_full_year and location.is_school_year %}
-            <p>{% trans 'Full Year'%}, {% trans 'School Year' %}</p>
+            <p>Full Year, School Year</p>
           {% elif location.is_full_year %}
-            <p>{% trans 'Full Year' %}</p>
+            <p>Full Year</p>
           {% elif location.is_school_year %}
-            <p>{% trans 'School Year' %}</p>
+            <p>School Year</p>
           {% endif %}
         <hr>
       {% endif %}
@@ -146,7 +146,7 @@ See LICENSE in the project root for copying permission
 
       {% if location.q_rating and not loc.item.is_enrollment %}
         <h1>{% trans 'Quality Rating' %}</h1>
-        {{ location.get_q_rating_display }}
+        {{ location.q_rating|safe }}
         <hr>
       {% endif %}
 

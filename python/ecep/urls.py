@@ -24,6 +24,7 @@ urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
     url(r'^$', portal_views.Index.as_view(), name='index'),
+    url(r'^test$', portal_views.Test.as_view(), name='test'),
     url(r'^about$', portal_views.About.as_view(), name='about'),
     url(r'^updates$', portal_views.Updates.as_view(), name='updates'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type="text/plain")),
@@ -88,9 +89,6 @@ urlpatterns = patterns(
 
     # Sitemaps
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
-
-    # Example CSV
-    # url(r'^locations\.csv$', 'portal.views.location_csv'),
 )
 
 urlpatterns += i18n_patterns(
