@@ -4,8 +4,6 @@
 import logging
 import hashlib
 import json
-import csv
-import urllib2
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
@@ -556,5 +554,3 @@ def location_csv(request):
             })
 
     return response
-
-
