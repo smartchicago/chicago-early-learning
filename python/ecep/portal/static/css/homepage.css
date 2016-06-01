@@ -27,7 +27,7 @@
 
 .container-custom {
     width: 970px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
     
@@ -111,25 +111,47 @@ input.homepage-search {
     margin-right: 17px;
 }
 
-.info {
-    list-style: none;
+.info-buckets {
     margin: 0 0 40px 0;
     padding: 0;
 }
 
-    .info h2 {
-        font-size: 18px;
-        line-height: 1.2em;
-    }
+.info-buckets h2 {
+    font-size: 18px;
+    line-height: 1.2em;
+    margin-top: 0;
+}
 
-    .info li {
-        float: left;
-        width: 28.865%;
-        margin: 0 3.298%;
-    }
+.bucket {
+    display: inline-block;
+    width: 100%;
+}
 
-    .info li:first-of-type { margin-left: 0; }
-    .info li:last-of-type { margin-right: 0; }
+.bucket-img {
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.bucket-img img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto !important;
+    width: auto\9;
+}
+
+.three {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+}
+
+.two {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+}
+
 
 /* Announcement */
 .announcement {

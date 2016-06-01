@@ -552,6 +552,12 @@
         margin-bottom: 40px;
     }
 
+    .three, .two {
+        -webkit-column-count: 1; /* Chrome, Safari, Opera */
+        -moz-column-count: 1; /* Firefox */
+        column-count: 1;
+    }
+
     .website-phone,
     .actions,
     .actions .single-share {
