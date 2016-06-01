@@ -558,4 +558,22 @@ def location_csv(request):
     return response
 
 
+def starred_location_api(request, location_ids=None):
+    if location_ids:
+        location_ids_array = [int(l_id) for l_id in location_ids.split(',') if l_id]
+    else:
+        location_ids_array = "none"
+
+    r = {'code': request.LANGUAGE_CODE}
+
+    locations = []
+    for location_id in location_ids_array:
+        l = Location.objects.get(id=location_id)
+        description_title = Location._meta.get_field_by_name('q_stmt')[0].verbose_name.title()
+        
+        locations.append(x)
+
+    r['locations'] = locations
+
+    return JsonResponse(r)
 
