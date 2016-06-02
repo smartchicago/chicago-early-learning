@@ -588,29 +588,30 @@ def starred_location_api(request, location_ids=None):
         l['zip'] = location.zip
         l['phone'] = location.phone
         l['url'] = location.url
+        l['not_enrollment_site'] = not location.is_enrollment
 
         # Description
         d = {}
-        description_display_name = location.verbose_name('q_stmt')
-        d['description_display_name'] = description_display_name
-        d['description_value'] = location.q_stmt
+        description_display = location.verbose_name('q_stmt')
+        d['display'] = description_display
+        d['value'] = location.q_stmt
         l['description'] = d
 
         # Ages Served
-        l['ages_served_display'] = ugettext('Ages Served')
+        l['ages_served'] = ugettext('Ages Served')
 
         ## Ages 0 - 3
         a1 = {}
-        ages_0_to_3_display_name = location.verbose_name('is_age_lt_3')
-        a1['ages_0_to_3_display_name'] = ages_0_to_3_display_name
-        a1['ages_0_to_3_value'] = location.is_age_lt_3
+        ages_0_to_3_display = location.verbose_name('is_age_lt_3')
+        a1['display'] = ages_0_to_3_display
+        a1['value'] = location.is_age_lt_3
         l['ages_0_to_3'] = a1
 
         ## Ages 3 - 5
         a2 = {}
-        ages_3_to_5_display_name = location.verbose_name('is_age_gt_3')
-        a2['ages_3_to_5_display_name'] = ages_3_to_5_display_name
-        a2['ages_3_to_5_value'] = location.is_age_gt_3
+        ages_3_to_5_display = location.verbose_name('is_age_gt_3')
+        a2['display'] = ages_3_to_5_display
+        a2['value'] = location.is_age_gt_3
         l['ages_3_to_5'] = a2
 
         # Duration and Hours
@@ -618,37 +619,37 @@ def starred_location_api(request, location_ids=None):
 
         ## Hours
         prg_hours = {}
-        prg_hours_display_name = location.verbose_name('prg_hours')
-        prg_hours['prg_hours_display_name'] = prg_hours_display_name
-        prg_hours['prg_hours_value'] = location.prg_hours
+        prg_hours_display = location.verbose_name('prg_hours')
+        prg_hours['display'] = prg_hours_display
+        prg_hours['value'] = location.prg_hours
         l['prg_hours'] = prg_hours
 
         ## Full Day
         full_day = {}
-        full_day_display_name = location.verbose_name('is_full_day')
-        full_day['full_day_display_name'] = full_day_display_name
-        full_day['full_day_value'] = location.is_full_day
+        full_day_display = location.verbose_name('is_full_day')
+        full_day['display'] = full_day_display
+        full_day['value'] = location.is_full_day
         l['full_day'] = full_day
 
         ## Part Day
         part_day = {}
-        part_day_display_name = location.verbose_name('is_part_day')
-        part_day['part_day_display_name'] = part_day_display_name
+        part_day_display = location.verbose_name('is_part_day')
+        part_day['display'] = part_day_display
         part_day['part_day_value'] = location.is_part_day
         l['part_day'] = part_day
 
         ## Full Year
         full_year = {}
-        full_year_display_name = location.verbose_name('is_full_year')
-        full_year['full_year_display_name'] = full_year_display_name
-        full_year['full_year_value'] = location.is_full_year
+        full_year_display = location.verbose_name('is_full_year')
+        full_year['display'] = full_year_display
+        full_year['value'] = location.is_full_year
         l['full_year'] = full_year
 
         ## School Year
         school_year = {}
-        school_year_display_name = location.verbose_name('is_school_year')
-        school_year['school_year_display_name'] = school_year_display_name
-        school_year['school_year_value'] = location.is_school_year
+        school_year_display = location.verbose_name('is_school_year')
+        school_year['display'] = school_year_display
+        school_year['value'] = location.is_school_year
         l['school_year'] = school_year
 
         # Program Information
@@ -656,72 +657,72 @@ def starred_location_api(request, location_ids=None):
 
         ## CPS Based
         cps_based = {}
-        cps_based_display_name = location.verbose_name('is_cps_based')
-        cps_based['cps_based_display_name'] = cps_based_display_name
-        cps_based['cps_based_value'] = location.is_cps_based
+        cps_based_display = location.verbose_name('is_cps_based')
+        cps_based['display'] = cps_based_display
+        cps_based['value'] = location.is_cps_based
         l['cps_based'] = cps_based
 
         ## Community Based
         community_based = {}
-        community_based_display_name = location.verbose_name('is_community_based')
-        community_based['community_based_display_name'] = community_based_display_name
-        community_based['community_based_value'] = location.is_community_based
+        community_based_display = location.verbose_name('is_community_based')
+        community_based['display'] = community_based_display
+        community_based['value'] = location.is_community_based
         l['community_based'] = community_based
 
         ## Head Start
         head_start = {}
-        head_start_display_name = location.verbose_name('is_hs')
-        head_start['head_start_display_name'] = head_start_display_name
-        head_start['head_start_value'] = location.is_hs
+        head_start_display = location.verbose_name('is_hs')
+        head_start['display'] = head_start_display
+        head_start['value'] = location.is_hs
         l['head_start'] = head_start
 
         ## Early Head Start
         early_head_start = {}
-        early_head_start_display_name = location.verbose_name('is_ehs')
-        early_head_start['early_head_start_display_name'] = early_head_start_display_name
-        early_head_start['early_head_start_value'] = location.is_ehs
+        early_head_start_display = location.verbose_name('is_ehs')
+        early_head_start['display'] = early_head_start_display
+        early_head_start['value'] = location.is_ehs
         l['early_head_start'] = early_head_start
 
         ## Accepts CCAP
         ccap = {}
-        ccap_display_name = location.verbose_name('accept_ccap')
-        ccap['ccap_display_name'] = ccap_display_name
-        ccap['ccap_value'] = location.accept_ccap
+        ccap_display = location.verbose_name('accept_ccap')
+        ccap['display'] = ccap_display
+        ccap['value'] = location.accept_ccap
         l['ccap'] = ccap
 
         ## Home Visiting
         home_visiting = {}
-        home_visiting_display_name = location.verbose_name('is_home_visiting')
-        home_visiting['home_visiting_display_name'] = home_visiting_display_name
-        home_visiting['home_visiting_value'] = location.is_home_visiting
+        home_visiting_display = location.verbose_name('is_home_visiting')
+        home_visiting['display'] = home_visiting_display
+        home_visiting['value'] = location.is_home_visiting
         l['home_visiting'] = home_visiting
 
         # Languages
         languages = {}
-        languages_display_name = ugettext('Languages (other than English)')
-        languages['languages_display_name'] = languages_display_name
-        languages['languages_value'] = location.combine_languages()
+        languages_display = ugettext('Languages (other than English)')
+        languages['display'] = languages_display
+        languages['value'] = location.combine_languages()
         l['languages'] = languages
 
         # Other Features
         other_features = {}
-        other_features_display_name = ugettext('Other Features')
-        other_features['other_features_display_name'] = other_features_display_name
-        other_features['other_features_value'] = location.combine_other_features()
+        other_features_display = ugettext('Other Features')
+        other_features['display'] = other_features_display
+        other_features['value'] = location.combine_other_features()
         l['other_features'] = other_features
 
         # Accreditation
         accreditation = {}
-        accreditation_display_name = location.verbose_name('accred')
-        accreditation['accreditation_display_name'] = accreditation_display_name
-        accreditation['accreditation_value'] = location.accred
+        accreditation_display = location.verbose_name('accred')
+        accreditation['display'] = accreditation_display
+        accreditation['value'] = location.accred
         l['accreditation'] = accreditation
 
         # Quality Rating
         quality_rating = {}
-        quality_rating_display_name = location.verbose_name('q_rating')
-        quality_rating['quality_rating_display_name'] = quality_rating_display_name
-        quality_rating['quality_rating_value'] = location.get_q_rating_display()
+        quality_rating_display = location.verbose_name('q_rating')
+        quality_rating['display'] = quality_rating_display
+        quality_rating['value'] = location.get_q_rating_display()
         l['quality_rating'] = quality_rating
 
         # Add to final location array
