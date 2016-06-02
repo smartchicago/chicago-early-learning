@@ -17,7 +17,7 @@ from django.db.models import Count, Q
 from django.contrib.gis.geos import Polygon
 from django.utils.functional import Promise
 from django.utils.encoding import force_unicode
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ugettext
 from django.template.defaultfilters import slugify
 
 from faq.models import Topic, Question
@@ -558,6 +558,12 @@ def location_csv(request):
     return response
 
 
+# This function overwrites the existing json API endpoint, specifically for the starred 
+# page. We need better control over what we display and when in location-based views,
+# so this logic replaces the default data transition function. This function should serve
+# as the new basis for site-wide data transfers going forward, if more refactoring is 
+# necessary. - ajb, 1 June 2016
+#
 def starred_location_api(request, location_ids=None):
     if location_ids:
         location_ids_array = [int(l_id) for l_id in location_ids.split(',') if l_id]
@@ -566,14 +572,162 @@ def starred_location_api(request, location_ids=None):
 
     r = {'code': request.LANGUAGE_CODE}
 
-    locations = []
+    locations_array = []
     for location_id in location_ids_array:
-        l = Location.objects.get(id=location_id)
-        description_title = Location._meta.get_field_by_name('q_stmt')[0].verbose_name.title()
-        
-        locations.append(x)
+        # Retrieve location object:
+        location = Location.objects.get(id=location_id)
 
-    r['locations'] = locations
+        l = {}
+        
+        # Basic Info
+        l['id'] = location.id
+        l['site_name'] = location.site_name
+        l['address'] = location.address
+        l['city'] = location.city
+        l['state'] = location.state
+        l['zip'] = location.zip
+        l['phone'] = location.phone
+        l['url'] = location.url
+
+        # Description
+        d = {}
+        description_display_name = location.verbose_name('q_stmt')
+        d['description_display_name'] = description_display_name
+        d['description_value'] = location.q_stmt
+        l['description'] = d
+
+        # Ages Served
+        l['ages_served_display'] = ugettext('Ages Served')
+
+        ## Ages 0 - 3
+        a1 = {}
+        ages_0_to_3_display_name = location.verbose_name('is_age_lt_3')
+        a1['ages_0_to_3_display_name'] = ages_0_to_3_display_name
+        a1['ages_0_to_3_value'] = location.is_age_lt_3
+        l['ages_0_to_3'] = a1
+
+        ## Ages 3 - 5
+        a2 = {}
+        ages_3_to_5_display_name = location.verbose_name('is_age_gt_3')
+        a2['ages_3_to_5_display_name'] = ages_3_to_5_display_name
+        a2['ages_3_to_5_value'] = location.is_age_gt_3
+        l['ages_3_to_5'] = a2
+
+        # Duration and Hours
+        l['duration_and_hours'] = ugettext('Duration and Hours')
+
+        ## Hours
+        prg_hours = {}
+        prg_hours_display_name = location.verbose_name('prg_hours')
+        prg_hours['prg_hours_display_name'] = prg_hours_display_name
+        prg_hours['prg_hours_value'] = location.prg_hours
+        l['prg_hours'] = prg_hours
+
+        ## Full Day
+        full_day = {}
+        full_day_display_name = location.verbose_name('is_full_day')
+        full_day['full_day_display_name'] = full_day_display_name
+        full_day['full_day_value'] = location.is_full_day
+        l['full_day'] = full_day
+
+        ## Part Day
+        part_day = {}
+        part_day_display_name = location.verbose_name('is_part_day')
+        part_day['part_day_display_name'] = part_day_display_name
+        part_day['part_day_value'] = location.is_part_day
+        l['part_day'] = part_day
+
+        ## Full Year
+        full_year = {}
+        full_year_display_name = location.verbose_name('is_full_year')
+        full_year['full_year_display_name'] = full_year_display_name
+        full_year['full_year_value'] = location.is_full_year
+        l['full_year'] = full_year
+
+        ## School Year
+        school_year = {}
+        school_year_display_name = location.verbose_name('is_school_year')
+        school_year['school_year_display_name'] = school_year_display_name
+        school_year['school_year_value'] = location.is_school_year
+        l['school_year'] = school_year
+
+        # Program Information
+        l['program_information'] = ugettext('Program Information')
+
+        ## CPS Based
+        cps_based = {}
+        cps_based_display_name = location.verbose_name('is_cps_based')
+        cps_based['cps_based_display_name'] = cps_based_display_name
+        cps_based['cps_based_value'] = location.is_cps_based
+        l['cps_based'] = cps_based
+
+        ## Community Based
+        community_based = {}
+        community_based_display_name = location.verbose_name('is_community_based')
+        community_based['community_based_display_name'] = community_based_display_name
+        community_based['community_based_value'] = location.is_community_based
+        l['community_based'] = community_based
+
+        ## Head Start
+        head_start = {}
+        head_start_display_name = location.verbose_name('is_hs')
+        head_start['head_start_display_name'] = head_start_display_name
+        head_start['head_start_value'] = location.is_hs
+        l['head_start'] = head_start
+
+        ## Early Head Start
+        early_head_start = {}
+        early_head_start_display_name = location.verbose_name('is_ehs')
+        early_head_start['early_head_start_display_name'] = early_head_start_display_name
+        early_head_start['early_head_start_value'] = location.is_ehs
+        l['early_head_start'] = early_head_start
+
+        ## Accepts CCAP
+        ccap = {}
+        ccap_display_name = location.verbose_name('accept_ccap')
+        ccap['ccap_display_name'] = ccap_display_name
+        ccap['ccap_value'] = location.accept_ccap
+        l['ccap'] = ccap
+
+        ## Home Visiting
+        home_visiting = {}
+        home_visiting_display_name = location.verbose_name('is_home_visiting')
+        home_visiting['home_visiting_display_name'] = home_visiting_display_name
+        home_visiting['home_visiting_value'] = location.is_home_visiting
+        l['home_visiting'] = home_visiting
+
+        # Languages
+        languages = {}
+        languages_display_name = ugettext('Languages (other than English)')
+        languages['languages_display_name'] = languages_display_name
+        languages['languages_value'] = location.combine_languages()
+        l['languages'] = languages
+
+        # Other Features
+        other_features = {}
+        other_features_display_name = ugettext('Other Features')
+        other_features['other_features_display_name'] = other_features_display_name
+        other_features['other_features_value'] = location.combine_other_features()
+        l['other_features'] = other_features
+
+        # Accreditation
+        accreditation = {}
+        accreditation_display_name = location.verbose_name('accred')
+        accreditation['accreditation_display_name'] = accreditation_display_name
+        accreditation['accreditation_value'] = location.accred
+        l['accreditation'] = accreditation
+
+        # Quality Rating
+        quality_rating = {}
+        quality_rating_display_name = location.verbose_name('q_rating')
+        quality_rating['quality_rating_display_name'] = quality_rating_display_name
+        quality_rating['quality_rating_value'] = location.get_q_rating_display()
+        l['quality_rating'] = quality_rating
+
+        # Add to final location array
+        locations_array.append(l)
+
+    r['locations'] = locations_array
 
     return JsonResponse(r)
 
