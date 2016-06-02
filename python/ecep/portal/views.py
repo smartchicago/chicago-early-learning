@@ -570,7 +570,7 @@ def starred_location_api(request, location_ids=None):
     else:
         location_ids_array = "none"
 
-    r = {'code': request.LANGUAGE_CODE}
+    r = {}
 
     locations_array = []
     for location_id in location_ids_array:
