@@ -635,7 +635,7 @@ def starred_location_api(request, location_ids=None):
         part_day = {}
         part_day_display = location.verbose_name('is_part_day')
         part_day['display'] = part_day_display
-        part_day['part_day_value'] = location.is_part_day
+        part_day['value'] = location.is_part_day
         l['part_day'] = part_day
 
         ## Full Year
