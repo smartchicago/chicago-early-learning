@@ -165,6 +165,15 @@ class Location(models.Model):
         else:
             return False
 
+    def combine_languages(self):
+        lang_list = [lang for lang in self.language_1, self.language_2, self.language_3 if lang]
+        languages = ", ".join(lang_list)
+        return languages
+
+    def combine_other_features(self):
+        other_features = ''
+        return other_features
+
     @staticmethod
     def get_filter_fields():
         """
