@@ -5,8 +5,11 @@
     <h1 class="school-name" itemprop="name">{{item.site_name}}</h1>
     <p itemprop="address">{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</p>
     <ul class="website-phone">
+      {{#if phone.number }}
+      <li><a href="tel:{{phone.number}}" itemprop="telephone">{{phone.number}}</a></li>
+      {{/if}}
       {{#if item.url}}
-      <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank" itemprop="url">{{item.url}}</a></li>
+      <li><a href="{{item.url}}" target="_blank" itemprop="url">{{item.url}}</a></li>
       {{/if}}
       <a href="javascript:void(0)"
           class="none favs-toggle single-star pull-right" id="favs-toggle-loc-{{item.key}}"
@@ -22,17 +25,6 @@
   </div>
   <hr>
   <div class="school-details">
-    <h1>{{phone.fieldname}}</h1>
-    <h2><a href="tel:{{phone.number}}" itemprop="telephone">{{phone.number}}</a></h2>
     <hr>
-    {{#each sfields}}
-      <h1>{{fieldname}}</h1>
-      {{{value}}}
-      <hr>
-    {{/each}}
-    {{#if bfields.values }}
-      <h1>{{bfields.fieldname}}</h1>
-      <div>{{bfields.values}}</div>
-    {{/if}}
   </div>
 </div>
