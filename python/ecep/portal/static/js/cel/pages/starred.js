@@ -54,7 +54,8 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
 
             if (regexResult || cookie) {
                 starredIds = regexResult ? regexResult[1] : cookie;
-                $.getJSON(common.getUrl('location-api', { locations: starredIds }), function (results) {
+                $.getJSON(common.getUrl('starred-location-api', { locations: starredIds }), function (results) {
+                    console.log(results);
                     drawStarredLocations(results);
                 });
             } else {

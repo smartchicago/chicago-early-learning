@@ -1,38 +1,124 @@
-<div class="favorite" data-key="{{item.key}}" itemscope itemtype="http://schema.org/EducationalOrganization">
+<div class="favorite" data-key="{{id}}" itemscope itemtype="http://schema.org/EducationalOrganization">
   <div id="location-map" class="none single-location-map"></div>
   <a href="javascript:void(0)" class="none favs-close-button">&times;</a>
   <div class="clearfix">
-    <h1 class="school-name" itemprop="name">{{item.site_name}}</h1>
-    <p itemprop="address">{{item.address}}, {{item.city}}, {{item.state}} {{item.zip}}</p>
+    <h1 class="school-name" itemprop="name">{{site_name}}</h1>
+    <p class="address-line" itemprop="address">{{address}}</p>
+    <p class="address-line" itemprop="address">{{city}}, {{state}} {{zip}}</p>
     <ul class="website-phone">
-      {{#if item.url}}
-      <li><i class="icon-globe"></i> <a href="{{item.url}}" target="_blank" itemprop="url">{{item.url}}</a></li>
+      {{#if phone }}
+      <li><a href="tel:{{phone}}" itemprop="telephone">{{phone}}</a></li>
+      {{/if}}
+      {{#if url}}
+      <li><a href="{{url}}" target="_blank" itemprop="url">{{url}}</a></li>
       {{/if}}
       <a href="javascript:void(0)"
-          class="none favs-toggle single-star pull-right" id="favs-toggle-loc-{{item.key}}"
-          data-loc-id="{{item.key}}">
+          class="none favs-toggle single-star pull-right" id="favs-toggle-loc-{{id}}"
+          data-loc-id="{{id}}">
         <i class="icon-heart-empty"></i>
-      </a>
-      <a href="#" class="none btn pull-right single-share"
-          data-r1024="<i class='icon-share'></i>{{translations.share}}">
-        <i class="icon-share"></i>
-        Share
       </a>
     </ul>
   </div>
   <hr>
   <div class="school-details">
-    <h1>{{phone.fieldname}}</h1>
-    <h2><a href="tel:{{phone.number}}" itemprop="telephone">{{phone.number}}</a></h2>
-    <hr>
-    {{#each sfields}}
-      <h1>{{fieldname}}</h1>
-      {{{value}}}
+    
+    <!-- Description -->
+    {{#if description.value }}
+      <h1>{{ description.display }}</h1>
+      <p>{{ description.value }}</p>
       <hr>
-    {{/each}}
-    {{#if bfields.values }}
-      <h1>{{bfields.fieldname}}</h1>
-      <div>{{bfields.values}}</div>
     {{/if}}
+
+
+    <!-- Ages Served -->
+    {{#if not_enrollment_site }}
+      <h1>{{ ages_served }}</h1>
+      <p>{{#if ages_0_to_3.value }}<i class="icon-ok"></i>{{else}}<i class="icon-cancel"></i>{{/if}} {{ ages_0_to_3.display }}</p>
+      <p>{{#if ages_3_to_5.value }}<i class="icon-ok"></i>{{else}}<i class="icon-cancel"></i>{{/if}} {{ ages_3_to_5.display }}</p>
+      <hr>
+    {{/if}}
+
+
+    <!-- Duration and Hours -->
+    {{#if not_enrollment_site }}
+      <h1>{{ duration_and_hours }}</h1>
+        {{#if prg_hours.value }}
+          <p>{{ prg_hours.display }}: {{ prg_hours.value }}</p>
+        {{/if}}
+        {{#if part_day.value }}
+          <p>{{ part_day.display }}</p>
+        {{/if}}
+        {{#if full_day.value }}
+          <p>{{ full_day.display }}</p>
+        {{/if}}
+        {{#if school_year.value }}
+          <p>{{ school_year.display }}</p>
+        {{/if}}
+        {{#if full_year.value }}
+          <p>{{ full_year.display }}</p>
+        {{/if}}
+      <hr>
+    {{/if}}
+
+
+    <!-- Program Information -->
+    {{#if not_enrollment_site}}
+      <h1>{{ program_information }}</h1>
+      {{#if cps_based.value }}
+        <p>{{ cps_based.display }}</p>
+      {{/if}}
+      {{#if community_based.value }}
+        <p>{{ community_based.display }}</p>
+      {{/if}}
+      {{#if head_start.value }}
+        <p>{{ head_start.display }}</p>
+      {{/if}}
+      {{#if early_head_start.value }}
+        <p>{{ early_head_start.display }}</p>
+      {{/if}}
+      {{#if ccap.value }}
+        <p>{{ ccap.display }}</p>
+      {{/if}}
+      {{#if home_visiting.value }}
+        <p>{{ home_visiting.display }}</p>
+      {{/if}}
+      <hr>
+    {{/if}}
+
+
+    <!-- Languages -->
+    {{#if languages.value }}
+      <h1>{{ languages.display }}</h1>
+      <p>{{ languages.value }}</p>
+      <hr>
+    {{/if}}
+
+
+    <!-- Other Features -->
+    {{#if other_features.value }}
+      <h1>{{ other_features.display }}</h1>
+      <p>{{ other_features.value }}</p>
+      <hr>
+    {{/if}}
+
+
+    <!-- Accreditation -->
+    {{#if not_enrollment_site}}
+      {{#if accreditation.value }}
+        <h1>{{ accreditation.display }}</h1>
+        <p>{{ accreditation.value }}</p>
+        <hr>
+      {{/if}}
+    {{/if}}
+
+
+    <!-- Quality Rating -->
+    {{#if not_enrollment_site}}
+      {{#if quality_rating.value }}
+        <h1>{{ quality_rating.display }}</h1>
+        <p>{{ quality_rating.value }}</p>
+      {{/if}}
+    {{/if}}
+
   </div>
 </div>
