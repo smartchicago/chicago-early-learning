@@ -598,6 +598,10 @@ h1, h2, h3, h4 {
     display: inline-block;
 }
 
+.address-line {
+    margin:0;
+}
+
 .container-faves {
     margin: 0 5px 0;
 }
@@ -659,7 +663,7 @@ h1, h2, h3, h4 {
 .website-phone {
     float: left;
     list-style: none;
-    margin: 0;
+    margin: 5px 0;
 }
 
 
