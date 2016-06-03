@@ -83,27 +83,26 @@ See LICENSE in the project root for copying permission
 
       {% with rtl_url="http://www.cps.edu/schools/earlychildhood/pages/earlychildhood.aspx" rtl_tel=settings.HOTLINE_PHONE|telurl sms_tel=settings.TWILIO_PHONE|telurl %}
 
-      <ul class="info clearfix">
-        <li>
+      <!-- 
+      When changing between two and three bucket items, use the corresponding class 
+      <div class="info-buckets three">
+      --> 
+      <div class="info-buckets two">
+        <div class="bucket">
           <h2>{% blocktrans %}Find & Compare{% endblocktrans %}</h2>
-          <p><a href="{% url 'browse' %}"><img src="{% static 'img/cel5.png' %}"></a></p>
+          <div class="bucket-img"><a href="{% url 'browse' %}"><img src="{% static 'img/cel5.png' %}"></a></div>
           <p>{% blocktrans %}Search by the address where you live or work to quickly find all the early learning programs located near you. Refine your search to find the features you most care about. Choose your "favorites" and compare them on a list.{% endblocktrans %}</p>
           <p><a href="{% url 'browse' %}">{% blocktrans %}Find and compare locations now{% endblocktrans %} &raquo;</a></p>
-        </li>
+        </div>
 
-        <li>
-          <h2>{% blocktrans %}Text For Info{% endblocktrans %}</h2>
-          <p><a href="{% url 'sms-info' %}"><img src="{% static 'img/cel3.png' %}"></a></p>
-          <p>{% blocktrans %}Get details about locations near you with text messages. Simply send a zip code to {{ sms_tel }} and follow the instructions on your phone. If you'd like to talk to someone about your options, please call the Chicago Early Learning Hotline at {{ rtl_tel }}.{% endblocktrans %}</p>
-        </li>
-
-        <li>
+        <div class="bucket">
           <h2>{% blocktrans %}Keep In Touch{% endblocktrans %}</h2>
-          <p><a href="http://eepurl.com/X9ZPf"><img src="{% static 'img/cel6.png' %}"></a></p>
+          <div class="bucket-img"><a href="http://eepurl.com/X9ZPf"><img src="{% static 'img/cel6.png' %}"></a></div>
           <p>{% blocktrans %}Keep in touch with Chicago Early Learning! Sign up to receive timely updates about enrollment deadlines, early learning resources in your area and new features from Chicago Early Learning. We look forward to staying in touch with you.{% endblocktrans %}</p>
           <p><a href="http://eepurl.com/X9ZPf">{% blocktrans %}Sign up for our mailing list{% endblocktrans %} &raquo;</a></p>
-        </li>
-      </ul>
+        </div>
+
+      </div>
       {% endwith %}
     </div>
 {% endblock %}

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-27 11:22-0500\n"
+"POT-Creation-Date: 2016-05-24 14:42-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,31 +141,27 @@ msgstr "Acreditación"
 msgid "Program Hours"
 msgstr "Horario del Programa"
 
-#: portal/models.py:89 portal/templates/location.html:84
+#: portal/models.py:89
 msgid "Ages 0 - 3"
-msgstr "0 ‐ 3 Años"
+msgstr "0 ‐ 3 años"
 
-#: portal/models.py:90 portal/templates/location.html:88
+#: portal/models.py:90
 msgid "Ages 3 - 5"
-msgstr "3 ‐ 5 Años"
+msgstr "3 ‐ 5 años"
 
-#: portal/models.py:91 portal/templates/location.html:99
-#: portal/templates/location.html.py:101
+#: portal/models.py:91
 msgid "Full Day"
 msgstr "Día completo"
 
-#: portal/models.py:92 portal/templates/location.html:99
-#: portal/templates/location.html.py:103
+#: portal/models.py:92
 msgid "Part Day"
 msgstr "Parte del día"
 
-#: portal/models.py:93 portal/templates/location.html:107
-#: portal/templates/location.html.py:111
+#: portal/models.py:93
 msgid "School Year"
 msgstr "Año Escolar"
 
-#: portal/models.py:94 portal/templates/location.html:107
-#: portal/templates/location.html.py:109
+#: portal/models.py:94
 msgid "Full Year"
 msgstr "Año completo"
 
@@ -763,11 +759,11 @@ msgstr "Ingrese el nombre de una escuela"
 msgid "Updates"
 msgstr "Actualizar"
 
-#: portal/views.py:509
+#: portal/views.py:507
 msgid "Explore"
 msgstr "Explorar"
 
-#: portal/views.py:510
+#: portal/views.py:508
 msgid "Click to see locations in this neighborhood"
 msgstr "Haga clic para ver ubicaciones en este vecindario"
 
@@ -868,16 +864,6 @@ msgstr ""
 #: templates/admin/portal/location/delete_confirmation.html:30
 msgid "Yes, I'm sure"
 msgstr ""
-
-#, fuzzy
-#~| msgid "Full Day"
-#~ msgid "Full Day, Part Day"
-#~ msgstr "Día completo"
-
-#, fuzzy
-#~| msgid "School Year"
-#~ msgid "Full Year, School Year"
-#~ msgstr "Año Escolar"
 
 #~ msgid "Click to share your list"
 #~ msgstr "Haga clic para compartir su lista"
