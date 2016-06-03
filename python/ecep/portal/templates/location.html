@@ -91,9 +91,9 @@ See LICENSE in the project root for copying permission
         <hr>
       {% endif %}
 
-      {% if location.prg_hours and not loc.item.is_enrollment %}
+      {% if not loc.item.is_enrollment %}
         <h1>{% trans 'Duration and Hours' %}</h1>
-          {% if location.prg_hours %}<p>{{ location.prg_hours }}</p>{% else %}<p>No Hours Listed</p>{% endif %}
+          {% if location.prg_hours %}<p>{{ location.prg_hours }}</p>{% else %}<p>{% trans 'No Hours Listed' %}</p>{% endif %}
           
           {% if location.is_full_day and location.is_part_day %}
             <p>Full Day, Part Day</p>
@@ -119,6 +119,7 @@ See LICENSE in the project root for copying permission
           {% if location.is_community_based %}<p>{% trans 'Community Based' %}</p>{% endif %}
           {% if location.is_hs %}<p>{% trans 'Head Start' %}</p>{% endif %}
           {% if location.is_ehs %}<p>{% trans 'Early Head Start' %}</p>{% endif %}
+          {% if location.accept_ccap %}<p>{% trans 'Accepts CCAP' %}</p>{% endif %}
           {% if location.is_home_visiting %}
             <p>{% trans 'Offers Home Visiting' %}</p>
             <p><em>{% trans 'If you are interested in enrolling your child in this home visiting program please contact this site directly.' %}</em></p>

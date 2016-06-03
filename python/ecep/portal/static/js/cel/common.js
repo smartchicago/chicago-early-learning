@@ -80,6 +80,15 @@ function($, L, Response, Handlebars) {
                     url += opts.locations.toString() + '/';
                 }
                 return url;
+            case 'starred-location-api':
+                // requires opts.locations to be comma separated string or
+                //      array of integers
+                url = '/' + ($.cookie('django_language') || CEL.serverVars.default_language) +
+                    '/api/starred-location/';
+                if (opts && opts.locations) {
+                    url += opts.locations.toString() + '/';
+                }
+                return url;
             case 'neighborhood-api':
                 return '/' + ($.cookie('django_language') || CEL.serverVars.default_language) +
                     '/api/neighborhood/';
