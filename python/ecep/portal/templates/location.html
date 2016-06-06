@@ -70,9 +70,9 @@ See LICENSE in the project root for copying permission
       <hr>
 
 
-      {% if fields.description %}
+      {% if location.q_stmt %}
         <h1>{% trans 'Description' %}</h1>
-        {{ fields.description|safe }}
+        {{ location.q_stmt|safe }}
         <hr>
       {% endif %}
 
@@ -147,7 +147,7 @@ See LICENSE in the project root for copying permission
 
       {% if location.q_rating and not loc.item.is_enrollment %}
         <h1>{% trans 'Quality Rating' %}</h1>
-        {{ location.q_rating|safe }}
+        {{ location.get_q_rating_display }}
         <hr>
       {% endif %}
 
