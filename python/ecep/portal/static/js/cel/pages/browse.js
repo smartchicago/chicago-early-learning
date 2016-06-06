@@ -306,13 +306,24 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
          * Change tooltip when refining search
          */
         var refineListener = function() {
+
+            // This should be handled by djangojs and gettext, but
+            // For whatever reason that's not working. 
+            //  - ajb, 6 June 2016 
+            var less_filters_text = 'Less Filters';
+            var more_filters_text = 'More Filters';
+            if (CEL.serverVars.language == 'es') {
+                less_filters_text = 'Menos Filtros';
+                more_filters_text = 'Más Filtros';
+            }
+
             if (!common.isTouchscreen) {
                 $('#filters-more').on('show.bs.collapse', function(e) {
-                    $('#filters-show-more').html(gettext('Less Filters'));
+                    $('#filters-show-more').html(less_filters_text);
                     $('#refineBtn').attr('data-hint', gettext('Click to hide filters'));
                 }).on('hide.bs.collapse', function(e) {
                     $('#refineBtn').attr('data-hint', gettext('Click to show filters'));
-                    $('#filters-show-more').html(gettext('More Filters'));
+                    $('#filters-show-more').html(more_filters_text);
                 });
             }
         };
