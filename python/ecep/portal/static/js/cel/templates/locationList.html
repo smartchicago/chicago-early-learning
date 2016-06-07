@@ -11,24 +11,24 @@
           <h2 id="location-address">{{item.address}}, {{item.zip}}</h2>
           {{#if item.age_lt_3}}
             {{#if item.age_gt_3}}
-              <h2 id="ages">Serves ages 0 - 3, 3 - 5</h2>
+              <h2 id="ages">{{translations.serves05}}</h2>
             {{else}}
-              <h2 id="ages">Serves ages 0 - 3</h2>
+              <h2 id="ages">{{translations.serves03}}</h2>
             {{/if}}
           {{else}}
             {{#if item.age_gt_3}}
-              <h2 id="ages">Serves ages 3 - 5</h2>
+              <h2 id="ages">{{translations.serves35}}</h2>
             {{/if}}
           {{/if}}
           {{#if item.full_day}}
             {{#if item.part_day}}
-              <h2 id="ages">Full Day, Part Day</h2>
+              <h2 id="ages">{{translations.full_day}}, {{translations.part_day}}</h2>
             {{else}}
-              <h2 id="ages">Full Day</h2>
+              <h2 id="ages">{{translations.full_day}}</h2>
             {{/if}}
           {{else}}
             {{#if item.age_gt_3}}
-              <h2 id="ages">Part Day</h2>
+              <h2 id="ages">{{translations.part_day}}</h2>
             {{/if}}
           {{/if}}
 
@@ -40,7 +40,7 @@
       <div class="location-buttons">
 
         <form action="/location/{{item.key}}/">
-          <button class="btn location-list-button" type="submit"><i class="icon-info-circled"></i> More Info</button>
+          <button class="btn location-list-button" type="submit"><i class="icon-info-circled"></i> {{translations.more_info}}</button>
         </form>
         <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"><button class="btn location-list-button hint--left" type="submit" data-hint="{{tooltip.directions}}"><i class="icon-road-1"></i> {{translations.directions}}</button></a>
         <button id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}" class="btn location-list-button favs-toggle hint--left" data-hint="{{tooltip.star}}"><i class="icon-mail-1"></i> {{translations.contact}}</button>
