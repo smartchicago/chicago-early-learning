@@ -28,7 +28,7 @@ If we want to actually group questions by topic, we'll need to modify this a bit
     <h1>{% trans 'Frequently Asked Questions' %}</h1>
     <div class="contents">
     {% for t in topics %}
-        <h1 class="topic-contents">{{ t.topic.name }}</h1>
+        <h1 class="topic-contents"><a href="#{{t.topic.slug}}">{{ t.topic.name }}</a></h1>
         {% for q in t.questions %}
         <h2 class="question-contents"><a href="#{{q.slug}}">{{ q.text }}</a></h2>
         {% endfor %}
