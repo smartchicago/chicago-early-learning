@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-06 15:27-0500\n"
+"POT-Creation-Date: 2016-06-06 19:11-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,66 +24,66 @@ msgstr ""
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: portal/forms.py:11 portal/models.py:420
+#: portal/forms.py:11 portal/models.py:422
 #, fuzzy
 #| msgid "Site Name"
 msgid "First Name"
 msgstr "Nombre del centro"
 
-#: portal/forms.py:12 portal/models.py:421
+#: portal/forms.py:12 portal/models.py:423
 #, fuzzy
 #| msgid "Site Name"
 msgid "Last Name"
 msgstr "Nombre del centro"
 
 #: portal/forms.py:13 portal/models.py:82 portal/models.py:338
-#: portal/models.py:422
+#: portal/models.py:424
 msgid "Phone Number"
 msgstr "Número de teléfono"
 
-#: portal/forms.py:14 portal/models.py:423
+#: portal/forms.py:14 portal/models.py:425
 #, fuzzy
 #| msgctxt ""
 #| msgid "Address"
 msgid "Address 1"
 msgstr "Dirección"
 
-#: portal/forms.py:15 portal/models.py:424
+#: portal/forms.py:15 portal/models.py:426
 #, fuzzy
 #| msgctxt ""
 #| msgid "Address"
 msgid "Address 2"
 msgstr "Dirección"
 
-#: portal/forms.py:16 portal/models.py:425
+#: portal/forms.py:16 portal/models.py:427
 msgid "City"
 msgstr "Ciudad"
 
-#: portal/forms.py:17 portal/models.py:426
+#: portal/forms.py:17 portal/models.py:428
 msgid "State"
 msgstr "Estado"
 
-#: portal/forms.py:18 portal/models.py:427
+#: portal/forms.py:18 portal/models.py:429
 msgid "Zip Code"
 msgstr "Código postal (ZIP)"
 
-#: portal/forms.py:20 portal/models.py:430
+#: portal/forms.py:20 portal/models.py:432
 msgid "Child 1's Age"
 msgstr ""
 
-#: portal/forms.py:21 portal/models.py:431
+#: portal/forms.py:21 portal/models.py:433
 msgid "Child 2's Age"
 msgstr ""
 
-#: portal/forms.py:22 portal/models.py:432
+#: portal/forms.py:22 portal/models.py:434
 msgid "Child 3's Age"
 msgstr ""
 
-#: portal/forms.py:23 portal/models.py:433
+#: portal/forms.py:23 portal/models.py:435
 msgid "Child 4's Age"
 msgstr ""
 
-#: portal/forms.py:24 portal/models.py:434
+#: portal/forms.py:24 portal/models.py:436
 msgid "Child 5's Age"
 msgstr ""
 
@@ -151,12 +151,12 @@ msgstr "0 ‐ 3 años"
 msgid "Ages 3 - 5"
 msgstr "3 ‐ 5 años"
 
-#: portal/models.py:91 portal/templates/location.html:99
+#: portal/models.py:91 portal/models.py:357 portal/templates/location.html:99
 #: portal/templates/location.html.py:101
 msgid "Full Day"
 msgstr "Día completo"
 
-#: portal/models.py:92 portal/templates/location.html:99
+#: portal/models.py:92 portal/models.py:357 portal/templates/location.html:99
 #: portal/templates/location.html.py:103
 msgid "Part Day"
 msgstr "Parte del día"
@@ -261,24 +261,40 @@ msgstr "Evaluaciones"
 msgid "Compare and Apply"
 msgstr "Compare y Aplique"
 
-#: portal/models.py:362
+#: portal/models.py:356
+msgid "More Info"
+msgstr "Más Info"
+
+#: portal/models.py:356
+msgid "Serves ages 0 - 3"
+msgstr "0 ‐ 3 años"
+
+#: portal/models.py:356
+msgid "Serves ages 3 - 5"
+msgstr "3 ‐ 5 años"
+
+#: portal/models.py:357
+msgid "Serves ages 0 - 3, 3 - 5"
+msgstr "0 ‐ 3, 3 - 5 años"
+
+#: portal/models.py:364
 msgid "Directions from Google"
 msgstr "Dirección usando Google"
 
-#: portal/models.py:362
+#: portal/models.py:364
 msgid "Click to show more information"
 msgstr "Haga clic para mostrar mas información"
 
-#: portal/models.py:363
+#: portal/models.py:365
 msgid "Click to save to your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:363
+#: portal/models.py:365
 #, fuzzy
 msgid "Click to remove from your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:367 portal/templates/location.html:137 portal/views.py:707
+#: portal/models.py:369 portal/templates/location.html:137 portal/views.py:707
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -631,7 +647,9 @@ msgid ""
 "there are infant/toddler programs available. Please contact the site "
 "directly for enrollment information for these programs."
 msgstr ""
-"Si su hijo que no va a cumplir 3 años antes del 1 de septiembre de 2016 hay programas de aprendizaje infantil. Por favor contacte directamente al programa para más información."
+"Si su hijo que no va a cumplir 3 años antes del 1 de septiembre de 2016 hay "
+"programas de aprendizaje infantil. Por favor contacte directamente al "
+"programa para más información."
 
 #: portal/templates/location.html:88
 #, python-format
@@ -643,8 +661,12 @@ msgid ""
 "Learning Hotline at <a href=\"%(rtl_url)s\">(312) 229-1690</a> for "
 "assistance.</b></em>"
 msgstr ""
-"Si su hijo tiene 3 ó 4 años antes del 1 de septiembre de 2016, está elegible por las programas pre-escolares. <b>Haga clic <a href=\"https://apply."
-"chicagoearlylearning.org/earlybird/#/\" target=\"_blank\">aquí</a> para completar una aplicación con las dos mejores opciones o llamar al Chicago Early Learning línea de acceso directo al <a href=\"%(rtl_url)s\">(312) 229-1690</a></b></em>."
+"Si su hijo tiene 3 ó 4 años antes del 1 de septiembre de 2016, está elegible "
+"por las programas pre-escolares. <b>Haga clic <a href=\"https://apply."
+"chicagoearlylearning.org/earlybird/#/\" target=\"_blank\">aquí</a> para "
+"completar una aplicación con las dos mejores opciones o llamar al Chicago "
+"Early Learning línea de acceso directo al <a href=\"%(rtl_url)s\">(312) "
+"229-1690</a></b></em>."
 
 #: portal/templates/location.html:125
 msgid ""
@@ -1113,9 +1135,6 @@ msgstr ""
 
 #~ msgid "From:"
 #~ msgstr "De:"
-
-#~ msgid "Text For More Info"
-#~ msgstr "Envíe texto para recibir más info"
 
 #~ msgid "Phone Number 2"
 #~ msgstr "Número de teléfono 2"
