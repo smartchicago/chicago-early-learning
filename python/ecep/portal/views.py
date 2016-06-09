@@ -411,13 +411,19 @@ def location(request, location_id=None, slug=None):
     loc = location_details(location_id)
     fields = clean_context_dict(loc)
 
+    if request.LANGUAGE_CODE == 'es' and location.q_stmt_es is None:
+        no_es_description = True
+    else:
+        no_es_description = False
+
 
     return render(request, 'location.html', {
         'loc': loc,
         'loc_description': location.q_stmt,
         'loc_neighborhood': location.neighborhood,
         'location': location,
-        'fields': fields
+        'fields': fields,
+        'no_es_description': no_es_description
     })
 
 def clean_context_dict(context_dict):
