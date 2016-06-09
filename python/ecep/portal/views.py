@@ -411,7 +411,7 @@ def location(request, location_id=None, slug=None):
     loc = location_details(location_id)
     fields = clean_context_dict(loc)
 
-    if request.LANGUAGE_CODE == 'es' and location.q_stmt_es is None:
+    if request.LANGUAGE_CODE == 'es' and location.q_stmt_es == '':
         no_es_description = True
     else:
         no_es_description = False
