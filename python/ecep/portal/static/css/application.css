@@ -566,11 +566,6 @@ h1, h2, h3, h4 {
     width: 280px;
     margin: 20px;
     vertical-align: top;
-    white-space: pre-wrap;      /* CSS3 */   
-    white-space: -moz-pre-wrap; /* Firefox */    
-    white-space: -pre-wrap;     /* Opera <7 */   
-    white-space: -o-pre-wrap;   /* Opera 7 */    
-    word-wrap: break-word; 
 }
 
 .starred-actions {
@@ -1244,7 +1239,6 @@ h1, h2, h3, h4 {
     padding-bottom: 150px;
 }
 
-
 .faq-container h1 {
     font-size: 32px;
 }
@@ -1253,7 +1247,21 @@ h1, h2, h3, h4 {
     font-size: 20px;
 }
 
-.anchor{
+.contents h1 {
+    padding: 0;
+    padding-top: 10px;
+    font-size: 18px;
+    line-height: 1.2em;
+}
+
+.contents h2 {
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.2em;
+    text-indent: 30px;
+}
+
+.anchor {
       display: block;
       height: 101px; /*same height as header*/
       margin-top: -101px; /*same height as header*/

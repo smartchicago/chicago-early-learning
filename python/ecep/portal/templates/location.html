@@ -72,6 +72,7 @@ See LICENSE in the project root for copying permission
 
       {% if location.q_stmt %}
         <h1>{% trans 'Description' %}</h1>
+        {% if no_es_description %}<p><em>No hay una descripción en español</em></p>{% endif %}
         {{ location.q_stmt|safe }}
         <hr>
       {% endif %}
