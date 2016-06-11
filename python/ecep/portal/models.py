@@ -264,6 +264,7 @@ class Location(models.Model):
             'site_type': self.site_type,
             'is_enrollment': self.is_enrollment,
             'duration_hours': self.prg_hours,
+            'availability': self.availability,
         }
 
         # simple fields to present -- these are the attributes that have text content
