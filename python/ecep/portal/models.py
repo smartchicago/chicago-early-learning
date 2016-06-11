@@ -352,7 +352,9 @@ class Location(models.Model):
         # This way we can do this with django and not have to worry about making a separate
         # handlebars helper
         trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
-                      'share': _('Share'), 'qrisrating': _('QRIS Rating'), 'contact': _('Compare and Apply')}
+                      'share': _('Share'), 'qrisrating': _('QRIS Rating'), 'contact': _('Compare and Apply'),
+                      'more_info': _('More Info'), 'serves03': _('Serves ages 0 - 3'), 'serves35': _('Serves ages 3 - 5'),
+                      'serves05': _('Serves ages 0 - 3, 3 - 5'), 'full_day': _('Full Day'), 'part_day': _('Part Day')}
 
         # More information for tooltip icon
         accreditation = ['Accredited'] if self.accred != 'None' else []

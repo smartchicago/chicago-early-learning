@@ -687,6 +687,7 @@ h1, h2, h3, h4 {
     height: 250px;
     margin-top: 105px;
     margin-bottom: 25px;
+    cursor: default;
 }
 
 /* necessary to display leaflet
@@ -1238,7 +1239,6 @@ h1, h2, h3, h4 {
     padding-bottom: 150px;
 }
 
-
 .faq-container h1 {
     font-size: 32px;
 }
@@ -1247,7 +1247,21 @@ h1, h2, h3, h4 {
     font-size: 20px;
 }
 
-.anchor{
+.contents h1 {
+    padding: 0;
+    padding-top: 10px;
+    font-size: 18px;
+    line-height: 1.2em;
+}
+
+.contents h2 {
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.2em;
+    text-indent: 30px;
+}
+
+.anchor {
       display: block;
       height: 101px; /*same height as header*/
       margin-top: -101px; /*same height as header*/
