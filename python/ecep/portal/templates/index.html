@@ -75,12 +75,13 @@ See LICENSE in the project root for copying permission
       When changing between two and three bucket items, use the corresponding class 
       <div class="info-buckets three">
       --> 
+      {% url 'families' as families_url %}
       <div class="info-buckets three">
         <div class="bucket">
           <h2>{% blocktrans %}For Families{% endblocktrans %}</h2>
-          <div class="bucket-img"><a href=""><img src="{% static 'img/bucket-families.png' %}"></a></div>
-          <p>{% blocktrans %}Children who participate in high-quality early learning experiences are better prepared for success in both kindergarten and over a lifetime of learning. <a href="">Click here</a> to learn more about how to invest in your child’s success through early learning, the different types of programs offered, and tips to help you choose a high quality program.{% endblocktrans %}</p>
-          <p><a href="">{% blocktrans %}Learn more about high quality early learning programs{% endblocktrans %} &raquo;</a></p>
+          <div class="bucket-img"><a href="{% url 'families' %}"><img src="{% static 'img/bucket-families.png' %}"></a></div>
+          <p>{% blocktrans %}Children who participate in high-quality early learning experiences are better prepared for success in both kindergarten and over a lifetime of learning. <a href="{{ families_url }}">Click here</a> to learn more about how to invest in your child’s success through early learning, the different types of programs offered, and tips to help you choose a high quality program.{% endblocktrans %}</p>
+          <p><a href="{% url 'families' %}">{% blocktrans %}Learn more about high quality early learning programs{% endblocktrans %} &raquo;</a></p>
         </div>
 
         <div class="bucket">
