@@ -27,6 +27,7 @@ urlpatterns = patterns(
     url(r'^test$', portal_views.Test.as_view(), name='test'),
     url(r'^about$', portal_views.About.as_view(), name='about'),
     url(r'^updates$', portal_views.Updates.as_view(), name='updates'),
+    url(r'^families$', portal_views.Families.as_view(), name='families'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type="text/plain")),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
     
