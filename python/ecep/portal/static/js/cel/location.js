@@ -123,7 +123,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         var iconOpts = $.extend({}, defaults, options),
             key = '';
 
-        console.log(iconOpts.key);
         // build a key!
         var og_key = this.getIconKey();
         key = iconOpts.key ? iconOpts.key : og_key.key;
@@ -172,7 +171,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         icon_url += this.isStarred() ? '-selected' : '';
         icon_url += '.png';
 
-        console.log(icon_url);
         return { 'key': key, 'icon_url': icon_url };
     };
 
