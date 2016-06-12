@@ -222,7 +222,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
 
                 marker.on('click', function (e) {
                     var isStarred = favorites.isStarred(locId),
-                        icon = isStarred ? 'icon-mail' : 'icon-mail-1',
+                        icon = isStarred ? 'fa fa-check-circle compare-check' : 'fa fa-plus-circle',
                         hint = isStarred ? 'tooltip.unstar' : 'tooltip.star',
                         selected = isStarred ? 'favs-button-selected' : '';
                     var enrollmentInsertion = '';
@@ -241,7 +241,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                     var popupText = '<div><b><a href="' + common.getUrl('single-location', { location: locId, slug: common.slugify(data.item.site_name) }) +
                         '">{{item.site_name}}</a></b><br>{{item.address}}<br>' + enrollmentInsertion +
                         '{{#each sfields}}{{#if_eq this.key "weekday_availability"}}{{#if_not_eq this.value "None"}}<small>{{this.value}}</small><br>{{/if_not_eq}}{{/if_eq}}{{#if_eq this.key "program_info"}}{{#if_not_eq this.value "None"}}<small>{{this.value}}{{/if_not_eq}}</small>{{/if_eq}}{{/each}}<br>' +
-                        '<a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle ' + selected + ' hint--top ga-track" data-hint="{{' + hint + '}}" data-loc-id="{{item.key}}" data-ga-category="search" data-ga-action="Favorite Location"><i class="' + icon + '"></i></a></div>';
+                        '<a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle hint--top ga-track ' + selected + '" data-hint="{{' + hint + '}}" data-loc-id="{{item.key}}" data-ga-category="search" data-ga-action="Favorite Location"><i class="' + icon + '"></i></a></div>';
                     var popupTemplate = Handlebars.compile(popupText);
 
                     var popup = L.popup()
