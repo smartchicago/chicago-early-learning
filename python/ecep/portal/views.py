@@ -48,6 +48,10 @@ class Updates(TemplateView):
     template_name = "updates.html"
 
 
+class Families(TemplateView):
+    template_name = "families.html"
+
+
 def browse(request):
     # If a search query was passed in, see if we can find a matching location
     query = request.GET.get('lq', '').strip()
