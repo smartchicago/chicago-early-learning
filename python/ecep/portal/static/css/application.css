@@ -171,7 +171,6 @@ h1, h2, h3, h4 {
 .favs-toggle i {
     position: relative;
     left: -6px;
-    color: black;
 }
 
 /*.accordion-group .favs-toggle i {
@@ -458,6 +457,10 @@ h1, h2, h3, h4 {
 
 .location-item {
     margin-top: -21px;
+}
+
+.compare-check {
+    color:#53C5EC;
 }
 
 
