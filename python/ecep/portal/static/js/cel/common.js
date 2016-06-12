@@ -157,7 +157,7 @@ function($, L, Response, Handlebars) {
             case 'icon-center-accredited-starred':
                 return '/static/img/leaflet-icons/center-accredited-starred.png';
             case 'icon-geolocation':
-                return '/static/img/leaflet-icons/geocode.png';
+                return '/static/img/map-icons/2x/geolocated.png';
             case 'icon-enrollment':
                 return '/static/img/leaflet-icons/appsite.png';
             case 'icon-quality':

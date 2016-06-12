@@ -522,6 +522,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
                         iconUrl: common.getUrl('icon-geolocation'),
+                        iconSize: [50, 50], 
                         iconAnchor: [17, 45]
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map).setZIndexOffset(1000);
