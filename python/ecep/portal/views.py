@@ -31,12 +31,6 @@ logger = logging.getLogger(__name__)
 class Index(TemplateView):
     template_name = "index.html"
 
-class IndexOne(TemplateView):
-    template_name = "index-one.html"
-
-class IndexTwo(TemplateView):
-    template_name = "index-two.html"
-
 
 class Test(TemplateView):
     template_name = "test.html"
@@ -49,9 +43,9 @@ class About(TemplateView):
 class SMSInfo(TemplateView):
     template_name = "smsinfo.html"
 
+
 class Updates(TemplateView):
     template_name = "updates.html"
-
 
 
 def browse(request):
