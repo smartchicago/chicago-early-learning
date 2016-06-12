@@ -167,7 +167,7 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                 $siblings.attr('data-hint', gettext('Click to save to your list'));
             // toggle on
             } else {
-                img = 'fa fa-check-circle';
+                img = 'fa fa-check-circle compare-check';
                 favs.addIdToCookie(buttonId);
                 increment = 1;
                 $siblings.attr('data-hint', gettext('Click to remove from your list'));
