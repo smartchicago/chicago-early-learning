@@ -36,7 +36,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
             popupLayer = new L.LayerGroup(),    // Popup Layer
-            legend = L.control({position: 'bottomright'}), 
             currentLayer = layerType.none,      // Layer being currently displayed
             dm = new location.DataManager($filters),    // DataManager object
             isAutocompleteSet = true,
@@ -66,12 +65,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 });
             }
         });
-
-        // Initialize Legend object for location layers
-
-        legend.onAdd = function (map) {
-            return $('.legend').get(0);
-        }
 
         /*
          * Set map pan/zoom centered on a neighborhood/location if requested in the url
@@ -237,7 +230,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
                 var key = $this.data('loc-id'),
                     loc = dm.locations[key],
-                    iconkey = 'icon-' + loc.getIconKey(),
+                    iconkey = 'icon-' + loc.getIconKey().key,
                     $locIcon = $('#loc-icon-' + key),
                     highlighted = false;
 
@@ -262,7 +255,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 var $this = $(this),
                     key = $this.data('key'),
                     loc = dm.locations[key],
-                    iconkey = 'icon-' + loc.getIconKey(),
+                    iconkey = 'icon-' + loc.getIconKey().key,
                     $locIcon = $('#loc-icon-' + key);
                 $locIcon.attr('src', common.getUrl(iconkey));
                 if (!common.isTouchscreen) {
@@ -484,7 +477,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             if (currentLayer !== layerType.location) {
                 currentLayer = layerType.location;
                 popupLayer.clearLayers();
-                map.addControl(legend);
             }
 
             map.removeLayer(neighborhoodLayer);
