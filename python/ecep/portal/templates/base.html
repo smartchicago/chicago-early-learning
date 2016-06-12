@@ -16,7 +16,6 @@
     <link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
     <link rel="stylesheet" href="https://use.fontawesome.com/e3d88004fc.css">
 
-    {% compress css %}
     <link href='{% static "css/lib/hint.min.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
@@ -35,7 +34,6 @@
             width: 100%;
         }
     </style>
-    {% endcompress %}
     <!--[if lt IE 9]>
       <script src='{% static "js/lib/html5shiv.js" %}'></script>
       <link href='{% static "css/lib/leaflet.ie.css" %}' rel="stylesheet">
