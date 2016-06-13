@@ -669,21 +669,17 @@ h1, h2, h3, h4 {
     margin: 5px 0;
 }
 
-
-.actions {
-    float: right;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.basic-info {
+    display: inline-block;
+    width: 60%;
+    vertical-align: top;
 }
 
-.actions li {
-    float: left;
-    margin-left: 15px;
+.location-actions {
+    display: inline-block;
+    width: 39%;
+    vertical-align: top;
 }
-
-.actions li:first-of-type { margin-left: 0; }
-.actions .single-share { margin-top: 0; }
 
 /* Single School View */
 #location-map {
@@ -860,6 +856,10 @@ h1, h2, h3, h4 {
     padding-bottom: 3px;
 }
 
+.location-body {
+    border-top: 2px solid #B54747;
+}
+
 .school-name {
     text-shadow: none;
     color: #000;
@@ -867,7 +867,6 @@ h1, h2, h3, h4 {
     font-size: 18px;
     padding-bottom: 3px;
     padding-top: 25px;
-    border-top: 2px solid #B54747;
 }
 
 .cb_slide_panel .inner {
