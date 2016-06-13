@@ -51,7 +51,7 @@
 }
 
 /* -- Dumb Exception for Spanish Language Navbar Overflow issue -- */
-@media (min-width: 1201px) {
+@media (min-width: 1250px) {
     .navbar .navbar-left > a.brand-sm {
         display: none;
     }
@@ -61,9 +61,10 @@
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1249px) {
     .navbar .navbar-left > a.brand-sm {
         display: inline;
+        padding-right: 0;
     }
 
     .navbar .navbar-left > a.brand-lg {
