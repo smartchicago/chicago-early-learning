@@ -1049,7 +1049,8 @@ h1, h2, h3, h4 {
     font-size: 18px;
     font-weight: bold;
     padding: 19px;
-    margin-right: 10px;
+    width: 23%;
+    vertical-align: top;
     background-color: #EECF16;
     *background-color: #EECF16;
     background-image: -moz-linear-gradient(top, #EECF16, #EECF16);
@@ -1079,6 +1080,7 @@ h1, h2, h3, h4 {
     font-size: 18px;
     font-weight: bold;
     padding: 19px;
+    width: 100%;
     background-color: #DEDEDE;
     *background-color: #DEDEDE;
     background-image: -moz-linear-gradient(top, #DEDEDE, #DEDEDE);

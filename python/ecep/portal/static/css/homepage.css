@@ -51,41 +51,41 @@ h1, h2, h3, h4 {
 }
 
     
-    .masthead-content {
-        width: 560px;
-        max-width: 100%;
-    }
+.masthead-content {
+    width: 65%;
+}
 
-	#featurettes .media img {
-		border: 1px solid #c2c2c2;
-		-webkit-border-radius: 4px;
-		-moz-border-radius: 	 4px;
-		border-radius: 			   4px;
-		-webkit-box-shadow:		 none;
-		-moz-box-shadow: 	     none;
-		box-shadow:		 			   none;
-	}
-   #featurettes hr {
+#featurettes .media img {
+	border: 1px solid #c2c2c2;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow:	none;
+	-moz-box-shadow: none;
+	box-shadow:	none;
+}
+
+#featurettes hr {
     margin: 40px 0;
-  }
+}
 
-  #featurettes .ready-to-learn {
+#featurettes .ready-to-learn {
     background-color: #ffd;
     border: 1px dashed #ccc;
     padding: 20px;
     font-size: 16px;
     line-height: 1.4em;
     margin: 40px 0 30px;
-  }
+}
 
-  #featurettes .ready-to-learn p {
-    margin: 0;
-  }
+#featurettes .ready-to-learn p {
+margin: 0;
+}
 
-  #featurettes .ready-to-learn img {
+#featurettes .ready-to-learn img {
     width: 300px;
     margin-right: 20px;
-  }
+}
 
 .jumbotron .get-started,
 .get-started {
@@ -115,13 +115,22 @@ h1, h2, h3, h4 {
     line-height: 1.4;
 }
 
+.search {
+    width: 65%;
+    display: inline-block;
+}
+
+.search-input {
+    width: 100%;
+    display: inline-block;
+}
+
 input.homepage-search {
-    padding: 20px;
-    margin-top: 9px;
+    padding: 19px;
     border: none;
     font-size: 18px;
-    margin-right: 10px;
-    width: 400px;
+    width: 69%;
+    margin-right: 6px;
     text-shadow: none;
     border: 1px solid #c2c2c2;
 }
@@ -232,25 +241,31 @@ input.homepage-search {
 .announcement-mobile strong { color: #ffd; }
 
 .error-message {
+    vertical-align: top;
     color: white;
     background-color: #bd362f;
     opacity: 0.85;
-    width: 400px;
-    padding: 10px;
-    margin-top: 5px;
+    height: 130px;
+    margin-left: 4px;
+    width: 33%;
+    display: inline-block;
     visibility: hidden;
 }
 
+.error-message-body {
+    padding: 8px;
+}
+
 .error-message p {
-        margin-top: 5px;
-        margin-bottom: 0;
+    margin-top: 5px;
+    margin-bottom: 0;
 }
 
 .error-message h3 {
-        font-size: 18px;
-        line-height: 1.2em;
-        margin-top: 0;
-        margin-bottom: 0;
+    font-size: 18px;
+    line-height: 1.2em;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 @media (min-width: 1024px) {
