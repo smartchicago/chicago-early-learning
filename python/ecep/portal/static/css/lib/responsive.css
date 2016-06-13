@@ -337,6 +337,22 @@
         font-size: 12px;
     }
 
+    .masthead-content {
+        width: 100%;
+    }
+
+    .search-content {
+        width: 100%;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .error-message {
+        display: none;
+    }
+
     .explore-btn {
             margin-top: 0px !important;
     }
