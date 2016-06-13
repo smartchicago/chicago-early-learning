@@ -675,10 +675,29 @@ h1, h2, h3, h4 {
     vertical-align: top;
 }
 
+.location-school-name {
+    text-shadow: none;
+    color: #000;
+    margin: 0;
+    font-size: 18px;
+    padding-bottom: 3px;
+    padding-top: 15px;
+}
+
 .location-actions {
     display: inline-block;
     width: 39%;
     vertical-align: top;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.btn-location-share {
+    width: 100%;
+}
+
+.btn-location-compare {
+    width: 100%;
 }
 
 /* Single School View */
@@ -914,10 +933,6 @@ h1, h2, h3, h4 {
 
 .close {
     margin-top: 25px;
-}
-
-.single-share {
-    margin-top: -32px;
 }
 
 .svg-icon {

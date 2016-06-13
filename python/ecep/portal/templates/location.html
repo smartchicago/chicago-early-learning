@@ -34,7 +34,7 @@ See LICENSE in the project root for copying permission
 
     <div class="location-body">
       <div class="basic-info">
-        <h1 class="school-name" itemprop="name">{{ loc.item.site_name }}</h1>
+        <h1 class="location-school-name" itemprop="name">{{ loc.item.site_name }}</h1>
         <p itemprop="address">
           <span itemprop="streetAddress">{{ loc.item.address }}</span>,
           <span itemprop="addressLocality">{{ loc.item.city }}</span>,
@@ -49,16 +49,23 @@ See LICENSE in the project root for copying permission
         </ul>
       </div>
       <div class="location-actions">
-        <a href="javascript:void(0)"
-            class="btn favs-toggle single-star ga-track" id="favs-toggle-loc-{{ loc.item.key }}"
-            data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Compare & Contact Single Location" data-redirect="/favorites/">
+
+        <!-- Share Button --> 
+        <a href="#" class="btn btn-location-share single-share ga-track" data-ga-action="Share Single Location">
+          <i class="icon-share"></i> {% trans 'Share' %}
+        </a>
+
+        <!-- Directions Button --> 
+        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{loc.item.address}}+{{loc.item.city}}+{{loc.item.city}}+{{loc.item.state}}+{{loc.item.zip}}" class="btn location-list-button">
+          <i class="icon-road-1"></i> {{ loc.translations.directions }}
+        </a>
+
+        <!-- Compare and Contact Button -->
+        <a href="javascript:void(0)" class="btn btn-location-compare favs-toggle single-star ga-track" id="favs-toggle-loc-{{ loc.item.key }}" data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Compare & Contact Single Location" data-redirect="/favorites/">
           <i class="fa fa-plus-circle"></i>{% trans 'Compare and Apply' %}
         </a>
-        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{loc.item.address}}+{{loc.item.city}}+{{loc.item.city}}+{{loc.item.state}}+{{loc.item.zip}}"><button class="btn location-list-button" type="submit" ><i class="icon-road-1"></i> {{ loc.translations.directions }}</button></a>
-        <a href="#" class="btn single-share ga-track" data-ga-action="Share Single Location">
-          <i class="icon-share"></i>{% trans 'Share' %}
-        </a>
-      </div>
+             
+     </div>
     	<br>
       <div class="school-details">
         <hr>
