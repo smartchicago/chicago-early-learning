@@ -664,9 +664,9 @@ h1, h2, h3, h4 {
 }
 
 .website-phone {
-    float: left;
     list-style: none;
     margin: 5px 0;
+    word-break: break-word;
 }
 
 .basic-info {

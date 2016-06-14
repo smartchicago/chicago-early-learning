@@ -588,6 +588,15 @@
     .legend {
         display: none;
     }
+
+    .basic-info {
+        width: 100%;
+    }
+
+    .location-actions {
+        width: 100%;
+    }
+
 }
 
 

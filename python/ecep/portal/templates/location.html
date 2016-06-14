@@ -50,20 +50,19 @@ See LICENSE in the project root for copying permission
       </div>
       <div class="location-actions">
 
-        <!-- Share Button --> 
-        <a href="#" class="btn btn-location-share single-share ga-track" data-ga-action="Share Single Location">
+        <!-- Share Button <a href="#" class="btn btn-location-share single-share ga-track" data-ga-action="Share Single Location">
           <i class="icon-share"></i> {% trans 'Share' %}
-        </a>
+        </a> --> 
+
+        <button class="btn btn-location-share single-share ga-track" data-ga-action="Share Single Location"><i class="icon-share"></i> {% trans 'Share' %}</button>
 
         <!-- Directions Button --> 
-        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{loc.item.address}}+{{loc.item.city}}+{{loc.item.city}}+{{loc.item.state}}+{{loc.item.zip}}" class="btn location-list-button">
-          <i class="icon-road-1"></i> {{ loc.translations.directions }}
+        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{loc.item.address}}+{{loc.item.city}}+{{loc.item.city}}+{{loc.item.state}}+{{loc.item.zip}}">
+          <button class="btn location-list-button"><i class="icon-road-1"></i> {{ loc.translations.directions }}</button>
         </a>
 
         <!-- Compare and Contact Button -->
-        <a href="javascript:void(0)" class="btn btn-location-compare favs-toggle single-star ga-track" id="favs-toggle-loc-{{ loc.item.key }}" data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Compare & Contact Single Location" data-redirect="/favorites/">
-          <i class="fa fa-plus-circle"></i>{% trans 'Compare and Apply' %}
-        </a>
+        <a href="javascript:void(0)"><button class="btn btn-location-compare favs-toggle single-star ga-track" id="favs-toggle-loc-{{ loc.item.key }}" data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Compare & Contact Single Location" data-redirect="/favorites/"><i class="fa fa-plus-circle"></i>{% trans 'Compare and Apply' %}</button></a>
              
      </div>
     	<br>
