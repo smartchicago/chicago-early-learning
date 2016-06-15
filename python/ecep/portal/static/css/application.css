@@ -1304,6 +1304,17 @@ h1, h2, h3, h4 {
     padding-bottom: 150px;
 }
 
+.resources-container {
+    position: relative;
+    top: 101px;
+    width: 970px;
+    margin: 0 auto;
+    padding-bottom: 150px;
+}
+
+
+
+
 /* -----------------------------------------
    Social/sharing styling
 ----------------------------------------- */
