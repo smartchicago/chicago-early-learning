@@ -1004,6 +1004,27 @@ h1, h2, h3, h4 {
     max-width: 510px;
 }
 
+.other-partners {
+    text-align: center;
+}
+
+
+.other-partners-div ul {
+    margin: 0;
+}
+
+.other-partner-logos li {
+    width: 49%;
+    display: inline-block;
+    text-align: center;
+}
+
+.other-partner-logos img {
+    max-height: 100px;
+    max-width: 90%;
+    margin: auto;
+}
+
 .btn-primary {
     color: #FFFFFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
