@@ -68,6 +68,7 @@ h1, h2, h3, h4 {
     font-size: 15px;
     text-transform: uppercase;
     font-weight: 300;
+    padding: 5px 20px 5px
 }
 
 .navbar-inverse .brand,
@@ -106,8 +107,8 @@ h1, h2, h3, h4 {
 }
 
 .logo {
-    width: 40px;
-    height: 40px;
+    width: 120px;
+    height: 50px;
     padding-right: 15px;
     min-width: 40px;
 }

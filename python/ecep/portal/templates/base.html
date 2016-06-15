@@ -64,8 +64,10 @@
       <div class="navbar-inner">
         <!-- Navbar LEFT -->
         <div class="navbar-left">
-            <a class="brand brand-sm" id="homepage-logo-small" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' class="logo" alt='CEL'></a>
-            <a class="brand brand-lg" id="homepage-logo-large" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' class="logo" alt='CEL'><span>Chicago</span> Early Learning</a>
+
+
+            <a class="brand" href="{% url 'index' %}"><img src='{% static "img/logo-en.png" %}' class="logo" alt='CEL'></a>
+
         {% block searchform %}{% endblock %}
         </div>
         <!-- Navbar RIGHT -->
