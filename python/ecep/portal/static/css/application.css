@@ -68,7 +68,7 @@ h1, h2, h3, h4 {
     font-size: 15px;
     text-transform: uppercase;
     font-weight: 300;
-    padding: 5px 20px 5px
+    padding: 5px 20px 5px;
 }
 
 .navbar-inverse .brand,
@@ -1294,6 +1294,14 @@ h1, h2, h3, h4 {
 
 .location-icons {
     max-width: 18px;
+}
+
+.families-container {
+    position: relative;
+    top: 101px;
+    width: 970px;
+    margin: 0 auto;
+    padding-bottom: 150px;
 }
 
 /* -----------------------------------------
