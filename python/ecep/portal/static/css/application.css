@@ -122,8 +122,9 @@ h1, h2, h3, h4 {
 
 
 .navbar-inverse .navbar-inner {
-    background: #424142;
-    border-bottom: none;
+    background: #2d9598;
+
+    border: none;
     /*border-bottom: 1px solid #333;*/
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
     font-weight: 400;
@@ -251,7 +252,7 @@ h1, h2, h3, h4 {
 
 .browse-container {
     position: fixed;
-    top: 101px;
+    top: 100px;
     width: 100%;
     bottom:0
 }
@@ -556,7 +557,7 @@ h1, h2, h3, h4 {
 
 .starred-container {
     position: relative;
-    top: 101px;
+    top: 100px;
     width: 970px;
     margin: 0 auto;
 }
@@ -1274,7 +1275,7 @@ h1, h2, h3, h4 {
 
 .faq-container {
     position: relative;
-    top: 101px;
+    top: 100px;
     width: 970px;
     margin: 0 auto;
     padding-bottom: 150px;
@@ -1304,8 +1305,8 @@ h1, h2, h3, h4 {
 
 .anchor {
       display: block;
-      height: 101px; /*same height as header*/
-      margin-top: -101px; /*same height as header*/
+      height: 100px; /*same height as header*/
+      margin-top: -100px; /*same height as header*/
       visibility: hidden;
 }
 
@@ -1319,7 +1320,7 @@ h1, h2, h3, h4 {
 
 .families-container {
     position: relative;
-    top: 101px;
+    top: 100px;
     width: 970px;
     margin: 0 auto;
     padding-bottom: 150px;
@@ -1327,7 +1328,7 @@ h1, h2, h3, h4 {
 
 .resources-container {
     position: relative;
-    top: 101px;
+    top: 100px;
     width: 970px;
     margin: 0 auto;
     padding-bottom: 150px;
