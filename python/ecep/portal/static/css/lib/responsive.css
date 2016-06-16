@@ -52,22 +52,21 @@
 
 /* -- Dumb Exception for Spanish Language Navbar Overflow issue -- */
 @media (min-width: 1250px) {
-    .navbar .navbar-left > a.brand-sm {
+    #searchbar-logo-small {
         display: none;
     }
 
-    .navbar .navbar-left > a.brand-lg {
+    #searchbar-logo-large {
         display: inline;
     }
 }
 
 @media (max-width: 1249px) {
-    .navbar .navbar-left > a.brand-sm {
+    #searchbar-logo-small {
         display: inline;
-        padding-right: 0;
     }
 
-    .navbar .navbar-left > a.brand-lg {
+    #searchbar-logo-large {
         display: none;
     }
 }
