@@ -135,14 +135,15 @@
     }
 
     .navbar .navbar-right {
-        width: 60%;
+        width: 73%;
     }
     .navbar .navbar-left {
-        width: 40%;
+        width: 27%;
     }
 
     .navbar .nav {
         margin: 10px 0;
+
     }
     .navbar .nav > li img {
         display: inline;
@@ -709,6 +710,10 @@
 
     .school-details {
         clear: both;
+    }
+
+    .navbar .nav {
+        padding: 0;
     }
 
 }
