@@ -48,6 +48,8 @@
     .navbar .nav > li.sm { display: none; }
     .navbar .nav > li.lg { display: inline; }
 
+    .nav-icon { display: none; }
+
 }
 
 /* -- Dumb Exception for Spanish Language Navbar Overflow issue -- */
@@ -146,13 +148,12 @@
         display: inline;
     }
 
-    .navbar .nav > li span {
-        display: none;
-    }
-
     .navbar .nav > li.sm { display: inline; }
     .navbar .nav > li.lg { display: none; }
- 
+    
+    .nav-icon { display: inline; }
+    .nav-text { display: none; }
+
     .results-right {
         visibility: hidden;
         top: 0;

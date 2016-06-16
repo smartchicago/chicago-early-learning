@@ -78,10 +78,19 @@
         <!-- Navbar RIGHT -->
         <div class="navbar-right">
           <ul class="nav">
-            <li><a href="{% url 'about' %}"><img src='{% static "img/icons/about.png" %}' alt="About" aria-hidden="true"><span>{% trans "About" %}</span></a></li>
-            <li><a href="{% url 'faq' %}"><img src='{% static "img/icons/faq.png" %}' alt="FAQ" aria-hidden="true"><span>{% trans "FAQ" %}</span></a></li>
+            
+            <!-- 
+            Apply icon designed by Blackwoodmedia.com.au, c/o the Noun Project.
+            Chicago icon designed by by Blaise Sewell, c/o the Noun Project.
+            --> 
+            <li><a href="{% url 'faq' %}"><span class="icomoon-apply nav-icon"></span><span class="nav-text">{% trans "Apply Now!" %}</span></a></li>
 
-            <li><a href="http://eepurl.com/X9ZPf"><img src='{% static "img/icons/email.png" %}' alt="Keep In Touch" aria-hidden="true"><span>{% trans "Keep In Touch" %}</span></a></li>
+            <li><a href="{% url 'families' %}"><span class="icomoon-families nav-icon"></span><span class="nav-text">{% trans "For Families" %}</span></a></li>
+
+            <li><a href="{% url 'faq' %}"><img src='{% static "img/icons/faq.png" %}' aria-hidden="true"><span class="nav-text">{% trans "FAQs" %}</span></a></li>
+
+            <li><a href="{% url 'city-resources' %}"><span class="icomoon-city nav-icon"></span><span class="nav-text">{% trans "City Resources" %}</span></a></li>
+
 
             {% if LANGUAGE_CODE == 'en' %}
             <li class="lg"><a href="{% url 'setlang' language=LANGUAGES.1.0 %}" data-lang="{{ LANGUAGES.1.0 }}">Español</a></li>

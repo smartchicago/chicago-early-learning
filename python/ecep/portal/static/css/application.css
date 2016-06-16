@@ -1,5 +1,59 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,700);
 
+@font-face {
+    font-family: 'icomoon';
+    src:    url('../font/icomoon/navicons.eot?s79khl');
+    src:    url('../font/icomoon/navicons.eot?s79khl#iefix') format('embedded-opentype'),
+        url('../font/icomoon/navicons.ttf?s79khl') format('truetype'),
+        url('../font/icomoon/navicons.woff?s79khl') format('woff'),
+        url('../font/icomoon/navicons.svg?s79khl#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icomoon-"], [class*=" icomoon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icomoon-apply:before {
+    content: "\e900";
+    color: white;
+    font-size: 45px;
+    line-height: 0;
+    position: relative;
+    top: 15px;
+}
+
+.icomoon-city:before {
+    content: "\e901";
+    color: white;
+    line-height: 0;
+    font-size: 40px;
+    position: relative;
+    top: 15px;
+}
+.icomoon-families:before {
+    content: "\e902";
+    color: white;
+    line-height: 0;
+    font-size: 25px;
+    position: relative;
+    top: 5px;
+}
+
+
+
 body {
   padding: 0;
   margin: 0;
@@ -163,6 +217,7 @@ a:focus {
     float: right;
     margin: 10px 0;
     font-size: 15px;
+    padding-right: 20px;
 }
 
 .navbar .nav img {
@@ -199,8 +254,14 @@ a:focus {
 }
 
 .navbar .ready-to-learn a {
-    color: #f6db68;
+    color: #F6DB68;
+    text-decoration: none;
     white-space: nowrap;
+}
+
+.navbar .ready-to-learn a:hover {
+    color: #DDC24F;
+    text-decoration: none;
 }
 
 .navbar .ready-to-learn span {
@@ -609,6 +670,38 @@ a:focus {
     width: 20%;
     display: inline-block;
 }
+
+.btn-apply {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #53C5EC;
+  *background-color: #53C5EC;
+  background-image: -moz-linear-gradient(top, #53C5EC, #498BB1);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, to(#498BB1), from(#53C5EC));
+  background-image: -webkit-linear-gradient(top, #53C5EC, #498BB1);
+  background-image: -o-linear-gradient(top, #53C5EC, #498BB1);
+  background-image: linear-gradient(to bottom, #53C5EC, #498BB1);
+  background-repeat: repeat-x;
+  border-color: #53C5EC #53C5EC #387038;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+
+.btn-apply:hover,
+.btn-apply:focus,
+.btn-apply:active,
+.btn-apply.active,
+.btn-apply.disabled,
+.btn-apply[disabled] {
+  color: #ffffff;
+  background-color: #53C5EC;
+  *background-color: #53C5EC;
+}
+
+.btn-apply:active,
+.btn-apply.active {
+  background-color: #408140 \9;
+}
+
 
 .address-line {
     margin:0;

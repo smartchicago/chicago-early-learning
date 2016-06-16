@@ -36,12 +36,10 @@ h1, h2, h3, h4 {
 }
 
 .jumbotron a {
-    color: #FFC;
-    border-bottom: 1px dotted #FFC;
+    color: #F6DB68;
 }
 .jumbotron a:hover {
-    color: #FF9;
-    border-bottom: 1px dotted #FF9;
+    color: #DDC24F;
     text-decoration: none;
 }
 
