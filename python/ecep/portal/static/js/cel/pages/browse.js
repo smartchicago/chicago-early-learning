@@ -44,7 +44,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             updateUrl = null,                   // Updates the url to reflect page state
             ajaxTimeoutId,
             spinnerDelayMillis = 500,
-            $locationWrapper;                   // Store div wrapper for results on left side
+            $locationWrapper,                   // Store div wrapper for results on left side
+            legend = L.control({position: 'bottomright'});
 
         // Initialize geojson for neighborhood layer
         neighborhoodLayer = L.geoJson(null, {
@@ -82,6 +83,13 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 }
                 isAutocompleteSet = false;
             }
+        };
+
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML += '<img src="/static/img/legend.png">'
+            return div;
         };
 
         /**
@@ -516,6 +524,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 map = new L.map('map').setView(state.point, zoom);   // Initialize Leaflet map
                 map.addLayer(mapboxTiles);
                 map.addLayer(popupLayer);
+
+                legend.addTo(map);
 
                 // draw marker for geolocated point
                 //      and open the map if on mobile
