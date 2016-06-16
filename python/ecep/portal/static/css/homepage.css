@@ -35,10 +35,12 @@ h1, h2, h3, h4 {
     background-size: cover;
 }
 
-.jumbotron a {
+.jumbotron a,
+.announcement-mobile a {
     color: #F6DB68;
 }
-.jumbotron a:hover {
+.jumbotron a:hover,
+.announcement-mobile a:hover {
     color: #DDC24F;
     text-decoration: none;
 }
@@ -181,7 +183,8 @@ input.homepage-search {
 
 
 /* Announcement */
-.announcement {
+.announcement,
+.announcement-mobile {
     color: white;
     background-color: rgba(66,65,66,0.6);
     padding: 10px;
@@ -189,9 +192,11 @@ input.homepage-search {
     margin-bottom: 20px;
 }
     
-.announcement strong { color: #ffd; }
+.announcement,
+.announcement-mobile strong { color: #ffd; }
 
-.announcement h3 {
+.announcement,
+.announcement-mobile h3 {
         font-size: 18px;
         line-height: 1.2em;
         margin-top: 0;
@@ -199,43 +204,11 @@ input.homepage-search {
         color: #ffd;
     }
 
-.announcement p {
+.announcement,
+.announcement-mobile p {
         margin-top: 5px;
         margin-bottom: 5px;
     }
-
-.announcement-mobile {
-    display: none;
-    background: #317DC1;
-    color: white;
-    padding: 10px;
-}
-
-.announcement-mobile h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 16px;
-        line-height: 1em;
-    }
-
-.announcement-mobile p {
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-.announcement-mobile a {
-        color: #ffd;
-        border-bottom: 1px dotted #ffd;
-    }
-
-.announcement-mobile a:hover {
-        text-decoration: none;
-        color: #ff9;
-        border-bottom: 1px solid #ff9;
-    }    
-
-.announcement-mobile h3,
-.announcement-mobile strong { color: #ffd; }
 
 .error-message {
     vertical-align: top;
