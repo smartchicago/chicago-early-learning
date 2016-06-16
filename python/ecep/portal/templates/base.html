@@ -65,10 +65,12 @@
         <!-- Navbar LEFT -->
         <div class="navbar-left">
 
-
-            <a class="brand" id="homepage-logo" href="{% url 'index' %}">
-                <img src='{% static "img/logos/logo-sm.png" %}' id="homepage-logo-small" class="logo-small" alt='CEL'>
-                <img src='{% static "img/logos/logo-text.png" %}' id="homepage-logo-text" class="logo-text" alt='CEL'>
+            <a class="brand" id="homepage-logo-small" href="{% url 'index' %}">
+                <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+            </a>
+            <a class="brand" id="homepage-logo-large" href="{% url 'index' %}">
+                <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+                <img src='{% static "img/logos/logo-text.png" %}' class="logo-text" alt='CEL'>
             </a>
 
         {% block searchform %}{% endblock %}

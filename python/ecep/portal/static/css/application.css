@@ -111,7 +111,8 @@ h1, h2, h3, h4 {
     height: 40px;
 }
 
-#homepage-logo {
+#homepage-logo-small,
+#homepage-logo-large {
     display: none;
 }
 
