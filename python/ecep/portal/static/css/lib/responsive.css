@@ -535,6 +535,7 @@
         width: auto;
         margin: 0;
     }
+
     .modal.fade.in {
         top: 20px;
     }
@@ -547,7 +548,7 @@
     }
 
     .navbar .ready-to-learn {
-        font-size: 13px;
+        font-size: 10px;
         line-height: 1.3em;
     }
 
