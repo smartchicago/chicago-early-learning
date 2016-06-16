@@ -194,6 +194,7 @@
     }
     .container-custom {
         width: auto;
+        margin: 0;
         padding: 25px;
         text-align: left;
     }

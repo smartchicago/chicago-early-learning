@@ -41,7 +41,7 @@ h1, h2, h3, h4 {
 }
 .jumbotron a:hover,
 .announcement-mobile a:hover {
-    color: #DDC24F;
+    color: #C3A835;
     text-decoration: none;
 }
 
@@ -183,8 +183,7 @@ input.homepage-search {
 
 
 /* Announcement */
-.announcement,
-.announcement-mobile {
+.announcement {
     color: white;
     background-color: rgba(66,65,66,0.6);
     padding: 10px;
@@ -192,11 +191,9 @@ input.homepage-search {
     margin-bottom: 20px;
 }
     
-.announcement,
-.announcement-mobile strong { color: #ffd; }
+.announcement strong { color: #ffd; }
 
-.announcement,
-.announcement-mobile h3 {
+.announcement h3 {
         font-size: 18px;
         line-height: 1.2em;
         margin-top: 0;
@@ -204,11 +201,24 @@ input.homepage-search {
         color: #ffd;
     }
 
-.announcement,
-.announcement-mobile p {
+.announcement p {
         margin-top: 5px;
         margin-bottom: 5px;
     }
+
+.announcement-mobile {
+    display: none;
+    background: #424142;
+    color: white;
+    font-weight: normal;
+    padding: 10px;
+}
+
+.announcement-mobile p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+ 
 
 .error-message {
     vertical-align: top;
