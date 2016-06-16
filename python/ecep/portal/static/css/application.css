@@ -106,15 +106,12 @@ h1, h2, h3, h4 {
     font-weight: 700;
 }
 
-.logo {
-    width: 40px;
+.logo-small,
+.logo-text {
     height: 40px;
-    padding-right: 15px;
-    min-width: 40px;
 }
 
-#homepage-logo-small,
-#homepage-logo-large {
+#homepage-logo {
     display: none;
 }
 
