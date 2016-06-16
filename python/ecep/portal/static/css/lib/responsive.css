@@ -133,10 +133,10 @@
     }
 
     .navbar .navbar-right {
-        width: 80%;
+        width: 60%;
     }
     .navbar .navbar-left {
-        width: 20%;
+        width: 40%;
     }
 
     .navbar .nav {
@@ -162,7 +162,7 @@
     }
 
     .browse-container {
-        top: 151px;
+        top: 150px;
     }
 
     #map {
