@@ -243,7 +243,7 @@
         width: auto;
         right: 57px;
         left: 93px;
-        top: 65px;
+        top: 68px;
         position: absolute;
         display: block;
         font-size: 13px;
@@ -588,7 +588,7 @@
         margin-bottom: 20px;
     }
 
-    .legend {
+    .legend img {
         display: none;
     }
 
