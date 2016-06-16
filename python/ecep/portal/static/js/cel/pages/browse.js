@@ -468,6 +468,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             neighborhoodLayer.clearLayers();
             neighborhoodLayer.addData(dm.neighborhoods.geojson);
             map.addLayer(neighborhoodLayer);
+            map.removeControl(legend);
             panHandler();
             exploreButton();
 
@@ -485,10 +486,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             if (currentLayer !== layerType.location) {
                 currentLayer = layerType.location;
                 popupLayer.clearLayers();
+                map.addControl(legend);
             }
 
             map.removeLayer(neighborhoodLayer);
             map.addLayer(locationLayer);
+            
             listResults(dm.locations, currentLayer);
 
             // set map to location/neighborhood if autocomplete requested it
@@ -524,8 +527,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 map = new L.map('map').setView(state.point, zoom);   // Initialize Leaflet map
                 map.addLayer(mapboxTiles);
                 map.addLayer(popupLayer);
-
-                legend.addTo(map);
 
                 // draw marker for geolocated point
                 //      and open the map if on mobile
