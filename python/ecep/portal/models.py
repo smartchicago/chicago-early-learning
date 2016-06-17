@@ -72,6 +72,16 @@ class Location(models.Model):
         (1, 'Application Site'),
     )
 
+    HIGH = 'High'
+    MEDIUM = 'Medium'
+    LOW = 'Low'
+
+    AVAILABILITY_CHOICES = (
+        (HIGH, ugettext_lazy('High')),
+        (MEDIUM, ugettext_lazy('Medium')),
+        (LOW, ugettext_lazy('Low')),
+    )    
+
     site_name = models.CharField('Site Name', max_length=100)
     site_type = models.IntegerField('Site Type', default=0, choices=LOCATION_TYPE_CHOICES)
     address = models.CharField('Address', max_length=75)
@@ -110,6 +120,10 @@ class Location(models.Model):
 
     # Keeps track of whether or not new locations have been approved by the admin
     accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
+
+    # ECM alottment status, classroom availability
+    availability = models.CharField(ugettext_lazy('Availability'), choices=AVAILABILITY_CHOICES, max_length=10, blank=True)
+
 
     # To get these placeholder fields to show up in the UI, replace
     # 'Placeholder 1' and 'Placeholder 2' in the lines below with

@@ -10,7 +10,7 @@ See LICENSE in the project root for copying permission
 {% load portal_extras %}
 
 {% block otherhead %}
-    <link href="{% static 'css/homepage.css' %}?v=2015030401" rel="stylesheet">
+    <link href="{% static 'css/homepage-one.css' %}?v=2015030401" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -19,28 +19,18 @@ See LICENSE in the project root for copying permission
       {% url 'faq' as faq_url %}
       <div class="container-custom">
         <div class="masthead-content">
-          <h1>{% blocktrans %}Find the right program for your child.{% endblocktrans %}</h1>
+          <h1 class="title">{% blocktrans %}Learn. Grow. Succeed!{% endblocktrans %}</h1>
 
 
           <div class="announcement">
 
+            <p>The City of Chicago’s Early Learning Portal is the place for families to learn, find and apply for high quality early learning programs across the city.</p>
 
-            <h3>Returning Soon:  Apply for Preschool Online!</h3>
-            <p>The Chicago Early Learning Preschool Application will be closed for one week while we notify parents who have applied. Check back June 20th to apply online and receive immediate notice of your placement.</p>
-            <p>Sign up with our <a href="http://eepurl.com/X9ZPf">Keep In Touch list</a> to receive email reminders and more upcoming events from Chicago Early Learning!</p>
-            <p>Questions? Refer to our <a href="{{ faq_url }}">FAQ guide</a> for more info.</p>
+            <p><a href="">Apply now for preschool!</a></p>
 
-            <!-- 
-            <h3>¡Inscríbase hoy!</h3>
-            <p>Las inscripciones para el pre-escolar del otoño 2016 ya están disponibles, <a href="https://apply.chicagoearlylearning.org/earlybird/#/" target="_blank">haga clic aquí</a> para inscribirse.</p>
-            <p>¿Preguntas? Refiérase a nuestra <a href="{{ faq_url }}">guía de preguntas y respuestas frecuentes</a> para así obtener más información.</p>
-            -->
-
-
+            <p>Questions? Browse our <a href="{{ faq_url }}">FAQ page</a> for more information.</p>
           
           </div>
-
-          <p class="description">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
 
         </div>
 
@@ -71,18 +61,15 @@ See LICENSE in the project root for copying permission
 
       <div class="announcement-mobile">
       {% if LANGUAGE_CODE == 'en' %}
-        <h3>Returning Soon:  Apply for Preschool Online!</h3>
-        <p>The Chicago Early Learning Preschool Application will be closed for one week while we notify parents who have applied. Check back June 20th to apply online and receive immediate notice of your placement.</p>
-        <p>Sign up with our <a href="http://eepurl.com/X9ZPf">Keep In Touch list</a> to receive email reminders and more upcoming events from Chicago Early Learning!</p>
+        <h3>Apply Today!</h3>
+        <p>Application for Fall 2016 preschool enrollment is now open, click <a href="https://apply.chicagoearlylearning.org/earlybird/#/" target="_blank">here</a> to apply.</p>
         <p>Questions? Refer to our <a href="{{ faq_url }}">FAQ guide</a> for more info.</p>
 
-      <!--
       {% elif LANGUAGE_CODE == 'es' %}
         <h3>¡Inscríbase hoy!</h3>
         <p>Las inscripciones para el pre-escolar del otoño 2016 ya están disponibles, <a href="https://apply.chicagoearlylearning.org/earlybird/#/" target="_blank">haga clic aquí</a> para inscribirse.</p>
         <p>¿Preguntas? Refiérase a nuestra <a href="{{ faq_url }}">guía de preguntas y respuestas frecuentes</a> para así obtener más información.</p>
       {% endif %}
-      -->
       </div>
 
       <p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
