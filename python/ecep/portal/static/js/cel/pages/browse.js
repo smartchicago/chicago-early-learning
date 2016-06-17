@@ -461,6 +461,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             // If not already displaying neighborhoods and zoomed out
             if (currentLayer !== layerType.neighborhood) {
                 currentLayer = layerType.neighborhood;
+                
+                if (typeof legend._map !== "undefined") {
+                    map.removeControl(legend);
+                }
             }
 
             listResults(dm.neighborhoods.data, currentLayer);
@@ -468,7 +472,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             neighborhoodLayer.clearLayers();
             neighborhoodLayer.addData(dm.neighborhoods.geojson);
             map.addLayer(neighborhoodLayer);
-            map.removeControl(legend);
             panHandler();
             exploreButton();
 
@@ -491,6 +494,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
             map.removeLayer(neighborhoodLayer);
             map.addLayer(locationLayer);
+            console.log(map.hasLayer(legend));
             
             listResults(dm.locations, currentLayer);
 
