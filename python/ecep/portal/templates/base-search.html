@@ -4,14 +4,18 @@
 {% load staticfiles %}
 {% load static %}
 
+<a class="brand" id="searchbar-logo-small" href="{% url 'index' %}">
+    <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+</a>
+
 {% if LANGUAGE_CODE == 'en' %}
-<a class="brand" id="homepage-logo-large" href="{% url 'index' %}">
+<a class="brand" id="searchbar-logo-large" href="{% url 'index' %}">
     <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
     <img src='{% static "img/logos/logo-en.png" %}' class="logo-text" alt='CEL'>
 </a>
 
 {% elif LANGUAGE_CODE == 'es' %}
-<a class="brand" id="homepage-logo-large" href="{% url 'index' %}">
+<a class="brand" id="searchbar-logo-large" href="{% url 'index' %}">
     <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
     <img src='{% static "img/logos/logo-es.png" %}' class="logo-text" alt='CEL'>
 </a>
