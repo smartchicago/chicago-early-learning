@@ -88,7 +88,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
         legend.onAdd = function (map) {
             var div = L.DomUtil.create('div', 'legend');
-            div.innerHTML += '<img src="/static/img/legend.png">'
+
+            div.innerHTML += '<img src="/static/img/legend_' + CEL.serverVars.language + '.png">';
             return div;
         };
 
