@@ -29,10 +29,10 @@
 .icomoon-apply:before {
     content: "\e900";
     color: white;
-    font-size: 45px;
+    font-size: 25px;
     line-height: 0;
     position: relative;
-    top: 15px;
+    top: 8px;
 }
 
 .icomoon-city:before {
