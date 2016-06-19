@@ -20,8 +20,12 @@
         </a>
       </ul>
     </div>
-
     <div class="school-details">
+      {{#if not_ecm}}
+      <div class="alert alert-block alert-not-ecm">
+        <p>Contact this site directly to apply.</p>
+      </div>
+      {{/if}}
       <hr>
       <!-- Description -->
       {{#if description.value }}

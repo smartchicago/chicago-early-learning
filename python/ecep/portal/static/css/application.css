@@ -1025,6 +1025,19 @@ a:focus {
     text-shadow: none;
 }
 
+.alert-not-ecm {
+    color: white;
+    background-color: #EA1F4C;
+    text-shadow: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.alert-not-ecm p {
+    font-size: 13px;
+}
+
+
 .svg-icon {
     width: 15px !important;
     margin-top: -3px;

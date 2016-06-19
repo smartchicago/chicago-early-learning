@@ -376,7 +376,6 @@ def location_details(location_id):
     return item.get_context_dict()
 
 
-@cache_control(must_revalidate=False, max_age=3600)
 def location_api(request, location_ids=None):
     """
     API endpoint for locations.
@@ -465,7 +464,6 @@ def location_json_api(request):
         location['category'] = 'Locations'
 
     return JsonResponse(loc_list, safe=False)
-
 
 
 def location_position(request, location_id):
@@ -602,6 +600,8 @@ def starred_location_api(request, location_ids=None):
         l['phone'] = location.phone
         l['url'] = location.url
         l['not_enrollment_site'] = not location.is_enrollment
+
+        l['not_ecm'] = (location.ecm_key == 0)
 
         # Description
         d = {}
