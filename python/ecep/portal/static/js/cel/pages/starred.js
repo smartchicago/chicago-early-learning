@@ -15,7 +15,14 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                 var template = Handlebars.compile(html),
                     container = $('.container-faves'),
                     $starred = $('<div></div>'),
+                    $alert = $('#alert-six'),
                     numLocations = data.locations.length;
+
+                if (numLocations > 6) {
+                    $alert.show();
+                } else {
+                    $alert.hide();
+                }
 
                 for (var i = 0; i < numLocations; i++) {
                     var loc = data.locations[i];

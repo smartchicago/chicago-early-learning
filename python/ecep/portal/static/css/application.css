@@ -1010,6 +1010,10 @@ a:focus {
     font-size: 16px;
 }
 
+#alert-six {
+    display: none;
+}
+
 .alert-six {
     color: white;
     background-color: #EA1F4C;
