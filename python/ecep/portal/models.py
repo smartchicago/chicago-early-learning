@@ -248,6 +248,11 @@ class Location(models.Model):
         if self.city.isupper():
             self.city = title(self.city)
 
+        if self.ecm_key == 0:
+            not_ecm = True
+        else:
+            not_ecm = False
+
         item = {
             'address': self.address,
             'city': self.city,
