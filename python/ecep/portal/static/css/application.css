@@ -1299,7 +1299,7 @@ a:focus {
 
 .explore-btn {
     color: #FFFFFF;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    text-shadow: none;
     background-color: #F06944;
     *background-color: #F06944;
     background-image: -moz-linear-gradient(top, #F06944, #F06944);
@@ -1318,7 +1318,7 @@ a:focus {
 .explore-btn.active,
 .explore-btn.disabled,
 .explore-btn[disabled] {
-    color: #FFFFFF;
+    color: #FFE8C3;
     background-color: #F06944;
     *background-color: #003bb3;
 }
