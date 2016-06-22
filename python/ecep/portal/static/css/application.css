@@ -1572,3 +1572,18 @@ a:focus {
 .required-field {
     font-weight: bold;
 }
+
+
+/* -- Footer -- */
+
+.footer {
+    font-size: 12px;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer li {
+    display: inline-block;
+}
