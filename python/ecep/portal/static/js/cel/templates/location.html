@@ -21,9 +21,9 @@
       </ul>
     </div>
     <div class="school-details">
-      {{#if not_ecm}}
+      {{#if ecm.value}}
       <div class="alert alert-block alert-not-ecm">
-        <p>Contact this site directly to apply.</p>
+        <p>{{ ecm.warning }}</p>
       </div>
       {{/if}}
       <hr>

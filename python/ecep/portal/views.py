@@ -603,7 +603,13 @@ def starred_location_api(request, location_ids=None):
         l['url'] = location.url
         l['not_enrollment_site'] = not location.is_enrollment
 
-        l['not_ecm'] = (location.ecm_key == 0)
+        # Is 
+        e = {}
+        ecm_warning_display = ugettext('Contact this site directly to apply.')
+        e['warning'] = ecm_warning_display
+        e['value'] = (location.ecm_key == 0)
+        l['ecm'] = e
+
 
         # Description
         d = {}
