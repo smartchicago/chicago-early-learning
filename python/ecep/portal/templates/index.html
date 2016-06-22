@@ -37,7 +37,7 @@ See LICENSE in the project root for copying permission
         <div class="search-wrapper">
           <div class="search">
             <div class="search-input">
-              <input class="homepage-search autocomplete-searchbox" type="text" placeholder="{% blocktrans %}Enter an address, community, or zip code{% endblocktrans %}">
+              <input class="homepage-search autocomplete-searchbox" type="text" placeholder="{% blocktrans %}Enter an address, center, or zip code{% endblocktrans %}">
               <button type="submit" id="search-main" class="btn btn-search-main autocomplete-submit">
                 <i class="icon-search"></i>
                 {% trans 'Search' %}
@@ -100,10 +100,11 @@ See LICENSE in the project root for copying permission
           <p><a href="{% url 'browse' %}">{% blocktrans %}Find and compare locations now{% endblocktrans %} &raquo;</a></p>
         </div>
 
+        {% url 'how-to-apply' as 'how_to_apply_url' %}
         <div class="bucket">
           <h2>{% blocktrans %}Apply Today{% endblocktrans %}</h2>
           <div class="bucket-img"><a href="https://apply.chicagoearlylearning.org"><img src="{% static 'img/apply.png' %}"></a></div>
-          <p>{% blocktrans %}Are you ready to apply for a preschool program for your 3- or 4-year old? Fill out an application online through your individual family portal today. Questions about the application and enrollment process or programs for younger children please read our <a href="{{ faq_url }}">FAQ</a> or call <a href="tel:3122291690">312-229-1690</a>.{% endblocktrans %}</p>
+          <p>{% blocktrans %}Are you ready to apply for a preschool program for your 3- or 4-year old? Click <a href="{{ how_to_apply_url }}">here</a> to learn more about the application and enrollment process or call <a href="tel:3122291690">312-229-1690</a>. Then fill out an application online through your individual family portal today. Questions about the application and enrollment process or programs for younger children please read our <a href="{{ faq_url }}">FAQ</a>.{% endblocktrans %}</p>
           <p><a href="https://apply.chicagoearlylearning.org">{% blocktrans %}Fill out an application online{% endblocktrans %} &raquo;</a></p>
         </div>
 
