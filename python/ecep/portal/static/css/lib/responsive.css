@@ -603,6 +603,10 @@
     .other-partner-logos li {
         width: 100%;
     }
+
+    .footer li {
+        width: 80%;
+    }
 }
 
 

@@ -53,6 +53,10 @@
 }
 
 
+html {
+    height: 100%;
+}
+
 
 body {
   padding: 0;
@@ -1578,12 +1582,25 @@ a:focus {
 
 .footer {
     font-size: 12px;
+    min-height: 100px;
+    background-color: #424142;
+    color: #FFF;
+    position: relative;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    text-align: center;
 }
 
 .footer ul {
     list-style: none;
+    margin: 0;
 }
 
 .footer li {
     display: inline-block;
+    width: 15%;
+    text-align: left;
+    vertical-align: top;
+    margin: 10px 10px;
 }
