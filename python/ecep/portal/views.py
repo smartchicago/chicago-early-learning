@@ -55,6 +55,8 @@ class Families(TemplateView):
 class CityResources(TemplateView):
     template_name = "city-resources.html"
 
+class HowToApply(TemplateView):
+    pass
 
 
 def browse(request):
