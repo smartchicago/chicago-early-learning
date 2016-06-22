@@ -1424,15 +1424,9 @@ a:focus {
     max-width: 18px;
 }
 
-.families-container {
-    position: relative;
-    top: 100px;
-    width: 970px;
-    margin: 0 auto;
-    padding-bottom: 150px;
-}
-
-.resources-container {
+.families-container,
+.resources-container,
+.enroll-container {
     position: relative;
     top: 100px;
     width: 970px;
