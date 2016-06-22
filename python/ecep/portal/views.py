@@ -56,7 +56,7 @@ class CityResources(TemplateView):
     template_name = "city-resources.html"
 
 class HowToApply(TemplateView):
-    pass
+    template_name = "how-to-apply.html"
 
 
 def browse(request):
