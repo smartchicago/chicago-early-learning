@@ -11,7 +11,9 @@
 
 {% block content %}
 <div class="resources-container">
-    <h1 id="resources-title">{% trans 'City Resources' %}</h1>
+    <div class="static-header" style="background-image: url({% static 'img/static-pages/resources-header.jpeg' %})">
+        <h1 id="resources-title">{% trans 'City Resources' %}</h1>
+    </div>
     <div class="resources-content">
 
         <p>The City of Chicago and Mayor Rahm Emanuel are committed to bringing access to high quality early learning opportunities to families throughout the city. In addition to great programs for children at schools and community agencies, there are a number of opportunities to start stimulating your child with early learning in other environments.</p>
@@ -72,7 +74,6 @@
             <p>{% blocktrans %}The foundation for early learning and a child’s success starts with maternal and infant health. The Chicago Department of Public Health’s neighborhood health clinics offer care for expectant mothers and wellness services for children. <a href="http://www.cityofchicago.org/city/en/depts/cdph.html">Contact the Chicago Department of Public Health for details.</a>{% endblocktrans %}</p>
           </div>
         </div>
-        <hr>
 
     </div>
 </div>
