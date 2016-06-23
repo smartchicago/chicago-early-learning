@@ -1591,7 +1591,6 @@ a:focus {
 .footer a {
     color: #F6DB68;
     text-decoration: none;
-    white-space: nowrap;
 }
 
 .footer a:hover {

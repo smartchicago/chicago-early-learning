@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-22 17:27-0500\n"
+"POT-Creation-Date: 2016-06-23 15:53-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -268,8 +268,8 @@ msgid "QRIS Rating"
 msgstr ""
 
 #: portal/models.py:376 portal/templates/browse.html:65
-#: portal/templates/browse.html.py:109 portal/templates/location.html:65
-#: portal/templates/starred.html:12 portal/templates/starred.html.py:21
+#: portal/templates/location.html:65 portal/templates/starred.html:12
+#: portal/templates/starred.html.py:21
 msgid "Compare and Apply"
 msgstr ""
 
@@ -359,9 +359,10 @@ msgstr ""
 #: portal/templates/contact.html:13 portal/templates/contact_thanks.html:13
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
-#: portal/templates/faq-models.html:9 portal/templates/location.html:12
-#: portal/templates/smsinfo.html:12 portal/templates/starred.html:12
-#: portal/templates/updates.html:5 templates/admin/base_site.html:15
+#: portal/templates/faq-models.html:9 portal/templates/how-to-apply.html:7
+#: portal/templates/location.html:12 portal/templates/smsinfo.html:12
+#: portal/templates/starred.html:12 portal/templates/updates.html:5
+#: templates/admin/base_site.html:15
 msgid "Chicago Early Learning"
 msgstr ""
 
@@ -460,11 +461,35 @@ msgid ""
 "For application information please call the Chicago Early Learning Hotline at"
 msgstr ""
 
-#: portal/templates/base.html:139
+#: portal/templates/base.html:142
+msgid "About the Chicago Early Learning Portal"
+msgstr ""
+
+#: portal/templates/base.html:143
+msgid "Built by"
+msgstr ""
+
+#: portal/templates/base.html:145
+msgid "Give us feeback"
+msgstr ""
+
+#: portal/templates/base.html:145
+msgid "to help make the Early Learning Portal better."
+msgstr ""
+
+#: portal/templates/base.html:146
+msgid "Keep in touch by signing up for the"
+msgstr ""
+
+#: portal/templates/base.html:146
+msgid "Early Learning Email Newsletter"
+msgstr ""
+
+#: portal/templates/base.html:156
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:142
+#: portal/templates/base.html:159
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -493,18 +518,6 @@ msgstr ""
 msgid "Community"
 msgstr ""
 
-#: portal/templates/browse.html:106
-msgid "Community based"
-msgstr ""
-
-#: portal/templates/browse.html:107
-msgid "CPS based"
-msgstr ""
-
-#: portal/templates/browse.html:108
-msgid "Nationally Accredited"
-msgstr ""
-
 #: portal/templates/contact.html:13 portal/templates/contact.html.py:22
 msgid "Contact"
 msgstr ""
@@ -530,7 +543,7 @@ msgid ""
 "should expect to hear back within 3 business days."
 msgstr ""
 
-#: portal/templates/enroll.html:10
+#: portal/templates/enroll.html:10 portal/templates/how-to-apply.html:14
 msgid "Enroll"
 msgstr ""
 
@@ -544,6 +557,10 @@ msgstr ""
 
 #: portal/templates/faq-models.html:28
 msgid "Frequently Asked Questions"
+msgstr ""
+
+#: portal/templates/how-to-apply.html:7
+msgid "How to Apply"
 msgstr ""
 
 #: portal/templates/index.html:23
@@ -606,13 +623,13 @@ msgstr ""
 #: portal/templates/index.html:107
 #, python-format
 msgid ""
-"Are you ready to apply for a preschool program for your 3- or 4-year old? "
-"Click <a href=\"%(how_to_apply_url)s\">here</a> to learn more about the "
+"Are you ready to apply for a preschool program for your 3- or 4-year old? <a "
+"href=\"%(how_to_apply_url)s\">Click here</a> to learn more about the "
 "application and enrollment process or call <a href="
 "\"tel:3122291690\">312-229-1690</a>. Then fill out an application online "
-"through your individual family portal today. Questions about the application "
-"and enrollment process or programs for younger children please read our <a "
-"href=\"%(faq_url)s\">FAQ</a>."
+"through your individual family portal today. Questions about programs for "
+"younger children (ages 0 - 3)? Please read our <a href=\"%(faq_url)s\">FAQ</"
+"a>."
 msgstr ""
 
 #: portal/templates/index.html:108
