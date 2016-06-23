@@ -11,9 +11,8 @@
 /* Portrait tablet to landscape and desktop --- */
 
 @media (min-width: 767px) and (max-width: 978px) {
-    body {
-        overflow: hidden;
-    }
+
+
     .results-left {
         width: 100%;
                 overflow: scroll;
