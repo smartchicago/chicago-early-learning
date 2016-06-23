@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-23 15:53-0500\n"
+"POT-Creation-Date: 2016-06-23 16:28-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -259,7 +259,7 @@ msgid "Directions"
 msgstr ""
 
 #: portal/models.py:376 portal/templates/location.html:54
-#: portal/templates/location.html.py:57 portal/templates/starred.html:47
+#: portal/templates/location.html.py:57 portal/templates/starred.html:46
 msgid "Share"
 msgstr ""
 
@@ -740,22 +740,22 @@ msgstr ""
 msgid "Press “Back to Search\" to add more locations you are interested in."
 msgstr ""
 
-#: portal/templates/starred.html:38
+#: portal/templates/starred.html:37
 msgid ""
-"Please select no more than <em>6</em> locations to continue to the "
-"application process. Compare your favorites below to pick the best options "
-"for your family."
+"Please select no more than 6 locations to continue to the application "
+"process. Compare your favorites below to pick the best options for your "
+"family."
 msgstr ""
 
-#: portal/templates/starred.html:42
+#: portal/templates/starred.html:41
 msgid "Apply"
 msgstr ""
 
-#: portal/templates/starred.html:50
+#: portal/templates/starred.html:49
 msgid "Clear Selections"
 msgstr ""
 
-#: portal/templates/starred.html:53
+#: portal/templates/starred.html:52
 msgid "Back to Search"
 msgstr ""
 

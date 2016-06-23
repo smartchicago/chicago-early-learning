@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-23 15:53-0500\n"
+"POT-Creation-Date: 2016-06-23 16:28-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,7 +266,7 @@ msgid "Directions"
 msgstr "Dirección"
 
 #: portal/models.py:376 portal/templates/location.html:54
-#: portal/templates/location.html.py:57 portal/templates/starred.html:47
+#: portal/templates/location.html.py:57 portal/templates/starred.html:46
 msgid "Share"
 msgstr "Compartir"
 
@@ -499,8 +499,7 @@ msgstr ""
 
 #: portal/templates/base.html:142
 msgid "About the Chicago Early Learning Portal"
-msgstr ""
-"Sobre del Chicago Early Learning Portal"
+msgstr "Sobre del Chicago Early Learning Portal"
 
 #: portal/templates/base.html:143
 msgid "Built by"
@@ -821,25 +820,25 @@ msgid "Press “Back to Search\" to add more locations you are interested in."
 msgstr ""
 "Haga clic “Regrese a Búsqueda\" para agregar más programas de interesa."
 
-#: portal/templates/starred.html:38
+#: portal/templates/starred.html:37
 msgid ""
-"Please select no more than <em>6</em> locations to continue to the "
-"application process. Compare your favorites below to pick the best options "
-"for your family."
+"Please select no more than 6 locations to continue to the application "
+"process. Compare your favorites below to pick the best options for your "
+"family."
 msgstr ""
-"Por favor escoja no más de <em>6</em> programas para continuar a la procesa "
+"Por favor escoja no más de 6 programas para continuar a la procesa "
 "de aplicaciones. Compare sus favoritos punto por punto para escoger la mejor "
 "opción para su familia."
 
-#: portal/templates/starred.html:42
+#: portal/templates/starred.html:41
 msgid "Apply"
 msgstr "Aplique"
 
-#: portal/templates/starred.html:50
+#: portal/templates/starred.html:49
 msgid "Clear Selections"
 msgstr "Borre Selecciones"
 
-#: portal/templates/starred.html:53
+#: portal/templates/starred.html:52
 msgid "Back to Search"
 msgstr "Regrese a Búsqueda"
 
