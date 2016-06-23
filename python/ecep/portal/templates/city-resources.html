@@ -13,27 +13,66 @@
 <div class="resources-container">
     <h1 id="resources-title">{% trans 'City Resources' %}</h1>
     <div class="resources-content">
-        
-        {% if LANGUAGE_CODE == 'en' %}
+
         <p>The City of Chicago and Mayor Rahm Emanuel are committed to bringing access to high quality early learning opportunities to families throughout the city. In addition to great programs for children at schools and community agencies, there are a number of opportunities to start stimulating your child with early learning in other environments.</p>
 
-        <h2 class="resources-subheader">Chicago Park District</h2>
-        <p>Many parks offer early childhood recreation classes— moms, pops, and tots interaction, play group, preschool, puppetry, storytelling, and Moms, Dads, & Tots Gymnastics. Early childhood participants develop and enhance their motor, listening and social skills through movement education programming. <a href="http://www.chicagoparkdistrict.com/">Visit the Chicago Park District website to find and sign up for a class near you.</a></p>
+        <hr>
 
-        <h2 class="resources-subheader">Chicago City of Learning</h2>
-        <p><a href="https://chicagocityoflearning.org/">Chicago City of Learning (CCOL)</a> is a groundbreaking initiative that joins together learning opportunities for young people in a way that allows them to think about, pursue, and develop their interests. CCOL partners to bring early childhood experiences to spaces during the summer to prepare children to enter kindergarten in the Fall. Visit CCOL to find opportunities near you.</p>
+        <div class="media">
+          <a class="pull-right" href="http://www.chicagoparkdistrict.com/">
+            <img src="{% static 'img/logos/park-district.png' %}" alt="Chicago Park District">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">{% trans "Chicago Park District" %}</h4>
+            <p>{% blocktrans %}Many parks offer early childhood recreation classes— moms, pops, and tots interaction, play group, preschool, puppetry, storytelling, and Moms, Dads, & Tots Gymnastics. Early childhood participants develop and enhance their motor, listening and social skills through movement education programming. <a href="http://www.chicagoparkdistrict.com/">Visit the Chicago Park District website to find and sign up for a class near you.</a>{% endblocktrans %}</p>
+          </div>
+        </div>
+        <hr>
 
-        <h2 class="resources-subheader">Chicago Public Library</h2>
-        <p>The <a href="http://www.chipublib.org/">Chicago Public Library (CPL)</a> has many enriching opportunities for children including early learning spaces at libraries and preschool reading hours. CPL also features mobile units that bring hands-on STEAM (science, technology, engineering, arts and math) learning activities for young children along with family literacy programming facilitated by librarians throughout the city. The CPL has three mobile units with these STEAM-based learning kits deployed throughout the city – one for each Library District. Contact CPL for details.</p>
+        <div class="media">
+          <a class="pull-right" href="https://chicagocityoflearning.org/">
+            <img src="{% static 'img/logos/city-of-learning.png' %}" alt="Chicago City of Learning">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">{% trans "Chicago City of Learning" %}</h4>
+            <p>{% blocktrans %}<a href="https://chicagocityoflearning.org/">Chicago City of Learning (CCOL)</a> is a groundbreaking initiative that joins together learning opportunities for young people in a way that allows them to think about, pursue, and develop their interests. CCOL partners to bring early childhood experiences to spaces during the summer to prepare children to enter kindergarten in the Fall. Visit CCOL to find opportunities near you.{% endblocktrans %}</p>
+          </div>
+        </div>
+        <hr>
 
-        <h2 class="resources-subheader">Tinkering Lab at the Chicago Children's Museum</h2>
-        <p>The <a href="http://www.chicagochildrensmuseum.org/">Chicago Children’s Museum</a> features a number of early learning spaces for children to support the development of communities where play and learning connect. One permanent exhibit, The Tinkering Lab, features an early learning nook of safe interactive objects and touchable tools. The Children’s Museum also partners to bring early learning and engagement spaces to other places in the city. Contact the Chicago Children’s Museum for details.</p>
+        <div class="media">
+          <a class="pull-right" href="http://www.chipublib.org/">
+            <img src="{% static 'img/logos/cpl.png' %}" alt="Chicago Public Library">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">{% trans "Chicago Public Library" %}</h4>
+            <p>{% blocktrans %}The <a href="http://www.chipublib.org/">Chicago Public Library (CPL)</a> has many enriching opportunities for children including early learning spaces at libraries and preschool reading hours. CPL also features mobile units that bring hands-on STEAM (science, technology, engineering, arts and math) learning activities for young children along with family literacy programming facilitated by librarians throughout the city. The CPL has three mobile units with these STEAM-based learning kits deployed throughout the city – one for each Library District. Contact CPL for details.{% endblocktrans %}</p>
+          </div>
+        </div>
+        <hr>
 
-        <h2 class="resources-subheader">Chicago Department of Public Health</h2>
-        <p>The foundation for early learning and a child’s success starts with maternal and infant health. The Chicago Department of Public Health’s neighborhood health clinics offer care for expectant mothers and wellness services for children. <a href="http://www.cityofchicago.org/city/en/depts/cdph.html">Contact the Chicago Department of Public Health for details.</a></p>
 
-        {% elif LANGUAGE_CODE == 'es' %}
-        {% endif %}
+        <div class="media">
+          <a class="pull-right" href="http://www.chicagochildrensmuseum.org/">
+            <img src="{% static 'img/logos/childrens-museum.jpg' %}" alt="Chicago Children's Museum">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">{% trans "Chicago Children's Museum" %}</h4>
+            <p>{% blocktrans %}The <a href="http://www.chicagochildrensmuseum.org/">Chicago Children’s Museum</a> features a number of early learning spaces for children to support the development of communities where play and learning connect. One permanent exhibit, The Tinkering Lab, features an early learning nook of safe interactive objects and touchable tools. The Children’s Museum also partners to bring early learning and engagement spaces to other places in the city. Contact the Chicago Children’s Museum for details.{% endblocktrans %}</p>
+          </div>
+        </div>
+        <hr>
+
+        <div class="media">
+          <a class="pull-right" href="http://www.cityofchicago.org/city/en/depts/cdph.html">
+            <img src="{% static 'img/logos/healthy-chicago.png' %}" alt="Chicago Department of Public Health">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">{% trans "Chicago Department of Public Health" %}</h4>
+            <p>{% blocktrans %}The foundation for early learning and a child’s success starts with maternal and infant health. The Chicago Department of Public Health’s neighborhood health clinics offer care for expectant mothers and wellness services for children. <a href="http://www.cityofchicago.org/city/en/depts/cdph.html">Contact the Chicago Department of Public Health for details.</a>{% endblocktrans %}</p>
+          </div>
+        </div>
+        <hr>
 
     </div>
 </div>

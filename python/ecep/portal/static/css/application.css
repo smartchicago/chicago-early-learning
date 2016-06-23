@@ -1436,6 +1436,11 @@ a:focus {
     padding-bottom: 125px;
 }
 
+.resources-container img {
+    max-height: 125px;
+    max-width: 150px;
+}
+
 
 
 
