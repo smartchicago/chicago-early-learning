@@ -455,7 +455,7 @@ msgstr "Otras Características"
 
 #: portal/templates/base-search.html:28
 msgid "Enter an address"
-msgstr "Para comenzar, ingrese su dirección"
+msgstr "Ingrese su dirección"
 
 #: portal/templates/base-search.html:30
 msgid "Click to use your current location"
