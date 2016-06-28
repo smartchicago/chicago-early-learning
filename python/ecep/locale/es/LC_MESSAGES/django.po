@@ -499,7 +499,7 @@ msgstr ""
 
 #: portal/templates/base.html:142
 msgid "About the Chicago Early Learning Portal"
-msgstr "Sobre del Chicago Early Learning Portal"
+msgstr "Sobre del portal del Chicago Educacíon Temprana"
 
 #: portal/templates/base.html:143
 msgid "Built by"
@@ -511,15 +511,15 @@ msgstr "Opine"
 
 #: portal/templates/base.html:145
 msgid "to help make the Early Learning Portal better."
-msgstr "para mejorar el Early Learning Portal."
+msgstr "para mejorar el portal del Chicago Educacíon Temprana."
 
 #: portal/templates/base.html:146
 msgid "Keep in touch by signing up for the"
-msgstr "Manténgase en contacto por subscribiendo a nuestro"
+msgstr "Subscriba a nuestro"
 
 #: portal/templates/base.html:146
 msgid "Early Learning Email Newsletter"
-msgstr "Early Learning Boletín de Correo Electronico"
+msgstr "boletín informativo de Chicago Educación Temprana"
 
 #: portal/templates/base.html:156
 msgid "Save and Share Permalink"
