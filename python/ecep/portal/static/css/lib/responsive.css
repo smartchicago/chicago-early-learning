@@ -225,6 +225,7 @@
     }
     .media-body p {
         font-size: 14px;
+
     }
 
     #desktop-search {
@@ -449,6 +450,11 @@
         display: none;
     }
 
+    .logos-container {
+        padding: 25px;
+    }
+
+
     .about-content {
         text-align: center;
     }
@@ -462,11 +468,21 @@
     }
     .about-content img {
         max-width: 200px;
-        padding-bottom: 25px;
+        max-height: 200px;
+        width: auto;
+        height: auto;
         padding-right: 0 !important;
     }
     #about-title {
         padding-left: 0;
+    }
+
+    .media-body {
+        width: 100%;
+    }
+
+    .media-image {
+        width: 100%;
     }
 
     .fullwidth {
@@ -538,8 +554,10 @@
     }
 
     .resources-container img {
-        max-height: 75px;
-        max-width: 150px;
+        max-height: 150px;
+        max-width: 200px;
+        height: auto;
+        width: auto;
     }
 
     .static-header {
@@ -633,6 +651,10 @@
 
     .other-partner-logos li {
         width: 100%;
+    }
+
+    .other-partner-logos img {
+        padding-bottom: 20px;
     }
 
     .footer li {

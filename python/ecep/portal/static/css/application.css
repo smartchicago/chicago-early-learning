@@ -817,12 +817,8 @@ a:focus {
     display: inline-block;
 }
 
-.logos-container {
-    padding: 35px;
-}
 
 #about-title {
-    padding-left: 35px;
     margin-top: 140px;
 }
 
@@ -1110,13 +1106,6 @@ a:focus {
     overflow-y: scroll;
     bottom: 0;
     width: 100%;
-}
-
-
-.about-content p {
-    text-align: justify;
-    padding-right: 40px;
-    max-width: 510px;
 }
 
 .other-partners {
@@ -1449,7 +1438,8 @@ a:focus {
     padding-top: 30px; 
 }
 
-.resources-container img {
+.resources-container img,
+.logos-container img {
     max-height: 125px;
     max-width: 150px;
 }
