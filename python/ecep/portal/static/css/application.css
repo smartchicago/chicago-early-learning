@@ -805,9 +805,16 @@ a:focus {
 
 /* Partners ------------------------ */
 
-.media img {
-    padding-right: 35px;
-    max-width: 300px;
+.media-image {
+    width: 24%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+}
+
+.media-body {
+    width: 75%;
+    display: inline-block;
 }
 
 .logos-container {
