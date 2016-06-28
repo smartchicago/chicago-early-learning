@@ -459,6 +459,7 @@ a:focus {
 }
 
 .accordion-heading img {
+    height: 14px;
     float: left;
     padding-left: 6px;
     margin-bottom: 2px;
