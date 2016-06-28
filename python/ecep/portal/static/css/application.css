@@ -1464,7 +1464,8 @@ a:focus {
     margin-left: 50px;
 }
 
-#families-header {
+#families-header,
+#families-break {
     background-position: 50% 25%;
 }
 
