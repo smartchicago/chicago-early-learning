@@ -1615,7 +1615,6 @@ a:focus {
     right: 0;
     left: 0;
     bottom: 0;
-    text-align: center;
 }
 
 .footer a {
@@ -1630,12 +1629,13 @@ a:focus {
 
 .footer ul {
     list-style: none;
-    margin: 0;
+    margin: auto;
+    width: 990px;
 }
 
 .footer li {
     display: inline-block;
-    width: 20%;
+    width: 307px;
     text-align: left;
     vertical-align: top;
     margin: 10px 10px;
