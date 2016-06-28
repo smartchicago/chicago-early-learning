@@ -11,7 +11,9 @@
 
 {% block content %}
 <div class="families-container">
-    <h1 id="families-title">{% trans 'Parent Information' %}</h1>
+    <div class="static-header" id="families-header" style="background-image: url({% static 'img/static-pages/families-header-1.jpg' %})">
+        <h1 id="resources-title">{% trans 'Parent Information' %}</h1>
+    </div>
     <div class="families-content">
         
         {% if LANGUAGE_CODE == 'en' %}
