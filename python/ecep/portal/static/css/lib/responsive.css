@@ -657,6 +657,10 @@
         padding-bottom: 20px;
     }
 
+    .footer ul {
+        width: 100%;
+    }
+
     .footer li {
         width: 80%;
     }
