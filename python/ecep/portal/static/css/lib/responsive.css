@@ -537,6 +537,27 @@
 
     }
 
+    .resources-container img {
+        max-height: 75px;
+        max-width: 150px;
+    }
+
+    .static-header {
+        width: 100%;
+        height: 200px;
+        max-width: none;
+        max-height: none;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .static-header h1 {
+        padding-top: 100px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
 }
 
 @media (max-width: 767px) {
