@@ -11,7 +11,9 @@
 
 {% block content %}
 <div class="enroll-container">
-    <h1 id="enroll-title">{% trans 'Enroll' %}</h1>
+    <div class="static-header" id="apply-header" style="background-image: url({% static 'img/static-pages/apply-header.jpeg' %})">
+        <h1 id="apply-title">{% trans 'Enroll' %}</h1>
+    </div>
     <div class="enroll-content">
         
         {% if LANGUAGE_CODE == 'en' %}
