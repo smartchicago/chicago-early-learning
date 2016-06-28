@@ -468,7 +468,7 @@
     }
     .about-content img {
         max-width: 200px;
-        max-height: 200px;
+        max-height: 125px;
         width: auto;
         height: auto;
         padding-right: 0 !important;
@@ -554,7 +554,7 @@
     }
 
     .resources-container img {
-        max-height: 150px;
+        max-height: 125px;
         max-width: 200px;
         height: auto;
         width: auto;
