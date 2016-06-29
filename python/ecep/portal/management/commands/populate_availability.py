@@ -23,7 +23,10 @@ class Command(BaseCommand):
                     key = row['Key']
                     l = Location.objects.get(ecm_key=key)
                     l.availability = row['Availability']
+
                     l.save()
+                    print l.ecm_key
+                    print l.site_name
                     print l.availability
                     print ''
 
