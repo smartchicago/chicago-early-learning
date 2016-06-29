@@ -22,5 +22,12 @@ class Command(BaseCommand):
                 try:
                     key = row['Key']
                     l = Location.objects.get(ecm_key=key)
-                    print l.site_name
+                    l.availability = row['Availability']
+                    l.save()
+                    print l.availability
+                    print ''
+
+                except:
+
+                    print 'Uh oh!'
 
