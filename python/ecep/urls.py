@@ -60,7 +60,7 @@ urlpatterns = patterns(
     ),
 
     # Enroll
-    url(r'enroll/?$', 'portal.views.faq', name='enroll-faq'),
+    url(r'enroll/?$', portal_views.HowToApply.as_view(), name='enroll-faq'),
     #url(r'enroll/plan/(?P<pk>\d+)/$', portal_views.enroll_plan, name='enroll-plan'),
 
     # Location Views
