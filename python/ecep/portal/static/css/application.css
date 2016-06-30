@@ -1433,6 +1433,12 @@ a:focus {
     padding-bottom: 125px;
 }
 
+.families-container p,
+.resources-container p,
+.enroll-container p {
+    word-break: break-word;
+}
+
 .families-content,
 .resources-content,
 .enroll-content {
