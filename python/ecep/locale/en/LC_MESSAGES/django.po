@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 15:43-0500\n"
+"POT-Creation-Date: 2016-06-30 16:46-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -123,7 +123,7 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: portal/models.py:94 portal/models.py:362 portal/templates/location.html:157
+#: portal/models.py:94 portal/models.py:362 portal/templates/location.html:167
 msgid "Quality Rating"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Enrollment Process"
 msgstr ""
 
-#: portal/models.py:98 portal/templates/location.html:151
+#: portal/models.py:98 portal/templates/location.html:161
 msgid "Accreditation"
 msgstr ""
 
@@ -159,22 +159,22 @@ msgid "Ages 3 - 5"
 msgstr ""
 
 #: portal/models.py:102 portal/models.py:385
-#: portal/templates/location.html:108 portal/templates/location.html.py:110
+#: portal/templates/location.html:118 portal/templates/location.html.py:120
 msgid "Full Day"
 msgstr ""
 
 #: portal/models.py:103 portal/models.py:385
-#: portal/templates/location.html:108 portal/templates/location.html.py:112
+#: portal/templates/location.html:118 portal/templates/location.html.py:122
 msgid "Part Day"
 msgstr ""
 
-#: portal/models.py:104 portal/templates/location.html:116
-#: portal/templates/location.html.py:120
+#: portal/models.py:104 portal/templates/location.html:126
+#: portal/templates/location.html.py:130
 msgid "School Year"
 msgstr ""
 
-#: portal/models.py:105 portal/templates/location.html:116
-#: portal/templates/location.html.py:118
+#: portal/models.py:105 portal/templates/location.html:126
+#: portal/templates/location.html.py:128
 msgid "Full Year"
 msgstr ""
 
@@ -190,15 +190,15 @@ msgstr ""
 msgid "Part Week"
 msgstr ""
 
-#: portal/models.py:112 portal/templates/location.html:128
+#: portal/models.py:112 portal/templates/location.html:138
 msgid "Community Based"
 msgstr ""
 
-#: portal/models.py:113 portal/templates/location.html:127
+#: portal/models.py:113 portal/templates/location.html:137
 msgid "CPS Based"
 msgstr ""
 
-#: portal/models.py:114 portal/templates/location.html:132
+#: portal/models.py:114 portal/templates/location.html:142
 msgid "Offers Home Visiting"
 msgstr ""
 
@@ -206,11 +206,11 @@ msgstr ""
 msgid "Accepts CCAP"
 msgstr ""
 
-#: portal/models.py:116 portal/templates/location.html:129
+#: portal/models.py:116 portal/templates/location.html:139
 msgid "Head Start"
 msgstr ""
 
-#: portal/models.py:117 portal/templates/location.html:130
+#: portal/models.py:117 portal/templates/location.html:140
 msgid "Early Head Start"
 msgstr ""
 
@@ -230,7 +230,7 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-#: portal/models.py:326 portal/templates/location.html:126 portal/views.py:678
+#: portal/models.py:326 portal/templates/location.html:136 portal/views.py:678
 msgid "Program Information"
 msgstr ""
 
@@ -238,11 +238,11 @@ msgstr ""
 msgid "Languages"
 msgstr ""
 
-#: portal/models.py:340 portal/templates/location.html:105
+#: portal/models.py:340 portal/templates/location.html:115
 msgid "No Hours Listed"
 msgstr ""
 
-#: portal/models.py:343 portal/templates/location.html:104 portal/views.py:640
+#: portal/models.py:343 portal/templates/location.html:114 portal/views.py:640
 msgid "Duration and Hours"
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Click to remove from your list"
 msgstr ""
 
-#: portal/models.py:397 portal/templates/location.html:145 portal/views.py:731
+#: portal/models.py:397 portal/templates/location.html:155 portal/views.py:731
 msgid "Other Features"
 msgstr ""
 
@@ -735,36 +735,44 @@ msgid ""
 msgstr ""
 
 #: portal/templates/location.html:90
-#, python-format
 msgid ""
 "If your child is 3 or 4 years old prior to September 1, 2016, your child "
-"will be eligible for preschool programs. <b>Click <a href=\"%(ecm_url)s\" "
-"target=\"_blank\">here</a> to fill out an application for two preferred "
-"sites or call the Chicago Early Learning Hotline at <a href=\"%(rtl_url)s\">"
-"(312) 229-1690</a> for assistance.</b></em>"
+"will be eligible for preschool programs."
 msgstr ""
 
-#: portal/templates/location.html:98 portal/views.py:752
+#: portal/templates/location.html:93
+#, python-format
+msgid ""
+"<b>Click <a href=\"%(ecm_url)s\" target=\"_blank\">here</a> to fill out an "
+"application for two preferred sites or call the Chicago Early Learning "
+"Hotline at <a href=\"%(rtl_url)s\">(312) 229-1690</a> for assistance."
+msgstr ""
+
+#: portal/templates/location.html:96 portal/views.py:608
+msgid "Contact this site directly to apply."
+msgstr ""
+
+#: portal/templates/location.html:108 portal/views.py:752
 msgid "Seats Available"
 msgstr ""
 
-#: portal/templates/location.html:133
+#: portal/templates/location.html:143
 msgid ""
 "If you are interested in enrolling your child in this home visiting program "
 "please contact this site directly."
 msgstr ""
 
-#: portal/templates/location.html:139 portal/views.py:724
+#: portal/templates/location.html:149 portal/views.py:724
 msgid "Languages (other than English)"
 msgstr ""
 
-#: portal/templates/location.html:162
+#: portal/templates/location.html:172
 msgid ""
 "Are you a <b>provider</b> who works at this early learning center and needs "
 "to make changes to information on this page?"
 msgstr ""
 
-#: portal/templates/location.html:162
+#: portal/templates/location.html:172
 msgid "Click here!"
 msgstr ""
 
@@ -871,10 +879,6 @@ msgstr ""
 
 #: portal/views.py:523
 msgid "Click to see locations in this neighborhood"
-msgstr ""
-
-#: portal/views.py:608
-msgid "Contact this site directly to apply."
 msgstr ""
 
 #: settings.py:46
