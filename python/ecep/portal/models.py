@@ -232,6 +232,13 @@ class Location(models.Model):
         ftype = field.get_internal_type()
         return ((ftype == 'CharField' or ftype == 'TextField'))
 
+    def get_ecm_url(self):
+
+        if self.ecm_key == 0:
+            return ''
+        else:
+            return 'https://apply.chicagoearlylearning.org/CEL035.Enginuity.Web.v6?cartid={}'.format(str(self.ecm_key))
+
     def get_context_dict(self, short=False):
         """Gets a context dictionary for rendering this object in templates
 
