@@ -43,6 +43,11 @@
         <hr>
       {{/if}}
 
+      {{#if availability.value }}
+        <h1>{{ availability.display }}</h1>
+        <p>{{ availability.value }}</p>
+        <hr>
+      {{/if}}
 
       <!-- Duration and Hours -->
       {{#if not_enrollment_site }}
