@@ -686,7 +686,7 @@ msgstr ""
 
 #: portal/templates/index.html:23
 msgid "Learn. Grow. Succeed!"
-msgstr ""
+msgstr "Aprender. Crecer. ¡Triunfar!"
 
 #: portal/templates/index.html:27
 msgid ""
