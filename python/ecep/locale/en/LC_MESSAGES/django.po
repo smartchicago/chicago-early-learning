@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-23 16:28-0500\n"
+"POT-Creation-Date: 2016-06-30 11:37-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -178,7 +178,7 @@ msgstr ""
 msgid "Full Year"
 msgstr ""
 
-#: portal/models.py:106 portal/templates/location.html:81 portal/views.py:622
+#: portal/models.py:106 portal/templates/location.html:81 portal/views.py:623
 msgid "Ages Served"
 msgstr ""
 
@@ -230,7 +230,7 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-#: portal/models.py:319 portal/templates/location.html:118 portal/views.py:677
+#: portal/models.py:319 portal/templates/location.html:118 portal/views.py:678
 msgid "Program Information"
 msgstr ""
 
@@ -242,7 +242,7 @@ msgstr ""
 msgid "No Hours Listed"
 msgstr ""
 
-#: portal/models.py:336 portal/templates/location.html:96 portal/views.py:639
+#: portal/models.py:336 portal/templates/location.html:96 portal/views.py:640
 msgid "Duration and Hours"
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Click to remove from your list"
 msgstr ""
 
-#: portal/models.py:390 portal/templates/location.html:137 portal/views.py:730
+#: portal/models.py:390 portal/templates/location.html:137 portal/views.py:731
 msgid "Other Features"
 msgstr ""
 
@@ -366,11 +366,11 @@ msgstr ""
 msgid "Chicago Early Learning"
 msgstr ""
 
-#: portal/templates/about.html:27
+#: portal/templates/about.html:24
 msgid "City of Chicago"
 msgstr ""
 
-#: portal/templates/about.html:28
+#: portal/templates/about.html:25
 msgid ""
 "Mayor Emanuel and the City of Chicago have made a firm commitment to "
 "providing children across the city with access to high-quality education, "
@@ -382,22 +382,22 @@ msgid ""
 "for their children and families."
 msgstr ""
 
-#: portal/templates/about.html:38
+#: portal/templates/about.html:35
 msgid "Chicago Public Schools"
 msgstr ""
 
-#: portal/templates/about.html:39
+#: portal/templates/about.html:36
 msgid ""
 "Chicago Public Schools works to ensure that every student in every community "
 "has access to a high quality education that prepares them for success in "
 "college and career."
 msgstr ""
 
-#: portal/templates/about.html:49
+#: portal/templates/about.html:47
 msgid "Chicago Department of Family and Support Services"
 msgstr ""
 
-#: portal/templates/about.html:50
+#: portal/templates/about.html:48
 msgid ""
 "The Chicago Department of Family and Support Services (DFSS) is dedicated to "
 "supporting a continuum of coordinated services to enhance the lives of "
@@ -405,11 +405,11 @@ msgid ""
 "senior years."
 msgstr ""
 
-#: portal/templates/about.html:60
+#: portal/templates/about.html:58
 msgid "Smart Chicago Collaborative"
 msgstr ""
 
-#: portal/templates/about.html:61
+#: portal/templates/about.html:59
 msgid ""
 "The Smart Chicago Collaborative is a civic organization devoted to using "
 "technology to make lives better in Chicago. We work to apply the "
@@ -417,7 +417,7 @@ msgid ""
 "Chicago."
 msgstr ""
 
-#: portal/templates/about.html:66
+#: portal/templates/about.html:67
 msgid "Other Partners"
 msgstr ""
 
@@ -448,7 +448,7 @@ msgid "For Families"
 msgstr ""
 
 #: portal/templates/base.html:100 portal/templates/city-resources.html:7
-#: portal/templates/city-resources.html:14
+#: portal/templates/city-resources.html:15
 msgid "City Resources"
 msgstr ""
 
@@ -470,11 +470,11 @@ msgid "Built by"
 msgstr ""
 
 #: portal/templates/base.html:145
-msgid "Give us feeback"
+msgid "Give us feedback"
 msgstr ""
 
 #: portal/templates/base.html:145
-msgid "to help make the Early Learning Portal better."
+msgid "to help make the Chicago Early Learning Portal better."
 msgstr ""
 
 #: portal/templates/base.html:146
@@ -518,6 +518,79 @@ msgstr ""
 msgid "Community"
 msgstr ""
 
+#: portal/templates/city-resources.html:25
+msgid "Chicago Park District"
+msgstr ""
+
+#: portal/templates/city-resources.html:26
+msgid ""
+"Many parks offer early childhood recreation classes— moms, pops, and tots "
+"interaction, play group, preschool, puppetry, storytelling, and Moms, Dads, "
+"& Tots Gymnastics. Early childhood participants develop and enhance their "
+"motor, listening and social skills through movement education programming. "
+"<a href=\"http://www.chicagoparkdistrict.com/\">Visit the Chicago Park "
+"District</a> to find and sign up for a class near you."
+msgstr ""
+
+#: portal/templates/city-resources.html:36
+msgid "Chicago City of Learning"
+msgstr ""
+
+#: portal/templates/city-resources.html:37
+msgid ""
+"Chicago City of Learning (CCOL) is a groundbreaking initiative that joins "
+"together learning opportunities for young people in a way that allows them "
+"to think about, pursue, and develop their interests. CCOL partners to bring "
+"early childhood experiences to spaces during the summer to prepare children "
+"to enter kindergarten in the Fall. <a href=\"https://chicagocityoflearning."
+"org/\">Visit CCOL</a> to find opportunities near you."
+msgstr ""
+
+#: portal/templates/city-resources.html:47
+msgid "Chicago Public Library"
+msgstr ""
+
+#: portal/templates/city-resources.html:48
+msgid ""
+"The Chicago Public Library (CPL) has many enriching opportunities for "
+"children including early learning spaces at libraries and preschool reading "
+"hours. CPL also features mobile units that bring hands-on STEAM (science, "
+"technology, engineering, arts and math) learning activities for young "
+"children along with family literacy programming facilitated by librarians "
+"throughout the city. The CPL has three mobile units with these STEAM-based "
+"learning kits deployed throughout the city – one for each Library District. "
+"<a href=\"http://www.chipublib.org/\">Contact CPL</a> for details."
+msgstr ""
+
+#: portal/templates/city-resources.html:59
+msgid "Chicago Children's Museum"
+msgstr ""
+
+#: portal/templates/city-resources.html:60
+msgid ""
+"The Chicago Children’s Museum features a number of early learning spaces for "
+"children to support the development of communities where play and learning "
+"connect. One permanent exhibit, The Tinkering Lab, features an early "
+"learning nook of safe interactive objects and touchable tools. The "
+"Children’s Museum also partners to bring early learning and engagement "
+"spaces to other places in the city. <a href=\"http://www."
+"chicagochildrensmuseum.org/\">Contact the Chicago Children’s Museum</a> for "
+"details."
+msgstr ""
+
+#: portal/templates/city-resources.html:70
+msgid "Chicago Department of Public Health"
+msgstr ""
+
+#: portal/templates/city-resources.html:71
+msgid ""
+"The foundation for early learning and a child’s success starts with maternal "
+"and infant health. The Chicago Department of Public Health’s neighborhood "
+"health clinics offer care for expectant mothers and wellness services for "
+"children. <a href=\"http://www.cityofchicago.org/city/en/depts/cdph.html"
+"\">Contact the Chicago Department of Public Health</a> for details."
+msgstr ""
+
 #: portal/templates/contact.html:13 portal/templates/contact.html.py:22
 msgid "Contact"
 msgstr ""
@@ -543,11 +616,11 @@ msgid ""
 "should expect to hear back within 3 business days."
 msgstr ""
 
-#: portal/templates/enroll.html:10 portal/templates/how-to-apply.html:14
+#: portal/templates/enroll.html:10 portal/templates/how-to-apply.html:15
 msgid "Enroll"
 msgstr ""
 
-#: portal/templates/families.html:14
+#: portal/templates/families.html:15
 msgid "Parent Information"
 msgstr ""
 
@@ -565,6 +638,24 @@ msgstr ""
 
 #: portal/templates/index.html:23
 msgid "Learn. Grow. Succeed!"
+msgstr ""
+
+#: portal/templates/index.html:27
+msgid ""
+"The City of Chicago’s Early Learning Portal is the place for families to "
+"learn, find and apply for high quality early learning programs across the "
+"city."
+msgstr ""
+
+#: portal/templates/index.html:29
+msgid "Apply now for preschool!"
+msgstr ""
+
+#: portal/templates/index.html:31
+#, python-format
+msgid ""
+"Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
+"information."
 msgstr ""
 
 #: portal/templates/index.html:40
@@ -660,7 +751,7 @@ msgid ""
 "please contact this site directly."
 msgstr ""
 
-#: portal/templates/location.html:131 portal/views.py:723
+#: portal/templates/location.html:131 portal/views.py:724
 msgid "Languages (other than English)"
 msgstr ""
 
