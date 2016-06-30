@@ -92,6 +92,12 @@ See LICENSE in the project root for copying permission
           <hr>
         {% endif %}
 
+        {% if location.availability %}
+          <h1>{% trans 'Seats Available' %}</h1>
+          <p><span class="availability-{{ location.availability|lower }}">{{ location.get_availability_display }}</span></p>
+          <hr>
+        {% endif %}
+
         {% if not loc.item.is_enrollment %}
           <h1>{% trans 'Duration and Hours' %}</h1>
             {% if location.prg_hours %}<p>{{ location.prg_hours }}</p>{% else %}<p>{% trans 'No Hours Listed' %}</p>{% endif %}
