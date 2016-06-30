@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 16:46-0500\n"
+"POT-Creation-Date: 2016-06-30 17:12-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -376,7 +376,7 @@ msgstr "Sobre Nosotros"
 #: portal/templates/contact.html:13 portal/templates/contact_thanks.html:13
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
-#: portal/templates/faq-models.html:9 portal/templates/how-to-apply.html:7
+#: portal/templates/faq-models.html:5 portal/templates/how-to-apply.html:7
 #: portal/templates/location.html:12 portal/templates/smsinfo.html:12
 #: portal/templates/starred.html:12 portal/templates/updates.html:5
 #: templates/admin/base_site.html:15
@@ -672,11 +672,11 @@ msgstr ""
 msgid "Parent Information"
 msgstr "Información del programa"
 
-#: portal/templates/faq-models.html:9
+#: portal/templates/faq-models.html:5
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
 
-#: portal/templates/faq-models.html:28
+#: portal/templates/faq-models.html:24
 msgid "Frequently Asked Questions"
 msgstr ""
 
