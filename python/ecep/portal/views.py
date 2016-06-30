@@ -747,6 +747,13 @@ def starred_location_api(request, location_ids=None):
         quality_rating['value'] = location.get_q_rating_display()
         l['quality_rating'] = quality_rating
 
+        # Seat Availability
+        availability = {}
+        availability_rating_display = ugettext('Seats Available')
+        availability['display'] = availability_rating_display
+        availability['value'] = location.get_availability_display()
+        l['availability'] = availability
+
         # Add to final location array
         locations_array.append(l)
 
