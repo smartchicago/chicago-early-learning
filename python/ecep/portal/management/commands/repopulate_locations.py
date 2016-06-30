@@ -1,4 +1,4 @@
-import csv
+import unicodecsv as csv
 
 from django.contrib.gis.geos import GEOSGeometry
 from django.core.management.base import BaseCommand, CommandError
@@ -14,18 +14,19 @@ class Command(BaseCommand):
         """
         """
 
-        with open('master-location-export.csv', 'rb') as masterfile:
+        with open('master.csv', 'rb') as masterfile:
 
             # Welp.
             Location.objects.all().delete()
 
             # Import the new
-            reader = csv.DictReader(masterfile)
+            reader = csv.DictReader(masterfile, encoding='utf-8-sig')
+            rows = 1
 
             for row in reader:
 
                 try: 
-                    
+                    print rows
                     l = Location()
 
                     l.site_name = row['site_name']
@@ -80,9 +81,10 @@ class Command(BaseCommand):
 
                     l.save()
                     print ''
-                    print 'Added {}'.format(l.site_name) 
+                    print 'Added {}'.format(str(l.id)) 
                     print ''
-
+                    rows +=1
+                    
                 except:
 
                     print ''
