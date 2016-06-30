@@ -1446,7 +1446,8 @@ a:focus {
 }
 
 .resources-container img,
-.logos-container img {
+.logos-container img,
+.faq-container img {
     max-height: 125px;
     max-width: 150px;
 }
@@ -1476,6 +1477,11 @@ a:focus {
 #apply-header {
     background-position: 50% 30%;
 }
+
+#faq-header {
+    background-position: 50% 70%;
+}
+
 
 
 /* -----------------------------------------

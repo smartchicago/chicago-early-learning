@@ -1,11 +1,7 @@
 {% extends "base-search.html" %}
 
-{% comment %}
-Copyright (c) 2012, 2013 Azavea, Inc.
-See LICENSE in the project root for copying permission
-{% endcomment %}
-
 {% load i18n %}
+{% load staticfiles %}
 {% block title %}{% trans "FAQ" %} - {% trans "Chicago Early Learning" %}{% endblock %}
 
 {% block otherhead %}
@@ -23,9 +19,10 @@ For now, there's only one topic, which is "Frequently Asked Questions"
 If we want to actually group questions by topic, we'll need to modify this a bit
 {% endcomment %}
 
-{% autoescape off %}
     <span class="anchor" id="top"></span>
-    <h1>{% trans 'Frequently Asked Questions' %}</h1>
+    <div class="static-header" id="faq-header" style="background-image: url({% static 'img/static-pages/faq-header.jpg' %})">
+        <h1 id="faq-title">{% trans 'Frequently Asked Questions' %}</h1>
+    </div>
     <div class="contents">
     {% for t in topics %}
         <h1 class="topic-contents"><a href="#{{t.topic.slug}}">{{ t.topic.name }}</a></h1>
@@ -44,7 +41,7 @@ If we want to actually group questions by topic, we'll need to modify this a bit
                 <span class="anchor" id="{{ q.slug }}"></span>
                 <div class="question">
                     <h2>{{ q.text }}</h2>
-                    {{ q.answer }}
+                    {{ q.answer|safe }}
                     <p><a href="#top">Return to top</a><p>
                 </div>
             {% endfor %}
@@ -90,6 +87,5 @@ If we want to actually group questions by topic, we'll need to modify this a bit
 {% endfor %}
 -->
 
-{% endautoescape %}
 </div>
 {% endblock %}
