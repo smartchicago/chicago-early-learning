@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 11:37-0500\n"
+"POT-Creation-Date: 2016-06-30 13:39-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -123,7 +123,7 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: portal/models.py:94 portal/models.py:355 portal/templates/location.html:149
+#: portal/models.py:94 portal/models.py:355 portal/templates/location.html:155
 msgid "Quality Rating"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Enrollment Process"
 msgstr ""
 
-#: portal/models.py:98 portal/templates/location.html:143
+#: portal/models.py:98 portal/templates/location.html:149
 msgid "Accreditation"
 msgstr ""
 
@@ -159,22 +159,22 @@ msgid "Ages 3 - 5"
 msgstr ""
 
 #: portal/models.py:102 portal/models.py:378
-#: portal/templates/location.html:100 portal/templates/location.html.py:102
+#: portal/templates/location.html:106 portal/templates/location.html.py:108
 msgid "Full Day"
 msgstr ""
 
 #: portal/models.py:103 portal/models.py:378
-#: portal/templates/location.html:100 portal/templates/location.html.py:104
+#: portal/templates/location.html:106 portal/templates/location.html.py:110
 msgid "Part Day"
 msgstr ""
 
-#: portal/models.py:104 portal/templates/location.html:108
-#: portal/templates/location.html.py:112
+#: portal/models.py:104 portal/templates/location.html:114
+#: portal/templates/location.html.py:118
 msgid "School Year"
 msgstr ""
 
-#: portal/models.py:105 portal/templates/location.html:108
-#: portal/templates/location.html.py:110
+#: portal/models.py:105 portal/templates/location.html:114
+#: portal/templates/location.html.py:116
 msgid "Full Year"
 msgstr ""
 
@@ -190,15 +190,15 @@ msgstr ""
 msgid "Part Week"
 msgstr ""
 
-#: portal/models.py:112 portal/templates/location.html:120
+#: portal/models.py:112 portal/templates/location.html:126
 msgid "Community Based"
 msgstr ""
 
-#: portal/models.py:113 portal/templates/location.html:119
+#: portal/models.py:113 portal/templates/location.html:125
 msgid "CPS Based"
 msgstr ""
 
-#: portal/models.py:114 portal/templates/location.html:124
+#: portal/models.py:114 portal/templates/location.html:130
 msgid "Offers Home Visiting"
 msgstr ""
 
@@ -206,11 +206,11 @@ msgstr ""
 msgid "Accepts CCAP"
 msgstr ""
 
-#: portal/models.py:116 portal/templates/location.html:121
+#: portal/models.py:116 portal/templates/location.html:127
 msgid "Head Start"
 msgstr ""
 
-#: portal/models.py:117 portal/templates/location.html:122
+#: portal/models.py:117 portal/templates/location.html:128
 msgid "Early Head Start"
 msgstr ""
 
@@ -230,7 +230,7 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-#: portal/models.py:319 portal/templates/location.html:118 portal/views.py:678
+#: portal/models.py:319 portal/templates/location.html:124 portal/views.py:678
 msgid "Program Information"
 msgstr ""
 
@@ -238,11 +238,11 @@ msgstr ""
 msgid "Languages"
 msgstr ""
 
-#: portal/models.py:333 portal/templates/location.html:97
+#: portal/models.py:333 portal/templates/location.html:103
 msgid "No Hours Listed"
 msgstr ""
 
-#: portal/models.py:336 portal/templates/location.html:96 portal/views.py:640
+#: portal/models.py:336 portal/templates/location.html:102 portal/views.py:640
 msgid "Duration and Hours"
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Click to remove from your list"
 msgstr ""
 
-#: portal/models.py:390 portal/templates/location.html:137 portal/views.py:731
+#: portal/models.py:390 portal/templates/location.html:143 portal/views.py:731
 msgid "Other Features"
 msgstr ""
 
@@ -745,23 +745,27 @@ msgid ""
 "assistance.</b></em>"
 msgstr ""
 
-#: portal/templates/location.html:125
+#: portal/templates/location.html:96
+msgid "Seats Available"
+msgstr ""
+
+#: portal/templates/location.html:131
 msgid ""
 "If you are interested in enrolling your child in this home visiting program "
 "please contact this site directly."
 msgstr ""
 
-#: portal/templates/location.html:131 portal/views.py:724
+#: portal/templates/location.html:137 portal/views.py:724
 msgid "Languages (other than English)"
 msgstr ""
 
-#: portal/templates/location.html:154
+#: portal/templates/location.html:160
 msgid ""
 "Are you a <b>provider</b> who works at this early learning center and needs "
 "to make changes to information on this page?"
 msgstr ""
 
-#: portal/templates/location.html:154
+#: portal/templates/location.html:160
 msgid "Click here!"
 msgstr ""
 

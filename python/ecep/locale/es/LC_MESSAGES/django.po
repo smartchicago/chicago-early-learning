@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 11:37-0500\n"
+"POT-Creation-Date: 2016-06-30 13:39-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,17 +118,17 @@ msgstr "Oro"
 
 #: portal/models.py:80
 msgid "High"
-msgstr ""
+msgstr "Alto"
 
 #: portal/models.py:81
 msgid "Medium"
-msgstr ""
+msgstr "Medio"
 
 #: portal/models.py:82
 msgid "Low"
-msgstr ""
+msgstr "Bajo"
 
-#: portal/models.py:94 portal/models.py:355 portal/templates/location.html:149
+#: portal/models.py:94 portal/models.py:355 portal/templates/location.html:155
 msgid "Quality Rating"
 msgstr "Evaluación de calidad"
 
@@ -145,7 +145,7 @@ msgstr "Descripción"
 msgid "Enrollment Process"
 msgstr ""
 
-#: portal/models.py:98 portal/templates/location.html:143
+#: portal/models.py:98 portal/templates/location.html:149
 msgid "Accreditation"
 msgstr "Acreditación"
 
@@ -164,22 +164,22 @@ msgid "Ages 3 - 5"
 msgstr "3 ‐ 5 años"
 
 #: portal/models.py:102 portal/models.py:378
-#: portal/templates/location.html:100 portal/templates/location.html.py:102
+#: portal/templates/location.html:106 portal/templates/location.html.py:108
 msgid "Full Day"
 msgstr "Día completo"
 
 #: portal/models.py:103 portal/models.py:378
-#: portal/templates/location.html:100 portal/templates/location.html.py:104
+#: portal/templates/location.html:106 portal/templates/location.html.py:110
 msgid "Part Day"
 msgstr "Parte del día"
 
-#: portal/models.py:104 portal/templates/location.html:108
-#: portal/templates/location.html.py:112
+#: portal/models.py:104 portal/templates/location.html:114
+#: portal/templates/location.html.py:118
 msgid "School Year"
 msgstr "Año Escolar"
 
-#: portal/models.py:105 portal/templates/location.html:108
-#: portal/templates/location.html.py:110
+#: portal/models.py:105 portal/templates/location.html:114
+#: portal/templates/location.html.py:116
 msgid "Full Year"
 msgstr "Año completo"
 
@@ -195,15 +195,15 @@ msgstr "Semana completa"
 msgid "Part Week"
 msgstr "Semana parcial"
 
-#: portal/models.py:112 portal/templates/location.html:120
+#: portal/models.py:112 portal/templates/location.html:126
 msgid "Community Based"
 msgstr "Organizaciones comunitarias"
 
-#: portal/models.py:113 portal/templates/location.html:119
+#: portal/models.py:113 portal/templates/location.html:125
 msgid "CPS Based"
 msgstr "Escuelas Públicas de Chicago"
 
-#: portal/models.py:114 portal/templates/location.html:124
+#: portal/models.py:114 portal/templates/location.html:130
 msgid "Offers Home Visiting"
 msgstr "Ofrece Visitas Domiciliarias"
 
@@ -211,11 +211,11 @@ msgstr "Ofrece Visitas Domiciliarias"
 msgid "Accepts CCAP"
 msgstr "Acepta CCAP"
 
-#: portal/models.py:116 portal/templates/location.html:121
+#: portal/models.py:116 portal/templates/location.html:127
 msgid "Head Start"
 msgstr "Head Start"
 
-#: portal/models.py:117 portal/templates/location.html:122
+#: portal/models.py:117 portal/templates/location.html:128
 msgid "Early Head Start"
 msgstr "Early Head Start"
 
@@ -237,7 +237,7 @@ msgstr ""
 msgid "Availability"
 msgstr "Disponibilidad entre semana"
 
-#: portal/models.py:319 portal/templates/location.html:118 portal/views.py:678
+#: portal/models.py:319 portal/templates/location.html:124 portal/views.py:678
 msgid "Program Information"
 msgstr "Información del programa"
 
@@ -245,11 +245,11 @@ msgstr "Información del programa"
 msgid "Languages"
 msgstr "Idiomas"
 
-#: portal/models.py:333 portal/templates/location.html:97
+#: portal/models.py:333 portal/templates/location.html:103
 msgid "No Hours Listed"
 msgstr "Horario no indicado"
 
-#: portal/models.py:336 portal/templates/location.html:96 portal/views.py:640
+#: portal/models.py:336 portal/templates/location.html:102 portal/views.py:640
 msgid "Duration and Hours"
 msgstr "Duración y Horas"
 
@@ -313,7 +313,7 @@ msgstr "Haga clic para guardarlo en su lista"
 msgid "Click to remove from your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:390 portal/templates/location.html:137 portal/views.py:731
+#: portal/models.py:390 portal/templates/location.html:143 portal/views.py:731
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -815,7 +815,11 @@ msgstr ""
 "Early Learning línea de acceso directo al <a href=\"%(rtl_url)s\">(312) "
 "229-1690</a></b></em>."
 
-#: portal/templates/location.html:125
+#: portal/templates/location.html:96
+msgid "Seats Available"
+msgstr "Asientos Disponibles"
+
+#: portal/templates/location.html:131
 msgid ""
 "If you are interested in enrolling your child in this home visiting program "
 "please contact this site directly."
@@ -823,11 +827,11 @@ msgstr ""
 "Si está interesado en inscribir su hijo en esta programa de visitas "
 "domiciliarias, por favor contacte directamente al programa. "
 
-#: portal/templates/location.html:131 portal/views.py:724
+#: portal/templates/location.html:137 portal/views.py:724
 msgid "Languages (other than English)"
 msgstr "Idiomas (excepto Inglés)"
 
-#: portal/templates/location.html:154
+#: portal/templates/location.html:160
 msgid ""
 "Are you a <b>provider</b> who works at this early learning center and needs "
 "to make changes to information on this page?"
@@ -835,7 +839,7 @@ msgstr ""
 "¿Es usted un <b>proveedor</b> de esta programa de aprendizaje temprano y "
 "necesita cambiar esta información?"
 
-#: portal/templates/location.html:154
+#: portal/templates/location.html:160
 msgid "Click here!"
 msgstr "¡Haga clic aquí!"
 
