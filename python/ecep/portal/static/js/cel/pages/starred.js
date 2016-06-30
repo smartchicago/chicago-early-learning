@@ -30,7 +30,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                     var loc = data.locations[i];
                     var $location = $(template(loc)).addClass("starred-entry");
                     $starred.append($location);
-                    if (loc.ecm.key != 0 && i < 6) {
+                    if (loc.ecm.key != 0 && ecm_ids.length < 6) {
                         ecm_ids.push(loc.ecm.key);
                     } 
                 }
