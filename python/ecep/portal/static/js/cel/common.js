@@ -166,6 +166,14 @@ function($, L, Response, Handlebars) {
                 } else {
                     throw 'getUrl::Invalid Parameter: icon-quality requires opts.quality';
                 }
+            case 'ecm-apply':
+                if (opts) {
+                    url = 'https://apply.chicagoearlylearning.org/CEL035.Enginuity.Web.v6?cartid=';
+                    url += opts.ids.join('+')
+                    return url;
+                } else {
+                    return 'https://apply.chicagoearlylearning.org';
+                }
             default:
                 break;
         }
