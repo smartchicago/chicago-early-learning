@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 14:48-0500\n"
+"POT-Creation-Date: 2016-06-30 15:33-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -811,16 +811,20 @@ msgid ""
 "results."
 msgstr ""
 
-#: portal/templates/starred.html:25
+#: portal/templates/starred.html:24
 msgid ""
-"Press the “Apply“ button to complete an application form for your top "
-"<b>two</b> site preferences or call the Chicago Early Learning Hotline at"
+"Press the \"Apply\" button to build your Chicago Early Learning parent "
+"profile and complete an application. You will be able to view your "
+"preliminary placement or waitlist status for the sites indicated below, and "
+"may submit an application for up to two of your site preferences (one "
+"placement and one waitlist)."
 msgstr ""
 
-#: portal/templates/starred.html:25
+#: portal/templates/starred.html:26
 msgid ""
-"Children must be 3 or 4 years old by September 1, 2016 to use this "
-"application for preschool programs (Ages 3 - 5)."
+"Call the Chicago Early Learning Hotline at <a href=\"tel:3122291690\"></a>"
+"(312) 229-1690 if you would like assistance completing the application over "
+"the phone."
 msgstr ""
 
 #: portal/templates/starred.html:28
