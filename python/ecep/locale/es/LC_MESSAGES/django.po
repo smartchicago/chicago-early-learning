@@ -693,18 +693,18 @@ msgid ""
 "The City of Chicago’s Early Learning Portal is the place for families to "
 "learn, find and apply for high quality early learning programs across the "
 "city."
-msgstr ""
+msgstr "El portal de la ciudad Chicago Early Learning es un lugar para las familias donde podrán aprender, solicitar y encontrar los programas de aprendizaje temprano en la ciudad de Chicago. "
 
 #: portal/templates/index.html:29
 msgid "Apply now for preschool!"
-msgstr ""
+msgstr "¡Solicite ahora para el preescolar!"
 
 #: portal/templates/index.html:31
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
 "information."
-msgstr ""
+msgstr "¿Preguntas? Visite nuestra  <a href=\"%(faq_url)s\">pagina de Preguntas y Respuestas</a> para más información. "
 
 #: portal/templates/index.html:40
 msgid "Enter an address, center, or zip code"
