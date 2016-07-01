@@ -1394,18 +1394,34 @@ a:focus {
     font-size: 20px;
 }
 
-.contents h1 {
+.contents {
+    padding-top: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+.topic-contents {
     padding: 0;
-    padding-top: 10px;
+    padding-top: 15px;
     font-size: 18px;
     line-height: 1.2em;
 }
 
-.contents h2 {
+.question-contents {
+    display: inline-block;
+    width: 80%;
     padding: 0;
     font-size: 14px;
-    line-height: 1.2em;
-    text-indent: 30px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.question-contents a {
+    color: #A6226A;
+}
+
+.question-contents a:hover {
+    color: #730037;
 }
 
 .anchor {

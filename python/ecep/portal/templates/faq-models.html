@@ -25,9 +25,9 @@ If we want to actually group questions by topic, we'll need to modify this a bit
     </div>
     <div class="contents">
     {% for t in topics %}
-        <h1 class="topic-contents"><a href="#{{t.topic.slug}}">{{ t.topic.name }}</a></h1>
+        <p class="topic-contents"><a href="#{{t.topic.slug}}">{{ t.topic.name }}</a></p>
         {% for q in t.questions %}
-        <h2 class="question-contents"><a href="#{{q.slug}}">{{ q.text }}</a></h2>
+        <p class="question-contents"><a href="#{{q.slug}}">{{ q.text }}</a></p>
         {% endfor %}
     {% endfor %}
     </div>

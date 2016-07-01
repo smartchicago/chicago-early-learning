@@ -664,6 +664,11 @@
     .footer li {
         width: 80%;
     }
+
+    #faq-header h1 {
+        padding-top: 50px;
+        font-size: 40px;
+    }
 }
 
 
