@@ -43,7 +43,7 @@
           <button class="btn location-list-button" type="submit"><i class="icon-info-circled"></i> {{translations.more_info}}</button>
         </form>
         <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"><button class="btn location-list-button hint--left" type="submit" data-hint="{{tooltip.directions}}"><i class="icon-road-1"></i> {{translations.directions}}</button></a>
-        <button id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}" class="btn location-list-button favs-toggle hint--left" data-hint="{{tooltip.star}}"><i class="icon-mail-1"></i> {{translations.contact}}</button>
+        <button id="favs-toggle-loc-{{item.key}}" data-loc-id="{{item.key}}" class="btn location-list-button favs-toggle hint--left" data-hint="{{tooltip.star}}"><i class="fa fa-plus-circle"></i>{{translations.contact}}</button>
         <!--
         <a href="/location/{{item.key}}/" class="btn location-list-button"><i class="icon-exclamation-sign"></i> More Info</a>
         <a href="https://maps.google.com/maps?saddr=current+location&daddr={{item.address}}+{{item.city}}+{{item.city}}+{{item.state}}+{{item.zip}}"

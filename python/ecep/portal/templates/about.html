@@ -20,58 +20,61 @@ See LICENSE in the project root for copying permission
   <div class="logos-container">
 
     <div class="media">
-      <a class="pull-right" href="http://www.cityofchicago.org/">
-        <img src="{% static 'img/logos/coc.jpg' %}" alt="City of Chicago" style="width: 130px; padding-right: 90px;">
-      </a>
       <div class="media-body">
         <h4 class="media-heading">{% trans "City of Chicago" %}</h4>
-        <p>{% blocktrans %}Mayor Emanuel and the City of Chicago have made a firm commitment to providing children across the city with access to high-quality education, from early learning programs all the way up through college. That is why the Mayor’s 2013 budget includes an incredible investment in programming for children, including early education seats where they are most needed. One of the most important pieces is ensuring that parents have access to the information they need to make the choices that are best for their children, and the Early Learning Portal is a piece of that objective. Here, parents will find a list of all of the early learning programs that receive City funding, an easy-to-use interactive map, basic information about the programs available at every site and suggested questions they should ask any early learning site provider in order to determine if that location is right for their child.{% endblocktrans %}</p>
+        <p>{% blocktrans %}Mayor Emanuel and the City of Chicago have made a firm commitment to providing children across the city with access to high-quality education, from early learning programs all the way up through college. Since taking office, Mayor Emanuel has invested over $45 million into expanding early childhood programs and building quality, access, and transparency throughout the city. Launched in 2012, the Early Learning Portal ensuring that parents have access to the information they need to make the choices that are best for their children and families.{% endblocktrans %}</p>
       </div>
+      <a class="media-image" href="http://www.cityofchicago.org/">
+        <img src="{% static 'img/logos/coc.jpg' %}" alt="City of Chicago">
+      </a>
     </div>
     <hr>
 
     <div class="media">
-      <a class="pull-right" href="http://www.cps.edu/">
-        <img src="{% static 'img/logos/cps.jpg' %}?v=2" alt="Chicago Public Schools">
-      </a>
       <div class="media-body">
         <h4 class="media-heading">{% trans "Chicago Public Schools" %}</h4>
         <p>{% blocktrans %}Chicago Public Schools works to ensure that every student in every community has access to a high quality education that prepares them for success in college and career.{% endblocktrans %}</p>
       </div>
+      <a class="media-image" href="http://www.cps.edu/">
+        <img src="{% static 'img/logos/cps.jpg' %}?v=2" alt="Chicago Public Schools">
+      </a>
+
     </div>
     <hr>
 
     <div class="media">
-      <a class="pull-right" href="http://www.cityofchicago.org/city/en/depts/fss.html">
-        <img src="{% static 'img/logos/dfss.jpg' %}" alt="Chicago Department of Family and Support Services">
-      </a>
       <div class="media-body">
         <h4 class="media-heading">{% trans "Chicago Department of Family and Support Services" %}</h4>
         <p>{% blocktrans %}The Chicago Department of Family and Support Services (DFSS) is dedicated to supporting a continuum of coordinated services to enhance the lives of Chicago residents, particularly those most in need, from birth through the senior years.{% endblocktrans %}</p>
       </div>
+      <a class="media-image" href="http://www.cityofchicago.org/city/en/depts/fss.html">
+        <img src="{% static 'img/logos/dfss.jpg' %}" alt="Chicago Department of Family and Support Services">
+      </a>
     </div>
     <hr>
 
     <div class="media">
-      <a class="pull-right" href="http://www.smartchicagocollaborative.org/">
-        <img src="{% static 'img/logos/scc.jpg' %}" alt="Smart Chicago Collaborative">
-      </a>
       <div class="media-body">
         <h4 class="media-heading">{% trans "Smart Chicago Collaborative" %}</h4>
-        <p>{% blocktrans %}The Smart Chicago Collaborative is a civic organization devoted to using technology to make lives better in Chicago. We work to apply the transformative power of technology to solve problems for the people of Chicago.{% endblocktrans %}
-</p>
+        <p>{% blocktrans %}The Smart Chicago Collaborative is a civic organization devoted to using technology to make lives better in Chicago. We work to apply the transformative power of technology to solve problems for the people of Chicago.{% endblocktrans %}</p>
       </div>
+      <a class="media-image" href="http://www.smartchicagocollaborative.org/">
+        <img src="{% static 'img/logos/scc.jpg' %}" alt="Smart Chicago Collaborative">
+      </a>
     </div>
     <hr>
 
-    <div class="media">
-      <a class="pull-right" href="http://uel.uchicago.edu/">
-        <img src="{% static 'img/logos/uel.jpg' %}" alt="University of Chicago Urban Education Lab">
-      </a>
-      <div class="media-body">
-        <h4 class="media-heading">{% trans "University of Chicago Urban Education Lab" %}</h4>
-        <p>{% blocktrans %}The University of Chicago Urban Education Lab, a project of the Urban Education Institute, seeks to improve education outcomes by providing scientific evidence about what strategies are the most effective and cost effective, for whom, and why.{% endblocktrans %}</p>
-      </div>
+    <h2 class="other-partners">{% trans 'Other Partners' %}</h2>
+    <div class="other-partners-div">
+      <ul class="other-partner-logos">
+        <li><a href="https://uel.uchicago.edu/"><img src="{% static 'img/logos/uel.png' %}"></a></li>
+        <li><a href="http://www.actforchildren.org/"><img src="{% static 'img/logos/iafc.png' %}"></a></li>
+        <li><a href="http://www.theounce.org/"><img src="{% static 'img/logos/ounce.png' %}"></a></li>
+        <li><a href="http://www.cityofchicago.org/city/en/depts/cdph.html"><img src="{% static 'img/logos/cdph.png' %}"></a></li>
+        <li><a href="https://www.metrofamily.org/"><img src="{% static 'img/logos/mfs.gif' %}"></a></li>
+        <li><a href="http://www.everthriveil.org/"><img src="{% static 'img/logos/eti.png' %}"></a></li>
+        <li><a href="http://www.erikson.edu/"><img src="{% static 'img/logos/erikson.jpeg' %}"></a></li>
+      </ul>
     </div>
 
   </div>

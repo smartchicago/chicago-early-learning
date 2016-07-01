@@ -19,43 +19,42 @@ See LICENSE in the project root for copying permission
       {% url 'faq' as faq_url %}
       <div class="container-custom">
         <div class="masthead-content">
-          <h1>{% blocktrans %}Find the right program for your child.{% endblocktrans %}</h1>
 
+          <h1 class="title">{% blocktrans %}Learn. Grow. Succeed!{% endblocktrans %}</h1>
 
           <div class="announcement">
 
+            <p>{% blocktrans %}The City of Chicago’s Early Learning Portal is the place for families to learn, find and apply for high quality early learning programs across the city.{% endblocktrans %}</p>
 
-            <h3>Returning Soon:  Apply for Preschool Online!</h3>
-            <p>The Chicago Early Learning Preschool Application will be closed for one week while we notify parents who have applied. Check back July 1st to apply online and receive immediate notice of your placement.</p>
-            <p>Sign up with our <a href="http://eepurl.com/X9ZPf">Keep In Touch list</a> to receive email reminders and more upcoming events from Chicago Early Learning!</p>
-            <p>Questions? Refer to our <a href="{{ faq_url }}">FAQ guide</a> for more info.</p>
+            <p><a href="https://apply.chicagoearlylearning.org">{% trans 'Apply now for preschool!' %}</a></p>
 
-            <!-- 
-            <h3>¡Inscríbase hoy!</h3>
-            <p>Las inscripciones para el pre-escolar del otoño 2016 ya están disponibles, <a href="https://apply.chicagoearlylearning.org/earlybird/#/" target="_blank">haga clic aquí</a> para inscribirse.</p>
-            <p>¿Preguntas? Refiérase a nuestra <a href="{{ faq_url }}">guía de preguntas y respuestas frecuentes</a> para así obtener más información.</p>
-            -->
-
-
+            <p>{% blocktrans %}Questions? Browse our <a href="{{ faq_url }}">FAQ page</a> for more information.{% endblocktrans %}</p>
           
           </div>
 
-          <p class="description">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
-
         </div>
 
-        <input class="homepage-search autocomplete-searchbox" type="text" placeholder="{% blocktrans %}Enter an address, community, or zip code{% endblocktrans %}">
-        <button type="submit" id="search-main" class="btn btn-search-main autocomplete-submit">
-          <i class="icon-search"></i>
-          {% trans 'Search' %}
-        </button>
-        <button type="submit" id="locate-main" class="btn btn-locate-main">
-          <i class="icon-target"></i>
-          {% trans 'Use your current location' %}
-        </button>
-        <div class="error-message">
-          <span><i class="icon-exclamation"></i><strong> Error! </strong></span><span>We couldn't find a result that matched your search.</span>
-          <p>Please try again or type in a zip code to find locations near you.</p>
+        <div class="search-wrapper">
+          <div class="search">
+            <div class="search-input">
+              <input class="homepage-search autocomplete-searchbox" type="text" placeholder="{% blocktrans %}Enter an address, center, or zip code{% endblocktrans %}">
+              <button type="submit" id="search-main" class="btn btn-search-main autocomplete-submit">
+                <i class="icon-search"></i>
+                {% trans 'Search' %}
+              </button>
+            </div>
+            <button type="submit" id="locate-main" class="btn btn-locate-main">
+              <i class="icon-target"></i>
+              {% trans 'Use your current location' %}
+            </button>
+          </div>
+
+          <div class="error-message">
+            <div class="error-message-body">
+              <span><i class="icon-exclamation"></i><strong> Error! </strong></span><span>We couldn't find a result that matched your search.</span>
+              <p>Please try again or type in a zip code to find locations near you.</p>
+            </div>
+          </div>
         </div>
 
         <!-- 
@@ -70,46 +69,46 @@ See LICENSE in the project root for copying permission
 
 
       <div class="announcement-mobile">
-      {% if LANGUAGE_CODE == 'en' %}
-        <h3>Returning Soon:  Apply for Preschool Online!</h3>
-        <p>The Chicago Early Learning Preschool Application will be closed for one week while we notify parents who have applied. Check back July 1st to apply online and receive immediate notice of your placement.</p>
-        <p>Sign up with our <a href="http://eepurl.com/X9ZPf">Keep In Touch list</a> to receive email reminders and more upcoming events from Chicago Early Learning!</p>
-        <p>Questions? Refer to our <a href="{{ faq_url }}">FAQ guide</a> for more info.</p>
 
-      <!--
-      {% elif LANGUAGE_CODE == 'es' %}
-        <h3>¡Inscríbase hoy!</h3>
-        <p>Las inscripciones para el pre-escolar del otoño 2016 ya están disponibles, <a href="https://apply.chicagoearlylearning.org/earlybird/#/" target="_blank">haga clic aquí</a> para inscribirse.</p>
-        <p>¿Preguntas? Refiérase a nuestra <a href="{{ faq_url }}">guía de preguntas y respuestas frecuentes</a> para así obtener más información.</p>
-      {% endif %}
-      -->
+        <p>{% blocktrans %}The City of Chicago’s Early Learning Portal is the place for families to learn, find and apply for high quality early learning programs across the city.{% endblocktrans %}</p>
+
+        <p><a href="https://apply.chicagoearlylearning.org">{% trans 'Apply now for preschool!' %}</a></p>
+
+        <p>{% blocktrans %}Questions? Browse our <a href="{{ faq_url }}">FAQ page</a> for more information.{% endblocktrans %}</p>
+
       </div>
 
       <p class="description-mobile">{% blocktrans %}Welcome to the City of Chicago's Early Learning Portal. Here you can easily find early learning programs near your home or work. You can also compare programs side-by-side to select the highest quality option for your child. Browse the <a href="{{ faq_url }}">FAQ</a> page to learn more about different alternatives and how to enroll your child in a quality early learning program.{% endblocktrans %}</p>
-
-      {% with rtl_url="http://www.cps.edu/schools/earlychildhood/pages/earlychildhood.aspx" rtl_tel=settings.HOTLINE_PHONE|telurl sms_tel=settings.TWILIO_PHONE|telurl %}
 
       <!-- 
       When changing between two and three bucket items, use the corresponding class 
       <div class="info-buckets three">
       --> 
-      <div class="info-buckets two">
+      {% url 'families' as families_url %}
+      <div class="info-buckets three">
+        <div class="bucket">
+          <h2>{% blocktrans %}For Families{% endblocktrans %}</h2>
+          <div class="bucket-img"><a href="{% url 'families' %}"><img src="{% static 'img/families.png' %}"></a></div>
+          <p>{% blocktrans %}Children who participate in high-quality early learning experiences are better prepared for success in both kindergarten and over a lifetime of learning. <a href="{{ families_url }}">Click here</a> to learn more about how to invest in your child’s success through early learning, the different types of programs offered, and tips to help you choose a high quality program.{% endblocktrans %}</p>
+          <p><a href="{% url 'families' %}">{% blocktrans %}Learn more about high quality early learning programs{% endblocktrans %} &raquo;</a></p>
+        </div>
+
         <div class="bucket">
           <h2>{% blocktrans %}Find & Compare{% endblocktrans %}</h2>
-          <div class="bucket-img"><a href="{% url 'browse' %}"><img src="{% static 'img/cel5.png' %}"></a></div>
+          <div class="bucket-img"><a href="{% url 'browse' %}"><img src="{% static 'img/bucket-map.png' %}"></a></div>
           <p>{% blocktrans %}Search by the address where you live or work to quickly find all the early learning programs located near you. Refine your search to find the features you most care about. Choose your "favorites" and compare them on a list.{% endblocktrans %}</p>
           <p><a href="{% url 'browse' %}">{% blocktrans %}Find and compare locations now{% endblocktrans %} &raquo;</a></p>
         </div>
 
+        {% url 'how-to-apply' as how_to_apply_url %}
         <div class="bucket">
-          <h2>{% blocktrans %}Keep In Touch{% endblocktrans %}</h2>
-          <div class="bucket-img"><a href="http://eepurl.com/X9ZPf"><img src="{% static 'img/cel6.png' %}"></a></div>
-          <p>{% blocktrans %}Keep in touch with Chicago Early Learning! Sign up to receive timely updates about enrollment deadlines, early learning resources in your area and new features from Chicago Early Learning. We look forward to staying in touch with you.{% endblocktrans %}</p>
-          <p><a href="http://eepurl.com/X9ZPf">{% blocktrans %}Sign up for our mailing list{% endblocktrans %} &raquo;</a></p>
+          <h2>{% blocktrans %}Apply Today{% endblocktrans %}</h2>
+          <div class="bucket-img"><a href="https://apply.chicagoearlylearning.org"><img src="{% static 'img/apply.png' %}"></a></div>
+          <p>{% blocktrans %}Are you ready to apply for a preschool program for your 3- or 4-year old? <a href="{{ how_to_apply_url }}">Click here</a> to learn more about the application and enrollment process or call <a href="tel:3122291690">312-229-1690</a>. Then fill out an application online through your individual family portal today. Questions about programs for younger children (ages 0 - 3)? Please read our <a href="{{ faq_url }}">FAQ</a>.{% endblocktrans %}</p>
+          <p><a href="https://apply.chicagoearlylearning.org">{% blocktrans %}Fill out an application online{% endblocktrans %} &raquo;</a></p>
         </div>
 
       </div>
-      {% endwith %}
     </div>
 {% endblock %}
 

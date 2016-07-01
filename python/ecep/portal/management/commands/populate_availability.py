@@ -1,5 +1,8 @@
 import random
+<<<<<<< HEAD
+=======
 import csv
+>>>>>>> master
 
 from django.core.management.base import BaseCommand, CommandError
 
@@ -14,23 +17,22 @@ class Command(BaseCommand):
         """
         """
 
-        with open('availability.csv', 'rb') as availability_file:
-            reader = csv.DictReader(availability_file)
-            
-            for row in reader:
+        q = Location.objects.all()
+        l = [0, 1, 2, 3]
 
-                try:
-                    key = row['Key']
-                    l = Location.objects.get(ecm_key=key)
-                    l.availability = row['Availability']
+        for location in q:
+            choice = random.choice(l)
 
-                    l.save()
-                    print l.ecm_key
-                    print l.site_name
-                    print l.availability
-                    print ''
+            if choice == 0:
+                pass
 
-                except:
+            elif choice == 1:
+                location.availability = Location.LOW
 
-                    print 'Uh oh!'
+            elif choice == 2:
+                location.availability = Location.MEDIUM
 
+            elif choice == 3:
+                location.availability = Location.HIGH
+
+            location.save()

@@ -106,8 +106,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             scaleDimensions(options.iconAnchor, scale);
             scaleDimensions(options.shadowAnchor, scale);
             scaleDimensions(options.popupAnchor, scale);
-            options.iconUrl = options.iconUrl.replace(".png", "@2x.png");
-            options.shadowUrl = options.shadowUrl.replace(".png", "@2x.png");
             return options;
         };
 
@@ -123,24 +121,15 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             popupAnchor: [0, -60]
         };
         var iconOpts = $.extend({}, defaults, options),
-            key = '',
-            cacheKey;
+            key = '';
 
         // build a key!
-        key = iconOpts.key ? iconOpts.key : this.getIconKey();
+        var og_key = this.getIconKey();
+        key = iconOpts.key ? iconOpts.key : og_key.key;
 
         // set icon url if not provided in options
         if (!options.iconUrl) {
-            iconOpts.iconUrl = common.getUrl('icon-' + key);
-        }
-
-        // cache the icon with a simple key
-        cacheKey = key;
-        if (iconOpts.highlighted) {
-            cacheKey += '-highlighted';
-        }
-        if (_iconcache[cacheKey]) {
-            return _iconcache[cacheKey];
+            iconOpts.iconUrl = og_key.icon_url;
         }
 
         // highlighting means we scale all dimensions up and replace the icon with @2x
@@ -149,7 +138,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         }
 
         var icon = L.icon(iconOpts);
-        _iconcache[cacheKey] = icon;
         return icon;
     };
 
@@ -174,7 +162,16 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         var key = this.isSchool() ? 'school' : 'center';
         key += this.isAccredited() ? '-accredited' : '';
         key += this.isStarred() ? '-starred' : '';
-        return key;
+
+        var icon_url = '/static/img/map-icons/'
+        icon_url += '2x/';
+        icon_url += this.isSchool() ? 'CPS/' : 'CBO/';
+        icon_url += this.data.item.availability ? this.data.item.availability : 'neutral';
+        icon_url += this.isAccredited() ? '-accredited' : '';
+        icon_url += this.isStarred() ? '-selected' : '';
+        icon_url += '.png';
+
+        return { 'key': key, 'icon_url': icon_url };
     };
 
     /*
@@ -191,7 +188,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             'school-accredited': gettext('Accredited School'),
             'school-accredited-starred': gettext('Favorite Accredited School')
         };
-        return descriptions[this.getIconKey()];
+        var key = this.getIconKey();
+        return descriptions[key.key];
     };
 
     /*
@@ -224,7 +222,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
 
                 marker.on('click', function (e) {
                     var isStarred = favorites.isStarred(locId),
-                        icon = isStarred ? 'icon-mail' : 'icon-mail-1',
+                        icon = isStarred ? 'fa fa-check-circle compare-check' : 'fa fa-plus-circle',
                         hint = isStarred ? 'tooltip.unstar' : 'tooltip.star',
                         selected = isStarred ? 'favs-button-selected' : '';
                     var enrollmentInsertion = '';
@@ -243,7 +241,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                     var popupText = '<div><b><a href="' + common.getUrl('single-location', { location: locId, slug: common.slugify(data.item.site_name) }) +
                         '">{{item.site_name}}</a></b><br>{{item.address}}<br>' + enrollmentInsertion +
                         '{{#each sfields}}{{#if_eq this.key "weekday_availability"}}{{#if_not_eq this.value "None"}}<small>{{this.value}}</small><br>{{/if_not_eq}}{{/if_eq}}{{#if_eq this.key "program_info"}}{{#if_not_eq this.value "None"}}<small>{{this.value}}{{/if_not_eq}}</small>{{/if_eq}}{{/each}}<br>' +
-                        '<a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle ' + selected + ' hint--top ga-track" data-hint="{{' + hint + '}}" data-loc-id="{{item.key}}" data-ga-category="search" data-ga-action="Favorite Location"><i class="' + icon + '"></i></a></div>';
+                        '<a href="#" id="favs-toggle-loc-{{item.key}}" class="favs-toggle hint--top ga-track ' + selected + '" data-hint="{{' + hint + '}}" data-loc-id="{{item.key}}" data-ga-category="search" data-ga-action="Favorite Location"><i class="' + icon + '"></i></a></div>';
                     var popupTemplate = Handlebars.compile(popupText);
 
                     var popup = L.popup()
@@ -279,8 +277,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             };
             this.events = $({});
             this.$filters = $filters;
-        },
-        _iconcache = {};
+        }
 
     DataManager.prototype = {
         /**
@@ -304,6 +301,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
                 // the hard way.
 
                 var locs = that.locations;
+
 
                 // Mark...
                 $.each(locs, function(i, location) {

@@ -3,8 +3,25 @@
 {% load i18n %}
 {% load staticfiles %}
 {% load static %}
-<a class="brand brand-sm" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' class="logo" alt='CEL'></a>
-<a class="brand brand-lg" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' class="logo" alt='CEL'><span>Chicago</span> Early Learning</a>
+
+<a class="brand" id="searchbar-logo-small" href="{% url 'index' %}">
+    <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+</a>
+
+{% if LANGUAGE_CODE == 'en' %}
+<a class="brand" id="searchbar-logo-large" href="{% url 'index' %}">
+    <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+    <img src='{% static "img/logos/logo-en.png" %}' class="logo-text" alt='CEL'>
+</a>
+
+{% elif LANGUAGE_CODE == 'es' %}
+<a class="brand" id="searchbar-logo-large" href="{% url 'index' %}">
+    <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+    <img src='{% static "img/logos/logo-es.png" %}' class="logo-text" alt='CEL'>
+</a>
+
+{% endif %}
+
 <form class="navbar-form" id="desktop-search">
   <div class="input-append">
     <input id="appendedInputButton" class="autocomplete-searchbox" type="text"

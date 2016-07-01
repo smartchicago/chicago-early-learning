@@ -29,131 +29,149 @@ See LICENSE in the project root for copying permission
 {% block content %}
 <div class="container">
   <div class="favorite" data-key="{{ loc.item.key }}" itemscope itemtype="http://schema.org/EducationalOrganization">
-      <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>
-      <a href="javascript:void(0)" class="none favs-close-button ga-track"
-          data-ga-category="starred" data-ga-action="Remove Favorite">&times;</a>
-    <h1 class="school-name" itemprop="name">{{ loc.item.site_name }}</h1>
-    <p itemprop="address">
-      <span itemprop="streetAddress">{{ loc.item.address }}</span>,
-      <span itemprop="addressLocality">{{ loc.item.city }}</span>,
-      <span itemprop="addressRegion">{{ loc.item.state }}</span>
-      <span itemprop="postalCode">{{ loc.item.zip }}</span>
-    </p>
-    <div class="clearfix">
-      <ul class="website-phone">
-        <li><a href="tel:{{ loc.phone.number }}" class="ga-track" itemprop="telephone" data-ga-category="location" data-ga-action="Telephone">{{ loc.phone.number }}</a></li>
-        {% if loc.item.url %}
-        <li><a href="{{ loc.item.url }}" target="_blank" itemprop="url">{{ loc.item.url }}</a></li>
+    <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>
+    <a href="javascript:void(0)" class="none favs-close-button ga-track" data-ga-category="starred" data-ga-action="Remove Favorite">&times;</a>
+
+    <div class="location-body">
+      <div class="basic-info">
+        <h1 class="location-school-name" itemprop="name">{{ loc.item.site_name }}</h1>
+        <p itemprop="address">
+          <span itemprop="streetAddress">{{ loc.item.address }}</span>,
+          <span itemprop="addressLocality">{{ loc.item.city }}</span>,
+          <span itemprop="addressRegion">{{ loc.item.state }}</span>
+          <span itemprop="postalCode">{{ loc.item.zip }}</span>
+        </p>
+        <ul class="website-phone">
+          <li><a href="tel:{{ loc.phone.number }}" class="ga-track" itemprop="telephone" data-ga-category="location" data-ga-action="Telephone">{{ loc.phone.number }}</a></li>
+          {% if loc.item.url %}
+          <li><a href="{{ loc.item.url }}" target="_blank" itemprop="url">{{ loc.item.url }}</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="location-actions">
+
+        <!-- Share Button <a href="#" class="btn btn-location-share single-share ga-track" data-ga-action="Share Single Location">
+          <i class="icon-share"></i> {% trans 'Share' %}
+        </a> --> 
+
+        <button class="btn btn-location-share single-share ga-track" data-ga-action="Share Single Location"><i class="icon-share"></i> {% trans 'Share' %}</button>
+
+        <!-- Directions Button --> 
+        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{loc.item.address}}+{{loc.item.city}}+{{loc.item.city}}+{{loc.item.state}}+{{loc.item.zip}}">
+          <button class="btn location-list-button"><i class="icon-road-1"></i> {{ loc.translations.directions }}</button>
+        </a>
+
+        <!-- Compare and Contact Button -->
+        <a href="javascript:void(0)"><button class="btn btn-location-compare favs-toggle single-star ga-track" id="favs-toggle-loc-{{ loc.item.key }}" data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Compare & Contact Single Location" data-redirect="/favorites/"><i class="fa fa-plus-circle"></i>{% trans 'Compare and Apply' %}</button></a>
+             
+     </div>
+    	<br>
+      <div class="school-details">
+        <hr>
+
+
+        {% if location.q_stmt %}
+          <h1>{% trans 'Description' %}</h1>
+          {% if no_es_description %}<p><em>No hay una descripción en español</em></p>{% endif %}
+          {{ location.q_stmt|safe }}
+          <hr>
         {% endif %}
-      </ul>
-      <ul class="actions">
-        <li>
-          <a href="javascript:void(0)"
-              class="btn favs-toggle single-star ga-track" id="favs-toggle-loc-{{ loc.item.key }}"
-              data-loc-id="{{ loc.item.key }}" data-ga-category="location" data-ga-action="Compare & Contact Single Location" data-redirect="/favorites/">
-            <i class="icon-mail-1"></i> {% trans 'Compare and Apply' %}
-          </a>
-        </li>
-        <li>
-          <a href="https://maps.google.com/maps?saddr=current+location&daddr={{loc.item.address}}+{{loc.item.city}}+{{loc.item.city}}+{{loc.item.state}}+{{loc.item.zip}}"><button class="btn location-list-button" type="submit" ><i class="icon-road-1"></i> {{ loc.translations.directions }}</button></a>
-        </li>
-        <li>
-          <a href="#" class="btn single-share ga-track" data-r1024="<i class='icon-share'></i>{{ loc.translations.share }}"
-              data-ga-category="location" data-ga-action="Share Single Location">
-            <i class="icon-share"></i>Share
-          </a>
-        </li>
-      </ul>
-    </div>
-  	<br>
-    <div class="school-details">
-      <hr>
 
+        {% if not loc.item.is_enrollment %}
+          <h1>{% trans 'Ages Served' %}</h1>
+            <p>{% if location.is_age_lt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} {% trans 'Ages 0 - 3' %}</p>
+            <p>{% if location.is_age_gt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} {% trans 'Ages 3 - 5' %}</p>
+            {% if location.is_age_lt_3 %}
+              <p><em><b>{% trans 'Ages 0 - 3' %}: </b>{% blocktrans %}If your child will be younger than 3 years old prior to September 1, 2016, there are infant/toddler programs available. Please contact the site directly for enrollment information for these programs.{% endblocktrans %}</em><p>
+            {% endif %}
+            {% if location.is_age_gt_3 %}
+              {% with "tel:3122291690" as rtl_url %}
+              {% with location.get_ecm_url as ecm_url %}
+              <p><em><b>{% trans 'Ages 3 - 5' %}: </b>{% blocktrans %}If your child is 3 or 4 years old prior to September 1, 2016, your child will be eligible for preschool programs.{% endblocktrans %}</em>
 
-      {% if location.q_stmt %}
-        <h1>{% trans 'Description' %}</h1>
-        {% if no_es_description %}<p><em>No hay una descripción en español</em></p>{% endif %}
-        {{ location.q_stmt|safe }}
-        <hr>
-      {% endif %}
+              {% if ecm_url %}
+                <em><b>{% blocktrans %}Click <a href="{{ ecm_url }}" target="_blank">here</a> to fill out an application for two preferred sites or call the Chicago Early Learning Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a> for assistance.{% endblocktrans %}</b></em>
+              {% else %}
+              <div class="alert alert-block alert-not-ecm">
+                <p>{% trans 'Contact this site directly to apply.' %}</p>
+              </div>
+              {% endif %}
 
-      {% if not loc.item.is_enrollment %}
-        <h1>{% trans 'Ages Served' %}</h1>
-          <p>{% if location.is_age_lt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} {% trans 'Ages 0 - 3' %}</p>
-          <p>{% if location.is_age_gt_3 %}<i class="icon-ok"></i>{% else %}<i class="icon-cancel"></i>{% endif %} {% trans 'Ages 3 - 5' %}</p>
-          {% if location.is_age_lt_3 %}
-            <p><em><b>{% trans 'Ages 0 - 3' %}: </b>{% blocktrans %}If your child will be younger than 3 years old prior to September 1, 2016, there are infant/toddler programs available. Please contact the site directly for enrollment information for these programs.{% endblocktrans %}</em><p>
-          {% endif %}
-          {% if location.is_age_gt_3 %}
-            {% with "tel:3122291690" as rtl_url %}
-            <p><em><b>{% trans 'Ages 3 - 5' %}: </b>{% blocktrans %}If your child is 3 or 4 years old prior to September 1, 2016, your child will be eligible for preschool programs. <b>Click <a href="https://apply.chicagoearlylearning.org/earlybird/#/" target="_blank">here</a> to fill out an application for two preferred sites or call the Chicago Early Learning Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a> for assistance.</b></em>{% endblocktrans %}</p>
-            {% endwith %}
-          {% endif %}
-        <hr>
-      {% endif %}
+              </p>
+              {% endwith %}
+              {% endwith %}
+            {% endif %}
+          <hr>
+        {% endif %}
 
-      {% if not loc.item.is_enrollment %}
-        <h1>{% trans 'Duration and Hours' %}</h1>
-          {% if location.prg_hours %}<p>{{ location.prg_hours }}</p>{% else %}<p>{% trans 'No Hours Listed' %}</p>{% endif %}
-          
-          {% if location.is_full_day and location.is_part_day %}
-            <p>{% trans 'Full Day' %}, {% trans 'Part Day'%}</p>
-          {% elif location.is_full_day %}
-            <p>{% trans 'Full Day'%}</p>
-          {% elif location.is_part_day %}
-            <p>{% trans 'Part Day' %}</p>
-          {% endif %}
+        {% if location.availability %}
+          <h1>{% trans 'Seats Available' %}</h1>
+          <p><span class="availability-{{ location.availability|lower }}">{{ location.get_availability_display }}</span></p>
+          <hr>
+        {% endif %}
 
-          {% if location.is_full_year and location.is_school_year %}
-            <p>{% trans 'Full Year' %}, {% trans 'School Year' %}</p>
-          {% elif location.is_full_year %}
-            <p>{% trans 'Full Year' %}</p>
-          {% elif location.is_school_year %}
-            <p>{% trans 'School Year' %}</p>
-          {% endif %}
-        <hr>
-      {% endif %}
+        {% if not loc.item.is_enrollment %}
+          <h1>{% trans 'Duration and Hours' %}</h1>
+            {% if location.prg_hours %}<p>{{ location.prg_hours }}</p>{% else %}<p>{% trans 'No Hours Listed' %}</p>{% endif %}
+            
+            {% if location.is_full_day and location.is_part_day %}
+              <p>{% trans 'Full Day' %}, {% trans 'Part Day'%}</p>
+            {% elif location.is_full_day %}
+              <p>{% trans 'Full Day'%}</p>
+            {% elif location.is_part_day %}
+              <p>{% trans 'Part Day' %}</p>
+            {% endif %}
 
-      {% if not loc.item.is_enrollment %}
-        <h1>{% trans 'Program Information' %}</h1>
-          {% if location.is_cps_based %}<p>{% trans 'CPS Based' %}</p>{% endif %}
-          {% if location.is_community_based %}<p>{% trans 'Community Based' %}</p>{% endif %}
-          {% if location.is_hs %}<p>{% trans 'Head Start' %}</p>{% endif %}
-          {% if location.is_ehs %}<p>{% trans 'Early Head Start' %}</p>{% endif %}
-          {% if location.accept_ccap %}<p>{% trans 'Accepts CCAP' %}</p>{% endif %}
-          {% if location.is_home_visiting %}
-            <p>{% trans 'Offers Home Visiting' %}</p>
-            <p><em>{% trans 'If you are interested in enrolling your child in this home visiting program please contact this site directly.' %}</em></p>
-          {% endif %}
-        <hr>
-      {% endif %}
+            {% if location.is_full_year and location.is_school_year %}
+              <p>{% trans 'Full Year' %}, {% trans 'School Year' %}</p>
+            {% elif location.is_full_year %}
+              <p>{% trans 'Full Year' %}</p>
+            {% elif location.is_school_year %}
+              <p>{% trans 'School Year' %}</p>
+            {% endif %}
+          <hr>
+        {% endif %}
 
-      {% if fields.languages%}
-        <h1>{% trans 'Languages (other than English)' %}</h1>
-        {{ fields.languages|safe }}
-        <hr>
-      {% endif %}
+        {% if not loc.item.is_enrollment %}
+          <h1>{% trans 'Program Information' %}</h1>
+            {% if location.is_cps_based %}<p>{% trans 'CPS Based' %}</p>{% endif %}
+            {% if location.is_community_based %}<p>{% trans 'Community Based' %}</p>{% endif %}
+            {% if location.is_hs %}<p>{% trans 'Head Start' %}</p>{% endif %}
+            {% if location.is_ehs %}<p>{% trans 'Early Head Start' %}</p>{% endif %}
+            {% if location.is_home_visiting %}
+              <p>{% trans 'Offers Home Visiting' %}</p>
+              <p><em>{% trans 'If you are interested in enrolling your child in this home visiting program please contact this site directly.' %}</em></p>
+            {% endif %}
+          <hr>
+        {% endif %}
 
-      {% if fields.other_features %}
-        <h1>{% trans 'Other Features' %}</h1>
-        {{ fields.other_features|join:", " }}
-        <hr>
-      {% endif %}
+        {% if fields.languages%}
+          <h1>{% trans 'Languages (other than English)' %}</h1>
+          {{ fields.languages|safe }}
+          <hr>
+        {% endif %}
 
-      {% if location.accred and not loc.item.is_enrollment %}
-        <h1>{% trans 'Accreditation' %}</h1>
-        {{ location.accred }}
-        <hr>
-      {% endif %}
+        {% if fields.other_features %}
+          <h1>{% trans 'Other Features' %}</h1>
+          {{ fields.other_features|join:", " }}
+          <hr>
+        {% endif %}
 
-      {% if location.q_rating and not loc.item.is_enrollment %}
-        <h1>{% trans 'Quality Rating' %}</h1>
-        {{ location.get_q_rating_display }}
-        <hr>
-      {% endif %}
+        {% if location.accred and not loc.item.is_enrollment %}
+          <h1>{% trans 'Accreditation' %}</h1>
+          {{ location.accred }}
+          <hr>
+        {% endif %}
 
-      <h2><em>{% blocktrans %}Are you a <b>provider</b> who works at this early learning center and needs to make changes to information on this page?{% endblocktrans %} <a href="https://smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-form/">{% trans 'Click here!' %}</a></em></h2>
+        {% if location.q_rating and not loc.item.is_enrollment %}
+          <h1>{% trans 'Quality Rating' %}</h1>
+          {{ location.get_q_rating_display }}
+          <hr>
+        {% endif %}
 
+        <h2><em>{% blocktrans %}Are you a <b>provider</b> who works at this early learning center and needs to make changes to information on this page?{% endblocktrans %} <a href="https://smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-form/">{% trans 'Click here!' %}</a></em></h2>
+
+      </div>
     </div>
   </div>
 </div>

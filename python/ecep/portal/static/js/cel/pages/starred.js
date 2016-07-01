@@ -15,14 +15,28 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                 var template = Handlebars.compile(html),
                     container = $('.container-faves'),
                     $starred = $('<div></div>'),
+                    $alert = $('#alert-six'),
+                    ecm_ids = [],
+                    ecm_url = '',
                     numLocations = data.locations.length;
+
+                if (numLocations > 6) {
+                    $alert.show();
+                } else {
+                    $alert.hide();
+                }
 
                 for (var i = 0; i < numLocations; i++) {
                     var loc = data.locations[i];
                     var $location = $(template(loc)).addClass("starred-entry");
                     $starred.append($location);
+                    if (loc.ecm.key != 0 && ecm_ids.length < 6) {
+                        ecm_ids.push(loc.ecm.key);
+                    } 
                 }
 
+                ecm_url = common.getUrl('ecm-apply', { ids: ecm_ids });
+                $('#faves-contact').attr('href', ecm_url);
                 // attach in single dom operation
                 container.html($starred);
 
@@ -55,7 +69,6 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
             if (regexResult || cookie) {
                 starredIds = regexResult ? regexResult[1] : cookie;
                 $.getJSON(common.getUrl('starred-location-api', { locations: starredIds }), function (results) {
-                    console.log(results);
                     drawStarredLocations(results);
                 });
             } else {
@@ -68,6 +81,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                     favorites.addIdToCookie(value);
                 });
             }
+
 
             favorites.addClearListener();
             favorites.addShareListener();
@@ -83,6 +97,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                     window.history.go(-1);
                 }
             });
+
 
         });
     }

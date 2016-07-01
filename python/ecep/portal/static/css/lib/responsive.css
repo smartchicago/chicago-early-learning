@@ -11,9 +11,8 @@
 /* Portrait tablet to landscape and desktop --- */
 
 @media (min-width: 767px) and (max-width: 978px) {
-    body {
-        overflow: hidden;
-    }
+
+
     .results-left {
         width: 100%;
                 overflow: scroll;
@@ -48,25 +47,27 @@
     .navbar .nav > li.sm { display: none; }
     .navbar .nav > li.lg { display: inline; }
 
+    .nav-icon { display: none; }
+
 }
 
 /* -- Dumb Exception for Spanish Language Navbar Overflow issue -- */
-@media (min-width: 1201px) {
-    .navbar .navbar-left > a.brand-sm {
+@media (min-width: 1250px) {
+    #searchbar-logo-small {
         display: none;
     }
 
-    .navbar .navbar-left > a.brand-lg {
+    #searchbar-logo-large {
         display: inline;
     }
 }
 
-@media (max-width: 1200px) {
-    .navbar .navbar-left > a.brand-sm {
+@media (max-width: 1249px) {
+    #searchbar-logo-small {
         display: inline;
     }
 
-    .navbar .navbar-left > a.brand-lg {
+    #searchbar-logo-large {
         display: none;
     }
 }
@@ -133,26 +134,26 @@
     }
 
     .navbar .navbar-right {
-        width: 80%;
+        width: 73%;
     }
     .navbar .navbar-left {
-        width: 20%;
+        width: 27%;
     }
 
     .navbar .nav {
         margin: 10px 0;
+
     }
     .navbar .nav > li img {
         display: inline;
     }
 
-    .navbar .nav > li span {
-        display: none;
-    }
-
     .navbar .nav > li.sm { display: inline; }
     .navbar .nav > li.lg { display: none; }
- 
+    
+    .nav-icon { display: inline; }
+    .nav-text { display: none; }
+
     .results-right {
         visibility: hidden;
         top: 0;
@@ -162,7 +163,7 @@
     }
 
     .browse-container {
-        top: 151px;
+        top: 150px;
     }
 
     #map {
@@ -192,11 +193,12 @@
     }
     .container-custom {
         width: auto;
+        margin: 0;
         padding: 25px;
         text-align: left;
     }
 
-    .container-custom    h1 {
+    .container-custom h1 {
         font-size: 29px;
     }
     .media {
@@ -223,6 +225,7 @@
     }
     .media-body p {
         font-size: 14px;
+
     }
 
     #desktop-search {
@@ -337,6 +340,22 @@
         font-size: 12px;
     }
 
+    .masthead-content {
+        width: 100%;
+    }
+
+    .search-content {
+        width: 100%;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .error-message {
+        display: none;
+    }
+
     .explore-btn {
             margin-top: 0px !important;
     }
@@ -431,6 +450,11 @@
         display: none;
     }
 
+    .logos-container {
+        padding: 25px;
+    }
+
+
     .about-content {
         text-align: center;
     }
@@ -444,11 +468,21 @@
     }
     .about-content img {
         max-width: 200px;
-        padding-bottom: 25px;
+        max-height: 125px;
+        width: auto;
+        height: auto;
         padding-right: 0 !important;
     }
     #about-title {
         padding-left: 0;
+    }
+
+    .media-body {
+        width: 100%;
+    }
+
+    .media-image {
+        width: 100%;
     }
 
     .fullwidth {
@@ -470,6 +504,7 @@
     .faq-container {
         width: auto;
         padding: 20px;
+        padding-bottom: 125px;
     }
 
     .starred-container {
@@ -508,6 +543,39 @@
         padding: 10px 20px 20px 20px;
     }
 
+    .families-container,
+    .resources-container,
+    .enroll-container {
+        width: auto;
+        padding: 25px;
+        margin: 0;
+        padding-bottom: 125px;
+
+    }
+
+    .resources-container img {
+        max-height: 125px;
+        max-width: 200px;
+        height: auto;
+        width: auto;
+    }
+
+    .static-header {
+        width: 100%;
+        height: 200px;
+        max-width: none;
+        max-height: none;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .static-header h1 {
+        padding-top: 100px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
 }
 
 @media (max-width: 767px) {
@@ -519,6 +587,7 @@
         width: auto;
         margin: 0;
     }
+
     .modal.fade.in {
         top: 20px;
     }
@@ -531,7 +600,7 @@
     }
 
     .navbar .ready-to-learn {
-        font-size: 13px;
+        font-size: 10px;
         line-height: 1.3em;
     }
 
@@ -568,8 +637,37 @@
         margin-bottom: 20px;
     }
 
-    .legend {
+    .legend img {
         display: none;
+    }
+
+    .basic-info {
+        width: 100%;
+    }
+
+    .location-actions {
+        width: 100%;
+    }
+
+    .other-partner-logos li {
+        width: 100%;
+    }
+
+    .other-partner-logos img {
+        padding-bottom: 20px;
+    }
+
+    .footer ul {
+        width: 100%;
+    }
+
+    .footer li {
+        width: 80%;
+    }
+
+    #faq-header h1 {
+        padding-top: 50px;
+        font-size: 40px;
     }
 }
 
@@ -679,6 +777,10 @@
 
     .school-details {
         clear: both;
+    }
+
+    .navbar .nav {
+        padding: 0;
     }
 
 }

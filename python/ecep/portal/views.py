@@ -31,12 +31,6 @@ logger = logging.getLogger(__name__)
 class Index(TemplateView):
     template_name = "index.html"
 
-class IndexOne(TemplateView):
-    template_name = "index-one.html"
-
-class IndexTwo(TemplateView):
-    template_name = "index-two.html"
-
 
 class Test(TemplateView):
     template_name = "test.html"
@@ -49,9 +43,20 @@ class About(TemplateView):
 class SMSInfo(TemplateView):
     template_name = "smsinfo.html"
 
+
 class Updates(TemplateView):
     template_name = "updates.html"
 
+
+class Families(TemplateView):
+    template_name = "families.html"
+
+
+class CityResources(TemplateView):
+    template_name = "city-resources.html"
+
+class HowToApply(TemplateView):
+    template_name = "how-to-apply.html"
 
 
 def browse(request):
@@ -373,7 +378,6 @@ def location_details(location_id):
     return item.get_context_dict()
 
 
-@cache_control(must_revalidate=False, max_age=3600)
 def location_api(request, location_ids=None):
     """
     API endpoint for locations.
@@ -462,7 +466,6 @@ def location_json_api(request):
         location['category'] = 'Locations'
 
     return JsonResponse(loc_list, safe=False)
-
 
 
 def location_position(request, location_id):
@@ -600,6 +603,15 @@ def starred_location_api(request, location_ids=None):
         l['url'] = location.url
         l['not_enrollment_site'] = not location.is_enrollment
 
+        # Is 
+        e = {}
+        ecm_warning_display = ugettext('Contact this site directly to apply.')
+        e['warning'] = ecm_warning_display
+        e['key'] = location.ecm_key
+        e['value'] = (location.ecm_key == 0)
+        l['ecm'] = e
+
+
         # Description
         d = {}
         description_display = location.verbose_name('q_stmt')
@@ -734,6 +746,13 @@ def starred_location_api(request, location_ids=None):
         quality_rating['display'] = quality_rating_display
         quality_rating['value'] = location.get_q_rating_display()
         l['quality_rating'] = quality_rating
+
+        # Seat Availability
+        availability = {}
+        availability_rating_display = ugettext('Seats Available')
+        availability['display'] = availability_rating_display
+        availability['value'] = location.get_availability_display()
+        l['availability'] = availability
 
         # Add to final location array
         locations_array.append(l)

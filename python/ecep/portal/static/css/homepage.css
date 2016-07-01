@@ -1,9 +1,29 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,700);
+
+
 /* Homepage ------------------------ */
+body {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+}
+
+input {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+.btn {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
 
 .masthead {
     padding: 70px 0 20px;
     margin-bottom: 0;
-    margin-top: 101px;
+    margin-top: 100px;
     color: #fff;
 }
 
@@ -11,17 +31,17 @@
     position: relative;
     padding-top: 20px;
     color: white;
-    background: url(../img/boylearn.jpg) right center no-repeat #eee;
+    background: url(../img/globe-tone.jpg) right center no-repeat #eee;
     background-size: cover;
 }
 
-.jumbotron a {
-    color: #FFC;
-    border-bottom: 1px dotted #FFC;
+.jumbotron a,
+.announcement-mobile a {
+    color: #F6DB68;
 }
-.jumbotron a:hover {
-    color: #FF9;
-    border-bottom: 1px dotted #FF9;
+.jumbotron a:hover,
+.announcement-mobile a:hover {
+    color: #C3A835;
     text-decoration: none;
 }
 
@@ -31,41 +51,41 @@
 }
 
     
-    .masthead-content {
-        width: 560px;
-        max-width: 100%;
-    }
+.masthead-content {
+    width: 65%;
+}
 
-	#featurettes .media img {
-		border: 1px solid #c2c2c2;
-		-webkit-border-radius: 4px;
-		-moz-border-radius: 	 4px;
-		border-radius: 			   4px;
-		-webkit-box-shadow:		 none;
-		-moz-box-shadow: 	     none;
-		box-shadow:		 			   none;
-	}
-   #featurettes hr {
+#featurettes .media img {
+	border: 1px solid #c2c2c2;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow:	none;
+	-moz-box-shadow: none;
+	box-shadow:	none;
+}
+
+#featurettes hr {
     margin: 40px 0;
-  }
+}
 
-  #featurettes .ready-to-learn {
+#featurettes .ready-to-learn {
     background-color: #ffd;
     border: 1px dashed #ccc;
     padding: 20px;
     font-size: 16px;
     line-height: 1.4em;
     margin: 40px 0 30px;
-  }
+}
 
-  #featurettes .ready-to-learn p {
-    margin: 0;
-  }
+#featurettes .ready-to-learn p {
+margin: 0;
+}
 
-  #featurettes .ready-to-learn img {
+#featurettes .ready-to-learn img {
     width: 300px;
     margin-right: 20px;
-  }
+}
 
 .jumbotron .get-started,
 .get-started {
@@ -95,13 +115,22 @@
     line-height: 1.4;
 }
 
+.search {
+    width: 65%;
+    display: inline-block;
+}
+
+.search-input {
+    width: 100%;
+    display: inline-block;
+}
+
 input.homepage-search {
-    padding: 20px;
-    margin-top: 9px;
+    padding: 19px;
     border: none;
     font-size: 18px;
-    margin-right: 10px;
-    width: 400px;
+    width: 69%;
+    margin-right: 6px;
     text-shadow: none;
     border: 1px solid #c2c2c2;
 }
@@ -156,8 +185,7 @@ input.homepage-search {
 /* Announcement */
 .announcement {
     color: white;
-    background-color: #317DC1;
-    background-color: rgba(49,125,193,0.7);
+    background-color: rgba(66,65,66,0.6);
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -174,63 +202,50 @@ input.homepage-search {
     }
 
 .announcement p {
-        margin-top: 10px;
-        margin-bottom: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
 .announcement-mobile {
     display: none;
-    background: #317DC1;
+    background: #424142;
     color: white;
+    font-weight: normal;
     padding: 10px;
 }
 
-.announcement-mobile h3 {
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 16px;
-        line-height: 1em;
-    }
-
 .announcement-mobile p {
-    margin-top: 10px;
-    margin-bottom: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
-
-.announcement-mobile a {
-        color: #ffd;
-        border-bottom: 1px dotted #ffd;
-    }
-
-.announcement-mobile a:hover {
-        text-decoration: none;
-        color: #ff9;
-        border-bottom: 1px solid #ff9;
-    }    
-
-.announcement-mobile h3,
-.announcement-mobile strong { color: #ffd; }
+ 
 
 .error-message {
+    vertical-align: top;
     color: white;
     background-color: #bd362f;
     opacity: 0.85;
-    width: 400px;
-    padding: 10px;
-    margin-top: 5px;
+    height: 130px;
+    margin-left: 4px;
+    width: 33%;
+    display: inline-block;
     visibility: hidden;
 }
 
+.error-message-body {
+    padding: 8px;
+}
+
 .error-message p {
-        margin-top: 5px;
-        margin-bottom: 0;
+    margin-top: 5px;
+    margin-bottom: 0;
 }
 
 .error-message h3 {
-        font-size: 18px;
-        line-height: 1.2em;
-        margin-top: 0;
-        margin-bottom: 0;
+    font-size: 18px;
+    line-height: 1.2em;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 @media (min-width: 1024px) {

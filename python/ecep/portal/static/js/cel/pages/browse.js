@@ -36,7 +36,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             locationLayer = new L.LayerGroup(),   // Location/school layer group
             neighborhoodLayer = new L.LayerGroup(),   // Neighborhood layer group
             popupLayer = new L.LayerGroup(),    // Popup Layer
-            legend = L.control({position: 'bottomright'}), 
             currentLayer = layerType.none,      // Layer being currently displayed
             dm = new location.DataManager($filters),    // DataManager object
             isAutocompleteSet = true,
@@ -45,7 +44,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             updateUrl = null,                   // Updates the url to reflect page state
             ajaxTimeoutId,
             spinnerDelayMillis = 500,
-            $locationWrapper;                   // Store div wrapper for results on left side
+            $locationWrapper,                   // Store div wrapper for results on left side
+            legend = L.control({position: 'bottomright'});
 
         // Initialize geojson for neighborhood layer
         neighborhoodLayer = L.geoJson(null, {
@@ -67,12 +67,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             }
         });
 
-        // Initialize Legend object for location layers
-
-        legend.onAdd = function (map) {
-            return $('.legend').get(0);
-        }
-
         /*
          * Set map pan/zoom centered on a neighborhood/location if requested in the url
          */
@@ -89,6 +83,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 }
                 isAutocompleteSet = false;
             }
+        };
+
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+
+            div.innerHTML += '<img src="/static/img/legend_' + CEL.serverVars.language + '.png">';
+            return div;
         };
 
         /**
@@ -237,7 +239,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
                 var key = $this.data('loc-id'),
                     loc = dm.locations[key],
-                    iconkey = 'icon-' + loc.getIconKey(),
+                    iconkey = 'icon-' + loc.getIconKey().key,
                     $locIcon = $('#loc-icon-' + key),
                     highlighted = false;
 
@@ -262,7 +264,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 var $this = $(this),
                     key = $this.data('key'),
                     loc = dm.locations[key],
-                    iconkey = 'icon-' + loc.getIconKey(),
+                    iconkey = 'icon-' + loc.getIconKey().key,
                     $locIcon = $('#loc-icon-' + key);
                 $locIcon.attr('src', common.getUrl(iconkey));
                 if (!common.isTouchscreen) {
@@ -460,6 +462,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
             // If not already displaying neighborhoods and zoomed out
             if (currentLayer !== layerType.neighborhood) {
                 currentLayer = layerType.neighborhood;
+                
+                if (typeof legend._map !== "undefined") {
+                    map.removeControl(legend);
+                }
             }
 
             listResults(dm.neighborhoods.data, currentLayer);
@@ -489,6 +495,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
             map.removeLayer(neighborhoodLayer);
             map.addLayer(locationLayer);
+            console.log(map.hasLayer(legend));
+            
             listResults(dm.locations, currentLayer);
 
             // set map to location/neighborhood if autocomplete requested it
@@ -530,6 +538,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 if (state.isGeolocated) {
                     geolocatedIcon = L.icon({
                         iconUrl: common.getUrl('icon-geolocation'),
+                        iconSize: [50, 50], 
                         iconAnchor: [17, 45]
                     });
                     geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map).setZIndexOffset(1000);

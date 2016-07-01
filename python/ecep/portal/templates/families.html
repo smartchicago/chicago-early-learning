@@ -1,0 +1,105 @@
+{% extends "base-search.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+
+{% block title %}{% trans 'For Families' %} - {% trans "Chicago Early Learning" %}{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block content %}
+<div class="families-container">
+    <div class="static-header" id="families-header" style="background-image: url({% static 'img/static-pages/families-header-1.jpg' %})">
+        <h1 id="resources-title">{% trans 'Parent Information' %}</h1>
+    </div>
+    <div class="families-content">
+        
+        <h2 class="families-subheader">Learn. Grow. Succeed!</h2>
+        <p>The City of Chicago is dedicated to ensuring every child in every neighborhood can access a quality education that begins in their earliest years. No matter what needs a family faces, the City and its partners a focused on providing secure, quality early learning programs for children that build a foundation for success in the rest of his or her academic and professional career.</p>
+
+        <hr>
+        <h2 class="families-subheader">Benefits of Early Learning</h2>
+        <p>Early learning programs and experiences activate your child while they are at the most important stage of developing the abilities that will become the foundation for success in school and beyond. Early learning activities are designed to support the development of physical, intellectual and social and emotional skills. Through creative and structured play activities with their peers, children are improving their use and understanding of motor skills, numbers and relationships, language, and emotional control.</p>
+        <p>Children that are exposed to early learning activities are not only better prepared to enter kindergarten, but they have greater success in graduating high school, raising their future earning and career potential, and achieving their adult goals.</p>
+
+        <hr>
+        <h2 class="families-subheader">Explanation of Different Programs Offered</h2>
+        <p>Different programs serve children of different ages and are funded in a variety of ways. Many sites have more than one type of program. The descriptions below will help you understand the general differences between programs.</p>
+        <p>While early childhood education is important for the healthy development of every child, each family has different needs. It is important to select a program that fits your family's budget and schedule, and one that provides a safe and stimulating environment for your child. You should call and visit each program that you are interested in to find out more about whether it is a good fit for your family.</p>
+
+        <h3>Preschool</h3>
+        <p>This program provides educational and early childhood development activities that promote school readiness for three to five year old children from low-income families. Programs may also include free medical, dental, and mental health services and nutritious meals, as well as parent education and training. These programs may also be referred to as Head Start or Preschool for All, based on the funding and services provided. Programs can be Half Day or Full Day.</p>
+
+
+        <h3>Infant and Toddler Programs</h3>
+        <p>This program provides educational and early childhood development activities for children from birth to three years old from low-income families. Programs may also include free medical, dental, and mental health services and nutritious meals, as well as parent education and training. These programs may also be referred to as Early Head Start, Prevention Initiative, or Early Intervention, based on the funding and services provided.</p>
+
+        <p>The early education programs at the City of Chicago are available in a number of different settings:</p>
+        <ul>
+            <li>Chicago Public Schools (CPS) Based: Elementary schools in the Chicago Public Schools district offer early education programs to children ages three to four.</li>
+            <li>Community Based: Community-based organizations provide early childhood education for children birth to age five in preparation for kindergarten (hours may vary). Eligible children enrolled in participating child care centers receive an enhanced educational program. These are targeted to low- and moderate-income working parents.</li>
+            <li>Home Visiting: Visiting coaches offer early care in the child’s home. The coaches deliver educational and early childhood development activities that promote school readiness for children from birth to three years old from low-income families.</li>
+        </ul>
+
+        <div class="static-header" id="families-break" style="background-image: url({% static 'img/static-pages/families-header-2.jpg' %})"></div>
+        
+        <h2 class="families-subheader">Tips for Choosing a Great Program for Your Child</h2>
+        <p>It does not take any special knowledge to be able to identify a high quality early childhood program. You will see the signs clearly:</p>
+
+        <ul>
+            <li>Educated, attentive, and engaged teachers and staff</li>
+            <li>Teachers who speak to children at eye-level and speak directly to infants and toddlers</li>
+            <li>Teachers who show affection toward children (holding, cuddling)</li>
+            <li>A safe, healthy, and child-friendly environment</li>
+            <li>A well-equipped room with accessible materials and toys, placed at eye level for the children</li>
+            <li>Stimulating activities and appropriately structured routines</li>
+            <li>Child engagement with activities</li>
+            <li>Children offered meals (breakfast and lunch) and naptime</li>
+            <li>Individual, small-group, and large-group activities</li>
+            <li>A daily routine</li>
+            <li>The use of indoor and outdoor spaces</li>
+            <li>Age-appropriate language, literacy, math, science, art, music, movement, and dramatic play activities</li>
+            <li>Independent play</li>
+            <li>Visitors welcomed with appropriate parental consent</li>
+            <li>Frequent hand-washing by children and adults</li>
+            <li>Exchanging information between families and teachers about the child's development and learning progress</li>
+            <li>Teachers with four-year degrees as well as training in early childhood education specifically</li>
+            <li>A maximum of 8 infants and toddlers, a maximum of 20 preschoolers in a classroom</li>
+            <li>1:3 teacher: child ratios for infants and 1:10 teacher: child ratios for preschoolers</li>
+        </ul>
+
+        <p>To learn more visit <a href="http://www.ounceofprevention.org/news/characteristics-of-quality-early-learning.php">http://www.ounceofprevention.org/news/characteristics-of-quality-early-learning.php</a></p>
+
+        <p>It is a good idea to schedule a visit to meet program staff. Many parents find it helpful to write down a list of questions before calling or visiting. Here are a few suggestions of things to ask, in addition to your own specific questions:</p>
+
+        <ul>
+            <li>What will my child do each day?</li>
+            <li>What makes your program special?</li>
+            <li>How do you include parents in the classroom?</li>
+            <li>How long has the preschool been in business?</li>
+            <li>What kind of accreditations or certifications do you and your staff have?</li>
+            <li>Can I volunteer and visit my child’s classroom?</li>
+            <li>How can I help in my child’s program?</li>
+            <li>How do I apply to enroll my child?</li>
+            <li>Will I have to pay anything?</li>
+            <li>What are the eligibility criteria for this program?</li>
+            <li>What are the hours for pick-up and drop-off?</li>
+            <li>What kind of information or documents will you need for my child (birth certificate, immunization records, etc.)?</li>
+            <li>Will my child need a physical exam before enrolling?</li>
+            <li>Is there a wait list for this program? How long is it?</li>
+            <li>Are there any additional fees I should know about?</li>
+            <li>Are there requirements for parent/family involvement? What are they?</li>
+            <li>Do I have to have a job in order to send my child to this program?</li>
+            <li>What are the attendance policies?</li>
+            <li>On what days or weeks is the program closed?</li>
+        </ul>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

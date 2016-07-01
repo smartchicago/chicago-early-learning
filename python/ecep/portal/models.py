@@ -232,6 +232,13 @@ class Location(models.Model):
         ftype = field.get_internal_type()
         return ((ftype == 'CharField' or ftype == 'TextField'))
 
+    def get_ecm_url(self):
+
+        if self.ecm_key == 0:
+            return ''
+        else:
+            return 'https://s56.esserver.com/cel035.enginuity.web.v6/#/pLoginWithRegister?cartId={}'.format(str(self.ecm_key))
+
     def get_context_dict(self, short=False):
         """Gets a context dictionary for rendering this object in templates
 
@@ -247,6 +254,11 @@ class Location(models.Model):
             self.address = title(self.address)
         if self.city.isupper():
             self.city = title(self.city)
+
+        if self.ecm_key == 0:
+            not_ecm = True
+        else:
+            not_ecm = False
 
         item = {
             'address': self.address,
@@ -265,6 +277,7 @@ class Location(models.Model):
             'site_type': self.site_type,
             'is_enrollment': self.is_enrollment,
             'duration_hours': self.prg_hours,
+            'availability': self.availability.lower(),
         }
 
         # simple fields to present -- these are the attributes that have text content

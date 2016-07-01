@@ -14,8 +14,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href='{% static "img/apple-touch-icon-72-precomposed.png" %}'>
     <link rel="apple-touch-icon-precomposed" href='{% static "img/apple-touch-icon-57-precomposed.png" %}'>
     <link rel="shortcut icon" href='{% static "img/favicon.png" %}'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/e3d88004fc.css">
 
-    {% compress css %}
     <link href='{% static "css/lib/hint.min.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
@@ -34,7 +34,6 @@
             width: 100%;
         }
     </style>
-    {% endcompress %}
     <!--[if lt IE 9]>
       <script src='{% static "js/lib/html5shiv.js" %}'></script>
       <link href='{% static "css/lib/leaflet.ie.css" %}' rel="stylesheet">
@@ -65,17 +64,42 @@
       <div class="navbar-inner">
         <!-- Navbar LEFT -->
         <div class="navbar-left">
-            <a class="brand brand-sm" id="homepage-logo-small" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' class="logo" alt='CEL'></a>
-            <a class="brand brand-lg" id="homepage-logo-large" href="{% url 'index' %}"><img src='{% static "img/logo.png" %}' class="logo" alt='CEL'><span>Chicago</span> Early Learning</a>
+
+            <a class="brand" id="homepage-logo-small" href="{% url 'index' %}">
+                <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+            </a>
+
+            {% if LANGUAGE_CODE == 'en' %}
+            <a class="brand" id="homepage-logo-large" href="{% url 'index' %}">
+                <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+                <img src='{% static "img/logos/logo-en.png" %}' class="logo-text" alt='CEL'>
+            </a>
+
+            {% elif LANGUAGE_CODE == 'es' %}
+            <a class="brand" id="homepage-logo-large" href="{% url 'index' %}">
+                <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+                <img src='{% static "img/logos/logo-es.png" %}' class="logo-text" alt='CEL'>
+            </a>
+
+            {% endif %}
+
         {% block searchform %}{% endblock %}
         </div>
         <!-- Navbar RIGHT -->
         <div class="navbar-right">
           <ul class="nav">
-            <li><a href="{% url 'about' %}"><img src='{% static "img/icons/about.png" %}' alt="About" aria-hidden="true"><span>{% trans "About" %}</span></a></li>
-            <li><a href="{% url 'faq' %}"><img src='{% static "img/icons/faq.png" %}' alt="FAQ" aria-hidden="true"><span>{% trans "FAQ" %}</span></a></li>
+            
+            <!-- 
+            Apply icon designed by Blackwoodmedia.com.au, c/o the Noun Project.
+            Chicago icon designed by by Blaise Sewell, c/o the Noun Project.
+            --> 
+            <li><a href="https://apply.chicagoearlylearning.org"><span class="icomoon-apply nav-icon"></span><span class="nav-text">{% trans "Apply Now!" %}</span></a></li>
 
-            <li><a href="http://eepurl.com/X9ZPf"><img src='{% static "img/icons/email.png" %}' alt="Keep In Touch" aria-hidden="true"><span>{% trans "Keep In Touch" %}</span></a></li>
+            <li><a href="{% url 'families' %}"><span class="icomoon-families nav-icon"></span><span class="nav-text">{% trans "For Families" %}</span></a></li>
+
+            <li><a href="{% url 'city-resources' %}"><span class="icomoon-city nav-icon"></span><span class="nav-text">{% trans "City Resources" %}</span></a></li>
+
+            <li><a href="{% url 'faq' %}"><img src='{% static "img/icons/faq.png" %}' aria-hidden="true"><span class="nav-text">{% trans "FAQs" %}</span></a></li>
 
             {% if LANGUAGE_CODE == 'en' %}
             <li class="lg"><a href="{% url 'setlang' language=LANGUAGES.1.0 %}" data-lang="{{ LANGUAGES.1.0 }}">Español</a></li>
@@ -106,7 +130,24 @@
         {% endwith %}
     </div>
 
+    <!-- Content block --> 
     {% block content %}{% endblock %}
+
+    <!-- Footer block -->
+    {% block footer %}
+
+    <div class="footer">
+        <ul>
+            <li>
+                <p><a href="{% url 'about' %}">{% trans 'About the Chicago Early Learning Portal' %}</a></p>
+                <p>{% trans 'Built by' %} <a href="http://www.smartchicagocollaborative.org">Smart Chicago Collaborative</a></p>
+            </li>
+            <li><a href="https://smartchicago2012.wufoo.com/forms/xvfz0tb1luuvfg/">{% trans 'Give us feedback' %}</a> {% trans 'to help make the Chicago Early Learning Portal better.' %}</li>
+            <li>{% trans 'Keep in touch by signing up for the' %} <a href="http://chicagoearlylearning.us5.list-manage.com/subscribe?u=085247dea37361c266002462c&id=5161f6a47c">{% trans 'Early Learning Email Newsletter' %}.</a></li>
+        </ul>
+    </div>
+
+    {% endblock %}
 
     <!-- Share Modal -->
     <div id="share-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="share-modal-label" aria-hidden="true">

@@ -157,7 +157,7 @@ function($, L, Response, Handlebars) {
             case 'icon-center-accredited-starred':
                 return '/static/img/leaflet-icons/center-accredited-starred.png';
             case 'icon-geolocation':
-                return '/static/img/leaflet-icons/geocode.png';
+                return '/static/img/map-icons/2x/geolocated.png';
             case 'icon-enrollment':
                 return '/static/img/leaflet-icons/appsite.png';
             case 'icon-quality':
@@ -165,6 +165,14 @@ function($, L, Response, Handlebars) {
                     return '/static/img/icons/' + opts.quality + '.png';
                 } else {
                     throw 'getUrl::Invalid Parameter: icon-quality requires opts.quality';
+                }
+            case 'ecm-apply':
+                if (opts) {
+                    url = 'https://s56.esserver.com/cel035.enginuity.web.v6/#/pLoginWithRegister?cartId=';
+                    url += opts.ids.join('+')
+                    return url;
+                } else {
+                    return 'https://apply.chicagoearlylearning.org';
                 }
             default:
                 break;
