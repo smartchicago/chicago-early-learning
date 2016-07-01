@@ -106,7 +106,6 @@ def parse_null_boolean(boolean):
         return None
 
     else:
-        return bool(boolean)
-
+        return boolean == 'True'
 
     
