@@ -168,7 +168,7 @@ function($, L, Response, Handlebars) {
                 }
             case 'ecm-apply':
                 if (opts) {
-                    url = 'https://apply.chicagoearlylearning.org/CEL035.Enginuity.Web.v6?cartid=';
+                    url = 'https://apply.chicagoearlylearning.org/CEL035.Enginuity.Web.v6/#/pLoginWithRegister?cartId=';
                     url += opts.ids.join('+')
                     return url;
                 } else {
