@@ -172,7 +172,7 @@ function($, L, Response, Handlebars) {
                     url += opts.ids.join('+')
                     return url;
                 } else {
-                    return 'https://apply.chicagoearlylearning.org';
+                    return 'https://s56.esserver.com/cel035.enginuity.web.v6/';
                 }
             default:
                 break;
