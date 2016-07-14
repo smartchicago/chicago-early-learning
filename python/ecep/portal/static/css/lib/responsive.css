@@ -198,6 +198,10 @@
         text-align: left;
     }
 
+    #first-homepage-container {
+        width: 50%;
+    }
+
     .container-custom h1 {
         font-size: 29px;
     }
