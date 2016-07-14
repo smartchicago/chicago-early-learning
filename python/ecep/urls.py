@@ -31,7 +31,7 @@ urlpatterns = patterns(
     url(r'^city-resources$', portal_views.CityResources.as_view(), name='city-resources'),
     url(r'^how-to-apply$', portal_views.HowToApply.as_view(), name='how-to-apply'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type="text/plain")),
-    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicon.ico')),
     
     # browse page
     url(r'^search/$', 'portal.views.browse', name='browse'),
