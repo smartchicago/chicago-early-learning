@@ -90,6 +90,10 @@ a:focus {
     font-weight: 300;
 }
 
+.btn:focus {
+    outline: none;
+}
+
 .container {
     margin-bottom: 20px;
 }
@@ -1670,4 +1674,12 @@ a:focus {
     text-align: left;
     vertical-align: top;
     margin: 10px 10px;
+}
+
+/**** Misc. ****/
+.hint--top,
+.hint--right,
+.hint--left,
+.hint--bottom {
+    outline: none;
 }
