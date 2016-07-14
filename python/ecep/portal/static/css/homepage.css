@@ -31,7 +31,7 @@ h1, h2, h3, h4 {
     position: relative;
     padding-top: 20px;
     color: white;
-    background: url(../img/globe-tone.jpg) right center no-repeat #eee;
+    background: url(/static/img/globe-tone.jpg) right center no-repeat #eee;
     background-size: cover;
 }
 
