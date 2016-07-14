@@ -704,6 +704,36 @@
         margin-top: 113px;
     }
 
+    .jumbotron {
+        background: none;
+    }
+
+    .masthead-content {
+        width: 100%;
+        height: 125px;
+        background: url(/static/img/globe-tone.jpg);
+        background-size: 100%;
+        background-position: right center;
+        background-repeat: no-repeat;
+    }
+
+    .title {
+        width: 40%;
+        padding-left: 25px;
+        padding-top: 10px;
+        font-size: 28px;
+        line-height: 1.2em;
+    } 
+
+    #first-homepage-container {
+        padding: 0;
+        width: 100%;
+    }
+
+    .search-wrapper {
+        padding: 25px;
+    }
+
     .jumbotron .get-started,
     .get-started {
         padding: 10px;
@@ -715,7 +745,6 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        padding: 20px;
         width: 100%;
         font-size: 12px;
     }
