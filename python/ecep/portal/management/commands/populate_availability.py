@@ -15,13 +15,15 @@ class Command(BaseCommand):
         """
 
         with open('scc_locations.csv', 'rb') as availability_file:
-            reader = csv.DictReader(availability_file, delimiter="|", encoding='utf-16')
+            reader = csv.DictReader(availability_file, delimiter="|", encoding='ISO-8859-1')
             
             for row in reader:
 
                 try:
-                    key = row['Key']
+                    key = row['ECMKey']
                     l = Location.objects.get(ecm_key=key)
+
+                    print 'Success with {}!'.format(key)
     
 
                 except:
