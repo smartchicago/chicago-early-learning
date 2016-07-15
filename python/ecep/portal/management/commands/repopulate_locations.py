@@ -79,7 +79,6 @@ class Command(BaseCommand):
                     l.enrollment_es = row['enrollment_es']
                     l.is_cps_based = parse_null_boolean(row['is_cps_based'])
 
-                    l.save()
                     print ''
                     print 'Added {}'.format(str(l.id)) 
                     print ''
