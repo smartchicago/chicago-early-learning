@@ -23,8 +23,13 @@ class Command(BaseCommand):
                     key = row['ECMKey']
                     l = Location.objects.get(ecm_key=key)
 
-                    print 'Success with {}!'.format(key)
-    
+                    print l.ecm_key
+                    print 'Old availability: {}'.format(l.availability)
+
+                    l.availability = row['Availability_Level']
+                    l.save()
+                    print 'New availability: {}'.format(row['Availability_Level'])
+                    print ''
 
                 except:
                     print ''
