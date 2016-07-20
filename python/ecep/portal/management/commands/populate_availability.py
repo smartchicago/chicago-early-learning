@@ -17,19 +17,23 @@ class Command(BaseCommand):
         with open('scc_locations.csv', 'rb') as availability_file:
             reader = csv.DictReader(availability_file, delimiter="|", encoding='ISO-8859-1')
             
+            i=0
+            row_num=0
+
             for row in reader:
 
                 try:
                     key = row['ECMKey']
                     l = Location.objects.get(ecm_key=key)
 
-                    print l.ecm_key
-                    print 'Old availability: {}'.format(l.availability)
+                    if str(l.is_age_lt_3) == row['Ages_Zero_Three_Y_N']:
+                        print key
+                        print l.is_age_lt_3
+                        print row['Ages_Zero_Three_Y_N']
+                        i+=1
 
-                    l.availability = row['Availability_Level']
-                    l.save()
-                    print 'New availability: {}'.format(row['Availability_Level'])
-                    print ''
+
+                    row_num+=1
 
                 except:
                     print ''
@@ -37,6 +41,11 @@ class Command(BaseCommand):
                     print 'Problem with {}'.format(row['ECMKey'])
                     print '**********'
                     print ''
+
+            print " "
+            print "Totals:"
+            print "Total sites: {}".format(str(row_num))
+            print "Sites with values: {}".format(str(i))
 
 
     def test_delta(self, l):
