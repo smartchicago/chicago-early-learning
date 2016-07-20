@@ -667,10 +667,8 @@ msgid "Enroll"
 msgstr ""
 
 #: portal/templates/families.html:15
-#, fuzzy
-#| msgid "Program Information"
 msgid "Parent Information"
-msgstr "Información del programa"
+msgstr "Información para los padres"
 
 #: portal/templates/faq-models.html:5
 msgid "FAQ"
