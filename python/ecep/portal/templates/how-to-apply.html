@@ -15,8 +15,16 @@
         <h1 id="apply-title">{% trans 'Enroll' %}</h1>
     </div>
     <div class="enroll-content">
+
+        <!--
+        The translations of this static content are hardcoded because building in Django translation blocks would make this page
+        and the Django translation file a nightmare. This isn't elegant, but the *proper* solution isn't any better.
+        -->
         
         {% if LANGUAGE_CODE == 'en' %}
+        <!-- English Translation -->
+
+
         <p>Enrolling your child in early childhood programs is easy and open year round. All you need is to complete three easy steps:</p>
         <ol>
             <li>Find your preferred programs.</li>
@@ -51,7 +59,46 @@
         <p>If your child or family is in a temporary living situation, living in a shelter, or sharing a house with another family, you will not be required to provide documentation. Falsifying this information may result in loss of placement.</p>
 
         <p>If you are looking to enroll your child in a birth to three year old program or home visiting services, please contact your preferred sites directly or call the Hotline for assistance.</p>
+
+
         {% elif LANGUAGE_CODE == 'es' %}
+        <!-- Spanish Translation -->
+
+        <p>Matricular a su hijo (a) en el programa de aprendizaje de temprana edad es fácil y está disponible todo el año. Sólo se necesita completar tres pasos fáciles:</p>
+        <ol>
+            <li>Encontrar el programa(s) preferido</li>
+            <li><a href="https://s56.esserver.com/cel035.enginuity.web.v6">Someter una solicitud</a> a través del internet o en un Centro de Recursos Familiares.</li>
+            <li>Visitar a su proveedor o a un Centro de Recursos Familiares para confirmar su puesto.</li>
+        </ol>
+        <hr>
+
+        <h2 class="enroll-subheader">Entérese de programas</h2>
+        <p>La Ciudad de Chicago, junto con sus afiliados ofrece programas de aprendizaje a temprana edad en más de 600 localidades en varias áreas de la ciudad. Visite <a href="{% url 'browse' %}">nuestra página de internet</a> y busque un centro más cercano al lugar de su trabajo o residencia. También puede identificar programas, clasificarlos, buscar horarios y las edades atendidos.</p>
+
+        <p>Le recomendamos buscar proveedores preferidos y hacerles preguntas y enterarse de sus horarios. Recursos para ayudar a identificar si un programa es una buena opción para su familia están incluidos en <a href="{% url 'families' %}">nuestra página de información familiar</a>.</p>
+
+        <p>Si usted necesita ayuda con preguntas generales o de cómo encontrar opciones cerca de usted, no dude de llamar a la Línea de Aprendizaje Temprano de Chicago en <a href="tel:3122291690">(312) 229-1690</a>. Sí usted tiene una pregunta específica para nuestros departamentos y proveedores de la ciudad de Chicago, puede llamar a la oficina de CPS (las escuelas públicas de Chicago) educación a temprana edad <a href="tel:7735532010">(773) 553-2010</a>, DFSS (Departamento de Apoyos y Servicios para Familias) división de servicios para niños <a href="tel:8666472489">(866) 647-2489</a>, o a el número de teléfono que aparece en la página detallada de los proveedores.</p>
+        <hr>
+        
+        <h2 class="enroll-subheader">Solicitar</h2>
+        <p>Este año, la cuidad de Chicago lanzó una aplicación en el internet para que familias puedan solicitar los programas preescolares en más de 600 centros en la ciudad accesible desde su computadora o su teléfono móvil. Visite <a href="https://s56.esserver.com/cel035.enginuity.web.v6">la aplicación en el internet</a> para adquirir una cuenta y perfil familiar, crear una aplicación para su hijo(s), y seleccionar su centro(s) preferido(s). Usted se enterará inmediatamente si usted es elegible para una colocación preliminar con un proveedor.</p>
+
+        <p>Si usted no tiene acceso a una computadora o un teléfono móvil o si prefiere asistencia en personal, puede hacerlo visitando uno de los 10 Centros de Recursos Familiares que tenemos a través de la ciudad, donde nuestros especialistas le pueden asistir a usted. Una lista de Centros de Recursos Familiares está disponible <a href="{% url 'faq' %}#list-of-family-resource-centers">aquí</a>.</p>
+
+        <p>También puede llamar a la Línea de Aprendizaje Temprano de Chicago en <a href="tel:3122291690">(312) 229-1690</a> y someter una solicitud por teléfono.</p>
+
+        <p>Si usted está interesado(a) de un programa para niños recién nacidos hasta la edad de tres años, comuníquese con su proveedor directamente.</p>
+        <hr>
+
+        <h2 class="enroll-subheader">Verificar su visita</h2>
+        <p>Una vez obtenido el puesto preliminar, usted será asignado a su proveedor o un Centro de Recursos para proporcionarle información adicional el cual podría confirmar su puesto. Le recomendamos llamar a su centro asignado para el material necesario y el horario adecuado para la entrevista.</p>
+
+        <p>Una vez que su puesto sea confirmado usted recibirá información adicional necesaria para completar su solicitud y empezar el programa. Por favor comuníquele a su proveedor si necesita un puesto de inmediato o si está interesado(a) en el programa del próximo año. Estas dos opciones podrían estar disponibles.</p>
+
+        <p>Si su hijo(a) o la familia está atravesando por una situación de vivienda temporal, en un refugio o compartiendo la vivienda con otra familia, usted no necesitará proporcionar ningún documento. Proveyendo información falsa sobre este asunto podría ser la causa para la pérdida del puesto.</p>
+
+        <p>Si usted está buscando para inscribir a su hijo(a) en un programa desde el nacimiento hasta la edad de tres años o prefiere servicios de visitas a domicilio, por favor póngase en contacto con su preferido proveedor de servicios preescolares, o a la Línea de Aprendizaje Temprano de Chicago en (312) 229-1690 para asistencia.</p>
+        
         {% endif %}
 
     </div>
