@@ -484,7 +484,7 @@ msgstr ""
 #: portal/templates/base.html:93 portal/templates/city-resources.html:7
 #: portal/templates/city-resources.html:15
 msgid "City Resources"
-msgstr ""
+msgstr "Recursos de la ciudad"
 
 #: portal/templates/base.html:95
 msgid "FAQs"
@@ -563,7 +563,7 @@ msgid ""
 "city. In addition to great programs for children at schools and community "
 "agencies, there are a number of opportunities to start stimulating your "
 "child with early learning in other environments."
-msgstr ""
+msgstr "La ciudad de Chicago, y el alcalde Rahm Emanuel, está comprometido a traer alta calidad a la enseñanza temprana. Además de programas para los niños en las escuelas y en agencias comunitarias, hay una serie de oportunidades para comenzar a estimular a su hijo en el aprendizaje temprano y otros entornos."
 
 #: portal/templates/city-resources.html:25
 #, fuzzy
@@ -579,13 +579,11 @@ msgid ""
 "motor, listening and social skills through movement education programming. "
 "<a href=\"http://www.chicagoparkdistrict.com/\">Visit the Chicago Park "
 "District</a> to find and sign up for a class near you."
-msgstr ""
+msgstr "Muchos parques ofrecen clases de recreo para la enseñanza de primera edad. Participantes de enseñanza temprana tienen oportunidad de fomentar el arte de escuchar de socializar a través de los programas se educación. <a href=\"http://www.chicagoparkdistrict.com/\">Visite la página de internet de los parques de chicago</a> para encontrar y matricularse para clases cerca a ud."
 
 #: portal/templates/city-resources.html:36
-#, fuzzy
-#| msgid "Chicago Early Learning"
 msgid "Chicago City of Learning"
-msgstr "Chicago Early Learning"
+msgstr ""
 
 #: portal/templates/city-resources.html:37
 msgid ""
@@ -595,13 +593,11 @@ msgid ""
 "early childhood experiences to spaces during the summer to prepare children "
 "to enter kindergarten in the Fall. <a href=\"https://chicagocityoflearning."
 "org/\">Visit CCOL</a> to find opportunities near you."
-msgstr ""
+msgstr "Chicago City of Learning (CCOL) es una iniciativa innovadora que une a las oportunidades de aprendizaje para a los jóvenes de una manera que les permite pensar, perseguir, y desarrollar sus intereses. <a href=\"https://chicagocityoflearning.org/\">Visita CCOL</a> para encontrar oportunidades cerca de usted."
 
 #: portal/templates/city-resources.html:47
-#, fuzzy
-#| msgid "Chicago Public Schools"
 msgid "Chicago Public Library"
-msgstr "Escuelas Públicas de Chicago"
+msgstr ""
 
 #: portal/templates/city-resources.html:48
 msgid ""
@@ -613,7 +609,7 @@ msgid ""
 "throughout the city. The CPL has three mobile units with these STEAM-based "
 "learning kits deployed throughout the city – one for each Library District. "
 "<a href=\"http://www.chipublib.org/\">Contact CPL</a> for details."
-msgstr ""
+msgstr "La Biblioteca Pública de Chicago o CPL tiene muchas oportunidades para los niños que incluyen espacios para la educación temprana y leyenda de libros para niños menos de cinco años. CPL también cuenta con unidades móviles que traen programas de STEAM (ciencia, tecnología, ingeniería, artes y matemáticas) actividades de aprendizaje para niños pequeños junto con la programación de educación familiar facilitado por los bibliotecarios de toda la ciudad. El CPL tiene tres unidades móviles con kits de aprendizaje basadas en STEAM desplegados por toda la ciudad. <a href=\"http://www.chipublib.org/\">Póngase en contacto con CPL</a> para más detalles."
 
 #: portal/templates/city-resources.html:59
 msgid "Chicago Children's Museum"
@@ -629,13 +625,11 @@ msgid ""
 "spaces to other places in the city. <a href=\"http://www."
 "chicagochildrensmuseum.org/\">Contact the Chicago Children’s Museum</a> for "
 "details."
-msgstr ""
+msgstr "El Museo Infantil de Chicago tiene disponible una serie de espacios de aprendizaje temprano para apoyar jugar con aprendizaje. Una exposición permanente, The Tinkering Lab, cuenta con un rincón de aprendizaje temprano. El museo infantil también se compromete para traer espacios de enseñanza temprana para otros sitios de la ciudad. <a href=\"http://www.chicagochildrensmuseum.org/\">Póngase en contacto con el Museo Infantil de Chicago</ para más detalles."
 
 #: portal/templates/city-resources.html:70
-#, fuzzy
-#| msgid "Chicago Department of Family and Support Services"
 msgid "Chicago Department of Public Health"
-msgstr "Departamento de Servicios Familiares y de Apoyo de Chicago"
+msgstr ""
 
 #: portal/templates/city-resources.html:71
 msgid ""
@@ -644,7 +638,7 @@ msgid ""
 "health clinics offer care for expectant mothers and wellness services for "
 "children. <a href=\"http://www.cityofchicago.org/city/en/depts/cdph.html"
 "\">Contact the Chicago Department of Public Health</a> for details."
-msgstr ""
+msgstr "La base para el aprendizaje temprano y éxito de un niño comienza con la salud materna e infantil. Las clínicas vendarías del Departamento de Salud Pública de Chicago ofrecen atención para las mujeres embarazadas y servicios de bienestar para los niños. <a href=\"http://www.cityofchicago.org/city/en/depts/cdph.html/\">Póngase en contacto con el Departamento de Salud Pública de Chicago </a>para más detalles."
 
 #: portal/templates/contact.html:13 portal/templates/contact.html.py:22
 msgid "Contact"
