@@ -15,6 +15,14 @@
         <h1 id="resources-title">{% trans 'Parent Information' %}</h1>
     </div>
     <div class="families-content">
+
+        <!--
+        The translations of this static content are hardcoded because building in Django translation blocks would make this page
+        and the Django translation file a nightmare. This isn't elegant, but the *proper* solution isn't any better.
+        -->
+
+        {% if LANGUAGE_CODE == 'en' %}
+        <!-- English Content -->
         
         <h2 class="families-subheader">Learn. Grow. Succeed!</h2>
         <p>The City of Chicago is dedicated to ensuring every child in every neighborhood can access a quality education that begins in their earliest years. No matter what needs a family faces, the City and its partners a focused on providing secure, quality early learning programs for children that build a foundation for success in the rest of his or her academic and professional career.</p>
@@ -95,6 +103,92 @@
             <li>What are the attendance policies?</li>
             <li>On what days or weeks is the program closed?</li>
         </ul>
+
+
+        {% elif LANGUAGE_CODE == 'es' %}
+        <!-- Spanish Content -->
+
+        <h2 class="families-subheader">Aprender. Crecer. ¡Triunfar!</h2>
+        <p>La ciudad de Chicago se dedica a asegurarse de que cada uno de nuestros niños en todos los vecindarios, tengan acceso a una educación de calidad que empieza en los primeros años. No importa qué necesidades tenga la familia, la ciudad y sus afiliados se enfocan en proveer un programa de enseñanza para niños de temprana edad que sea seguro y de alta calidad, creando una base para los logros de ellos(a) en su futuro académico y profesional.</p>
+
+        <hr>
+        <h2 class="families-subheader">Beneficios de enseñanza temprana</h2>
+        <p>Programas de enseñanza a temprana edad activa a su hijo(a) mientras pasan por la etapa más importante de desarrollar las habilidades que serán la base de sus éxitos en años escolares y más adelante. Actividades en la enseñanza a temprana edad están diseñadas a mantener el desarrollo físico, intelectual, social y capacidad emocional. A través de juegos y actividades estructuradas con sus pares, los niños estarán mejorando su uso y el entendimiento de los números, relaciones, lenguajes y control emocional.</p>
+        <p>Niños que han participado en enseñanza y actividades de temprana edad no solamente tienen una buena preparación para entrar al Kínder, tendrán un éxito asegurado al culminar su escuela secundaria, logrando obtener un ingreso salarial más alto en el futuro, acorde con el potencial de sus profesiones para alcanzar sus metas como adulto.</p>
+
+        <hr>
+        <h2 class="families-subheader">Explicación de los diferentes programas ofrecidos</h2>
+        <p>Diferentes programas sirven a niños de diferentes edades y son financiados en una variedad de maneras. Muchos centros ofrecen más de un tipo de programa. Las descripciones a continuación le ayudarán a entender las diferencias generales entre los programas.</p>
+        <p>Mientras que la educación de temprana edad es importante para el desarrollo saludable de cada niño, cada familia tiene diferentes necesidades. Es necesario seleccionar el programa que más se adapte a sus necesidades de presupuesto, horarios, y que proporciona un ambiente seguro y estimulante para su hijo(a). Le aconsejamos llamar y visitar cada centro que le interese para decidir cuál sería el programa que más le convendría.</p>
+
+        <h3>Pre-escuela</h3>
+        <p>Este programa ofrece actividades de desarrollo de la infancia y principios educativos que promueven la preparación escolar de los niños de tres a cinco años de edad de familias de bajos ingresos. Estos programas también pueden incluir servicios gratuitos de salud médica, dental y de salud mental y comidas nutritivas, como también educación y entrenamiento para los padres. Estos programas también pueden ser conocidos como Head Start o Pre School For All, dependiendo en la financiación y los servicios prestados. Los programas ofrecidos pueden ser de medio día o día completo.</p>
+
+
+        <h3>Programas para niños y bebes</h3>
+        <p>Este programa provee educación para el desarrollo en la temprana edad con actividades para niños(a) de recién nacidos hasta los tres años de edad para familias de bajos ingresos. Estos programas también pueden incluir servicios gratuitos de salud médica, dental y de salud mental y comidas nutritivas, como también educación y entrenamiento para los padres. Estos programas también pueden ser conocidos como Early Head Start, Prevention Initiative, o Early Intervention, dependiendo en la financiación y los servicios prestados.</p>
+
+        <p>Los programas de educación temprana de la ciudad de Chicago están disponibles en una serie de situaciones diferentes:</p>
+        <ul>
+            <li>Chicago Public Schools (CPS) Based: Las escuelas primarias en el distrito de Escuelas Públicas de Chicago ofrecen programas de educación temprana a niños de tres a cuatro años de edad.</li>
+            <li>Organizaciones de servicios la comunidad: ofrecen educación temprana para niños recién nacidos a los cinco años de edad en la preparación para el Kínder (horario puede variar). Los niños en centros de cuidado de niños reciben un programa educativo mejorado. Estos programas están dirigidos a padres de bajos y moderados ingresos.</li>
+            <li>Visitas a su residencia: visitas de personas entrenadas para ofrecer asistencia a los niños(a) en su propio hogar. Estos les proveerán educación y desarrollos educativos para promover una buena preparación educativa para niños recién nacidos hasta los tres años para familias con bajos ingresos.</li>
+        </ul>
+
+        <div class="static-header" id="families-break" style="background-image: url({% static 'img/static-pages/families-header-2.jpg' %})"></div>
+        
+        <h2 class="families-subheader">Consejos de cómo elegir el mejor programa para su hijo(a)</h2>
+        <p>No se necesita un conocimiento especial para ser capaz de identificar un programa preescolar de alta calidad. Verá usted claramente los signos:</p>
+
+        <ul>
+            <li>Maestros y personal que son educados y atentos</li>
+            <li>Maestros que hablan a los niños a nivel del ojo y hablan directamente a bebés y niños pequeños</li>
+            <li>Maestros que demuestran afecto hacia los niños (cargándolos y abrazándolos)</li>
+            <li>Un ambiente seguro, saludable y amistoso para niños</li>
+            <li>Salones bien equipados con materiales y juguetes accesibles, y ubicados a la altura de la vista de los niños</li>
+            <li>Actividades y rutinas adecuadamente estructurados</li>
+            <li>Los niños reciben comidas (desayuno y almuerzo) también pueden tener siesta</li>
+            <li>Participación de los niños con las actividades</li>
+            <li>Una rutina diaria</li>
+            <li>Uso de espacios fuera y dentro</li>
+            <li>Actividades apropiadas (a la edad) de lenguaje, literatura, matemáticas, ciencia, el arte, la música, el movimiento y el juego dramático</li>
+            <li>Juegos independientes</li>
+            <li>Visitantes son bienvenidos con el permiso de los padres</li>
+            <li>Lavado frecuente de las manos de los adultos y niños</li>
+            <li>Intercambio de información entre los maestros y las familias acerca del desarrollo y el progreso de aprendizaje del niño</li>
+            <li>Los maestros con títulos de cuatro años y con entrenamiento en educación infantil</li>
+            <li>Un máximo de 8 bebés y niños pequeños en un salón o un máximo de 20 niños en edad preescolar en un salón</li>
+            <li>No menos de un maestro en un salón por cada bebe menos de tres años</li>
+            <li>No menos de un maestro en un salón por cada diez niños de tres a cinco años</li>
+        </ul>
+
+        <p>Para más información visite: <a href="http://www.ounceofprevention.org/news/characteristics-of-quality-early-learning.php">http://www.ounceofprevention.org/news/characteristics-of-quality-early-learning.php</a></p>
+
+        <p>Sería una buena idea hacer una cita para visitar y reunirse con los empleados del programa. Muchos padres les ayuda escribir una lista de preguntas antes de llamar o visitar el programa preescolar. Aquí están algunas sugerencias de preguntas, además de sus propias preguntas:</p>
+
+        <ul>
+            <li>¿Qué hará mi hijo cada día? </li>
+            <li>¿Qué hace qué su programa sea especial? </li>
+            <li>¿Cómo participan los padres? </li>
+            <li>¿Por cuánto tiempo ha estado este programa preescolar abierto? </li>
+            <li>¿Qué tipo de acreditaciones o certificaciones tienen usted y su personal?</li>
+            <li>¿Puedo ser voluntario y visitar la clase de mi hijo?</li>
+            <li>¿Cómo le puedo ayudar a mi hijo(a) en este programa? </li>
+            <li>¿Cómo puedo inscribir a mi hijo(a)?</li>
+            <li>¿Tendré que pagar algo? </li>
+            <li>¿Cuáles son los criterios de elegibilidad para este programa?</li>
+            <li>¿Cuál será el horario de entrada y salida? </li>
+            <li>¿Qué tipo de información o documentos se necesitan para inscribir a mi hijo(a) (certificado de nacimiento, libro de vacunas, etc.)?</li>
+            <li>¿Necesita mi hijo(a) un examen físico antes de matricularlo?</li>
+            <li>¿Hay alguna lista de espera para este programa? ¿Y si lo hay, qué tiempo toma? </li>
+            <li>¿Habrá algún costo adicional qué se necesite saber?</li>
+            <li>¿Existe algún requisito para involucrar a padres y familias? ¿Y cuáles serían? </li>
+            <li>¿Necesito tener un trabajo para poder inscribir a mi hijo(a) en este programa? </li>
+            <li>¿Cuáles son las normas de asistencia?</li>
+            <li>¿Cuáles días o semanas estará cerrada el programa?</li>
+        </ul>
+
+        {% endif %}
 
     </div>
 </div>
