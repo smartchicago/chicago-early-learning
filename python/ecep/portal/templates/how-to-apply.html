@@ -15,8 +15,14 @@
         <h1 id="apply-title">{% trans 'Enroll' %}</h1>
     </div>
     <div class="enroll-content">
+
+        <!--
+        The translations of this static content are hardcoded because building in Django translation blocks would make this page
+        and the Django translation file a nightmare. This isn't elegant, but the *proper* solution isn't any better.
+        -->
         
         {% if LANGUAGE_CODE == 'en' %}
+        
         <p>Enrolling your child in early childhood programs is easy and open year round. All you need is to complete three easy steps:</p>
         <ol>
             <li>Find your preferred programs.</li>
