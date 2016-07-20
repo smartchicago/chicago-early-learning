@@ -673,7 +673,7 @@ msgstr ""
 
 #: portal/templates/enroll.html:10 portal/templates/how-to-apply.html:15
 msgid "Enroll"
-msgstr ""
+msgstr "Matricular"
 
 #: portal/templates/families.html:15
 msgid "Parent Information"
