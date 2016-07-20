@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 17:12-0500\n"
+"POT-Creation-Date: 2016-07-20 14:47-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -470,62 +470,62 @@ msgstr "Buscar"
 msgid "Find early learning programs near your home or work."
 msgstr "Encuentre programas de educación temprana cerca de su casa y trabajo."
 
-#: portal/templates/base.html:96
+#: portal/templates/base.html:89
 #, fuzzy
 #| msgid "Apply"
 msgid "Apply Now!"
 msgstr "Aplique"
 
-#: portal/templates/base.html:98 portal/templates/families.html:7
-#: portal/templates/index.html:90
+#: portal/templates/base.html:91 portal/templates/families.html:7
+#: portal/templates/index.html:88
 msgid "For Families"
 msgstr ""
 
-#: portal/templates/base.html:100 portal/templates/city-resources.html:7
+#: portal/templates/base.html:93 portal/templates/city-resources.html:7
 #: portal/templates/city-resources.html:15
 msgid "City Resources"
 msgstr ""
 
-#: portal/templates/base.html:102
+#: portal/templates/base.html:95
 msgid "FAQs"
 msgstr ""
 
-#: portal/templates/base.html:128
+#: portal/templates/base.html:121
 msgid ""
 "For application information please call the Chicago Early Learning Hotline at"
 msgstr ""
 "Para información acerca de la aplicación, por favor llamar al Chicago Early "
 "Learning línea de acceso directo al"
 
-#: portal/templates/base.html:142
+#: portal/templates/base.html:135
 msgid "About the Chicago Early Learning Portal"
 msgstr "Sobre del portal del Chicago Educacíon Temprana"
 
-#: portal/templates/base.html:143
+#: portal/templates/base.html:136
 msgid "Built by"
 msgstr "Construido por"
 
-#: portal/templates/base.html:145
+#: portal/templates/base.html:138
 msgid "Give us feedback"
 msgstr "Opine para mejorar"
 
-#: portal/templates/base.html:145
+#: portal/templates/base.html:138
 msgid "to help make the Chicago Early Learning Portal better."
 msgstr "el portal del Chicago Educacíon Temprana."
 
-#: portal/templates/base.html:146
+#: portal/templates/base.html:139
 msgid "Keep in touch by signing up for the"
 msgstr "Subscriba a nuestro"
 
-#: portal/templates/base.html:146
+#: portal/templates/base.html:139
 msgid "Early Learning Email Newsletter"
 msgstr "boletín informativo de Chicago Educación Temprana"
 
-#: portal/templates/base.html:156
+#: portal/templates/base.html:149
 msgid "Save and Share Permalink"
 msgstr "Guarde y comparta el enlace permanente"
 
-#: portal/templates/base.html:159
+#: portal/templates/base.html:152
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -555,6 +555,15 @@ msgstr "Haga clic para ver su lista"
 #: portal/templates/browse.html:83
 msgid "Community"
 msgstr "Organizaciones comunitarias"
+
+#: portal/templates/city-resources.html:19
+msgid ""
+"The City of Chicago and Mayor Rahm Emanuel are committed to bringing access "
+"to high quality early learning opportunities to families throughout the "
+"city. In addition to great programs for children at schools and community "
+"agencies, there are a number of opportunities to start stimulating your "
+"child with early learning in other environments."
+msgstr ""
 
 #: portal/templates/city-resources.html:25
 #, fuzzy
@@ -688,7 +697,7 @@ msgstr ""
 msgid "Learn. Grow. Succeed!"
 msgstr "Aprender. Crecer. ¡Triunfar!"
 
-#: portal/templates/index.html:27
+#: portal/templates/index.html:27 portal/templates/index.html.py:73
 msgid ""
 "The City of Chicago’s Early Learning Portal is the place for families to "
 "learn, find and apply for high quality early learning programs across the "
@@ -698,11 +707,11 @@ msgstr ""
 "donde podrán aprender, solicitar y encontrar los programas de aprendizaje "
 "temprano en la ciudad de Chicago. "
 
-#: portal/templates/index.html:29
+#: portal/templates/index.html:29 portal/templates/index.html.py:75
 msgid "Apply now for preschool!"
 msgstr "¡Solicite ahora para el preescolar!"
 
-#: portal/templates/index.html:31
+#: portal/templates/index.html:31 portal/templates/index.html.py:77
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
@@ -719,25 +728,7 @@ msgstr "Ingrese su dirección, escuela, o código postal"
 msgid "Use your current location"
 msgstr "Usar su ubicación actual"
 
-#: portal/templates/index.html:81
-#, python-format
-msgid ""
-"Welcome to the City of Chicago's Early Learning Portal. Here you can easily "
-"find early learning programs near your home or work. You can also compare "
-"programs side-by-side to select the highest quality option for your child. "
-"Browse the <a href=\"%(faq_url)s\">FAQ</a> page to learn more about "
-"different alternatives and how to enroll your child in a quality early "
-"learning program."
-msgstr ""
-"Bienvenido al portal de aprendizaje temprano de la ciudad de Chicago. Aquí "
-"podrá encontrar fácilmente programas de aprendizaje temprano cerca de su "
-"hogar o lugar de trabajo. También podrá comparar programas punto por punto "
-"para escoger la mejor opción para su hijo. Revise <a href=\"%(faq_url)s\">la "
-"página de preguntas</a> frecuentes para informarse mejor sobre las "
-"diferentes alternativas y cómo inscribir a su hijo en un programa de "
-"aprendizaje temprano óptimo"
-
-#: portal/templates/index.html:92
+#: portal/templates/index.html:90
 #, python-format
 msgid ""
 "Children who participate in high-quality early learning experiences are "
@@ -748,15 +739,15 @@ msgid ""
 "program."
 msgstr ""
 
-#: portal/templates/index.html:93
+#: portal/templates/index.html:91
 msgid "Learn more about high quality early learning programs"
 msgstr ""
 
-#: portal/templates/index.html:97
+#: portal/templates/index.html:95
 msgid "Find & Compare"
 msgstr "Busque y Compare"
 
-#: portal/templates/index.html:99
+#: portal/templates/index.html:97
 msgid ""
 "Search by the address where you live or work to quickly find all the early "
 "learning programs located near you. Refine your search to find the features "
@@ -767,17 +758,17 @@ msgstr ""
 "usted. Afine su búsqueda para así encontrar las características que mas le "
 "interesen. Escoja sus \"favoritos\" y compárelos con la lista."
 
-#: portal/templates/index.html:100
+#: portal/templates/index.html:98
 msgid "Find and compare locations now"
 msgstr "Encuentre y compare ubicaciones ahora"
 
-#: portal/templates/index.html:105
+#: portal/templates/index.html:103
 #, fuzzy
 #| msgid "Apply"
 msgid "Apply Today"
 msgstr "Aplique"
 
-#: portal/templates/index.html:107
+#: portal/templates/index.html:105
 #, python-format
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year old? <a "
@@ -789,7 +780,7 @@ msgid ""
 "a>."
 msgstr ""
 
-#: portal/templates/index.html:108
+#: portal/templates/index.html:106
 msgid "Fill out an application online"
 msgstr ""
 
@@ -824,7 +815,7 @@ msgstr ""
 #| "sites or call the Chicago Early Learning Hotline at <a href=\"%(rtl_url)s"
 #| "\">(312) 229-1690</a> for assistance.</b></em>"
 msgid ""
-"<b>Click <a href=\"%(ecm_url)s\" target=\"_blank\">here</a> to fill out an "
+"Click <a href=\"%(ecm_url)s\" target=\"_blank\">here</a> to fill out an "
 "application for two preferred sites or call the Chicago Early Learning "
 "Hotline at <a href=\"%(rtl_url)s\">(312) 229-1690</a> for assistance."
 msgstr ""
@@ -1091,6 +1082,22 @@ msgstr ""
 #: templates/admin/portal/location/delete_confirmation.html:30
 msgid "Yes, I'm sure"
 msgstr ""
+
+#~ msgid ""
+#~ "Welcome to the City of Chicago's Early Learning Portal. Here you can "
+#~ "easily find early learning programs near your home or work. You can also "
+#~ "compare programs side-by-side to select the highest quality option for "
+#~ "your child. Browse the <a href=\"%(faq_url)s\">FAQ</a> page to learn more "
+#~ "about different alternatives and how to enroll your child in a quality "
+#~ "early learning program."
+#~ msgstr ""
+#~ "Bienvenido al portal de aprendizaje temprano de la ciudad de Chicago. "
+#~ "Aquí podrá encontrar fácilmente programas de aprendizaje temprano cerca "
+#~ "de su hogar o lugar de trabajo. También podrá comparar programas punto "
+#~ "por punto para escoger la mejor opción para su hijo. Revise <a href="
+#~ "\"%(faq_url)s\">la página de preguntas</a> frecuentes para informarse "
+#~ "mejor sobre las diferentes alternativas y cómo inscribir a su hijo en un "
+#~ "programa de aprendizaje temprano óptimo"
 
 #~ msgid ""
 #~ "Press the “Apply“ button to complete an application form for your top "
