@@ -31,8 +31,6 @@ class Command(BaseCommand):
                         print "Old: {}".format(old)
                         print "New: {}".format(new)
                         print ''
-                        l.availability = new
-                        l.save()
 
                 except:
                     print ''
