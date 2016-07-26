@@ -6,7 +6,7 @@ import csv
 from datetime import datetime
 from django.template.defaultfilters import slugify
 
-from portal.models import Location, LocationEdit, Contact
+from portal.models import Neighborhood, Location, LocationEdit, Contact
 from django.contrib.gis import admin
 from django import forms
 from portal.widgets import MapWidget
@@ -355,10 +355,19 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
 
         result = Location.objects.all()
         header = next(result.values().iterator()).keys()
+        header.append('neighborhood_name')
         writer = csv.DictWriter(response, header)
         writer.writeheader()
 
         for row in result.values():
+            neighborhood_id = row['neighborhood_id']
+            try:
+                n = Neighborhood.objects.get(id=neighborhood_id)
+                neighborhood_name = n.primary_name
+            except:
+                neighborhood_name = ''
+
+            row['neighborhood_name'] = neighborhood_name
             writer.writerow({unicode(k): unicode(v).encode('utf-8') for k, v in row.items()})
 
         response.flush()

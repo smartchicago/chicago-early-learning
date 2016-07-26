@@ -14,7 +14,7 @@ class Command(BaseCommand):
         """
         """
 
-        with open('export_7_21.csv', 'rb') as availability_file:
+        with open('test.csv', 'rb') as availability_file:
 
             reader = csv.DictReader(availability_file, delimiter="|", encoding="Latin1")
 
@@ -22,15 +22,7 @@ class Command(BaseCommand):
 
                 try:
                     key = row['ECMKey']
-                    l = Location.objects.get(ecm_key=key)
-                    old = l.availability
-                    new = row['Availability_Level']
-                    
-                    if old != new:
-                        print key
-                        print "Old: {}".format(old)
-                        print "New: {}".format(new)
-                        print ''
+                    print key
 
                 except:
                     print ''
