@@ -356,7 +356,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
         result = Location.objects.all()
         header = next(result.values().iterator()).keys()
         header.append('neighborhood_name')
-        writer = csv.DictWriter(response, header)
+        writer = csv.DictWriter(response, header, delimiter='|')
         writer.writeheader()
 
         for row in result.values():
