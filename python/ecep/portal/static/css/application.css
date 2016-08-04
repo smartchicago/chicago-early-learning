@@ -695,7 +695,8 @@ a:focus {
     margin:0;
 }
 
-.container-faves {
+.container-one-faves,
+.container-two-faves {
     margin: 0 5px 0;
 }
 
