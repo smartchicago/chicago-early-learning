@@ -9,12 +9,15 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
             function drawStarredLocations(data, ecm_locations, non_ecm_locations) {
                 var template = Handlebars.compile(html),
                     $apply_button = $('#faves-contact'),
-                    $container = $('.container-one-faves'),
-                    $starred = $('<div></div>'),
+                    $container_one = $('.container-one-faves'),
+                    $container_two = $('.container-two-faves'),
+                    $starred_one = $('<div></div>'),
+                    $starred_two = $('<div></div>'),
                     $alert = $('#alert-six'),
                     ecm_ids = [],
                     ecm_url = '',
-                    numECMLocations = ecm_locations.length;
+                    numECMLocations = ecm_locations.length,
+                    numNonECMLocations = non_ecm_locations.length;
 
                 if (numECMLocations > 6) {
                     $alert.show();
@@ -23,17 +26,26 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                     $alert.hide();
                 }
 
+                if (numNonECMLocations > 0) { $('#non-ecm-header').show(); }
+
                 for (var i = 0; i < numECMLocations; i++) {
                     var loc = ecm_locations[i];
                     var $location = $(template(loc)).addClass("starred-entry");
-                    $starred.append($location);
+                    $starred_one.append($location);
                     ecm_ids.push(loc.ecm.key);
+                }
+
+                for (var i = 0; i < numNonECMLocations; i++) {
+                    var loc = non_ecm_locations[i];
+                    var $location = $(template(loc)).addClass("starred-entry");
+                    $starred_two.append($location);
                 }
 
                 ecm_url = common.getUrl('ecm-apply', { ids: ecm_ids });
                 $('#faves-contact').attr('href', ecm_url);
                 // attach in single dom operation
-                $container.html($starred);
+                $container_one.html($starred_one);
+                $container_two.html($starred_two);
 
 
                 // add close buttons and click listener if we are displaying cookie locations
@@ -72,9 +84,6 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                             ecm.push(locations[i]);
                         }
                     }
-
-                    console.log(non_ecm);
-                    console.log(ecm);
 
                     drawStarredLocations(results, ecm, non_ecm);
                 });
