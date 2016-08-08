@@ -641,7 +641,7 @@ def starred_location_api(request, location_ids=None):
 
         ## Hours
         prg_hours = {}
-        prg_hours_display = location.verbose_name('prg_hours')
+        prg_hours_display = ugettext('No Hours Listed')
         prg_hours['display'] = prg_hours_display
         prg_hours['value'] = location.prg_hours
         l['prg_hours'] = prg_hours
