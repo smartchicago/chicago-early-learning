@@ -107,6 +107,7 @@ See LICENSE in the project root for copying permission
         {% if location.availability %}
           <h1>{% trans 'Seats Available' %}</h1>
           <p><span class="availability-{{ location.availability|lower }}">{{ location.get_availability_display }}</span></p>
+          <p><em>{% trans 'Note: Availability and placement are subject to eligibility.' %}</em></p>
           <hr>
         {% endif %}
 

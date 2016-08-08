@@ -1,8 +1,3 @@
-/********************************************************
- * Copyright (c) 2013 Azavea, Inc.
- * See LICENSE in the project root for copying permission
- * JavaScript for the starred locations page
- ********************************************************/
 
 define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorites', 'Handlebars'],
     function($, L, html, common, favorites, Handlebars) {
@@ -11,37 +6,46 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
         $(document).ready(function() {
 
             // Draw the Handlebars template for a location
-            function drawStarredLocations(data) {
+            function drawStarredLocations(data, ecm_locations, non_ecm_locations) {
                 var template = Handlebars.compile(html),
-                    container = $('.container-faves'),
-                    $starred = $('<div></div>'),
+                    $apply_button = $('#faves-contact'),
+                    $container_one = $('.container-one-faves'),
+                    $container_two = $('.container-two-faves'),
+                    $starred_one = $('<div></div>'),
+                    $starred_two = $('<div></div>'),
                     $alert = $('#alert-six'),
                     ecm_ids = [],
                     ecm_url = '',
-                    numLocations = data.locations.length;
+                    numECMLocations = ecm_locations.length,
+                    numNonECMLocations = non_ecm_locations.length;
 
-                if (numLocations > 6) {
+                if (numECMLocations > 6) {
                     $alert.show();
+                    $apply_button.addClass('disabled');
                 } else {
                     $alert.hide();
                 }
 
-                for (var i = 0; i < numLocations; i++) {
-                    var loc = data.locations[i];
+                if (numNonECMLocations > 0) { $('#non-ecm-header').show(); }
+
+                for (var i = 0; i < numECMLocations; i++) {
+                    var loc = ecm_locations[i];
                     var $location = $(template(loc)).addClass("starred-entry");
-                    $starred.append($location);
-                    if (loc.ecm.key != 0 && ecm_ids.length < 6) {
-                        ecm_ids.push(loc.ecm.key);
-                    } 
+                    $starred_one.append($location);
+                    ecm_ids.push(loc.ecm.key);
+                }
+
+                for (var i = 0; i < numNonECMLocations; i++) {
+                    var loc = non_ecm_locations[i];
+                    var $location = $(template(loc)).addClass("starred-entry");
+                    $starred_two.append($location);
                 }
 
                 ecm_url = common.getUrl('ecm-apply', { ids: ecm_ids });
                 $('#faves-contact').attr('href', ecm_url);
                 // attach in single dom operation
-                container.html($starred);
-
-                // Remove map and share button for each location
-                $('.fav-count').html(numLocations);
+                $container_one.html($starred_one);
+                $container_two.html($starred_two);
 
 
                 // add close buttons and click listener if we are displaying cookie locations
@@ -69,10 +73,22 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
             if (regexResult || cookie) {
                 starredIds = regexResult ? regexResult[1] : cookie;
                 $.getJSON(common.getUrl('starred-location-api', { locations: starredIds }), function (results) {
-                    drawStarredLocations(results);
+                    var locations = results.locations,
+                        ecm = [],
+                        non_ecm = [];
+
+                    for (var i=0; i<locations.length; i++) {
+                        if (locations[i].ecm.key == 0) {
+                            non_ecm.push(locations[i]);
+                        } else {
+                            ecm.push(locations[i]);
+                        }
+                    }
+
+                    drawStarredLocations(results, ecm, non_ecm);
                 });
             } else {
-                $('.container-faves').html(gettext('No Favorite Locations'));
+                $('.container-one-faves').html(gettext('No Favorite Locations'));
             }
 
             if(regexResult) {
@@ -98,6 +114,11 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                 }
             });
 
+            $('#faves-contact').on('click', function(e) {
+                if ($('#faves-contact').hasClass('disabled')) {
+                    e.preventDefault();
+                }
+            });
 
         });
     }

@@ -695,8 +695,14 @@ a:focus {
     margin:0;
 }
 
-.container-faves {
+.container-one-faves,
+.container-two-faves {
     margin: 0 5px 0;
+}
+
+#non-ecm-header {
+    padding-top: 25px;
+    text-align: center;
 }
 
 .faves-left {
