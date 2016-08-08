@@ -41,6 +41,7 @@
       {{#if availability.value }}
         <h1>{{ availability.display }}</h1>
         <p>{{ availability.value }}</p>
+        <p><em>{{ availability.note }}</em></p>
         <hr>
       {{/if}}
 
@@ -50,7 +51,7 @@
           {{#if prg_hours.value }}
             <p>{{ prg_hours.value }}</p>
           {{else}}
-            <p>{ prg_hours.display }}</p>
+            <p>{{ prg_hours.display }}</p>
           {{/if}}
           {{#if part_day.value }}
             <p>{{ part_day.display }}</p>
