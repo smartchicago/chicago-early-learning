@@ -21,12 +21,7 @@
       </ul>
     </div>
     <div class="school-details">
-      {{#if ecm.value}}
-      <div class="alert alert-block alert-not-ecm">
-        <p>{{ ecm.warning }}</p>
-      </div>
-      {{/if}}
-      <hr>
+
       <!-- Description -->
       {{#if description.value }}
         <h1>{{ description.display }}</h1>
@@ -53,7 +48,9 @@
       {{#if not_enrollment_site }}
         <h1>{{ duration_and_hours }}</h1>
           {{#if prg_hours.value }}
-            <p>{{ prg_hours.display }}: {{ prg_hours.value }}</p>
+            <p>{{ prg_hours.value }}</p>
+          {{else}}
+            <p>{ prg_hours.display }}</p>
           {{/if}}
           {{#if part_day.value }}
             <p>{{ part_day.display }}</p>
