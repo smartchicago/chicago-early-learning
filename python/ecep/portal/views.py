@@ -752,6 +752,7 @@ def starred_location_api(request, location_ids=None):
         availability_rating_display = ugettext('Seats Available')
         availability['display'] = availability_rating_display
         availability['value'] = location.get_availability_display()
+        availability['note'] = ugettext('Note: Availability and placement are subject to eligibility.')
         l['availability'] = availability
 
         # Add to final location array
