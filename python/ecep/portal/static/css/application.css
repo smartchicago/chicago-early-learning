@@ -682,12 +682,17 @@ a:focus {
 }
 .btn-apply:hover,
 .btn-apply:active,
-.btn-apply.active,
-.btn-apply.disabled,
-.btn-apply[disabled] {
+.btn-apply.active {
     color: #B9FFFF;
     background-color: #53C5EC;
     *background-color: #003bb3;
+}
+
+.btn-apply.disabled,
+.btn-apply[disabled] {
+    color: #888888;
+    background-color: #AAAAAA;
+    *background-color: #003bb3; 
 }
 
 
