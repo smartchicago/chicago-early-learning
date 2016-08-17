@@ -324,6 +324,7 @@ a:focus {
 .btn[disabled] {
   opacity: 0.85;
   filter: alpha(opacity=85);
+  cursor: not-allowed;
 }
 
 /* Results --------------------- */
@@ -1040,6 +1041,7 @@ a:focus {
 
 #alert-six {
     display: none;
+    margin-bottom: 5px;
 }
 
 .alert-six {
