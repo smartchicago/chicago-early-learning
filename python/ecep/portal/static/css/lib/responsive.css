@@ -538,7 +538,8 @@
         width: 80%;
     }        
 
-    .container-faves {
+    .container-one-faves,
+    .container-two-faves {
         padding-top: 0;
         margin: 0;
     }

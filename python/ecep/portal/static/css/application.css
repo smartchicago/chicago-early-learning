@@ -324,6 +324,7 @@ a:focus {
 .btn[disabled] {
   opacity: 0.85;
   filter: alpha(opacity=85);
+  cursor: not-allowed;
 }
 
 /* Results --------------------- */
@@ -682,12 +683,17 @@ a:focus {
 }
 .btn-apply:hover,
 .btn-apply:active,
-.btn-apply.active,
-.btn-apply.disabled,
-.btn-apply[disabled] {
+.btn-apply.active {
     color: #B9FFFF;
     background-color: #53C5EC;
     *background-color: #003bb3;
+}
+
+.btn-apply.disabled,
+.btn-apply[disabled] {
+    color: #888888;
+    background-color: #AAAAAA;
+    *background-color: #003bb3; 
 }
 
 
@@ -695,8 +701,14 @@ a:focus {
     margin:0;
 }
 
-.container-faves {
+.container-one-faves,
+.container-two-faves {
     margin: 0 5px 0;
+}
+
+#non-ecm-header {
+    padding-top: 25px;
+    text-align: center;
 }
 
 .faves-left {
@@ -1029,6 +1041,7 @@ a:focus {
 
 #alert-six {
     display: none;
+    margin-bottom: 5px;
 }
 
 .alert-six {
