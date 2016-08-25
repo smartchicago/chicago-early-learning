@@ -43,12 +43,19 @@ function($, L, Response, Handlebars) {
             opt_label = $elt.data('ga-label'),
             opt_value = $elt.data('ga-value'),
             opt_noninteraction = $elt.data('ga-noninteraction'),
-            data = ['_trackEvent', category, action];
+            opt_beacon = $elt.data('ga-beacon'),
+            data = {
+                hitType: 'event', 
+                eventCategory: category,
+                eventAction: action,
+            };
+        
         // optional parameters
-        data.push(opt_label || undefined);
-        data.push(opt_value || undefined);
-        data.push(!!(opt_noninteraction));
-        _gaq.push(data);
+        if (opt_label) { data[eventLabel] = opt_label; }
+        if (opt_value) { data[eventValue] = opt_value; }
+        if (opt_beacon) {data[transport] = true;}
+
+        ga('send', data);
     };
 
     var isRetinaDisplay = function() {
@@ -250,7 +257,8 @@ function($, L, Response, Handlebars) {
                     label: selection.label,
                     place_id: selection.place_id
                 });
-            }
+            },
+            delay: 150
         });
 
         // Calls the Places API to populate the dropdown
