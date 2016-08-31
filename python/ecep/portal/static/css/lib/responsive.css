@@ -637,6 +637,12 @@
         column-count: 1;
     }
 
+    .bucket {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
     .website-phone,
     .actions,
     .actions .single-share {
