@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-20 16:46-0500\n"
+"POT-Creation-Date: 2016-09-14 12:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -128,7 +128,7 @@ msgstr "Medio"
 msgid "Low"
 msgstr "Bajo"
 
-#: portal/models.py:94 portal/models.py:362 portal/templates/location.html:167
+#: portal/models.py:94 portal/models.py:362 portal/templates/location.html:168
 msgid "Quality Rating"
 msgstr "Evaluación de calidad"
 
@@ -145,7 +145,7 @@ msgstr "Descripción"
 msgid "Enrollment Process"
 msgstr ""
 
-#: portal/models.py:98 portal/templates/location.html:161
+#: portal/models.py:98 portal/templates/location.html:162
 msgid "Accreditation"
 msgstr "Acreditación"
 
@@ -164,22 +164,22 @@ msgid "Ages 3 - 5"
 msgstr "3 ‐ 5 años"
 
 #: portal/models.py:102 portal/models.py:385
-#: portal/templates/location.html:118 portal/templates/location.html.py:120
+#: portal/templates/location.html:119 portal/templates/location.html.py:121
 msgid "Full Day"
 msgstr "Día completo"
 
 #: portal/models.py:103 portal/models.py:385
-#: portal/templates/location.html:118 portal/templates/location.html.py:122
+#: portal/templates/location.html:119 portal/templates/location.html.py:123
 msgid "Part Day"
 msgstr "Parte del día"
 
-#: portal/models.py:104 portal/templates/location.html:126
-#: portal/templates/location.html.py:130
+#: portal/models.py:104 portal/templates/location.html:127
+#: portal/templates/location.html.py:131
 msgid "School Year"
 msgstr "Año Escolar"
 
-#: portal/models.py:105 portal/templates/location.html:126
-#: portal/templates/location.html.py:128
+#: portal/models.py:105 portal/templates/location.html:127
+#: portal/templates/location.html.py:129
 msgid "Full Year"
 msgstr "Año completo"
 
@@ -195,15 +195,15 @@ msgstr "Semana completa"
 msgid "Part Week"
 msgstr "Semana parcial"
 
-#: portal/models.py:112 portal/templates/location.html:138
+#: portal/models.py:112 portal/templates/location.html:139
 msgid "Community Based"
 msgstr "Organizaciones comunitarias"
 
-#: portal/models.py:113 portal/templates/location.html:137
+#: portal/models.py:113 portal/templates/location.html:138
 msgid "CPS Based"
 msgstr "Escuelas Públicas de Chicago"
 
-#: portal/models.py:114 portal/templates/location.html:142
+#: portal/models.py:114 portal/templates/location.html:143
 msgid "Offers Home Visiting"
 msgstr "Ofrece Visitas Domiciliarias"
 
@@ -211,11 +211,11 @@ msgstr "Ofrece Visitas Domiciliarias"
 msgid "Accepts CCAP"
 msgstr "Acepta CCAP"
 
-#: portal/models.py:116 portal/templates/location.html:139
+#: portal/models.py:116 portal/templates/location.html:140
 msgid "Head Start"
 msgstr "Head Start"
 
-#: portal/models.py:117 portal/templates/location.html:140
+#: portal/models.py:117 portal/templates/location.html:141
 msgid "Early Head Start"
 msgstr "Early Head Start"
 
@@ -237,7 +237,7 @@ msgstr ""
 msgid "Availability"
 msgstr "Disponibilidad entre semana"
 
-#: portal/models.py:326 portal/templates/location.html:136 portal/views.py:678
+#: portal/models.py:326 portal/templates/location.html:137 portal/views.py:678
 msgid "Program Information"
 msgstr "Información del programa"
 
@@ -245,11 +245,11 @@ msgstr "Información del programa"
 msgid "Languages"
 msgstr "Idiomas"
 
-#: portal/models.py:340 portal/templates/location.html:115
+#: portal/models.py:340 portal/templates/location.html:116 portal/views.py:644
 msgid "No Hours Listed"
 msgstr "Horario no indicado"
 
-#: portal/models.py:343 portal/templates/location.html:114 portal/views.py:640
+#: portal/models.py:343 portal/templates/location.html:115 portal/views.py:640
 msgid "Duration and Hours"
 msgstr "Duración y Horas"
 
@@ -266,7 +266,7 @@ msgid "Directions"
 msgstr "Dirección"
 
 #: portal/models.py:383 portal/templates/location.html:54
-#: portal/templates/location.html.py:57 portal/templates/starred.html:46
+#: portal/templates/location.html.py:57 portal/templates/starred.html:41
 msgid "Share"
 msgstr "Compartir"
 
@@ -275,8 +275,8 @@ msgid "QRIS Rating"
 msgstr "Evaluaciones"
 
 #: portal/models.py:383 portal/templates/browse.html:65
-#: portal/templates/location.html:65 portal/templates/starred.html:12
-#: portal/templates/starred.html.py:21
+#: portal/templates/location.html:65 portal/templates/starred.html:7
+#: portal/templates/starred.html.py:16
 msgid "Compare and Apply"
 msgstr "Compare y Aplique"
 
@@ -313,7 +313,7 @@ msgstr "Haga clic para guardarlo en su lista"
 msgid "Click to remove from your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:397 portal/templates/location.html:155 portal/views.py:731
+#: portal/models.py:397 portal/templates/location.html:156 portal/views.py:731
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -378,7 +378,7 @@ msgstr "Sobre Nosotros"
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
 #: portal/templates/faq-models.html:5 portal/templates/how-to-apply.html:7
 #: portal/templates/location.html:12 portal/templates/smsinfo.html:12
-#: portal/templates/starred.html:12 portal/templates/updates.html:5
+#: portal/templates/starred.html:7 portal/templates/updates.html:5
 #: templates/admin/base_site.html:15
 msgid "Chicago Early Learning"
 msgstr "Chicago Early Learning"
@@ -488,42 +488,42 @@ msgstr "Recursos de la ciudad"
 msgid "FAQs"
 msgstr ""
 
-#: portal/templates/base.html:121
+#: portal/templates/base.html:119
 msgid ""
 "For application information please call the Chicago Early Learning Hotline at"
 msgstr ""
 "Para información acerca de la aplicación, por favor llamar al Chicago Early "
 "Learning línea de acceso directo al"
 
-#: portal/templates/base.html:135
+#: portal/templates/base.html:133
 msgid "About the Chicago Early Learning Portal"
 msgstr "Sobre del portal del Chicago Educacíon Temprana"
 
-#: portal/templates/base.html:136
+#: portal/templates/base.html:134
 msgid "Built by"
 msgstr "Construido por"
 
-#: portal/templates/base.html:138
+#: portal/templates/base.html:136
 msgid "Give us feedback"
 msgstr "Opine para mejorar"
 
-#: portal/templates/base.html:138
+#: portal/templates/base.html:136
 msgid "to help make the Chicago Early Learning Portal better."
 msgstr "el portal del Chicago Educacíon Temprana."
 
-#: portal/templates/base.html:139
+#: portal/templates/base.html:137
 msgid "Keep in touch by signing up for the"
 msgstr "Subscriba a nuestro"
 
-#: portal/templates/base.html:139
+#: portal/templates/base.html:137
 msgid "Early Learning Email Newsletter"
 msgstr "boletín informativo de Chicago Educación Temprana"
 
-#: portal/templates/base.html:149
+#: portal/templates/base.html:147
 msgid "Save and Share Permalink"
 msgstr "Guarde y comparta el enlace permanente"
 
-#: portal/templates/base.html:152
+#: portal/templates/base.html:150
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -567,13 +567,69 @@ msgstr ""
 "las escuelas y en agencias comunitarias, hay una serie de oportunidades para "
 "comenzar a estimular a su hijo en el aprendizaje temprano y otros entornos."
 
-#: portal/templates/city-resources.html:25
-#, fuzzy
-#| msgid "Chicago Early Learning"
-msgid "Chicago Park District"
-msgstr "Chicago Early Learning"
-
 #: portal/templates/city-resources.html:26
+msgid ""
+"Connect4Tots is a text-message service for parents and guardians of toddlers "
+"ages 1 to 3. Parents and guardians who enroll will receive 2-3 text messages "
+"each week with information about their child’s growth and development, as "
+"well as connections to health, education, public service, and event "
+"resources in the City of Chicago."
+msgstr ""
+"Connect4Tots es un servicio de mensajes de texto para padres y tutores de "
+"bebés entre 1 y 3 años de edad. Los padres y tutores que se registren "
+"recibirán de 2 a 3 mensajes de texto cada semana, con información acerca del "
+"desarrollo y crecimiento de sus niños, así como la salud, la educación, los "
+"servicios públicos y eventos en la ciudad de Chicago."
+
+#: portal/templates/city-resources.html:27
+msgid ""
+"To enroll, parents and guardians should text TOPTOPT7 to 311311 or use <a "
+"href=\"http://chitot.cityofchicago.org/demo/C4KSubscriptionForm.jsp\">this "
+"online form.</a>"
+msgstr ""
+"Para registrarse, los padres y tutores deben enviar el mensaje de texto "
+"TOPTOPT7 al 311311 o usar <a href=\"http://chitot.cityofchicago.org/demo/"
+"C4KSubscriptionForm.jsp\">este formulario en línea.</a>"
+
+#: portal/templates/city-resources.html:28
+msgid ""
+"At the time that you enroll, you will be asked to provide your child’s date "
+"of birth and sex, your city address, and your preferred language to receive "
+"texts. Once enrolled, you will automatically receive 2-3 messages per week "
+"with helpful guidance and tips."
+msgstr ""
+"En el momento del registro, se le pedirá que especifique el sexo y la fecha "
+"de nacimiento del niño, su dirección en la ciudad y el idioma en que "
+"prefiere que le envíen los mensajes. Una vez registrado, recibirá "
+"automáticamente de 2 a 3 mensajes por semana con orientación y consejos "
+"útiles."
+
+#: portal/templates/city-resources.html:29
+msgid "Standard text messaging rates may apply."
+msgstr "Se pueden aplicar tarifas estándares de mensajes de texto."
+
+#: portal/templates/city-resources.html:30
+msgid "Additional Information"
+msgstr "Información adicional"
+
+#: portal/templates/city-resources.html:31
+msgid ""
+"Connect4Tots is sponsored by the City of Chicago and the University of "
+"Chicago Urban Labs. The Urban Labs will evaluate the effects of the program "
+"by analyzing participants’ use of the information and resources included in "
+"the text messages. For more information on the program, please contact Urban "
+"Labs at <a href=\"mailto:Connect4TotsFeedback@cityofchicago.org"
+"\">Connect4TotsFeedback@cityofchicago.org</a>."
+msgstr ""
+"Connect4Tots cuenta con el patrocinio de la ciudad de Chicago y Urban Labs de la Universidad de Chicago. Este centro evaluará los efectos del programa mediante el análisis del uso que hacen los participantes de la información y los recursos incluidos en los mensajes de texto. Para obtener más información sobre el programa, puede comunicarse con Urban Labs a través de"
+" <a href=\"mailto:Connect4TotsFeedback@cityofchicago.org"
+"\">Connect4TotsFeedback@cityofchicago.org</a>."
+
+#: portal/templates/city-resources.html:43
+msgid "Chicago Park District"
+msgstr ""
+
+#: portal/templates/city-resources.html:44
 msgid ""
 "Many parks offer early childhood recreation classes— moms, pops, and tots "
 "interaction, play group, preschool, puppetry, storytelling, and Moms, Dads, "
@@ -588,11 +644,11 @@ msgstr ""
 "\"http://www.chicagoparkdistrict.com/\">Visite la página de internet de los "
 "parques de chicago</a> para encontrar y matricularse para clases cerca a ud."
 
-#: portal/templates/city-resources.html:36
+#: portal/templates/city-resources.html:54
 msgid "Chicago City of Learning"
 msgstr ""
 
-#: portal/templates/city-resources.html:37
+#: portal/templates/city-resources.html:55
 msgid ""
 "Chicago City of Learning (CCOL) is a groundbreaking initiative that joins "
 "together learning opportunities for young people in a way that allows them "
@@ -607,11 +663,11 @@ msgstr ""
 "chicagocityoflearning.org/\">Visita CCOL</a> para encontrar oportunidades "
 "cerca de usted."
 
-#: portal/templates/city-resources.html:47
+#: portal/templates/city-resources.html:65
 msgid "Chicago Public Library"
 msgstr ""
 
-#: portal/templates/city-resources.html:48
+#: portal/templates/city-resources.html:66
 msgid ""
 "The Chicago Public Library (CPL) has many enriching opportunities for "
 "children including early learning spaces at libraries and preschool reading "
@@ -632,11 +688,11 @@ msgstr ""
 "basadas en STEAM desplegados por toda la ciudad. <a href=\"http://www."
 "chipublib.org/\">Póngase en contacto con CPL</a> para más detalles."
 
-#: portal/templates/city-resources.html:59
+#: portal/templates/city-resources.html:77
 msgid "Chicago Children's Museum"
 msgstr ""
 
-#: portal/templates/city-resources.html:60
+#: portal/templates/city-resources.html:78
 msgid ""
 "The Chicago Children’s Museum features a number of early learning spaces for "
 "children to support the development of communities where play and learning "
@@ -655,11 +711,11 @@ msgstr ""
 "chicagochildrensmuseum.org/\">Póngase en contacto con el Museo Infantil de "
 "Chicago</ para más detalles."
 
-#: portal/templates/city-resources.html:70
+#: portal/templates/city-resources.html:88
 msgid "Chicago Department of Public Health"
 msgstr ""
 
-#: portal/templates/city-resources.html:71
+#: portal/templates/city-resources.html:89
 msgid ""
 "The foundation for early learning and a child’s success starts with maternal "
 "and infant health. The Chicago Department of Public Health’s neighborhood "
@@ -859,7 +915,11 @@ msgstr "Contacte directamente al programa para aplicar."
 msgid "Seats Available"
 msgstr "Asientos Disponibles"
 
-#: portal/templates/location.html:143
+#: portal/templates/location.html:110 portal/views.py:755
+msgid "Note: Availability and placement are subject to eligibility."
+msgstr ""
+
+#: portal/templates/location.html:144
 msgid ""
 "If you are interested in enrolling your child in this home visiting program "
 "please contact this site directly."
@@ -867,11 +927,11 @@ msgstr ""
 "Si está interesado en inscribir su hijo en esta programa de visitas "
 "domiciliarias, por favor contacte directamente al programa. "
 
-#: portal/templates/location.html:149 portal/views.py:724
+#: portal/templates/location.html:150 portal/views.py:724
 msgid "Languages (other than English)"
 msgstr "Idiomas (excepto Inglés)"
 
-#: portal/templates/location.html:172
+#: portal/templates/location.html:173
 msgid ""
 "Are you a <b>provider</b> who works at this early learning center and needs "
 "to make changes to information on this page?"
@@ -879,7 +939,7 @@ msgstr ""
 "¿Es usted un <b>proveedor</b> de esta programa de aprendizaje temprano y "
 "necesita cambiar esta información?"
 
-#: portal/templates/location.html:172
+#: portal/templates/location.html:173
 msgid "Click here!"
 msgstr "¡Haga clic aquí!"
 
@@ -923,7 +983,7 @@ msgstr ""
 "Si desea hablar con alguien acerca de sus opciones, por favor llamar a "
 "Chicago Early Learning al "
 
-#: portal/templates/starred.html:22
+#: portal/templates/starred.html:17
 msgid ""
 "Compare early learning programs side-by-side to select the highest quality "
 "option for your child. Add more programs by going back to your search "
@@ -932,7 +992,7 @@ msgstr ""
 "Compare programas de aprendizaje temprano punto por punto para escoger la "
 "mejor opción para su hijo. Regrese a su búsqueda para agregar más programas."
 
-#: portal/templates/starred.html:24
+#: portal/templates/starred.html:19
 msgid ""
 "Press the \"Apply\" button to build your Chicago Early Learning parent "
 "profile and complete an application. You will be able to view your "
@@ -947,7 +1007,7 @@ msgstr ""
 "solicitud para dos lugares como máximo de su preferencia (Uno de ubicación y "
 "uno lista de espera)."
 
-#: portal/templates/starred.html:26
+#: portal/templates/starred.html:21
 msgid ""
 "Call the Chicago Early Learning Hotline at <a href=\"tel:3122291690\">(312) "
 "229-1690</a> if you would like assistance completing the application over "
@@ -956,7 +1016,7 @@ msgstr ""
 "Por favor llamar al Chicago Early Learning línea de acceso directo al <a "
 "href=\"tel:3122291690\">(312) 229-1690</a> para asistencia."
 
-#: portal/templates/starred.html:28
+#: portal/templates/starred.html:23
 msgid ""
 "If you are looking to enroll in a program immediately or have a child that "
 "will not yet be 3 years old in the Fall, please contact the early childhood "
@@ -966,12 +1026,12 @@ msgstr ""
 "un hijo que no va a cumplir 3 años en el otoño, por favor contacte "
 "directamente al programa."
 
-#: portal/templates/starred.html:30
+#: portal/templates/starred.html:25
 msgid "Press “Back to Search\" to add more locations you are interested in."
 msgstr ""
 "Haga clic “Regrese a Búsqueda\" para agregar más programas de interesa."
 
-#: portal/templates/starred.html:37
+#: portal/templates/starred.html:32
 msgid ""
 "Please select no more than 6 locations to continue to the application "
 "process. Compare your favorites below to pick the best options for your "
@@ -981,15 +1041,15 @@ msgstr ""
 "aplicaciones. Compare sus favoritos punto por punto para escoger la mejor "
 "opción para su familia."
 
-#: portal/templates/starred.html:41
+#: portal/templates/starred.html:36
 msgid "Apply"
 msgstr "Aplique"
 
-#: portal/templates/starred.html:49
+#: portal/templates/starred.html:44
 msgid "Clear Selections"
 msgstr "Borre Selecciones"
 
-#: portal/templates/starred.html:52
+#: portal/templates/starred.html:47
 msgid "Back to Search"
 msgstr "Regrese a Búsqueda"
 
