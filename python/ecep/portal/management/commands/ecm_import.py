@@ -28,6 +28,7 @@ class Command(BaseCommand):
 
                 print ""
                 print key
+                print l.site_name
 
                 if l.address != row['LocAddress'] and row['LocAddress'] is not None:
 
