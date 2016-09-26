@@ -84,6 +84,7 @@ class Command(BaseCommand):
 
                 l.is_cps_based = smart_swap(l.is_cps_based, parse_null_boolean(row['School_Based_Y_N']), l.verbose_name('is_cps_based'))
 
+                l.save()
 
 
 
@@ -113,5 +114,9 @@ def smart_swap(current, new, name):
 
     if new and current != new:
         print "Updated {} to {}".format(name, str(new))
+        return new
+
+    else:
+        return current
 
 
