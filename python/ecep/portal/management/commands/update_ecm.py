@@ -1,7 +1,13 @@
-import csv
-import os
-import re
+from geopy.geocoders import GoogleV3
 
+import csv
+import logging
+import os
+import paramiko
+import re
+import time
+
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import NoArgsCommand
 from django.conf import settings
 
@@ -12,72 +18,212 @@ class Command(NoArgsCommand):
     """
     Import Cleaned Site Name, Address, and ECM Keys
     """
+    remote_path = 'Exports/'
+    local_export_dir_path = '/cel/app/python/ecep/portal/management/exports/export.csv'
+
+    geolocator = GoogleV3()
 
     def handle(self, *args, **options):
 
-        with open('export.txt', 'rb') as master:
+        timestr = time.strftime("%Y%m%d_%H%M%S")
+        logfile = 'portal/management/commands/logs/ecm_import_' + timestr + '.log'
+        logging.basicConfig(filename=logfile, level=logging.INFO)
+
+        self.download_export()
+
+        with open(self.local_export_dir_path, 'rb') as master:
             reader = csv.DictReader(master, delimiter='|')
 
             for row in reader:
                 self.process_row(row)
 
-        print 'Done!'
+
+    def download_export(self):
+
+        host = settings.ECM_SFTP_HOST
+        port = 22
+
+        transport = paramiko.Transport((host, port))
+
+        username = settings.ECM_SFTP_USERNAME
+        password = settings.ECM_SFTP_PASSWORD
+
+        transport.connect(username=username, password=password)
+        sftp = paramiko.SFTPClient.from_transport(transport)
+
+        uploads = sftp.listdir('Exports/')
+        latest_export = uploads[-1]
+        latest_export_path = self.remote_path + latest_export
+        sftp.get(remotepath=latest_export_path, localpath=self.local_export_dir_path)
+        
+        sftp.close()
+        transport.close()
+
+        return latest_export
 
 
     def process_row(self, row):
 
-        try: 
-            l = Location.objects.get(ecm_key=row['Key'])
-            print l.site_name
+        try:
 
-            l.q_stmt_en = self.test(l.q_stmt_en, row['Description'])
-            l.q_stmt_es = self.test(l.q_stmt_es, row['Description (Spanish)'])
-            l.city = self.test(l.city, row['City'])
-            l.state = self.test(l.state, row['State'])
-            l.zip = self.test(l.zip, row['ZIP'])
-            l.phone = self.test(l.phone, row['Phone Number'])
-            l.url = self.test(l.url, row['URL'])
-            l.ages = self.test(l.ages, row['Ages Served'])
-            l.is_age_lt_3 = self.test_bool(l.is_age_lt_3, row['Ages 0-3 (Y/N)'])
-            l.is_age_gt_3 = self.test_bool(l.is_age_gt_3, row['Ages 3-5 (Y/N)'])
-            l.is_part_day = self.test_bool(l.is_part_day, row['Part Day (Y/N)'])
-            l.is_full_day = self.test_bool(l.is_full_day, row['Full Day (Y/N)'])
-            l.is_full_year = self.test_bool(l.is_full_year, row['Full Year (Y/N)'])
-            l.is_school_year = self.test_bool(l.is_school_year, row['School Year (Y/N)'])
-            l.prg_hours = self.test(l.prg_hours, row['Operating Hours'])
-            l.is_cps_based = self.test_bool(l.is_cps_based, row['School Based (Y/N)'])
-            l.is_community_based = self.test_bool(l.is_community_based, row['Community Based (Y/N)'])
-            l.is_hs = self.test_bool(l.is_hs, row['Head Start (Y/N)'])
-            l.accept_ccap = self.test_bool(l.accept_ccap, row['Accepts CCAP (Y/N)'])
-            l.is_home_visiting = self.test_bool(l.is_home_visiting, row['Home Visiting (Y/N)'])
-            l.language_1 = self.test(l.language_1, row['Languages other than English'])
-            l.other_features_bucket = self.test(l.other_features_bucket, row['Other Features'])
-            l.accred = self.test(l.accred, row['Accreditation'])
-            l.availability = self.test(l.availability, row['Availability Level'])
-            l.neighborhood = self.test(l.neighborhood, row['Neighborhood'])
+            key = row['ECMKey']
+            l = Location.objects.get(ecm_key=key)
 
-            print l.site_name
+            logging.info("")
+            logging.info(key)
+            logging.info(l.site_name)
+
+            # Special handling for address and geolocation
+            if l.address != row['LocAddress'] and row['LocAddress'] is not None:
+
+                location = self.geocode(row['LocAddress'], row['LocCity'], row['LocState'], row['LocZip'])
+                l.address = row['LocAddress']
+                logging.info("Updated address to {}".format(row['LocAddress']))
+                l.geom = 'POINT({} {})'.format(location.longitude, location.latitude)
+                logging.info('Updated geometry!')
+
+            l.ages = smart_swap(l.ages, row['Ages_Served'], l.verbose_name('ages'))
+            l.q_rating = smart_swap(l.q_rating, row['Quality_Rating'], l.verbose_name('q_rating'))
+            l.is_part_day = smart_swap(l.is_part_day, parse_null_boolean(row['Part_Day_Y_N']), l.verbose_name('is_part_day'))
+            l.prg_hours = smart_swap(l.prg_hours, row['Operating_Hours'], l.verbose_name('prg_hours'))
+            l.city = smart_swap(l.city, row['LocCity'], l.verbose_name('city'))
+            l.zip = smart_swap(l.zip, row['LocZip'], l.verbose_name('zip'))
+            l.state = smart_swap(l.state, row['LocState'], l.verbose_name('state'))
+            l.is_age_lt_3 = smart_swap(l.is_age_lt_3, parse_null_boolean(row['Ages_Zero_Three_Y_N']), l.verbose_name('is_age_lt_3'))
+            l.is_age_gt_3 = smart_swap(l.is_age_gt_3, parse_null_boolean(row['Ages_Three_Five_Y_N']), l.verbose_name('is_age_gt_3'))
+            l.is_community_based = smart_swap(l.is_community_based, parse_null_boolean(row['Community_Based_Y_N']), l.verbose_name('is_community_based'))
+            l.is_school_year = smart_swap(l.is_school_year, parse_null_boolean(row['School_Year_Y_N']), l.verbose_name('is_school_year'))
+            l.accred = smart_swap(l.accred, row['Accreditation'], l.verbose_name('accred'))
+
+            # Special processing for languages:
+            cleaned_languages = clean_languages(row['Languages_other_than_English'])
+            l.language_1 = smart_swap(l.language_1, cleaned_languages, l.verbose_name('language_1'))
+            l.language_2 = ''
+            l.language_3 = ''
+
+            l.phone = smart_swap(l.phone, row['Phone_Number'], l.verbose_name('phone'))
+            l.accept_ccap = smart_swap(l.accept_ccap, parse_null_boolean(row['Accepts_CCAP_Y_N']), l.verbose_name('accept_ccap'))
+            l.address = smart_swap(l.address, row['LocAddress'], l.verbose_name('address'))
+            l.is_hs = smart_swap(l.is_hs, parse_null_boolean(row['Head_Start_Y_N']), l.verbose_name('is_hs'))
+            l.is_full_day = smart_swap(l.is_full_day, parse_null_boolean(row['Full_Day_Y_N']), l.verbose_name('is_full_day'))
+            l.is_full_year = smart_swap(l.is_full_year, parse_null_boolean(row['Full_Year_Y_N']), l.verbose_name('is_full_year'))
+            l.url = smart_swap(l.url, row['URL'], l.verbose_name('url'))
+            l.is_home_visiting = smart_swap(l.is_home_visiting, parse_null_boolean(row['Home_Visiting_Y_N']), l.verbose_name('is_home_visiting'))
+            l.is_cps_based = smart_swap(l.is_cps_based, parse_null_boolean(row['School_Based_Y_N']), l.verbose_name('is_cps_based'))
+                
+            # Save results
+            l.save()
+
+        except ObjectDoesNotExist:
+
+            self.create_new_school(row)
 
         except:
-            print "**** RUH ROH ****"
-            print row['Key']
+
+            logging.warning('')
+            logging.warning('*********')
+            logging.warning("Whoops! Something went wrong with ")
+            logging.warning(row['ECMKey'])
+            logging.warning('*********')
+            logging.warning('')
+
+
+    def geocode(self, address, city, state, zip):
+
+        address_string = " ".join([address, city, state, zip])
+
+        point = self.geolocator.geocode(address_string)
+        return point
+
+
+    def process_location(self, row):
+
+        time.sleep(1)
+        location = self.geocode(row['LocAddress'], row['LocCity'], row['LocState'], row['LocZip'])
+        try:
+            x = location.longitude
+
+        except:
             print ""
+            print "UH OH"
+            print row['ECMKey']
+            print "UH OH"
+
+    def create_new_school(self, row):
+
+        l = Location(
+            ecm_key = row['ECMKey'],
+            site_name = row['Site_Name'],
+            address = row['LocAddress'],
+            city = row['LocCity'], # Yes, a space after city
+            state = row['LocState'],
+            zip = row['LocZip'],
+            phone = row['Phone_Number'],
+            url = row['URL'],
+            accred = row['Accreditation'],
+            q_rating = row['Quality_Rating'],
+            prg_hours = row['Operating_Hours'],
+            is_full_day = parse_null_boolean(row['Full_Day_Y_N']),
+            is_part_day = parse_null_boolean(row['Part_Day_Y_N']),
+            is_school_year = parse_null_boolean(row['School_Year_Y_N']),
+            is_full_year = parse_null_boolean(row['Full_Year_Y_N']),
+            ages = row['Ages_Served'],
+            is_age_lt_3 = parse_null_boolean(row['Ages_Zero_Three_Y_N']),
+            is_age_gt_3 = parse_null_boolean(row['Ages_Three_Five_Y_N']),
+            is_community_based = parse_null_boolean(row['Community_Based_Y_N']),
+            is_cps_based = parse_null_boolean(row['School_Based_Y_N']),
+            is_home_visiting = parse_null_boolean(row['Home_Visiting_Y_N']),
+            accept_ccap = parse_null_boolean(row['Accepts_CCAP_Y_N']),
+            is_hs = parse_null_boolean(row['Head_Start_Y_N']),
+            availability = row['Availability_Level']
+        )
+
+        location = self.geocode(row['LocAddress'], row['LocCity'], row['LocState'], row['LocZip'])
+        l.geom = 'POINT({} {})'.format(location.longitude, location.latitude)
+
+        l.languages = clean_languages(row['Languages_other_than_English'])
+    
+        try:
+            l.save()
+
+        except:
+            logging.info('')
+            logging.info(row['ECMKey'])
+            logging.info('Created new location!')
+            logging.info('')
 
 
-    def test(self, existing, new):
-        if new:
-            return new
-            print 'changed!'
-        else:
-            return existing
+
+def parse_null_boolean(boolean):
+
+    if boolean == '':
+        return ''
+
+    elif boolean == None:
+        return None
+
+    else:
+        return boolean == '1'
+
+    
+def smart_swap(current, new, name):
+
+    if new and new != '_' and current != new and new != 'n/a':
+        logging.info("Updated {} to {}".format(name, str(new)))
+        return new
+
+    else:
+        return current
 
 
-    def test_bool(self, existing, new):
-        if new:
-            return bool(new)
-            print 'changed!'
-        else:
-            return existing
+def clean_languages(languages):
 
-
-
+    if languages == "_" or languages == ";;":
+        return ''
+    elif languages.endswith(";;"):
+        return languages.strip(";;")
+    else:
+        # Chained replace catches both scenarios like
+        #  a) "Spanish;;French"
+        #  b) "Spanish;French;Latin"
+        return languages.replace(";;", ", ").replace(";", ", ")
