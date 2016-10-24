@@ -185,13 +185,19 @@ class Command(NoArgsCommand):
     
         try:
             l.save()
-
-        except:
             logging.info('')
             logging.info(row['ECMKey'])
             logging.info('Created new location!')
             logging.info('')
 
+
+        except:
+            logging.error('')
+            logging.error('!!!!!')
+            logging.error('Could not create new school!')
+            logging.error(row['ECMKey'])
+            logging.error('!!!!!')
+            logging.error('')
 
 
 def parse_null_boolean(boolean):
