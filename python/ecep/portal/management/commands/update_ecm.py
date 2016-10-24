@@ -191,11 +191,12 @@ class Command(NoArgsCommand):
             logging.info('')
 
 
-        except:
+        except Exception as e:
             logging.error('')
             logging.error('!!!!!')
             logging.error('Could not create new school!')
             logging.error(row['ECMKey'])
+            logging.error(e)
             logging.error('!!!!!')
             logging.error('')
 
