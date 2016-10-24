@@ -152,22 +152,22 @@ class Command(NoArgsCommand):
     def create_new_school(self, row):
 
         l = Location(
-            ecm_key = row['ECMKey'],
-            site_name = row['Site_Name'],
-            address = row['LocAddress'],
-            city = row['LocCity'], # Yes, a space after city
-            state = row['LocState'],
-            zip = row['LocZip'],
-            phone = row['Phone_Number'],
-            url = row['URL'],
-            accred = row['Accreditation'],
-            q_rating = row['Quality_Rating'],
-            prg_hours = row['Operating_Hours'],
+            ecm_key = smart_swap('', row['ECMKey'], None),
+            site_name = smart_swap('', row['Site_Name'], None),
+            address = smart_swap('', row['LocAddress'], None),
+            city = smart_swap('Chicago', row['LocCity'], None), # Yes, a space after city
+            state = smart_swap('IL', row['LocState'], None),
+            zip = smart_swap('', row['LocZip'], None),
+            phone = smart_swap('', row['Phone_Number'], None),
+            url = smart_swap('', row['URL'], None),
+            accred = smart_swap('', row['Accreditation'], None),
+            q_rating = smart_swap('', row['Quality_Rating'], None),
+            prg_hours = smart_swap('', row['Operating_Hours'], None),
             is_full_day = parse_null_boolean(row['Full_Day_Y_N']),
             is_part_day = parse_null_boolean(row['Part_Day_Y_N']),
             is_school_year = parse_null_boolean(row['School_Year_Y_N']),
             is_full_year = parse_null_boolean(row['Full_Year_Y_N']),
-            ages = row['Ages_Served'],
+            ages = smart_swap('', row['Ages_Served'], None),
             is_age_lt_3 = parse_null_boolean(row['Ages_Zero_Three_Y_N']),
             is_age_gt_3 = parse_null_boolean(row['Ages_Three_Five_Y_N']),
             is_community_based = parse_null_boolean(row['Community_Based_Y_N']),
@@ -175,7 +175,7 @@ class Command(NoArgsCommand):
             is_home_visiting = parse_null_boolean(row['Home_Visiting_Y_N']),
             accept_ccap = parse_null_boolean(row['Accepts_CCAP_Y_N']),
             is_hs = parse_null_boolean(row['Head_Start_Y_N']),
-            availability = row['Availability_Level']
+            availability = smart_swap('', row['Availability_Level'], None)
         )
 
         location = self.geocode(row['LocAddress'], row['LocCity'], row['LocState'], row['LocZip'])
@@ -216,7 +216,8 @@ def parse_null_boolean(boolean):
 def smart_swap(current, new, name):
 
     if new and new != '_' and current != new and new != 'n/a':
-        logging.info("Updated {} to {}".format(name, str(new)))
+        if name:
+            logging.info("Updated {} to {}".format(name, str(new)))
         return new
 
     else:
