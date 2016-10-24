@@ -153,7 +153,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
         ('Other',   {'fields': [('ages', 'prg_hours', 'accred'),
                                 ('language_1', 'language_2', 'language_3'),
                                 'q_stmt', 'enrollment', 'open_house', 'curriculum',
-                                'q_rating', ]}),
+                                'q_rating', 'ecm_key', 'availability']}),
     ]
 
     def _delete_messages(self, request):
@@ -356,7 +356,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
         result = Location.objects.all()
         header = next(result.values().iterator()).keys()
         header.append('neighborhood_name')
-        writer = csv.DictWriter(response, header, delimiter='|')
+        writer = csv.DictWriter(response, header)
         writer.writeheader()
 
         for row in result.values():

@@ -14,10 +14,7 @@ class Command(BaseCommand):
         """
         """
 
-        with open('master.csv', 'rb') as masterfile:
-
-            # Welp.
-            Location.objects.all().delete()
+        with open('cleaned_export.csv', 'rb') as masterfile:
 
             # Import the new
             reader = csv.DictReader(masterfile, encoding='utf-8-sig')
@@ -26,72 +23,158 @@ class Command(BaseCommand):
             for row in reader:
 
                 try: 
-                    print rows
-                    l = Location()
 
-                    l.site_name = row['site_name']
-                    l.q_stmt = row['q_stmt']
-                    l.q_stmt_en = row['q_stmt_en']
-                    l.ages = row['ages']
-                    l.ecm_key = int(row['ecm_key'])
-                    l.q_rating = row['q_rating']
-                    l.q_stmt_es = row['q_stmt_es']
-                    l.is_part_day = parse_null_boolean(row['is_part_day'])
-                    l.id = int(row['id'])
-                    l.prg_hours = row['prg_hours']
-                    l.city = row['city']
-                    l.site_type = row['site_type']
-                    l.zip = row['zip']
-                    l.placeholder_2 = row['placeholder_2']
-                    l.state = row['state']
-                    l.is_full_week = parse_null_boolean(row['is_full_week'])
-                    l.is_age_lt_3 = parse_null_boolean(row['is_age_lt_3'])
-                    l.geom = GEOSGeometry(row['geom'])
-                    l.availability = row['availability']
-                    l.is_age_gt_3 = parse_null_boolean(row['is_age_gt_3'])
-                    l.is_community_based = parse_null_boolean(row['is_community_based'])
-                    l.is_school_year = parse_null_boolean(row['is_school_year'])
-                    l.email = row['email']
-                    l.accred = row['accred']
-                    l.is_hs = parse_null_boolean(row['is_hs'])
-                    l.curriculum = row['curriculum']
-                    l.language_1 = row['language_1']
-                    l.language_3 = row['language_3']
-                    l.language_2 = row['language_2']
-                    l.is_part_week = parse_null_boolean(row['is_part_week'])
-                    l.phone = row['phone']
-                    l.accept_ccap = parse_null_boolean(row['accept_ccap'])
-                    l.address = row['address']
-                    l.accepted = row['accepted']
-                    l.is_ehs = parse_null_boolean(row['is_ehs'])
-                    l.is_full_day = parse_null_boolean(row['is_full_day'])
-                    l.is_full_year = parse_null_boolean(row['is_full_year'])
-                    l.url = row['url']
-                    l.enrollment = row['enrollment']
-                    l.enrollment_en = row['enrollment_en']
-                    l.is_home_visiting = parse_null_boolean(row['is_home_visiting'])
-                    l.curriculum_es = row['curriculum_es']
-                    l.curriculum_en = row['curriculum_en']
-                    l.open_house_en = row['open_house_en']
-                    l.placeholder_1 = row['placeholder_1']
-                    l.open_house = row['open_house']
-                    l.open_house_es = row['open_house_es']
-                    l.enrollment_es = row['enrollment_es']
-                    l.is_cps_based = parse_null_boolean(row['is_cps_based'])
+                    key = row['ECMKey']
+                    l = Location.objects.get(ecm_key=key)
 
-                    print ''
-                    print 'Added {}'.format(str(l.id)) 
-                    print ''
-                    rows +=1
+                    print ""
+                    print "!!!!!!!!!!!!!!!!!!!!!!"
+                    print key
+                    print "!!!!!!!!!!!!!!!!!!!!!!"
+                    print ""
+
+                    print "Name"
+                    print l.site_name
+                    print row['Site_Name']
+                    print ""
+
+                    print "Ages Served"
+                    print l.ages
+                    print row['Ages_Served']
+                    print ""
+
+                    print "ECM Key"
+                    print l.ecm_key
+                    print int(row['ECMKey'])
+                    print ""
+
+                    print "Quality Rating"
+                    print l.q_rating
+                    print row['Quality_Rating']
+                    print ""
+
+                    print "Part Day"
+                    print l.is_part_day
+                    print parse_null_boolean(row['Part_Day_Y_N'])
+                    print ""
+
+                    print "Operating Hours"
+                    print l.prg_hours
+                    print row['Operating_Hours']
+                    print ""
+
+                    print "City"
+                    print l.city
+                    print row['LocCity']
+                    print ""
+
+                    print "Zip"
+                    print l.zip
+                    print row['LocZip']
+                    print ""
+
+                    print "State"
+                    print l.state
+                    print row['LocState']
+                    print ""
+
+                    print "0 - 3"
+                    print l.is_age_lt_3
+                    print parse_null_boolean(row['Ages_Zero_Three_Y_N'])
+                    print ""
+
+                    print "3 - 5"
+                    print l.is_age_gt_3
+                    print parse_null_boolean(row['Ages_Three_Five_Y_N'])
+                    print ""
+
+                    print "Community Based"
+                    print l.is_community_based
+                    print parse_null_boolean(row['Community_Based_Y_N'])
+                    print ""
+
+                    print "School Year"
+                    print l.is_school_year
+                    print parse_null_boolean(row['School_Year_Y_N'])
+                    print ""
+
+                    print "Accreditation"
+                    print l.accred
+                    print row['Accreditation']
+                    print ""
+
+                    print "Languages"
+                    print l.language_1
+                    print row['Languages_other_than_English']
+                    print l.language_2
+                    print row['Lang2']
+                    print l.language_3
+                    print row['Lang3']
+                    print ""
+
+                    print "Phone Number"
+                    print l.phone
+                    print row['Phone_Number']
+                    print ""
+
+                    print "CCAP"
+                    print l.accept_ccap
+                    print parse_null_boolean(row['Accepts_CCAP_Y_N'])
+                    print ""
+
+                    print "Address"
+                    print l.address
+                    print row['LocAddress']
+                    print ""
+
+                    print "Head Start"
+                    print l.is_hs
+                    print parse_null_boolean(row['Head_Start_Y_N'])
+                    print ""
+
+                    print "Early Head Start"
+                    # print l.is_ehs
+                    # print parse_null_boolean(row['is_ehs'])
+                    print ""
+
+                    print "Full Day"
+                    print l.is_full_day
+                    print parse_null_boolean(row['Full_Day_Y_N'])
+                    print ""
+
+                    print "Full Year"
+                    print l.is_full_year
+                    print parse_null_boolean(row['Full_Year_Y_N'])
+                    print ""
+
+                    print "URL"
+                    print l.url
+                    print row['URL']
+                    print ""
+
+                    print "Home Visiting"
+                    print l.is_home_visiting
+                    print parse_null_boolean(row['Home_Visiting_Y_N'])
+                    print ""
+
+                    print "CPS Based"
+                    print l.is_cps_based
+                    print parse_null_boolean(row['School_Based_Y_N'])
+                    print ""
+
+                    print ""
+                    input("Next...")
+
                     
                 except:
 
                     print ''
                     print '*********'
                     print "Whoops! Something went wrong with "
-                    print row['id']
+                    print row['ECMKey']
                     print '*********'
                     print ''
+
 
 
 

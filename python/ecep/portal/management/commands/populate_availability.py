@@ -14,7 +14,7 @@ class Command(BaseCommand):
         """
         """
 
-        with open('export_7_21.csv', 'rb') as availability_file:
+        with open('export.csv', 'rb') as availability_file:
 
             reader = csv.DictReader(availability_file, delimiter="|", encoding="Latin1")
 

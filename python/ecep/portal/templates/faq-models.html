@@ -25,27 +25,31 @@ If we want to actually group questions by topic, we'll need to modify this a bit
     </div>
     <div class="contents">
     {% for t in topics %}
-        <p class="topic-contents"><a href="#{{t.topic.slug}}">{{ t.topic.name }}</a></p>
-        {% for q in t.questions %}
-        <p class="question-contents"><a href="#{{q.slug}}">{{ q.text }}</a></p>
-        {% endfor %}
+        {% if t.questions %}    
+            <p class="topic-contents"><a href="#{{t.topic.slug}}">{{ t.topic.name }}</a></p>
+            {% for q in t.questions %}
+            <p class="question-contents"><a href="#{{q.slug}}">{{ q.text }}</a></p>
+            {% endfor %}
+        {% endif %}
     {% endfor %}
     </div>
 
     {% for t in topics %}
-        <span class="anchor" id="{{t.topic.slug}}"></span>
-        <div id="{{t.topic.slug}}">
-            <h1 class="topic">{{ t.topic.name }}</h1>
-            
-            {% for q in t.questions %}
-                <span class="anchor" id="{{ q.slug }}"></span>
-                <div class="question">
-                    <h2>{{ q.text }}</h2>
-                    {{ q.answer|safe }}
-                    <p><a href="#top">Return to top</a><p>
-                </div>
-            {% endfor %}
-        </div>
+        {% if t.questions %}
+            <span class="anchor" id="{{t.topic.slug}}"></span>
+            <div id="{{t.topic.slug}}">
+                <h1 class="topic">{{ t.topic.name }}</h1>
+                
+                {% for q in t.questions %}
+                    <span class="anchor" id="{{ q.slug }}"></span>
+                    <div class="question">
+                        <h2>{{ q.text }}</h2>
+                        {{ q.answer|safe }}
+                        <p><a href="#top">Return to top</a><p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
 
     {% endfor %}
 

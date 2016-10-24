@@ -22,7 +22,25 @@
 
         <div class="media">
           <div class="media-body">
-            <h4 class="media-heading">{% trans "Chicago Park District" %}</h4>
+            <h3 class="media-heading">Connect4Tots</h3>
+            <p>{% blocktrans %}Connect4Tots is a text-message service for parents and guardians of toddlers ages 1 to 3. Parents and guardians who enroll will receive 2-3 text messages each week with information about their child’s growth and development, as well as connections to health, education, public service, and event resources in the City of Chicago.{% endblocktrans %}</p>
+            <p><b>{% blocktrans %}To enroll, parents and guardians should text TOPTOPT7 to 311311 or use <a href="http://chitot.cityofchicago.org/demo/C4KSubscriptionForm.jsp">this online form.</a>{% endblocktrans %}</b></p>
+            <p>{% blocktrans %}At the time that you enroll, you will be asked to provide your child’s date of birth and sex, your city address, and your preferred language to receive texts. Once enrolled, you will automatically receive 2-3 messages per week with helpful guidance and tips.{% endblocktrans %}</p>
+            <p>Standard text messaging rates may apply.</p>
+            <h4>Additional Information</h4>
+            <p>{% blocktrans %}Connect4Tots is sponsored by the City of Chicago and the University of Chicago Urban Labs. The Urban Labs will evaluate the effects of the program by analyzing participants’ use of the information and resources included in the text messages. For more information on the program, please contact Urban Labs at <a href="mailto:Connect4TotsFeedback@cityofchicago.org">Connect4TotsFeedback@cityofchicago.org</a>.{% endblocktrans %}</p>
+
+          </div>
+          <a class="media-image">
+            <img src="{% static 'img/logos/connect4tots.png' %}" alt="Connect4">
+          </a>
+        </div>
+
+        <hr>
+
+        <div class="media">
+          <div class="media-body">
+            <h3 class="media-heading">{% trans "Chicago Park District" %}</h3>
             <p>{% blocktrans %}Many parks offer early childhood recreation classes— moms, pops, and tots interaction, play group, preschool, puppetry, storytelling, and Moms, Dads, & Tots Gymnastics. Early childhood participants develop and enhance their motor, listening and social skills through movement education programming. <a href="http://www.chicagoparkdistrict.com/">Visit the Chicago Park District</a> to find and sign up for a class near you.{% endblocktrans %}</p>
           </div>
           <a class="media-image" href="http://www.chicagoparkdistrict.com/">
@@ -33,7 +51,7 @@
 
         <div class="media">
           <div class="media-body">
-            <h4 class="media-heading">{% trans "Chicago City of Learning" %}</h4>
+            <h3 class="media-heading">{% trans "Chicago City of Learning" %}</h3>
             <p>{% blocktrans %}Chicago City of Learning (CCOL) is a groundbreaking initiative that joins together learning opportunities for young people in a way that allows them to think about, pursue, and develop their interests. CCOL partners to bring early childhood experiences to spaces during the summer to prepare children to enter kindergarten in the Fall. <a href="https://chicagocityoflearning.org/">Visit CCOL</a> to find opportunities near you.{% endblocktrans %}</p>
           </div>
           <a class="media-image" href="https://chicagocityoflearning.org/">
@@ -44,7 +62,7 @@
 
         <div class="media">
           <div class="media-body">
-            <h4 class="media-heading">{% trans "Chicago Public Library" %}</h4>
+            <h3 class="media-heading">{% trans "Chicago Public Library" %}</h3>
             <p>{% blocktrans %}The Chicago Public Library (CPL) has many enriching opportunities for children including early learning spaces at libraries and preschool reading hours. CPL also features mobile units that bring hands-on STEAM (science, technology, engineering, arts and math) learning activities for young children along with family literacy programming facilitated by librarians throughout the city. The CPL has three mobile units with these STEAM-based learning kits deployed throughout the city – one for each Library District. <a href="http://www.chipublib.org/">Contact CPL</a> for details.{% endblocktrans %}</p>
           </div>
           <a class="media-image" href="http://www.chipublib.org/">
@@ -56,7 +74,7 @@
 
         <div class="media">
           <div class="media-body">
-            <h4 class="media-heading">{% trans "Chicago Children's Museum" %}</h4>
+            <h3 class="media-heading">{% trans "Chicago Children's Museum" %}</h3>
             <p>{% blocktrans %}The Chicago Children’s Museum features a number of early learning spaces for children to support the development of communities where play and learning connect. One permanent exhibit, The Tinkering Lab, features an early learning nook of safe interactive objects and touchable tools. The Children’s Museum also partners to bring early learning and engagement spaces to other places in the city. <a href="http://www.chicagochildrensmuseum.org/">Contact the Chicago Children’s Museum</a> for details.{% endblocktrans %}</p>
           </div>
           <a class="media-image" href="http://www.chicagochildrensmuseum.org/">
@@ -67,7 +85,7 @@
 
         <div class="media">
           <div class="media-body">
-            <h4 class="media-heading">{% trans "Chicago Department of Public Health" %}</h4>
+            <h3 class="media-heading">{% trans "Chicago Department of Public Health" %}</h3>
             <p>{% blocktrans %}The foundation for early learning and a child’s success starts with maternal and infant health. The Chicago Department of Public Health’s neighborhood health clinics offer care for expectant mothers and wellness services for children. <a href="http://www.cityofchicago.org/city/en/depts/cdph.html">Contact the Chicago Department of Public Health</a> for details.{% endblocktrans %}</p>
           </div>
           <a class="media-image" href="http://www.cityofchicago.org/city/en/depts/cdph.html">
@@ -75,21 +93,7 @@
           </a>
         </div>
 
-        <hr>
-
-        <div class="media">
-          <div class="media-body">
-            <h4 class="media-heading">Connect4Tots</h4>
-            <p>{% blocktrans %}Connect4Tots is a text-message service for parents and guardians of toddlers ages 1 to 3. Parents and guardians who enroll will receive 2-3 text messages each week with information on their child’s growth and development as well as connections to health, education, public service, and event resources in the City of Chicago.{% endblocktrans %}</p>
-            <p>{% blocktrans %}To enroll, parents and guardians should text "TOPTOPT7" to 311311.{% endblocktrans %}</p>
-            <p>{% blocktrans %}Connect4Tots is sponsored by the City of Chicago and University of Chicago Urban Labs. Its purpose is to connect Chicago-area parents/guardians of children ages 1 to 3 with evidenced-based information on their child’s developmental milestones and connect them to Chicago-area resources, such as vaccinations and free clinics, public assistance enrollment services, age-appropriate events, and early learning resources.{% endblocktrans %}</p>
-            <p>{% blocktrans %}Urban Labs will evaluate the effects of the program by analyzing participants’ use of the information and resources included in the text messages. For more information on the program, please contact Urban Labs at <a href="mailto:Connect4TotsFeedback@cityofchicago.org">Connect4TotsFeedback@cityofchicago.org</a>.{% endblocktrans %}</p>
-
-          </div>
-          <a class="media-image">
-            <img src="{% static 'img/logos/connect4tots.png' %}" alt="Connect4">
-          </a>
-        </div>
+        
 
     </div>
 </div>
