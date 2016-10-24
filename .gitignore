@@ -7,6 +7,7 @@
 python/ecep/static/*
 python/ecep/portal/static-prod
 python/ecep/local_settings.py
+python/ecep/portal/management/exports/*
 
 # Generated config file for celery service
 config/django-celery.local.config
