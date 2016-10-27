@@ -82,6 +82,7 @@ class Command(NoArgsCommand):
                 l.geom = 'POINT({} {})'.format(location.longitude, location.latitude)
                 logging.info('Updated geometry!')
 
+            l.site_name = smart_swap(l.site_name, row['Site_Name'], l.verbose_name('site_name'))
             l.ages = smart_swap(l.ages, row['Ages_Served'], l.verbose_name('ages'))
             l.q_rating = smart_swap(l.q_rating, row['Quality_Rating'], l.verbose_name('q_rating'))
             l.is_part_day = smart_swap(l.is_part_day, parse_null_boolean(row['Part_Day_Y_N']), l.verbose_name('is_part_day'))
