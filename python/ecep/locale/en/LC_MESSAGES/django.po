@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 12:03-0500\n"
+"POT-Creation-Date: 2017-01-16 13:20-0600\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -259,7 +259,7 @@ msgid "Directions"
 msgstr ""
 
 #: portal/models.py:383 portal/templates/location.html:54
-#: portal/templates/location.html.py:57 portal/templates/starred.html:41
+#: portal/templates/location.html.py:57 portal/templates/starred.html:43
 msgid "Share"
 msgstr ""
 
@@ -429,8 +429,8 @@ msgstr ""
 msgid "Click to use your current location"
 msgstr ""
 
-#: portal/templates/base-search.html:36 portal/templates/index.html:43
-#: portal/templates/index.html.py:61 portal/templates/index.html:62
+#: portal/templates/base-search.html:36 portal/templates/index.html:45
+#: portal/templates/index.html.py:63 portal/templates/index.html:64
 msgid "Search"
 msgstr ""
 
@@ -443,7 +443,7 @@ msgid "Apply Now!"
 msgstr ""
 
 #: portal/templates/base.html:91 portal/templates/families.html:7
-#: portal/templates/index.html:88
+#: portal/templates/index.html:92
 msgid "For Families"
 msgstr ""
 
@@ -636,10 +636,13 @@ msgstr ""
 #: portal/templates/city-resources.html:89
 msgid ""
 "The foundation for early learning and a child’s success starts with maternal "
-"and infant health. The Chicago Department of Public Health’s neighborhood "
-"health clinics offer care for expectant mothers and wellness services for "
-"children. <a href=\"http://www.cityofchicago.org/city/en/depts/cdph.html"
-"\">Contact the Chicago Department of Public Health</a> for details."
+"and infant health. The Chicago Department of Public Health (CDPH)’s "
+"neighborhood health clinics offer care support for expectant mothers and "
+"wellness services for children. CDPH also has a resource finder for many "
+"needs for families expecting or with young children, including health care "
+"and other supports like clothes, car seats and more. <a href=\"http://www."
+"healthychicagobabies.org/\">Contact the Chicago Department of Public Health</"
+"a> for details."
 msgstr ""
 
 #: portal/templates/contact.html:13 portal/templates/contact.html.py:22
@@ -687,37 +690,45 @@ msgstr ""
 msgid "How to Apply"
 msgstr ""
 
+#: portal/templates/how-to-apply.html:19 portal/templates/index.html:31
+#: portal/templates/index.html.py:79 portal/templates/index.html:111
+#: portal/templates/starred.html:17
+msgid ""
+"Please note: applications are being accepted for the current school year "
+"only. The application for Fall 2017 will be available in Spring 2017."
+msgstr ""
+
 #: portal/templates/index.html:23
 msgid "Learn. Grow. Succeed!"
 msgstr ""
 
-#: portal/templates/index.html:27 portal/templates/index.html.py:73
+#: portal/templates/index.html:27 portal/templates/index.html.py:75
 msgid ""
 "The City of Chicago’s Early Learning Portal is the place for families to "
 "learn, find and apply for high quality early learning programs across the "
 "city."
 msgstr ""
 
-#: portal/templates/index.html:29 portal/templates/index.html.py:75
+#: portal/templates/index.html:29 portal/templates/index.html.py:77
 msgid "Apply now for preschool!"
 msgstr ""
 
-#: portal/templates/index.html:31 portal/templates/index.html.py:77
+#: portal/templates/index.html:33 portal/templates/index.html.py:81
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
 "information."
 msgstr ""
 
-#: portal/templates/index.html:40
+#: portal/templates/index.html:42
 msgid "Enter an address, center, or zip code"
 msgstr ""
 
-#: portal/templates/index.html:48
+#: portal/templates/index.html:50
 msgid "Use your current location"
 msgstr ""
 
-#: portal/templates/index.html:90
+#: portal/templates/index.html:94
 #, python-format
 msgid ""
 "Children who participate in high-quality early learning experiences are "
@@ -728,30 +739,30 @@ msgid ""
 "program."
 msgstr ""
 
-#: portal/templates/index.html:91
+#: portal/templates/index.html:95
 msgid "Learn more about high quality early learning programs"
 msgstr ""
 
-#: portal/templates/index.html:95
+#: portal/templates/index.html:99
 msgid "Find & Compare"
 msgstr ""
 
-#: portal/templates/index.html:97
+#: portal/templates/index.html:101
 msgid ""
 "Search by the address where you live or work to quickly find all the early "
 "learning programs located near you. Refine your search to find the features "
 "you most care about. Choose your \"favorites\" and compare them on a list."
 msgstr ""
 
-#: portal/templates/index.html:98
+#: portal/templates/index.html:102
 msgid "Find and compare locations now"
 msgstr ""
 
-#: portal/templates/index.html:103
+#: portal/templates/index.html:107
 msgid "Apply Today"
 msgstr ""
 
-#: portal/templates/index.html:105
+#: portal/templates/index.html:109
 #, python-format
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year old? <a "
@@ -763,7 +774,7 @@ msgid ""
 "a>."
 msgstr ""
 
-#: portal/templates/index.html:106
+#: portal/templates/index.html:110
 msgid "Fill out an application online"
 msgstr ""
 
@@ -856,14 +867,14 @@ msgid ""
 "Early Learning Hotline at "
 msgstr ""
 
-#: portal/templates/starred.html:17
+#: portal/templates/starred.html:19
 msgid ""
 "Compare early learning programs side-by-side to select the highest quality "
 "option for your child. Add more programs by going back to your search "
 "results."
 msgstr ""
 
-#: portal/templates/starred.html:19
+#: portal/templates/starred.html:21
 msgid ""
 "Press the \"Apply\" button to build your Chicago Early Learning parent "
 "profile and complete an application. You will be able to view your "
@@ -872,40 +883,40 @@ msgid ""
 "placement and one waitlist)."
 msgstr ""
 
-#: portal/templates/starred.html:21
+#: portal/templates/starred.html:23
 msgid ""
 "Call the Chicago Early Learning Hotline at <a href=\"tel:3122291690\">(312) "
 "229-1690</a> if you would like assistance completing the application over "
 "the phone."
 msgstr ""
 
-#: portal/templates/starred.html:23
+#: portal/templates/starred.html:25
 msgid ""
 "If you are looking to enroll in a program immediately or have a child that "
 "will not yet be 3 years old in the Fall, please contact the early childhood "
 "program directly."
 msgstr ""
 
-#: portal/templates/starred.html:25
+#: portal/templates/starred.html:27
 msgid "Press “Back to Search\" to add more locations you are interested in."
 msgstr ""
 
-#: portal/templates/starred.html:32
+#: portal/templates/starred.html:34
 msgid ""
 "Please select no more than 6 locations to continue to the application "
 "process. Compare your favorites below to pick the best options for your "
 "family."
 msgstr ""
 
-#: portal/templates/starred.html:36
+#: portal/templates/starred.html:38
 msgid "Apply"
 msgstr ""
 
-#: portal/templates/starred.html:44
+#: portal/templates/starred.html:46
 msgid "Clear Selections"
 msgstr ""
 
-#: portal/templates/starred.html:47
+#: portal/templates/starred.html:49
 msgid "Back to Search"
 msgstr ""
 
