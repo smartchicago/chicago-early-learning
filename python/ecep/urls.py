@@ -24,7 +24,6 @@ urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
     url(r'^$', portal_views.Index.as_view(), name='index'),
-    url(r'^test$', portal_views.Test.as_view(), name='test'),
     url(r'^about$', portal_views.About.as_view(), name='about'),
     url(r'^updates$', portal_views.Updates.as_view(), name='updates'),
     url(r'^families$', portal_views.Families.as_view(), name='families'),
