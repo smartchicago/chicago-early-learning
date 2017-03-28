@@ -32,8 +32,8 @@ class Index(TemplateView):
     template_name = "index.html"
 
 
-class Test(TemplateView):
-    template_name = "test.html"
+class Connect(TemplateView):
+    template_name = "connect.html"
 
 
 class About(TemplateView):

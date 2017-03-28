@@ -24,12 +24,12 @@ urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
     url(r'^$', portal_views.Index.as_view(), name='index'),
-    url(r'^test$', portal_views.Test.as_view(), name='test'),
     url(r'^about$', portal_views.About.as_view(), name='about'),
     url(r'^updates$', portal_views.Updates.as_view(), name='updates'),
     url(r'^families$', portal_views.Families.as_view(), name='families'),
     url(r'^city-resources$', portal_views.CityResources.as_view(), name='city-resources'),
     url(r'^how-to-apply$', portal_views.HowToApply.as_view(), name='how-to-apply'),
+    url(r'^connect$', portal_views.Connect.as_view(), name='connect'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type="text/plain")),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicon.ico')),
     
