@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 13:20-0600\n"
+"POT-Creation-Date: 2017-04-04 18:42-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -351,12 +351,14 @@ msgid "(page %(current)d/%(total)d)"
 msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
+#: portal/templates/connect.html:9
 msgid "About"
 msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/base.html:4
 #: portal/templates/browse.html:7 portal/templates/city-resources.html:7
-#: portal/templates/contact.html:13 portal/templates/contact_thanks.html:13
+#: portal/templates/connect.html:9 portal/templates/contact.html:13
+#: portal/templates/contact_thanks.html:13
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
 #: portal/templates/faq-models.html:5 portal/templates/how-to-apply.html:7
@@ -691,11 +693,10 @@ msgid "How to Apply"
 msgstr ""
 
 #: portal/templates/how-to-apply.html:19 portal/templates/index.html:31
-#: portal/templates/index.html.py:79 portal/templates/index.html:111
-#: portal/templates/starred.html:17
+#: portal/templates/index.html.py:79 portal/templates/starred.html:17
 msgid ""
-"Please note: applications are being accepted for the current school year "
-"only. The application for Fall 2017 will be available in Spring 2017."
+"The application is still open for the 2016 – 2017 school year. The "
+"application for the 2017 – 2018 school year will open May 2017."
 msgstr ""
 
 #: portal/templates/index.html:23
@@ -776,6 +777,12 @@ msgstr ""
 
 #: portal/templates/index.html:110
 msgid "Fill out an application online"
+msgstr ""
+
+#: portal/templates/index.html:111
+msgid ""
+"Please note: applications are being accepted for the current school year "
+"only. The application for Fall 2017 will be available in Spring 2017."
 msgstr ""
 
 #: portal/templates/location.html:85
