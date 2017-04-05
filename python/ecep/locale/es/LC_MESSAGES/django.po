@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-04 18:42-0500\n"
+"POT-Creation-Date: 2017-04-05 14:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -793,12 +793,15 @@ msgid "How to Apply"
 msgstr ""
 
 #: portal/templates/how-to-apply.html:19 portal/templates/index.html:31
-#: portal/templates/index.html.py:79 portal/templates/starred.html:17
+#: portal/templates/index.html.py:79 portal/templates/index.html:111
+#: portal/templates/starred.html:17
 msgid ""
 "The application is still open for the 2016 – 2017 school year. The "
 "application for the 2017 – 2018 school year will open May 2017."
-msgstr "La aplicación todavía está disponible para el año escolar de 2016 a 2017. La aplicación para el año escolar de 2017 a 2018 estará disponible en el mayo de 2017."
-
+msgstr ""
+"La aplicación todavía está disponible para el año escolar de 2016 a 2017. La "
+"aplicación para el año escolar de 2017 a 2018 estará disponible en el mayo "
+"de 2017."
 
 #: portal/templates/index.html:23
 msgid "Learn. Grow. Succeed!"
@@ -890,16 +893,6 @@ msgstr ""
 #: portal/templates/index.html:110
 msgid "Fill out an application online"
 msgstr ""
-
-#: portal/templates/index.html:111
-msgid ""
-"Please note: applications are being accepted for the current school year "
-"only. The application for Fall 2017 will be available in Spring 2017."
-msgstr ""
-"Por favor note lo siguiente: Las solicitudes para programas pre-escolares "
-"atreves de esta página web sólo se están aceptando para el año escolar en "
-"curso. Las solicitudes para programas pre-escolares del otoño de 2017 "
-"estarán disponibles atreves de esta página web en la primavera de 2017."
 
 #: portal/templates/location.html:85
 msgid ""
@@ -1203,6 +1196,15 @@ msgstr ""
 #: templates/admin/portal/location/delete_confirmation.html:30
 msgid "Yes, I'm sure"
 msgstr ""
+
+#~ msgid ""
+#~ "Please note: applications are being accepted for the current school year "
+#~ "only. The application for Fall 2017 will be available in Spring 2017."
+#~ msgstr ""
+#~ "Por favor note lo siguiente: Las solicitudes para programas pre-escolares "
+#~ "atreves de esta página web sólo se están aceptando para el año escolar en "
+#~ "curso. Las solicitudes para programas pre-escolares del otoño de 2017 "
+#~ "estarán disponibles atreves de esta página web en la primavera de 2017."
 
 #~ msgid ""
 #~ "Welcome to the City of Chicago's Early Learning Portal. Here you can "
