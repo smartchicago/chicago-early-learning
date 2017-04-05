@@ -797,7 +797,7 @@ msgstr ""
 msgid ""
 "The application is still open for the 2016 – 2017 school year. The "
 "application for the 2017 – 2018 school year will open May 2017."
-msgstr "La aplicación todavía está disponible para el año escolar de 2016 a 2017. La aplicación para el año escolar de 2017 a 2018 estará disponible en el Mayo de 2017."
+msgstr "La aplicación todavía está disponible para el año escolar de 2016 a 2017. La aplicación para el año escolar de 2017 a 2018 estará disponible en el mayo de 2017."
 
 
 #: portal/templates/index.html:23
