@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-05 14:03-0500\n"
+"POT-Creation-Date: 2017-04-06 12:22-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -584,13 +584,14 @@ msgstr ""
 "servicios públicos y eventos en la ciudad de Chicago."
 
 #: portal/templates/city-resources.html:27
+#, fuzzy
 msgid ""
-"To enroll, parents and guardians should text TOPTOPT7 to 311311 or use <a "
+"To enroll, parents and guardians should text TOPTOPT2 to 311311 or use <a "
 "href=\"http://chitot.cityofchicago.org/demo/C4KSubscriptionForm.jsp\">this "
 "online form.</a>"
 msgstr ""
 "Para registrarse, los padres y tutores deben enviar el mensaje de texto "
-"TOPTOPT7 al 311311 o usar <a href=\"http://chitot.cityofchicago.org/demo/"
+"TOPTOPT2 al 311311 o usar <a href=\"http://chitot.cityofchicago.org/demo/"
 "C4KSubscriptionForm.jsp\">este formulario en línea.</a>"
 
 #: portal/templates/city-resources.html:28
