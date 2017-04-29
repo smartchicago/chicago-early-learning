@@ -7,6 +7,7 @@ import json
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views.decorators.cache import cache_control
 from django.views.generic import TemplateView, DetailView
@@ -602,6 +603,8 @@ def starred_location_api(request, location_ids=None):
         l['phone'] = location.phone
         l['url'] = location.url
         l['not_enrollment_site'] = not location.is_enrollment
+        l['location-page'] = reverse('location-view', 
+                                     kwargs = {'location_id': location.id})
 
         # Is 
         e = {}

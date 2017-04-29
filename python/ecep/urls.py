@@ -66,7 +66,7 @@ urlpatterns = patterns(
     # Location Views
     # Need to pass id to view for sitemap, but don't need to do anything with it since this is handled with javascript
     url(r'^location/(\d+)/$', 'portal.views.location', name='location-view'),
-    url(r'^location/(?P<location_id>\d+)/(?P<slug>[\w-]+)/$', 'portal.views.location', name='location-view'),
+    url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location', name='location-view'),
     url(r'^location/(?P<location_id>\d+)/(?P<slug>[\w-]+)/$', 'portal.views.location', name='location-view'),
 
     # Starred Location Views
