@@ -297,14 +297,16 @@ function($, L, Response, Handlebars) {
                     var likelyResult = allResults[0];
                     $autocomplete.data({
                         label: likelyResult.label,
-                        place_id: likelyResult.place_id,
-                        category: likelyResult.category
+                        place_id: likelyResult.place_id,  
+                        category: likelyResult.category,
+                        types: likelyResult.types
                     });
                 } else {
                     $autocomplete.data({
                         label: 'None',
                         place_id: 'None',
-                        category: 'None'
+                        category: 'None',
+                        types: 'None'
                     });
                 }
                 response(allResults);
