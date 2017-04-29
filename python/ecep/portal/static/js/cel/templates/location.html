@@ -3,7 +3,7 @@
   <a href="javascript:void(0)" class="none favs-close-button">&times;</a>
   <div class="clearfix">
     <div class="location-body">
-      <h1 class="school-name" itemprop="name">{{site_name}}</h1>
+      <h1 class="school-name" itemprop="name"><a href="">{{site_name}}</a></h1>
       <p class="address-line" itemprop="address">{{address}}</p>
       <p class="address-line" itemprop="address">{{city}}, {{state}} {{zip}}</p>
       <ul class="website-phone">
@@ -24,7 +24,7 @@
 
       <!-- Description -->
       {{#if description.value }}
-        <h1>{{ description.display }}</h1>
+        <h3>{{ description.display }}</h3>
         {{{ description.value }}}
         <hr>
       {{/if}}
@@ -32,14 +32,14 @@
 
       <!-- Ages Served -->
       {{#if not_enrollment_site }}
-        <h1>{{ ages_served }}</h1>
+        <h3>{{ ages_served }}</h3>
         <p>{{#if ages_0_to_3.value }}<i class="icon-ok"></i>{{else}}<i class="icon-cancel"></i>{{/if}} {{ ages_0_to_3.display }}</p>
         <p>{{#if ages_3_to_5.value }}<i class="icon-ok"></i>{{else}}<i class="icon-cancel"></i>{{/if}} {{ ages_3_to_5.display }}</p>
         <hr>
       {{/if}}
 
       {{#if availability.value }}
-        <h1>{{ availability.display }}</h1>
+        <h3>{{ availability.display }}</h3>
         <p>{{ availability.value }}</p>
         <p><em>{{ availability.note }}</em></p>
         <hr>
@@ -47,7 +47,7 @@
 
       <!-- Duration and Hours -->
       {{#if not_enrollment_site }}
-        <h1>{{ duration_and_hours }}</h1>
+        <h3>{{ duration_and_hours }}</h3>
           {{#if prg_hours.value }}
             <p>{{ prg_hours.value }}</p>
           {{else}}
@@ -71,7 +71,7 @@
 
       <!-- Program Information -->
       {{#if not_enrollment_site}}
-        <h1>{{ program_information }}</h1>
+        <h3>{{ program_information }}</h3>
         {{#if cps_based.value }}
           <p>{{ cps_based.display }}</p>
         {{/if}}
@@ -93,7 +93,7 @@
 
       <!-- Languages -->
       {{#if languages.value }}
-        <h1>{{ languages.display }}</h1>
+        <h3>{{ languages.display }}</h3>
         <p>{{ languages.value }}</p>
         <hr>
       {{/if}}
@@ -101,7 +101,7 @@
 
       <!-- Other Features -->
       {{#if other_features.value }}
-        <h1>{{ other_features.display }}</h1>
+        <h3>{{ other_features.display }}</h3>
         <p>{{ other_features.value }}</p>
         <hr>
       {{/if}}
@@ -110,7 +110,7 @@
       <!-- Accreditation -->
       {{#if not_enrollment_site}}
         {{#if accreditation.value }}
-          <h1>{{ accreditation.display }}</h1>
+          <h3>{{ accreditation.display }}</h3>
           <p>{{ accreditation.value }}</p>
           <hr>
         {{/if}}
@@ -120,7 +120,7 @@
       <!-- Quality Rating -->
       {{#if not_enrollment_site}}
         {{#if quality_rating.value }}
-          <h1>{{ quality_rating.display }}</h1>
+          <h3>{{ quality_rating.display }}</h3>
           <p>{{ quality_rating.value }}</p>
         {{/if}}
       {{/if}}

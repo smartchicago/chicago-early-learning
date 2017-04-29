@@ -742,8 +742,9 @@ a:focus {
 }
 
 .favorite h1 {
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 500;
 }
 
 .favorite h2 {
@@ -753,6 +754,11 @@ a:focus {
     margin: 0;
     line-height: 16px;
     color: #666;
+}
+
+.favorite h3 {
+    font-size: 16px;
+    line-height: 16px;
 }
 
 .favorite hr {
