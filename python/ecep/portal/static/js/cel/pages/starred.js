@@ -6,6 +6,10 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
         $(document).ready(function() {
 
             // Draw the Handlebars template for a location
+            function drawTable(data, ecm_locations, non_ecm_locations) {
+                
+            }
+
             function drawStarredLocations(data, ecm_locations, non_ecm_locations) {
                 var template = Handlebars.compile(html),
                     $apply_button = $('#faves-contact'),

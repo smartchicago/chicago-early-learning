@@ -808,6 +808,83 @@ a:focus {
     width: 100%;
 }
 
+/*  Favorites Table(s)  */
+
+.faves-table table {
+    margin: 20px 0;
+    width: 100%;
+}
+
+.faves-table p {
+    margin: 3px 0;
+}
+
+.faves-table table th, td {
+    padding: 10px;
+}
+
+.faves-table table td {
+    border: solid 1px #cccccc;
+}
+
+.faves-table table thead {
+    border: 1px solid #B54747;
+    color: white;
+    background-color: #B54747;
+}
+
+.faves-table table th {
+    font-weight: 400;
+}
+
+.faves-table table th:first-child,
+.faves-table table td:first-child {
+    width: 5%;
+    text-align: center;
+}
+
+.faves-table table th:nth-child(2),
+.faves-table table td:nth-child(2) {
+    width: 30%;
+}
+.faves-table table th:nth-child(6),
+.faves-table table td:nth-child(6) {
+    width: 20%;
+}
+
+.faves-table h1 {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 500;
+    margin: 3px 0 5px 0;
+}
+
+.faves-table h2 {
+    font-size: 13px;
+    padding: 0;
+    font-weight: normal;
+    margin: 0;
+    line-height: 16px;
+    color: #666;
+}
+
+.faves-table h3 {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.faves-table input[type="checkbox"] {
+    margin: 0;
+}
+
+.faves-table .icon-ok {
+    color: green;
+}
+
+.faves-table .icon-cancel {
+    color: red;
+}
+
 /* Single School View */
 #location-map {
     height: 250px;
