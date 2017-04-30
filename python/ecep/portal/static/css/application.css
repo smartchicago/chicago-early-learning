@@ -829,9 +829,12 @@ a:focus {
 
 .faves-table table thead {
     border: 1px solid #B54747;
-    font-weight: 600;
     color: white;
     background-color: #B54747;
+}
+
+.faves-table table th {
+    font-weight: 400;
 }
 
 .faves-table table th:first-child,
