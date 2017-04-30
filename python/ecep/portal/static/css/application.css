@@ -813,7 +813,6 @@ a:focus {
 .faves-table table {
     margin: 20px 0;
     width: 100%;
-    border: solid thin ;
 }
 
 .faves-table p {
@@ -822,11 +821,17 @@ a:focus {
 
 .faves-table table th, td {
     padding: 10px;
+}
+
+.faves-table table td {
     border: solid 1px #cccccc;
 }
 
 .faves-table table thead {
-    border-bottom: solid 2px #cccccc;
+    border: 1px solid #B54747;
+    font-weight: 600;
+    color: white;
+    background-color: #B54747;
 }
 
 .faves-table table th:first-child,
@@ -837,7 +842,11 @@ a:focus {
 
 .faves-table table th:nth-child(2),
 .faves-table table td:nth-child(2) {
-    width: 25%;
+    width: 30%;
+}
+.faves-table table th:nth-child(6),
+.faves-table table td:nth-child(6) {
+    width: 20%;
 }
 
 .faves-table h1 {
