@@ -808,6 +808,71 @@ a:focus {
     width: 100%;
 }
 
+/*  Favorites Table(s)  */
+
+.faves-table table {
+    margin: 20px 0;
+    width: 100%;
+    border: solid thin ;
+}
+
+.faves-table p {
+    margin: 3px 0;
+}
+
+.faves-table table th, td {
+    padding: 10px;
+    border: solid 1px #cccccc;
+}
+
+.faves-table table thead {
+    border-bottom: solid 2px #cccccc;
+}
+
+.faves-table table th:first-child,
+.faves-table table td:first-child {
+    width: 5%;
+    text-align: center;
+}
+
+.faves-table table th:nth-child(2),
+.faves-table table td:nth-child(2) {
+    width: 25%;
+}
+
+.faves-table h1 {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 500;
+    margin: 3px 0 5px 0;
+}
+
+.faves-table h2 {
+    font-size: 13px;
+    padding: 0;
+    font-weight: normal;
+    margin: 0;
+    line-height: 16px;
+    color: #666;
+}
+
+.faves-table h3 {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.faves-table input[type="checkbox"] {
+    margin: 0;
+}
+
+.faves-table .icon-ok {
+    color: green;
+}
+
+.faves-table .icon-cancel {
+    color: red;
+}
+
 /* Single School View */
 #location-map {
     height: 250px;
