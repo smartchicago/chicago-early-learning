@@ -839,17 +839,17 @@ a:focus {
 
 .faves-table table th:first-child,
 .faves-table table td:first-child {
-    width: 5%;
-    text-align: center;
-}
-
-.faves-table table th:nth-child(2),
-.faves-table table td:nth-child(2) {
     width: 30%;
 }
-.faves-table table th:nth-child(6),
-.faves-table table td:nth-child(6) {
+.faves-table table th:nth-child(5),
+.faves-table table td:nth-child(5) {
     width: 20%;
+}
+
+.faves-table table th:nth-child(7),
+.faves-table table td:nth-child(7) {
+    width: 5%;
+    text-align: center;
 }
 
 .faves-table h1 {
