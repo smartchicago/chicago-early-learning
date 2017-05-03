@@ -59,6 +59,9 @@ class CityResources(TemplateView):
 class HowToApply(TemplateView):
     template_name = "how-to-apply.html"
 
+class Announcements(TemplateView):
+    template_name = "announcements.html"
+
 
 def browse(request):
     # If a search query was passed in, see if we can find a matching location
