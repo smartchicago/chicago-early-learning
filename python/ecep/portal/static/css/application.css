@@ -1472,7 +1472,8 @@ a:focus {
 
 .families-container,
 .resources-container,
-.enroll-container {
+.enroll-container,
+.announcements-container {
     position: relative;
     top: 100px;
     width: 970px;
@@ -1482,21 +1483,28 @@ a:focus {
 
 .families-container p,
 .resources-container p,
-.enroll-container p {
+.enroll-container p,
+.announcements-container p {
     word-break: break-word;
 }
 
 .families-content,
 .resources-content,
-.enroll-content {
+.enroll-content,
+.announcements-content {
     padding-top: 30px; 
 }
 
 .resources-container img,
 .logos-container img,
-.faq-container img {
+.faq-container img,
+.announcements-container img {
     max-height: 125px;
     max-width: 200px;
+}
+
+.announcements-content {
+    padding-bottom: 200px;
 }
 
 .static-header {

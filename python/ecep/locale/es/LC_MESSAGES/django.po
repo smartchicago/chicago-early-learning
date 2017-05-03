@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-06 13:17-0500\n"
+"POT-Creation-Date: 2017-05-02 23:49-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,7 +183,7 @@ msgstr "Año Escolar"
 msgid "Full Year"
 msgstr "Año completo"
 
-#: portal/models.py:106 portal/templates/location.html:81 portal/views.py:623
+#: portal/models.py:106 portal/templates/location.html:81 portal/views.py:629
 msgid "Ages Served"
 msgstr "Edades para las que se presta servicio"
 
@@ -237,7 +237,7 @@ msgstr ""
 msgid "Availability"
 msgstr "Disponibilidad entre semana"
 
-#: portal/models.py:326 portal/templates/location.html:137 portal/views.py:678
+#: portal/models.py:326 portal/templates/location.html:137 portal/views.py:684
 msgid "Program Information"
 msgstr "Información del programa"
 
@@ -245,11 +245,11 @@ msgstr "Información del programa"
 msgid "Languages"
 msgstr "Idiomas"
 
-#: portal/models.py:340 portal/templates/location.html:116 portal/views.py:644
+#: portal/models.py:340 portal/templates/location.html:116 portal/views.py:650
 msgid "No Hours Listed"
 msgstr "Horario no indicado"
 
-#: portal/models.py:343 portal/templates/location.html:115 portal/views.py:640
+#: portal/models.py:343 portal/templates/location.html:115 portal/views.py:646
 msgid "Duration and Hours"
 msgstr "Duración y Horas"
 
@@ -313,7 +313,7 @@ msgstr "Haga clic para guardarlo en su lista"
 msgid "Click to remove from your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:397 portal/templates/location.html:156 portal/views.py:731
+#: portal/models.py:397 portal/templates/location.html:156 portal/views.py:737
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -372,10 +372,10 @@ msgstr "(página %(current)d/%(total)d)"
 msgid "About"
 msgstr "Sobre Nosotros"
 
-#: portal/templates/about.html:9 portal/templates/base.html:4
-#: portal/templates/browse.html:7 portal/templates/city-resources.html:7
-#: portal/templates/connect.html:9 portal/templates/contact.html:13
-#: portal/templates/contact_thanks.html:13
+#: portal/templates/about.html:9 portal/templates/announcements.html:7
+#: portal/templates/base.html:4 portal/templates/browse.html:7
+#: portal/templates/city-resources.html:7 portal/templates/connect.html:9
+#: portal/templates/contact.html:13 portal/templates/contact_thanks.html:13
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
 #: portal/templates/faq-models.html:5 portal/templates/how-to-apply.html:7
@@ -454,6 +454,41 @@ msgstr ""
 #| msgid "Other Features"
 msgid "Other Partners"
 msgstr "Otras Características"
+
+#: portal/templates/announcements.html:7
+#: portal/templates/announcements.html:15
+msgid "Announcements"
+msgstr ""
+
+#: portal/templates/announcements.html:19
+msgid ""
+"Are you looking for preschool for your 3 or 4 year old starting in the fall?"
+msgstr "¿Está buscando los programas de aprendizaje temprano para su hijo de 3 o 4 años empezando en el otoño?"
+
+#: portal/templates/announcements.html:21
+msgid ""
+"Chicago Early Learning Preschool Applications open May 15th for the 2017 – "
+"2018 school year!"
+msgstr "La aplicación de Educación Temprana de Chicago estará disponible el 15 de mayo para el año escolar 2017 a 2018."
+
+#: portal/templates/announcements.html:23
+msgid ""
+"Chicago Early Learning supports Chicago families looking for early learning "
+"at community sites and schools across the city."
+msgstr "Educación Temprana de Chicago apoya a las familias de Chicago quienes quieren la educación temprana en los sitios de la comunidad, y en las escuelas públicas por toda la ciudad."
+
+#: portal/templates/announcements.html:25
+msgid ""
+"For immediate enrollment before the fall, please call <a href="
+"\"tel:7735532010\">773-553-2010</a>, or call the community site you would "
+"like your child to attend."
+msgstr "Para la inscripción inmediata antes del otoño, llame a <a href=\"tel:7735532010\">773-553-2010</a>, o llame al sitio de la comunidad a lo que quiere que asista su hijo."
+
+#: portal/templates/announcements.html:27
+msgid ""
+"For any other questions, please call the Chicago Early Learning Hotline: <a "
+"href=\"tel:3122291690\">312-229-1690</a>."
+msgstr "Para otras preguntas, por favor llame a nuestra línea directa para el apoyo familiar: <a href=\"tel:7735532010\">312-229-1690</a>."
 
 #: portal/templates/base-search.html:28
 msgid "Enter an address"
@@ -583,6 +618,7 @@ msgstr ""
 "desarrollo y crecimiento de sus niños, así como la salud, la educación, los "
 "servicios públicos y eventos en la ciudad de Chicago."
 
+#: portal/templates/city-resources.html:27
 msgid ""
 "To enroll, parents and guardians should text TOTOPT7 to 311311 or use <a "
 "href=\"http://chitot.cityofchicago.org/demo/C4KSubscriptionForm.jsp\">this "
@@ -934,15 +970,15 @@ msgstr ""
 "opciones o llamar al Chicago Early Learning línea de acceso directo al <a "
 "href=\"%(rtl_url)s\">(312) 229-1690</a></b></em>."
 
-#: portal/templates/location.html:96 portal/views.py:608
+#: portal/templates/location.html:96 portal/views.py:614
 msgid "Contact this site directly to apply."
 msgstr "Contacte directamente al programa para aplicar."
 
-#: portal/templates/location.html:108 portal/views.py:752
+#: portal/templates/location.html:108 portal/views.py:758
 msgid "Seats Available"
 msgstr "Asientos Disponibles"
 
-#: portal/templates/location.html:110 portal/views.py:755
+#: portal/templates/location.html:110 portal/views.py:761
 msgid "Note: Availability and placement are subject to eligibility."
 msgstr ""
 
@@ -954,7 +990,7 @@ msgstr ""
 "Si está interesado en inscribir su hijo en esta programa de visitas "
 "domiciliarias, por favor contacte directamente al programa. "
 
-#: portal/templates/location.html:150 portal/views.py:724
+#: portal/templates/location.html:150 portal/views.py:730
 msgid "Languages (other than English)"
 msgstr "Idiomas (excepto Inglés)"
 
@@ -1090,11 +1126,11 @@ msgstr "Ingrese el nombre de una escuela"
 msgid "Updates"
 msgstr "Actualizar"
 
-#: portal/views.py:522
+#: portal/views.py:526
 msgid "Explore"
 msgstr "Explorar"
 
-#: portal/views.py:523
+#: portal/views.py:527
 msgid "Click to see locations in this neighborhood"
 msgstr "Haga clic para ver ubicaciones en este vecindario"
 
