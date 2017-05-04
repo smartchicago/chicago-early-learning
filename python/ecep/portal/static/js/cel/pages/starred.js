@@ -1,13 +1,25 @@
 
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorites', 'Handlebars'],
-    function($, L, html, common, favorites, Handlebars) {
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fave-row.html', 'common', 'favorites', 'Handlebars'],
+    function($, L, html, html_row, common, favorites, Handlebars) {
         'use strict';
 
         $(document).ready(function() {
 
             // Draw the Handlebars template for a location
-            function drawTable(data, ecm_locations, non_ecm_locations) {
-                
+            function drawTable(data, locations) {
+                var template = Handlebars.compile(html_row),
+                    $tbody = $('.table-body'),
+                    faves = [],
+                    num_locations = locations.length;
+
+                for (var i=0; i < num_locations; i++) {
+                    var loc = locations[i];
+                    var $location = $(template(loc));
+                    faves.push($location);
+                }
+
+                $tbody.html(faves);
+
             }
 
             function drawStarredLocations(data, ecm_locations, non_ecm_locations) {
@@ -75,8 +87,11 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                 starredIds = "";
 
             if (regexResult || cookie) {
+                
+
                 starredIds = regexResult ? regexResult[1] : cookie;
                 $.getJSON(common.getUrl('starred-location-api', { locations: starredIds }), function (results) {
+                    
                     var locations = results.locations,
                         ecm = [],
                         non_ecm = [];
@@ -89,10 +104,11 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                         }
                     }
 
-                    drawStarredLocations(results, ecm, non_ecm);
+                    drawTable(results, locations);
+                    // drawStarredLocations(results, ecm, non_ecm);
                 });
             } else {
-                $('.container-one-faves').html(gettext('No Favorite Locations'));
+                $('.empty-faves').show();
             }
 
             if(regexResult) {
