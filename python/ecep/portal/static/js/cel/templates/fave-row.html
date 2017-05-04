@@ -1,0 +1,71 @@
+<tr id="fave-{{id}}">   
+  <td>
+      <p><input type="checkbox" name="{{id}}"></p>
+      <div class="hide-fave"><a href="javascript:void(0)">(hide)</a></div>
+  </td>
+  <td>
+      <h1><a href="{{url}}">{{site_name}}</a></h1>
+      <p>{{address}}</p>
+      <p>{{city}}, {{state}} {{zip}}</p> 
+      {{#if prg_hours.value }}
+      <p>{{ prg_hours.value }}</p>
+      {{/if}}
+      {{#if phone }}
+      <p><a href="tel:{{phone}}">{{phone}}</a></p>
+      {{/if}}
+      {{#if url}}
+      <p><a href="{{url}}" target="_blank">Website &#x2197;</a></p>
+      {{/if}}
+  </td>
+  <td>
+      <p>{{#if ages_0_to_3.value }}<i class="icon-ok"></i>{{else}}<i class="icon-cancel"></i>{{/if}} 0 to 3</p>
+      <p>{{#if ages_3_to_5.value }}<i class="icon-ok"></i>{{else}}<i class="icon-cancel"></i>{{/if}} 3 to 5</p>
+  </td>
+  <td>
+    {{#if availability.value }}
+    {{ availability.value }}
+    {{/if}}
+  </td>
+  <td>
+    {{#if part_day.value }}
+    <p>{{ part_day.display }}</p>
+    {{/if}}
+    {{#if full_day.value }}
+    <p>{{ full_day.display }}</p>
+    {{/if}}
+    {{#if school_year.value }}
+    <p>{{ school_year.display }}</p>
+    {{/if}}
+    {{#if full_year.value }}
+    <p>{{ full_year.display }}</p>
+    {{/if}}
+  </td>
+  <td>
+    {{#if cps_based.value }}
+    <p>{{ cps_based.display }}</p>
+    {{/if}}
+    {{#if community_based.value }}
+    <p>{{ community_based.display }}</p>
+    {{/if}}
+    {{#if head_start.value }}
+    <p>{{ head_start.display }}</p>
+    {{/if}}
+    {{#if early_head_start.value }}
+    <p>{{ early_head_start.display }}</p>
+    {{/if}}
+    {{#if home_visiting.value }}
+    <p>{{ home_visiting.display }}</p>
+    {{/if}}
+    {{#if languages.value }}
+    <p>{{ languages.value }}</p>
+    {{/if}}
+  </td>
+  <td>
+    {{#if accreditation.value }}
+    <p>{{ accreditation.value }}</p>
+    {{/if}}
+    {{#if quality_rating.value }}
+    <p>QRIS {{ quality_rating.value }}</p>
+    {{/if}}
+  </td>
+</tr>
