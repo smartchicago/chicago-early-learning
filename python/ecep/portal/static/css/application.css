@@ -893,6 +893,15 @@ a:focus {
     margin-top: 50px;
 }
 
+.remove-row {
+    //display: none;
+}
+
+.remove-row {
+    background-color: #cc7d7d;
+    color: white;
+}
+
 /* Single School View */
 #location-map {
     height: 250px;

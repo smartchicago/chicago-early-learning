@@ -28,29 +28,6 @@
 
     </div>
 
-    <div class="starred-actions">
-
-        <div id="alert-six" class="alert alert-block alert-six">
-            <p>{% blocktrans %}Please select no more than 6 locations to continue to the application process. Compare your favorites below to pick the best options for your family.{% endblocktrans %}</p>
-        </div>
-
-        <div class="contact-button">
-            <a href="" target="_blank" id="faves-contact" class="btn faves-option btn-apply btn-block hint--bottom ga-track" data-ga-category="starred" data-ga-action="Contact Favorites"><i class="fa fa-check-circle"></i> {% trans "Apply" %}</a>
-        </div>
-
-        <div class="other-buttons">
-            <div class="share-button">
-                <a id="faves-share" class="btn btn-block faves-option hint--bottom ga-track" href="#" data-ga-category="starred" data-ga-action="Share Favorites"><i class="icon-share"></i> {% trans "Share" %}</a>
-            </div>
-            <div class="clear-button">
-                <a id="faves-clear" class="btn btn-block faves-option ga-track" href='{% url "browse" %}' data-ga-category="starred" data-ga-action="Clear Selections"><i class="icon-remove-circle"></i> {% trans "Clear Selections" %}</a>
-            </div>
-            <div class="return-button">
-                <button class="btn btn-block faves-close faves-option" id="back-button"><i class="icon-arrow-left" ></i> {% trans "Back to Search" %}</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Favorite list -->
     <div class="faves-table" id="one">
         <table>
@@ -237,7 +214,28 @@
     <div class="container-two-faves">
     </div>
     -->
+    <div class="starred-actions">
 
+        <div id="alert-six" class="alert alert-block alert-six">
+            <p>{% blocktrans %}Please select no more than 6 locations to continue to the application process. Compare your favorites below to pick the best options for your family.{% endblocktrans %}</p>
+        </div>
+
+        <div class="contact-button">
+            <a href="" target="_blank" id="faves-contact" class="btn faves-option btn-apply btn-block hint--bottom ga-track" data-ga-category="starred" data-ga-action="Contact Favorites"><i class="fa fa-check-circle"></i> {% trans "Apply" %}</a>
+        </div>
+
+        <div class="other-buttons">
+            <div class="share-button">
+                <a id="faves-share" class="btn btn-block faves-option hint--bottom ga-track" href="#" data-ga-category="starred" data-ga-action="Share Favorites"><i class="icon-share"></i> {% trans "Share" %}</a>
+            </div>
+            <div class="clear-button">
+                <a id="faves-clear" class="btn btn-block faves-option ga-track" href='{% url "browse" %}' data-ga-category="starred" data-ga-action="Clear Selections"><i class="icon-remove-circle"></i> {% trans "Clear Selections" %}</a>
+            </div>
+            <div class="return-button">
+                <button class="btn btn-block faves-close faves-option" id="back-button"><i class="icon-arrow-left" ></i> {% trans "Back to Search" %}</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}
