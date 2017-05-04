@@ -1,0 +1,34 @@
+{% extends "base-search.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+
+{% block title %}{% trans 'Announcements' %} - {% trans "Chicago Early Learning" %}{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block content %}
+<div class="announcements-container">
+    <div class="static-header" id="announcement-header" style="background-image: url({% static 'img/static-pages/announcement-header.jpg' %})">
+        <h1 id="announcements-title">{% trans 'Announcements' %}</h1>
+    </div>
+    <div class="announcements-content">
+
+      <h3>{% blocktrans %}Are you looking for preschool for your 3 or 4 year old starting in the fall?{% endblocktrans %}</h3>
+
+      <h4>{% blocktrans %}Chicago Early Learning Preschool Applications open May 15th for the 2017 – 2018 school year!{% endblocktrans %}</h4>
+
+      <p>{% blocktrans %}Chicago Early Learning supports Chicago families looking for early learning at community sites and schools across the city.{% endblocktrans %}</p>
+
+      <p>{% blocktrans %}For immediate enrollment before the fall, please call <a href="tel:7735532010">773-553-2010</a>, or call the community site you would like your child to attend.{% endblocktrans %}</p>
+
+      <p>{% blocktrans %}For any other questions, please call the Chicago Early Learning Hotline: <a href="tel:3122291690">312-229-1690</a>.{% endblocktrans %}</p>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

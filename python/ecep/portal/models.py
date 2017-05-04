@@ -5,6 +5,7 @@ from django.contrib.gis.db import models
 from portal.templatetags.portal_extras import nicephone
 from django.template.defaultfilters import title
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 # Model fields need to be translated lazily
 from django.utils.translation import ugettext as _, ugettext_lazy
@@ -233,11 +234,9 @@ class Location(models.Model):
         return ((ftype == 'CharField' or ftype == 'TextField'))
 
     def get_ecm_url(self):
-
-        if self.ecm_key == 0:
-            return ''
-        else:
-            return 'https://s56.esserver.com/cel035.enginuity.web.v6/#/pLoginWithRegister?cartId={}'.format(str(self.ecm_key))
+        """
+        """
+        return reverse('announcements')
 
     def get_context_dict(self, short=False):
         """Gets a context dictionary for rendering this object in templates

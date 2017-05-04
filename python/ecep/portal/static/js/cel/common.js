@@ -174,13 +174,7 @@ function($, L, Response, Handlebars) {
                     throw 'getUrl::Invalid Parameter: icon-quality requires opts.quality';
                 }
             case 'ecm-apply':
-                if (opts) {
-                    url = 'https://s56.esserver.com/cel035.enginuity.web.v6/#/pLoginWithRegister?cartId=';
-                    url += opts.ids.join('+')
-                    return url;
-                } else {
-                    return 'https://s56.esserver.com/cel035.enginuity.web.v6/';
-                }
+                return '/announcements'
             default:
                 break;
         }
