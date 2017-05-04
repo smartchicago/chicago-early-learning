@@ -885,6 +885,14 @@ a:focus {
     color: red;
 }
 
+.empty-faves {
+    display: none;
+}
+
+.hide-fave {
+    margin-top: 50px;
+}
+
 /* Single School View */
 #location-map {
     height: 250px;
