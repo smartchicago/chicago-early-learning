@@ -1,5 +1,7 @@
+import csv
+import re
+
 from geopy.geocoders import Nominatim
-import unicodecsv as csv
 
 from django.contrib.gis.geos import GEOSGeometry
 from django.core.management.base import BaseCommand, CommandError
@@ -12,6 +14,50 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **options):
+        """
+        """
+        with open('portal/management/exports/copa.txt') as copa:
+            fieldnames = ['Site ID', 'Site Name', 'Address', 'City', 
+                          'State', 'Zip Code', 'Phone Number',
+                          'URL', 'Ages Served', 'Ages Zero To Three', 
+                          'Ages Three To Five', 'Part Day Program', 'Full Day Program', 
+                          'Full Year Program', 'School Year Program', 'Operating Hours', 
+                          'School Based', 'Community Based', 'Head Start Program',
+                          'Accept CCAP', 'Home Visiting', 'Other Languages',
+                          'Other Features', 'Accreditation', 'Quality Rating', 'Slots available']
+            reader = csv.DictReader(copa, delimiter='\t', fieldnames=fieldnames)
+
+            count = 0
+            empty = 0
+
+            for row in reader:
+
+                try:
+                    if not row["Address"]:
+                        empty += 1
+                        raise Exception('Empty address')
+
+                    print row["Address"]
+                    address = re.sub('[!@#$\\.]', '', row["Address"].lower())
+                    st_address = address.replace('street', '')
+                    print st_address
+                    q = Location.objects.filter(address__icontains=st_address)
+                    print q[0].site_name
+                    print row['Site Name']
+                    print 'COPA ID: {}'.format(row['Site ID'])
+
+                except:
+                    count += 1
+                    print "*** OH NO ***"
+
+                print " "
+
+            print " "
+            print ' '
+            print count
+            print empty
+
+    def old_handle(self, *args, **options):
         """
         """
 
