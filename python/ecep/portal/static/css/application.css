@@ -1507,6 +1507,11 @@ a:focus {
     padding-bottom: 200px;
 }
 
+.announcements-content h3, 
+.announcements-content h4 {
+    text-align: center;
+}
+
 .static-header {
     width: 100%;
     height: 300px;
