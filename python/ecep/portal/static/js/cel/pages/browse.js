@@ -343,7 +343,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
             if ($map.data('zoom')) {
                 defaultZoom = $map.data('zoom');
-                console.log(defaultZoom);
             } else if ($map.data('lat') || geolat) {
                 defaultZoom = 15;
             }
@@ -495,7 +494,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
 
             map.removeLayer(neighborhoodLayer);
             map.addLayer(locationLayer);
-            console.log(map.hasLayer(legend));
             
             listResults(dm.locations, currentLayer);
 

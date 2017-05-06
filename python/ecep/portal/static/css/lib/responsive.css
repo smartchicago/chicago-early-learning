@@ -550,7 +550,8 @@
 
     .families-container,
     .resources-container,
-    .enroll-container {
+    .enroll-container,
+    .announcements-container {
         width: auto;
         padding: 25px;
         margin: 0;
@@ -584,6 +585,27 @@
 
     .static-header.small-header h1 {
         font-size: 42px;
+    }
+
+    .announcements-container h1 {
+        font-size: 26px;
+    }
+
+    .announcements-container h3 {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    .announcements-container h4 {
+        font-size: 14px;
+    }
+
+    #announcement-header {
+        max-height: 150px;
+    }
+    
+    .announcements-content {
+        padding-bottom: 0;
     }
 
 }
