@@ -1,4 +1,5 @@
 import csv
+import unicodecsv
 import re
 
 from geopy.geocoders import Nominatim
@@ -17,18 +18,13 @@ class Command(BaseCommand):
         """
         """
         with open('portal/management/exports/copa.txt') as copa:
-            fieldnames = ['Site ID', 'Site Name', 'Address', 'City', 
-                          'State', 'Zip Code', 'Phone Number',
-                          'URL', 'Ages Served', 'Ages Zero To Three', 
-                          'Ages Three To Five', 'Part Day Program', 'Full Day Program', 
-                          'Full Year Program', 'School Year Program', 'Operating Hours', 
-                          'School Based', 'Community Based', 'Head Start Program',
-                          'Accept CCAP', 'Home Visiting', 'Other Languages',
-                          'Other Features', 'Accreditation', 'Quality Rating', 'Slots available']
-            reader = csv.DictReader(copa, delimiter='\t', fieldnames=fieldnames)
+            reader = csv.DictReader(copa, delimiter='\t')
 
             count = 0
             empty = 0
+
+            good_list = []
+            bad_list = []
 
             for row in reader:
 
@@ -45,17 +41,40 @@ class Command(BaseCommand):
                     print q[0].site_name
                     print row['Site Name']
                     print 'COPA ID: {}'.format(row['Site ID'])
+                    good_list.append({
+                        'site_name': q[0].site_name,
+                        'copa_id': row['Site ID'],
+                        'portal_id': q[0].id
+                        })
+
 
                 except:
                     count += 1
                     print "*** OH NO ***"
+                    bad_list.append({'site_name': row['Site Name'], 'address': row['Address'], 'copa_id': row['Site ID']})
 
                 print " "
 
             print " "
             print ' '
-            print count
-            print empty
+            print len(good_list)
+            print len(bad_list)
+
+            with open('good.csv','wb') as good:
+                good_names = ['site_name', 'portal_id', 'copa_id']
+                writer = unicodecsv.DictWriter(good, fieldnames=good_names)
+                writer.writeheader()
+
+                for row in good_list:
+                    writer.writerow(row)
+
+            with open('bad.csv','wb') as bad:
+                bad_names = ['site_name', 'address', 'copa_id']
+                writer = unicodecsv.DictWriter(bad, fieldnames=bad_names)
+                writer.writeheader()
+
+                for row in bad_list:
+                    writer.writerow(row)
 
     def old_handle(self, *args, **options):
         """
