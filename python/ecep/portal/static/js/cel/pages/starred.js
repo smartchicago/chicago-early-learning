@@ -5,6 +5,9 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
 
         $(document).ready(function() {
 
+            var $apply_button = $('#faves-contact'),
+                apply_sites = [];
+
             // Draw the Handlebars template for a location
             function drawTable(data, copa_locations, non_copa_locations) {
                 var template = Handlebars.compile(html_row),
@@ -12,6 +15,8 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                     $non_copa_body = $('#non-copa-table'),
                     copa_faves = [],
                     non_copa_faves = [],
+                    application_site_ids = [],
+                    application_site_total = application_site_ids.length,
                     copa_total = copa_locations.length,
                     non_copa_total = non_copa_locations.length;
 
@@ -34,6 +39,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                     $non_copa_body.html(non_copa_faves);
                     $('#non-copa').show();
                 }
+                if (application_site_total == 0) { $apply_button.addClass('disabled'); }
 
 
                 // Set removal listeners
@@ -43,7 +49,8 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                         key = $favorite.data('key'),
                         $fave_row = $('#fave-' + id);
 
-                    // favorites.removeIdFromCookie(id);
+                    console.log(key);
+                    favorites.removeIdFromCookie(id);
 
                     if ( key ) {
                         copa_total--;
@@ -59,64 +66,39 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                 });
 
                 // Set apply checkbox listeners
+                $('.apply-checkbox').on('change', function(e) {
+                    var $favorite = $(this),
+                        id = $favorite.data('id'),
+                        key = $favorite.data('key');
+
+                    if (this.checked) {
+                        checkSite(id, key);
+                    } else {
+                        uncheckSite(id, key);
+                    }
+                });
 
             }
 
-            function drawStarredLocations(data, ecm_locations, non_ecm_locations) {
-
-                var template = Handlebars.compile(html),
-                    $apply_button = $('#faves-contact'),
-                    $container_one = $('.container-one-faves'),
-                    $container_two = $('.container-two-faves'),
-                    $starred_one = $('<div></div>'),
-                    $starred_two = $('<div></div>'),
-                    $alert = $('#alert-six'),
-                    ecm_ids = [],
-                    ecm_url = '',
-                    numECMLocations = ecm_locations.length,
-                    numNonECMLocations = non_ecm_locations.length;
-
-                if (numECMLocations > 6) {
-                    $alert.show();
-                    $apply_button.addClass('disabled');
-                } else {
-                    $alert.hide();
+            function checkSite(id, key) {
+                apply_sites.push(key);
+                if (apply_sites.length > 0) { $apply_button.removeClass('disabled'); }
+                if (apply_sites.length == 2) {
+                    $('input:checkbox:not(:checked)').attr('disabled', true);
                 }
+                var copa_url = common.getUrl('copa-apply', { ids: apply_sites});
+                $('.destination').text(copa_url);
+                console.log(copa_url);
+            }
 
-                if (numNonECMLocations > 0) { $('#non-ecm-header').show(); }
-
-                for (var i = 0; i < numECMLocations; i++) {
-                    var loc = ecm_locations[i];
-                    var $location = $(template(loc)).addClass("starred-entry");
-                    $starred_one.append($location);
-                    ecm_ids.push(loc.ecm.key);
-                }
-
-                for (var i = 0; i < numNonECMLocations; i++) {
-                    var loc = non_ecm_locations[i];
-                    var $location = $(template(loc)).addClass("starred-entry");
-                    $starred_two.append($location);
-                }
-
-                ecm_url = common.getUrl('ecm-apply', { ids: ecm_ids });
-                $('#faves-contact').attr('href', ecm_url);
-                // attach in single dom operation
-                $container_one.html($starred_one);
-                $container_two.html($starred_two);
-
-
-                // add close buttons and click listener if we are displaying cookie locations
-                //      else hide because this was a shared link and the "remove" functionality
-                //      does not make sense
-                if (!regexResult) {
-                    $('.favs-close-button').removeClass('none').on('click', function(e) {
-                        var $favorite = $(this).parent(),
-                            key = $favorite.data('key');
-
-                        favorites.removeIdFromCookie(key);
-                        location.reload();
-                    });
-                }
+            function uncheckSite(id, key) {
+                apply_sites = apply_sites.filter(function (item) {
+                    return item !== key;
+                });
+                var copa_url = common.getUrl('copa-apply', { ids: apply_sites});
+                $('.destination').text(copa_url);
+                if (apply_sites.length == 0) {$apply_button.addClass('disabled');}
+                $('input:checkbox:disabled').attr('disabled', false);
             }
 
             // get location ids:

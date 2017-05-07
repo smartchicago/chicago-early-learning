@@ -2,9 +2,9 @@
   <td>
       {{# if ecm.value }}
       {{else}}
-        <p><input class="apply-checkbox" type="checkbox" data-id="{{id}}" value="{{key}}"></p>
+        <p><input class="apply-checkbox" type="checkbox" data-id="{{id}}" data-key="{{ecm.key}}" name="{{id}}"></p>
       {{/if}}
-      <div class="hide-fave hint--right remove-fave" data-id="{{id}}" data-hint="Remove site from your list">
+      <div class="hide-fave hint--right remove-fave" data-key="{{ecm.key}}" data-id="{{id}}" data-hint="Remove site from your list">
         <a href="javascript:void(0)">&times;</a>
       </div>
 
