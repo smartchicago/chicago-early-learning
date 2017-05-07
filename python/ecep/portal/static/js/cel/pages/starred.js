@@ -51,12 +51,9 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                         non_copa_total--;
                     }
                     $fave_row.hide();
-                    console.log(non_copa_total);
-                    console.log(copa_total);
-                    console.log(key);
+
                     if ( copa_total == 0 ) { $('.empty-faves').show(); }
                     if ( non_copa_total == 0 ) { 
-                        console.log('true!');
                         $('#non-copa').hide();
                     }
                 });
