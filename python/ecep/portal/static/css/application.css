@@ -875,6 +875,7 @@ a:focus {
 
 .faves-table input[type="checkbox"] {
     margin: 0;
+    margin-bottom: 50px;
 }
 
 .faves-table .icon-ok {
@@ -889,17 +890,25 @@ a:focus {
     display: none;
 }
 
-.hide-fave {
-    margin-top: 50px;
+.hide-fave .icon-cancel {
+    color: gray;
+}
+
+.hide-fave a {
+    font-size: 40px;
 }
 
 .remove-row {
-    //display: none;
+    display: none;
 }
 
 .remove-row {
     background-color: #cc7d7d;
     color: white;
+}
+
+#non-copa {
+    margin-bottom: 150px;
 }
 
 /* Single School View */

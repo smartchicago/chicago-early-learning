@@ -6,23 +6,67 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
         $(document).ready(function() {
 
             // Draw the Handlebars template for a location
-            function drawTable(data, locations) {
+            function drawTable(data, copa_locations, non_copa_locations) {
                 var template = Handlebars.compile(html_row),
-                    $tbody = $('.table-body'),
-                    faves = [],
-                    num_locations = locations.length;
+                    $copa_body = $('#copa-table'),
+                    $non_copa_body = $('#non-copa-table'),
+                    copa_faves = [],
+                    non_copa_faves = [],
+                    copa_total = copa_locations.length,
+                    non_copa_total = non_copa_locations.length;
 
-                for (var i=0; i < num_locations; i++) {
-                    var loc = locations[i];
+                for (var i=0; i < copa_total; i++) {
+                    var loc = copa_locations[i];
                     var $location = $(template(loc));
-                    faves.push($location);
+                    copa_faves.push($location);
                 }
 
-                $tbody.html(faves);
+                for (var i=0; i < non_copa_total; i++) {
+                    var loc = non_copa_locations[i];
+                    var $location = $(template(loc));
+                    non_copa_faves.push($location);
+                }
+
+                if (copa_total > 0) {
+                    $copa_body.html(copa_faves);
+                }
+                if (non_copa_total > 0) {
+                    $non_copa_body.html(non_copa_faves);
+                    $('#non-copa').show();
+                }
+
+
+                // Set removal listeners
+                $('.hide-fave').on('click', function(e) {
+                    var $favorite = $(this),
+                        id = $favorite.data('id'),
+                        key = $favorite.data('key'),
+                        $fave_row = $('#fave-' + id);
+
+                    // favorites.removeIdFromCookie(id);
+
+                    if ( key ) {
+                        copa_total--;
+                    } else {
+                        non_copa_total--;
+                    }
+                    $fave_row.hide();
+                    console.log(non_copa_total);
+                    console.log(copa_total);
+                    console.log(key);
+                    if ( copa_total == 0 ) { $('.empty-faves').show(); }
+                    if ( non_copa_total == 0 ) { 
+                        console.log('true!');
+                        $('#non-copa').hide();
+                    }
+                });
+
+                // Set apply checkbox listeners
 
             }
 
             function drawStarredLocations(data, ecm_locations, non_ecm_locations) {
+
                 var template = Handlebars.compile(html),
                     $apply_button = $('#faves-contact'),
                     $container_one = $('.container-one-faves'),
@@ -104,7 +148,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                         }
                     }
 
-                    drawTable(results, locations);
+                    drawTable(results, ecm, non_ecm);
                     // drawStarredLocations(results, ecm, non_ecm);
                 });
             } else {
@@ -117,7 +161,6 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                     favorites.addIdToCookie(value);
                 });
             }
-
 
             favorites.addClearListener();
             favorites.addShareListener();

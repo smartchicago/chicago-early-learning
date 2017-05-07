@@ -1,7 +1,13 @@
-<tr id="fave-{{id}}">   
+<tr id="fave-{{id}}" >   
   <td>
-      <p><input type="checkbox" name="{{id}}"></p>
-      <div class="hide-fave"><a href="javascript:void(0)">(hide)</a></div>
+      {{# if ecm.value }}
+      {{else}}
+        <p><input class="apply-checkbox" type="checkbox" data-id="{{id}}" value="{{key}}"></p>
+      {{/if}}
+      <div class="hide-fave hint--right remove-fave" data-id="{{id}}" data-hint="Remove site from your list">
+        <a href="javascript:void(0)">&times;</a>
+      </div>
+
   </td>
   <td>
       <h1><a href="{{url}}">{{site_name}}</a></h1>
@@ -24,6 +30,8 @@
   <td>
     {{#if availability.value }}
     {{ availability.value }}
+    {{else}}
+      <p class="na">N/A</p>
     {{/if}}
   </td>
   <td>
