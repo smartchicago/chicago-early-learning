@@ -839,6 +839,11 @@ a:focus {
 
 .faves-table table th:first-child,
 .faves-table table td:first-child {
+    text-align: center;
+}
+
+.faves-table table th:nth-child(2),
+.faves-table table td:nth-child(2) {
     width: 30%;
 }
 
@@ -855,7 +860,6 @@ a:focus {
 .faves-table table th:nth-child(7),
 .faves-table table td:nth-child(7) {
     width: 5%;
-    text-align: center;
 }
 
 .faves-table h1 {
