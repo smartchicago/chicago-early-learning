@@ -847,6 +847,12 @@ a:focus {
 .faves-table table td:nth-child(2) {
     width: 30%;
 }
+
+.faves-table table th:nth-child(3),
+.faves-table table td:nth-child(3) {
+    width: 10%;
+}
+
 .faves-table table th:nth-child(6),
 .faves-table table td:nth-child(6) {
     width: 20%;
