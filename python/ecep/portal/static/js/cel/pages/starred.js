@@ -24,6 +24,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                     var loc = copa_locations[i];
                     var $location = $(template(loc));
                     copa_faves.push($location);
+                    console.log(loc);
                 }
 
                 for (var i=0; i < non_copa_total; i++) {

@@ -1,3 +1,4 @@
+{{#if not_enrollment_site}}
 <tr id="fave-{{id}}" >   
   <td>
       {{# if ecm.value }}
@@ -67,6 +68,9 @@
     {{#if languages.value }}
     <p>{{ languages.value }}</p>
     {{/if}}
+    {{#if ccap.value }}
+    <p>{{ ccap.display }}</p>
+    {{/if}}
   </td>
   <td>
     {{#if accreditation.value }}
@@ -80,3 +84,4 @@
 <tr class="remove-row" id="remove-{{id}}">
   <td colspan="7">Remove {{site_name}} from your list?</td>
 </tr>
+{{/if}}
