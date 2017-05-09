@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-08 20:03-0500\n"
+"POT-Creation-Date: 2017-05-09 18:31-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -146,7 +146,7 @@ msgid "Enrollment Process"
 msgstr ""
 
 #: portal/models.py:99 portal/templates/location.html:162
-#: portal/templates/starred.html:67
+#: portal/templates/starred.html:67 portal/templates/starred.html.py:92
 msgid "Accreditation"
 msgstr "Acreditación"
 
@@ -1158,25 +1158,35 @@ msgstr "Borre Selecciones"
 msgid "Back to Search"
 msgstr "Regrese a Búsqueda"
 
-#: portal/templates/starred.html:62
+#: portal/templates/starred.html:62 portal/templates/starred.html.py:87
 msgid "Site Info"
 msgstr "Info del centro"
 
-#: portal/templates/starred.html:63
+#: portal/templates/starred.html:63 portal/templates/starred.html.py:88
 msgid "Ages"
 msgstr "Edades"
 
-#: portal/templates/starred.html:64
+#: portal/templates/starred.html:64 portal/templates/starred.html.py:89
 msgid "Seats"
 msgstr "Asientos"
 
-#: portal/templates/starred.html:65
+#: portal/templates/starred.html:65 portal/templates/starred.html.py:90
 msgid "Duration"
 msgstr "Duración"
 
-#: portal/templates/starred.html:66
+#: portal/templates/starred.html:66 portal/templates/starred.html.py:91
 msgid "Program Info"
 msgstr "Info del programa"
+
+#: portal/templates/starred.html:82
+msgid ""
+"The following sites do not have online enrollment. Contact these sites "
+"directly to apply."
+msgstr ""
+
+#: portal/templates/starred.html:86
+msgid "Remove"
+msgstr ""
 
 #: portal/templates/test.html:17
 msgid "Enter a school name"
