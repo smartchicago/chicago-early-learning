@@ -49,8 +49,8 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                         key = $favorite.data('key'),
                         $fave_row = $('#fave-' + id);
 
-                    console.log(key);
                     favorites.removeIdFromCookie(id);
+                    uncheckSite(id, key);
 
                     if ( key ) {
                         copa_total--;
