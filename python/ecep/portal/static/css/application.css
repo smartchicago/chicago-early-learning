@@ -841,8 +841,14 @@ a:focus {
 .faves-table table td:first-child {
     width: 30%;
 }
-.faves-table table th:nth-child(5),
-.faves-table table td:nth-child(5) {
+
+.faves-table table th:nth-child(3),
+.faves-table table td:nth-child(3) {
+    width: 10%;
+}
+
+.faves-table table th:nth-child(6),
+.faves-table table td:nth-child(6) {
     width: 20%;
 }
 
@@ -875,6 +881,7 @@ a:focus {
 
 .faves-table input[type="checkbox"] {
     margin: 0;
+    margin-bottom: 50px;
 }
 
 .faves-table .icon-ok {
@@ -883,6 +890,31 @@ a:focus {
 
 .faves-table .icon-cancel {
     color: red;
+}
+
+.empty-faves {
+    display: none;
+}
+
+.hide-fave .icon-cancel {
+    color: gray;
+}
+
+.hide-fave a {
+    font-size: 40px;
+}
+
+.remove-row {
+    display: none;
+}
+
+.remove-row {
+    background-color: #cc7d7d;
+    color: white;
+}
+
+#non-copa {
+    margin-bottom: 150px;
 }
 
 /* Single School View */
@@ -1549,7 +1581,8 @@ a:focus {
 
 .families-container,
 .resources-container,
-.enroll-container {
+.enroll-container,
+.announcements-container {
     position: relative;
     top: 100px;
     width: 970px;
@@ -1559,21 +1592,33 @@ a:focus {
 
 .families-container p,
 .resources-container p,
-.enroll-container p {
+.enroll-container p,
+.announcements-container p {
     word-break: break-word;
 }
 
 .families-content,
 .resources-content,
-.enroll-content {
+.enroll-content,
+.announcements-content {
     padding-top: 30px; 
 }
 
 .resources-container img,
 .logos-container img,
-.faq-container img {
+.faq-container img,
+.announcements-container img {
     max-height: 125px;
     max-width: 200px;
+}
+
+.announcements-content {
+    padding-bottom: 200px;
+}
+
+.announcements-content h3, 
+.announcements-content h4 {
+    text-align: center;
 }
 
 .static-header {

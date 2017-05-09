@@ -34,8 +34,10 @@
             <p>{% blocktrans %}Please select no more than 6 locations to continue to the application process. Compare your favorites below to pick the best options for your family.{% endblocktrans %}</p>
         </div>
 
+        <div class="destination"></div>
+
         <div class="contact-button">
-            <a href="" target="_blank" id="faves-contact" class="btn faves-option btn-apply btn-block hint--bottom ga-track" data-ga-category="starred" data-ga-action="Contact Favorites"><i class="fa fa-check-circle"></i> {% trans "Apply" %}</a>
+            <a href="" target="_blank" id="faves-contact" class="btn disabled faves-option btn-apply btn-block hint--bottom ga-track" data-ga-category="starred" data-ga-action="Contact Favorites"><i class="fa fa-check-circle"></i> {% trans "Apply" %}</a>
         </div>
 
         <div class="other-buttons">
@@ -52,10 +54,36 @@
     </div>
 
     <!-- Favorite list -->
-    <div class="faves-table" id="one">
+    <div class="faves-table" id="copa">
         <table>
             <thead>    
-                <tr>    
+                <tr>
+                    <th>{% trans 'Apply' %}</th>
+                    <th>{% trans 'Site Info' %}</th>
+                    <th>{% trans 'Ages' %}</th>
+                    <th>{% trans 'Seats' %}</th>
+                    <th>{% trans 'Duration' %}</th>
+                    <th>{% trans 'Program Info' %}</th>
+                    <th>{% trans 'Accreditation' %}</th>
+                </tr>
+            </thead>
+            <tbody class="empty-faves">
+                <tr>
+                    <th colspan="7">No Saved Locations</th>
+                </tr>
+            </tbody>
+            <tbody class="table-body" id="copa-table">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="faves-table" id="non-copa" style="display:none">
+        <h4 id="non-ecm-header">The following sites do not have online enrollment. Contact these sites directly to apply.</h4>
+        <table>
+            <thead>    
+                <tr>
+                    <th>Remove</th>
                     <th>Site Info</th>
                     <th>Ages</th>
                     <th>Seats</th>
@@ -65,151 +93,9 @@
                     <th>Apply</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>   
-                    <td>
-                        <h1><a href="">North Avenue Day Nursery</a></h1>
-                        <p>Address Line</p>
-                        <p>Chicago, IL Zip</p> 
-                        <p>7:00am-5:45pm</p>
-                        <p><a href="">312-555-555</a></p>
-                        <p><a href="">Website &#x2197;</a></p>
-                    </td>
-                    <td>
-                        <p><i class="icon-ok"></i> 0 - 3</p>
-                        <p><i class="icon-ok"></i> 3 - 5</p>
-                    </td>
-                    <td>High</td>
-                    <td>
-                        <p>Full Day</p>
-                        <p>School Year</p>
-                    </td>
-                    <td>
-                        <p>Community Based</p>
-                        <p>Head Start</p>
-                        <p>Early Head Start</p>
-                        <p>Offers Spanish</p>
-                    </td>
-                    <td>
-                        <p>NAEYC</p>
-                        <p>QRIS Gold Rating</p>
-                    </td>
-                    <td>
-                        <p><input type="checkbox" name=""></p>
-                        <p><a href="" class="faves-close-button">&times;</a></p>
-                    </td>                    
-                </tr>
-                <tr>
-                    <td>
-                        <h1><a href="">Rodolfo Lozano Bilingual & International Center Elementary School</a></h1>
-                        <p>Address Line</p>
-                        <p>Chicago, IL Zip</p> 
-                        <p>Site Hours</p>
-                        <p><a href="">312-555-555</a></p>
-                        <p><a href="">Website &#x2197;</a></p>
-                    </td>
-                    <td>
-                        <p><i class="icon-cancel"></i> 0 - 3</p>
-                        <p><i class="icon-ok"></i> 3 - 5</p>
-                    </td>
-                    <td>Medium</td>
-                    <td>
-                        <p>Part Day</p>
-                        <p>Full Day</p>
-                        <p>School Year</p>
-                        <p>Full Year</p>
-                    </td>
-                    <td>
-                        <p>CPS Based</p>
-                        <p>Head Start</p>
-                    </td>
-                    <td>
-                        <p>QRIS Gold Rated</p>
-                    </td>
-                    <td>
-                        <p><input type="checkbox" name=""></p>
-                        <p><a href="" class="faves-close-button">&times;</a></p>
-                    </td>
-                </tr>
-                <tr class="row-two">
-                    <td>
-                        <h1><a href="">Christopher Columbus Elementary School</a></h1>
-                        <p>Address Line</p>
-                        <p>Chicago, IL Zip</p> 
-                        <p>Site Hours</p>
-                        <p><a href="">312-555-555</a></p>
-                        <p><a href="">Website &#x2197;</a></p>
-                    </td>
-                    <td>
-                        <p><i class="icon-cancel"></i> 0 - 3</p>
-                        <p><i class="icon-ok"></i> 3 - 5</p>
-                    </td>
-                    <td>Low</td>
-                    <td>
-                        <p>Part Day</p>
-                        <p>Full Year</p>
-                    </td>
-                    <td>
-                        <p>Offers Chinese (Simplified), Chinese (Traditional), Mandarin and Cantonese</p>
-                    </td>
-                    <td>
-                        <p>QRIS Gold Rated</p>
-                    </td>
-                    <td>
-                        <p><input type="checkbox" name=""></p>
-                        <p><a href="" class="faves-close-button">&times;</a></p>
-                    </td>   
-                </tr>
-                <tr>
-                    <td>
-                        <h1><a href="">Generic School Entry</a></h1>
-                        <p>Address Line</p>
-                        <p>Chicago, IL Zip</p> 
-                        <p>Site Hours</p>
-                        <p><a href="">312-555-555</a></p>
-                        <p><a href="">Website &#x2197;</a></p>
-                    </td>
-                    <td>
-                        <p><i class="icon-cancel"></i> 0 - 3</p>
-                        <p><i class="icon-ok"></i> 3 - 5</p>
-                    </td>
-                    <td>
-                        <p>High</p>
-                        <p>Medium</p>
-                        <p>Low</p>
-                    </td>
-                    <td>
-                        <p>Part Day</p>
-                        <p>Full Day</p>
-                        <p>School Year</p>
-                        <p>Full Year</p>
-                    </td>
-                    <td>
-                        <p>CPS-Based</p>
-                        <p>Head Start</p>
-                        <p>Early Head Start</p>
-                        <p>Accepts CCAP</p>
-                        <p>Home Visiting</p>
-                        <p>Offers Spanish, Polish, Philipino (Tagalog)</p>
-                    </td>
-                    <td>
-                        <p>NYAEC</p>
-                        <p>QRIS Licensed</p>
-                    </td>
-                    <td>
-                        <p><input type="checkbox" name=""></p>
-                        <p><a href="" class="faves-close-button">&times;</a></p>
-                    </td>   
-                </tr>
+            <tbody class="table-body" id="non-copa-table">
             </tbody>
         </table>
-    </div>
-
-    <div class="container-one-faves">
-    </div>
-
-    <h4 id="non-ecm-header" style="display:none">The following sites do not have online enrollment. Contact these sites directly to apply.</h4>
-    <div class="container-two-faves">
     </div>
 
 </div>

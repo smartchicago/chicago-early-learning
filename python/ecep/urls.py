@@ -30,6 +30,7 @@ urlpatterns = patterns(
     url(r'^city-resources$', portal_views.CityResources.as_view(), name='city-resources'),
     url(r'^how-to-apply$', portal_views.HowToApply.as_view(), name='how-to-apply'),
     url(r'^connect$', portal_views.Connect.as_view(), name='connect'),
+    url(r'^announcements$', portal_views.Announcements.as_view(), name='announcements'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type="text/plain")),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicon.ico')),
     

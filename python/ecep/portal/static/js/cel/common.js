@@ -174,13 +174,17 @@ function($, L, Response, Handlebars) {
                     throw 'getUrl::Invalid Parameter: icon-quality requires opts.quality';
                 }
             case 'ecm-apply':
-                if (opts) {
-                    url = 'https://s56.esserver.com/cel035.enginuity.web.v6/#/pLoginWithRegister?cartId=';
-                    url += opts.ids.join('+')
-                    return url;
-                } else {
-                    return 'https://s56.esserver.com/cel035.enginuity.web.v6/';
+                return '/announcements';
+            case 'copa-apply':
+                url = 'https://cys.mycopa.com/familyPortal/welcome.epl?'
+                if (opts && opts.ids ) {
+                    var payload = '';
+                    for (var i=0; i < opts.ids.length; i++) {
+                        payload += 'site' + (i+1) + '=' + opts.ids[i];
+                        if (i+1 < opts.ids.length) { payload += '&'; }
+                    }
                 }
+                return url + payload;
             default:
                 break;
         }
@@ -297,14 +301,16 @@ function($, L, Response, Handlebars) {
                     var likelyResult = allResults[0];
                     $autocomplete.data({
                         label: likelyResult.label,
-                        place_id: likelyResult.place_id,
-                        category: likelyResult.category
+                        place_id: likelyResult.place_id,  
+                        category: likelyResult.category,
+                        types: likelyResult.types
                     });
                 } else {
                     $autocomplete.data({
                         label: 'None',
                         place_id: 'None',
-                        category: 'None'
+                        category: 'None',
+                        types: 'None'
                     });
                 }
                 response(allResults);
