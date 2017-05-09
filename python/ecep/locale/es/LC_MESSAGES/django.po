@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-03 00:30-0500\n"
+"POT-Creation-Date: 2017-05-08 20:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -146,6 +146,7 @@ msgid "Enrollment Process"
 msgstr ""
 
 #: portal/models.py:99 portal/templates/location.html:162
+#: portal/templates/starred.html:67
 msgid "Accreditation"
 msgstr "Acreditación"
 
@@ -232,10 +233,8 @@ msgid "Approved"
 msgstr ""
 
 #: portal/models.py:127
-#, fuzzy
-#| msgid "Weekday Availability"
 msgid "Availability"
-msgstr "Disponibilidad entre semana"
+msgstr "Disponibilidad"
 
 #: portal/models.py:325 portal/templates/location.html:137 portal/views.py:684
 msgid "Program Information"
@@ -266,7 +265,7 @@ msgid "Directions"
 msgstr "Dirección"
 
 #: portal/models.py:382 portal/templates/location.html:54
-#: portal/templates/location.html.py:57 portal/templates/starred.html:43
+#: portal/templates/location.html.py:57 portal/templates/starred.html:45
 msgid "Share"
 msgstr "Compartir"
 
@@ -309,7 +308,6 @@ msgid "Click to save to your list"
 msgstr "Haga clic para guardarlo en su lista"
 
 #: portal/models.py:392
-#, fuzzy
 msgid "Click to remove from your list"
 msgstr "Haga clic para guardarlo en su lista"
 
@@ -368,7 +366,6 @@ msgid "(page %(current)d/%(total)d)"
 msgstr "(página %(current)d/%(total)d)"
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
-#: portal/templates/connect.html:9
 msgid "About"
 msgstr "Sobre Nosotros"
 
@@ -816,6 +813,17 @@ msgstr ""
 "depts/cdph.html/\">Póngase en contacto con el Departamento de Salud Pública "
 "de Chicago </a>para más detalles."
 
+#: portal/templates/connect.html:9
+msgid "Connect"
+msgstr ""
+
+#: portal/templates/connect.html:29
+#, fuzzy
+#| msgid "to help make the Chicago Early Learning Portal better."
+msgid ""
+"Stay up to date on Chicago Early Learning! Join our email and text lists."
+msgstr "el portal del Chicago Educacíon Temprana."
+
 #: portal/templates/contact.html:13 portal/templates/contact.html.py:22
 msgid "Contact"
 msgstr ""
@@ -1138,17 +1146,37 @@ msgstr ""
 "aplicaciones. Compare sus favoritos punto por punto para escoger la mejor "
 "opción para su familia."
 
-#: portal/templates/starred.html:38
+#: portal/templates/starred.html:40 portal/templates/starred.html.py:61
 msgid "Apply"
 msgstr "Aplique"
 
-#: portal/templates/starred.html:46
+#: portal/templates/starred.html:48
 msgid "Clear Selections"
 msgstr "Borre Selecciones"
 
-#: portal/templates/starred.html:49
+#: portal/templates/starred.html:51
 msgid "Back to Search"
 msgstr "Regrese a Búsqueda"
+
+#: portal/templates/starred.html:62
+msgid "Site Info"
+msgstr "Info del centro"
+
+#: portal/templates/starred.html:63
+msgid "Ages"
+msgstr "Edades"
+
+#: portal/templates/starred.html:64
+msgid "Seats"
+msgstr "Asientos"
+
+#: portal/templates/starred.html:65
+msgid "Duration"
+msgstr "Duración"
+
+#: portal/templates/starred.html:66
+msgid "Program Info"
+msgstr "Info del programa"
 
 #: portal/templates/test.html:17
 msgid "Enter a school name"

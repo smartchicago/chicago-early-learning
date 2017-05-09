@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-03 00:30-0500\n"
+"POT-Creation-Date: 2017-05-08 20:03-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -141,6 +141,7 @@ msgid "Enrollment Process"
 msgstr ""
 
 #: portal/models.py:99 portal/templates/location.html:162
+#: portal/templates/starred.html:67
 msgid "Accreditation"
 msgstr ""
 
@@ -259,7 +260,7 @@ msgid "Directions"
 msgstr ""
 
 #: portal/models.py:382 portal/templates/location.html:54
-#: portal/templates/location.html.py:57 portal/templates/starred.html:43
+#: portal/templates/location.html.py:57 portal/templates/starred.html:45
 msgid "Share"
 msgstr ""
 
@@ -351,7 +352,6 @@ msgid "(page %(current)d/%(total)d)"
 msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
-#: portal/templates/connect.html:9
 msgid "About"
 msgstr ""
 
@@ -698,6 +698,15 @@ msgid ""
 "a> for details."
 msgstr ""
 
+#: portal/templates/connect.html:9
+msgid "Connect"
+msgstr ""
+
+#: portal/templates/connect.html:29
+msgid ""
+"Stay up to date on Chicago Early Learning! Join our email and text lists."
+msgstr ""
+
 #: portal/templates/contact.html:13 portal/templates/contact.html.py:22
 msgid "Contact"
 msgstr ""
@@ -961,16 +970,36 @@ msgid ""
 "family."
 msgstr ""
 
-#: portal/templates/starred.html:38
+#: portal/templates/starred.html:40 portal/templates/starred.html.py:61
 msgid "Apply"
 msgstr ""
 
-#: portal/templates/starred.html:46
+#: portal/templates/starred.html:48
 msgid "Clear Selections"
 msgstr ""
 
-#: portal/templates/starred.html:49
+#: portal/templates/starred.html:51
 msgid "Back to Search"
+msgstr ""
+
+#: portal/templates/starred.html:62
+msgid "Site Info"
+msgstr ""
+
+#: portal/templates/starred.html:63
+msgid "Ages"
+msgstr ""
+
+#: portal/templates/starred.html:64
+msgid "Seats"
+msgstr ""
+
+#: portal/templates/starred.html:65
+msgid "Duration"
+msgstr ""
+
+#: portal/templates/starred.html:66
+msgid "Program Info"
 msgstr ""
 
 #: portal/templates/test.html:17
