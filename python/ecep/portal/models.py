@@ -83,6 +83,7 @@ class Location(models.Model):
         (LOW, ugettext_lazy('Low')),
     )    
 
+    copa_key = models.IntegerField('ECM Key', default=0, blank=True)
     ecm_key = models.IntegerField('ECM Key', default=0, blank=True)
     site_name = models.CharField('Site Name', max_length=100)
     site_type = models.IntegerField('Site Type', default=0, choices=LOCATION_TYPE_CHOICES)
