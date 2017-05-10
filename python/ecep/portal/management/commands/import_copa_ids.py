@@ -21,5 +21,6 @@ class Command(BaseCommand):
 
             for row in reader:
                 site = Location.objects.get(id=row["portal_id"])
-                site.copa_id = row["copa_id"]
+                site.copa_key = row["copa_id"]
                 site.save()
+                print site.copa_key
