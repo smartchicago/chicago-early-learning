@@ -24,7 +24,6 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                     var loc = copa_locations[i];
                     var $location = $(template(loc));
                     copa_faves.push($location);
-                    console.log(loc);
                 }
 
                 for (var i=0; i < non_copa_total; i++) {
@@ -88,8 +87,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                     $('input:checkbox:not(:checked)').attr('disabled', true);
                 }
                 var copa_url = common.getUrl('copa-apply', { ids: apply_sites});
-                $('.destination').text(copa_url);
-                console.log(copa_url);
+                $('#faves-contact').attr('href', copa_url);
             }
 
             function uncheckSite(id, key) {
@@ -97,7 +95,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                     return item !== key;
                 });
                 var copa_url = common.getUrl('copa-apply', { ids: apply_sites});
-                $('.destination').text(copa_url);
+                $('#faves-contact').attr('href', copa_url);
                 if (apply_sites.length == 0) {$apply_button.addClass('disabled');}
                 $('input:checkbox:disabled').attr('disabled', false);
             }
@@ -117,19 +115,18 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                 $.getJSON(common.getUrl('starred-location-api', { locations: starredIds }), function (results) {
                     
                     var locations = results.locations,
-                        ecm = [],
-                        non_ecm = [];
+                        copa = [],
+                        non_copa = [];
 
                     for (var i=0; i<locations.length; i++) {
-                        if (locations[i].ecm.key == 0) {
-                            non_ecm.push(locations[i]);
+                        if (locations[i].copa.key == 0) {
+                            non_copa.push(locations[i]);
                         } else {
-                            ecm.push(locations[i]);
+                            copa.push(locations[i]);
                         }
                     }
 
-                    drawTable(results, ecm, non_ecm);
-                    // drawStarredLocations(results, ecm, non_ecm);
+                    drawTable(results, copa, non_copa);
                 });
             } else {
                 $('.empty-faves').show();

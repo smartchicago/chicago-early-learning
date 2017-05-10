@@ -1,11 +1,11 @@
 {{#if not_enrollment_site}}
 <tr id="fave-{{id}}" >   
   <td>
-      {{# if ecm.value }}
+      {{# if copa.value }}
       {{else}}
-        <p><input class="apply-checkbox" type="checkbox" data-id="{{id}}" data-key="{{ecm.key}}" name="{{id}}"></p>
+        <p><input class="apply-checkbox" type="checkbox" data-id="{{id}}" data-key="{{copa.key}}" name="{{id}}"></p>
       {{/if}}
-      <div class="hide-fave hint--right remove-fave" data-key="{{ecm.key}}" data-id="{{id}}" data-hint="Remove site from your list">
+      <div class="hide-fave hint--right remove-fave" data-key="{{copa.key}}" data-id="{{id}}" data-hint="Remove site from your list">
         <a href="javascript:void(0)">&times;</a>
       </div>
 
