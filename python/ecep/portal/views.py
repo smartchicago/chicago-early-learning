@@ -610,12 +610,12 @@ def starred_location_api(request, location_ids=None):
                                      kwargs = {'location_id': location.id})
 
         # Is 
-        e = {}
-        ecm_warning_display = ugettext('Contact this site directly to apply.')
-        e['warning'] = ecm_warning_display
-        e['key'] = location.ecm_key
-        e['value'] = (location.ecm_key == 0)
-        l['ecm'] = e
+        copa = {}
+        copa_warning_display = ugettext('Contact this site directly to apply.')
+        copa['warning'] = copa_warning_display
+        copa['key'] = location.copa_key
+        copa['value'] = (location.copa_key == 0)
+        l['copa'] = copa
 
 
         # Description
