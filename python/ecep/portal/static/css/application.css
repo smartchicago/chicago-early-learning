@@ -858,6 +858,7 @@ a:focus {
 
 .faves-table table th:nth-child(3),
 .faves-table table td:nth-child(3) {
+    white-space: nowrap;
     width: 10%;
 }
 
