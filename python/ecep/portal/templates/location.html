@@ -86,11 +86,11 @@ See LICENSE in the project root for copying permission
             {% endif %}
             {% if location.is_age_gt_3 %}
               {% with "tel:3122291690" as rtl_url %}
-              {% with location.get_ecm_url as ecm_url %}
+              {% with location.get_copa_url as copa_url %}
               <p><em><b>{% trans 'Ages 3 - 5' %}: </b>{% blocktrans %}If your child is 3 or 4 years old prior to September 1, 2016, your child will be eligible for preschool programs.{% endblocktrans %}</em>
 
-              {% if ecm_url %}
-                <em><b>{% blocktrans %}Click <a href="{{ ecm_url }}" target="_blank">here</a> to fill out an application for two preferred sites or call the Chicago Early Learning Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a> for assistance.{% endblocktrans %}</b></em>
+              {% if copa_url %}
+                <em><b>{% blocktrans %}Click <a href="{{ copa_url }}" target="_blank">here</a> to fill out an application for two preferred sites or call the Chicago Early Learning Hotline at <a href="{{ rtl_url }}">(312) 229-1690</a> for assistance.{% endblocktrans %}</b></em>
               {% else %}
               <div class="alert alert-block alert-not-ecm">
                 <p>{% trans 'Contact this site directly to apply.' %}</p>
