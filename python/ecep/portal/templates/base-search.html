@@ -5,22 +5,12 @@
 {% load static %}
 
 <a class="brand" id="searchbar-logo-small" href="{% url 'index' %}">
-    <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+    <img src='{% static "img/logos/logo-left.png" %}' class="logo-small" alt='CEL'>
 </a>
-
-{% if LANGUAGE_CODE == 'en' %}
 <a class="brand" id="searchbar-logo-large" href="{% url 'index' %}">
-    <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
-    <img src='{% static "img/logos/logo-en.png" %}' class="logo-text" alt='CEL'>
+    <img src='{% static "img/logos/logo-left.png" %}' class="logo-small" alt='CEL'>
+    <img src='{% static "img/logos/logo-right.png" %}' class="logo-text" alt='CEL'>
 </a>
-
-{% elif LANGUAGE_CODE == 'es' %}
-<a class="brand" id="searchbar-logo-large" href="{% url 'index' %}">
-    <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
-    <img src='{% static "img/logos/logo-es.png" %}' class="logo-text" alt='CEL'>
-</a>
-
-{% endif %}
 
 <form class="navbar-form" id="desktop-search">
   <div class="input-append">

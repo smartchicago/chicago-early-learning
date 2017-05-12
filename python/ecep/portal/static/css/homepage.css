@@ -11,13 +11,13 @@ input {
 }
 
 h1, h2, h3, h4 {
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-family: filson-soft, Helvetica, Arial, sans-serif;
     font-weight: 700;
 }
 
 .btn {
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
-    font-weight: 300;
+    font-family: filson-soft, Helvetica, Arial, sans-serif;
+    font-weight: 700;
 }
 
 .masthead {
