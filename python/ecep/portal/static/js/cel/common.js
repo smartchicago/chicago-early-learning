@@ -176,7 +176,7 @@ function($, L, Response, Handlebars) {
             case 'ecm-apply':
                 return '/announcements';
             case 'copa-apply':
-                url = 'http://dcysbeta.nulinx.com/familyPortal/welcome.epl?'
+                url = 'https://cys.mycopa.com/familyPortal/welcome.epl'
                 if (opts && opts.ids ) {
                     var payload = '';
                     for (var i=0; i < opts.ids.length; i++) {
