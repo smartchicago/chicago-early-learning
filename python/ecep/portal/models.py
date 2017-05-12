@@ -234,10 +234,13 @@ class Location(models.Model):
         ftype = field.get_internal_type()
         return ((ftype == 'CharField' or ftype == 'TextField'))
 
-    def get_ecm_url(self):
+    def get_copa_url(self):
         """
         """
-        return reverse('announcements')
+        if self.copa_url == 0:
+            return ''
+        else:
+            return 'https://cys.mycopa.com/familyPortal/welcome.epl'
 
     def get_context_dict(self, short=False):
         """Gets a context dictionary for rendering this object in templates
