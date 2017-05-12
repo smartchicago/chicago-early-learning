@@ -28,7 +28,7 @@
 
 .icomoon-apply:before {
     content: "\e900";
-    color: white;
+    color: #202222;
     font-size: 25px;
     line-height: 0;
     position: relative;
@@ -37,7 +37,7 @@
 
 .icomoon-city:before {
     content: "\e901";
-    color: white;
+    color: #202222;
     line-height: 0;
     font-size: 40px;
     position: relative;
@@ -45,7 +45,7 @@
 }
 .icomoon-families:before {
     content: "\e902";
-    color: white;
+    color: #202222;
     line-height: 0;
     font-size: 25px;
     position: relative;
@@ -71,17 +71,18 @@ input {
 }
 
 h1, h2, h3, h4 {
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-family: filson-soft, Helvetica, Arial, sans-serif;
+    font-style: normal;
     font-weight: 700;
 }
 
 a {
-    color: #2D9598;
+    color: #1ba7d5;
 }
 
 a:hover,
 a:focus {
-  color: #006265;
+  color: #48dcf4;
   text-decoration: none;
 }
 
@@ -147,7 +148,7 @@ a:focus {
 
 .navbar-inverse .brand,
 .navbar-inverse .nav > li > a {
-    color: #fff;
+    color: #202222;
     transition: 0.3s;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
@@ -155,7 +156,7 @@ a:focus {
 
 .navbar-inverse .brand,
 .navbar-inverse .nav > li > a:hover {
-    color: #f6db68;
+    color: #ee5713;
     transition: 0.3s;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
@@ -164,7 +165,7 @@ a:focus {
 .navbar-inverse .brand,
 .navbar-inverse .nav > li > a {
     text-shadow: none;
-    color: #fff;
+    color: #202222;
 }
 
 .navbar-inverse .brand span {
@@ -194,7 +195,7 @@ a:focus {
 
 
 .navbar-inverse .navbar-inner {
-    background: #2d9598;
+    background: #ffffff;
 
     border: none;
     /*border-bottom: 1px solid #333;*/
@@ -205,7 +206,7 @@ a:focus {
 .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
 .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
-    background-color: rgb(29,44,54);
+    background-color: #ffffff;
 }
 
 
@@ -255,7 +256,7 @@ a:focus {
 /* Ready to Learn ------------ */
 
 .navbar .ready-to-learn {
-    background: #424142;
+    background: #1ba7d5;
     color: white;
     text-align: center;
     height: 40px;
@@ -264,13 +265,13 @@ a:focus {
 }
 
 .navbar .ready-to-learn a {
-    color: #F6DB68;
+    color: #fff04a;
     text-decoration: none;
     white-space: nowrap;
 }
 
 .navbar .ready-to-learn a:hover {
-    color: #DDC24F;
+    color: #ffc104;
     text-decoration: none;
 }
 
@@ -1334,24 +1335,24 @@ a:focus {
 }
 
 .btn-search-main {
-    color: #5C5C5C;
+    color: #202222;
     text-shadow: none !important;
     font-size: 18px;
     font-weight: bold;
     padding: 19px;
     width: 23%;
     vertical-align: top;
-    background-color: #F6DB68;
-    *background-color: #F6DB68;
-    background-image: -moz-linear-gradient(top, #F6DB68, #F6DB68);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F6DB68), to(#F6DB68));
-    background-image: -webkit-linear-gradient(top, #F6DB68, #F6DB68);
-    background-image: -o-linear-gradient(top, #F6DB68, #F6DB68);
-    background-image: linear-gradient(to bottom, #F6DB68, #F6DB68);
+    background-color: #ffe009;
+    *background-color: #ffe009;
+    background-image: -moz-linear-gradient(top, #ffe009, #ffe009);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffe009), to(#ffe009));
+    background-image: -webkit-linear-gradient(top, #ffe009, #ffe009);
+    background-image: -o-linear-gradient(top, #ffe009, #ffe009);
+    background-image: linear-gradient(to bottom, #ffe009, #ffe009);
     background-repeat: repeat-x;
-    border-color: #F6DB68;
+    border-color: #ffe009;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F6DB68', endColorstr='#F6DB68', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe009', endColorstr='#ffe009', GradientType=0);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 .btn-search-main:hover,
@@ -1359,29 +1360,28 @@ a:focus {
 .btn-search-main.active,
 .btn-search-main.disabled,
 .btn-search-main[disabled] {
-    color: #A59639;
-    background-color: #F6DB68;
-    *background-color: #003bb3;
+    color: #B5A111;
+    background-color: #ffe009;
 }
 
 .btn-locate-main {
-    color: #5C5C5C;
+    color: #202222;
     text-shadow: none !important;
     font-size: 18px;
     font-weight: bold;
     padding: 19px;
     width: 100%;
-    background-color: #DEDEDE;
-    *background-color: #DEDEDE;
-    background-image: -moz-linear-gradient(top, #DEDEDE, #DEDEDE);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#DEDEDE), to(#DEDEDE));
-    background-image: -webkit-linear-gradient(top, #DEDEDE, #DEDEDE);
-    background-image: -o-linear-gradient(top, #DEDEDE, #DEDEDE);
-    background-image: linear-gradient(to bottom, #DEDEDE, #DEDEDE);
+    background-color: #d6d8d7;
+    *background-color: #d6d8d7;
+    background-image: -moz-linear-gradient(top, #d6d8d7, #d6d8d7);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d6d8d7), to(#d6d8d7));
+    background-image: -webkit-linear-gradient(top, #d6d8d7, #d6d8d7);
+    background-image: -o-linear-gradient(top, #d6d8d7, #d6d8d7);
+    background-image: linear-gradient(to bottom, #d6d8d7, #d6d8d7);
     background-repeat: repeat-x;
-    border-color: #DEDEDE;
+    border-color: #d6d8d7;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DEDEDE', endColorstr='#DEDEDE', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d6d8d7', endColorstr='#d6d8d7', GradientType=0);
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 .btn-locate-main:hover,
@@ -1389,9 +1389,8 @@ a:focus {
 .btn-locate-main.active,
 .btn-locate-main.disabled,
 .btn-locate-main[disabled] {
-    color: #A3A3A3;
-    background-color: #DEDEDE;
-    *background-color: #003bb3;
+    color: #999B9B;
+    background-color: #d6d8d7;
 }
 
 .btn-navsearch-main {
@@ -1801,7 +1800,7 @@ a:focus {
 .footer {
     font-size: 12px;
     min-height: 100px;
-    background-color: #424142;
+    background-color: #ee703f;
     color: #FFF;
     position: relative;
     right: 0;
@@ -1810,12 +1809,12 @@ a:focus {
 }
 
 .footer a {
-    color: #F6DB68;
+    color: #ffe009;
     text-decoration: none;
 }
 
 .footer a:hover {
-    color: #DDC24F;
+    color: #ffc104;
     text-decoration: none;
 }
 

@@ -15,7 +15,6 @@
     <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
-
     <style>
         /*
             This is a hack because there is no other simple way to ensure that the correct
@@ -48,6 +47,8 @@
     </script>
     <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
     <!-- end Mixpanel -->
+    <script src="https://use.typekit.net/dkf1mwm.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 
   </head>
@@ -59,22 +60,12 @@
         <div class="navbar-left">
 
             <a class="brand" id="homepage-logo-small" href="{% url 'index' %}">
-                <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
+                <img src='{% static "img/logos/logo-left.png" %}' class="logo-small" alt='CEL'>
             </a>
-
-            {% if LANGUAGE_CODE == 'en' %}
             <a class="brand" id="homepage-logo-large" href="{% url 'index' %}">
-                <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
-                <img src='{% static "img/logos/logo-en.png" %}' class="logo-text" alt='CEL'>
+                <img src='{% static "img/logos/logo-left.png" %}' class="logo-small" alt='CEL'>
+                <img src='{% static "img/logos/logo-right.png" %}' class="logo-text" alt='CEL'>
             </a>
-
-            {% elif LANGUAGE_CODE == 'es' %}
-            <a class="brand" id="homepage-logo-large" href="{% url 'index' %}">
-                <img src='{% static "img/logos/logo-sm.png" %}' class="logo-small" alt='CEL'>
-                <img src='{% static "img/logos/logo-es.png" %}' class="logo-text" alt='CEL'>
-            </a>
-
-            {% endif %}
 
         {% block searchform %}{% endblock %}
         </div>
@@ -92,7 +83,7 @@
 
             <li><a href="{% url 'city-resources' %}"><span class="icomoon-city nav-icon"></span><span class="nav-text">{% trans "City Resources" %}</span></a></li>
 
-            <li><a href="{% url 'faq' %}"><img src='{% static "img/icons/faq.png" %}' aria-hidden="true"><span class="nav-text">{% trans "FAQs" %}</span></a></li>
+            <li><a href="{% url 'faq' %}"><img src='{% static "img/icons/faq_symbol-black.png" %}' aria-hidden="true"><span class="nav-text">{% trans "FAQs" %}</span></a></li>
 
             {% if LANGUAGE_CODE == 'en' %}
             <li class="lg"><a href="{% url 'setlang' language=LANGUAGES.1.0 %}" data-lang="{{ LANGUAGES.1.0 }}">Español</a></li>
