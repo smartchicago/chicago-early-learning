@@ -237,7 +237,7 @@ class Location(models.Model):
     def get_copa_url(self):
         """
         """
-        if self.copa_url == 0:
+        if self.copa_key == 0:
             return ''
         else:
             return 'https://cys.mycopa.com/familyPortal/welcome.epl'
