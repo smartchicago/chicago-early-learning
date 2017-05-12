@@ -31,17 +31,17 @@ h1, h2, h3, h4 {
     position: relative;
     padding-top: 20px;
     color: white;
-    background: url(/static/img/globe-tone.jpg) right center no-repeat #eee;
+    background: url(/static/img/scientist-girl.jpg) left top no-repeat #eee;
     background-size: cover;
 }
 
 .jumbotron a,
 .announcement-mobile a {
-    color: #F6DB68;
+    color: #fff04a;
 }
 .jumbotron a:hover,
 .announcement-mobile a:hover {
-    color: #C3A835;
+    color: #ffc104;
     text-decoration: none;
 }
 
@@ -183,7 +183,7 @@ input.homepage-search {
 /* Announcement */
 .announcement {
     color: white;
-    background-color: rgba(66,65,66,0.6);
+    background-color: rgba(32,34,34,0.6);
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
