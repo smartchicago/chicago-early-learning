@@ -16,11 +16,20 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        with open('portal/management/imports/matched.csv', 'rb') as copa:
+        q = Location.objects.all()
+
+        for loc in list(q):
+            loc.copa_key = 0
+            loc.save()
+
+        with open('portal/management/imports/match.csv', 'rb') as copa:
             reader = unicodecsv.DictReader(copa)
 
             for row in reader:
-                site = Location.objects.get(id=row["portal_id"])
-                site.copa_key = row["copa_id"]
-                site.save()
-                print site.copa_key
+                if row["portal_id"] == "XXXXXX":
+                    pass
+                else:
+                    site = Location.objects.get(id=row["portal_id"])
+                    site.copa_key = row["copa_id"]
+                    site.save()
+                    print site.copa_key

@@ -15,6 +15,39 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **options):
+        with open('portal/management/exports/copa.txt') as copa:
+            reader = csv.DictReader(copa, delimiter='\t')
+            good_list = []
+
+            for row in reader:
+                try:
+                    key = int(row['Site ID'])
+                    print key
+                    l = Location.objects.get(copa_key=key)
+                    good_list.append({
+                        'site_name': row['Site Name'],
+                        'copa_id': row['Site ID'],
+                        'portal_id': l.id
+                        })
+                except:
+                    print 'XXXXXX'
+                    good_list.append({
+                        'site_name': row['Site Name'],
+                        'copa_id': row['Site ID'],
+                        'portal_id': 'XXXXXX'
+                        })
+
+
+        with open('portal/management/imports/match2.csv','wb') as good:
+            good_names = ['site_name', 'portal_id', 'copa_id']
+            writer = unicodecsv.DictWriter(good, fieldnames=good_names)
+            writer.writeheader()
+
+            for row in good_list:
+                writer.writerow(row)
+
+
+    def copa_handle(self, *args, **options):
         """
         """
         with open('portal/management/exports/copa.txt') as copa:
