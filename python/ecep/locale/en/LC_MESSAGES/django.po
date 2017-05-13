@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-13 16:39-0500\n"
+"POT-Creation-Date: 2017-05-13 17:23-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -752,30 +752,34 @@ msgstr ""
 msgid "How to Apply"
 msgstr ""
 
-#: portal/templates/how-to-apply.html:19 portal/templates/index.html:31
-#: portal/templates/index.html.py:79 portal/templates/index.html:111
-#: portal/templates/starred.html:17
+#: portal/templates/how-to-apply.html:19 portal/templates/index.html:79
+#: portal/templates/index.html.py:111 portal/templates/starred.html:17
 msgid ""
 "The application is still open for the 2016 – 2017 school year. The "
 "application for the 2017 – 2018 school year will open May 2017."
 msgstr ""
 
-#: portal/templates/index.html:27 portal/templates/index.html.py:75
+#: portal/templates/index.html:27
 msgid ""
-"The City of Chicago’s Early Learning Portal is the place for families to "
-"learn, find and apply for high quality early learning programs across the "
-"city."
+"There is no limit to what your child can accomplish! Jumpstart your child's "
+"education with Chicago Early Learning!"
 msgstr ""
 
-#: portal/templates/index.html:29 portal/templates/index.html.py:77
-msgid "Apply now for preschool!"
+#: portal/templates/index.html:29
+msgid "Complete your child's preschool application online today!"
 msgstr ""
 
-#: portal/templates/index.html:33 portal/templates/index.html.py:81
+#: portal/templates/index.html:31
+msgid ""
+"If your child qualifies, you will receive an email on June 1st with "
+"information on how to verify your child’s assignment."
+msgstr ""
+
+#: portal/templates/index.html:33
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
-"information."
+"information, or call the Chicago Early Learning Hotline:"
 msgstr ""
 
 #: portal/templates/index.html:42
@@ -784,6 +788,24 @@ msgstr ""
 
 #: portal/templates/index.html:50
 msgid "Use your current location"
+msgstr ""
+
+#: portal/templates/index.html:75
+msgid ""
+"The City of Chicago’s Early Learning Portal is the place for families to "
+"learn, find and apply for high quality early learning programs across the "
+"city."
+msgstr ""
+
+#: portal/templates/index.html:77
+msgid "Apply now for preschool!"
+msgstr ""
+
+#: portal/templates/index.html:81
+#, python-format
+msgid ""
+"Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
+"information."
 msgstr ""
 
 #: portal/templates/index.html:94

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-13 16:39-0500\n"
+"POT-Creation-Date: 2017-05-13 17:23-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -869,9 +869,8 @@ msgstr ""
 msgid "How to Apply"
 msgstr ""
 
-#: portal/templates/how-to-apply.html:19 portal/templates/index.html:31
-#: portal/templates/index.html.py:79 portal/templates/index.html:111
-#: portal/templates/starred.html:17
+#: portal/templates/how-to-apply.html:19 portal/templates/index.html:79
+#: portal/templates/index.html.py:111 portal/templates/starred.html:17
 msgid ""
 "The application is still open for the 2016 – 2017 school year. The "
 "application for the 2017 – 2018 school year will open May 2017."
@@ -880,7 +879,41 @@ msgstr ""
 "aplicación para el año escolar de 2017 a 2018 estará disponible en el mayo "
 "de 2017."
 
-#: portal/templates/index.html:27 portal/templates/index.html.py:75
+#: portal/templates/index.html:27
+msgid ""
+"There is no limit to what your child can accomplish! Jumpstart your child's "
+"education with Chicago Early Learning!"
+msgstr ""
+
+#: portal/templates/index.html:29
+msgid "Complete your child's preschool application online today!"
+msgstr "¡Complete una aplicación para su niño hoy para la escuela preescolar!"
+
+#: portal/templates/index.html:31
+msgid ""
+"If your child qualifies, you will receive an email on June 1st with "
+"information on how to verify your child’s assignment."
+msgstr ""
+"Si califica su niño, reciba un correo electrónico el 1º de junio con "
+"información en cómo verificar la asignación de su niño."
+
+#: portal/templates/index.html:33
+msgid ""
+"Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
+"information, or call the Chicago Early Learning Hotline:"
+msgstr ""
+"¿Preguntas? Visite nuestra  <a href=\"%(faq_url)s\">pagina de Preguntas y "
+"Respuestas</a> para más información, o llame al Chicago Early Learning línea de acceso directo:"
+
+#: portal/templates/index.html:42
+msgid "Enter an address, center, or zip code"
+msgstr "Ingrese su dirección, escuela, o código postal"
+
+#: portal/templates/index.html:50
+msgid "Use your current location"
+msgstr "Usar su ubicación actual"
+
+#: portal/templates/index.html:75
 msgid ""
 "The City of Chicago’s Early Learning Portal is the place for families to "
 "learn, find and apply for high quality early learning programs across the "
@@ -890,11 +923,11 @@ msgstr ""
 "donde podrán aprender, solicitar y encontrar los programas de aprendizaje "
 "temprano en la ciudad de Chicago. "
 
-#: portal/templates/index.html:29 portal/templates/index.html.py:77
+#: portal/templates/index.html:77
 msgid "Apply now for preschool!"
 msgstr "¡Solicite ahora para el preescolar!"
 
-#: portal/templates/index.html:33 portal/templates/index.html.py:81
+#: portal/templates/index.html:81
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
@@ -902,14 +935,6 @@ msgid ""
 msgstr ""
 "¿Preguntas? Visite nuestra  <a href=\"%(faq_url)s\">pagina de Preguntas y "
 "Respuestas</a> para más información. "
-
-#: portal/templates/index.html:42
-msgid "Enter an address, center, or zip code"
-msgstr "Ingrese su dirección, escuela, o código postal"
-
-#: portal/templates/index.html:50
-msgid "Use your current location"
-msgstr "Usar su ubicación actual"
 
 #: portal/templates/index.html:94
 #, python-format
