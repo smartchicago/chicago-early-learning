@@ -20,6 +20,7 @@ class Command(BaseCommand):
 
         for loc in list(q):
             loc.copa_key = 0
+            loc.availability = ''
             loc.save()
 
         with open('portal/management/imports/match.csv', 'rb') as copa:
@@ -31,5 +32,6 @@ class Command(BaseCommand):
                 else:
                     site = Location.objects.get(id=row["portal_id"])
                     site.copa_key = row["copa_id"]
+                    site.availability = 'HIGH'
                     site.save()
                     print site.copa_key
