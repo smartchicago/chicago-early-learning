@@ -1685,6 +1685,7 @@ a:focus {
     padding-top: 230;
 }
 
+
 #families-header,
 #families-break {
     background-position: 50% 25%;
@@ -1732,7 +1733,32 @@ a:focus {
 
 .enroll-steps {
     margin: 20px auto;
-    width: 60%;
+    width: 80%;
+}
+
+#outreach h3 {
+    text-align: left;
+}
+
+.outreach-pictures {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.outreach-pic {
+    width:40%;
+    margin: 20px 20px;
+    display: inline-block;
+}
+
+.outreach-pic img {
+    max-height: none;
+    max-width: 100%;
+}
+
+#outreach {
+    padding-bottom: 0;
 }
 
 
