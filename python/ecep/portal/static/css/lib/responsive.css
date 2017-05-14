@@ -720,6 +720,16 @@
         overflow-x: auto;
         _overflow: auto;
     }
+
+    .enroll-table {
+        width: 100%;
+        overflow-x: auto;
+        _overflow: auto;
+    }
+
+    .enroll-steps {
+        width: 80%;
+    }
 }
 
 

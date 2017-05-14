@@ -1619,6 +1619,13 @@ a:focus {
     margin-top: 30px;
 }
 
+.families-container h4,
+.resources-container h4,
+.enroll-container h4,
+.announcements-container h4 {
+    margin-top: 20px;
+}
+
 .families-container p,
 .resources-container p,
 .enroll-container p,
@@ -1715,6 +1722,10 @@ a:focus {
     background: #dff2f9;
 }
 
+.enroll-steps {
+    margin: 20px auto;
+    width: 60%;
+}
 
 
 /* -----------------------------------------
