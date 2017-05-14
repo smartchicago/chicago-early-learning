@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-13 19:24-0500\n"
+"POT-Creation-Date: 2017-05-13 19:41-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -517,6 +517,7 @@ msgid "Apply Now!"
 msgstr "¡Aplique!"
 
 #: portal/templates/base.html:82 portal/templates/families.html:7
+#: portal/templates/families.html.py:15
 msgid "For Families"
 msgstr "Para Familias"
 
@@ -852,10 +853,6 @@ msgstr ""
 msgid "Enroll"
 msgstr "Matricular"
 
-#: portal/templates/families.html:15
-msgid "Parent Information"
-msgstr "Información para los padres"
-
 #: portal/templates/faq-models.html:5
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
@@ -1179,6 +1176,10 @@ msgstr "Duración"
 msgid "Program Info"
 msgstr "Info del programa"
 
+#: portal/templates/starred.html:70
+msgid "No Saved Locations"
+msgstr "No Hay Ubicaciones Favoritas"
+
 #: portal/templates/starred.html:80
 msgid ""
 "The following sites do not have online enrollment. Contact these sites "
@@ -1304,6 +1305,9 @@ msgstr ""
 #: templates/admin/portal/location/delete_confirmation.html:30
 msgid "Yes, I'm sure"
 msgstr ""
+
+#~ msgid "Parent Information"
+#~ msgstr "Información para los padres"
 
 #~ msgid "High"
 #~ msgstr "Alto"

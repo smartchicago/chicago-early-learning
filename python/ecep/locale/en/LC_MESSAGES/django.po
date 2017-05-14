@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-13 19:24-0500\n"
+"POT-Creation-Date: 2017-05-13 19:41-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -476,6 +476,7 @@ msgid "Apply Now!"
 msgstr ""
 
 #: portal/templates/base.html:82 portal/templates/families.html:7
+#: portal/templates/families.html.py:15
 msgid "For Families"
 msgstr ""
 
@@ -729,10 +730,6 @@ msgstr ""
 
 #: portal/templates/enroll.html:10
 msgid "Enroll"
-msgstr ""
-
-#: portal/templates/families.html:15
-msgid "Parent Information"
 msgstr ""
 
 #: portal/templates/faq-models.html:5
@@ -999,6 +996,10 @@ msgstr ""
 
 #: portal/templates/starred.html:64 portal/templates/starred.html.py:89
 msgid "Program Info"
+msgstr ""
+
+#: portal/templates/starred.html:70
+msgid "No Saved Locations"
 msgstr ""
 
 #: portal/templates/starred.html:80

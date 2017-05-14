@@ -126,6 +126,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                         }
                     }
 
+                    if ( copa.length == 0 ) { $('.empty-faves').show(); }
                     drawTable(results, copa, non_copa);
                 });
             } else {
