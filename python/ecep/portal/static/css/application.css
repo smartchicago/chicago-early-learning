@@ -1677,6 +1677,14 @@ a:focus {
     margin-left: 50px;
 }
 
+#outreach-header {
+    background-position: 50% 35%;
+}
+
+#outreach-header h1 {
+    padding-top: 230;
+}
+
 #families-header,
 #families-break {
     background-position: 50% 25%;

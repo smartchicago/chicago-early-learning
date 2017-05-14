@@ -1,0 +1,24 @@
+{% extends "base-search.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+
+{% block title %}{% trans 'Outreach' %} - {% trans "Chicago Early Learning" %}{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block content %}
+<div class="announcements-container">
+    <div class="static-header" id="outreach-header" style="background-image: url({% static 'img/static-pages/outreach.png' %})">
+        <h1 id="outreach-title">{% trans 'Outreach' %}</h1>
+    </div>
+    <div class="announcements-content">
+
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
