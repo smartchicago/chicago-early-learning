@@ -23,7 +23,7 @@ class Command(BaseCommand):
             loc.availability = ''
             loc.save()
 
-        with open('portal/management/imports/match.csv', 'rb') as copa:
+        with open('portal/management/imports/match2.csv', 'rb') as copa:
             reader = unicodecsv.DictReader(copa)
 
             for row in reader:
