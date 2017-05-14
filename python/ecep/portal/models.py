@@ -73,14 +73,12 @@ class Location(models.Model):
         (1, 'Application Site'),
     )
 
-    HIGH = 'High'
-    MEDIUM = 'Medium'
-    LOW = 'Low'
+    HIGH = 'Slots Available'
+    MEDIUM = 'Limited Availability'
 
     AVAILABILITY_CHOICES = (
-        (HIGH, ugettext_lazy('High')),
-        (MEDIUM, ugettext_lazy('Medium')),
-        (LOW, ugettext_lazy('Low')),
+        (HIGH, ugettext_lazy('Slots Available')),
+        (MEDIUM, ugettext_lazy('Limited Availability')),
     )    
 
     copa_key = models.IntegerField('ECM Key', default=0, blank=True)
@@ -125,7 +123,7 @@ class Location(models.Model):
     accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
 
     # ECM alottment status, classroom availability
-    availability = models.CharField(ugettext_lazy('Availability'), choices=AVAILABILITY_CHOICES, max_length=10, blank=True)
+    availability = models.CharField(ugettext_lazy('Availability'), choices=AVAILABILITY_CHOICES, max_length=25, blank=True)
 
 
     # To get these placeholder fields to show up in the UI, replace
