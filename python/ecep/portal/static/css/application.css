@@ -1123,7 +1123,7 @@ a:focus {
 }
 
 .location-body {
-    border-top: 2px solid #B54747;
+    border-top: 2px solid #ee5710;
 }
 
 .school-name {
@@ -1185,7 +1185,7 @@ a:focus {
 
 .alert-six {
     color: white;
-    background-color: #EA1F4C;
+    background-color: #ee8547;
     text-shadow: none;
 }
 
@@ -1196,7 +1196,7 @@ a:focus {
 
 .alert-not-ecm {
     color: white;
-    background-color: #EA1F4C;
+    background-color: #ee8547;
     text-shadow: none;
     margin-top: 5px;
     margin-bottom: 5px;
