@@ -32,6 +32,6 @@ class Command(BaseCommand):
                 else:
                     site = Location.objects.get(id=row["portal_id"])
                     site.copa_key = row["copa_id"]
-                    site.availability = 'HIGH'
+                    site.availability = 'Slots Available'
                     site.save()
                     print site.copa_key
