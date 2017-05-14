@@ -151,6 +151,10 @@ input.homepage-search {
     margin-top: 0;
 }
 
+.info-buckets p {
+    margin: 5px 0 5px;
+}
+
 .bucket {
 }
 
