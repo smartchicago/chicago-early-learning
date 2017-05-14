@@ -261,6 +261,13 @@ class Location(models.Model):
         else:
             not_ecm = False
 
+        if self.availability == self.HIGH:
+            availability = 'high'
+        elif self.availability == self.MEDIUM:
+            availability = 'medium'
+        else:
+            availability = ''
+
         item = {
             'address': self.address,
             'city': self.city,
@@ -278,7 +285,7 @@ class Location(models.Model):
             'site_type': self.site_type,
             'is_enrollment': self.is_enrollment,
             'duration_hours': self.prg_hours,
-            'availability': self.availability.lower(),
+            'availability': availability,
         }
 
         # simple fields to present -- these are the attributes that have text content
