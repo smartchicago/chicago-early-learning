@@ -1605,6 +1605,20 @@ a:focus {
     padding-bottom: 125px;
 }
 
+.families-container h2,
+.resources-container h2,
+.enroll-container h2,
+.announcements-container h2 {
+    margin-top: 30px;
+}
+
+.families-container h3,
+.resources-container h3,
+.enroll-container h3,
+.announcements-container h3 {
+    margin-top: 30px;
+}
+
 .families-container p,
 .resources-container p,
 .enroll-container p,
@@ -1667,6 +1681,38 @@ a:focus {
 
 #faq-header {
     background-position: 50% 70%;
+}
+
+.enroll-table {
+    width: 100%;
+}
+
+.enroll-table table {
+    width: 100%;
+    margin: 0 0 10px;
+}
+
+.enroll-table table th, td {
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.enroll-table table thead {
+    color: white;
+    background-color: #1ca7d6;
+}
+
+.enroll-table table td:first-child {
+    font-weight: bold;
+    text-align: center;
+}
+
+.enroll-table table td:nth-child(2) {
+    width: 20%;
+}
+
+.enroll-table table tbody tr:nth-child(even) {
+    background: #dff2f9;
 }
 
 
