@@ -1191,7 +1191,7 @@ msgstr "No Hay Ubicaciones Favoritas"
 msgid ""
 "The following sites do not have online enrollment. Contact these sites "
 "directly to apply."
-msgstr ""
+msgstr "Estos centros no tiene inscripción en línea. Contacte directamente estos programa para aplicar."
 
 #: portal/templates/starred.html:84
 msgid "Remove"
