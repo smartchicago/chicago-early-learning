@@ -853,13 +853,18 @@ a:focus {
 
 .faves-table table th:nth-child(2),
 .faves-table table td:nth-child(2) {
-    width: 30%;
+    width: 25%;
 }
 
 .faves-table table th:nth-child(3),
 .faves-table table td:nth-child(3) {
     white-space: nowrap;
     width: 10%;
+}
+
+.faves-table table th:nth-child(5),
+.faves-table table td:nth-child(5) {
+    width: 15%;
 }
 
 .faves-table table th:nth-child(6),

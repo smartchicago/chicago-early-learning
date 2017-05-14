@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-13 17:42-0500\n"
+"POT-Creation-Date: 2017-05-13 19:41-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,66 +24,66 @@ msgstr ""
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: portal/forms.py:11 portal/models.py:453
+#: portal/forms.py:11 portal/models.py:451
 #, fuzzy
 #| msgid "Site Name"
 msgid "First Name"
 msgstr "Nombre del centro"
 
-#: portal/forms.py:12 portal/models.py:454
+#: portal/forms.py:12 portal/models.py:452
 #, fuzzy
 #| msgid "Site Name"
 msgid "Last Name"
 msgstr "Nombre del centro"
 
-#: portal/forms.py:13 portal/models.py:95 portal/models.py:369
-#: portal/models.py:455
+#: portal/forms.py:13 portal/models.py:93 portal/models.py:367
+#: portal/models.py:453
 msgid "Phone Number"
 msgstr "Número de teléfono"
 
-#: portal/forms.py:14 portal/models.py:456
+#: portal/forms.py:14 portal/models.py:454
 #, fuzzy
 #| msgctxt ""
 #| msgid "Address"
 msgid "Address 1"
 msgstr "Dirección"
 
-#: portal/forms.py:15 portal/models.py:457
+#: portal/forms.py:15 portal/models.py:455
 #, fuzzy
 #| msgctxt ""
 #| msgid "Address"
 msgid "Address 2"
 msgstr "Dirección"
 
-#: portal/forms.py:16 portal/models.py:458
+#: portal/forms.py:16 portal/models.py:456
 msgid "City"
 msgstr "Ciudad"
 
-#: portal/forms.py:17 portal/models.py:459
+#: portal/forms.py:17 portal/models.py:457
 msgid "State"
 msgstr "Estado"
 
-#: portal/forms.py:18 portal/models.py:460
+#: portal/forms.py:18 portal/models.py:458
 msgid "Zip Code"
 msgstr "Código postal (ZIP)"
 
-#: portal/forms.py:20 portal/models.py:463
+#: portal/forms.py:20 portal/models.py:461
 msgid "Child 1's Age"
 msgstr ""
 
-#: portal/forms.py:21 portal/models.py:464
+#: portal/forms.py:21 portal/models.py:462
 msgid "Child 2's Age"
 msgstr ""
 
-#: portal/forms.py:22 portal/models.py:465
+#: portal/forms.py:22 portal/models.py:463
 msgid "Child 3's Age"
 msgstr ""
 
-#: portal/forms.py:23 portal/models.py:466
+#: portal/forms.py:23 portal/models.py:464
 msgid "Child 4's Age"
 msgstr ""
 
-#: portal/forms.py:24 portal/models.py:467
+#: portal/forms.py:24 portal/models.py:465
 msgid "Child 5's Age"
 msgstr ""
 
@@ -95,223 +95,219 @@ msgstr ""
 msgid "Select a rating"
 msgstr ""
 
-#: portal/models.py:64 portal/models.py:162 portal/models.py:322
-#: portal/models.py:330 portal/models.py:347 portal/models.py:354
+#: portal/models.py:64 portal/models.py:160 portal/models.py:320
+#: portal/models.py:328 portal/models.py:345 portal/models.py:352
 msgid "None"
 msgstr "Ninguno"
 
-#: portal/models.py:65 portal/models.py:163
+#: portal/models.py:65 portal/models.py:161
 msgid "Licensed"
 msgstr "Autorizado"
 
-#: portal/models.py:66 portal/models.py:164
+#: portal/models.py:66 portal/models.py:162
 msgid "Bronze"
 msgstr "Bronce"
 
-#: portal/models.py:67 portal/models.py:165
+#: portal/models.py:67 portal/models.py:163
 msgid "Silver"
 msgstr "Plata"
 
-#: portal/models.py:68 portal/models.py:166
+#: portal/models.py:68 portal/models.py:164
 msgid "Gold"
 msgstr "Oro"
 
+#: portal/models.py:80
+msgid "Slots Available"
+msgstr "Asientos Disponibles"
+
 #: portal/models.py:81
-msgid "High"
-msgstr "Alto"
+msgid "Limited Availability"
+msgstr "Asientos limitados"
 
-#: portal/models.py:82
-msgid "Medium"
-msgstr "Medio"
-
-#: portal/models.py:83
-msgid "Low"
-msgstr "Bajo"
-
-#: portal/models.py:96 portal/models.py:365 portal/templates/location.html:168
+#: portal/models.py:94 portal/models.py:363 portal/templates/location.html:168
 msgid "Quality Rating"
 msgstr "Evaluación de calidad"
 
-#: portal/models.py:97 portal/models.py:385
+#: portal/models.py:95 portal/models.py:383
 #: portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr "Sitio web"
 
-#: portal/models.py:98 portal/models.py:376 portal/templates/location.html:74
+#: portal/models.py:96 portal/models.py:374 portal/templates/location.html:74
 msgid "Description"
 msgstr "Descripción"
 
-#: portal/models.py:99
+#: portal/models.py:97
 msgid "Enrollment Process"
 msgstr ""
 
-#: portal/models.py:100 portal/templates/location.html:162
+#: portal/models.py:98 portal/templates/location.html:162
 #: portal/templates/starred.html:65 portal/templates/starred.html.py:90
 msgid "Accreditation"
 msgstr "Acreditación"
 
-#: portal/models.py:101
+#: portal/models.py:99
 msgid "Program Hours"
 msgstr "Horario del Programa"
 
-#: portal/models.py:102 portal/templates/location.html:82
+#: portal/models.py:100 portal/templates/location.html:82
 #: portal/templates/location.html.py:85
 msgid "Ages 0 - 3"
 msgstr "0 ‐ 3 años"
 
-#: portal/models.py:103 portal/templates/location.html:83
+#: portal/models.py:101 portal/templates/location.html:83
 #: portal/templates/location.html.py:90
 msgid "Ages 3 - 5"
 msgstr "3 ‐ 5 años"
 
-#: portal/models.py:104 portal/models.py:388
+#: portal/models.py:102 portal/models.py:386
 #: portal/templates/location.html:119 portal/templates/location.html.py:121
 msgid "Full Day"
 msgstr "Día completo"
 
-#: portal/models.py:105 portal/models.py:388
+#: portal/models.py:103 portal/models.py:386
 #: portal/templates/location.html:119 portal/templates/location.html.py:123
 msgid "Part Day"
 msgstr "Parte del día"
 
-#: portal/models.py:106 portal/templates/location.html:127
+#: portal/models.py:104 portal/templates/location.html:127
 #: portal/templates/location.html.py:131
 msgid "School Year"
 msgstr "Año Escolar"
 
-#: portal/models.py:107 portal/templates/location.html:127
+#: portal/models.py:105 portal/templates/location.html:127
 #: portal/templates/location.html.py:129
 msgid "Full Year"
 msgstr "Año completo"
 
-#: portal/models.py:108 portal/templates/location.html:81 portal/views.py:629
+#: portal/models.py:106 portal/templates/location.html:81 portal/views.py:629
 msgid "Ages Served"
 msgstr "Edades para las que se presta servicio"
 
-#: portal/models.py:109
+#: portal/models.py:107
 msgid "Full Week"
 msgstr "Semana completa"
 
-#: portal/models.py:110
+#: portal/models.py:108
 msgid "Part Week"
 msgstr "Semana parcial"
 
-#: portal/models.py:114 portal/templates/location.html:139
+#: portal/models.py:112 portal/templates/location.html:139
 msgid "Community Based"
 msgstr "Organizaciones comunitarias"
 
-#: portal/models.py:115 portal/templates/location.html:138
+#: portal/models.py:113 portal/templates/location.html:138
 msgid "CPS Based"
 msgstr "Escuelas Públicas de Chicago"
 
-#: portal/models.py:116 portal/templates/location.html:143
+#: portal/models.py:114 portal/templates/location.html:143
 msgid "Offers Home Visiting"
 msgstr "Ofrece Visitas Domiciliarias"
 
-#: portal/models.py:117
+#: portal/models.py:115
 msgid "Accepts CCAP"
 msgstr "Acepta CCAP"
 
-#: portal/models.py:118 portal/templates/location.html:140
+#: portal/models.py:116 portal/templates/location.html:140
 msgid "Head Start"
 msgstr "Head Start"
 
-#: portal/models.py:119 portal/templates/location.html:141
+#: portal/models.py:117 portal/templates/location.html:141
 msgid "Early Head Start"
 msgstr "Early Head Start"
 
-#: portal/models.py:120
+#: portal/models.py:118
 msgid "Open House"
 msgstr "Puertas Abiertas"
 
-#: portal/models.py:121
+#: portal/models.py:119
 msgid "Curriculum"
 msgstr "Plan de Estudios"
 
-#: portal/models.py:125
+#: portal/models.py:123
 msgid "Approved"
 msgstr ""
 
-#: portal/models.py:128
+#: portal/models.py:126
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: portal/models.py:329 portal/templates/location.html:137 portal/views.py:684
+#: portal/models.py:327 portal/templates/location.html:137 portal/views.py:684
 msgid "Program Information"
 msgstr "Información del programa"
 
-#: portal/models.py:337
+#: portal/models.py:335
 msgid "Languages"
 msgstr "Idiomas"
 
-#: portal/models.py:343 portal/templates/location.html:116 portal/views.py:650
+#: portal/models.py:341 portal/templates/location.html:116 portal/views.py:650
 msgid "No Hours Listed"
 msgstr "Horario no indicado"
 
-#: portal/models.py:346 portal/templates/location.html:115 portal/views.py:646
+#: portal/models.py:344 portal/templates/location.html:115 portal/views.py:646
 msgid "Duration and Hours"
 msgstr "Duración y Horas"
 
-#: portal/models.py:353
+#: portal/models.py:351
 msgid "Weekday Availability"
 msgstr "Disponibilidad entre semana"
 
-#: portal/models.py:385
+#: portal/models.py:383
 msgid "More"
 msgstr "Más"
 
-#: portal/models.py:385
+#: portal/models.py:383
 msgid "Directions"
 msgstr "Dirección"
 
-#: portal/models.py:386 portal/templates/location.html:54
+#: portal/models.py:384 portal/templates/location.html:54
 #: portal/templates/location.html.py:57 portal/templates/starred.html:43
 msgid "Share"
 msgstr "Compartir"
 
-#: portal/models.py:386
+#: portal/models.py:384
 msgid "QRIS Rating"
 msgstr "Evaluaciones"
 
-#: portal/models.py:386 portal/templates/browse.html:65
+#: portal/models.py:384 portal/templates/browse.html:65
 #: portal/templates/location.html:65 portal/templates/starred.html:7
 #: portal/templates/starred.html.py:16
 msgid "Compare and Apply"
 msgstr "Compare y Aplique"
 
-#: portal/models.py:387
+#: portal/models.py:385
 msgid "More Info"
 msgstr "Más Info"
 
-#: portal/models.py:387
+#: portal/models.py:385
 msgid "Serves ages 0 - 3"
 msgstr "0 ‐ 3 años"
 
-#: portal/models.py:387
+#: portal/models.py:385
 msgid "Serves ages 3 - 5"
 msgstr "3 ‐ 5 años"
 
-#: portal/models.py:388
+#: portal/models.py:386
 msgid "Serves ages 0 - 3, 3 - 5"
 msgstr "0 ‐ 3, 3 - 5 años"
 
-#: portal/models.py:395
+#: portal/models.py:393
 msgid "Directions from Google"
 msgstr "Dirección usando Google"
 
-#: portal/models.py:395
+#: portal/models.py:393
 msgid "Click to show more information"
 msgstr "Haga clic para mostrar mas información"
 
-#: portal/models.py:396
+#: portal/models.py:394
 msgid "Click to save to your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:396
+#: portal/models.py:394
 msgid "Click to remove from your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:400 portal/templates/location.html:156 portal/views.py:737
+#: portal/models.py:398 portal/templates/location.html:156 portal/views.py:737
 msgid "Other Features"
 msgstr "Otras Características"
 
@@ -521,7 +517,7 @@ msgid "Apply Now!"
 msgstr "¡Aplique!"
 
 #: portal/templates/base.html:82 portal/templates/families.html:7
-#: portal/templates/index.html:92
+#: portal/templates/families.html.py:15
 msgid "For Families"
 msgstr "Para Familias"
 
@@ -853,13 +849,9 @@ msgid ""
 "should expect to hear back within 3 business days."
 msgstr ""
 
-#: portal/templates/enroll.html:10 portal/templates/how-to-apply.html:15
+#: portal/templates/enroll.html:10
 msgid "Enroll"
 msgstr "Matricular"
-
-#: portal/templates/families.html:15
-msgid "Parent Information"
-msgstr "Información para los padres"
 
 #: portal/templates/faq-models.html:5
 msgid "FAQ"
@@ -873,15 +865,11 @@ msgstr ""
 msgid "How to Apply"
 msgstr ""
 
-#: portal/templates/how-to-apply.html:19 portal/templates/index.html:111
-#: portal/templates/starred.html:17
-msgid ""
-"The application is still open for the 2016 – 2017 school year. The "
-"application for the 2017 – 2018 school year will open May 2017."
-msgstr ""
-"La aplicación todavía está disponible para el año escolar de 2016 a 2017. La "
-"aplicación para el año escolar de 2017 a 2018 estará disponible en el mayo "
-"de 2017."
+#: portal/templates/how-to-apply.html:15 portal/templates/index.html:107
+#, fuzzy
+#| msgid "Apply"
+msgid "Apply Today"
+msgstr "Aplique"
 
 #: portal/templates/index.html:27 portal/templates/index.html.py:75
 msgid ""
@@ -901,15 +889,14 @@ msgstr ""
 "Si califica su niño, reciba un correo electrónico el 1º de junio con "
 "información en cómo verificar la asignación de su niño."
 
-#: portal/templates/index.html:33 portal/templates/index.html.py:81
+#: portal/templates/index.html:33
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
-"information, or call the Chicago Early Learning Hotline:"
+"information."
 msgstr ""
 "¿Preguntas? Visite nuestra  <a href=\"%(faq_url)s\">pagina de Preguntas y "
-"Respuestas</a> para más información, o llame al Chicago Early Learning línea "
-"de acceso directo:"
+"Respuestas</a> para más información. "
 
 #: portal/templates/index.html:42
 msgid "Enter an address, center, or zip code"
@@ -919,15 +906,25 @@ msgstr "Ingrese su dirección, escuela, o código postal"
 msgid "Use your current location"
 msgstr "Usar su ubicación actual"
 
-#: portal/templates/index.html:94
+#: portal/templates/index.html:81
 #, python-format
+msgid ""
+"Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
+"information, or call the Chicago Early Learning Hotline:"
+msgstr ""
+"¿Preguntas? Visite nuestra  <a href=\"%(faq_url)s\">pagina de Preguntas y "
+"Respuestas</a> para más información, o llame al Chicago Early Learning línea "
+"de acceso directo:"
+
+#: portal/templates/index.html:92
+msgid "Learn More"
+msgstr ""
+
+#: portal/templates/index.html:94
 msgid ""
 "Children who participate in high-quality early learning experiences are "
 "better prepared for success in both kindergarten and over a lifetime of "
-"learning. <a href=\"%(families_url)s\">Click here</a> to learn more about "
-"how to invest in your child’s success through early learning, the different "
-"types of programs offered, and tips to help you choose a high quality "
-"program."
+"learning."
 msgstr ""
 
 #: portal/templates/index.html:95
@@ -940,24 +937,14 @@ msgstr "Busque y Compare"
 
 #: portal/templates/index.html:101
 msgid ""
-"Search by the address where you live or work to quickly find all the early "
-"learning programs located near you. Refine your search to find the features "
-"you most care about. Choose your \"favorites\" and compare them on a list."
+"Find the right preschool program for your child. Search by the address where "
+"you live or work, or by other features you care most about and then compare "
+"your favorite programs."
 msgstr ""
-"Busque por la dirección donde usted vive o trabaja para encontrar "
-"rápidamente todos los programas de educación temprana, ubicados cerca de "
-"usted. Afine su búsqueda para así encontrar las características que mas le "
-"interesen. Escoja sus \"favoritos\" y compárelos con la lista."
 
 #: portal/templates/index.html:102
 msgid "Find and compare locations now"
 msgstr "Encuentre y compare ubicaciones ahora"
-
-#: portal/templates/index.html:107
-#, fuzzy
-#| msgid "Apply"
-msgid "Apply Today"
-msgstr "Aplique"
 
 #: portal/templates/index.html:109
 #, python-format
@@ -965,10 +952,8 @@ msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year old? <a "
 "href=\"%(how_to_apply_url)s\">Click here</a> to learn more about the "
 "application and enrollment process or call <a href="
-"\"tel:3122291690\">312-229-1690</a>. Then fill out an application online "
-"through your individual family portal today. Questions about programs for "
-"younger children (ages 0 - 3)? Please read our <a href=\"%(faq_url)s\">FAQ</"
-"a>."
+"\"tel:3122291690\">312-229-1690</a> with your questions. Then fill out an "
+"preschool application."
 msgstr ""
 
 #: portal/templates/index.html:110
@@ -1092,6 +1077,15 @@ msgstr ""
 "Si desea hablar con alguien acerca de sus opciones, por favor llamar a "
 "Chicago Early Learning al "
 
+#: portal/templates/starred.html:17
+msgid ""
+"The application is still open for the 2016 – 2017 school year. The "
+"application for the 2017 – 2018 school year will open May 2017."
+msgstr ""
+"La aplicación todavía está disponible para el año escolar de 2016 a 2017. La "
+"aplicación para el año escolar de 2017 a 2018 estará disponible en el mayo "
+"de 2017."
+
 #: portal/templates/starred.html:19
 msgid ""
 "Compare early learning programs side-by-side to select the highest quality "
@@ -1181,6 +1175,10 @@ msgstr "Duración"
 #: portal/templates/starred.html:64 portal/templates/starred.html.py:89
 msgid "Program Info"
 msgstr "Info del programa"
+
+#: portal/templates/starred.html:70
+msgid "No Saved Locations"
+msgstr "No Hay Ubicaciones Favoritas"
 
 #: portal/templates/starred.html:80
 msgid ""
@@ -1308,6 +1306,29 @@ msgstr ""
 msgid "Yes, I'm sure"
 msgstr ""
 
+#~ msgid "Parent Information"
+#~ msgstr "Información para los padres"
+
+#~ msgid "High"
+#~ msgstr "Alto"
+
+#~ msgid "Medium"
+#~ msgstr "Medio"
+
+#~ msgid "Low"
+#~ msgstr "Bajo"
+
+#~ msgid ""
+#~ "Search by the address where you live or work to quickly find all the "
+#~ "early learning programs located near you. Refine your search to find the "
+#~ "features you most care about. Choose your \"favorites\" and compare them "
+#~ "on a list."
+#~ msgstr ""
+#~ "Busque por la dirección donde usted vive o trabaja para encontrar "
+#~ "rápidamente todos los programas de educación temprana, ubicados cerca de "
+#~ "usted. Afine su búsqueda para así encontrar las características que mas "
+#~ "le interesen. Escoja sus \"favoritos\" y compárelos con la lista."
+
 #~ msgid ""
 #~ "The City of Chicago’s Early Learning Portal is the place for families to "
 #~ "learn, find and apply for high quality early learning programs across the "
@@ -1319,13 +1340,6 @@ msgstr ""
 
 #~ msgid "Apply now for preschool!"
 #~ msgstr "¡Solicite ahora para el preescolar!"
-
-#~ msgid ""
-#~ "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
-#~ "information."
-#~ msgstr ""
-#~ "¿Preguntas? Visite nuestra  <a href=\"%(faq_url)s\">pagina de Preguntas y "
-#~ "Respuestas</a> para más información. "
 
 #~ msgid "Learn. Grow. Succeed!"
 #~ msgstr "Aprender. Crecer. ¡Triunfar!"
