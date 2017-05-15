@@ -34,4 +34,7 @@ class Command(BaseCommand):
                     site.copa_key = row["copa_id"]
                     site.availability = 'Slots Available'
                     site.save()
+                    print site.site_name
                     print site.copa_key
+                    print ' '
+
