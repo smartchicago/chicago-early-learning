@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-14 11:40-0500\n"
+"POT-Creation-Date: 2017-05-15 07:58-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -137,7 +137,7 @@ msgid "Enrollment Process"
 msgstr ""
 
 #: portal/models.py:98 portal/templates/location.html:162
-#: portal/templates/starred.html:65 portal/templates/starred.html.py:90
+#: portal/templates/starred.html:76 portal/templates/starred.html.py:101
 msgid "Accreditation"
 msgstr ""
 
@@ -175,7 +175,7 @@ msgstr ""
 msgid "Full Year"
 msgstr ""
 
-#: portal/models.py:106 portal/templates/location.html:81 portal/views.py:629
+#: portal/models.py:106 portal/templates/location.html:81 portal/views.py:632
 msgid "Ages Served"
 msgstr ""
 
@@ -227,7 +227,7 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-#: portal/models.py:334 portal/templates/location.html:137 portal/views.py:684
+#: portal/models.py:334 portal/templates/location.html:137 portal/views.py:687
 msgid "Program Information"
 msgstr ""
 
@@ -235,11 +235,11 @@ msgstr ""
 msgid "Languages"
 msgstr ""
 
-#: portal/models.py:348 portal/templates/location.html:116 portal/views.py:650
+#: portal/models.py:348 portal/templates/location.html:116 portal/views.py:653
 msgid "No Hours Listed"
 msgstr ""
 
-#: portal/models.py:351 portal/templates/location.html:115 portal/views.py:646
+#: portal/models.py:351 portal/templates/location.html:115 portal/views.py:649
 msgid "Duration and Hours"
 msgstr ""
 
@@ -256,7 +256,7 @@ msgid "Directions"
 msgstr ""
 
 #: portal/models.py:391 portal/templates/location.html:54
-#: portal/templates/location.html.py:57 portal/templates/starred.html:43
+#: portal/templates/location.html.py:57 portal/templates/starred.html:54
 msgid "Share"
 msgstr ""
 
@@ -302,7 +302,7 @@ msgstr ""
 msgid "Click to remove from your list"
 msgstr ""
 
-#: portal/models.py:405 portal/templates/location.html:156 portal/views.py:737
+#: portal/models.py:405 portal/templates/location.html:156 portal/views.py:740
 msgid "Other Features"
 msgstr ""
 
@@ -358,9 +358,9 @@ msgstr ""
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
 #: portal/templates/faq-models.html:5 portal/templates/how-to-apply.html:7
-#: portal/templates/location.html:12 portal/templates/smsinfo.html:12
-#: portal/templates/starred.html:7 portal/templates/updates.html:5
-#: templates/admin/base_site.html:15
+#: portal/templates/location.html:12 portal/templates/outreach.html:7
+#: portal/templates/smsinfo.html:12 portal/templates/starred.html:7
+#: portal/templates/updates.html:5 templates/admin/base_site.html:15
 msgid "Chicago Early Learning"
 msgstr ""
 
@@ -462,8 +462,8 @@ msgstr ""
 msgid "Click to use your current location"
 msgstr ""
 
-#: portal/templates/base-search.html:26 portal/templates/index.html:45
-#: portal/templates/index.html.py:63 portal/templates/index.html:64
+#: portal/templates/base-search.html:26 portal/templates/index.html:51
+#: portal/templates/index.html.py:69 portal/templates/index.html:70
 msgid "Search"
 msgstr ""
 
@@ -744,88 +744,88 @@ msgstr ""
 msgid "How to Apply"
 msgstr ""
 
-#: portal/templates/how-to-apply.html:15 portal/templates/index.html:107
+#: portal/templates/how-to-apply.html:15 portal/templates/index.html:113
 msgid "Apply Today"
 msgstr ""
 
-#: portal/templates/index.html:27 portal/templates/index.html.py:75
+#: portal/templates/index.html:33 portal/templates/index.html.py:81
 msgid ""
 "There is no limit to what your child can accomplish! Jumpstart your child's "
 "education with Chicago Early Learning!"
 msgstr ""
 
-#: portal/templates/index.html:29 portal/templates/index.html.py:77
+#: portal/templates/index.html:35 portal/templates/index.html.py:83
 msgid "Complete your child's preschool application online today!"
 msgstr ""
 
-#: portal/templates/index.html:31 portal/templates/index.html.py:79
+#: portal/templates/index.html:37 portal/templates/index.html.py:85
 msgid ""
 "If your child qualifies, you will receive an email on June 1st with "
 "information on how to verify your child’s assignment."
 msgstr ""
 
-#: portal/templates/index.html:33
+#: portal/templates/index.html:39
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
 "information."
 msgstr ""
 
-#: portal/templates/index.html:42
+#: portal/templates/index.html:48
 msgid "Enter an address, center, or zip code"
 msgstr ""
 
-#: portal/templates/index.html:50
+#: portal/templates/index.html:56
 msgid "Use your current location"
 msgstr ""
 
-#: portal/templates/index.html:81
+#: portal/templates/index.html:87
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
 "information, or call the Chicago Early Learning Hotline:"
 msgstr ""
 
-#: portal/templates/index.html:92
+#: portal/templates/index.html:98
 msgid "Learn More"
 msgstr ""
 
-#: portal/templates/index.html:94
+#: portal/templates/index.html:100
 msgid ""
 "Children who participate in high-quality early learning experiences are "
 "better prepared for success in both kindergarten and over a lifetime of "
 "learning."
 msgstr ""
 
-#: portal/templates/index.html:95
+#: portal/templates/index.html:101
 msgid "Learn more about high quality early learning programs"
 msgstr ""
 
-#: portal/templates/index.html:99
+#: portal/templates/index.html:105
 msgid "Find & Compare"
 msgstr ""
 
-#: portal/templates/index.html:101
+#: portal/templates/index.html:107
 msgid ""
 "Find the right preschool program for your child. Search by the address where "
 "you live or work, or by other features you care most about and then compare "
 "your favorite programs."
 msgstr ""
 
-#: portal/templates/index.html:102
+#: portal/templates/index.html:108
 msgid "Find and compare locations now"
 msgstr ""
 
-#: portal/templates/index.html:109
+#: portal/templates/index.html:115
 #, python-format
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year old? <a "
 "href=\"%(how_to_apply_url)s\">Learn more</a> about the application and "
 "enrollment process or call <a href=\"tel:3122291690\">312-229-1690</a> with "
-"your questions. Then fill out an preschool application."
+"your questions. Then fill out a preschool application."
 msgstr ""
 
-#: portal/templates/index.html:110
+#: portal/templates/index.html:116
 msgid "Fill out an application online"
 msgstr ""
 
@@ -850,15 +850,15 @@ msgid ""
 "Hotline at <a href=\"%(rtl_url)s\">(312) 229-1690</a> for assistance."
 msgstr ""
 
-#: portal/templates/location.html:96 portal/views.py:614
+#: portal/templates/location.html:96 portal/views.py:617
 msgid "Contact this site directly to apply."
 msgstr ""
 
-#: portal/templates/location.html:108 portal/views.py:758
+#: portal/templates/location.html:108 portal/views.py:761
 msgid "Seats Available"
 msgstr ""
 
-#: portal/templates/location.html:110 portal/views.py:761
+#: portal/templates/location.html:110 portal/views.py:764
 msgid "Note: Availability and placement are subject to eligibility."
 msgstr ""
 
@@ -868,7 +868,7 @@ msgid ""
 "please contact this site directly."
 msgstr ""
 
-#: portal/templates/location.html:150 portal/views.py:730
+#: portal/templates/location.html:150 portal/views.py:733
 msgid "Languages (other than English)"
 msgstr ""
 
@@ -880,6 +880,10 @@ msgstr ""
 
 #: portal/templates/location.html:173
 msgid "Click here!"
+msgstr ""
+
+#: portal/templates/outreach.html:7 portal/templates/outreach.html.py:15
+msgid "Outreach"
 msgstr ""
 
 #: portal/templates/smsinfo.html:12
@@ -918,96 +922,56 @@ msgid ""
 "Early Learning Hotline at "
 msgstr ""
 
-#: portal/templates/starred.html:17
-msgid ""
-"The application is still open for the 2016 – 2017 school year. The "
-"application for the 2017 – 2018 school year will open May 2017."
-msgstr ""
-
-#: portal/templates/starred.html:19
-msgid ""
-"Compare early learning programs side-by-side to select the highest quality "
-"option for your child. Add more programs by going back to your search "
-"results."
-msgstr ""
-
-#: portal/templates/starred.html:21
-msgid ""
-"Press the \"Apply\" button to build your Chicago Early Learning parent "
-"profile and complete an application. You will be able to view your "
-"preliminary placement or waitlist status for the sites indicated below, and "
-"may submit an application for up to two of your site preferences (one "
-"placement and one waitlist)."
-msgstr ""
-
-#: portal/templates/starred.html:23
-msgid ""
-"Call the Chicago Early Learning Hotline at <a href=\"tel:3122291690\">(312) "
-"229-1690</a> if you would like assistance completing the application over "
-"the phone."
-msgstr ""
-
-#: portal/templates/starred.html:25
-msgid ""
-"If you are looking to enroll in a program immediately or have a child that "
-"will not yet be 3 years old in the Fall, please contact the early childhood "
-"program directly."
-msgstr ""
-
-#: portal/templates/starred.html:27
-msgid "Press “Back to Search\" to add more locations you are interested in."
-msgstr ""
-
-#: portal/templates/starred.html:34
+#: portal/templates/starred.html:45
 msgid ""
 "Please select no more than 6 locations to continue to the application "
 "process. Compare your favorites below to pick the best options for your "
 "family."
 msgstr ""
 
-#: portal/templates/starred.html:38 portal/templates/starred.html.py:59
+#: portal/templates/starred.html:49 portal/templates/starred.html.py:70
 msgid "Apply"
 msgstr ""
 
-#: portal/templates/starred.html:46
+#: portal/templates/starred.html:57
 msgid "Clear All Sites"
 msgstr ""
 
-#: portal/templates/starred.html:49
+#: portal/templates/starred.html:60
 msgid "Back to Search"
 msgstr ""
 
-#: portal/templates/starred.html:60 portal/templates/starred.html.py:85
+#: portal/templates/starred.html:71 portal/templates/starred.html.py:96
 msgid "Site Info"
 msgstr ""
 
-#: portal/templates/starred.html:61 portal/templates/starred.html.py:86
+#: portal/templates/starred.html:72 portal/templates/starred.html.py:97
 msgid "Ages"
 msgstr ""
 
-#: portal/templates/starred.html:62 portal/templates/starred.html.py:87
+#: portal/templates/starred.html:73 portal/templates/starred.html.py:98
 msgid "Seats"
 msgstr ""
 
-#: portal/templates/starred.html:63 portal/templates/starred.html.py:88
+#: portal/templates/starred.html:74 portal/templates/starred.html.py:99
 msgid "Duration"
 msgstr ""
 
-#: portal/templates/starred.html:64 portal/templates/starred.html.py:89
+#: portal/templates/starred.html:75 portal/templates/starred.html.py:100
 msgid "Program Info"
 msgstr ""
 
-#: portal/templates/starred.html:70
+#: portal/templates/starred.html:81
 msgid "No Saved Locations"
 msgstr ""
 
-#: portal/templates/starred.html:80
+#: portal/templates/starred.html:91
 msgid ""
 "The following sites do not have online enrollment. Contact these sites "
 "directly to apply."
 msgstr ""
 
-#: portal/templates/starred.html:84
+#: portal/templates/starred.html:95
 msgid "Remove"
 msgstr ""
 
@@ -1019,11 +983,11 @@ msgstr ""
 msgid "Updates"
 msgstr ""
 
-#: portal/views.py:526
+#: portal/views.py:529
 msgid "Explore"
 msgstr ""
 
-#: portal/views.py:527
+#: portal/views.py:530
 msgid "Click to see locations in this neighborhood"
 msgstr ""
 
