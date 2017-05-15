@@ -12,94 +12,491 @@
 {% block content %}
 <div class="enroll-container">
     <div class="static-header" id="apply-header" style="background-image: url({% static 'img/static-pages/apply-header.jpeg' %})">
-        <h1 id="apply-title">{% trans 'Enroll' %}</h1>
+        <h1 id="apply-title">{% trans 'Apply Today' %}</h1>
     </div>
     <div class="enroll-content">
-
-        <p><em>{% blocktrans %}The application is still open for the 2016 – 2017 school year. The application for the 2017 – 2018 school year will open May 2017.{% endblocktrans %}</em></p>
-        
-        <!--
-        The translations of this static content are hardcoded because building in Django translation blocks would make this page
-        and the Django translation file a nightmare. This isn't elegant, but the *proper* solution isn't any better.
-        -->
         
         {% if LANGUAGE_CODE == 'en' %}
         <!-- English Translation -->
 
-        <p>Enrolling your child in early childhood programs is easy and open year round. All you need is to complete three easy steps:</p>
-        <ol>
-            <li>Find your preferred programs.</li>
-            <li><a href="{% url 'announcements' %}">Submit an application online</a> or by calling (312) 229-1690</li>
-            <li>Visit the site to which you are applying (for community-based preschool programs) or Colman or Hall Mall (for school-based preschool programs) to confirm your placement.</li>
-        </ol>
-        <hr>
+        <p><em>If you are interested in programs for children birth to aged three – contact your preferred provider directly.</em></p>
 
-        <h2 class="enroll-subheader">Finding programs</h2>
-        <p>The City of Chicago and its partners offer early learning programs at over 600 sites throughout the city. Visit <a href="{% url 'browse' %}">our search page</a> to identify sites in areas near your home or work. The Chicago Early Learning Portal allows you to identify a programs quality rating, schedule and ages served.</p>
+        <h3 id="areyoureadytoapplyforpreschoolforyour3or4yearold">Are you ready to apply for preschool for your 3 or 4 year old?</h3>
 
-        <p>We encourage you to reach out to preferred providers to ask questions or schedule a visit. Resources to help identify if a program is a good fit for your family are included on our <a href="{% url 'families' %}">family information page.</a></p>
-
-        <p>If you need assistance with general questions or finding options near you, feel free to call the Chicago Early Learning Hotline at <a href="tel:3122291690">(312) 229-1690</a>. If you have specific questions for our city departments and providers call the CPS Office of Early Childhood Education <a href="tel:7735532010">(773) 553-2010</a>, DFSS Children’s Services Division <a href="tel:8666472489">(866) 647-2489</a>, or the number listed on a provider’s detailed info page.</p>
-        <hr>
+        <p>Enrolling your 3 or 4 year-old child in an early learning program is easy, and open year-round. Follow these easy steps to get your child enrolled in preschool:</p>
         
-        <h2 class="enroll-subheader">Apply</h2>
-        <p>This year, Chicago launched an online application to apply for preschool programs at over 600 sites throughout the city accessible from your home computer, shared computer or mobile phone. Visit <a href="{% url 'announcements' %}">the online application site</a> to sign up for family account and profile, create an application for your child(ren), and select your preferred sites. You will be able to immediately see if you are eligible for a preliminary placement with a provider.</p>
+        <div class="enroll-steps">
+            <p><strong>Step 1)</strong><a href="https://cys.mycopa.com/familyPortal/welcome.epl"> Click here</a> to create an online account for your family</p>
 
-        <p>f you do not have access to a computer or mobile phone or would prefer in-person assistance, visit the community-based program to which you would like to apply or visit Colman – CPS Central Office (4655 S. Dearborn) or Hall Mall (4638 W. Diversey) for school-based preschool programs.</p>
+            <p><strong>Step 2)</strong> Fill in information on your family, such as employment and income, information on your child, and then apply for your top choice preschool site</p>
 
-        <p>You can also call the Chicago Early Learning Hotline at <a href="tel:3122291690">(312) 229-1690</a> and submit an application over the phone.</p>
+            <p><strong>Step 3)</strong> If your child qualifies, you will receive an email on June 1st with information on how to verify your child’s preschool seat</p>
+        </div>
 
-        <p>If you are interested in programs for children birth to aged three – contact your preferred provider directly.</p>
+        <p>See you for the first day of school in September!</p>
+
+        <p>If you have questions, please call our Chicago Early Learning Hotline: <a href="tel:3122291690">(312) 229-1690</a>.</p>
+
+        <h3 id="haveyoufoundtherightprogramforyourchild">Have you found the right program for your child?</h3>
+
+        <p>The City of Chicago and its partners offer early learning programs at over 600 sites throughout the city. Visit <a href="https://chicagoearlylearning.org/search/">our search page</a> to identify sites in areas near your home or work. The Chicago Early Learning Portal allows you to identify a program’s quality rating, schedule and ages served.</p>
+
+        <p>We encourage you to reach out to preferred providers to ask questions or schedule a visit. Resources to help identify if a program is a good fit for your family are included on <a href="https://chicagoearlylearning.org/families">our family information page.</a></p>
+
+        <h3 id="needapplicationsupport">Need application support?</h3>
+
+        <p>If you have any concerns with the online application, please call our Family Support Hotline at <a href="tel:3122291690">(312) 229-1690</a>, or visit any of the Family Resource Centers listed below.</p>
+
+        <p>You are welcome to visit a Chicago Public School or community-based preschool site directly, within their operating hours, for additional support.</p>
+
+        <h3 id="howwillyouverifyyourchildsplacement">How will you verify your child's placement?</h3>
+
+        <p>If your child is offered a preliminary preschool placement, you will receive an email with verification instructions.</p>
+
+        <p>Follow these three steps to accept your child’s placement:</p>
+
+        <h4 class="enroll-step">Step 1) Gather Documents</h4>
+
+        <p><strong>*see below for a list of document types that are accepted as proof of your child's birth and proof of employment or other income</strong></p>
+
+        <h4 class="enroll-step">Step 2) Bring and verify Documents</h4>
+
+        <p>If your child has a seat at a <strong>Community-based site</strong> bring your documents directly to the site which your child was assigned.</p>
+
+        <p>If your child has a seat at a <strong>Chicago Public School (CPS) site</strong> bring your documents to a Family Resource Center.<p>
+
+        <div class="enroll-table">
+            <h3>Family Resource Centers</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Resource Center</th>
+                        <th rowspan="2">Address</th>
+                        <th rowspan="2">Telephone Number</th>
+                        <th colspan="5">Hours of Operation</th>
+                    </tr>
+                    <tr>
+                        <th>M</th>
+                        <th>T</th>
+                        <th>W</th>
+                        <th>Th</th>
+                        <th>F</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="1">
+                        <td>Austin Library</td>
+                        <td><a href="https://www.google.com/maps/place/5615+W+Race+Ave,+Chicago,+IL+60644/@41.889016,-87.7679999,17z/data=!3m1!4b1!4m5!3m4!1s0x880e334fe8b68017:0x77ac716a833b6c1e!8m2!3d41.889016!4d-87.7658112?hl=en&authuser=0">5615 W. Race Ave, Chicago IL 60644</a></td>
+                        <td>(312) 746-5038</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="2">
+                        <td>Avalon Park Library</td>
+                        <td><a href="https://www.google.com/maps/place/8148+S+Stony+Island+Ave,+Chicago,+IL+60617/@41.7463322,-87.5884372,17z/data=!3m1!4b1!4m5!3m4!1s0x880e288f740d0c13:0xbe70658f1220073d!8m2!3d41.7463322!4d-87.5862485?hl=en&authuser=0">8148 S. Stony Island, Chicago IL 60617</a></td>
+                        <td>(312) 747-5234</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="3">
+                        <td>Bezazian Library</td>
+                        <td><a href="https://www.google.com/maps/place/1226+W+Ainslie+St,+Chicago,+IL+60640/@41.9716922,-87.6629256,17z/data=!3m1!4b1!4m5!3m4!1s0x880fd22ba1015b69:0x6975a780a4700a63!8m2!3d41.9716922!4d-87.6607369?hl=en&authuser=0">1226 W. Ainslie St, Chicago IL 60640</a></td>
+                        <td>(312) 744-0019</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="4">
+                        <td>Budlong Woods Library</td>
+                        <td><a href="https://www.google.com/maps/place/5630+N+Lincoln+Ave,+Chicago,+IL+60659/@41.9833634,-87.6985169,17z/data=!3m1!4b1!4m5!3m4!1s0x880fd1fd9ffe6da1:0xdcb488a3a5d6a88d!8m2!3d41.9833634!4d-87.6963282?hl=en&authuser=0">5630 N. Lincoln Ave, Chicago IL 60659</a></td>
+                        <td>(312) 742-9590</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="5">
+                        <td>Humboldt Park Library*</td>
+                        <td><a href="https://www.google.com/maps/place/1605+N+Troy+St,+Chicago,+IL+60647/@41.9104659,-87.7075348,17z/data=!3m1!4b1!4m5!3m4!1s0x880fcd5b734a5a17:0xd0cd73baded3cb76!8m2!3d41.9104659!4d-87.7053461?hl=en&authuser=0">1605 N. Troy, Chicago IL 60647</a></td>
+                        <td>(312) 744-2244</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="6">
+                        <td>Legler Library</td>
+                        <td><a href="https://www.google.com/maps/place/115+S+Pulaski+Rd,+Chicago,+IL+60624/@41.8793122,-87.7274915,17z/data=!3m1!4b1!4m5!3m4!1s0x880e32c2fac680ab:0x42cbbca0262159e9!8m2!3d41.8793122!4d-87.7253028?hl=en&authuser=0">115 S. Pulaski Rd, Chicago IL 60624</a></td>
+                        <td>(312) 746-7730</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="7">
+                        <td>Little Village Library*</td>
+                        <td><a href="https://www.google.com/maps/place/2311+S+Kedzie+Ave,+Chicago,+IL+60623/@41.8496377,-87.7069855,17z/data=!3m1!4b1!4m5!3m4!1s0x880e327a552c8d41:0x8d03af1f1f0a8647!8m2!3d41.8496377!4d-87.7047968?hl=en&authuser=0">2311 S. Kedzie Ave, Chicago IL 60623</a></td>
+                        <td>(312) 745-1862</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="8">
+                        <td>McKinley Park Library*</td>
+                        <td><a href="https://www.google.com/maps/place/1915+W+35th+St,+Chicago,+IL+60609/@41.8301512,-87.6757797,17z/data=!3m1!4b1!4m5!3m4!1s0x880e2dc38dc1a8dd:0x9b49ef4ad5bd370d!8m2!3d41.8301512!4d-87.673591?hl=en&authuser=0">1915 W. 35th St, Chicago IL 60609</a></td>
+                        <td>(312) 747-6082</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="9">
+                        <td>Portage-Cragin Library*</td>
+                        <td><a href="https://www.google.com/maps/place/5108+W+Belmont+Ave,+Chicago,+IL+60641/@41.9389444,-87.7571573,17z/data=!3m1!4b1!4m5!3m4!1s0x880fcc5fbcb116df:0x814a88520e7b19ec!8m2!3d41.9389444!4d-87.7549686?hl=en&authuser=0">5108 W. Belmont Ave, Chicago IL 60641</a></td>
+                        <td>(312) 744-0152</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="10">
+                        <td>Thurgood Marshall Library</td>
+                        <td><a href="https://www.google.com/maps/place/7506+S+Racine+Ave,+Chicago,+IL+60620/@41.7573801,-87.6565622,17z/data=!3m1!4b1!4m5!3m4!1s0x880e2f0b47f3a411:0xea0de1925a9d11b3!8m2!3d41.7573801!4d-87.6543735?hl=en&authuser=0">7506 S. Racine Ave, Chicago IL 60620</a></td>
+                        <td>(312) 747-5927</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="11">
+                        <td>West Lawn Library*</td>
+                        <td><a href="https://www.google.com/maps/place/4020+W+63rd+St,+Chicago,+IL+60629/@41.7788952,-87.7257778,17z/data=!3m1!4b1!4m5!3m4!1s0x880e31b33ecb65c9:0xbf16ecffef926623!8m2!3d41.7788952!4d-87.7235891?hl=en&authuser=0">4020 W. 63rd St, Chicago IL 60629</a></td>
+                        <td>(312) 747-7381</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="12">
+                        <td>Colman</td>
+                        <td><a href="https://www.google.com/maps/place/4655+S+Dearborn+St,+Chicago,+IL+60609/@41.8101095,-87.6291247,17z/data=!3m1!4b1!4m5!3m4!1s0x880e2eaf3bbc767d:0x168afc59fd14a72!8m2!3d41.8101095!4d-87.626936?hl=en&authuser=0">4655 S. Dearborn St, Chicago IL 60609</a></td>
+                        <td>(773) 535-2010</td>
+                        <td>9AM - 5PM</td>
+                        <td>9AM - 5PM</td>
+                        <td>9AM - 5PM</td>
+                        <td>9AM - 5PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>*Bilingual support</em></p>
+            <p><em>Applications will be taken 30 minutes after opening and will end 30 mintutes before closing.</em></p>
+        </div>
+
+        <h4 class="enroll-step">Step 3) Bring your child on the first day of school in September. Let the learning begin!</h4>
+
         <hr>
+        <h4 id="listofdocumentsthataregenerallyacceptedforverification">*List of Documents that are generally accepted for verification:</h4>
 
-        <h2 class="enroll-subheader">Visit to confirm</h2>
-        <p>Once you have received a preliminary placement, you will be directed to the site to which you have applied (for community-based preschools) or to Colman – CPS Central Office or Hall Mall (for school-based preschools) to provide additional information that may confirm your placement. We recommend that you call in advance to confirm the necessary materials and a good time to visit.</p>
+        <h4 id="proofofchildsage">Proof of child’s age</h4>
 
-        <p>Once your placement is confirmed, you will receive any additional info necessary to finish registration and start the program. Please let your provider know if you need an immediate placement, or you are interested in enrolling for the next program year. Both options may be available.</p>
+        <ul>
+        <li>Original birth certificate</li>
 
-        <p>If your child or family is in a temporary living situation, living in a shelter, or sharing a house with another family, you will not be required to provide documentation. Falsifying this information may result in loss of placement.</p>
+        <li>Passport</li>
+        </ul>
 
-        <p>If you are looking to enroll your child in a birth to three year old program or home visiting services, please contact your preferred sites directly or call the Hotline for assistance.</p>
+        <h4 id="proofofaddress">Proof of address</h4>
+
+        <ul>
+        <li>Driver’s license/ID card</li>
+
+        <li>Utility bill</li>
+
+        <li>Lease agreement/mortgage statement</li>
+
+        <li>Current voter’s registration card</li>
+        </ul>
+
+        <h4 id="proofofincome">Proof of income</h4>
+
+        <ul>
+        <li>Current paystub</li>
+
+        <li>1040/W-2</li>
+
+        <li>SSI Letter</li>
+
+        <li>Unemployment letter/stub</li>
+
+        <li>Workers’ compensation letter/stub</li>
+
+        <li>Retirement or pension stub/letter</li>
+
+        <li>Alimony</li>
+
+        <li>Official child support letter</li>
+
+        <li>TANF</li>
+
+        <li>Income verification form</li>
+        </ul>
+
+        <p><em>Note:  If your family is in a temporary living situation, you are not required to present the documents listed above for verification.  All schools must immediately enroll students in temporary living situations even if the student lacks health, immunization or school records, proof of guardianship, proof of residency, or any other documentation normally required for school enrollment.</em></p>
 
 
         {% elif LANGUAGE_CODE == 'es' %}
         <!-- Spanish Translation -->
+        <p><em>Si usted está interesado(a) de un programa para niños recién nacidos hasta la edad de tres años, comuníquese con su proveedor directamente.</em></p>
 
-        <p>Matricular a su hijo (a) en el programa de aprendizaje de temprana edad es fácil y está disponible todo el año. Sólo se necesita completar tres pasos fáciles:</p>
-        <ol>
-            <li>Encontrar el programa(s) preferido</li>
-            <li><a href="{% url 'announcements' %}">Someter una solicitud</a> o llamar al (312) 229-1690</li>
-            <li>Visitar a su proveedor o a un Centro de Recursos Familiares para confirmar su puesto.</li>
-        </ol>
-        <hr>
+        <h3 id="estnpreparadosparaaplicarparasunioquetiene3o4aos">¿Están preparados para aplicar para su niño que tiene 3 o 4 años?</h3>
 
-        <h2 class="enroll-subheader">Entérese de programas</h2>
-        <p>La Ciudad de Chicago, junto con sus afiliados ofrece programas de aprendizaje a temprana edad en más de 600 localidades en varias áreas de la ciudad. Visite <a href="{% url 'browse' %}">nuestra página de internet</a> y busque un centro más cercano al lugar de su trabajo o residencia. También puede identificar programas, clasificarlos, buscar horarios y las edades atendidos.</p>
+        <p>Enrolling your 3 or 4 year-old child in an early learning program is easy, and open year-round. Follow these easy steps to get your child enrolled in preschool:</p>
 
-        <p>Le recomendamos buscar proveedores preferidos y hacerles preguntas y enterarse de sus horarios. Recursos para ayudar a identificar si un programa es una buena opción para su familia están incluidos en <a href="{% url 'families' %}">nuestra página de información familiar</a>.</p>
+        <div class="enroll-steps">
+            <p><strong>Step 1)</strong> <a href="https://cys.mycopa.com/familyPortal/welcome.epl">Click here</a> to create an online account for your family</p>
 
-        <p>Si usted necesita ayuda con preguntas generales o de cómo encontrar opciones cerca de usted, no dude de llamar a la Línea de Aprendizaje Temprano de Chicago en <a href="tel:3122291690">(312) 229-1690</a>. Sí usted tiene una pregunta específica para nuestros departamentos y proveedores de la ciudad de Chicago, puede llamar a la oficina de CPS (las escuelas públicas de Chicago) educación a temprana edad <a href="tel:7735532010">(773) 553-2010</a>, DFSS (Departamento de Apoyos y Servicios para Familias) división de servicios para niños <a href="tel:8666472489">(866) 647-2489</a>, o a el número de teléfono que aparece en la página detallada de los proveedores.</p>
-        <hr>
-        
-        <h2 class="enroll-subheader">Solicitar</h2>
-        <p>Este año, la cuidad de Chicago lanzó una aplicación en el internet para que familias puedan solicitar los programas preescolares en más de 600 centros en la ciudad accesible desde su computadora o su teléfono móvil. Visite <a href="{% url 'announcements' %}">la aplicación en el internet</a> para adquirir una cuenta y perfil familiar, crear una aplicación para su hijo(s), y seleccionar su centro(s) preferido(s). Usted se enterará inmediatamente si usted es elegible para una colocación preliminar con un proveedor.</p>
+            <p><strong>Step 2)</strong> Fill in information on your family, such as employment and income, information on your child, and then apply for your top choice preschool site</p>
 
-        <p>Si usted no tiene acceso a una computadora o un teléfono móvil o si prefiere asistencia en personal, puede hacerlo visitando la locación cual usted esta interesado si es un proveedor de servicios comunitarios o Hall Mall (4638 W Diversey) o Colman (4655 S Dearborn) si aplico a un programa de CPS.</p>
+            <p><strong>Step 3)</strong> If your child qualifies, you will receive an email on June 1st with information on how to verify your child’s preschool seat</p>
+        </div>
 
-        <p>También puede llamar a la Línea de Aprendizaje Temprano de Chicago en <a href="tel:3122291690">(312) 229-1690</a> y someter una solicitud por teléfono.</p>
+        <p>See you for the first day of school in September!</p>
 
-        <p>Si usted está interesado(a) de un programa para niños recién nacidos hasta la edad de tres años, comuníquese con su proveedor directamente.</p>
-        <hr>
+        <p>If you have questions, please call our Chicago Early Learning Hotline: <a href="tel:3122291690">(312) 229-1690</a>.</p>
 
-        <h2 class="enroll-subheader">Verificar su visita</h2>
-        <p>Una vez obtenido el puesto preliminar, usted será asignado a su proveedor (si eligio un programa de sevicios comunitarios) o Hall Mall o Colman CPS Central Office (si eligio un programa de CPS) para proporcionarle información adicional el cual podría confirmar su puesto. Le recomendamos llamar a su centro asignado para el material necesario y el horario adecuado para la entrevista.</p>
+        <h3 id="haveyoufoundtherightprogramforyourchild"><strong>Have you found the right program for your child?</strong></h3>
 
-        <p>Una vez que su puesto sea confirmado usted recibirá información adicional necesaria para completar su solicitud y empezar el programa. Por favor comuníquele a su proveedor si necesita un puesto de inmediato o si está interesado(a) en el programa del próximo año. Estas dos opciones podrían estar disponibles.</p>
+        <p>La ciudad de Chicago y sus compañeros ofrece los programas preescolares en más de 600 centros en la ciudad. Luego, visite la aplicación en el internet para adquirir una cuenta y perfil familiar, crear una aplicación para su hijo(s), y seleccionar su centro(s) preferido(s).</p>
 
-        <p>Si su hijo(a) o la familia está atravesando por una situación de vivienda temporal, en un refugio o compartiendo la vivienda con otra familia, usted no necesitará proporcionar ningún documento. Proveyendo información falsa sobre este asunto podría ser la causa para la pérdida del puesto.</p>
+        <h3 id="needapplicationsupport">Need application support?</h3>
 
-        <p>Si usted está buscando para inscribir a su hijo(a) en un programa desde el nacimiento hasta la edad de tres años o prefiere servicios de visitas a domicilio, por favor póngase en contacto con su preferido proveedor de servicios preescolares, o a la Línea de Aprendizaje Temprano de Chicago en (312) 229-1690 para asistencia.</p>
-        
+        <p>También puede llamar a la Línea de Aprendizaje Temprano de Chicago en <a href="tel:3122291690">(312) 229-1690</a> y someter una solicitud por teléfono o visite <a href="https://chicagoearlylearning.org/faq#lista-de-centro-de-recursos-familiares">un centro de recurso familiar</a>.</p>
+
+        <h3 id="howwillyouverifyyourchildsplacement">How will you verify your child's placement?</h3>
+
+        <p>If your child is offered a preliminary preschool placement, you will receive an email with verification instructions.</p>
+
+        <p>Follow these three steps to accept your child’s placement:</p>
+
+        <h4 class="enroll-step">Step 1) Gather Documents</h4>
+
+        <p><strong>*see below for a list of document types that are accepted as proof of your child's birth and proof of employment or other income</strong></p>
+
+        <h4 class="enroll-step">Step 2) Bring and verify Documents</h4>
+
+        <p>If your child has a seat at a <strong>Community-based site</strong> bring your documents directly to the site which your child was assigned.</p>
+
+        <p>If your child has a seat at a <strong>Chicago Public School (CPS) site</strong> bring your documents to a Family Resource Center.<p>
+
+        <div class="enroll-table">
+            <h3>Centros de Recursos Familiares</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Centros de Recursos</th>
+                        <th rowspan="2">Dirección</th>
+                        <th rowspan="2">Número de Teléfono</th>
+                        <th colspan="5">Horas</th>
+                    </tr>
+                    <tr>
+                        <th>M</th>
+                        <th>T</th>
+                        <th>W</th>
+                        <th>Th</th>
+                        <th>F</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="1">
+                        <td>Austin Library</td>
+                        <td><a href="https://www.google.com/maps/place/5615+W+Race+Ave,+Chicago,+IL+60644/@41.889016,-87.7679999,17z/data=!3m1!4b1!4m5!3m4!1s0x880e334fe8b68017:0x77ac716a833b6c1e!8m2!3d41.889016!4d-87.7658112?hl=en&authuser=0">5615 W. Race Ave, Chicago IL 60644</a></td>
+                        <td>(312) 746-5038</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="2">
+                        <td>Avalon Park Library</td>
+                        <td><a href="https://www.google.com/maps/place/8148+S+Stony+Island+Ave,+Chicago,+IL+60617/@41.7463322,-87.5884372,17z/data=!3m1!4b1!4m5!3m4!1s0x880e288f740d0c13:0xbe70658f1220073d!8m2!3d41.7463322!4d-87.5862485?hl=en&authuser=0">8148 S. Stony Island, Chicago IL 60617</a></td>
+                        <td>(312) 747-5234</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="3">
+                        <td>Bezazian Library</td>
+                        <td><a href="https://www.google.com/maps/place/1226+W+Ainslie+St,+Chicago,+IL+60640/@41.9716922,-87.6629256,17z/data=!3m1!4b1!4m5!3m4!1s0x880fd22ba1015b69:0x6975a780a4700a63!8m2!3d41.9716922!4d-87.6607369?hl=en&authuser=0">1226 W. Ainslie St, Chicago IL 60640</a></td>
+                        <td>(312) 744-0019</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="4">
+                        <td>Budlong Woods Library</td>
+                        <td><a href="https://www.google.com/maps/place/5630+N+Lincoln+Ave,+Chicago,+IL+60659/@41.9833634,-87.6985169,17z/data=!3m1!4b1!4m5!3m4!1s0x880fd1fd9ffe6da1:0xdcb488a3a5d6a88d!8m2!3d41.9833634!4d-87.6963282?hl=en&authuser=0">5630 N. Lincoln Ave, Chicago IL 60659</a></td>
+                        <td>(312) 742-9590</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="5">
+                        <td>Humboldt Park Library*</td>
+                        <td><a href="https://www.google.com/maps/place/1605+N+Troy+St,+Chicago,+IL+60647/@41.9104659,-87.7075348,17z/data=!3m1!4b1!4m5!3m4!1s0x880fcd5b734a5a17:0xd0cd73baded3cb76!8m2!3d41.9104659!4d-87.7053461?hl=en&authuser=0">1605 N. Troy, Chicago IL 60647</a></td>
+                        <td>(312) 744-2244</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="6">
+                        <td>Legler Library</td>
+                        <td><a href="https://www.google.com/maps/place/115+S+Pulaski+Rd,+Chicago,+IL+60624/@41.8793122,-87.7274915,17z/data=!3m1!4b1!4m5!3m4!1s0x880e32c2fac680ab:0x42cbbca0262159e9!8m2!3d41.8793122!4d-87.7253028?hl=en&authuser=0">115 S. Pulaski Rd, Chicago IL 60624</a></td>
+                        <td>(312) 746-7730</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="7">
+                        <td>Little Village Library*</td>
+                        <td><a href="https://www.google.com/maps/place/2311+S+Kedzie+Ave,+Chicago,+IL+60623/@41.8496377,-87.7069855,17z/data=!3m1!4b1!4m5!3m4!1s0x880e327a552c8d41:0x8d03af1f1f0a8647!8m2!3d41.8496377!4d-87.7047968?hl=en&authuser=0">2311 S. Kedzie Ave, Chicago IL 60623</a></td>
+                        <td>(312) 745-1862</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="8">
+                        <td>McKinley Park Library*</td>
+                        <td><a href="https://www.google.com/maps/place/1915+W+35th+St,+Chicago,+IL+60609/@41.8301512,-87.6757797,17z/data=!3m1!4b1!4m5!3m4!1s0x880e2dc38dc1a8dd:0x9b49ef4ad5bd370d!8m2!3d41.8301512!4d-87.673591?hl=en&authuser=0">1915 W. 35th St, Chicago IL 60609</a></td>
+                        <td>(312) 747-6082</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="9">
+                        <td>Portage-Cragin Library*</td>
+                        <td><a href="https://www.google.com/maps/place/5108+W+Belmont+Ave,+Chicago,+IL+60641/@41.9389444,-87.7571573,17z/data=!3m1!4b1!4m5!3m4!1s0x880fcc5fbcb116df:0x814a88520e7b19ec!8m2!3d41.9389444!4d-87.7549686?hl=en&authuser=0">5108 W. Belmont Ave, Chicago IL 60641</a></td>
+                        <td>(312) 744-0152</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="10">
+                        <td>Thurgood Marshall Library</td>
+                        <td><a href="https://www.google.com/maps/place/7506+S+Racine+Ave,+Chicago,+IL+60620/@41.7573801,-87.6565622,17z/data=!3m1!4b1!4m5!3m4!1s0x880e2f0b47f3a411:0xea0de1925a9d11b3!8m2!3d41.7573801!4d-87.6543735?hl=en&authuser=0">7506 S. Racine Ave, Chicago IL 60620</a></td>
+                        <td>(312) 747-5927</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="11">
+                        <td>West Lawn Library*</td>
+                        <td><a href="https://www.google.com/maps/place/4020+W+63rd+St,+Chicago,+IL+60629/@41.7788952,-87.7257778,17z/data=!3m1!4b1!4m5!3m4!1s0x880e31b33ecb65c9:0xbf16ecffef926623!8m2!3d41.7788952!4d-87.7235891?hl=en&authuser=0">4020 W. 63rd St, Chicago IL 60629</a></td>
+                        <td>(312) 747-7381</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>12PM - 8PM</td>
+                        <td>10AM - 6PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                    <tr id="12">
+                        <td>Colman</td>
+                        <td><a href="https://www.google.com/maps/place/4655+S+Dearborn+St,+Chicago,+IL+60609/@41.8101095,-87.6291247,17z/data=!3m1!4b1!4m5!3m4!1s0x880e2eaf3bbc767d:0x168afc59fd14a72!8m2!3d41.8101095!4d-87.626936?hl=en&authuser=0">4655 S. Dearborn St, Chicago IL 60609</a></td>
+                        <td>(773) 535-2010</td>
+                        <td>9AM - 5PM</td>
+                        <td>9AM - 5PM</td>
+                        <td>9AM - 5PM</td>
+                        <td>9AM - 5PM</td>
+                        <td>9AM - 5PM</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>*Ayuda bilingüe</em></p>
+            <p><em>Se tomarán solicitudes 30 minutes después de apertura y finalizarán 30 minutos antes del cierre.</em></p>
+        </div>
+
+        <h4 class="enroll-step">Step 3) Bring your child on the first day of school in September. Let the learning begin!</h4>
+
+        <h3 id="listadedocumentoscalificadosparacolocacin">Lista de documentos calificados para colocación</h3>
+
+        <p>Un centro puede solicitar documentación adicional antes de completar la inscripción.</p>
+
+        <h4 id="pruebadeedaddelnioa">Prueba de edad del niño(a)</h4>
+
+        <ul>
+        <li>Certificado original de nacimiento</li>
+
+        <li>Pasaporte</li>
+        </ul>
+
+        <h4 id="proofofaddress">Proof of address</h4>
+
+        <ul>
+        <li>Licencia de conducir/tarjeta de identificación</li>
+
+        <li>Cuenta de utilidades</li>
+
+        <li>Contrato de arrendamiento/hipoteca</li>
+
+        <li>Tarjeta de matriculación del votar</li>
+        </ul>
+
+        <h4 id="pruebadeingresos">Prueba de ingresos</h4>
+
+        <ul>
+        <li>Talonario reciente de pago</li>
+
+        <li>Forma 1040/W-2</li>
+
+        <li>SSI carta (Seguridad de Ingreso Suplementario)</li>
+
+        <li>Carta de desempleo/talonario de cheque</li>
+
+        <li>Carta compensación a trabajadores/talonario de cheque</li>
+
+        <li>Carta de retiro o pensión/talonario de cheque</li>
+
+        <li>TANF (El Programa de Asistencia Temporal Para Familias Necesitadas)</li>
+        </ul>
+
+        <p><em>Note: If your family is in a temporary living situation, you are not required to present the documents listed above for verification. All schools must immediately enroll students in temporary living situations even if the student lacks health, immunization or school records, proof of guardianship, proof of residency, or any other documentation normally required for school enrollment.</em></p>
+
         {% endif %}
 
     </div>

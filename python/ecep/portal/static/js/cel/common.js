@@ -174,7 +174,17 @@ function($, L, Response, Handlebars) {
                     throw 'getUrl::Invalid Parameter: icon-quality requires opts.quality';
                 }
             case 'ecm-apply':
-                return '/announcements'
+                return '/announcements';
+            case 'copa-apply':
+                url = 'https://cys.mycopa.com/familyPortal/welcome.epl?'
+                if (opts && opts.ids ) {
+                    var payload = '';
+                    for (var i=0; i < opts.ids.length; i++) {
+                        payload += 'site' + (i+1) + '=' + opts.ids[i];
+                        if (i+1 < opts.ids.length) { payload += '&'; }
+                    }
+                }
+                return url + payload;
             default:
                 break;
         }

@@ -1,0 +1,81 @@
+{% extends "base-search.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+
+{% block title %}{% trans 'Outreach' %} - {% trans "Chicago Early Learning" %}{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block content %}
+<div class="announcements-container">
+    <div class="static-header" id="outreach-header" style="background-image: url({% static 'img/static-pages/outreach.png' %})">
+        <h1 id="outreach-title">{% trans 'Outreach' %}</h1>
+    </div>
+    <div class="announcements-content" id="outreach">
+      <h1 id="outreach2017">Outreach 2017</h1>
+
+      <p>Thank you for helping spread the word about enrolling 3 and 4 year olds in early learning programs across Chicago. With <strong>your help,</strong> we will <strong>enroll more children</strong> than ever before, especially our highest need families.</p>
+
+      <p>Here you will find social media links, talking points, and outreach resources to help share information with Chicago families.</p>
+
+      <h2 id="outreachtoolkits">Outreach Toolkits</h2>
+
+      <h3 id="tell">Tell</h3>
+
+      <p>Tell families about Chicago Early Learning. Here are some talking points you can share with your families:</p>
+
+      <p>The Chicago Early Learning online preschool application is now open! Follow these easy steps to get your child enrolled in preschool: </p>
+      <div class="enroll-steps">
+
+        <p><strong>Step 1)</strong> Visit ChicagoEarlyLearning.org to create an online account for your family</p>
+        <p><strong>Step 2)</strong> Fill in information on your family, such as employment and income, information on your child, and then apply for your top choice preschool site</p>
+        <p><strong>Step 3)</strong> If your child qualifies, you will receive an email on June 1st with information on how to verify your child's preschool seat</p>
+
+      </div>
+
+      <p>See you for the first day of school in September! </p>
+
+      <p>If you have questions, please visit <a href="https://www.ChicagoEarlyLearning.org">ChicagoEarlyLearning.org</a>, or call the Chicago Early Learning Hotline: <a href="tel:3122291690">(312) 229-1690</a>.</p>
+
+      <p>There are also great resources on ChicagoEarlyLearning.org:</p>
+
+      <ul>
+      <li>Visit the <a href="https://chicagoearlylearning.org/faq">FAQs page</a> to get answers to common questions</li>
+
+      <li>Tell parents about the <a href="https://chicagoearlylearning.org/families">beneifts of early learning</a></li>
+      </ul>
+
+      <h3 id="share">Share</h3>
+
+      <p>Share the news with families on social media. Use any of these captions below on Facebook, Twitter, Instagram, Snapchat or more:</p>
+
+      <ul>
+      <li>The Chicago Early Learning preschool application is now open! Parents looking for quality preschool programs for 3 and 4 year olds in the fall can register today! #chicagoearlylearning </li>
+
+      <li>Are you a parent of a 3 or 4 year old? Don't miss out on early access to over 600 preschool programs throughout the city for next school year. Apply today. Start in September! #chicagoearlylearning </li>
+
+      <li>With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning </li>
+
+      <li><strong>OR</strong> create your own caption on social media! Just don't forget to use #chicagoearylearning  </li>
+      </ul>
+
+      <p>Download these images to add to your social media messages:</p>
+      <div class="outreach-pictures">
+        <div class="outreach-pic">
+          <img src="{% static 'img/static-pages/outreach-1.jpg' %}">
+          <a href="{% static 'img/static-pages/outreach-1.jpg' %}" download="">Download</a>
+        </div>
+        <div class="outreach-pic">
+          <img src="{% static 'img/static-pages/outreach-2.jpg' %}">
+          <a href="{% static 'img/static-pages/outreach-2.jpg' %}" download="">Download</a>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

@@ -73,16 +73,15 @@ class Location(models.Model):
         (1, 'Application Site'),
     )
 
-    HIGH = 'High'
-    MEDIUM = 'Medium'
-    LOW = 'Low'
+    HIGH = 'Slots Available'
+    MEDIUM = 'Limited Availability'
 
     AVAILABILITY_CHOICES = (
-        (HIGH, ugettext_lazy('High')),
-        (MEDIUM, ugettext_lazy('Medium')),
-        (LOW, ugettext_lazy('Low')),
+        (HIGH, ugettext_lazy('Slots Available')),
+        (MEDIUM, ugettext_lazy('Limited Availability')),
     )    
 
+    copa_key = models.IntegerField('ECM Key', default=0, blank=True)
     ecm_key = models.IntegerField('ECM Key', default=0, blank=True)
     site_name = models.CharField('Site Name', max_length=100)
     site_type = models.IntegerField('Site Type', default=0, choices=LOCATION_TYPE_CHOICES)
@@ -124,7 +123,7 @@ class Location(models.Model):
     accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
 
     # ECM alottment status, classroom availability
-    availability = models.CharField(ugettext_lazy('Availability'), choices=AVAILABILITY_CHOICES, max_length=10, blank=True)
+    availability = models.CharField(ugettext_lazy('Availability'), choices=AVAILABILITY_CHOICES, max_length=25, blank=True)
 
 
     # To get these placeholder fields to show up in the UI, replace
@@ -233,10 +232,13 @@ class Location(models.Model):
         ftype = field.get_internal_type()
         return ((ftype == 'CharField' or ftype == 'TextField'))
 
-    def get_ecm_url(self):
+    def get_copa_url(self):
         """
         """
-        return reverse('announcements')
+        if self.copa_key == 0:
+            return ''
+        else:
+            return 'https://cys.mycopa.com/familyPortal/welcome.epl'
 
     def get_context_dict(self, short=False):
         """Gets a context dictionary for rendering this object in templates
@@ -259,6 +261,13 @@ class Location(models.Model):
         else:
             not_ecm = False
 
+        if self.availability == self.HIGH:
+            availability = 'high'
+        elif self.availability == self.MEDIUM:
+            availability = 'medium'
+        else:
+            availability = ''
+
         item = {
             'address': self.address,
             'city': self.city,
@@ -276,7 +285,7 @@ class Location(models.Model):
             'site_type': self.site_type,
             'is_enrollment': self.is_enrollment,
             'duration_hours': self.prg_hours,
-            'availability': self.availability.lower(),
+            'availability': availability,
         }
 
         # simple fields to present -- these are the attributes that have text content

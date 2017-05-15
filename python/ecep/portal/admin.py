@@ -123,7 +123,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
     delete_confirmation_template = 'admin/portal/location/delete_confirmation.html'
     save_on_top = True
     save_on_bottom = False
-    list_display = ['site_name', 'address', 'zip', 'phone', 'email', 'id', 'ecm_key', 'accepted', 'q_rating', 'site_type']
+    list_display = ['site_name', 'address', 'zip', 'phone', 'email', 'id', 'copa_key', 'accepted', 'q_rating', 'site_type']
     base_list_filter = ['is_hs', 'is_ehs', 'accept_ccap', 'is_cps_based', 'is_community_based',
                         'is_age_lt_3', 'is_age_gt_3', 'is_full_day', 'is_full_week', 'is_full_year',
                         'is_part_day', 'is_part_week', 'is_school_year', 'is_home_visiting', 'q_rating', 'site_type']

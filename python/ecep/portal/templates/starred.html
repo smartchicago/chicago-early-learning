@@ -14,17 +14,28 @@
 <div class="starred-container">
     <div class="contact-text">
         <h1>{% trans "Compare and Apply" %}</h1>
-        <p><em>{% blocktrans %}The application is still open for the 2016 – 2017 school year. The application for the 2017 – 2018 school year will open May 2017.{% endblocktrans %}</em></p>
-        
-        <p>{% blocktrans %}Compare early learning programs side-by-side to select the highest quality option for your child. Add more programs by going back to your search results.{% endblocktrans %}</p>
 
-        <p>{% blocktrans %}Press the "Apply" button to build your Chicago Early Learning parent profile and complete an application. You will be able to view your preliminary placement or waitlist status for the sites indicated below, and may submit an application for up to two of your site preferences (one placement and one waitlist).{% endblocktrans %}</p>
+        {% if LANGUAGE_CODE == 'en' %}
+        <p>Compare early learning programs side-by-side to select the highest quality option for your child. </p>
 
-        <p>{% blocktrans %}Call the Chicago Early Learning Hotline at <a href="tel:3122291690">(312) 229-1690</a> if you would like assistance completing the application over the phone.{% endblocktrans %}</p>
+        <p><strong>Select your two favorite choices and press the “Apply” button to build your Chicago Early Learning parent profile and complete an application.</strong></p>
 
-        <p>{% blocktrans %}If you are looking to enroll in a program immediately or have a child that will not yet be 3 years old in the Fall, please contact the early childhood program directly.{% endblocktrans %}</p>
+        <p>Call the Chicago Early Learning Hotline at <a href="tel:3122291690">(312) 229-1690</a> if you would like assistance completing the application over the phone.</p>
 
-        <p>{% blocktrans %}Press “Back to Search" to add more locations you are interested in.{% endblocktrans %}</p>
+        <p>If you are looking to enroll in a program immediately or have a child that will not yet be 3 years old in the Fall, please contact the early childhood program directly.</p>
+
+        <p>Press “Back to Search" to add more locations you are interested in.</p>
+        {% elif LANGUAGE_CODE == 'es' %}
+        <p>Compare programas de aprendizaje temprano punto por punto para escoger la mejor opción para su hijo.</p>
+
+        <p><strong>Seleccione dos lugares favoritos y presione el botón "Aplicar" para construir su perfil familiar en Chicago Early Learning y así completar su solicitud.</strong></p>
+
+        <p>Por favor llamar al Chicago Early Learning línea de acceso directo al <a href="tel:3122291690">(312) 229-1690</a> para asistencia.</p>
+
+        <p>Si está buscando inscribir a su hijo en un programa inmediatamente o tiene un hijo que no va a cumplir 3 años en el otoño, por favor contacte directamente al programa.</p>
+
+        <p>Haga clic “Regrese a Búsqueda" para agregar más programas de interesa.</p>
+        {% endif %}
 
     </div>
 
@@ -35,7 +46,7 @@
         </div>
 
         <div class="contact-button">
-            <a href="" target="_blank" id="faves-contact" class="btn faves-option btn-apply btn-block hint--bottom ga-track" data-ga-category="starred" data-ga-action="Contact Favorites"><i class="fa fa-check-circle"></i> {% trans "Apply" %}</a>
+            <a href="" target="_blank" id="faves-contact" class="btn disabled faves-option btn-apply btn-block hint--bottom ga-track" data-ga-category="starred" data-ga-action="Contact Favorites"><i class="fa fa-check-circle"></i> {% trans "Apply" %}</a>
         </div>
 
         <div class="other-buttons">
@@ -43,7 +54,7 @@
                 <a id="faves-share" class="btn btn-block faves-option hint--bottom ga-track" href="#" data-ga-category="starred" data-ga-action="Share Favorites"><i class="icon-share"></i> {% trans "Share" %}</a>
             </div>
             <div class="clear-button">
-                <a id="faves-clear" class="btn btn-block faves-option ga-track" href='{% url "browse" %}' data-ga-category="starred" data-ga-action="Clear Selections"><i class="icon-remove-circle"></i> {% trans "Clear Selections" %}</a>
+                <a id="faves-clear" class="btn btn-block faves-option ga-track" href='{% url "browse" %}' data-ga-category="starred" data-ga-action="Clear Selections"><i class="icon-remove-circle"></i> {% trans "Clear All Sites" %}</a>
             </div>
             <div class="return-button">
                 <button class="btn btn-block faves-close faves-option" id="back-button"><i class="icon-arrow-left" ></i> {% trans "Back to Search" %}</button>
@@ -52,11 +63,47 @@
     </div>
 
     <!-- Favorite list -->
-    <div class="container-one-faves">
+    <div class="faves-table" id="copa">
+        <table>
+            <thead>    
+                <tr>
+                    <th>{% trans 'Apply' %}</th>
+                    <th>{% trans 'Site Info' %}</th>
+                    <th>{% trans 'Ages' %}</th>
+                    <th>{% trans 'Seats' %}</th>
+                    <th>{% trans 'Duration' %}</th>
+                    <th>{% trans 'Program Info' %}</th>
+                    <th>{% trans 'Accreditation' %}</th>
+                </tr>
+            </thead>
+            <tbody class="empty-faves">
+                <tr>
+                    <th colspan="7">{% trans 'No Saved Locations' %}</th>
+                </tr>
+            </tbody>
+            <tbody class="table-body" id="copa-table">
+
+            </tbody>
+        </table>
     </div>
 
-    <h4 id="non-ecm-header" style="display:none">The following sites do not have online enrollment. Contact these sites directly to apply.</h4>
-    <div class="container-two-faves">
+    <div class="faves-table" id="non-copa" style="display:none">
+        <h4 id="non-ecm-header">{% trans 'The following sites do not have online enrollment. Contact these sites directly to apply.' %}</h4>
+        <table>
+            <thead>    
+                <tr>
+                    <th>{% trans 'Remove' %}</th>
+                    <th>{% trans 'Site Info' %}</th>
+                    <th>{% trans 'Ages' %}</th>
+                    <th>{% trans 'Seats' %}</th>
+                    <th>{% trans 'Duration' %}</th>
+                    <th>{% trans 'Program Info' %}</th>
+                    <th>{% trans 'Accreditation' %}</th>
+                </tr>
+            </thead>
+            <tbody class="table-body" id="non-copa-table">
+            </tbody>
+        </table>
     </div>
 
 </div>

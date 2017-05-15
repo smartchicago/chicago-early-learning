@@ -1,65 +1,103 @@
 
-define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorites', 'Handlebars'],
-    function($, L, html, common, favorites, Handlebars) {
+define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fave-row.html', 'common', 'favorites', 'Handlebars'],
+    function($, L, html, html_row, common, favorites, Handlebars) {
         'use strict';
 
         $(document).ready(function() {
 
+            var $apply_button = $('#faves-contact'),
+                apply_sites = [];
+
             // Draw the Handlebars template for a location
-            function drawStarredLocations(data, ecm_locations, non_ecm_locations) {
-                var template = Handlebars.compile(html),
-                    $apply_button = $('#faves-contact'),
-                    $container_one = $('.container-one-faves'),
-                    $container_two = $('.container-two-faves'),
-                    $starred_one = $('<div></div>'),
-                    $starred_two = $('<div></div>'),
-                    $alert = $('#alert-six'),
-                    ecm_ids = [],
-                    ecm_url = '',
-                    numECMLocations = ecm_locations.length,
-                    numNonECMLocations = non_ecm_locations.length;
+            function drawTable(data, copa_locations, non_copa_locations) {
+                var template = Handlebars.compile(html_row),
+                    $copa_body = $('#copa-table'),
+                    $non_copa_body = $('#non-copa-table'),
+                    copa_faves = [],
+                    non_copa_faves = [],
+                    application_site_ids = [],
+                    application_site_total = application_site_ids.length,
+                    copa_total = copa_locations.length,
+                    non_copa_total = non_copa_locations.length;
 
-                if (numECMLocations > 6) {
-                    $alert.show();
-                    $apply_button.addClass('disabled');
-                } else {
-                    $alert.hide();
+                for (var i=0; i < copa_total; i++) {
+                    var loc = copa_locations[i];
+                    var $location = $(template(loc));
+                    copa_faves.push($location);
                 }
 
-                if (numNonECMLocations > 0) { $('#non-ecm-header').show(); }
-
-                for (var i = 0; i < numECMLocations; i++) {
-                    var loc = ecm_locations[i];
-                    var $location = $(template(loc)).addClass("starred-entry");
-                    $starred_one.append($location);
-                    ecm_ids.push(loc.ecm.key);
+                for (var i=0; i < non_copa_total; i++) {
+                    var loc = non_copa_locations[i];
+                    var $location = $(template(loc));
+                    non_copa_faves.push($location);
                 }
 
-                for (var i = 0; i < numNonECMLocations; i++) {
-                    var loc = non_ecm_locations[i];
-                    var $location = $(template(loc)).addClass("starred-entry");
-                    $starred_two.append($location);
+                if (copa_total > 0) {
+                    $copa_body.html(copa_faves);
                 }
-
-                ecm_url = common.getUrl('ecm-apply', { ids: ecm_ids });
-                $('#faves-contact').attr('href', ecm_url);
-                // attach in single dom operation
-                $container_one.html($starred_one);
-                $container_two.html($starred_two);
-
-
-                // add close buttons and click listener if we are displaying cookie locations
-                //      else hide because this was a shared link and the "remove" functionality
-                //      does not make sense
-                if (!regexResult) {
-                    $('.favs-close-button').removeClass('none').on('click', function(e) {
-                        var $favorite = $(this).parent(),
-                            key = $favorite.data('key');
-
-                        favorites.removeIdFromCookie(key);
-                        location.reload();
-                    });
+                if (non_copa_total > 0) {
+                    $non_copa_body.html(non_copa_faves);
+                    $('#non-copa').show();
                 }
+                if (application_site_total == 0) { $apply_button.addClass('disabled'); }
+
+
+                // Set removal listeners
+                $('.hide-fave').on('click', function(e) {
+                    var $favorite = $(this),
+                        id = $favorite.data('id'),
+                        key = $favorite.data('key'),
+                        $fave_row = $('#fave-' + id);
+
+                    favorites.removeIdFromCookie(id);
+                    uncheckSite(id, key);
+
+                    if ( key ) {
+                        copa_total--;
+                    } else {
+                        non_copa_total--;
+                    }
+                    $fave_row.hide();
+
+                    if ( copa_total == 0 ) { $('.empty-faves').show(); }
+                    if ( non_copa_total == 0 ) { 
+                        $('#non-copa').hide();
+                    }
+                });
+
+                // Set apply checkbox listeners
+                $('.apply-checkbox').on('change', function(e) {
+                    var $favorite = $(this),
+                        id = $favorite.data('id'),
+                        key = $favorite.data('key');
+
+                    if (this.checked) {
+                        checkSite(id, key);
+                    } else {
+                        uncheckSite(id, key);
+                    }
+                });
+
+            }
+
+            function checkSite(id, key) {
+                apply_sites.push(key);
+                if (apply_sites.length > 0) { $apply_button.removeClass('disabled'); }
+                if (apply_sites.length == 2) {
+                    $('input:checkbox:not(:checked)').attr('disabled', true);
+                }
+                var copa_url = common.getUrl('copa-apply', { ids: apply_sites});
+                $('#faves-contact').attr('href', copa_url);
+            }
+
+            function uncheckSite(id, key) {
+                apply_sites = apply_sites.filter(function (item) {
+                    return item !== key;
+                });
+                var copa_url = common.getUrl('copa-apply', { ids: apply_sites});
+                $('#faves-contact').attr('href', copa_url);
+                if (apply_sites.length == 0) {$apply_button.addClass('disabled');}
+                $('input:checkbox:disabled').attr('disabled', false);
             }
 
             // get location ids:
@@ -71,24 +109,28 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                 starredIds = "";
 
             if (regexResult || cookie) {
+                
+
                 starredIds = regexResult ? regexResult[1] : cookie;
                 $.getJSON(common.getUrl('starred-location-api', { locations: starredIds }), function (results) {
+                    
                     var locations = results.locations,
-                        ecm = [],
-                        non_ecm = [];
+                        copa = [],
+                        non_copa = [];
 
                     for (var i=0; i<locations.length; i++) {
-                        if (locations[i].ecm.key == 0) {
-                            non_ecm.push(locations[i]);
+                        if (locations[i].copa.key == 0) {
+                            non_copa.push(locations[i]);
                         } else {
-                            ecm.push(locations[i]);
+                            copa.push(locations[i]);
                         }
                     }
 
-                    drawStarredLocations(results, ecm, non_ecm);
+                    if ( copa.length == 0 ) { $('.empty-faves').show(); }
+                    drawTable(results, copa, non_copa);
                 });
             } else {
-                $('.container-one-faves').html(gettext('No Favorite Locations'));
+                $('.empty-faves').show();
             }
 
             if(regexResult) {
@@ -97,7 +139,6 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'common', 'favorite
                     favorites.addIdToCookie(value);
                 });
             }
-
 
             favorites.addClearListener();
             favorites.addShareListener();
