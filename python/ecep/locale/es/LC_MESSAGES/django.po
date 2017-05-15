@@ -884,7 +884,7 @@ msgid ""
 "If your child qualifies, you will receive an email on June 1st with "
 "information on how to verify your child’s assignment."
 msgstr ""
-"Si califica su niño, reciba un correo electrónico el 1º de junio con "
+"Si califica su niño, reciba un correo electrónico el 1st de junio con "
 "información en cómo verificar la asignación de su niño."
 
 #: portal/templates/index.html:33
