@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-15 07:58-0500\n"
+"POT-Creation-Date: 2017-05-22 19:40-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -951,6 +951,7 @@ msgid "Find and compare locations now"
 msgstr "Encuentre y compare ubicaciones ahora"
 
 #: portal/templates/index.html:115
+#, python-format
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year old? <a "
 "href=\"%(how_to_apply_url)s\">Learn more</a> about the application and "
@@ -968,24 +969,20 @@ msgstr "Complete una aplicación preescolar"
 
 #: portal/templates/location.html:85
 msgid ""
-"If your child will be younger than 3 years old prior to September 1, 2016, "
+"If your child will be younger than 3 years old prior to September 1, 2017, "
 "there are infant/toddler programs available. Please contact the site "
 "directly for enrollment information for these programs."
 msgstr ""
-"Si su hijo que no va a cumplir 3 años antes del 1 de septiembre de 2016 hay "
+"Si su hijo que no va a cumplir 3 años antes del 1 de septiembre de 2017 hay "
 "programas de aprendizaje infantil. Por favor contacte directamente al "
 "programa para más información."
 
 #: portal/templates/location.html:90
-#, fuzzy
-#| msgid ""
-#| "Children must be 3 or 4 years old by September 1, 2016 to use this "
-#| "application for preschool programs (Ages 3 - 5)."
 msgid ""
-"If your child is 3 or 4 years old prior to September 1, 2016, your child "
+"If your child is 3 or 4 years old prior to September 1, 2017, your child "
 "will be eligible for preschool programs."
 msgstr ""
-"Los niños deben tener 3 ó 4 años antes del 1 de septiembre de 2016 para "
+"Los niños deben tener 3 ó 4 años antes del 1 de septiembre de 2017 para "
 "completar una aplicación de programas pre-escolares (3 - 5 años)."
 
 #: portal/templates/location.html:93

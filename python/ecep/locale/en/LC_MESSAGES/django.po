@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-15 07:58-0500\n"
+"POT-Creation-Date: 2017-05-22 19:40-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -831,14 +831,14 @@ msgstr ""
 
 #: portal/templates/location.html:85
 msgid ""
-"If your child will be younger than 3 years old prior to September 1, 2016, "
+"If your child will be younger than 3 years old prior to September 1, 2017, "
 "there are infant/toddler programs available. Please contact the site "
 "directly for enrollment information for these programs."
 msgstr ""
 
 #: portal/templates/location.html:90
 msgid ""
-"If your child is 3 or 4 years old prior to September 1, 2016, your child "
+"If your child is 3 or 4 years old prior to September 1, 2017, your child "
 "will be eligible for preschool programs."
 msgstr ""
 
