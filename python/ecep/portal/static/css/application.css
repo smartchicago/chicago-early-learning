@@ -1740,6 +1740,23 @@ a:focus {
     text-align: left;
 }
 
+.outreach-flyer {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.flyer-one {
+    width: 40%;
+    margin: 20px 20px;
+    display: inline-block;
+}
+
+.flyer-one img {
+    max-height: none;
+    max-width: 100%;
+}
+
 .outreach-pictures {
     display: block;
     width: 100%;
