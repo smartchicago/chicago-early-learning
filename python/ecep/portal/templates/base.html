@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="google-site-verification" content="c_0AMwlpIq4b4OQfRjbMWhsfk2Mv8DStFiNf3HkXLCA" />
-    <link rel="shortcut icon" href='{% static "img/favicon.ico" %}'>
     <link rel="stylesheet" href="https://use.fontawesome.com/e3d88004fc.css">
     <link href='{% static "css/lib/hint.min.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
@@ -15,6 +14,18 @@
     <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'img/favicons/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="384x384" href="{% static 'img/favicons/android-chrome-384x384.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicons/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicons/favicon-32x32.png' %}">
+    <link rel="mask-icon" href="{% static 'img/favicons/safari-pinned-tab.svg' %}">
+    <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}">
+    <meta name="msapplication-TileColor" content="#1dc1ea">
+    <meta name="msapplication-TileImage" content="{% static 'img/favicons/mstile-150x150.png' %}">
+
     <style>
         /*
             This is a hack because there is no other simple way to ensure that the correct
