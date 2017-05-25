@@ -21,3 +21,23 @@ class Command(NoArgsCommand):
 
     def handle(self, *args, **options):
         pass
+
+    def download_export(self):
+
+        host = settings.COPA_SFTP_HOST
+        port = settings.COPA_SFTP_PORT
+        key_path = settings.COPA_SFTP_KEY
+        username = settings.COPA_SFTP_USERNAME
+        key = paramiko.RSAKey.from_private_key_file(key_path)
+
+        transport = paramiko.Transport((host, port))
+        transport.connect(username=username, pkey=key)
+
+        sftp = paramiko.SFTPClient.from_transport(transport)
+
+        uploads = sftp.listdir('/')
+
+        sftp.close()
+        transport.close()
+
+
