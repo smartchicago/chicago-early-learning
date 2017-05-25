@@ -19,8 +19,19 @@ class Command(NoArgsCommand):
       - Transfer latest report from SFTP
     """
 
+    REMOTE_PATH = 'reports/'
+    LOCAL_EXPORT = '/cel/app/python/ecep/portal/management/exports/export.txt'
+    LOGFILE = ''
+
     def handle(self, *args, **options):
-        pass
+        self.download_export()
+
+        with open(self.LOCAL_EXPORT, 'rb') as export:
+            reader = csv.DictReader(export, delimiter='\t')
+
+            for row in reader:
+                print row['Site ID']
+
 
     def download_export(self):
 
@@ -35,9 +46,14 @@ class Command(NoArgsCommand):
 
         sftp = paramiko.SFTPClient.from_transport(transport)
 
-        uploads = sftp.listdir('/')
+        uploads = sftp.listdir('reports/')
+        latest_export = uploads[-1]
+        latest_export_path = self.REMOTE_PATH + latest_export
+        sftp.get(remotepath=latest_export_path, localpath=self.LOCAL_EXPORT)
 
         sftp.close()
         transport.close()
+
+        return latest_export
 
 
