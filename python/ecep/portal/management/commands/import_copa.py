@@ -31,6 +31,8 @@ class Command(NoArgsCommand):
 
             for row in reader:
                 print row['Site ID']
+                print row['Slots available']
+                print ''
 
 
     def download_export(self):
