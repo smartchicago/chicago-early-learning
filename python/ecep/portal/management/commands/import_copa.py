@@ -29,6 +29,8 @@ class Command(NoArgsCommand):
         with open(self.LOCAL_EXPORT, 'rb') as export:
             reader = csv.DictReader(export, delimiter='\t')
 
+            exceptions = 0
+
             for row in reader:
                 try:
                     copa_id = row['Site ID']
@@ -39,10 +41,13 @@ class Command(NoArgsCommand):
                     print availability
                     print ''
                 except:
+                    exceptions+=1
                     print '************'
                     print row['Site ID']
                     print '************'
                     print ''
+
+            print exceptions
 
 
 
