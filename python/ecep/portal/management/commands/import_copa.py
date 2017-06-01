@@ -33,7 +33,7 @@ class Command(NoArgsCommand):
                 try:
                     copa_id = row['Site ID']
                     availability = row['Slots available']
-                    l = location.objects.get(copa_key=copa_id)
+                    l = Location.objects.get(copa_key=copa_id)
                     l.availability = availability
                     print copa_id
                     print availability
