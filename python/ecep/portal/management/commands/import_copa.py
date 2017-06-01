@@ -43,6 +43,7 @@ class Command(NoArgsCommand):
                     print copa_id
                     print availability
                     print ''
+                    l.save()
                 except:
                     if row['Universal Application'] == '1':
                         bad.append(copa_id)
