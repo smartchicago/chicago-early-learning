@@ -44,6 +44,9 @@ class Command(NoArgsCommand):
                     print availability
                     print ''
                 except:
+                    if row['Universal Application'] == 1:
+                        bad.append(copa_id)
+                        
                     exceptions+=1
                     print '************'
                     print row['Site ID']
@@ -51,8 +54,7 @@ class Command(NoArgsCommand):
                     print '************'
                     print ''
 
-                    if row['Universal Application'] == 1:
-                        bad.append(copa_id)
+                    
 
             print total
             print exceptions
