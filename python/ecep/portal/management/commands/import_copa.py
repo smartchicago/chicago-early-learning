@@ -29,9 +29,11 @@ class Command(NoArgsCommand):
         with open(self.LOCAL_EXPORT, 'rb') as export:
             reader = csv.DictReader(export, delimiter='\t')
 
+            total = 0
             exceptions = 0
 
             for row in reader:
+                total+=1
                 try:
                     copa_id = row['Site ID']
                     availability = row['Slots available']
@@ -44,9 +46,11 @@ class Command(NoArgsCommand):
                     exceptions+=1
                     print '************'
                     print row['Site ID']
+                    print row['Universal Application']
                     print '************'
                     print ''
 
+            print total
             print exceptions
 
 
