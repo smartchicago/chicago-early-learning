@@ -153,7 +153,7 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
         ('Other',   {'fields': [('ages', 'prg_hours', 'accred'),
                                 ('language_1', 'language_2', 'language_3'),
                                 'q_stmt', 'enrollment', 'open_house', 'curriculum',
-                                'q_rating', 'ecm_key', 'availability']}),
+                                'q_rating', 'copa_key', 'availability']}),
     ]
 
     def _delete_messages(self, request):
@@ -351,7 +351,6 @@ class LocationAdmin(admin.OSMGeoAdmin, TranslationAdmin):
         filename = slugify('%s_location_export' % str(datetime.now().date())) + '.csv'
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="%s";' % filename
-        response.write(u'\ufeff'.encode('utf8'))  # BOM for excel
 
         result = Location.objects.all()
         header = next(result.values().iterator()).keys()
