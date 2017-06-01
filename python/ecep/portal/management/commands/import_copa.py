@@ -30,9 +30,20 @@ class Command(NoArgsCommand):
             reader = csv.DictReader(export, delimiter='\t')
 
             for row in reader:
-                print row['Site ID']
-                print row['Slots available']
-                print ''
+                try:
+                    copa_id = row['Site ID']
+                    availability = row['Slots available']
+                    l = location.objects.get(copa_key=copa_id)
+                    l.availability = availability
+                    print copa_id
+                    print availability
+                    print ''
+                except:
+                    print '************'
+                    print row['Site ID']
+                    print '************'
+                    print ''
+
 
 
     def download_export(self):
