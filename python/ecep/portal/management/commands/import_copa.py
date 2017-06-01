@@ -31,6 +31,7 @@ class Command(NoArgsCommand):
 
             total = 0
             exceptions = 0
+            bad = []
 
             for row in reader:
                 total+=1
@@ -50,8 +51,12 @@ class Command(NoArgsCommand):
                     print '************'
                     print ''
 
+                    if row['Universal Application'] == 1:
+                        bad.append(copa_id)
+
             print total
             print exceptions
+            print bad
 
 
 
