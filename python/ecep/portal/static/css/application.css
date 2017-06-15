@@ -1929,29 +1929,57 @@ a:focus {
     bottom: 0;
 }
 
-.footer a {
+.footer-wrapper {
+    width: 990px;
+    margin: auto;
+}
+
+.footer-body {
+    display: inline-block;
+    width: 930px;
+}
+
+.footer-body a {
     color: #ffe009;
     text-decoration: none;
 }
 
-.footer a:hover {
+.footer-body a:hover {
     color: #ffc104;
     text-decoration: none;
 }
 
-.footer ul {
+.footer-body ul {
     list-style: none;
-    margin: auto;
-    width: 990px;
+    margin: 0;
 }
 
-.footer li {
+.footer-body li {
     display: inline-block;
-    width: 307px;
+    width: 285px;
     text-align: left;
     vertical-align: top;
     margin: 10px 10px;
 }
+
+.footer-social {
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 10px;
+    width: 40px;
+}
+
+.footer-social svg {
+    width: 30px;
+    margin-bottom: 5px;
+    fill: white;
+}
+
+.footer-social svg:hover {
+    fill: #fce2d9;
+}
+
 
 /**** Misc. ****/
 .hint--top,
