@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-22 19:40-0500\n"
+"POT-Creation-Date: 2017-06-14 22:32-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -471,58 +471,58 @@ msgstr ""
 msgid "Find early learning programs near your home or work."
 msgstr ""
 
-#: portal/templates/base.html:80
+#: portal/templates/base.html:103
 msgid "Apply Now!"
 msgstr ""
 
-#: portal/templates/base.html:82 portal/templates/families.html:7
+#: portal/templates/base.html:105 portal/templates/families.html:7
 #: portal/templates/families.html.py:15
 msgid "For Families"
 msgstr ""
 
-#: portal/templates/base.html:84 portal/templates/city-resources.html:7
+#: portal/templates/base.html:107 portal/templates/city-resources.html:7
 #: portal/templates/city-resources.html:15
 msgid "City Resources"
 msgstr ""
 
-#: portal/templates/base.html:86
+#: portal/templates/base.html:109
 msgid "FAQs"
 msgstr ""
 
-#: portal/templates/base.html:110
+#: portal/templates/base.html:133
 msgid ""
 "For application information please call the Chicago Early Learning Hotline at"
 msgstr ""
 
-#: portal/templates/base.html:124
+#: portal/templates/base.html:153
 msgid "About the Chicago Early Learning Portal"
 msgstr ""
 
-#: portal/templates/base.html:125
+#: portal/templates/base.html:154
 msgid "Built by"
 msgstr ""
 
-#: portal/templates/base.html:127
+#: portal/templates/base.html:156
 msgid "Give us feedback"
 msgstr ""
 
-#: portal/templates/base.html:127
+#: portal/templates/base.html:156
 msgid "to help make the Chicago Early Learning Portal better."
 msgstr ""
 
-#: portal/templates/base.html:128
+#: portal/templates/base.html:157
 msgid "Keep in touch by signing up for the"
 msgstr ""
 
-#: portal/templates/base.html:128
+#: portal/templates/base.html:157
 msgid "Early Learning Email Newsletter"
 msgstr ""
 
-#: portal/templates/base.html:138
+#: portal/templates/base.html:169
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:141
+#: portal/templates/base.html:172
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -760,7 +760,7 @@ msgstr ""
 
 #: portal/templates/index.html:37 portal/templates/index.html.py:85
 msgid ""
-"If your child qualifies, you will receive an email on June 1st with "
+"If your child qualifies, you will receive an email very soon with "
 "information on how to verify your child’s assignment."
 msgstr ""
 
