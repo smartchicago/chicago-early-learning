@@ -1936,7 +1936,7 @@ a:focus {
 
 .footer-body {
     display: inline-block;
-    width: 930px;
+    width: 990px;
 }
 
 .footer-body a {
@@ -1956,7 +1956,7 @@ a:focus {
 
 .footer-body li {
     display: inline-block;
-    width: 285px;
+    width: 307px;
     text-align: left;
     vertical-align: top;
     margin: 10px 10px;
@@ -1970,13 +1970,14 @@ a:focus {
     width: 40px;
 }
 
-.footer-social svg {
+.footer-body svg {
     width: 30px;
     margin-bottom: 5px;
+    margin-right: 5px;
     fill: white;
 }
 
-.footer-social svg:hover {
+.footer-body svg:hover {
     fill: #fce2d9;
 }
 
