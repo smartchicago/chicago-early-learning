@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-14 22:32-0500\n"
+"POT-Creation-Date: 2017-06-15 22:02-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -494,11 +494,11 @@ msgid ""
 "For application information please call the Chicago Early Learning Hotline at"
 msgstr ""
 
-#: portal/templates/base.html:153
+#: portal/templates/base.html:149
 msgid "About the Chicago Early Learning Portal"
 msgstr ""
 
-#: portal/templates/base.html:154
+#: portal/templates/base.html:150
 msgid "Built by"
 msgstr ""
 
@@ -510,19 +510,19 @@ msgstr ""
 msgid "to help make the Chicago Early Learning Portal better."
 msgstr ""
 
-#: portal/templates/base.html:157
+#: portal/templates/base.html:158
 msgid "Keep in touch by signing up for the"
 msgstr ""
 
-#: portal/templates/base.html:157
+#: portal/templates/base.html:158
 msgid "Early Learning Email Newsletter"
 msgstr ""
 
-#: portal/templates/base.html:169
+#: portal/templates/base.html:172
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:172
+#: portal/templates/base.html:175
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -597,7 +597,7 @@ msgstr ""
 
 #: portal/templates/city-resources.html:38
 msgid ""
-"All you already a Connect4Tots parent? Let your other Chicago friends who "
+"Are you already a Connect4Tots parent? Let your other Chicago friends who "
 "are parents of toddlers know so they can get important text messages on FREE "
 "resources for those who qualify."
 msgstr ""
