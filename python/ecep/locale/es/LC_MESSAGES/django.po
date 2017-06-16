@@ -969,7 +969,7 @@ msgstr ""
 
 #: portal/templates/index.html:116
 msgid "Fill out an application online"
-msgstr "CLlene la solicitud en línea"
+msgstr "Llene la solicitud en línea"
 
 #: portal/templates/location.html:85
 msgid ""
