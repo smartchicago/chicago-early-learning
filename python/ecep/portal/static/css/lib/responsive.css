@@ -702,12 +702,22 @@
         padding-bottom: 20px;
     }
 
-    .footer ul {
+    .footer-wrapper {
         width: 100%;
     }
 
-    .footer li {
+    .footer-body {
+        width: 100%;
+    }
+
+    .footer-body ul {
         width: 80%;
+        margin: 20px auto;
+    }
+
+    .footer-body li {
+        width: 100%;
+        margin: 0;
     }
 
     #faq-header h1 {

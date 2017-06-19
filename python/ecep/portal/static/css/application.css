@@ -954,31 +954,6 @@ a:focus {
     z-index: 1 !important;
 }
 
-/* Partners ------------------------ */
-
-.media-image {
-    width: 24%;
-    display: inline-block;
-    text-align: center;
-    vertical-align: top;
-}
-
-.media-body {
-    width: 75%;
-    display: inline-block;
-}
-
-
-#about-title {
-    margin-top: 140px;
-}
-
-#mc_embed_signup {
-    margin-top: 100px;
-}
-
-
-
 /* Map/List Mobile Panels ---------- */
 
 .cb_slide_panel {
@@ -1740,6 +1715,23 @@ a:focus {
     text-align: left;
 }
 
+.outreach-flyer {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.flyer-one {
+    width: 40%;
+    margin: 20px 20px;
+    display: inline-block;
+}
+
+.flyer-one img {
+    max-height: none;
+    max-width: 100%;
+}
+
 .outreach-pictures {
     display: block;
     width: 100%;
@@ -1759,6 +1751,41 @@ a:focus {
 
 #outreach {
     padding-bottom: 0;
+}
+
+/* Partners ------------------------ */
+
+.media-image {
+    width: 24%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+}
+
+.media-body {
+    width: 75%;
+    display: inline-block;
+}
+
+.media-body h3 {
+    margin-top: 0;
+}
+
+.subhead-sp {
+    display: none;
+    font-size: 16px;
+    line-height: 24px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+#about-title {
+    margin-top: 140px;
+}
+
+#mc_embed_signup {
+    margin-top: 100px;
 }
 
 
@@ -1912,29 +1939,58 @@ a:focus {
     bottom: 0;
 }
 
-.footer a {
+.footer-wrapper {
+    width: 990px;
+    margin: auto;
+}
+
+.footer-body {
+    display: inline-block;
+    width: 990px;
+}
+
+.footer-body a {
     color: #ffe009;
     text-decoration: none;
 }
 
-.footer a:hover {
+.footer-body a:hover {
     color: #ffc104;
     text-decoration: none;
 }
 
-.footer ul {
+.footer-body ul {
     list-style: none;
-    margin: auto;
-    width: 990px;
+    margin: 0;
 }
 
-.footer li {
+.footer-body li {
     display: inline-block;
     width: 307px;
     text-align: left;
     vertical-align: top;
     margin: 10px 10px;
 }
+
+.footer-social {
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 10px;
+    width: 40px;
+}
+
+.footer-body svg {
+    width: 30px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    fill: white;
+}
+
+.footer-body svg:hover {
+    fill: #fce2d9;
+}
+
 
 /**** Misc. ****/
 .hint--top,

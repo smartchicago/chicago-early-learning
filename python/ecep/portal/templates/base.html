@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="google-site-verification" content="c_0AMwlpIq4b4OQfRjbMWhsfk2Mv8DStFiNf3HkXLCA" />
-    <link rel="shortcut icon" href='{% static "img/favicon.ico" %}'>
     <link rel="stylesheet" href="https://use.fontawesome.com/e3d88004fc.css">
     <link href='{% static "css/lib/hint.min.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
@@ -15,6 +14,30 @@
     <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
     <link href='{% static "css/application.css" %}' rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'img/favicons/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="384x384" href="{% static 'img/favicons/android-chrome-384x384.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicons/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicons/favicon-32x32.png' %}">
+    <link rel="mask-icon" href="{% static 'img/favicons/safari-pinned-tab.svg' %}">
+    <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}">
+    <meta name="msapplication-TileColor" content="#1dc1ea">
+    <meta name="msapplication-TileImage" content="{% static 'img/favicons/mstile-150x150.png' %}">
+
+    <!-- Social Cards -->
+    <!-- 
+    <meta property="og:title" content="Generic Early Learning Embed!">
+    <meta property="og:description" content="Apply now for the Fall 2017 School Year! This metatag works in Slack!">
+    <meta property="og:image" content="{% static 'img/full-council-boy.jpg' %}">
+    <meta property="og:url" content="https://www.chicagoearlylearning.org">
+    <meta name="twitter:title" content="Chicago Early Learning Portal Twitter Embed!">
+    <meta name="twitter:description" content="Apply now for the Fall 2017 School Year! On Twitter!">
+    <meta name="twitter:image" content="{% static 'img/full-scientist-girl.jpg' %}">
+    <meta name="twitter:card" content="summary_large_image">
+    -->
+
     <style>
         /*
             This is a hack because there is no other simple way to ensure that the correct
@@ -119,14 +142,27 @@
     {% block footer %}
 
     <div class="footer">
-        <ul>
-            <li>
-                <p><a href="{% url 'about' %}">{% trans 'About the Chicago Early Learning Portal' %}</a></p>
-                <p>{% trans 'Built by' %} <a href="http://www.smartchicagocollaborative.org">Smart Chicago Collaborative</a></p>
-            </li>
-            <li><a href="https://smartchicago2012.wufoo.com/forms/xvfz0tb1luuvfg/">{% trans 'Give us feedback' %}</a> {% trans 'to help make the Chicago Early Learning Portal better.' %}</li>
-            <li>{% trans 'Keep in touch by signing up for the' %} <a href="{% url 'connect' %}">{% trans 'Early Learning Email Newsletter' %}.</a></li>
-        </ul>
+        <div class="footer-wrapper">
+            <div class="footer-body">
+                <ul>
+                    <li>
+                        <p><a href="{% url 'about' %}">{% trans 'About the Chicago Early Learning Portal' %}</a></p>
+                        <p>{% trans 'Built by' %} <a href="http://www.smartchicagocollaborative.org">Smart Chicago Collaborative</a></p>
+                    </li>
+                    <li>
+                        <p><a href="https://smartchicago2012.wufoo.com/forms/xvfz0tb1luuvfg/">{% trans 'Give us feedback' %}</a> {% trans 'to help make the Chicago Early Learning Portal better.' %}</p>
+                    </li>
+                    <li>
+                        <p>{% trans 'Keep in touch by signing up for the' %} <a href="{% url 'connect' %}">{% trans 'Early Learning Email Newsletter' %}.</a>
+                        </p>
+                        <div>
+                            <a href="https://www.facebook.com/ChicagoEarlyLearning/"><svg version="1.1" id="Facebook_w_x2F__circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"><path d="M10,0.4c-5.302,0-9.6,4.298-9.6,9.6s4.298,9.6,9.6,9.6s9.6-4.298,9.6-9.6S15.302,0.4,10,0.4z M12.274,7.034h-1.443c-0.171,0-0.361,0.225-0.361,0.524V8.6h1.805l-0.273,1.486H10.47v4.461H8.767v-4.461H7.222V8.6h1.545V7.726c0-1.254,0.87-2.273,2.064-2.273h1.443V7.034z"/></svg></a>
+                            <a href="https://twitter.com/ChiEarlyLearn"><svg version="1.1" id="Twitter_w_x2F__circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve"><path d="M10,0.4c-5.302,0-9.6,4.298-9.6,9.6s4.298,9.6,9.6,9.6s9.6-4.298,9.6-9.6S15.302,0.4,10,0.4z M13.905,8.264c0.004,0.082,0.005,0.164,0.005,0.244c0,2.5-1.901,5.381-5.379,5.381c-1.068,0-2.062-0.312-2.898-0.85c0.147,0.018,0.298,0.025,0.451,0.025c0.886,0,1.701-0.301,2.348-0.809c-0.827-0.016-1.525-0.562-1.766-1.312c0.115,0.021,0.233,0.033,0.355,0.033c0.172,0,0.34-0.023,0.498-0.066c-0.865-0.174-1.517-0.938-1.517-1.854V9.033C6.257,9.174,6.549,9.26,6.859,9.27C6.351,8.93,6.018,8.352,6.018,7.695c0-0.346,0.093-0.672,0.256-0.951c0.933,1.144,2.325,1.896,3.897,1.977c-0.033-0.139-0.049-0.283-0.049-0.432c0-1.043,0.846-1.891,1.891-1.891c0.543,0,1.035,0.23,1.38,0.598c0.431-0.086,0.835-0.242,1.2-0.459c-0.141,0.441-0.44,0.812-0.831,1.047c0.383-0.047,0.747-0.148,1.086-0.299C14.595,7.664,14.274,7.998,13.905,8.264z"/></svg></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     {% endblock %}

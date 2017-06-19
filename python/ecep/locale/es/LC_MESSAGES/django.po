@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-15 07:58-0500\n"
+"POT-Creation-Date: 2017-06-15 22:02-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -512,60 +512,60 @@ msgstr "Buscar"
 msgid "Find early learning programs near your home or work."
 msgstr "Encuentre programas de educación temprana cerca de su casa y trabajo."
 
-#: portal/templates/base.html:80
+#: portal/templates/base.html:103
 msgid "Apply Now!"
 msgstr "¡Aplique!"
 
-#: portal/templates/base.html:82 portal/templates/families.html:7
+#: portal/templates/base.html:105 portal/templates/families.html:7
 #: portal/templates/families.html.py:15
 msgid "For Families"
 msgstr "Para Familias"
 
-#: portal/templates/base.html:84 portal/templates/city-resources.html:7
+#: portal/templates/base.html:107 portal/templates/city-resources.html:7
 #: portal/templates/city-resources.html:15
 msgid "City Resources"
 msgstr "Recursos de la ciudad"
 
-#: portal/templates/base.html:86
+#: portal/templates/base.html:109
 msgid "FAQs"
 msgstr ""
 
-#: portal/templates/base.html:110
+#: portal/templates/base.html:133
 msgid ""
 "For application information please call the Chicago Early Learning Hotline at"
 msgstr ""
 "Para información acerca de la aplicación, por favor llamar al Chicago Early "
 "Learning línea de acceso directo al"
 
-#: portal/templates/base.html:124
+#: portal/templates/base.html:149
 msgid "About the Chicago Early Learning Portal"
 msgstr "Sobre del portal del Chicago Educacíon Temprana"
 
-#: portal/templates/base.html:125
+#: portal/templates/base.html:150
 msgid "Built by"
 msgstr "Construido por"
 
-#: portal/templates/base.html:127
+#: portal/templates/base.html:156
 msgid "Give us feedback"
 msgstr "Opine para mejorar"
 
-#: portal/templates/base.html:127
+#: portal/templates/base.html:156
 msgid "to help make the Chicago Early Learning Portal better."
 msgstr "el portal del Chicago Educacíon Temprana."
 
-#: portal/templates/base.html:128
+#: portal/templates/base.html:158
 msgid "Keep in touch by signing up for the"
 msgstr "Subscriba a nuestro"
 
-#: portal/templates/base.html:128
+#: portal/templates/base.html:158
 msgid "Early Learning Email Newsletter"
 msgstr "boletín informativo de Chicago Educación Temprana"
 
-#: portal/templates/base.html:138
+#: portal/templates/base.html:172
 msgid "Save and Share Permalink"
 msgstr "Guarde y comparta el enlace permanente"
 
-#: portal/templates/base.html:141
+#: portal/templates/base.html:175
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -604,10 +604,12 @@ msgid ""
 "agencies, there are a number of opportunities to start stimulating your "
 "child with early learning in other environments."
 msgstr ""
-"La ciudad de Chicago, y el alcalde Rahm Emanuel, está comprometido a traer "
-"alta calidad a la enseñanza temprana. Además de programas para los niños en "
-"las escuelas y en agencias comunitarias, hay una serie de oportunidades para "
-"comenzar a estimular a su hijo en el aprendizaje temprano y otros entornos."
+"La Ciudad de Chicago y el Alcalde Rahm Emanuel están comprometidos a darle "
+"acceso a oportunidades de educación temprana de alta calidad a las familias "
+"a todo lo largo de la ciudad. Además de los programas fuertes existentes en "
+"escuelas y sitios comunitarios, también hay un gran número de oportunidades "
+"para comenzar a estimular a su niño en su aprendizaje temprano en otros "
+"entornos."
 
 #: portal/templates/city-resources.html:26
 msgid ""
@@ -617,28 +619,26 @@ msgid ""
 "development, connections to health & safety, education, public service, "
 "event resources in the City of Chicago, and more!"
 msgstr ""
-"Connect4Tots proporciona mensajes de texto en recursos GRATUITOS para padres "
-"y tutores de niños de 1 a 3 años de edad. Los padres y tutores de "
+"Connect4Tots envía mensajes de texto sobre recursos GRATIS para padres y "
+"tutores legales de niños que comienzan a dar sus primeros pasos y que tienen "
+"de 1 a 3 años de edad. Los padres y tutores legales que se suscriben a "
 "Connect4Tots reciben de 2 a 3 mensajes de texto semanalmente con información "
-"sobre el crecimiento y desarrollo del niño, enlaces a servicios de salud y "
-"seguridad, educación, asistencia pública, recursos para eventos en la ciudad "
-"de Chicago y más."
+"acerca del crecimiento y desarrollo de su niño y lo conectan a recursos y "
+"eventos en la Ciudad de Chicago sobre salud y seguridad, educación, "
+"servicios públicos ¡y más!"
 
 #: portal/templates/city-resources.html:28
 msgid "Sign Up Today!"
-msgstr "¡Inscríbase Hoy!"
+msgstr "¡Suscríbase hoy!"
 
 #: portal/templates/city-resources.html:30
-#, fuzzy
-#| msgid ""
-#| "Text TOTOPT7 to 311311 or use <a href=\"http://chitot.org/enroll\">this "
-#| "online form.</a>"
 msgid ""
 "Text <span class=\"tot\">TOT</span><span class=\"opt7\">OPT7</span> to "
 "311311 or use <a href=\"http://chitot.org/enroll\">this online form.</a>"
 msgstr ""
-"Escriba TOTOPT7 en el 311311 o hágalo directamente en <a href=\"http://"
-"chitot.org/enroll\">este formulario en línea.</a>"
+"Envíe lo siguiente en un texto <span class=\"tot\">TOT</span><span class="
+"\"opt7\">OPT7</span> al 311311 o use este <a href=\"http://chitot.org/enroll"
+"\">formulario en línea.</a>"
 
 #: portal/templates/city-resources.html:32
 msgid ""
@@ -647,30 +647,30 @@ msgid ""
 "Polish) to receive texts. Once enrolled, you will automatically receive 2-3 "
 "messages per week with helpful guidance and tips."
 msgstr ""
-"Al inscribirse se le pedirá que proporcione la fecha de nacimiento y sexo de "
-"su hijo, su dirección y el idioma de su preferencia (inglés, español o "
-"polaco) para recibir los mensajes de texto. Una vez inscrito, recibirá "
-"automáticamente de 2 a 3 mensajes por semana con asesoramiento y consejos "
+"Cuando se suscriba, se le preguntará la fecha de nacimiento y el sexo de su "
+"hijo, la dirección de su domicilio en la ciudad y su idioma preferido para "
+"recibir textos (inglés, español o polaco). Una vez suscrito, recibirá "
+"automáticamente de 2 a 3 mensajes por semana con consejos y sugerencias "
 "útiles."
 
 #: portal/templates/city-resources.html:34
 msgid "Standard text messaging rates may apply."
-msgstr "Se aplican tarifas estándar de mensajería de texto."
+msgstr "Las tarifas estándar para enviar mensajes de texto pueden aplicar."
 
 #: portal/templates/city-resources.html:36
 msgid "Tell your Chicago Friends!"
-msgstr "¡Cuéntele a sus amigos de Chicago!"
+msgstr "¡Dígale a sus amigos en Chicago!"
 
 #: portal/templates/city-resources.html:38
 msgid ""
-"All you already a Connect4Tots parent? Let your other Chicago friends who "
+"Are you already a Connect4Tots parent? Let your other Chicago friends who "
 "are parents of toddlers know so they can get important text messages on FREE "
 "resources for those who qualify."
 msgstr ""
-"¿Ya es un padre de Connect4Tots? Permita que sus amigos de Chicago que son "
-"padres de niños pequeños se enteren para que aquellos que cumplan con los "
-"requisitos, también puedan recibir mensajes de texto importantes en recursos "
-"gratuitos."
+"¿Ya es un padre Connect4Tots? Dígaselo a sus amigos de Chicago quienes sean "
+"padres de niños que comienzan a dar sus primeros pasos para que ellos "
+"también puedan recibir mensajes de texto con recursos GRATIS para los que "
+"califiquen."
 
 #: portal/templates/city-resources.html:40
 msgid "Additional Information"
@@ -687,19 +687,18 @@ msgid ""
 "Connect4TotsFeedback@cityofchicago.org\">Connect4TotsFeedback@cityofchicago."
 "org</a>."
 msgstr ""
-"Connect4Tots cuenta con el patrocinio de la ciudad de Chicago y Urban Labs "
-"de la Universidad de Chicago. Este centro evaluará los efectos del programa "
-"mediante el análisis del uso que hacen los participantes de la información y "
-"los recursos incluidos en los mensajes de texto. Por favor revise <a href="
-"\"http://chitot.org/consent\">nuestro</a> consentimiento para obtener más "
-"información. Para obtener más información sobre el programa, puede "
-"comunicarse con Urban Labs a través de <a href=\"mailto:"
-"Connect4TotsFeedback@cityofchicago.org\">Connect4TotsFeedback@cityofchicago."
-"org</a>."
+"Connect4Tots está patrocinado por la Ciudad de Chicago y los Laboratorios "
+"Urbanos (Urban Labs) de la Universidad de Chicago. Urban Labs evaluará los "
+"efectos del programa cuando analice cómo los participantes usan la "
+"información y los recursos incluidos en los mensajes de texto. Revise la "
+"hoja de consentimiento para obtener mayor información. Para obtener mayor "
+"información sobre el programa, por favor contacte a Urban Labs en <a href="
+"\"mailto:Connect4TotsFeedback@cityofchicago.org"
+"\">Connect4TotsFeedback@cityofchicago.org</a>."
 
 #: portal/templates/city-resources.html:54
 msgid "Chicago Park District"
-msgstr ""
+msgstr "Distrito de Parques de Chicago"
 
 #: portal/templates/city-resources.html:55
 msgid ""
@@ -710,15 +709,17 @@ msgid ""
 "<a href=\"http://www.chicagoparkdistrict.com/\">Visit the Chicago Park "
 "District</a> to find and sign up for a class near you."
 msgstr ""
-"Muchos parques ofrecen clases de recreo para la enseñanza de primera edad. "
-"Participantes de enseñanza temprana tienen oportunidad de fomentar el arte "
-"de escuchar de socializar a través de los programas se educación. <a href="
-"\"http://www.chicagoparkdistrict.com/\">Visite la página de internet de los "
-"parques de chicago</a> para encontrar y matricularse para clases cerca a ud."
+"Varios parques ofrecen clases recreativas de educación temprana: interacción "
+"entre mamás, papás e infantes, juegos en grupo, preescolar, títeres, "
+"cuentos, y gimnasia para mamás, papás e infantes. Los participantes en "
+"Educación Temprana desarrollan y mejoran sus habilidades motrices, sociales, "
+"y para escuchar a través de los programas de educación en el movimiento. <a "
+"href=\"http://www.chicagoparkdistrict.com/\">Visite el Distrito de Parques "
+"de Chicago</a> para buscar e inscribirse en una clase cerca de usted."
 
 #: portal/templates/city-resources.html:65
 msgid "Chicago City of Learning"
-msgstr ""
+msgstr "Chicago, Ciudad de Aprendizaje"
 
 #: portal/templates/city-resources.html:66
 msgid ""
@@ -729,15 +730,17 @@ msgid ""
 "to enter kindergarten in the Fall. <a href=\"https://chicagocityoflearning."
 "org/\">Visit CCOL</a> to find opportunities near you."
 msgstr ""
-"Chicago City of Learning (CCOL) es una iniciativa innovadora que une a las "
-"oportunidades de aprendizaje para a los jóvenes de una manera que les "
-"permite pensar, perseguir, y desarrollar sus intereses. <a href=\"https://"
-"chicagocityoflearning.org/\">Visita CCOL</a> para encontrar oportunidades "
-"cerca de usted."
+"Chicago City of Learning (CCOL) es una iniciativa pionera que reúne "
+"oportunidades de aprendizaje para jóvenes de tal forma que les permite "
+"pensar, perseguir y desarrollar sus propios intereses. CCOL y sus socios "
+"llevan experiencias de educación temprana a diferentes espacios durante el "
+"verano para preparar a los niños a entrar al jardín de niños en el otoño. <a "
+"href=\"https://chicagocityoflearning.org/\">Visita CCOL</a> para encontrar "
+"las oportunidades que existen cerca de usted."
 
 #: portal/templates/city-resources.html:76
 msgid "Chicago Public Library"
-msgstr ""
+msgstr "Bibliotecas Públicas de Chicago"
 
 #: portal/templates/city-resources.html:77
 msgid ""
@@ -750,19 +753,21 @@ msgid ""
 "learning kits deployed throughout the city – one for each Library District. "
 "<a href=\"http://www.chipublib.org/\">Contact CPL</a> for details."
 msgstr ""
-"La Biblioteca Pública de Chicago o CPL tiene muchas oportunidades para los "
-"niños que incluyen espacios para la educación temprana y leyenda de libros "
-"para niños menos de cinco años. CPL también cuenta con unidades móviles que "
-"traen programas de STEAM (ciencia, tecnología, ingeniería, artes y "
-"matemáticas) actividades de aprendizaje para niños pequeños junto con la "
-"programación de educación familiar facilitado por los bibliotecarios de toda "
-"la ciudad. El CPL tiene tres unidades móviles con kits de aprendizaje "
-"basadas en STEAM desplegados por toda la ciudad. <a href=\"http://www."
-"chipublib.org/\">Póngase en contacto con CPL</a> para más detalles."
+"Bibliotecas Públicas de Chicago (CPL por sus siglas en inglés) tiene muchas "
+"oportunidades enriquecedoras para niños, incluso espacios para la educación "
+"temprana en las bibliotecas y horas de lectura para preescolares. CPL "
+"también tiene unidades móviles que llevan actividades manuales de "
+"aprendizaje de STEAM (por sus siglas en inglés; se refiere a ciencias, "
+"tecnología, ingeniería, artes y matemáticas) para los niños pequeños, junto "
+"con una programación en alfabetización para la familia, facilitadas por "
+"bibliotecarios a lo largo de la ciudad. CPL tiene tres unidades móviles con "
+"paquetes de aprendizaje basados en STEAM por toda la ciudad, uno por cada "
+"Distrito Bibliotecario. <a href=\"http://www.chipublib.org/\">Contacta a "
+"CPL</a> para obtener más detalles."
 
 #: portal/templates/city-resources.html:88
 msgid "Chicago Children's Museum"
-msgstr ""
+msgstr "Museo de Niños de Chicago"
 
 #: portal/templates/city-resources.html:89
 msgid ""
@@ -775,27 +780,21 @@ msgid ""
 "chicagochildrensmuseum.org/\">Contact the Chicago Children’s Museum</a> for "
 "details."
 msgstr ""
-"El Museo Infantil de Chicago tiene disponible una serie de espacios de "
-"aprendizaje temprano para apoyar jugar con aprendizaje. Una exposición "
-"permanente, The Tinkering Lab, cuenta con un rincón de aprendizaje temprano. "
-"El museo infantil también se compromete para traer espacios de enseñanza "
-"temprana para otros sitios de la ciudad. <a href=\"http://www."
-"chicagochildrensmuseum.org/\">Póngase en contacto con el Museo Infantil de "
-"Chicago</ para más detalles."
+"El Museo de Niños de Chicago tiene un buen número de espacios para la "
+"educación temprana para apoyar el desarrollo de comunidades en donde el "
+"juego y el aprendizaje se conecten. Una de sus exhibiciones permanentes, "
+"“The Tinkering Lab” (Un laboratorio para juguetear), tiene un rincón de "
+"aprendizaje con objetos interactivos seguros y herramientas que se pueden "
+"tocar. El Museo de Niños también se asocia con otras entidades para llevar "
+"espacios de educación temprana y participación a otros lugares en la ciudad. "
+"<a href=\"http://www.chicagochildrensmuseum.org/\">Contacte al Museo de "
+"Niños de Chicago</a> para obtener más detalles."
 
 #: portal/templates/city-resources.html:99
 msgid "Chicago Department of Public Health"
-msgstr ""
+msgstr "Departamento de Salud Pública de Chicago"
 
 #: portal/templates/city-resources.html:100
-#, fuzzy
-#| msgid ""
-#| "The foundation for early learning and a child’s success starts with "
-#| "maternal and infant health. The Chicago Department of Public Health’s "
-#| "neighborhood health clinics offer care for expectant mothers and wellness "
-#| "services for children. <a href=\"http://www.cityofchicago.org/city/en/"
-#| "depts/cdph.html\">Contact the Chicago Department of Public Health</a> for "
-#| "details."
 msgid ""
 "The foundation for early learning and a child’s success starts with maternal "
 "and infant health. The Chicago Department of Public Health (CDPH)’s "
@@ -806,12 +805,16 @@ msgid ""
 "healthychicagobabies.org/\">Contact the Chicago Department of Public Health</"
 "a> for details."
 msgstr ""
-"La base para el aprendizaje temprano y éxito de un niño comienza con la "
-"salud materna e infantil. Las clínicas vendarías del Departamento de Salud "
-"Pública de Chicago ofrecen atención para las mujeres embarazadas y servicios "
-"de bienestar para los niños. <a href=\"http://www.cityofchicago.org/city/en/"
-"depts/cdph.html/\">Póngase en contacto con el Departamento de Salud Pública "
-"de Chicago </a>para más detalles."
+"Las bases del aprendizaje temprano y del éxito de los niños comienzan con la "
+"salud maternal y de los niños. Las clínicas de salud en el vecindario del "
+"Departamento de Salud Pública de Chicago (CDPH por sus siglas en inglés) "
+"ofrecen apoyo para las mujeres embarazadas y servicios de bienestar para los "
+"niños. El CDPH también tiene un buscador de recursos para muchas de las "
+"necesidades que tienen las familias que están esperando o que ya tienen "
+"niños pequeños, inclusive cuidado de la salud y otros apoyos como ropa, "
+"asientos de carro para bebés y más. <a href=\"http://www.cityofchicago.org/"
+"city/en/depts/cdph.html/\">Contacte al Departamento de Salud Pública de "
+"Chicago</a> para obtener más detalles."
 
 #: portal/templates/connect.html:9
 msgid "Connect"
@@ -867,25 +870,28 @@ msgstr ""
 
 #: portal/templates/how-to-apply.html:15 portal/templates/index.html:113
 msgid "Apply Today"
-msgstr "Aplique hoy"
+msgstr "Llene la solicitud hoy mismo"
 
 #: portal/templates/index.html:33 portal/templates/index.html.py:81
 msgid ""
 "There is no limit to what your child can accomplish! Jumpstart your child's "
 "education with Chicago Early Learning!"
 msgstr ""
+"¡No hay ningún límite para lo que su niño puede lograr! ¡Tenga un buen "
+"comienzo en la educación de su niño, explore la Educación Temprana de "
+"Chicago!"
 
 #: portal/templates/index.html:35 portal/templates/index.html.py:83
 msgid "Complete your child's preschool application online today!"
-msgstr "¡Complete una aplicación para su niño hoy para la escuela preescolar!"
+msgstr "¡Complete hoy la solicitud al preescolar de su niño en línea!"
 
 #: portal/templates/index.html:37 portal/templates/index.html.py:85
 msgid ""
-"If your child qualifies, you will receive an email on June 1st with "
+"If your child qualifies, you will receive an email very soon with "
 "information on how to verify your child’s assignment."
 msgstr ""
-"Si califica su niño, reciba un correo electrónico el 1st de junio con "
-"información en cómo verificar la asignación de su niño."
+"Si su niño califica, usted recibirá un correo electrónico este verano con "
+"información acerca de cómo puede verificar la asignación de su niño."
 
 #: portal/templates/index.html:39
 #, python-format
@@ -893,8 +899,8 @@ msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
 "information."
 msgstr ""
-"¿Preguntas? Visite nuestra  <a href=\"%(faq_url)s\">pagina de Preguntas y "
-"Respuestas</a> para más información. "
+"¿Preguntas? Explore nuestra <a href=\"%(faq_url)s\">pagina de Preguntas y "
+"Respuestas</a> para obtener mayor información. "
 
 #: portal/templates/index.html:48
 msgid "Enter an address, center, or zip code"
@@ -924,16 +930,18 @@ msgid ""
 "better prepared for success in both kindergarten and over a lifetime of "
 "learning."
 msgstr ""
-"Niños que tienen participación en enseñanza y actividades de temprana edad "
-"tendrán éxito para entrar al Kínder y más allá."
+"Los niños que participan en experiencias tempranas de aprendizaje de alta "
+"calidad están mejor preparados para tener éxito, tanto en el jardín de "
+"niños, como en el transcurso de toda una vida de aprendizaje."
 
 #: portal/templates/index.html:101
 msgid "Learn more about high quality early learning programs"
-msgstr "Aprenda más de los programas de altas calidades"
+msgstr ""
+"Aprenda más acerca de los programas de educación temprana de alta calidad"
 
 #: portal/templates/index.html:105
 msgid "Find & Compare"
-msgstr "Busque y Compare"
+msgstr "Encuentre y Compare"
 
 #: portal/templates/index.html:107
 msgid ""
@@ -941,51 +949,47 @@ msgid ""
 "you live or work, or by other features you care most about and then compare "
 "your favorite programs."
 msgstr ""
-"Busque por la dirección donde usted vive o trabaja para encontrar "
-"rápidamente todos los programas de educación temprana, ubicados cerca de "
-"usted. Afine su búsqueda para así encontrar las características que mas le "
-"interesen. Escoja sus favoritos y compárelos con la lista."
+"Encuentre el programa escolar apropiado para su niño. Busque por medio de su "
+"dirección de casa o del trabajo, o por medio de cualquier otra forma que "
+"usted quiera, y luego compare sus programas favoritos."
 
 #: portal/templates/index.html:108
 msgid "Find and compare locations now"
-msgstr "Encuentre y compare ubicaciones ahora"
+msgstr "Encuentre y compare los programas ahora"
 
 #: portal/templates/index.html:115
+#, python-format
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year old? <a "
 "href=\"%(how_to_apply_url)s\">Learn more</a> about the application and "
 "enrollment process or call <a href=\"tel:3122291690\">312-229-1690</a> with "
 "your questions. Then fill out a preschool application."
 msgstr ""
-"¿Está preparado para aplicar para su niño que tiene 3 o 4 años? <a href="
-"\"%(how_to_apply_url)s\">Obtenga más información</a> de la aplicación y el "
-"proceso de solicitud o llame al (312) 229-1690 con sus preguntas. Después "
-"complete una solicitud."
+"¿Está listo para llenar su solicitud para un programa preescolar para su "
+"niño de 3 o 4 años? <a href=\"%(how_to_apply_url)s\">Aprenda más</a> acerca "
+"de la solicitud y el proceso de inscripción o llame al 312-229-1690 con sus "
+"preguntas. Luego llene la solicitud para el preescolar."
 
 #: portal/templates/index.html:116
 msgid "Fill out an application online"
-msgstr "Complete una aplicación preescolar"
+msgstr "Llene la solicitud en línea"
 
 #: portal/templates/location.html:85
 msgid ""
-"If your child will be younger than 3 years old prior to September 1, 2016, "
+"If your child will be younger than 3 years old prior to September 1, 2017, "
 "there are infant/toddler programs available. Please contact the site "
 "directly for enrollment information for these programs."
 msgstr ""
-"Si su hijo que no va a cumplir 3 años antes del 1 de septiembre de 2016 hay "
+"Si su hijo que no va a cumplir 3 años antes del 1 de septiembre de 2017 hay "
 "programas de aprendizaje infantil. Por favor contacte directamente al "
 "programa para más información."
 
 #: portal/templates/location.html:90
-#, fuzzy
-#| msgid ""
-#| "Children must be 3 or 4 years old by September 1, 2016 to use this "
-#| "application for preschool programs (Ages 3 - 5)."
 msgid ""
-"If your child is 3 or 4 years old prior to September 1, 2016, your child "
+"If your child is 3 or 4 years old prior to September 1, 2017, your child "
 "will be eligible for preschool programs."
 msgstr ""
-"Los niños deben tener 3 ó 4 años antes del 1 de septiembre de 2016 para "
+"Los niños deben tener 3 ó 4 años antes del 1 de septiembre de 2017 para "
 "completar una aplicación de programas pre-escolares (3 - 5 años)."
 
 #: portal/templates/location.html:93
