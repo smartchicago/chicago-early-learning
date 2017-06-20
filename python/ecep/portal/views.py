@@ -65,6 +65,9 @@ class Announcements(TemplateView):
 class Outreach(TemplateView):
     template_name = "outreach.html"
 
+class OutreachRedesign(TemplateView):
+    template_name = "outreach-redesign.html"
+
 
 def browse(request):
     # If a search query was passed in, see if we can find a matching location
