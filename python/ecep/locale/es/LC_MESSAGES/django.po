@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 22:02-0500\n"
+"POT-Creation-Date: 2017-06-20 21:39-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -503,8 +503,8 @@ msgstr "Ingrese su dirección"
 msgid "Click to use your current location"
 msgstr "Haga clic para usar su ubicación actual"
 
-#: portal/templates/base-search.html:26 portal/templates/index.html:51
-#: portal/templates/index.html.py:69 portal/templates/index.html:70
+#: portal/templates/base-search.html:26 portal/templates/index.html:52
+#: portal/templates/index.html.py:70 portal/templates/index.html:71
 msgid "Search"
 msgstr "Buscar"
 
@@ -522,7 +522,7 @@ msgid "For Families"
 msgstr "Para Familias"
 
 #: portal/templates/base.html:107 portal/templates/city-resources.html:7
-#: portal/templates/city-resources.html:15
+#: portal/templates/city-resources.html:22
 msgid "City Resources"
 msgstr "Recursos de la ciudad"
 
@@ -545,27 +545,27 @@ msgstr "Sobre del portal del Chicago Educacíon Temprana"
 msgid "Built by"
 msgstr "Construido por"
 
-#: portal/templates/base.html:156
+#: portal/templates/base.html:153
 msgid "Give us feedback"
 msgstr "Opine para mejorar"
 
-#: portal/templates/base.html:156
+#: portal/templates/base.html:153
 msgid "to help make the Chicago Early Learning Portal better."
 msgstr "el portal del Chicago Educacíon Temprana."
 
-#: portal/templates/base.html:158
+#: portal/templates/base.html:156
 msgid "Keep in touch by signing up for the"
 msgstr "Subscriba a nuestro"
 
-#: portal/templates/base.html:158
+#: portal/templates/base.html:156
 msgid "Early Learning Email Newsletter"
 msgstr "boletín informativo de Chicago Educación Temprana"
 
-#: portal/templates/base.html:172
+#: portal/templates/base.html:174
 msgid "Save and Share Permalink"
 msgstr "Guarde y comparta el enlace permanente"
 
-#: portal/templates/base.html:175
+#: portal/templates/base.html:177
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -596,7 +596,7 @@ msgstr "Haga clic para ver su lista"
 msgid "Community"
 msgstr "Organizaciones comunitarias"
 
-#: portal/templates/city-resources.html:19
+#: portal/templates/city-resources.html:26
 msgid ""
 "The City of Chicago and Mayor Rahm Emanuel are committed to bringing access "
 "to high quality early learning opportunities to families throughout the "
@@ -611,7 +611,7 @@ msgstr ""
 "para comenzar a estimular a su niño en su aprendizaje temprano en otros "
 "entornos."
 
-#: portal/templates/city-resources.html:26
+#: portal/templates/city-resources.html:33
 msgid ""
 "Connect4Tots provides text messages on FREE resources for parents and "
 "guardians of toddlers ages 1 to 3. Connect4Tots parents and guardians "
@@ -627,11 +627,11 @@ msgstr ""
 "eventos en la Ciudad de Chicago sobre salud y seguridad, educación, "
 "servicios públicos ¡y más!"
 
-#: portal/templates/city-resources.html:28
+#: portal/templates/city-resources.html:35
 msgid "Sign Up Today!"
 msgstr "¡Suscríbase hoy!"
 
-#: portal/templates/city-resources.html:30
+#: portal/templates/city-resources.html:37
 msgid ""
 "Text <span class=\"tot\">TOT</span><span class=\"opt7\">OPT7</span> to "
 "311311 or use <a href=\"http://chitot.org/enroll\">this online form.</a>"
@@ -640,7 +640,7 @@ msgstr ""
 "\"opt7\">OPT7</span> al 311311 o use este <a href=\"http://chitot.org/enroll"
 "\">formulario en línea.</a>"
 
-#: portal/templates/city-resources.html:32
+#: portal/templates/city-resources.html:39
 msgid ""
 "When you enroll, you will be asked to provide your child’s date of birth and "
 "sex, your city address, and your preferred language (English, Spanish, or "
@@ -653,15 +653,15 @@ msgstr ""
 "automáticamente de 2 a 3 mensajes por semana con consejos y sugerencias "
 "útiles."
 
-#: portal/templates/city-resources.html:34
+#: portal/templates/city-resources.html:41
 msgid "Standard text messaging rates may apply."
 msgstr "Las tarifas estándar para enviar mensajes de texto pueden aplicar."
 
-#: portal/templates/city-resources.html:36
+#: portal/templates/city-resources.html:43
 msgid "Tell your Chicago Friends!"
 msgstr "¡Dígale a sus amigos en Chicago!"
 
-#: portal/templates/city-resources.html:38
+#: portal/templates/city-resources.html:45
 msgid ""
 "Are you already a Connect4Tots parent? Let your other Chicago friends who "
 "are parents of toddlers know so they can get important text messages on FREE "
@@ -672,11 +672,11 @@ msgstr ""
 "también puedan recibir mensajes de texto con recursos GRATIS para los que "
 "califiquen."
 
-#: portal/templates/city-resources.html:40
+#: portal/templates/city-resources.html:47
 msgid "Additional Information"
 msgstr "Información adicional"
 
-#: portal/templates/city-resources.html:42
+#: portal/templates/city-resources.html:49
 msgid ""
 "Connect4Tots is sponsored by the City of Chicago and the University of "
 "Chicago Urban Labs. Urban Labs will evaluate the effects of the program by "
@@ -696,11 +696,11 @@ msgstr ""
 "\"mailto:Connect4TotsFeedback@cityofchicago.org"
 "\">Connect4TotsFeedback@cityofchicago.org</a>."
 
-#: portal/templates/city-resources.html:54
+#: portal/templates/city-resources.html:62
 msgid "Chicago Park District"
 msgstr "Distrito de Parques de Chicago"
 
-#: portal/templates/city-resources.html:55
+#: portal/templates/city-resources.html:63
 msgid ""
 "Many parks offer early childhood recreation classes— moms, pops, and tots "
 "interaction, play group, preschool, puppetry, storytelling, and Moms, Dads, "
@@ -717,11 +717,11 @@ msgstr ""
 "href=\"http://www.chicagoparkdistrict.com/\">Visite el Distrito de Parques "
 "de Chicago</a> para buscar e inscribirse en una clase cerca de usted."
 
-#: portal/templates/city-resources.html:65
+#: portal/templates/city-resources.html:74
 msgid "Chicago City of Learning"
 msgstr "Chicago, Ciudad de Aprendizaje"
 
-#: portal/templates/city-resources.html:66
+#: portal/templates/city-resources.html:75
 msgid ""
 "Chicago City of Learning (CCOL) is a groundbreaking initiative that joins "
 "together learning opportunities for young people in a way that allows them "
@@ -738,11 +738,11 @@ msgstr ""
 "href=\"https://chicagocityoflearning.org/\">Visita CCOL</a> para encontrar "
 "las oportunidades que existen cerca de usted."
 
-#: portal/templates/city-resources.html:76
+#: portal/templates/city-resources.html:86
 msgid "Chicago Public Library"
 msgstr "Bibliotecas Públicas de Chicago"
 
-#: portal/templates/city-resources.html:77
+#: portal/templates/city-resources.html:87
 msgid ""
 "The Chicago Public Library (CPL) has many enriching opportunities for "
 "children including early learning spaces at libraries and preschool reading "
@@ -765,11 +765,11 @@ msgstr ""
 "Distrito Bibliotecario. <a href=\"http://www.chipublib.org/\">Contacta a "
 "CPL</a> para obtener más detalles."
 
-#: portal/templates/city-resources.html:88
+#: portal/templates/city-resources.html:99
 msgid "Chicago Children's Museum"
 msgstr "Museo de Niños de Chicago"
 
-#: portal/templates/city-resources.html:89
+#: portal/templates/city-resources.html:100
 msgid ""
 "The Chicago Children’s Museum features a number of early learning spaces for "
 "children to support the development of communities where play and learning "
@@ -790,11 +790,11 @@ msgstr ""
 "<a href=\"http://www.chicagochildrensmuseum.org/\">Contacte al Museo de "
 "Niños de Chicago</a> para obtener más detalles."
 
-#: portal/templates/city-resources.html:99
+#: portal/templates/city-resources.html:111
 msgid "Chicago Department of Public Health"
 msgstr "Departamento de Salud Pública de Chicago"
 
-#: portal/templates/city-resources.html:100
+#: portal/templates/city-resources.html:112
 msgid ""
 "The foundation for early learning and a child’s success starts with maternal "
 "and infant health. The Chicago Department of Public Health (CDPH)’s "
@@ -872,7 +872,7 @@ msgstr ""
 msgid "Apply Today"
 msgstr "Llene la solicitud hoy mismo"
 
-#: portal/templates/index.html:33 portal/templates/index.html.py:81
+#: portal/templates/index.html:34 portal/templates/index.html.py:82
 msgid ""
 "There is no limit to what your child can accomplish! Jumpstart your child's "
 "education with Chicago Early Learning!"
@@ -881,19 +881,22 @@ msgstr ""
 "comienzo en la educación de su niño, explore la Educación Temprana de "
 "Chicago!"
 
-#: portal/templates/index.html:35 portal/templates/index.html.py:83
+#: portal/templates/index.html:36 portal/templates/index.html.py:84
 msgid "Complete your child's preschool application online today!"
 msgstr "¡Complete hoy la solicitud al preescolar de su niño en línea!"
 
-#: portal/templates/index.html:37 portal/templates/index.html.py:85
+#: portal/templates/index.html:38 portal/templates/index.html.py:86
+#, python-format
 msgid ""
-"If your child qualifies, you will receive an email very soon with "
-"information on how to verify your child’s assignment."
+"The Colman Family Resource Center will be closed June 21st and 22nd. Please "
+"see <a href=\"%(how_to_apply_url)s\">this list</a> for other options, and "
+"plan to visit another Family Resource Center that day."
 msgstr ""
-"Si su niño califica, usted recibirá un correo electrónico este verano con "
-"información acerca de cómo puede verificar la asignación de su niño."
+"El Centro de Recursos Familiares en Colman estará cerrado los días 21 y 22 "
+"de junio. Por favor <a href=\"%(how_to_apply_url)s\">vea esta lista</a> para "
+"otras opciones, y planea visitar otro centro este día."
 
-#: portal/templates/index.html:39
+#: portal/templates/index.html:40
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
@@ -902,15 +905,15 @@ msgstr ""
 "¿Preguntas? Explore nuestra <a href=\"%(faq_url)s\">pagina de Preguntas y "
 "Respuestas</a> para obtener mayor información. "
 
-#: portal/templates/index.html:48
+#: portal/templates/index.html:49
 msgid "Enter an address, center, or zip code"
 msgstr "Ingrese su dirección, escuela, o código postal"
 
-#: portal/templates/index.html:56
+#: portal/templates/index.html:57
 msgid "Use your current location"
 msgstr "Usar su ubicación actual"
 
-#: portal/templates/index.html:87
+#: portal/templates/index.html:88
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
@@ -920,11 +923,11 @@ msgstr ""
 "Respuestas</a> para más información, o llame al Chicago Early Learning línea "
 "de acceso directo:"
 
-#: portal/templates/index.html:98
+#: portal/templates/index.html:99
 msgid "Learn More"
 msgstr "Aprenda más"
 
-#: portal/templates/index.html:100
+#: portal/templates/index.html:101
 msgid ""
 "Children who participate in high-quality early learning experiences are "
 "better prepared for success in both kindergarten and over a lifetime of "
@@ -934,16 +937,16 @@ msgstr ""
 "calidad están mejor preparados para tener éxito, tanto en el jardín de "
 "niños, como en el transcurso de toda una vida de aprendizaje."
 
-#: portal/templates/index.html:101
+#: portal/templates/index.html:102
 msgid "Learn more about high quality early learning programs"
 msgstr ""
 "Aprenda más acerca de los programas de educación temprana de alta calidad"
 
-#: portal/templates/index.html:105
+#: portal/templates/index.html:106
 msgid "Find & Compare"
 msgstr "Encuentre y Compare"
 
-#: portal/templates/index.html:107
+#: portal/templates/index.html:108
 msgid ""
 "Find the right preschool program for your child. Search by the address where "
 "you live or work, or by other features you care most about and then compare "
@@ -953,7 +956,7 @@ msgstr ""
 "dirección de casa o del trabajo, o por medio de cualquier otra forma que "
 "usted quiera, y luego compare sus programas favoritos."
 
-#: portal/templates/index.html:108
+#: portal/templates/index.html:109
 msgid "Find and compare locations now"
 msgstr "Encuentre y compare los programas ahora"
 
@@ -1264,6 +1267,13 @@ msgstr ""
 #: templates/admin/portal/location/delete_confirmation.html:30
 msgid "Yes, I'm sure"
 msgstr ""
+
+#~ msgid ""
+#~ "If your child qualifies, you will receive an email very soon with "
+#~ "information on how to verify your child’s assignment."
+#~ msgstr ""
+#~ "Si su niño califica, usted recibirá un correo electrónico este verano con "
+#~ "información acerca de cómo puede verificar la asignación de su niño."
 
 #~ msgid ""
 #~ "The application is still open for the 2016 – 2017 school year. The "

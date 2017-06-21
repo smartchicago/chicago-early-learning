@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-15 22:02-0500\n"
+"POT-Creation-Date: 2017-06-20 21:39-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -462,8 +462,8 @@ msgstr ""
 msgid "Click to use your current location"
 msgstr ""
 
-#: portal/templates/base-search.html:26 portal/templates/index.html:51
-#: portal/templates/index.html.py:69 portal/templates/index.html:70
+#: portal/templates/base-search.html:26 portal/templates/index.html:52
+#: portal/templates/index.html.py:70 portal/templates/index.html:71
 msgid "Search"
 msgstr ""
 
@@ -481,7 +481,7 @@ msgid "For Families"
 msgstr ""
 
 #: portal/templates/base.html:107 portal/templates/city-resources.html:7
-#: portal/templates/city-resources.html:15
+#: portal/templates/city-resources.html:22
 msgid "City Resources"
 msgstr ""
 
@@ -502,27 +502,27 @@ msgstr ""
 msgid "Built by"
 msgstr ""
 
-#: portal/templates/base.html:156
+#: portal/templates/base.html:153
 msgid "Give us feedback"
 msgstr ""
 
-#: portal/templates/base.html:156
+#: portal/templates/base.html:153
 msgid "to help make the Chicago Early Learning Portal better."
 msgstr ""
 
-#: portal/templates/base.html:158
+#: portal/templates/base.html:156
 msgid "Keep in touch by signing up for the"
 msgstr ""
 
-#: portal/templates/base.html:158
+#: portal/templates/base.html:156
 msgid "Early Learning Email Newsletter"
 msgstr ""
 
-#: portal/templates/base.html:172
+#: portal/templates/base.html:174
 msgid "Save and Share Permalink"
 msgstr ""
 
-#: portal/templates/base.html:175
+#: portal/templates/base.html:177
 msgid ""
 "Save the following link, or share it with friends, family, or co-workers."
 msgstr ""
@@ -551,7 +551,7 @@ msgstr ""
 msgid "Community"
 msgstr ""
 
-#: portal/templates/city-resources.html:19
+#: portal/templates/city-resources.html:26
 msgid ""
 "The City of Chicago and Mayor Rahm Emanuel are committed to bringing access "
 "to high quality early learning opportunities to families throughout the "
@@ -560,7 +560,7 @@ msgid ""
 "child with early learning in other environments."
 msgstr ""
 
-#: portal/templates/city-resources.html:26
+#: portal/templates/city-resources.html:33
 msgid ""
 "Connect4Tots provides text messages on FREE resources for parents and "
 "guardians of toddlers ages 1 to 3. Connect4Tots parents and guardians "
@@ -569,17 +569,17 @@ msgid ""
 "event resources in the City of Chicago, and more!"
 msgstr ""
 
-#: portal/templates/city-resources.html:28
+#: portal/templates/city-resources.html:35
 msgid "Sign Up Today!"
 msgstr ""
 
-#: portal/templates/city-resources.html:30
+#: portal/templates/city-resources.html:37
 msgid ""
 "Text <span class=\"tot\">TOT</span><span class=\"opt7\">OPT7</span> to "
 "311311 or use <a href=\"http://chitot.org/enroll\">this online form.</a>"
 msgstr ""
 
-#: portal/templates/city-resources.html:32
+#: portal/templates/city-resources.html:39
 msgid ""
 "When you enroll, you will be asked to provide your child’s date of birth and "
 "sex, your city address, and your preferred language (English, Spanish, or "
@@ -587,26 +587,26 @@ msgid ""
 "messages per week with helpful guidance and tips."
 msgstr ""
 
-#: portal/templates/city-resources.html:34
+#: portal/templates/city-resources.html:41
 msgid "Standard text messaging rates may apply."
 msgstr ""
 
-#: portal/templates/city-resources.html:36
+#: portal/templates/city-resources.html:43
 msgid "Tell your Chicago Friends!"
 msgstr ""
 
-#: portal/templates/city-resources.html:38
+#: portal/templates/city-resources.html:45
 msgid ""
 "Are you already a Connect4Tots parent? Let your other Chicago friends who "
 "are parents of toddlers know so they can get important text messages on FREE "
 "resources for those who qualify."
 msgstr ""
 
-#: portal/templates/city-resources.html:40
+#: portal/templates/city-resources.html:47
 msgid "Additional Information"
 msgstr ""
 
-#: portal/templates/city-resources.html:42
+#: portal/templates/city-resources.html:49
 msgid ""
 "Connect4Tots is sponsored by the City of Chicago and the University of "
 "Chicago Urban Labs. Urban Labs will evaluate the effects of the program by "
@@ -618,11 +618,11 @@ msgid ""
 "org</a>."
 msgstr ""
 
-#: portal/templates/city-resources.html:54
+#: portal/templates/city-resources.html:62
 msgid "Chicago Park District"
 msgstr ""
 
-#: portal/templates/city-resources.html:55
+#: portal/templates/city-resources.html:63
 msgid ""
 "Many parks offer early childhood recreation classes— moms, pops, and tots "
 "interaction, play group, preschool, puppetry, storytelling, and Moms, Dads, "
@@ -632,11 +632,11 @@ msgid ""
 "District</a> to find and sign up for a class near you."
 msgstr ""
 
-#: portal/templates/city-resources.html:65
+#: portal/templates/city-resources.html:74
 msgid "Chicago City of Learning"
 msgstr ""
 
-#: portal/templates/city-resources.html:66
+#: portal/templates/city-resources.html:75
 msgid ""
 "Chicago City of Learning (CCOL) is a groundbreaking initiative that joins "
 "together learning opportunities for young people in a way that allows them "
@@ -646,11 +646,11 @@ msgid ""
 "org/\">Visit CCOL</a> to find opportunities near you."
 msgstr ""
 
-#: portal/templates/city-resources.html:76
+#: portal/templates/city-resources.html:86
 msgid "Chicago Public Library"
 msgstr ""
 
-#: portal/templates/city-resources.html:77
+#: portal/templates/city-resources.html:87
 msgid ""
 "The Chicago Public Library (CPL) has many enriching opportunities for "
 "children including early learning spaces at libraries and preschool reading "
@@ -662,11 +662,11 @@ msgid ""
 "<a href=\"http://www.chipublib.org/\">Contact CPL</a> for details."
 msgstr ""
 
-#: portal/templates/city-resources.html:88
+#: portal/templates/city-resources.html:99
 msgid "Chicago Children's Museum"
 msgstr ""
 
-#: portal/templates/city-resources.html:89
+#: portal/templates/city-resources.html:100
 msgid ""
 "The Chicago Children’s Museum features a number of early learning spaces for "
 "children to support the development of communities where play and learning "
@@ -678,11 +678,11 @@ msgid ""
 "details."
 msgstr ""
 
-#: portal/templates/city-resources.html:99
+#: portal/templates/city-resources.html:111
 msgid "Chicago Department of Public Health"
 msgstr ""
 
-#: portal/templates/city-resources.html:100
+#: portal/templates/city-resources.html:112
 msgid ""
 "The foundation for early learning and a child’s success starts with maternal "
 "and infant health. The Chicago Department of Public Health (CDPH)’s "
@@ -748,71 +748,73 @@ msgstr ""
 msgid "Apply Today"
 msgstr ""
 
-#: portal/templates/index.html:33 portal/templates/index.html.py:81
+#: portal/templates/index.html:34 portal/templates/index.html.py:82
 msgid ""
 "There is no limit to what your child can accomplish! Jumpstart your child's "
 "education with Chicago Early Learning!"
 msgstr ""
 
-#: portal/templates/index.html:35 portal/templates/index.html.py:83
+#: portal/templates/index.html:36 portal/templates/index.html.py:84
 msgid "Complete your child's preschool application online today!"
 msgstr ""
 
-#: portal/templates/index.html:37 portal/templates/index.html.py:85
+#: portal/templates/index.html:38 portal/templates/index.html.py:86
+#, python-format
 msgid ""
-"If your child qualifies, you will receive an email very soon with "
-"information on how to verify your child’s assignment."
+"The Colman Family Resource Center will be closed June 21st and 22nd. Please "
+"see <a href=\"%(how_to_apply_url)s\">this list</a> for other options, and "
+"plan to visit another Family Resource Center that day."
 msgstr ""
 
-#: portal/templates/index.html:39
+#: portal/templates/index.html:40
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
 "information."
 msgstr ""
 
-#: portal/templates/index.html:48
+#: portal/templates/index.html:49
 msgid "Enter an address, center, or zip code"
 msgstr ""
 
-#: portal/templates/index.html:56
+#: portal/templates/index.html:57
 msgid "Use your current location"
 msgstr ""
 
-#: portal/templates/index.html:87
+#: portal/templates/index.html:88
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
 "information, or call the Chicago Early Learning Hotline:"
 msgstr ""
 
-#: portal/templates/index.html:98
+#: portal/templates/index.html:99
 msgid "Learn More"
 msgstr ""
 
-#: portal/templates/index.html:100
+#: portal/templates/index.html:101
 msgid ""
 "Children who participate in high-quality early learning experiences are "
 "better prepared for success in both kindergarten and over a lifetime of "
 "learning."
 msgstr ""
 
-#: portal/templates/index.html:101
+#: portal/templates/index.html:102
 msgid "Learn more about high quality early learning programs"
 msgstr ""
 
-#: portal/templates/index.html:105
+#: portal/templates/index.html:106
 msgid "Find & Compare"
 msgstr ""
 
-#: portal/templates/index.html:107
+#: portal/templates/index.html:108
 msgid ""
 "Find the right preschool program for your child. Search by the address where "
 "you live or work, or by other features you care most about and then compare "
 "your favorite programs."
 msgstr ""
 
-#: portal/templates/index.html:108
+#: portal/templates/index.html:109
 msgid "Find and compare locations now"
 msgstr ""
 
