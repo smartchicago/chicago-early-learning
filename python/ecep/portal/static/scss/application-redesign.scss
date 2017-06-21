@@ -1,0 +1,73 @@
+/* --- Variables --- */
+
+// CEL Colors
+$blue:      #1dc1ea;
+$green:     #a3d65e;
+$orange:    #ee703f;
+$yellow:    #ffe009;
+
+$light-blue: #48dcf4;
+$light-green: #a2e690;
+$light-orange: #ee8547;
+$light-yellow: #fff04a;
+
+$deep-blue: #1ba7d5;
+$deep-green: #81c538;
+$deep-orange: #ee5713;
+$deep-yellow: #ffc104;
+
+$white: #ffffff;
+$light-gray: #d6d6d6;
+$dark-gray: #787878;
+$black: #222222;
+
+$background-gray: #f1f1f1;
+
+
+/* --- Base --- */
+body {
+  background-color: $background-gray;
+}
+
+/* --- Global Nav --- */
+
+
+
+/* --- Outreach Page --- */ 
+
+#outreach-wrapper {
+
+  margin-top: 20px;
+
+  .container {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 #BDBBBB;
+  }
+
+  #dummy-nav-container {
+    padding: 0;
+  }
+
+  #outreach-nav {
+
+    .nav-tabs {
+      border-bottom: 3px solid $light-gray;
+      
+      .nav-item {
+        margin-bottom: -3px;
+      }
+
+    }
+
+    .nav-tabs .nav-link {
+      color: $dark-gray;
+      border: none;
+    }
+
+    .nav-tabs .nav-link.active {
+      color: $blue;
+      border-bottom: 3px solid $blue;
+    }
+  }
+
+}

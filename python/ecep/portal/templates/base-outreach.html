@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load i18n staticfiles static compress %}
+<!DOCTYPE html>{% load i18n staticfiles static sass_tags compress %}
 <html>
 <head>
     <title>
@@ -15,7 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
     <!-- Defined CSS -->
-    <link href='{% static "css/application-redesign.css" %}' rel="stylesheet">
+    <link href='{% sass_src "scss/application-redesign.scss" %}' rel="stylesheet">
     <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
 
     <!-- Favicons -->
