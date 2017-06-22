@@ -55,6 +55,21 @@ body {
       
       .nav-item {
         margin-bottom: -3px;
+
+        .outreach-tab-logo {
+          display: block;
+          width: 25px;
+          height: 25px;
+          margin: 10px auto;
+        }
+
+        #resources-logo {
+          background: url('../img/redesign-icons/browser.svg'); 
+          background-size: 25px 25px;
+        }
+        #events-logo {}
+        #share-logo {}
+        #impact-logo {}
       }
 
     }
@@ -67,7 +82,13 @@ body {
     .nav-tabs .nav-link.active {
       color: $blue;
       border-bottom: 3px solid $blue;
+
+      .nav-item .outreach-tab-logo {
+        stroke: $blue;
+      }
     }
+
+
   }
 
 }

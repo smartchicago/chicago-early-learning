@@ -1,9 +1,7 @@
-# Copyright (c) 2012, 2013 Azavea, Inc.
-# See LICENSE in the project root for copying permission
-
-
-import os
 import djcelery
+import mimetypes
+import os
+
 
 djcelery.setup_loader()
 BROKER_URL = 'amqp://guest:guest@localhost:5672/'
@@ -80,6 +78,9 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+
+# Add SVG support for serving staticfiles
+mimetypes.add_type("image/svg+xml", ".svg", True)
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

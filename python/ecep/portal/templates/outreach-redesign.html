@@ -9,6 +9,7 @@
 
 {% block template_headers %}
 <script type="text/javascript">
+
 </script>
 {% endblock %}
 
@@ -19,22 +20,27 @@
             <ul class="nav nav-tabs nav-fill" role="tablist">
                 <li class="nav-item">
                     <a href="#resources" class="nav-link active" data-toggle="tab" role="tab">
-                    Resources
+                        {% static 'img/redesign-icons/browser.svg' %}
+                        <!-- <div class="outreach-tab-logo" id="resources-logo"></div> -->
+                        Resources
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#events" class="nav-link" data-toggle="tab" role="tab">
-                    Events
+                        <div class="outreach-tab-logo" id="events-logo"></div>
+                        Events
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#share" class="nav-link" data-toggle="tab" role="tab">
-                    Share
+                        <div class="outreach-tab-logo" id="share-logo"></div>
+                        Share
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#impact" class="nav-link" data-toggle="tab" role="tab">
-                    Impact
+                        <div class="outreach-tab-logo" id="impact-logo"></div>
+                        Impact
                     </a>
                 </li>
             </ul>
@@ -52,7 +58,10 @@
                 <p>Share</p>
             </div>
             <div class="tab-pane fade" role="tabpanel" id="impact">
-                <p>Impact</p>
+                <div>
+                    <h1>Impact</h1>
+                </div>
+
             </div>
             
         </div>
