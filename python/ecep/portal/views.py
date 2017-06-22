@@ -68,6 +68,9 @@ class Outreach(TemplateView):
 class OutreachRedesign(TemplateView):
     template_name = "outreach-redesign.html"
 
+class Starred(TemplateView):
+    template_name = 'starred.html'
+
 
 def browse(request):
     # If a search query was passed in, see if we can find a matching location
@@ -535,21 +538,6 @@ def neighborhood_api(request):
 
     context = {'neighborhoods': count_list}
     return _make_response(context, etag_hash)
-
-
-class Starred(TemplateView):
-    template_name = 'starred.html'
-
-
-def enroll_plan(request, pk):
-    location = get_object_or_404(Location, pk=pk)
-    return render(request, 'enroll-plan-community.html', {'object': location})
-
-
-class EnrollCommunityPlan(DetailView):
-    """ Display customized printable enrollment plan """
-    template_name = 'enroll-plan-community.html'
-    model = Location
 
 
 def location_csv(request):

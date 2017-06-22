@@ -55,16 +55,8 @@ urlpatterns = patterns(
     # sms info page
     url(r'^sms/?$', portal_views.SMSInfo.as_view(), name='sms-info'),
 
-    # Contact
-    url(r'^contact/(?P<location_ids>[0-9,]*)/$', 'portal.views.contact', name='contact'),
-    url(
-        r'^contact-thanks/$',
-        TemplateView.as_view(template_name='contact_thanks.html'),
-    ),
-
     # Enroll
     url(r'enroll/?$', portal_views.HowToApply.as_view(), name='enroll-faq'),
-    #url(r'enroll/plan/(?P<pk>\d+)/$', portal_views.enroll_plan, name='enroll-plan'),
 
     # Location Views
     # Need to pass id to view for sitemap, but don't need to do anything with it since this is handled with javascript
