@@ -135,14 +135,10 @@ INSTALLED_APPS = (
     'compressor',
     'sass_processor',
     'portal',
-    'portal.sms',           # This is necessary for the celery worker to respond to messages
-    'django_twilio',
     'gunicorn',
     'faq',
     'rosetta',
-    'djcelery',
     'redactor',
-    'django_forms_bootstrap',
     'djrill',
 )
 
@@ -200,11 +196,4 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
-# Email
-DEFAULT_FROM_EMAIL = 'earlylearning@smartchicagocollaborative.org'
-try:
-    MANDRILL_API_KEY
-    EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
-except NameError:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'

@@ -22,8 +22,6 @@ from django.template.defaultfilters import slugify
 from faq.models import Topic, Question
 
 from models import Location, Neighborhood, Contact
-from tasks import send_emails
-from forms import ContactForm
 from operator import attrgetter
 
 logger = logging.getLogger(__name__)
@@ -97,61 +95,6 @@ def browse(request):
     return render(request, 'browse.html', {
         'filters_main': fields[:6],
         'filters_more': fields[6:],
-    })
-
-
-def contact(request, location_ids):
-    location_ids = location_ids.split(',')
-    all_locations = Location.objects.filter(pk__in=location_ids, accepted=True)
-
-    form = ContactForm(request.POST or None)
-
-    if form.is_valid():
-        cd = form.cleaned_data
-
-        # Figure out which locations have already been contacted
-        existing_locations_ids = Contact.objects.filter(
-            email=cd['email'],
-            location__in=location_ids
-        ).values_list(
-            'location',
-            flat=True,
-        )
-
-        new_locations_ids = [l.pk for l in all_locations if l.pk not in existing_locations_ids]
-
-        if len(new_locations_ids) > 0:
-            # Create Contact objects for the new locations
-            Contact.objects.bulk_create([
-                Contact(
-                    email=cd['email'],
-                    first_name=cd['first_name'],
-                    last_name=cd['last_name'],
-                    phone=cd['phone'],
-                    address_1=cd['address_1'],
-                    address_2=cd['address_2'],
-                    city=cd['city'],
-                    state=cd['state'],
-                    zip=cd['zip'],
-                    child_1=cd['child_1'],
-                    child_2=cd['child_2'],
-                    child_3=cd['child_3'],
-                    child_4=cd['child_4'],
-                    child_5=cd['child_5'],
-                    message=cd['message'],
-                    location_id=lid
-                ) for lid in new_locations_ids
-            ])
-
-            # Send emails to the inquirer and locations
-            send_emails.delay(cd, new_locations_ids)
-
-        # Redirect to the thanks page
-        return HttpResponseRedirect('/contact-thanks/?new=%s&existing=%s' % (','.join([str(i) for i in new_locations_ids]), ','.join([str(i) for i in existing_locations_ids])))
-
-    return render(request, 'contact.html', {
-        'locations': [l.get_context_dict() for l in all_locations],
-        'form': form,
     })
 
 
