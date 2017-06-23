@@ -56,20 +56,13 @@ body {
       .nav-item {
         margin-bottom: -3px;
 
-        .outreach-tab-logo {
+        .outreach-tab-logo svg {
           display: block;
           width: 25px;
           height: 25px;
           margin: 10px auto;
+          fill: $dark-gray;
         }
-
-        #resources-logo {
-          background: url('../img/redesign-icons/browser.svg'); 
-          background-size: 25px 25px;
-        }
-        #events-logo {}
-        #share-logo {}
-        #impact-logo {}
       }
 
     }
@@ -77,14 +70,16 @@ body {
     .nav-tabs .nav-link {
       color: $dark-gray;
       border: none;
+      font-size: 12px;
+      padding: 1.5em .75em;
     }
 
     .nav-tabs .nav-link.active {
       color: $blue;
       border-bottom: 3px solid $blue;
 
-      .nav-item .outreach-tab-logo {
-        stroke: $blue;
+      .outreach-tab-logo svg {
+        fill: $blue;
       }
     }
 

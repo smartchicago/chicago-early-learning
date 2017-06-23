@@ -2,6 +2,7 @@
 
 {% load i18n %}
 {% load staticfiles %}
+{% load svg %}
 
 {% block title %}
 {% trans "Chicago Early Learning" %} - {% trans "Outreach" %}
@@ -20,26 +21,26 @@
             <ul class="nav nav-tabs nav-fill" role="tablist">
                 <li class="nav-item">
                     <a href="#resources" class="nav-link active" data-toggle="tab" role="tab">
-                        {% static 'img/redesign-icons/browser.svg' %}
+                        <div class="outreach-tab-logo" id="resources-logo">{% svg 'icons/browser' %}</div>
                         <!-- <div class="outreach-tab-logo" id="resources-logo"></div> -->
                         Resources
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#events" class="nav-link" data-toggle="tab" role="tab">
-                        <div class="outreach-tab-logo" id="events-logo"></div>
+                        <div class="outreach-tab-logo" id="events-logo">{% svg 'icons/browser' %}</div>
                         Events
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#share" class="nav-link" data-toggle="tab" role="tab">
-                        <div class="outreach-tab-logo" id="share-logo"></div>
+                        <div class="outreach-tab-logo" id="share-logo">{% svg 'icons/browser' %}</div>
                         Share
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#impact" class="nav-link" data-toggle="tab" role="tab">
-                        <div class="outreach-tab-logo" id="impact-logo"></div>
+                        <div class="outreach-tab-logo" id="impact-logo">{% svg 'icons/browser' %}</div>
                         Impact
                     </a>
                 </li>
