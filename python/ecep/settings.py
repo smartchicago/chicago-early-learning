@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'compressor',
     'sass_processor',
+    'svg',
     'portal',
     'gunicorn',
     'rosetta',
