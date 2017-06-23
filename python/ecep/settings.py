@@ -1,10 +1,5 @@
-import djcelery
 import mimetypes
 import os
-
-
-djcelery.setup_loader()
-BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -136,7 +131,6 @@ INSTALLED_APPS = (
     'sass_processor',
     'portal',
     'gunicorn',
-    'faq',
     'rosetta',
     'redactor',
     'djrill',
