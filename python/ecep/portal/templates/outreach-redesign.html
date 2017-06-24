@@ -22,7 +22,6 @@
                 <li class="nav-item">
                     <a href="#resources" class="nav-link active" data-toggle="tab" role="tab">
                         <div class="outreach-tab-logo" id="resources-logo">{% svg 'icons/browser' %}</div>
-                        <!-- <div class="outreach-tab-logo" id="resources-logo"></div> -->
                         Resources
                     </a>
                 </li>
@@ -53,23 +52,15 @@
                 <div class="row">
                     <div id="resources-body" class="col-md-7">
                         <div id="resources-text">
-                            <h2>Early Learning Resources</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <h3>Early Learning Resources</h3>
+                            <p>{% blocktrans %}{% endblocktrans %}</p>
+                            <p>{% blocktrans %}{% endblocktrans %}</p>
+                            <p>{% blocktrans %}{% endblocktrans %}</p>
+                            <p>{% blocktrans %}{% endblocktrans %}</p>
                         </div>
                         <div id="resources-links-row" class="row">
                             <div class="col-md-6">
-                                <a href="#" class="btn btn-cel btn-green btn-block" role="button">Frequently Asked Questions</a>
+                                <a href="#" class="btn btn-cel btn-green btn-block resources-link" role="button">Frequently Asked Questions</a>
                             </div>
                             <div class="col-md-6">
                                 <a href="#" class="btn btn-cel btn-green btn-block" role="button">Early Learning Programs</a>
@@ -78,19 +69,86 @@
                     </div>
                     <div id="resources-downloads" class="col-md-5">
                         <div class="box box-orange">
-                            <h2>Downloads</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <div class="downloads-header">
+                                <div class="downloads-header-text">
+                                    <h2>Downloads</h2>
+                                </div>
+                                <div class="download-all">
+                                    <a href="#">
+                                        <div class="">
+                                            <h4>Download all</h4>
+                                        </div>
+                                        <div class="download-all-icon">{% svg 'icons/cloud-download' %}</div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="downloads-list">
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Resource Name</h1>
+                                        <h2>PDF</h2>
+                                        <h2>English</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="#">{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Resource Name</h1>
+                                        <h2>PDF</h2>
+                                        <h2>English</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="#">{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Resource Name</h1>
+                                        <h2>PDF</h2>
+                                        <h2>English</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="#">{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Resource Name</h1>
+                                        <h2>PDF</h2>
+                                        <h2>English</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="#">{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Resource Name</h1>
+                                        <h2>PDF</h2>
+                                        <h2>English</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="#">{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

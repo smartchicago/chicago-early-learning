@@ -56,5 +56,94 @@
       margin-bottom: 15px;
     }
   }
+
+  #resources {
+
+    h3 {
+      color: $blue;
+    }
+
+    .resources-link {
+      margin-bottom: 15px;
+    }
+
+    #resources-downloads {
+
+      h1, h2 {
+        font-size: 1.5em;
+        font-weight: 300;
+        margin-bottom: .25em;
+      }
+      
+      .downloads-header {
+        display: flex;
+        
+        .download-all {
+
+          margin-left: auto;
+
+          a { 
+            display: flex;
+            vertical-align: middle;
+          }
+
+          h4 {
+            font-size: .75em;
+            font-weight: 300;
+            margin-bottom: 0;
+            vertical-align: middle;
+            padding-right: .25em;
+          }
+
+          .download-all-icon {
+          }
+
+          svg {
+            width: 1em;
+            height: 2em;
+            vertical-align: center;
+            fill: $white;
+          }
+        }
+      }
+
+      .download-item {
+        display: flex;
+        padding: .5em 0;
+        border-top: 1px solid $white;
+        height: 5em;
+
+        .item-thumbnail {
+          height: 4em;
+          width: 4em;
+          background-color: $white;
+          border: none;
+        }
+
+        .item-description {
+          padding: 0 1em;
+
+          h1 { font-size: .8em; }
+          h2 { font-size: .7em; }
+        }
+
+        .download-icon {
+          margin-left: auto;
+          width: 2em;
+          height: 4em;
+
+          svg {
+            width: 2em;
+            height: 4em;
+            vertical-align: center;
+            fill: $white;
+          }
+        }
+      }
+    }
+  }
+  #events {}
+  #share {}
+  #impact {}
 }
 
