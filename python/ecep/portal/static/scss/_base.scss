@@ -1,0 +1,17 @@
+/* --- Base --- */
+body {
+  background-color: $background-gray;
+}
+
+/* --- Blocks --- */
+
+.box {
+  color: $white;
+  padding: 15px;
+  @include border-radius(2px);
+}
+
+.box-orange {
+  background-color: $orange;
+}
+
