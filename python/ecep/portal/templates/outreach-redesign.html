@@ -48,6 +48,9 @@
     </div>
     <div class="container" id="outreach-container">
         <div id="outreach-content" class="tab-content">
+
+            
+            <!--   Resources Content   -->
             <div class="tab-pane fade show active" role="tabpanel" id="resources">
                 <div class="row">
                     <div id="resources-body" class="col-md-7">
@@ -74,12 +77,7 @@
                                     <h2>Downloads</h2>
                                 </div>
                                 <div class="download-all">
-                                    <a href="#">
-                                        <div class="">
-                                            <h4>Download all</h4>
-                                        </div>
-                                        <div class="download-all-icon">{% svg 'icons/cloud-download' %}</div>
-                                    </a>
+                                    <a href="#" class="btn btn-sm btn-clear">Download all</a>
                                 </div>
                             </div>
                             <div class="downloads-list">
@@ -153,11 +151,20 @@
                     </div>
                 </div>
             </div>
+
+            
+            <!--   Events Content   -->
             <div class="tab-pane fade" role="tabpanel" id="events">
                 <div>
-                    <h1>Events</h1>
+                    <p>{% blocktrans %}Check back often to see where Chicago Early Learning teams are connecting with families throughout the 2017 summer months.{% endblocktrans %}</p>
+                    <div class="calendar-embed">
+                        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%2333ccff&amp;src=6nfr2okcbal0reqhfdfn0nvbd4%40group.calendar.google.com&amp;color=%23BE6D00&amp;ctz=America%2FChicago" style="" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                    </div>
                 </div>
             </div>
+
+
+            <!--   Share Content   -->
             <div class="tab-pane fade" role="tabpanel" id="share">
                 <div>
                     <div id="downloads-row" class="row">
@@ -199,6 +206,9 @@
                     </div>
                 </div>
             </div>
+
+
+            <!--   Impact Content   -->
             <div class="tab-pane fade" role="tabpanel" id="impact">
                 <div id="impact-tableau-embed">
                     <div class='tableauPlaceholder' id='viz1498063303974' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ch&#47;ChiagoEarlyLearningDashboard&#47;WeeklyRecruitmentDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='ChiagoEarlyLearningDashboard&#47;WeeklyRecruitmentDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ch&#47;ChiagoEarlyLearningDashboard&#47;WeeklyRecruitmentDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1498063303974');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1004px';vizElement.style.height='669px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1004px';vizElement.style.height='669px';} else { vizElement.style.width='100%';vizElement.style.height='1169px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
