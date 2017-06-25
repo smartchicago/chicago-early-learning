@@ -13,6 +13,7 @@
     border: none;
     box-shadow: 0 0.25em $border;
     transition-duration: 0s; 
+    margin-bottom: 4px;
 
     @include border-radius(2px);
 
