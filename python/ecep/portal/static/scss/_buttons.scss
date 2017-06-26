@@ -21,7 +21,10 @@
   color: $white;
   @include border-radius(2px);
   
-  &:hover {}
+  &:hover {
+    color: $white;
+    background-color: rgba(0, 0, 0, 0.07)
+  }
   &:active {}
 
 }

@@ -1,0 +1,43 @@
+a {
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .btn-clear {
+
+  }
+}
+
+.link-svg-white {
+
+  svg {
+    fill: $white;
+
+    &:hover {
+      fill: rgba(255, 255 , 255, 0.6);
+    }
+  }
+}
+
+.a-blue {
+  @include link-variant($blue, $deep-blue);
+}
+
+.a-green {
+  @include link-variant($green, $deep-green);
+}
+
+.a-orange {
+  @include link-variant($orange, $deep-orange);
+}
+
+.a-yellow {
+  @include link-variant($yellow, $deep-yellow);
+}
+
+.a-black-orange {
+  @include link-variant($black, $deep-orange);
+}
