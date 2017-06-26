@@ -15,6 +15,7 @@
 }
 
 .btn-clear {
+  transition: 0s;
   padding: .5em 2em;
   background-color: inherit;
   border: 1px solid $white;
@@ -22,6 +23,7 @@
   @include border-radius(2px);
   
   &:hover {
+    transition: 0s;
     color: $white;
     background-color: rgba(0, 0, 0, 0.07)
   }
