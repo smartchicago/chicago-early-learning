@@ -4,6 +4,10 @@
 
   margin-top: 20px;
 
+  h3 {
+    color: $blue;
+  }
+
   .container {
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 #BDBBBB;
@@ -58,10 +62,6 @@
   }
 
   #resources {
-
-    h3 {
-      color: $blue;
-    }
 
     .resources-link {
       margin-bottom: 15px;
