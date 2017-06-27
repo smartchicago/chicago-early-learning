@@ -58,7 +58,7 @@
                             <h3>Chicago Early Learning Resources</h3>
                             <p>{% blocktrans %}Thank you for helping spread the word about enrolling 3 and 4 year olds in early learning programs across Chicago. With your help, we will enroll more children than ever before, especially our highest need families.{% endblocktrans %}</p>
                             <p>{% blocktrans %}Here you will find social media links, talking points, and outreach resources to help share information with Chicago families.{% endblocktrans %}</p>
-                            <p>{% blocktrans %}If you have questions, please visit ChicagoEarlyLearning.org, or call the Chicago Early Learning Hotline:{% endblocktrans %} <a href="" class="a-orange">(312) 229-1690</a></p>
+                            <p>{% blocktrans %}If you have questions, please visit ChicagoEarlyLearning.org, or call the Chicago Early Learning Hotline:{% endblocktrans %} <a href="" class="a-blue">(312) 229-1690</a></p>
                             <p>{% blocktrans %}There are also great resources on ChicagoEarlyLearning.org:{% endblocktrans %}</p>
                         </div>
                         <div id="resources-links-row" class="row">
@@ -179,8 +179,8 @@
                     </div>
 
                     <!-- Video and Introduction -->
-                    <div id="copy-row-2" class="row">
-                        <div class="col-md-4">
+                    <div id="share-video" class="row">
+                        <div class="col-md-4 block">
                             <p>On this page you'll find resources that can be used to spread the word about the Chicago Early Learning site and enrollment process.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -188,7 +188,7 @@
                             consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                             cillum dolore eu fugiat nulla pariatur.</p>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 block">
                             <div class='youtube-container'>
                                 <iframe src='https://www.youtube.com/embed/0-lS0ntMjHc' frameborder='0' allowfullscreen></iframe>
                             </div>
@@ -196,64 +196,87 @@
                     </div>
 
                     <!-- Image Downloads -->
-                    <div id="downloads-row" class="row">
-                        <div class="col-md-4">
-                            <button class="btn btn-cel btn-blue btn-block">Download All Images</button>
+                    <div id="share-downloads">
+                        <div class="row">
+                            <div class="col-md-4 block">
+                                <p>Post these images to social media to help spread the word about Chicago Early Learning enrollment!</p>
+                                <p>Use this link to download all social images:</p>
+                                <button class="btn btn-cel btn-blue center">Download All Images</button>
+                            </div>
+                            <div class="col-md-4 block">
+                                <div class="download-image">
+                                    <div class="download-image-background" id="families-header" style="background-image: url({% static 'img/share-downloads/apply-today.jpg' %})"></div>
+                                    <button class="btn btn-cel btn-blue btn-block">Download</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4 block">
+                                <div class="download-image">
+                                    <div class="download-image-background" id="families-header" style="background-image: url({% static 'img/share-downloads/open-enrollment.jpg' %})"></div>
+                                    <button class="btn btn-cel btn-blue btn-block">Download</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <h1>Download 1</h1>
-                            <button class="btn btn-cel btn-blue btn-block">Download</button>
-                        </div>
-                        <div class="col-md-4">
-                            <h1>Download 2</h1>
-                            <button class="btn btn-cel btn-blue btn-block">Download</button>
-                        </div>
-                        <div class="col-md-4">
-                            <h1>Download 3</h1>
-                            <button class="btn btn-cel btn-blue btn-block">Download</button>
-                        </div>
-                        <div class="col-md-4">
-                            <h1>Download 4</h1>
-                            <button class="btn btn-cel btn-blue btn-block">Download</button>
-                        </div>
-                        <div class="col-md-4">
-                            <h1>Download 5</h1>
-                            <button class="btn btn-cel btn-blue btn-block">Download</button>
+                        <div class="row">
+                            <div class="col-md-4 block">
+                                <div class="download-image">
+                                    <div class="download-image-background" id="families-header" style="background-image: url({% static 'img/share-downloads/chemist-girl.jpg' %})"></div>
+                                    <button class="btn btn-cel btn-blue btn-block">Download</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4 block">
+                                <div class="download-image">
+                                    <div class="download-image-background" id="families-header" style="background-image: url({% static 'img/share-downloads/artist-boy.jpg' %})"></div>
+                                    <button class="btn btn-cel btn-blue btn-block">Download</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4 block">
+                                <div class="download-image">
+                                    <div class="download-image-background chef-girl" id="families-header" style="background-image: url({% static 'img/share-downloads/chef-girl.jpg' %})"></div>
+                                    <button class="btn btn-cel btn-blue btn-block">Download</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Social Captions --> 
                     <div id="copy-row-1" class="row">
                         <div class="col-md-4">
-                            <p></p>
+                            <div class="block">
+                                <p>Share the news with families on social media. Use any of these captions below on Facebook, Twitter, Instagram, Snapchat or more.</p>
+                                <p>Or create your own caption on social media! Just don't forget to use the hashtag <span class="orange-text">#chicagoearlylearning</span></p>
+                            </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="box box-orange">
+                            <div class="block box box-orange share-block">
                                 <p>The Chicago Early Learning preschool application is now open! Parents looking for quality preschool programs for 3 and 4 year olds in the fall can register today! #chicagoearlylearning</p>
                                 <button class="btn btn-clear">Copy</button>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="box box-orange">
-                                <p>The Chicago Early Learning preschool application is now open! Parents looking for quality preschool programs for 3 and 4 year olds in the fall can register today! #chicagoearlylearning</p>
+                            <div class="block box box-orange share-block">
+                                <p>Are you a parent of a 3 or 4 year old? Don't miss out on early access to over 600 preschool programs throughout the city for next school year. Apply today. Start in September! #chicagoearlylearning</p>
+                                <button class="btn btn-clear">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="copy-row-2" class="row">
+                        <div class="col-md-4">
+                            <div class="block box box-orange share-block">
+                                <p>With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning</p>
                                 <button class="btn btn-clear">Copy</button>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="box box-orange">
-                                <p>The Chicago Early Learning preschool application is now open! Parents looking for quality preschool programs for 3 and 4 year olds in the fall can register today! #chicagoearlylearning</p>
+                            <div class="block box box-orange share-block">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. #chicagoearlylearning</p>
                                 <button class="btn btn-clear">Copy</button>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="box box-orange">
-                                <p>The Chicago Early Learning preschool application is now open! Parents looking for quality preschool programs for 3 and 4 year olds in the fall can register today! #chicagoearlylearning</p>
-                                <button class="btn btn-clear">Copy</button>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box box-orange">
-                                <p>The Chicago Early Learning preschool application is now open! Parents looking for quality preschool programs for 3 and 4 year olds in the fall can register today! #chicagoearlylearning</p>
+                            <div class="block box box-orange share-block">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. #chicagoearlylearning</p>
                                 <button class="btn btn-clear">Copy</button>
                             </div>
                         </div>
