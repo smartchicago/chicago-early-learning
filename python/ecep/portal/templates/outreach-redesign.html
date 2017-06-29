@@ -26,15 +26,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#events" class="nav-link" data-toggle="tab" role="tab">
-                        <div class="outreach-tab-logo" id="events-logo">{% svg 'icons/calendar' %}</div>
-                        Events
+                    <a href="#share" class="nav-link" data-toggle="tab" role="tab">
+                        <div class="outreach-tab-logo" id="share-logo">{% svg 'icons/message' %}</div>
+                        Communications
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#share" class="nav-link" data-toggle="tab" role="tab">
-                        <div class="outreach-tab-logo" id="share-logo">{% svg 'icons/message' %}</div>
-                        Share
+                    <a href="#events" class="nav-link" data-toggle="tab" role="tab">
+                        <div class="outreach-tab-logo" id="events-logo">{% svg 'icons/calendar' %}</div>
+                        Events
                     </a>
                 </li>
                 <li class="nav-item">
@@ -57,7 +57,7 @@
                         <div id="resources-text">
                             <h3>Chicago Early Learning Resources</h3>
                             <p>{% blocktrans %}Thank you for helping spread the word about enrolling 3 and 4 year olds in early learning programs across Chicago. With your help, we will enroll more children than ever before, especially our highest need families.{% endblocktrans %}</p>
-                            <p>{% blocktrans %}Here you will find social media links, talking points, and outreach resources to help share information with Chicago families.{% endblocktrans %}</p>
+                            <p><b>{% blocktrans %}Here you will find social media links, talking points, and outreach resources to help share information with Chicago families.{% endblocktrans %}</b></p>
                             <p>{% blocktrans %}If you have questions, please visit ChicagoEarlyLearning.org, or call the Chicago Early Learning Hotline:{% endblocktrans %} <a href="" class="a-blue">(312) 229-1690</a></p>
                             <p>{% blocktrans %}There are also great resources on ChicagoEarlyLearning.org:{% endblocktrans %}</p>
                         </div>
@@ -156,18 +156,6 @@
                 </div>
             </div>
 
-            
-            <!--   Events Content   -->
-            <div class="tab-pane fade" role="tabpanel" id="events">
-                <div>
-                    <h3>Events</h3>
-                    <p>{% blocktrans %}Check back often to see where Chicago Early Learning teams are connecting with families throughout the 2017 summer months.{% endblocktrans %}</p>
-                    <div class="calendar-embed">
-                        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%2333ccff&amp;src=6nfr2okcbal0reqhfdfn0nvbd4%40group.calendar.google.com&amp;color=%23BE6D00&amp;ctz=America%2FChicago" style="" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-                    </div>
-                </div>
-            </div>
-
 
             <!--   Share Content   -->
             <div class="tab-pane fade" role="tabpanel" id="share">
@@ -182,11 +170,6 @@
                     <div id="share-video" class="row">
                         <div class="col-md-4 block">
                             <p>On this page you'll find resources that can be used to spread the word about the Chicago Early Learning site and enrollment process.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur.</p>
                         </div>
                         <div class="col-md-8 block">
                             <div class='youtube-container'>
@@ -285,9 +268,23 @@
                 </div>
             </div>
 
+            
+            <!--   Events Content   -->
+            <div class="tab-pane fade" role="tabpanel" id="events">
+                <div>
+                    <h3>Events</h3>
+                    <p>{% blocktrans %}Check back often to see where Chicago Early Learning teams are connecting with families throughout the 2017 summer months.{% endblocktrans %}</p>
+                    <div class="calendar-embed">
+                        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%2333ccff&amp;src=6nfr2okcbal0reqhfdfn0nvbd4%40group.calendar.google.com&amp;color=%23BE6D00&amp;ctz=America%2FChicago" style="" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+
 
             <!--   Impact Content   -->
             <div class="tab-pane fade" role="tabpanel" id="impact">
+
+                <!-- 
                 <div id="impact-tableau-embed">
                     <div class='tableauPlaceholder' id='viz1498514490044' style='position: relative'><noscript><a href=''><img alt='Program Applications ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ch&#47;ChicagoEarlyLearningDashboard&#47;WeeklyRecruitmentDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='ChicagoEarlyLearningDashboard&#47;WeeklyRecruitmentDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ch&#47;ChicagoEarlyLearningDashboard&#47;WeeklyRecruitmentDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                
                     <script type='text/javascript'>
@@ -305,6 +302,9 @@
                         vizElement.parentNode.insertBefore(scriptElement, vizElement);
                     </script>
                 </div>
+
+                -->
+
             </div>
             
         </div>

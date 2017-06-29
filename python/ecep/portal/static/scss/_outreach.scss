@@ -122,17 +122,17 @@
         .item-description {
           padding: 0 1em;
 
-          h1 { font-size: .8em; }
-          h2 { font-size: .7em; }
+          h1 { font-size: 1.1em; }
+          h2 { font-size: 1em; }
         }
 
         .download-icon {
           margin-left: auto;
-          width: 2em;
+          width: 1.5em;
           height: 4em;
 
           svg {
-            width: 2em;
+            width: 1.5em;
             height: 4em;
             vertical-align: center;
           }
@@ -197,7 +197,7 @@
         .download-image-background {
           background-position: center;
           background-size: cover;
-          height: 16em;
+          height: 18em;
           width: 100%;
         }
 
