@@ -117,12 +117,20 @@
           width: 4em;
           background-color: $white;
           border: none;
+
+          img {
+            height: 4em;
+            width: 4em;
+          }
         }
 
         .item-description {
           padding: 0 1em;
 
-          h1 { font-size: 1.1em; }
+          h1 {
+            font-size: 1.1em;
+            font-weight: 500;
+          }
           h2 { font-size: 1em; }
         }
 
