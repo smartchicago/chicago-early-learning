@@ -48,20 +48,22 @@
         </div>
         <div class="nav-content">
             <ul class="nav nav-pills justify-content-end">
+               <!--
                <li class="nav-item">
                     <a class="nav-link a-black-orange" href="#">Early Learning Programs</a>
                </li>
+               -->
                <li class="nav-item">
-                    <a class="nav-link a-black-orange" href="#">How To Apply</a>
+                    <a class="nav-link a-black-orange" href="{% url 'how-to-apply' %}">How To Apply</a>
                </li> 
                <li class="nav-item">
-                    <a class="nav-link a-black-orange" href="#">Resources</a>
+                    <a class="nav-link a-black-orange" href="{% url 'city-resources' %}">Resources</a>
                </li> 
                <li class="nav-item">
-                    <a class="nav-link a-black-orange" href="#">FAQ</a>
+                    <a class="nav-link a-black-orange" href="{% url 'faq' %}">FAQ</a>
                </li>
                <li class="apply-button">
-                   <a href="#" class="btn btn-cel btn-orange" role="button">Apply</a>
+                   <a href="https://cys.mycopa.com/familyPortal/welcome.epl" class="btn btn-cel btn-orange" role="button">Apply</a>
                </li>
             </ul>
         </div>
