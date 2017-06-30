@@ -52,7 +52,7 @@
                             <h3>Chicago Early Learning Resources</h3>
                             <p>{% blocktrans %}Thank you for helping spread the word about enrolling 3 and 4 year olds in early learning programs across Chicago. With your help, we will enroll more children than ever before, especially our highest need families.{% endblocktrans %}</p>
                             <p><b>{% blocktrans %}Here you will find social media links, talking points, and outreach resources to help share information with Chicago families.{% endblocktrans %}</b></p>
-                            <p>{% blocktrans %}If you have questions, please visit ChicagoEarlyLearning.org, or call the Chicago Early Learning Hotline:{% endblocktrans %} <a href="" class="a-blue">(312) 229-1690</a></p>
+                            <p>{% blocktrans %}If you have questions, please visit ChicagoEarlyLearning.org, or call the Chicago Early Learning Hotline:{% endblocktrans %} <a href="tel:3122291690" class="a-blue">(312) 229-1690</a></p>
                             <p>{% blocktrans %}There are also great resources on ChicagoEarlyLearning.org:{% endblocktrans %}</p>
                         </div>
                         <div id="resources-links-row" class="row">
@@ -234,27 +234,27 @@
                             <div class="block box box-orange share-block">
                                 <p>With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning</p>
 
-                                <button data-clipboard-text="With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning" class="btn btn-clear btn-copy">Copy</button>
+                                <button id="copy-1" data-clipboard-text="With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning" class="btn btn-clear btn-copy">Copy</button>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="block box box-orange share-block">
-                                <p id="copy-2">Are you a parent of a 3 or 4 year old? Don't miss out on early access to over 600 preschool programs throughout the city for next school year. Apply today. Start in September! #chicagoearlylearning</p>
-                                <button data-clipboard-target="#copy-2" class="btn btn-clear copy">Copy</button>
+                                <p>Are you a parent of a 3 or 4 year old? Don't miss out on early access to over 600 preschool programs throughout the city for next school year. Apply today. Start in September! #chicagoearlylearning</p>
+                                <button id="copy-2" data-clipboard-text="Are you a parent of a 3 or 4 year old? Don't miss out on early access to over 600 preschool programs throughout the city for next school year. Apply today. Start in September! #chicagoearlylearning" class="btn btn-clear btn-copy">Copy</button>
                             </div>
                         </div>
                     </div>
                     <div id="copy-row-2" class="row">
                         <div class="col-md-4 offset-md-4">
                             <div class="block box box-orange share-block">
-                                <p id="copy-3">The Chicago Early Learning 3 & 4 year old pre-k application is open! Register today at chicagoearlylearning.org #chicagoearlylearning</p>
-                                <button data-clipboard-target="#copy-3" class="btn btn-clear copy">Copy</button>
+                                <p>The Chicago Early Learning 3 & 4 year old pre-k application is open! Register today at chicagoearlylearning.org #chicagoearlylearning</p>
+                                <button id="copy-3" data-clipboard-text="The Chicago Early Learning 3 & 4 year old pre-k application is open! Register today at chicagoearlylearning.org #chicagoearlylearning" class="btn btn-clear btn-copy">Copy</button>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="block box box-orange share-block">
-                                <p id="copy-4">Look what your child can do! Enroll your 3 or 4 year old in Pre-K today at chicagoearlylearning.org #chicagoearlylearning</p>
-                                <button data-clipboard-target="#copy-4" class="btn btn-clear copy">Copy</button>
+                                <p>Look what your child can do! Enroll your 3 or 4 year old in Pre-K today at chicagoearlylearning.org #chicagoearlylearning</p>
+                                <button id="copy-4" data-clipboard-text="Look what your child can do! Enroll your 3 or 4 year old in Pre-K today at chicagoearlylearning.org #chicagoearlylearning" class="btn btn-clear btn-copy">Copy</button>
                             </div>
                         </div>
                     </div>
@@ -317,10 +317,12 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 <script type="text/javascript">
-    var clipboard = new Clipboard('.btn-copy');
+    var btns = document.querySelectorAll('.btn-copy')
+    var clipboard = new Clipboard(btns);
 
     clipboard.on('success', function (e) {
-        this.html('Copied!')
+        var btn = document.getElementById(e.trigger.id);
+        btn.innerHTML = "Copied!";
     })
 </script>
 {% endblock %}
