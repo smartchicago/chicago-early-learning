@@ -63,7 +63,7 @@
                         </div>
                         <div id="resources-links-row" class="row">
                             <div class="col-md-12">
-                                <a href="#" class="btn btn-cel btn-green btn-block" role="button">Frequently Asked Questions</a>
+                                <a href="{% url 'faq' %}" class="btn btn-cel btn-green btn-block" role="button">Frequently Asked Questions</a>
                             </div>
                         </div>
                     </div>
@@ -80,14 +80,28 @@
                             <div class="downloads-list">
                                 <div class="download-item">
                                     <div class="item-thumbnail">
-                                        <img src="{% static 'img/resource-thumbnails/flyer-thumbnail.png' %}">
+                                        <img src="{% static 'img/resource-thumbnails/flyer-en-thumbnail.png' %}">
                                     </div>
                                     <div class="item-description">
                                         <h1>Informational Flyer</h1>
                                         <h2>PNG</h2>
+                                        <h2>English</h2>
                                     </div>
                                     <div class="download-icon">
-                                        <a href="{% static 'img/resource-downloads/flyter-image.png' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
+                                        <a href="{% static 'img/resource-downloads/flyer-english.png' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="{% static 'img/resource-thumbnails/flyer-sp-thumbnail.png' %}">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Informational Flyer</h1>
+                                        <h2>PNG</h2>
+                                        <h2>Spanish</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="{% static 'img/resource-downloads/flyer-spanish.png' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
                                     </div>
                                 </div>
                                 <div class="download-item">
@@ -230,7 +244,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="block box box-orange share-block">
-                                <p>Are you a parent of a 3 or 4 year old? See what your child can do! Don't miss out on access to over 600 preschool programs throughout the city for next school year. Apply today. Start in September! #chicagoearlylearning</p>
+                                <p>With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning</p>
                                 <button class="btn btn-clear">Copy</button>
                             </div>
                         </div>
@@ -242,13 +256,7 @@
                         </div>
                     </div>
                     <div id="copy-row-2" class="row">
-                        <div class="col-md-4">
-                            <div class="block box box-orange share-block">
-                                <p>With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning</p>
-                                <button class="btn btn-clear">Copy</button>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 offset-md-4">
                             <div class="block box box-orange share-block">
                                 <p>The Chicago Early Learning 3 & 4 year old pre-k application is open! Register today at chicagoearlylearning.org #chicagoearlylearning</p>
                                 <button class="btn btn-clear">Copy</button>
