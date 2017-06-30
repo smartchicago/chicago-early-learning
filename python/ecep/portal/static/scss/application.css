@@ -1,0 +1,323 @@
+/* --- Variables --- */
+a {
+  color: #1dc1ea;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: none; }
+
+.link-svg-white svg {
+  fill: #ffffff; }
+  .link-svg-white svg:hover {
+    fill: rgba(255, 255, 255, 0.5); }
+
+.a-blue {
+  color: #1dc1ea; }
+  .a-blue:hover {
+    color: #1ba7d5; }
+
+.a-green {
+  color: #a3d65e; }
+  .a-green:hover {
+    color: #81c538; }
+
+.a-orange {
+  color: #ee703f; }
+  .a-orange:hover {
+    color: #ee5713; }
+
+.a-yellow {
+  color: #ffe009; }
+  .a-yellow:hover {
+    color: #ffc104; }
+
+.a-black-orange {
+  color: #222222; }
+  .a-black-orange:hover {
+    color: #ee5713; }
+
+.btn-orange {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #ee703f;
+  border: none;
+  box-shadow: 0 0.25em #ee5713;
+  transition-duration: 0s;
+  margin-bottom: 4px;
+  border-radius: 2px; }
+  .btn-orange:hover {
+    border: none;
+    background-color: #ed6631;
+    box-shadow: 0 0.25em #ce4a0f;
+    color: #ffffff; }
+  .btn-orange:active {
+    text-decoration: none;
+    color: #ffffff;
+    box-shadow: 0 0.15em #ce4a0f;
+    transform: translateY(0.1em); }
+
+.btn-blue {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #1dc1ea;
+  border: none;
+  box-shadow: 0 0.25em #1ba7d5;
+  transition-duration: 0s;
+  margin-bottom: 4px;
+  border-radius: 2px; }
+  .btn-blue:hover {
+    border: none;
+    background-color: #15bae3;
+    box-shadow: 0 0.25em #178eb5;
+    color: #ffffff; }
+  .btn-blue:active {
+    text-decoration: none;
+    color: #ffffff;
+    box-shadow: 0 0.15em #178eb5;
+    transform: translateY(0.1em); }
+
+.btn-green {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #a3d65e;
+  border: none;
+  box-shadow: 0 0.25em #81c538;
+  transition-duration: 0s;
+  margin-bottom: 4px;
+  border-radius: 2px; }
+  .btn-green:hover {
+    border: none;
+    background-color: #9cd352;
+    box-shadow: 0 0.25em #6fa930;
+    color: #ffffff; }
+  .btn-green:active {
+    text-decoration: none;
+    color: #ffffff;
+    box-shadow: 0 0.15em #6fa930;
+    transform: translateY(0.1em); }
+
+.btn-yellow {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #ffe009;
+  border: none;
+  box-shadow: 0 0.25em #ffc104;
+  transition-duration: 0s;
+  margin-bottom: 4px;
+  border-radius: 2px; }
+  .btn-yellow:hover {
+    border: none;
+    background-color: #f9d900;
+    box-shadow: 0 0.25em #dfa800;
+    color: #ffffff; }
+  .btn-yellow:active {
+    text-decoration: none;
+    color: #ffffff;
+    box-shadow: 0 0.15em #dfa800;
+    transform: translateY(0.1em); }
+
+.btn-clear {
+  transition: 0s;
+  padding: .5em 2em;
+  background-color: inherit;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  border-radius: 2px; }
+  .btn-clear:hover {
+    transition: 0s;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.07); }
+
+/* --- Base --- */
+body {
+  background-color: #f1f1f1; }
+
+/* --- Text Styling --- */
+.blue-text {
+  color: #1dc1ea; }
+
+.green-text {
+  color: #a3d65e; }
+
+.yellow-text {
+  color: #ffe009; }
+
+.orange-text {
+  color: #ee703f; }
+
+/* --- Blocks --- */
+.block {
+  margin-bottom: 30px; }
+
+.box {
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 2px; }
+
+.box-orange {
+  background-color: #ee703f; }
+
+/* --- Global Nav --- */
+.navbar {
+  background-color: #ffffff;
+  padding: 1em 1em; }
+  .navbar .nav-logo {
+    position: absolute; }
+    .navbar .nav-logo .navbar-brand {
+      padding-top: 0;
+      height: 2em; }
+      .navbar .nav-logo .navbar-brand img {
+        height: 2em; }
+  .navbar .nav-content {
+    line-height: 2em;
+    font-size: .8em;
+    vertical-align: center; }
+    .navbar .nav-content .apply-button a {
+      margin-left: 1em;
+      width: 7em;
+      font-size: 1.1em; }
+
+/* --- Outreach Page --- */
+#outreach-wrapper {
+  margin-top: 20px; }
+  #outreach-wrapper h3 {
+    color: #1dc1ea;
+    margin-bottom: 15px; }
+  #outreach-wrapper .container {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 #BDBBBB; }
+  #outreach-wrapper #dummy-nav-container {
+    padding: 0; }
+  #outreach-wrapper #outreach-nav .nav-tabs {
+    border-bottom: 3px solid #d6d6d6; }
+    #outreach-wrapper #outreach-nav .nav-tabs .nav-item {
+      margin-bottom: -3px; }
+      #outreach-wrapper #outreach-nav .nav-tabs .nav-item .outreach-tab-logo svg {
+        display: block;
+        width: 25px;
+        height: 25px;
+        margin: 10px auto;
+        fill: #787878; }
+  #outreach-wrapper #outreach-nav .nav-tabs .nav-link {
+    color: #787878;
+    border: none;
+    font-size: 12px;
+    padding: 1.5em .75em; }
+    #outreach-wrapper #outreach-nav .nav-tabs .nav-link.active {
+      color: #1dc1ea;
+      border-bottom: 4px solid #1dc1ea; }
+      #outreach-wrapper #outreach-nav .nav-tabs .nav-link.active .outreach-tab-logo svg {
+        fill: #1dc1ea; }
+  #outreach-wrapper #outreach-container {
+    padding: 15px; }
+  #outreach-wrapper #resources .resources-link {
+    margin-bottom: 15px; }
+  #outreach-wrapper #resources #resources-downloads h1, #outreach-wrapper #resources #resources-downloads h2 {
+    font-size: 1.75em;
+    font-weight: 300;
+    margin-bottom: .25em; }
+  #outreach-wrapper #resources #resources-downloads .downloads-header {
+    display: flex;
+    padding-bottom: .5em; }
+    #outreach-wrapper #resources #resources-downloads .downloads-header .download-all {
+      margin-left: auto; }
+      #outreach-wrapper #resources #resources-downloads .downloads-header .download-all a {
+        display: flex;
+        vertical-align: middle; }
+      #outreach-wrapper #resources #resources-downloads .downloads-header .download-all h4 {
+        font-size: .75em;
+        font-weight: 300;
+        margin-bottom: 0;
+        vertical-align: middle;
+        padding-right: .25em; }
+      #outreach-wrapper #resources #resources-downloads .downloads-header .download-all svg {
+        width: 1em;
+        height: 2em;
+        vertical-align: center;
+        fill: #ffffff; }
+  #outreach-wrapper #resources #resources-downloads .download-item {
+    display: flex;
+    padding: .5em 0;
+    border-top: 1px solid #ffffff;
+    height: 5em; }
+    #outreach-wrapper #resources #resources-downloads .download-item .item-thumbnail {
+      height: 4em;
+      width: 4em;
+      background-color: #ffffff;
+      border: none; }
+      #outreach-wrapper #resources #resources-downloads .download-item .item-thumbnail img {
+        height: 4em;
+        width: 4em; }
+    #outreach-wrapper #resources #resources-downloads .download-item .item-description {
+      padding: 0 1em; }
+      #outreach-wrapper #resources #resources-downloads .download-item .item-description h1 {
+        font-size: 1.1em;
+        font-weight: 500; }
+      #outreach-wrapper #resources #resources-downloads .download-item .item-description h2 {
+        font-size: 1em; }
+    #outreach-wrapper #resources #resources-downloads .download-item .download-icon {
+      margin-left: auto;
+      width: 1.5em;
+      height: 4em; }
+      #outreach-wrapper #resources #resources-downloads .download-item .download-icon svg {
+        width: 1.5em;
+        height: 4em;
+        vertical-align: center; }
+  #outreach-wrapper #events .calendar-embed {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden; }
+    #outreach-wrapper #events .calendar-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+  #outreach-wrapper #share .youtube-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%; }
+    #outreach-wrapper #share .youtube-container iframe,
+    #outreach-wrapper #share .youtube-container object,
+    #outreach-wrapper #share .youtube-container embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+  #outreach-wrapper #share .share-block {
+    position: relative;
+    height: 15em; }
+    #outreach-wrapper #share .share-block button {
+      position: absolute;
+      bottom: 1em;
+      right: 1em; }
+  #outreach-wrapper #share #share-downloads a {
+    color: #ffffff; }
+  #outreach-wrapper #share #share-downloads .download-image .download-image-background {
+    background-position: center;
+    background-size: cover;
+    height: 18em;
+    width: 100%; }
+  #outreach-wrapper #impact .impact-announcement h1 {
+    margin: 2em auto; }
+
+/*# sourceMappingURL=application.css.map */
