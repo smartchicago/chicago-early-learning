@@ -199,18 +199,19 @@
     }
 
     #share-downloads {
-      .download-image {
 
+        // For some reason this is getting overridden...
+        a {
+          color: $white
+        }
+
+      .download-image {
 
         .download-image-background {
           background-position: center;
           background-size: cover;
           height: 18em;
           width: 100%;
-        }
-
-        .chef-girl {
-          background-position: 70% 50%;
         }
       }
     }
