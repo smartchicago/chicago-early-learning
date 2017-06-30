@@ -7,12 +7,6 @@
 {% block title %}
 {% trans "Chicago Early Learning" %} - {% trans "Outreach" %}
 {% endblock %}
- 
-{% block template_headers %}
-<!-- Allow for external linking to tabs --> 
-<script type="text/javascript">
-</script>
-{% endblock %}
 
 {% block body %}
 <div class="container-wrapper" id="outreach-wrapper">
@@ -239,27 +233,28 @@
                         <div class="col-md-4">
                             <div class="block box box-orange share-block">
                                 <p>With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning</p>
-                                <button class="btn btn-clear">Copy</button>
+
+                                <button data-clipboard-text="With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning" class="btn btn-clear btn-copy">Copy</button>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="block box box-orange share-block">
-                                <p>Are you a parent of a 3 or 4 year old? Don't miss out on early access to over 600 preschool programs throughout the city for next school year. Apply today. Start in September! #chicagoearlylearning</p>
-                                <button class="btn btn-clear">Copy</button>
+                                <p id="copy-2">Are you a parent of a 3 or 4 year old? Don't miss out on early access to over 600 preschool programs throughout the city for next school year. Apply today. Start in September! #chicagoearlylearning</p>
+                                <button data-clipboard-target="#copy-2" class="btn btn-clear copy">Copy</button>
                             </div>
                         </div>
                     </div>
                     <div id="copy-row-2" class="row">
                         <div class="col-md-4 offset-md-4">
                             <div class="block box box-orange share-block">
-                                <p>The Chicago Early Learning 3 & 4 year old pre-k application is open! Register today at chicagoearlylearning.org #chicagoearlylearning</p>
-                                <button class="btn btn-clear">Copy</button>
+                                <p id="copy-3">The Chicago Early Learning 3 & 4 year old pre-k application is open! Register today at chicagoearlylearning.org #chicagoearlylearning</p>
+                                <button data-clipboard-target="#copy-3" class="btn btn-clear copy">Copy</button>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="block box box-orange share-block">
-                                <p>Look what your child can do! Enroll your 3 or 4 year old in Pre-K today at chicagoearlylearning.org #chicagoearlylearning</p>
-                                <button class="btn btn-clear">Copy</button>
+                                <p id="copy-4">Look what your child can do! Enroll your 3 or 4 year old in Pre-K today at chicagoearlylearning.org #chicagoearlylearning</p>
+                                <button data-clipboard-target="#copy-4" class="btn btn-clear copy">Copy</button>
                             </div>
                         </div>
                     </div>
@@ -315,3 +310,17 @@
 
 {% endblock %}
 
+{% block template_headers %}
+<!-- Allow for external linking to tabs --> 
+<script type="text/javascript">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script type="text/javascript">
+    var clipboard = new Clipboard('.btn-copy');
+
+    clipboard.on('success', function (e) {
+        this.html('Copied!')
+    })
+</script>
+{% endblock %}
