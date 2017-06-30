@@ -1,0 +1,34 @@
+/* --- Global Nav --- */
+
+.navbar {
+  background-color: $white;
+  padding: 1em 1em;
+
+  .nav-logo {
+    position: absolute;
+
+     .navbar-brand {
+      padding-top: 0;
+      height: 2em;
+
+      img {
+        height: 2em;
+      }
+    }
+  }
+
+  .nav-content {
+
+    line-height: 2em;
+    font-size: .8em;
+    vertical-align: center;
+
+    .nav-link {}
+
+    .apply-button a {
+      margin-left: 1em; 
+      width: 7em;
+      font-size: 1.1em;
+    }
+  }
+}

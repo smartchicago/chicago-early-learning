@@ -1,0 +1,39 @@
+/* --- Base --- */
+body {
+  background-color: $background-gray;
+}
+
+/* --- Text Styling --- */
+.blue-text {
+  color: $blue;
+}
+
+.green-text {
+  color: $green;
+}
+
+.yellow-text {
+  color: $yellow;
+}
+
+.orange-text {
+  color: $orange;
+}
+
+
+/* --- Blocks --- */
+
+.block {
+  margin-bottom: 30px;
+}
+
+.box {
+  color: $white;
+  padding: 15px;
+  @include border-radius(2px);
+}
+
+.box-orange {
+  background-color: $orange;
+}
+

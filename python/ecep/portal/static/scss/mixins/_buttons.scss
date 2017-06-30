@@ -1,0 +1,38 @@
+
+@mixin primary-variant($color, $background, $border) {
+    $active-background: darken($background, 3%);
+    $active-border: darken($border, 7%);
+
+    position: relative;
+    display: inline-block;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    color: $color;
+    background-color: $background;
+    border: none;
+    box-shadow: 0 0.25em $border;
+    transition-duration: 0s; 
+    margin-bottom: 4px;
+
+    @include border-radius(2px);
+
+    &:hover {
+        border: none;
+        background-color: $active-background;
+        box-shadow: 0 0.25em $active-border;
+        color: $color;
+    }
+
+    &:active {
+        text-decoration: none;
+        color: $color;
+        box-shadow: 0 0.15em $active-border;
+        transform: translateY(0.1em);
+    }
+
+    &:disabled {
+
+    }
+}
+

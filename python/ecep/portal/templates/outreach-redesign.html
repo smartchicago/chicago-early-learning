@@ -1,0 +1,328 @@
+{% extends 'base-outreach.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load svg %}
+
+{% block title %}
+{% trans "Chicago Early Learning" %} - {% trans "Outreach" %}
+{% endblock %}
+
+{% block body %}
+<div class="container-wrapper" id="outreach-wrapper">
+    <div class="container" id="dummy-nav-container">
+        <div id="outreach-nav">
+            <ul class="nav nav-tabs nav-fill" role="tablist">
+                <li class="nav-item">
+                    <a href="#resources" class="nav-link active" data-toggle="tab" role="tab">
+                        <div class="outreach-tab-logo" id="resources-logo">{% svg 'icons/browser' %}</div>
+                        Resources
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#share" class="nav-link" data-toggle="tab" role="tab">
+                        <div class="outreach-tab-logo" id="share-logo">{% svg 'icons/message' %}</div>
+                        Communications
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#events" class="nav-link" data-toggle="tab" role="tab">
+                        <div class="outreach-tab-logo" id="events-logo">{% svg 'icons/calendar' %}</div>
+                        Events
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#impact" class="nav-link" data-toggle="tab" role="tab">
+                        <div class="outreach-tab-logo" id="impact-logo">{% svg 'icons/meter' %}</div>
+                        Impact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container" id="outreach-container">
+        <div id="outreach-content" class="tab-content">
+
+            
+            <!--   Resources Content   -->
+            <div class="tab-pane fade show active" role="tabpanel" id="resources">
+                <div class="row">
+                    <div id="resources-body" class="col-md-7">
+                        <div id="resources-text">
+                            <h3>Chicago Early Learning Resources</h3>
+                            <p>{% blocktrans %}Thank you for helping spread the word about enrolling 3 and 4 year olds in early learning programs across Chicago. With your help, we will enroll more children than ever before, especially our highest need families.{% endblocktrans %}</p>
+                            <p><b>{% blocktrans %}Here you will find social media links, talking points, and outreach resources to help share information with Chicago families.{% endblocktrans %}</b></p>
+                            <p>{% blocktrans %}If you have questions, please visit ChicagoEarlyLearning.org, or call the Chicago Early Learning Hotline:{% endblocktrans %} <a href="tel:3122291690" class="a-blue">(312) 229-1690</a></p>
+                            <p>{% blocktrans %}There are also great resources on ChicagoEarlyLearning.org:{% endblocktrans %}</p>
+                        </div>
+                        <div id="resources-links-row" class="row">
+                            <div class="col-md-12">
+                                <a href="{% url 'faq' %}" class="btn btn-cel btn-green btn-block" role="button">Frequently Asked Questions</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="resources-downloads" class="col-md-5">
+                        <div class="box box-orange">
+                            <div class="downloads-header">
+                                <div class="downloads-header-text">
+                                    <h2>Downloads</h2>
+                                </div>
+                                <div class="download-all">
+                                    <a href="{% static 'img/zips/resources.zip' %}" class="btn btn-sm btn-clear" download>Download all</a>
+                                </div>
+                            </div>
+                            <div class="downloads-list">
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="{% static 'img/resource-thumbnails/flyer-en-thumbnail.png' %}">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Informational Flyer</h1>
+                                        <h2>PNG</h2>
+                                        <h2>English</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="{% static 'img/resource-downloads/flyer-english.png' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="{% static 'img/resource-thumbnails/flyer-sp-thumbnail.png' %}">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Informational Flyer</h1>
+                                        <h2>PNG</h2>
+                                        <h2>Spanish</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="{% static 'img/resource-downloads/flyer-spanish.png' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="{% static 'img/resource-thumbnails/verification-thumbnail.png' %}">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Verification Packet</h1>
+                                        <h2>PDF</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="{% static 'img/resource-downloads/verification-packet.pdf' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="{% static 'img/resource-thumbnails/cel-header-thumbnail.jpg' %}">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Promotional Header</h1>
+                                        <h2>PNG</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="{% static 'img/resource-downloads/cel-header.jpg' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="{% static 'img/resource-thumbnails/cel-logo-bw-thumbnail.png' %}">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Large Logo - Black and White</h1>
+                                        <h2>PNG</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="{% static 'img/resource-downloads/cel-logo-bw.png' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="{% static 'img/resource-thumbnails/cel-logo-color-thumbnail.png' %}">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Large Logo - Color</h1>
+                                        <h2>PNG</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="{% static 'img/resource-downloads/cel-logo-color.png' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="{% static 'img/resource-thumbnails/small-thumbnail.png' %}">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Small Logo - Color</h1>
+                                        <h2>PNG</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="{% static 'img/resource-downloads/logo-left.png' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--   Share Content   -->
+            <div class="tab-pane fade" role="tabpanel" id="share">
+                <div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Sharing and Social Media Resources</h3>
+                        </div>
+                    </div>
+
+                    <!-- Video and Introduction -->
+                    <div id="share-video" class="row">
+                        <div class="col-md-4 block">
+                            <p>On this page you'll find resources that can be used to spread the word about the Chicago Early Learning site and enrollment process.</p>
+                        </div>
+                        <div class="col-md-8 block">
+                            <div class='youtube-container'>
+                                <iframe src='https://www.youtube.com/embed/0-lS0ntMjHc' frameborder='0' allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Downloads -->
+                    <div id="share-downloads">
+                        <div class="row">
+                            <div class="col-md-4 block">
+                                <p>Post these images to social media to help spread the word about Chicago Early Learning enrollment!</p>
+                                <p>Use this link to download all social images:</p>
+                                <a href="{% static 'img/zips/downloads.zip' %}" role="button" class="btn btn-cel btn-blue center" download>Download All Images</a>
+                            </div>
+                            <div class="col-md-4 block">
+                                <div class="download-image">
+                                    <div class="download-image-background" id="families-header" style="background-image: url({% static 'img/share-downloads/apply-today.jpg' %})"></div>
+                                    <a href="{% static 'img/share-downloads/apply-today.jpg' %}" role="button" class="btn btn-cel btn-blue btn-block" download>Download</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 block">
+                                <div class="download-image">
+                                    <div class="download-image-background" id="families-header" style="background-image: url({% static 'img/share-downloads/open-enrollment.jpg' %})"></div>
+                                    <a href="{% static 'img/share-downloads/open-enrollment.jpg' %}" role="button" class="btn btn-cel btn-blue btn-block" download>Download</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 offset-md-4 block">
+                                <div class="download-image">
+                                    <div class="download-image-background" id="families-header" style="background-image: url({% static 'img/share-downloads/fireman-boy.jpg' %})"></div>
+                                    <a href="{% static 'img/share-downloads/fireman-boy.jpg' %}" role="button" class="btn btn-cel btn-blue btn-block" download>Download</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 block">
+                                <div class="download-image">
+                                    <div class="download-image-background" id="families-header" style="background-image: url({% static 'img/share-downloads/chef-girl-espanol.jpg' %})"></div>
+                                    <a href="{% static 'img/share-downloads/chef-girl-espanol.jpg' %}" role="button" class="btn btn-cel btn-blue btn-block" download>Download</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Captions --> 
+                    <div id="copy-row-1" class="row">
+                        <div class="col-md-4">
+                            <div class="block">
+                                <p>Share these messages on social media with <span class="orange-text">#chicagoearlylearning</span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="block box box-orange share-block">
+                                <p>With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning</p>
+
+                                <button id="copy-1" data-clipboard-text="With over 600 options throughout the city let us help you find the best match for your 3 and 4 year old. Get started at chicagoearlylearning.org #chicagoearlylearning" class="btn btn-clear btn-copy">Copy</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="block box box-orange share-block">
+                                <p>Are you a parent of a 3 or 4 year old? Don't miss out on early access to over 600 preschool programs throughout the city for next school year. Apply today. Start in September! #chicagoearlylearning</p>
+                                <button id="copy-2" data-clipboard-text="Are you a parent of a 3 or 4 year old? Don't miss out on early access to over 600 preschool programs throughout the city for next school year. Apply today. Start in September! #chicagoearlylearning" class="btn btn-clear btn-copy">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="copy-row-2" class="row">
+                        <div class="col-md-4 offset-md-4">
+                            <div class="block box box-orange share-block">
+                                <p>The Chicago Early Learning 3 & 4 year old pre-k application is open! Register today at chicagoearlylearning.org #chicagoearlylearning</p>
+                                <button id="copy-3" data-clipboard-text="The Chicago Early Learning 3 & 4 year old pre-k application is open! Register today at chicagoearlylearning.org #chicagoearlylearning" class="btn btn-clear btn-copy">Copy</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="block box box-orange share-block">
+                                <p>Look what your child can do! Enroll your 3 or 4 year old in Pre-K today at chicagoearlylearning.org #chicagoearlylearning</p>
+                                <button id="copy-4" data-clipboard-text="Look what your child can do! Enroll your 3 or 4 year old in Pre-K today at chicagoearlylearning.org #chicagoearlylearning" class="btn btn-clear btn-copy">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            <!--   Events Content   -->
+            <div class="tab-pane fade" role="tabpanel" id="events">
+                <div>
+                    <h3>Events</h3>
+                    <p>{% blocktrans %}Check back often to see where Chicago Early Learning teams are connecting with families throughout the 2017 summer months.{% endblocktrans %}</p>
+                    <div class="calendar-embed">
+                        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%2333ccff&amp;src=6nfr2okcbal0reqhfdfn0nvbd4%40group.calendar.google.com&amp;color=%23BE6D00&amp;ctz=America%2FChicago" style="" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--   Impact Content   -->
+            <div class="tab-pane fade" role="tabpanel" id="impact">
+                <div class="impact-announcement row">
+                    <h1 class="justify-md-center">Impact Dashboard Coming Soon!</h1>
+                </div>
+                <!-- 
+                <div id="impact-tableau-embed">
+                    <div class='tableauPlaceholder' id='viz1498514490044' style='position: relative'><noscript><a href=''><img alt='Program Applications ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ch&#47;ChicagoEarlyLearningDashboard&#47;WeeklyRecruitmentDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='ChicagoEarlyLearningDashboard&#47;WeeklyRecruitmentDashboard' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ch&#47;ChicagoEarlyLearningDashboard&#47;WeeklyRecruitmentDashboard&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                
+                    <script type='text/javascript'>
+                        var divElement = document.getElementById('viz1498514490044');
+                        var vizElement = divElement.getElementsByTagName('object')[0];
+                        if ( divElement.offsetWidth > 800 ) { 
+                            vizElement.style.width='1004px';vizElement.style.height='669px';
+                        } else if ( divElement.offsetWidth > 500 ) { 
+                            vizElement.style.width='100%';vizElement.style.height='1169px';
+                        } else { 
+                            vizElement.style.width='100%';vizElement.style.height='1169px';
+                        }
+                        var scriptElement = document.createElement('script');
+                        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                    </script>
+                </div>
+
+                -->
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block template_headers %}
+<!-- Allow for external linking to tabs --> 
+<script type="text/javascript">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script type="text/javascript">
+    var btns = document.querySelectorAll('.btn-copy')
+    var clipboard = new Clipboard(btns);
+
+    clipboard.on('success', function (e) {
+        var btn = document.getElementById(e.trigger.id);
+        btn.innerHTML = "Copied!";
+    })
+</script>
+{% endblock %}

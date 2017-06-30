@@ -1,0 +1,230 @@
+/* --- Outreach Page --- */ 
+
+#outreach-wrapper {
+
+  margin-top: 20px;
+
+  h3 {
+    color: $blue;
+    margin-bottom: 15px;
+  }
+
+  .container {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 #BDBBBB;
+  }
+
+  #dummy-nav-container {
+    padding: 0;
+  }
+
+  #outreach-nav {
+
+    .nav-tabs {
+      border-bottom: 3px solid $light-gray;
+      
+      .nav-item {
+        margin-bottom: -3px;
+
+        .outreach-tab-logo svg {
+          display: block;
+          width: 25px;
+          height: 25px;
+          margin: 10px auto;
+          fill: $dark-gray;
+        }
+      }
+
+    }
+
+    .nav-tabs .nav-link {
+      color: $dark-gray;
+      border: none;
+      font-size: 12px;
+      padding: 1.5em .75em;
+
+      &.active {
+        color: $blue;
+        border-bottom: 4px solid $blue;
+
+        .outreach-tab-logo svg {
+          fill: $blue;
+        }
+      }
+    }
+  }
+
+  #outreach-container {
+    padding: 15px;
+
+  }
+
+  #resources {
+
+    .resources-link {
+      margin-bottom: 15px;
+    }
+
+    #resources-downloads {
+
+      h1, h2 {
+        font-size: 1.75em;
+        font-weight: 300;
+        margin-bottom: .25em;
+      }
+      
+      .downloads-header {
+        display: flex;
+        padding-bottom: .5em;
+
+        .download-all {
+
+          margin-left: auto;
+
+          a { 
+            display: flex;
+            vertical-align: middle;
+          }
+
+          h4 {
+            font-size: .75em;
+            font-weight: 300;
+            margin-bottom: 0;
+            vertical-align: middle;
+            padding-right: .25em;
+          }
+
+          .download-all-icon {
+          }
+
+          svg {
+            width: 1em;
+            height: 2em;
+            vertical-align: center;
+            fill: $white;
+          }
+        }
+      }
+
+      .download-item {
+        display: flex;
+        padding: .5em 0;
+        border-top: 1px solid $white;
+        height: 5em;
+
+        .item-thumbnail {
+          height: 4em;
+          width: 4em;
+          background-color: $white;
+          border: none;
+
+          img {
+            height: 4em;
+            width: 4em;
+          }
+        }
+
+        .item-description {
+          padding: 0 1em;
+
+          h1 {
+            font-size: 1.1em;
+            font-weight: 500;
+          }
+          h2 { font-size: 1em; }
+        }
+
+        .download-icon {
+          margin-left: auto;
+          width: 1.5em;
+          height: 4em;
+
+          svg {
+            width: 1.5em;
+            height: 4em;
+            vertical-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  #events {
+
+    .calendar-embed {
+      position: relative;
+      padding-bottom: 75%;
+      height: 0;
+      overflow: hidden;
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  #share {
+
+    .youtube-container { 
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%; 
+     
+      iframe, 
+      object, 
+      embed { 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+      }
+    }
+
+    .share-block {
+      position: relative;
+      height: 15em;
+
+      button {
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+      }
+    }
+
+    #share-downloads {
+
+        // For some reason this is getting overridden...
+        a {
+          color: $white
+        }
+
+      .download-image {
+
+        .download-image-background {
+          background-position: center;
+          background-size: cover;
+          height: 18em;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  #impact {
+
+    .impact-announcement {
+      
+      h1 {
+        margin: 2em auto;
+      }
+    }
+  }
+}
+

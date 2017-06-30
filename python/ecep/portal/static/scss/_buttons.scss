@@ -1,0 +1,32 @@
+.btn-orange {
+  @include primary-variant($white, $orange, $deep-orange);
+}
+
+.btn-blue {
+  @include primary-variant($white, $blue, $deep-blue);
+}
+
+.btn-green {
+  @include primary-variant($white, $green, $deep-green);
+}
+
+.btn-yellow {
+  @include primary-variant($white, $yellow, $deep-yellow);
+}
+
+.btn-clear {
+  transition: 0s;
+  padding: .5em 2em;
+  background-color: inherit;
+  border: 1px solid $white;
+  color: $white;
+  @include border-radius(2px);
+  
+  &:hover {
+    transition: 0s;
+    color: $white;
+    background-color: rgba(0, 0, 0, 0.07)
+  }
+  &:active {}
+
+}

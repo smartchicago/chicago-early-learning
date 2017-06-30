@@ -1,12 +1,5 @@
-# Copyright (c) 2012, 2013 Azavea, Inc.
-# See LICENSE in the project root for copying permission
-
-
+import mimetypes
 import os
-import djcelery
-
-djcelery.setup_loader()
-BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -81,6 +74,9 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+# Add SVG support for serving staticfiles
+mimetypes.add_type("image/svg+xml", ".svg", True)
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -132,15 +128,12 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     'django.contrib.sitemaps',
     'compressor',
+    'sass_processor',
+    'svg',
     'portal',
-    'portal.sms',           # This is necessary for the celery worker to respond to messages
-    'django_twilio',
     'gunicorn',
-    'faq',
     'rosetta',
-    'djcelery',
     'redactor',
-    'django_forms_bootstrap',
     'djrill',
 )
 
@@ -198,11 +191,4 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
-# Email
-DEFAULT_FROM_EMAIL = 'earlylearning@smartchicagocollaborative.org'
-try:
-    MANDRILL_API_KEY
-    EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
-except NameError:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'

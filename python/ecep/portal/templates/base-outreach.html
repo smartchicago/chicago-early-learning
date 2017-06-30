@@ -1,0 +1,75 @@
+<!DOCTYPE html>{% load i18n staticfiles static sass_tags compress %}
+<html>
+<head>
+    <title>
+    {% block title %}
+
+    {% endblock %}
+    </title>
+    <meta charset="utf-8">
+
+    <!-- Boostrap 4, JQuery --> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <!-- Defined CSS -->
+    <link href='{% sass_src "scss/application.scss" %}' rel="stylesheet">
+    <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'img/favicons/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="384x384" href="{% static 'img/favicons/android-chrome-384x384.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicons/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicons/favicon-32x32.png' %}">
+    <link rel="mask-icon" href="{% static 'img/favicons/safari-pinned-tab.svg' %}">
+    <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}">
+    <meta name="msapplication-TileColor" content="#1dc1ea">
+    <meta name="msapplication-TileImage" content="{% static 'img/favicons/mstile-150x150.png' %}">
+
+    <!-- Set Active state in nav -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+           $('a[href="' + this.location.pathname + '"]').parent().addClass('active'); 
+        });
+    </script>
+    <!-- Add'l Headers --> 
+    
+</head>
+<body>
+    <nav class="navbar navbar-light">
+        <div class="nav-logo">
+            <a href="{% url 'index' %}" class="navbar-brand">
+                <img src='{% static "img/logos/logo-left.png" %}' class="logo-small" alt='CEL'>
+                <img src='{% static "img/logos/logo-right.png" %}' class="logo-text" alt='CEL'>
+            </a>
+        </div>
+        <div class="nav-content">
+            <ul class="nav nav-pills justify-content-end">
+               <li class="nav-item">
+                    <a class="nav-link a-black-orange" href="{% url 'families' %}">For Families</a>
+               </li>
+               <li class="nav-item">
+                    <a class="nav-link a-black-orange" href="{% url 'how-to-apply' %}">How To Apply</a>
+               </li> 
+               <li class="nav-item">
+                    <a class="nav-link a-black-orange" href="{% url 'city-resources' %}">Resources</a>
+               </li> 
+               <li class="nav-item">
+                    <a class="nav-link a-black-orange" href="{% url 'faq' %}">FAQ</a>
+               </li>
+               <li class="apply-button">
+                   <a href="https://cys.mycopa.com/familyPortal/welcome.epl" class="btn btn-cel btn-orange" role="button">Apply</a>
+               </li>
+            </ul>
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
+</body>
+<footer>
+  
+{% block template_headers %}{% endblock %}
+</footer>
+</html>
