@@ -1,5 +1,3 @@
-# Copyright (c) 2012, 2013 Azavea, Inc.
-# See LICENSE in the project root for copying permission
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
@@ -31,8 +29,7 @@ urlpatterns = patterns(
     url(r'^how-to-apply$', HowToApply.as_view(), name='how-to-apply'),
     url(r'^connect$', Connect.as_view(), name='connect'),
     url(r'^announcements$', Announcements.as_view(), name='announcements'),
-    url(r'^outreach$', Outreach.as_view(), name='outreach'),
-    url(r'^outreach-redesign$', OutreachRedesign.as_view(), name='outreach-redesign'),
+    url(r'^outreach$', OutreachRedesign.as_view(), name='outreach'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type="text/plain")),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicons/favicon.ico')),
 
