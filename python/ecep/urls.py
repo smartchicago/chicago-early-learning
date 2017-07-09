@@ -16,25 +16,28 @@ js_info_dict = {
     'packages': ('portal',),
 }
 
-from portal import views as portal_views
+from portal.views import *
 
 sitemaps = {'location': LocationSiteMap, 'static': StaticViewSitemap}
 
 urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
-    url(r'^$', portal_views.Index.as_view(), name='index'),
-    url(r'^about$', portal_views.About.as_view(), name='about'),
-    url(r'^updates$', portal_views.Updates.as_view(), name='updates'),
-    url(r'^families$', portal_views.Families.as_view(), name='families'),
-    url(r'^city-resources$', portal_views.CityResources.as_view(), name='city-resources'),
-    url(r'^how-to-apply$', portal_views.HowToApply.as_view(), name='how-to-apply'),
-    url(r'^connect$', portal_views.Connect.as_view(), name='connect'),
-    url(r'^announcements$', portal_views.Announcements.as_view(), name='announcements'),
-    url(r'^outreach$', portal_views.Outreach.as_view(), name='outreach'),
-    url(r'^outreach-redesign$', portal_views.OutreachRedesign.as_view(), name='outreach-redesign'),
+    url(r'^$', Index.as_view(), name='index'),
+    url(r'^about$', About.as_view(), name='about'),
+    url(r'^updates$', Updates.as_view(), name='updates'),
+    url(r'^families$', Families.as_view(), name='families'),
+    url(r'^city-resources$', CityResources.as_view(), name='city-resources'),
+    url(r'^how-to-apply$', HowToApply.as_view(), name='how-to-apply'),
+    url(r'^connect$', Connect.as_view(), name='connect'),
+    url(r'^announcements$', Announcements.as_view(), name='announcements'),
+    url(r'^outreach$', Outreach.as_view(), name='outreach'),
+    url(r'^outreach-redesign$', OutreachRedesign.as_view(), name='outreach-redesign'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type="text/plain")),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicons/favicon.ico')),
+
+    # Redesign testing ground
+    url(r'redesign/index$', IndexRedesign.as_view(), name="redesign-home"),
     
     # browse page
     url(r'^search/$', 'portal.views.browse', name='browse'),
@@ -53,10 +56,10 @@ urlpatterns = patterns(
     url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
 
     # sms info page
-    url(r'^sms/?$', portal_views.SMSInfo.as_view(), name='sms-info'),
+    url(r'^sms/?$', SMSInfo.as_view(), name='sms-info'),
 
     # Enroll
-    url(r'enroll/?$', portal_views.HowToApply.as_view(), name='enroll-faq'),
+    url(r'enroll/?$', HowToApply.as_view(), name='enroll-faq'),
 
     # Location Views
     # Need to pass id to view for sitemap, but don't need to do anything with it since this is handled with javascript
@@ -67,12 +70,12 @@ urlpatterns = patterns(
     # Starred Location Views
     url(
         r'^starred/?[0-9,]*/$',
-        portal_views.Starred.as_view(),
+        Starred.as_view(),
         name='starred',
     ),
     url(
         r'^favorites/?[0-9,]*/$',
-        portal_views.Starred.as_view(),
+        Starred.as_view(),
         name='favorites',
     ),
 

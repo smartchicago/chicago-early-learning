@@ -30,26 +30,23 @@ logger = logging.getLogger(__name__)
 class Index(TemplateView):
     template_name = "index.html"
 
+class IndexRedesign(TemplateView):
+    template_name = "redesign/index.html"
 
 class Connect(TemplateView):
     template_name = "connect.html"
 
-
 class About(TemplateView):
     template_name = "about.html"
-
 
 class SMSInfo(TemplateView):
     template_name = "smsinfo.html"
 
-
 class Updates(TemplateView):
     template_name = "updates.html"
 
-
 class Families(TemplateView):
     template_name = "families.html"
-
 
 class CityResources(TemplateView):
     template_name = "city-resources.html"
@@ -97,7 +94,7 @@ def browse(request):
         'filters_more': fields[6:],
     })
 
-
+# This can probably go - ajb 9 July 2017
 class TopicWrapper(object):
     """Wrapper for Topic model, enforces visibility rules for anonymous users"""
 
