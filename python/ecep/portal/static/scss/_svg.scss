@@ -1,0 +1,23 @@
+.svg-blue {
+  @include svg-variant($blue);
+}
+
+.svg-green {
+  @include svg-variant($green);
+}
+
+.svg-orange {
+  @include svg-variant($orange);
+}
+
+.svg-yellow {
+  @include svg-variant($yellow);
+}
+
+.svg-black {
+  @include svg-variant($black);
+}
+
+.svg-white {
+  @include svg-variant($white);
+}

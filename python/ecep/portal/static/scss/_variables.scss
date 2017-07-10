@@ -23,10 +23,19 @@ $black: #222222;
 
 $background-gray: #f1f1f1;
 
+$white-opaque: rgba($white, 0.6);
+
+// Fonts
+$montserrat: 'Montserrat', sans-serif;
 
 // Sizes
 $btn-font-weight: 400;
 
+// Variables
+$break-small: 576px;
+$break-medium: 768px;
+$break-large: 992px;
+$break-x-large: 1200px;
 
 // Misc Variables
 $enable-rounded: true;

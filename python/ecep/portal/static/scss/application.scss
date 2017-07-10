@@ -3,12 +3,15 @@
 @import "mixins";
 
 // Components
+@import "fonts";
 @import "links";
+@import "svg";
 @import "buttons";
 
 // Core
 @import "base";
 @import "nav";
+@import "footer";
 
 // Static Pages
 @import "outreach";

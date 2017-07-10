@@ -11,14 +11,11 @@ a {
   }
 }
 
-.link-svg-white {
+.link-svg-white svg {
+  fill: $white;
 
-  svg {
-    fill: $white;
-
-    &:hover {
-      fill: rgba(255, 255 , 255, 0.5);
-    }
+  &:hover {
+    fill: rgba(255, 255 , 255, 0.5);
   }
 }
 
@@ -39,5 +36,15 @@ a {
 }
 
 .a-black-orange {
-  @include link-variant($black, $deep-orange);
+  @include link-variant($black, $orange);
+}
+
+.a-white {
+  @include link-variant($white, $white-opaque);
+}
+
+.a-white-underline {
+  @include link-variant($white, $white-opaque)
+  text-decoration: underline;
+  &:hover {text-decoration: underline;}
 }

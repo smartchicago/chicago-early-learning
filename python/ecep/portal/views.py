@@ -57,11 +57,8 @@ class HowToApply(TemplateView):
 class Announcements(TemplateView):
     template_name = "announcements.html"
 
-class Outreach(TemplateView):
-    template_name = "outreach.html"
-
 class OutreachRedesign(TemplateView):
-    template_name = "outreach-redesign.html"
+    template_name = "redesign/outreach.html"
 
 class Starred(TemplateView):
     template_name = 'starred.html'

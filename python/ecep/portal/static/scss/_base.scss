@@ -1,6 +1,11 @@
 /* --- Base --- */
 body {
   background-color: $background-gray;
+  font-family: $montserrat;
+
+  .body {
+    min-height: 60em;
+  }
 }
 
 /* --- Text Styling --- */
