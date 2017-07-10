@@ -51,7 +51,18 @@
     font-size: .8em;
     vertical-align: center;
 
-    .nav-link {}
+    .nav-item {
+      .nav-active {
+        border-radius: 0;
+        color: $blue;
+        border-bottom: 3px solid $blue;
+
+        &:hover {
+          color: $light-blue;
+          border-bottom: 3px solid $light-blue;
+        }
+      }
+    }
 
     .apply-button a {
       margin-left: 1em; 
