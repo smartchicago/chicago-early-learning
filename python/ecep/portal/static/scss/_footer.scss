@@ -5,11 +5,11 @@ footer {
   .footer {
     $height: 30em;
 
-    height: ($height - 8em);
+    height: ($height - 2em);
     overflow: hidden;
 
     @media (max-width: $break-small) {
-      height: ($height + 10em);
+      height: ($height + 18em);
     } 
     
     .curve {
@@ -38,6 +38,8 @@ footer {
       }
       .links-block {
 
+        padding-bottom: 2em;
+
         p {
           margin-bottom: .5rem;
         }
@@ -46,6 +48,10 @@ footer {
           list-style-type: none; 
           margin: 0;
           padding: 0;
+
+          li {
+            padding-bottom: .5em;
+          }
         }
 
         .svg-share {
