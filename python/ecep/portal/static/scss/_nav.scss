@@ -54,12 +54,12 @@
     .nav-item {
       .nav-active {
         border-radius: 0;
-        color: $blue;
-        border-bottom: 3px solid $blue;
+        color: $deep-blue;
+        border-bottom: 3px solid $deep-blue;
 
         &:hover {
-          color: $light-blue;
-          border-bottom: 3px solid $light-blue;
+          color: $blue;
+          border-bottom: 3px solid $blue;
         }
       }
     }
