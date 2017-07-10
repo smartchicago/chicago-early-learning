@@ -34,7 +34,8 @@ urlpatterns = patterns(
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicons/favicon.ico')),
 
     # Redesign testing ground
-    url(r'redesign/index$', IndexRedesign.as_view(), name="redesign-home"),
+    url(r'^redesign/index$', IndexRedesign.as_view(), name="redesign-home"),
+    url(r'^redesign/connect$', ConnectRedesign.as_view(), name='connect-redesign'),
     
     # browse page
     url(r'^search/$', 'portal.views.browse', name='browse'),

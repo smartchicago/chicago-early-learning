@@ -1,0 +1,44 @@
+#mc_embed_signup {
+  background: none;
+
+  h1 {
+    text-align: center;
+    color: $blue;
+  }
+
+  input {
+    border: none;
+  }
+
+  form {
+    padding: inherit;
+  }
+
+  .mc-field-group {
+    width: inherit;
+
+    input {
+      border-radius: 2px;
+      border: 2px solid $orange;
+      height: 4em;
+      min-width: 8em;
+
+      @include placeholder {
+        font-style:italic;
+        color: $dark-gray;
+      }
+    }
+
+    .mce_inline_error {
+      background-color: rgba(255, 255, 255, 0);
+    }
+
+    .phonefield {
+      padding: 0 0 !important;
+    }
+  }
+
+  .size1of2 {
+    width: inherit;
+  }
+}

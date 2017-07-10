@@ -30,9 +30,6 @@ logger = logging.getLogger(__name__)
 class Index(TemplateView):
     template_name = "index.html"
 
-class IndexRedesign(TemplateView):
-    template_name = "redesign/index.html"
-
 class Connect(TemplateView):
     template_name = "connect.html"
 
@@ -57,11 +54,20 @@ class HowToApply(TemplateView):
 class Announcements(TemplateView):
     template_name = "announcements.html"
 
-class OutreachRedesign(TemplateView):
-    template_name = "redesign/outreach.html"
-
 class Starred(TemplateView):
     template_name = 'starred.html'
+
+
+# Redesign Template Views:
+
+class IndexRedesign(TemplateView):
+    template_name = "redesign/index.html"
+
+class ConnectRedesign(TemplateView):
+    template_name = "redesign/connect.html"
+
+class OutreachRedesign(TemplateView):
+    template_name = "redesign/outreach.html"
 
 
 def browse(request):
