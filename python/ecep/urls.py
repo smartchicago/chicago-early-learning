@@ -36,6 +36,10 @@ urlpatterns = patterns(
     # Redesign testing ground
     url(r'^redesign/index$', IndexRedesign.as_view(), name="redesign-home"),
     url(r'^redesign/connect$', ConnectRedesign.as_view(), name='connect-redesign'),
+    url(r'^redesign/connect$', HowToApplyRedesign.as_view(), name='how-to-apply-redesign'),
+    url(r'^redesign/connect$', ConnectRedesign.as_view(), name='connect-redesign'),
+    url(r'^redesign/connect$', ConnectRedesign.as_view(), name='connect-redesign'),
+    url(r'^redesign/connect$', ConnectRedesign.as_view(), name='connect-redesign'),
     
     # browse page
     url(r'^search/$', 'portal.views.browse', name='browse'),

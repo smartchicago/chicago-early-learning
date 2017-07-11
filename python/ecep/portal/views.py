@@ -59,15 +59,26 @@ class Starred(TemplateView):
 
 
 # Redesign Template Views:
+class ConnectRedesign(TemplateView):
+    template_name = "redesign/connect.html"
+
+class FAQRedesign(TemplateView):
+    template_name = "redesign/faq.html"
+
+class HowToApplyRedesign(TemplateView):
+    template_name = "redesign/how-to-apply.html"
 
 class IndexRedesign(TemplateView):
     template_name = "redesign/index.html"
 
-class ConnectRedesign(TemplateView):
-    template_name = "redesign/connect.html"
-
 class OutreachRedesign(TemplateView):
     template_name = "redesign/outreach.html"
+
+class ProgramsRedesign(TemplateView):
+    template_name = "redesign/programs.html"
+
+class ResourcesRedesign(TemplateView):
+    template_name = "redesign/resources.html"
 
 
 def browse(request):
