@@ -8,7 +8,15 @@
         <img class="footer-logo" src="{% static 'img/logos/logo-white.png' %}">
       </div>
       <div class="links-block row">
-        <div class="col-sm-2 offset-sm-2">
+        <div class="col-sm-4 offset-sm-2">
+          <p>{% blocktrans %}For application information, please call the Chicago Early Learning Hotline at <a class="a-white-underline" href="tel:3122291690">(312) 229-1690</a>.{% endblocktrans %}</p>
+          <p>{% trans 'Follow us on Facebook and Twitter:' %}</p>
+          <div class="share-logos">
+            <div class="svg-white svg-share"><a class="" href="https://www.facebook.com/ChicagoEarlyLearning/">{% svg 'social/facebook' %}</a></div>
+            <div class="svg-white svg-share"><a class="" href="https://twitter.com/ChiEarlyLearn">{% svg 'social/twitter' %}</a></div> 
+          </div>
+        </div>
+        <div class="col-6 col-sm-2">
           <ul>
             <li><a class="a-white" href="">{% trans 'About Chicago Early Learning' %}</a></li>
             <li><a class="a-white" href="">{% trans 'Programs' %}</a></li>
@@ -16,7 +24,7 @@
             <li><a class="a-white" href="">{% trans 'Find Locations' %}</a></li>
           </ul>
         </div>
-        <div class="col-sm-2 col-xs-8 offset-xs-2">
+        <div class="col-6 col-sm-2">
           <ul>
             <li><a class="a-white" href="">{% trans 'FAQ' %}</a></li>
             <li><a class="a-white" href="">{% trans 'Resources' %}</a></li>
@@ -24,14 +32,7 @@
             <li><a class="a-white" href="">{% trans 'Family Resource Centers' %}</a></li>
           </ul>
         </div>
-        <div class="col-sm-4 col-xs-8 offset-xs-2">
-          <p>{% blocktrans %}FOR APPLICATION INFORMATION PLEASE CALL THE CHICAGO EARLY LEARNING HOTLINE AT <a class="a-white-underline" href="tel:3122291690">(312) 229-1690</a>.{% endblocktrans %}</p>
-          <p>{% trans 'FOLLOW US:' %}</p>
-          <div class="share-logos">
-            <div class="svg-white svg-share"><a class="" href="https://www.facebook.com/ChicagoEarlyLearning/">{% svg 'social/facebook' %}</a></div>
-            <div class="svg-white svg-share"><a class="" href="https://twitter.com/ChiEarlyLearn">{% svg 'social/twitter' %}</a></div> 
-          </div>
-        </div>
+
       </div>
       <div class="copyright text-center">
         <p>COPYRIGHT ©2017 CHICAGO EARLY LEARNING / BUILT BY <a class="a-yellow" href="">SMART CHICAGO COLLABORATIVE</a></p>
