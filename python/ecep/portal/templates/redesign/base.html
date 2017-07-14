@@ -64,7 +64,7 @@
           <div class="nav-content">
               <ul class="nav nav-pills justify-content-end">
                 <li class="nav-item">
-                      <a class="nav-link a-black-orange nav-active" href="{% url 'faq' %}">{% trans 'Early Learning Programs' %}</a>
+                      <a class="nav-link a-black-orange" href="{% url 'faq' %}">{% trans 'Early Learning Programs' %}</a>
                  </li>
                  <li class="nav-item">
                       <a class="nav-link a-black-orange" href="{% url 'faq' %}">{% trans 'How to Apply' %}</a>
@@ -73,10 +73,10 @@
                       <a class="nav-link a-black-orange" href="{% url 'faq' %}">{% trans 'Find Sites' %}</a>
                  </li> 
                  <li class="nav-item">
-                      <a class="nav-link a-black-orange" href="{% url 'faq' %}">{% trans 'Resources' %}</a>
+                      <a class="nav-link a-black-orange" href="{% url 'resources-redesign' %}">{% trans 'Resources' %}</a>
                  </li> 
                  <li class="nav-item">
-                      <a class="nav-link a-black-orange" href="{% url 'faq' %}">{% trans 'FAQ' %}</a>
+                      <a class="nav-link a-black-orange" href="{% url 'faq-redesign' %}">{% trans 'FAQ' %}</a>
                  </li>
                  <li class="apply-button">
                      <a href="https://cys.mycopa.com/familyPortal/welcome.epl" class="btn btn-cel btn-orange" role="button">{% trans 'Apply' %}</a>
@@ -101,7 +101,8 @@
   <!-- Set Active state in nav -->
   <script type="text/javascript">
       $(document).ready(function() {
-         $('a[href="' + this.location.pathname + '"]').parent().addClass('active'); 
+        // TODO: Add some cleaner logic around this:
+        $('a[href="' + this.location.pathname + '"]').addClass('nav-active');
       });
   </script>
   <!-- Add'l Headers --> 

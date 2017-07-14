@@ -1,0 +1,46 @@
+/* -- General Resources -- */
+
+.category-block {
+
+  .resources-category {
+    padding: 2em 0;
+  }
+
+  .resource {
+    padding: 2em 0;
+    border-top: 2px solid $faint-gray;
+
+    h2 {
+      color: $blue;
+    }
+
+    a {
+      font-style: italic;
+    }
+  }
+}
+
+/* -- Header -- */
+$height: 20em;
+
+#resources-header {
+
+  .curve-header {
+    background-image: url("../img/static-pages/resources-header.jpeg");
+    background-position: 50% (2*$height);
+  }
+}
+
+#resources-intro {
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    resize: vertical;
+    height: $height;
+    color: $deep-blue;
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+}

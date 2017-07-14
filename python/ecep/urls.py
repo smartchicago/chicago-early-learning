@@ -34,6 +34,7 @@ urlpatterns = patterns(
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicons/favicon.ico')),
 
     # Redesign testing ground
+    url(r'^redesign/about$', AboutRedesign.as_view(), name='about-redesign'),
     url(r'^redesign/connect$', ConnectRedesign.as_view(), name='connect-redesign'),
     url(r'^redesign/faq$', FAQRedesign.as_view(), name='faq-redesign'),
     url(r'^redesign/how-to-apply$', HowToApplyRedesign.as_view(), name='how-to-apply-redesign'),

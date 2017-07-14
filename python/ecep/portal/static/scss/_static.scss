@@ -1,3 +1,50 @@
-.curve-header {
-  
+.header {
+  $height: 20em;
+
+  height: $height;
+  overflow: hidden;
+  margin-bottom: -2em;
+
+  .curve-header {
+    position: relative;
+    height: 3*$height;
+    width: 300%;
+    left: -100%;
+    top: -200%;
+    border-radius: 0 0 150% 150%;
+    overflow: hidden;
+    margin-bottom: -2em;
+    z-index: 10;
+
+    .curve-image {
+      position: relative;
+      top: (2*$height);
+      left: percentage(5/18);
+      width: percentage(4/9);
+      height: $height;
+      background-repeat: no-repeat;
+      background-color: black;
+      margin-bottom: -2em;
+      z-index: 10;
+    }
+  }
+
+  .header-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    resize: vertical;
+    position: relative;
+    
+    top: -(3*$height);
+    left: 0;
+    z-index: 11;
+    height: $height;
+    width: 100%;
+
+    h1 {
+      font-size: 4em;
+      color: white;
+    }
+  }
 }
