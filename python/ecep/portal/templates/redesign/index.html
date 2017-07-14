@@ -9,7 +9,106 @@
 {% endblock %}
 
 {% block body %}
-<div id="index" class="container-fluid">
+<div id="index-header" class="container-fluid header">
+  <div class="curve-header"></div>
+  <div class="header-title">
+    <div class="homepage-header row">
+      <div class="index-header col-md-5 offset-md-1">
+        <div class="">
+          <h1>Look what I can do!</h1>
+          <p>{% blocktrans %}There is no limit to what your child can accomplish. Jumpstart your child's education with Chicago Early Learning!{% endblocktrans %}</p>
+        </div>
+        <div class="">
+          <input type="" name="">
+          <button class="btn btn-primary">TEST</button>
+          <button class="btn btn-primary">TEST</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="index-intro" class="container-fluid container-top-4 bg-white">
+  <div class="intro text-center col-md-6 offset-md-3">
+    <p>{% blocktrans %}“Every child in every neighborhood deserves a quality education and that must begin in their earliest years.”</p>
+    <p>- Chicago Mayor Rahm Emanuel{% endblocktrans %}</p>
+  </div>
+</div>
+
+<div id="index-update" class="container-fluid fluid-full index-block">
+  <div id="update-content" class="col-md-6">
+    <div class="update-tag text-center white">
+      <h4>{% trans 'Important Update' %}</h4>
+    </div>
+    <div class="update-text index-sub-block">
+      <h1 class="white">Important Update</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.</p>
+      <a href="" class="btn btn-cel btn-yellow btn-block">Learn More</a>
+    </div>
+  </div>
+  <div id="update-image" class="index-sub-block col-md-6">
+    
+  </div>
+</div>
+
+<div id="index-programs" class="container-fluid fluid-full index-block bg-white">
+  <div id="programs-image" class="index-sub-block col-md-6">
+    
+  </div>
+  <div id="progams-content" class="index-sub-block col-md-6">
+    <h1 class="green">{% trans 'Explore our early learning programs!' %}</h1>
+    <p>{% blocktrans %}Children who participate in high-quality early learning experiences are better prepared for success in kindergarten and beyond.{% endblocktrans %}</p>
+    <a href="" class="btn btn-cel btn-orange btn-block">Learn More</a>
+  </div>
+</div>
+
+<div id="index-application" class="container-fluid fluid-full index-block bg-gray">
+  <div id="application-content" class="index-sub-block col-md-6">
+    <h1 class="blue">{% trans 'What is the preschool application process?' %}</h1>
+    <p>{% blocktrans %}Are you ready to apply for a preschool program for your 3- or 4-year-old? Learn about the process here or call <a class="a-orange" href="tel:3122291690">(312) 229-1690</a> with your questions.{% endblocktrans %}</p>
+    <a href="" class="btn btn-cel btn-green btn-block">Learn More</a>
+  </div>
+  <div id="application-video" class="index-sub-block col-md-6">
+    
+  </div>
+</div>
+
+<div id="index-resources" class="container-fluid fluid-full index-block">
+  <div id="resources-content" class="index-sub-block col-md-6 offset-md-6 text-center">
+    <h1 class="white">{% trans 'Early learning doesn’t only take place in a preschool classroom.' %}</h1>
+    <p class="white">{% blocktrans %}Chicago offers a variety of stimulating children’s activities to get kids learning, moving, and playing. Learn more about what is offered by city agencies and organizations.{% endblocktrans %}</p>
+    <a href="" class="btn btn-cel btn-blue btn-block">Learn More</a>
+  </div>  
+</div>
+
+<div id="index-news" class="container bg-white">
+  <div class="text-center">
+    <h1 class="green">Latest News</h1>
+  </div>
+  <div class="row text-center">
+    <div class="news-content col-md-4">
+      <h1>News 1</h1>
+    </div>
+    <div class="news-content col-md-4">
+      <h1>News 2</h1>
+    </div>
+    <div class="news-content col-md-4">
+      <h1>News 3</h1>
+    </div>
+  </div>
+</div>
+
+<div id="index-subscribe" class="container-fluid container-bottom bg-gray">
+  <div class="subscribe-row row">
+    <div id="subscribe-image" class="col-md-2 offset-md-2">
+      <img src="">
+    </div>
+    <div id="subscribe-text" class="col-md-6">
+      <p>Stay up to date on Chicago Early Learning!</p>
+      <p>Subscribe to our email and text lists. <a class="a-orange" href="">Subscribe me!</a></p>
+    </div>
+  </div>
 </div>
 {% endblock %}
 

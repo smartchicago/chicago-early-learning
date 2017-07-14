@@ -36,15 +36,26 @@
     resize: vertical;
     position: relative;
     
-    top: -(3*$height);
+    top: -(3*$height) - 2em;
     left: 0;
     z-index: 11;
     height: $height;
     width: 100%;
+    margin-bottom: -2em;
 
     h1 {
       font-size: 4em;
       color: white;
     }
   }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  resize: vertical;
+  color: $deep-blue;
+  font-size: 1.5em;
+  font-weight: 500;
 }

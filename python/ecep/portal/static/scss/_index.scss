@@ -1,3 +1,100 @@
-#index {
-  background: $green;
+/* -- General -- */
+.index-block {
+  display: flex;
+  height: 30em;
+}
+
+.index-sub-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* -- Header -- */
+#index-header {
+  $height: 40em;
+  height: $height;
+  margin-bottom: -4em;
+
+  .curve-header {
+    height: 3*$height;
+    background-image: url("../img/scientist-girl.jpg");
+    background-position: 50% (2*$height);
+    margin-bottom: -4em;
+  }
+
+  .header-title {
+    top: -(3*$height)+4em;
+    height: $height;
+    margin-bottom: -4em;
+  }
+}
+
+#index-intro {
+  .intro {
+    height: 10em;
+  }
+}
+
+#index-update {
+
+  #update-content {
+    justify-content: space-bewteen;
+    background-color: $orange;
+    padding-left: 0;
+    padding-right: 0;
+
+    .update-tag {
+      padding: 1em;
+      background-color: $light-orange;
+
+      h4 { margin-bottom: 0; }
+    }
+
+    .update-text {
+      height: 24em;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  #update-image {
+    background-color: black;
+  }
+}
+
+#index-programs {
+
+  #programs-image {
+    background-color: black;
+  }
+
+  #programs-content {
+
+  }
+}
+
+#index-application {
+
+}
+
+#index-resources {
+  background-color: black;
+}
+
+#index-news {}
+
+#index-subscribe {
+  font-size: 1.5em;
+  font-weight: 500;
+
+  .subscribe-row {
+    padding-top: 4em;
+    padding-bottom: 4em;
+
+    p {
+      margin-bottom: 0rem;
+      color: $dark-gray;
+    }
+  }
 }

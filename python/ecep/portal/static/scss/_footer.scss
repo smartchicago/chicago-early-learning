@@ -1,12 +1,15 @@
 footer {
 
   font-size: .8em;
+  margin-top: -2em;
 
   .footer {
     $height: 30em;
 
     height: ($height - 2em);
     overflow: hidden;
+    margin-top: -2em;
+    z-index: 10;
 
     @media (max-width: $break-small) {
       height: ($height + 18em);
@@ -19,14 +22,15 @@ footer {
       width: 300%;
       background-color: $orange;
       border-radius: 150% 150% 0 0;
+      z-index: 10;
     }
 
     .footer-content {
       position: relative;
       top: (-(3*$height) + 2em);
       left: 0;
-
       color: white;
+      z-index: 11;
 
       .logo-row {
         padding: 1em 0 1.5em;

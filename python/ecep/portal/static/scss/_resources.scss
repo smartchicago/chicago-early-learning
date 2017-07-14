@@ -32,15 +32,7 @@ $height: 20em;
 }
 
 #resources-intro {
-
   .intro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    resize: vertical;
     height: $height;
-    color: $deep-blue;
-    font-size: 1.5em;
-    font-weight: 500;
   }
 }
