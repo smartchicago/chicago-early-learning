@@ -14,15 +14,25 @@
   <div class="header-title">
     <div class="homepage-header row">
       <div class="index-header col-md-5 offset-md-1">
-        <div class="">
+        <div class="header-content">
           <h1>Look what I can do!</h1>
           <p>{% blocktrans %}There is no limit to what your child can accomplish. Jumpstart your child's education with Chicago Early Learning!{% endblocktrans %}</p>
         </div>
-        <div class="">
-          <input type="" name="">
-          <button class="btn btn-primary">TEST</button>
-          <button class="btn btn-primary">TEST</button>
-        </div>
+        <form>
+          <div class="form-group row">
+            <div class="col-sm-9 clear-padding-right">
+              <input type="text" class="form-control form-control-lg" placeholder="{% trans 'Enter your address or zip code' %}">
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-blue btn-lg btn-block">{% trans 'Search' %}</button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <button class="btn btn-gray btn-block btn-lg">{% trans 'Use your current location' %}</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -35,66 +45,92 @@
   </div>
 </div>
 
-<div id="index-update" class="container-fluid fluid-full index-block">
+<div id="index-update" class="container-fluid fluid-full index-section-block">
   <div id="update-content" class="col-md-6">
     <div class="update-tag text-center white">
-      <h4>{% trans 'Important Update' %}</h4>
+      <h1>{% trans 'Important Update' %}</h1>
     </div>
-    <div class="update-text index-sub-block">
-      <h1 class="white">Important Update</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.</p>
-      <a href="" class="btn btn-cel btn-yellow btn-block">Learn More</a>
+    <div class="update-text index-block">
+      <div class="index-sub-block">
+        <h1 class="white">Important Update</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</p>
+        <a href="" class="btn btn-cel btn-yellow btn-block">Learn More</a>
+      </div>
     </div>
   </div>
-  <div id="update-image" class="index-sub-block col-md-6">
+  <div id="update-image" class="index-block col-md-6">
     
   </div>
 </div>
 
-<div id="index-programs" class="container-fluid fluid-full index-block bg-white">
-  <div id="programs-image" class="index-sub-block col-md-6">
+<div id="index-programs" class="container-fluid fluid-full index-section-block bg-white">
+  <div id="programs-image" class="index-block col-md-6">
     
   </div>
-  <div id="progams-content" class="index-sub-block col-md-6">
-    <h1 class="green">{% trans 'Explore our early learning programs!' %}</h1>
-    <p>{% blocktrans %}Children who participate in high-quality early learning experiences are better prepared for success in kindergarten and beyond.{% endblocktrans %}</p>
-    <a href="" class="btn btn-cel btn-orange btn-block">Learn More</a>
+  <div id="progams-content" class="index-block col-md-6">
+    <div class="index-sub-block">
+      <h1 class="green">{% trans 'Explore our early learning programs!' %}</h1>
+      <p>{% blocktrans %}Children who participate in high-quality early learning experiences are better prepared for success in kindergarten and beyond.{% endblocktrans %}</p>
+      <a href="" class="btn btn-cel btn-orange btn-block">Learn More</a>
+    </div>
   </div>
 </div>
 
-<div id="index-application" class="container-fluid fluid-full index-block bg-gray">
-  <div id="application-content" class="index-sub-block col-md-6">
-    <h1 class="blue">{% trans 'What is the preschool application process?' %}</h1>
-    <p>{% blocktrans %}Are you ready to apply for a preschool program for your 3- or 4-year-old? Learn about the process here or call <a class="a-orange" href="tel:3122291690">(312) 229-1690</a> with your questions.{% endblocktrans %}</p>
-    <a href="" class="btn btn-cel btn-green btn-block">Learn More</a>
+<div id="index-application" class="container-fluid fluid-full index-section-block bg-gray">
+  <div id="application-content" class="index-block col-md-6">
+    <div class="index-sub-block">
+      <h1 class="blue">{% trans 'What is the preschool application process?' %}</h1>
+      <p>{% blocktrans %}Are you ready to apply for a preschool program for your 3- or 4-year-old? Learn about the process here or call <a class="a-orange" href="tel:3122291690">(312) 229-1690</a> with your questions.{% endblocktrans %}</p>
+      <a href="" class="btn btn-cel btn-green btn-block">Learn More</a>
+    </div>
   </div>
-  <div id="application-video" class="index-sub-block col-md-6">
+  <div id="application-video" class="index-block col-md-6">
     
   </div>
 </div>
 
-<div id="index-resources" class="container-fluid fluid-full index-block">
-  <div id="resources-content" class="index-sub-block col-md-6 offset-md-6 text-center">
-    <h1 class="white">{% trans 'Early learning doesn’t only take place in a preschool classroom.' %}</h1>
-    <p class="white">{% blocktrans %}Chicago offers a variety of stimulating children’s activities to get kids learning, moving, and playing. Learn more about what is offered by city agencies and organizations.{% endblocktrans %}</p>
-    <a href="" class="btn btn-cel btn-blue btn-block">Learn More</a>
+<div id="index-resources" class="container-fluid fluid-full index-section-block">
+  <div id="resources-content" class="index-block col-md-6 offset-md-6 text-center">
+    <div class="index-sub-block">
+      <h1 class="white">{% trans 'Early learning doesn’t only take place in a preschool classroom.' %}</h1>
+      <p class="white">{% blocktrans %}Chicago offers a variety of stimulating children’s activities to get kids learning, moving, and playing. Learn more about what is offered by city agencies and organizations.{% endblocktrans %}</p>
+      <a href="" class="btn btn-cel btn-blue btn-block">Learn More</a>
+    </div>
   </div>  
 </div>
 
-<div id="index-news" class="container bg-white">
-  <div class="text-center">
+<div id="index-news" class="container-fluid bg-white">
+  <div class="news-header text-center">
     <h1 class="green">Latest News</h1>
   </div>
-  <div class="row text-center">
+  <div class="news-block d-flex flex-row justify-content-center">
     <div class="news-content col-md-4">
-      <h1>News 1</h1>
+      <img class="" src="">
+      <h1 class="blue">News Item Headline Lorem Ipsum News Item</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div>
+        <a class="a-black-orange" href="#"><i>{% trans 'Read More' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+      </div>
     </div>
     <div class="news-content col-md-4">
-      <h1>News 2</h1>
+      <img class="" src="">
+      <h1 class="blue">News Item Headline Lorem Ipsum News Item</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div>
+        <a class="a-black-orange" href="#"><i>{% trans 'Read More' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+      </div>
     </div>
     <div class="news-content col-md-4">
-      <h1>News 3</h1>
+      <img class="" src="">
+      <h1 class="blue">News Item Headline Lorem Ipsum News Item</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.</p>
+      <div>
+        <a class="a-black-orange" href="#"><i>{% trans 'Read More' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+      </div>
     </div>
   </div>
 </div>

@@ -21,3 +21,17 @@
 .svg-white {
   @include svg-variant($white);
 }
+
+/* -- -- */
+
+.inline-link-svg {
+  display: inline-block;
+  height: 1.5em;
+  width: 1.5em;
+
+  svg {
+    vertical-align: top;
+    height: 1.5em;
+    width: 1.5em;
+  }
+}

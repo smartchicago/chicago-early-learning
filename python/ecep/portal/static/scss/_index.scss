@@ -1,15 +1,3 @@
-/* -- General -- */
-.index-block {
-  display: flex;
-  height: 30em;
-}
-
-.index-sub-block {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 /* -- Header -- */
 #index-header {
   $height: 40em;
@@ -30,12 +18,45 @@
   }
 }
 
+
+/* -- Intro Block -- */
 #index-intro {
   .intro {
     height: 10em;
+
+    p {
+      font-weight: 400;
+    }
   }
 }
 
+/* -- Content Blocks General -- */
+.index-section-block {
+  display: flex;
+  height: 30em;
+
+  .index-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .index-sub-block {
+      width: 75%;
+    }
+  }
+
+  h1 {
+    font-size: 2.5em;
+    font-weight: 400;
+  }
+
+  p {
+    padding: 1em 0;
+  }
+}
+
+/* -- Update Block -- */
 #index-update {
 
   #update-content {
@@ -48,13 +69,21 @@
       padding: 1em;
       background-color: $light-orange;
 
-      h4 { margin-bottom: 0; }
+      h1 { 
+        font-size: 1.25em;
+        font-weight: 400;
+        margin-bottom: 0;
+      }
     }
 
     .update-text {
       height: 24em;
       padding-left: 15px;
       padding-right: 15px;
+
+      h1 {
+        font-size: 2em;
+      }
     }
   }
 
@@ -63,6 +92,8 @@
   }
 }
 
+
+/* -- Programs Block -- */
 #index-programs {
 
   #programs-image {
@@ -74,16 +105,48 @@
   }
 }
 
+
+/* -- Application Block -- */
 #index-application {
 
 }
 
+
+/* -- Resources Block -- */
 #index-resources {
   background-color: black;
 }
 
-#index-news {}
 
+/* -- News Block -- */
+#index-news {
+  padding-top: 4em;
+  padding-bottom: 4em;
+
+  .news-content {
+    padding: 1em 2em;
+
+    h1 {
+      font-size: 1.5em;
+      font-weight: 500;
+      padding: 1em 0;
+      margin-bottom: 0;
+    }
+
+    a {
+      font-weight: 500;
+    }
+
+    img {
+      height: 14em;
+      width: 100%;
+      background-color: black;
+    }
+  }
+}
+
+
+/* -- Subscribe Block -- */
 #index-subscribe {
   font-size: 1.5em;
   font-weight: 500;

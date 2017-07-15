@@ -1,3 +1,11 @@
+.btn {
+  padding-bottom: 5px;
+}
+
+.btn-lg {
+  padding-bottom: 9px;
+}
+
 .btn-orange {
   @include primary-variant($white, $orange, $deep-orange);
 }
@@ -12,6 +20,10 @@
 
 .btn-yellow {
   @include primary-variant($white, $yellow, $deep-yellow);
+}
+
+.btn-gray {
+  @include primary-variant($dark-gray, $light-gray, darken($light-gray, 20%));
 }
 
 .btn-clear {

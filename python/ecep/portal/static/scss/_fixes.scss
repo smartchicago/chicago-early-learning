@@ -1,0 +1,12 @@
+.clear-padding-left {
+  padding-left: 0;
+}
+
+.clear-padding-right {
+  padding-right: 0;
+}
+
+.clear-padding-horizontal {
+  @extend .clear-padding-left;
+  @extent .clear-padding-right;
+}
