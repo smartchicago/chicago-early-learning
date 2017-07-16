@@ -63,7 +63,8 @@
 /* -- Update Block -- */
 #index-update {
 
-  #update-content {
+  #update-content,
+  #update-announcement {
     justify-content: space-bewteen;
     background-color: $orange;
     padding-left: 0;
@@ -91,6 +92,21 @@
     }
   }
 
+  #update-content {
+    background-color: $orange;
+    .update-tag {
+      background-color: $light-orange;
+    }
+  }
+
+  #update-announcement {
+    background-color: $blue;
+    .update-tag {
+      background-color: $light-blue;
+    }
+  }
+
+
   #update-image {
     background-color: black;
   }
@@ -112,7 +128,26 @@
 
 /* -- Application Block -- */
 #index-application {
+  #application-video {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 
+    
+    .application-youtube-embed {
+      width: 85%;
+    }
+
+    .application-video-title {
+      width: 85%;
+
+      h1 {
+        padding: .5em 0;
+        font-size: 1.5em;
+      }
+    }
+  }
 }
 
 

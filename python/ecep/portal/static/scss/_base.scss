@@ -8,6 +8,10 @@ body {
   }
 }
 
+input {
+  font-family: $montserrat;
+}
+
 /* --- Text Styling --- */
 .blue-text {
   color: $blue;
