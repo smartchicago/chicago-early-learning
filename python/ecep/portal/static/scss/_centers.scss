@@ -1,0 +1,64 @@
+/* -- General -- */
+.info-row {
+  padding-top: 8em;
+  padding-bottom: 8em;
+
+  img {}
+
+}
+
+/* -- General List -- */
+#centers-list {
+  border-top: 3px solid $yellow;
+  border-bottom: 3px solid $yellow;
+
+  .center-list {
+    align-items: stretch;
+
+    .center-block {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 2em;
+      padding-bottom: 2em;
+
+      img {
+        background-color: black;
+      }
+      
+      h1 {
+        font-size: 1.25em;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      .center-name {
+        display: inline-flex;
+        justify-content: space-between;
+      }
+
+      .center-address,
+      .center-phone,
+      .center-hours,
+      .center-directions {
+        padding: .25em 0;
+      }
+
+      .center-phone {
+        font-weight: 500;
+      }
+
+      .center-hours {
+        font-style: italic;
+        color: $dark-gray;
+      }
+
+      .center-directions {
+        margin-top: auto;
+      }
+
+    }
+  }
+}
