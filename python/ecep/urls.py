@@ -36,6 +36,7 @@ urlpatterns = patterns(
     # Redesign testing ground
     url(r'^redesign/about$', AboutRedesign.as_view(), name='about-redesign'),
     url(r'^redesign/connect$', ConnectRedesign.as_view(), name='connect-redesign'),
+    url(r'^redesign/family-resource-centers',  FamilyResourceCentersRedesign.as_view(), name='family-resource-centers'),
     url(r'^redesign/faq$', FAQRedesign.as_view(), name='faq-redesign'),
     url(r'^redesign/how-to-apply$', HowToApplyRedesign.as_view(), name='how-to-apply-redesign'),
     url(r'^redesign/index$', IndexRedesign.as_view(), name="redesign-home"),

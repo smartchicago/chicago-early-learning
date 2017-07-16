@@ -65,6 +65,9 @@ class AboutRedesign(TemplateView):
 class ConnectRedesign(TemplateView):
     template_name = "redesign/connect.html"
 
+class FamilyResourceCentersRedesign(TemplateView):
+    template_name = "redesign/family-resource-centers.html"       
+
 class FAQRedesign(TemplateView):
     template_name = "redesign/faq.html"
 
