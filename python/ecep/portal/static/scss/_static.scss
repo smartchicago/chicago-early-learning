@@ -36,7 +36,7 @@
     resize: vertical;
     position: relative;
     
-    top: -(3*$height) - 2em;
+    top: -(3*$height) + 2em;
     left: 0;
     z-index: 11;
     height: $height;

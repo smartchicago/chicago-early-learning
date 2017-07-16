@@ -1,27 +1,43 @@
 .blue {
-  color: $blue;
+  color: $blue !important;
 }
 
 .green {
-  color: $green;
+  color: $green !important;
 }
 
 .yellow {
-  color: $yellow;
+  color: $yellow !important;
 }
 
 .orange {
-  color: $orange;
+  color: $orange !important;
 }
 
 .white {
-  color: $white;
+  color: $white !important;
 }
 
 .bg-white {
-  background-color: $white;
+  background-color: $white !important;
 }
 
 .bg-light-gray {
-  background-color: $light-gray;  
+  background-color: $light-gray !important;
+}
+
+.b-blue {
+  border-color: $blue !important;
+}
+
+.b-green {
+  border-color: $green !important;
+}
+
+.b-yellow {
+  border-color: $yellow !important;
+}
+
+.b-orange {
+  border-color: $orange !important;
 }

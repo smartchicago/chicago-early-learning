@@ -6,6 +6,10 @@
   padding-bottom: 9px;
 }
 
+.btn-half {
+  width: 50%;
+}
+
 .btn-orange {
   @include primary-variant($white, $orange, $deep-orange);
 }
