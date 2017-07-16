@@ -7,3 +7,35 @@ $height: 20em;
     background-position: 50% (2*$height);
   }
 }
+
+#about-partners {
+  padding-top: 4em;
+  padding-bottom: 4em;
+
+  h1 { 
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: 1em;
+  }
+
+  .partner {
+
+    .partner-image,
+    .partner-bio {
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+  }
+
+  .minor-partners {
+
+    .minor-partner {
+      width: 25%;
+
+      img {
+        max-width: 90%;
+        max-height: 8em;
+      }
+    }
+  }
+}
