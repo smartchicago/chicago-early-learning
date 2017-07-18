@@ -1,24 +1,32 @@
-/* -- Header -- */
+ /* -- Header -- */
 #index-header {
-  $height: 40em;
+  $height: 30em;
   height: $height;
-  margin-bottom: -4em;
+  margin-bottom: -3em;
 
   .curve-header {
     height: 3*$height;
     background-image: url("../img/scientist-girl.jpg");
     background-position: 50% (2*$height);
-    margin-bottom: -4em;
+    margin-bottom: -3em;
   }
 
   .header-title {
-    top: -(3*$height)+4em;
+    top: -(3*$height)+3em;
     height: $height;
-    margin-bottom: -4em;
+    margin-bottom: -3em;
   }
 
-  h1 {
-    font-size: 3em;
+  .header-content {
+
+    h1 {
+      font-size: 1em;
+    }
+
+    img {
+      max-height: 4em;
+      text-align: center;
+    }
   }
 }
 
@@ -36,72 +44,61 @@
 
 /* -- Content Blocks General -- */
 .index-section-block {
-  display: flex;
-  height: 30em;
+  $block-height: 20em;
 
-  .index-block {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  .index-info-block {
+    height: $block-height;
+    display: inline-flex;
+    flex-direction: column;
 
     .index-sub-block {
-      width: 75%;
+      flex-grow: 2;
+      display: inline-flex;
+      flex-direction: column;
+
+      .sub-block-content {
+        width: 80%;
+        margin: auto !important;
+
+        h1 {
+          padding: 0;
+          font-size: 1.75em;
+        }
+      }
     }
   }
 
   h1 {
-    font-size: 2.5em;
+    font-size: 1.25em;
     font-weight: 400;
+    margin-bottom: 0;
+    padding: .5em 0;
   }
 
   p {
     padding: 1em 0;
+    margin-bottom: 0;
   }
 }
 
 /* -- Update Block -- */
 #index-update {
 
-  #update-content,
-  #update-announcement {
-    justify-content: space-bewteen;
-    background-color: $orange;
-    padding-left: 0;
-    padding-right: 0;
-
-    .update-tag {
-      padding: 1em;
-      background-color: $light-orange;
-
-      h1 { 
-        font-size: 1.25em;
-        font-weight: 400;
-        margin-bottom: 0;
-      }
-    }
-
-    .update-text {
-      height: 24em;
-      padding-left: 15px;
-      padding-right: 15px;
-
-      h1 {
-        font-size: 2em;
-      }
-    }
+  .full-width-header {
+    margin-left: -15px;
+    margin-right: -15px;
   }
 
   #update-content {
     background-color: $orange;
-    .update-tag {
+    #update-content-header {
       background-color: $light-orange;
     }
   }
 
   #update-announcement {
     background-color: $blue;
-    .update-tag {
+    #update-announcement-header {
       background-color: $light-blue;
     }
   }
@@ -134,17 +131,23 @@
     justify-content: center;
     align-content: center;
 
-    
-    .application-youtube-embed {
-      width: 85%;
-    }
+    .application-youtube {
+      padding-top: 15px;
+      padding-bottom: 15px;
 
-    .application-video-title {
-      width: 85%;
+      .application-youtube-embed {
+        margin: auto !important;
+        width: 80%;
+      }
 
-      h1 {
-        padding: .5em 0;
-        font-size: 1.5em;
+      .application-video-title {
+        width: 80%;
+        margin: auto !important;
+
+        h2 {
+          padding: 0;
+          font-size: 1.25em;
+        }
       }
     }
   }

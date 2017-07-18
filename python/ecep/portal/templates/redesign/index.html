@@ -13,24 +13,24 @@
   <div class="curve-header"></div>
   <div class="header-title">
     <div class="homepage-header row">
-      <div class="index-header col-md-5 offset-md-1">
+      <div class="index-header col-md-7 offset-md-1">
         <div class="header-content">
-          <h1>Look what I can do!</h1>
+          <img class="img-fluid mx-auto" src='{% static "img/tagline_white_blue.png" %}'>
           <p class="white">{% blocktrans %}There is no limit to what your child can accomplish. Jumpstart your child's education with Chicago Early Learning!{% endblocktrans %}</p>
           <p class="yellow">{% blocktrans %}Enter your address (work, home, or somewhere else!) to find a preschool or early learning program convenient for you and your family.{% endblocktrans %}</p>
         </div>
         <form>
           <div class="form-group row">
-            <div class="col-sm-9 clear-padding-right">
+            <div class="col-sm-8 clear-padding-right">
               <input type="text" class="form-control form-control-lg" placeholder="{% trans 'Enter your address or zip code' %}">
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <button class="btn btn-blue btn-lg btn-block">{% trans 'Search' %}</button>
             </div>
           </div>
           <div class="form-group row">
             <div class="col-sm-12">
-              <button class="btn btn-gray btn-block btn-lg">{% trans 'Use your current location' %}</button>
+              <button class="btn btn-gray btn-lg btn-block">{% trans 'Use your current location' %}</button>
             </div>
           </div>
         </form>
@@ -40,112 +40,122 @@
 </div>
 
 <div id="index-intro" class="container-fluid container-top-4 bg-white">
-  <div class="intro text-center col-md-6 offset-md-3">
+  <div class="intro text-center col-md-8 offset-md-2">
     <p>{% blocktrans %}“Every child in every neighborhood deserves a quality education and that must begin in their earliest years.”</p>
     <p>- Chicago Mayor Rahm Emanuel{% endblocktrans %}</p>
   </div>
 </div>
 
-<div id="index-update" class="container-fluid fluid-full index-section-block">
-  <div id="update-content" class="col-md-6">
-    <div class="update-tag text-center white">
-      <h1>{% trans 'Important Update' %}</h1>
-    </div>
-    <div class="update-text index-block">
+<div id="index-update" class="container-fluid index-section-block">
+  <div class="row">
+    <div id="update-content" class="index-info-block col-md-6">
+      <div id="update-content-header" class="sub-block-content full-width-header text-center white">
+        <h1>{% trans 'Important Update' %}</h1>
+      </div>
       <div class="index-sub-block">
-        <h1 class="white">{% trans 'Important Update' %}</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.</p>
-        <a href="" class="btn btn-cel btn-yellow btn-half btn-lg">Learn More</a>
+        <div class="sub-block-content">
+          <h1 class="white">{% trans 'Important Update' %}</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a href="" class="btn btn-cel btn-yellow btn-half ">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="update-announcement" class="index-info-block col-md-6">
+      <div id="update-announcement-header" class="sub-block-content full-width-header text-center white">
+        <h1>{% trans 'Important Announcement' %}</h1>
+      </div>
+      <div class="index-sub-block">
+        <div class="sub-block-content">
+          <h1 class="white">{% trans 'Important Announcement' %}</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a href="" class="btn btn-cel btn-green btn-half">Learn More</a>
+        </div>
       </div>
     </div>
   </div>
-  <div id="update-announcement" class="col-md-6">
-    <div class="update-tag text-center white">
-      <h1>{% trans 'Upcoming Event' %}</h1>
+</div>
+
+<div id="index-programs" class="container-fluid index-section-block bg-white">
+  <div class="row">
+    <div id="programs-image" class="index-info-block col-md-6">
+      
     </div>
-    <div class="update-text index-block">
+    <div id="progams-content" class="index-info-block col-md-6">
       <div class="index-sub-block">
-        <h1 class="white">{% trans 'Event Announcement' %}</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.</p>
-        <a href="" class="btn btn-cel btn-green btn-half btn-lg">Learn More</a>
+        <div class="sub-block-content">
+          <h1 class="green">{% trans 'Explore our early learning programs!' %}</h1>
+          <p>{% blocktrans %}Children who participate in high-quality early learning experiences are better prepared for success in kindergarten and beyond.{% endblocktrans %}</p>
+          <a href="" class="btn btn-cel btn-orange btn-half">Learn More</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div id="index-programs" class="container-fluid fluid-full index-section-block bg-white">
-  <div id="programs-image" class="index-block col-md-6">
-    
-  </div>
-  <div id="progams-content" class="index-block col-md-6">
-    <div class="index-sub-block">
-      <h1 class="green">{% trans 'Explore our early learning programs!' %}</h1>
-      <p>{% blocktrans %}Children who participate in high-quality early learning experiences are better prepared for success in kindergarten and beyond.{% endblocktrans %}</p>
-      <a href="" class="btn btn-cel btn-orange btn-half btn-lg">Learn More</a>
+<div id="index-application" class="container-fluid index-section-block bg-gray">
+  <div class="row">
+    <div id="application-content" class="index-info-block col-md-6">
+      <div class="index-sub-block">
+        <div class="sub-block-content">
+          <h1 class="blue">{% trans 'What is the preschool application process?' %}</h1>
+          <p>{% blocktrans %}Are you ready to apply for a preschool program for your 3- or 4-year-old? Learn about the process here or call <a class="a-orange" href="tel:3122291690">(312) 229-1690</a> with your questions.{% endblocktrans %}</p>
+          <a href="" class="btn btn-cel btn-green btn-half ">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div id="application-video" class="index-info-block col-md-6">
+      <div class="index-sub-block application-youtube">
+        <div class="application-youtube-embed embed-responsive embed-responsive-16by9">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/J---aiyznGQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="application-video-title embed">
+          <h2 class="orange">{% trans 'WATCH: Keyboard Cat Lorem Ipsum' %}</h2>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div id="index-application" class="container-fluid fluid-full index-section-block bg-gray">
-  <div id="application-content" class="index-block col-md-6">
-    <div class="index-sub-block">
-      <h1 class="blue">{% trans 'What is the preschool application process?' %}</h1>
-      <p>{% blocktrans %}Are you ready to apply for a preschool program for your 3- or 4-year-old? Learn about the process here or call <a class="a-orange" href="tel:3122291690">(312) 229-1690</a> with your questions.{% endblocktrans %}</p>
-      <a href="" class="btn btn-cel btn-green btn-half btn-lg">Learn More</a>
+<div id="index-resources" class="container-fluid index-section-block">
+  <div class="row">
+    <div id="resources-content" class="index-info-block col-md-6 offset-md-6 text-center">
+      <div class="index-sub-block">
+        <div class="sub-block-content">
+          <h1 class="white">{% trans 'Early learning doesn’t only take place in a preschool classroom.' %}</h1>
+          <p class="white">{% blocktrans %}Chicago offers a variety of stimulating children’s activities to get kids learning, moving, and playing. Learn more about what is offered by city agencies and organizations.{% endblocktrans %}</p>
+          <a href="" class="btn btn-cel btn-blue btn-half ">Learn More</a>
+        </div>
+      </div>
     </div>
   </div>
-  <div id="application-video" class="index-block col-md-6">
-    <div class="application-youtube-embed embed-responsive embed-responsive-16by9">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/J---aiyznGQ" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="application-video-title">
-      <h1 class="orange">{% trans 'WATCH: Keyboard Cat Lorem Ipsum' %}</h1>
-    </div>
-  </div>
-</div>
-
-<div id="index-resources" class="container-fluid fluid-full index-section-block">
-  <div id="resources-content" class="index-block col-md-6 offset-md-6 text-center">
-    <div class="index-sub-block">
-      <h1 class="white">{% trans 'Early learning doesn’t only take place in a preschool classroom.' %}</h1>
-      <p class="white">{% blocktrans %}Chicago offers a variety of stimulating children’s activities to get kids learning, moving, and playing. Learn more about what is offered by city agencies and organizations.{% endblocktrans %}</p>
-      <a href="" class="btn btn-cel btn-blue btn-half btn-lg">Learn More</a>
-    </div>
-  </div>  
 </div>
 
 <div id="index-news" class="container-fluid bg-white">
   <div class="news-header text-center">
     <h1 class="green">Latest News</h1>
   </div>
-  <div class="news-block d-flex flex-row justify-content-center">
-    <div class="news-content col-md-4">
-      <img class="" src="">
-      <h1 class="blue">News Item Headline Lorem Ipsum News Item</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.</p>
-      <div>
-        <a class="a-black-orange" href="#"><i>{% trans 'Read More' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+  <div class="news-block">
+    <div class="row justify-content-center">
+      <div class="news-content col-md-4">
+        <img class="" src="">
+        <h1 class="blue">News Item Headline Lorem Ipsum News Item</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div>
+          <a class="a-black-orange" href="#"><i>{% trans 'Read More' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+        </div>
       </div>
-    </div>
-    <div class="news-content col-md-4">
-      <img class="" src="">
-      <h1 class="blue">News Item Headline Lorem Ipsum News Item</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.</p>
-      <div>
-        <a class="a-black-orange" href="#"><i>{% trans 'Read More' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
-      </div>
-    </div>
-    <div class="news-content col-md-4">
-      <img class="" src="">
-      <h1 class="blue">News Item Headline Lorem Ipsum News Item</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.</p>
-      <div>
-        <a class="a-black-orange" href="#"><i>{% trans 'Read More' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+      <div class="news-content col-md-4">
+        <img class="" src="">
+        <h1 class="blue">News Item Headline Lorem Ipsum News Item</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div>
+          <a class="a-black-orange" href="#"><i>{% trans 'Read More' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+        </div>
       </div>
     </div>
   </div>
