@@ -17,15 +17,30 @@
     margin-bottom: -3em;
   }
 
-  .header-content {
+  .index-header {
+    padding-bottom: 2em;
+    
+    .header-content {
 
-    h1 {
-      font-size: 1em;
+      h1 {
+        font-size: 1em;
+      }
+
+      img {
+        display: block;
+        max-height: 4em;
+        margin: auto;
+      }
     }
 
-    img {
-      max-height: 4em;
-      text-align: center;
+    .index-form {
+      padding-top: 1rem;
+    }
+
+    @media (max-width: $break-small) {
+      .clear-padding-right {
+        padding-right: 15px;
+      }
     }
   }
 }
