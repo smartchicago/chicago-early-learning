@@ -52,6 +52,7 @@
     height: 10em;
 
     p {
+      font-size: .9em;
       font-weight: 400;
     }
   }
@@ -72,19 +73,19 @@
       flex-direction: column;
 
       .sub-block-content {
-        width: 80%;
+        width: 90%;
         margin: auto !important;
 
         h1 {
           padding: 0;
-          font-size: 1.75em;
+          font-size: 1.5em;
         }
       }
     }
   }
 
   h1 {
-    font-size: 1.25em;
+    font-size: 1.2em;
     font-weight: 400;
     margin-bottom: 0;
     padding: .5em 0;
@@ -152,11 +153,11 @@
 
       .application-youtube-embed {
         margin: auto !important;
-        width: 80%;
+        width: 90%;
       }
 
       .application-video-title {
-        width: 80%;
+        width: 90%;
         margin: auto !important;
 
         h2 {
@@ -184,7 +185,7 @@
     padding: 1em 2em;
 
     h1 {
-      font-size: 1.5em;
+      font-size: 1.25em;
       font-weight: 500;
       padding: 1em 0;
       margin-bottom: 0;
