@@ -1,4 +1,5 @@
 $height: 20em;
+$block-height: 40em;
 
 #programs-header {
 
@@ -6,4 +7,37 @@ $height: 20em;
     background-image: url("../img/static-pages/resources-header.jpeg");
     background-position: 50% (2*$height);
   }
+}
+
+
+.programs-block {
+  min-height: $block-height;
+
+  .programs-info-block {
+    height: 100%;
+  }
+}
+
+.programs-image-block {
+  background-color: $black;
+}
+
+#programs-age-calculator {}
+
+#programs-infants-image,
+#programs-preschool-image {
+  background-color: $black;
+}
+
+#programs-infants-info {
+  background-color: $orange;
+}
+
+#programs-preschool-info {
+  background-color: $blue;
+}
+
+#programs-kindergarten {
+  min-height: .5*$block-height;
+  background-color: $deep-yellow;
 }
