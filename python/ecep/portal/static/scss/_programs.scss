@@ -11,10 +11,10 @@ $block-height: 40em;
 
 
 .programs-block {
-  min-height: $block-height;
 
   .programs-info-block {
-    height: 100%;
+    width: 80%;
+    margin: auto !important;
   }
 }
 
@@ -22,7 +22,23 @@ $block-height: 40em;
   background-color: $black;
 }
 
-#programs-age-calculator {}
+.programs-base {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+#programs-intro {
+  
+  img {
+    width: 100%;
+    height: 12em;
+    background-color: $black;
+  }
+}
+
+#programs-age-calculator {
+
+}
 
 #programs-infants-image,
 #programs-preschool-image {
@@ -30,14 +46,121 @@ $block-height: 40em;
 }
 
 #programs-infants-info {
+  min-height: $block-height;
   background-color: $orange;
 }
 
 #programs-preschool-info {
+  min-height: $block-height;
   background-color: $blue;
 }
 
 #programs-kindergarten {
-  min-height: .5*$block-height;
   background-color: $deep-yellow;
+}
+
+#programs-kindergarten-info {
+  min-height: .5*$block-height;
+}
+
+
+#programs-infants-info,
+#programs-preschool-info,
+#programs-kindergarten-info {
+  color: $white;
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2, h3 {
+    font-size: 1.25em;
+  }
+
+  h3 {
+    color: lighten($light-gray, 10%);
+    font-style: italic;
+  }
+
+  ul {
+    padding-left: 2em;
+
+    li {
+
+    }
+  }
+}
+
+#programs-types {
+
+  @media (min-width: $break-medium) {
+    #program-types-cps {
+      border-right: 3px solid $white;
+    }
+  }
+
+  .program-type {
+
+    img {
+      height: 8em;
+      width: 8em;
+      background-color: $black;
+      margin: 2em;
+    }
+
+    h1 {
+      font-size: 1.5em;
+    }
+
+    h2 {
+      font-size: 1em;
+      font-style: italic;
+    }
+
+    h1, h2 {
+      margin-bottom: 1em;
+    }
+
+  }
+
+  .home-visiting {
+    width: 90%;
+    border: 2px solid $blue;
+    padding: 2em 4em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .programs-description {
+    width: 90%;
+    margin-top: 4em;
+    padding-top: 2em;
+    border-top: 3px solid $white;
+
+    img {
+      background-color: $black;
+      height: 4em;
+      width: 8em;
+      margin-top: -6em;
+    }
+
+    h1 {
+
+    }
+  }
+
+}
+
+#programs-graphic {
+  height: $block-height;
+  background-color: $black;
+}
+
+#programs-resources {
+  height: $height + 3em;
+  background-color: $dark-gray;
 }
