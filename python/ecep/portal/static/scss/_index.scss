@@ -20,6 +20,13 @@
   .index-header {
     padding-bottom: 2em;
     
+    form {
+
+      .form-control-lg,
+      .btn-lg {
+        font-size: .9rem;
+      }
+    }
     .header-content {
 
       h1 {
@@ -48,6 +55,10 @@
 
 /* -- Intro Block -- */
 #index-intro {
+  background-image: url("../img/redesign/shapes_2x.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   .intro {
     padding-top: 2em;
     padding-bottom: 2em;
