@@ -1,34 +1,32 @@
 $height: 20em;
 
-
-
 .apply-block {
   padding-top: 4em;
   padding-bottom: 4em;
 }
 
+#apply-header {
+
+  .curve-header {
+    background-image: url("../img/static-pages/resources-header.jpeg");
+    background-position: 50% (2*$height);
+  }
+}
+
 #apply {
   h1 {
-    font-size: 2em;
-    font-weight: 400;
+    font-size: 2.25em;
+    font-weight: 500;
   }
 
   h2 {
-    font-size: 1.6em;
-    font-weight: 400;
+    font-size: 1.5em;
+    font-weight: 500;
   }
 
   h3 {
-    font-size: 1.4em;
-    font-weight: 400;
-  }
-
-  #apply-header {
-
-    .curve-header {
-      background-image: url("../img/static-pages/resources-header.jpeg");
-      background-position: 50% (2*$height);
-    }
+    font-size: 1.2em;
+    font-weight: 500;
   }
 
   #apply-intro {}
