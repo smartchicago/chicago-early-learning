@@ -1,9 +1,118 @@
 $height: 20em;
 
-#apply-header {
 
-  .curve-header {
-    background-image: url("../img/static-pages/resources-header.jpeg");
-    background-position: 50% (2*$height);
+
+.apply-block {
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+#apply {
+  h1 {
+    font-size: 2em;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-size: 1.6em;
+    font-weight: 400;
+  }
+
+  h3 {
+    font-size: 1.4em;
+    font-weight: 400;
+  }
+
+  #apply-header {
+
+    .curve-header {
+      background-image: url("../img/static-pages/resources-header.jpeg");
+      background-position: 50% (2*$height);
+    }
+  }
+
+  #apply-intro {}
+
+  #apply-enroll {
+    min-height: $height;
+
+    .apply-block-steps {
+      padding-top: 2em;
+      padding-bottom: 2em;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      .step-image {
+        background-color: $black;
+        height: 8em;
+        width: 100%;
+        margin: auto 0 !important;
+      }
+
+      .or-break {
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
+    }
+  }
+
+  #apply-verify {
+    min-height: $height;
+    
+    .top-border-box {
+      border-color: $light-gray;
+      margin-top: 1em;
+    }
+
+    .full-border-box {
+      border-color: $green;
+    }
+
+    .documents {
+      width: 80%;
+
+      .verify-bullets {
+        flex-grow: 1;
+      }
+    }
+
+    .documents-note {
+      padding-top: 1em;
+      padding-bottom: 1em;
+
+      .documents-image {
+
+        img {
+          width: 100%;
+          height: 4em;
+          background-color: $black;
+        }
+      }
+
+      .documents-description {
+
+      }
+    }
+  }
+
+  #apply-links {
+    height: 2*$height;
+    color: $white;
+
+    .link-block {
+      width: 80%;
+
+      p {}
+    }
+
+    #link-programs-block {
+      background-color: $light-blue;
+    }
+
+    #link-support-block {
+      background-color: $deep-blue;
+    }
   }
 }

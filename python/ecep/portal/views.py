@@ -27,28 +27,16 @@ from operator import attrgetter
 logger = logging.getLogger(__name__)
 
 
-class Index(TemplateView):
-    template_name = "index.html"
-
-class Connect(TemplateView):
-    template_name = "connect.html"
-
-class About(TemplateView):
-    template_name = "about.html"
-
 class SMSInfo(TemplateView):
     template_name = "smsinfo.html"
 
 class Updates(TemplateView):
     template_name = "updates.html"
 
-class Families(TemplateView):
-    template_name = "families.html"
-
 class CityResources(TemplateView):
     template_name = "city-resources.html"
 
-class HowToApply(TemplateView):
+class HowToApplyRedesign(TemplateView):
     template_name = "how-to-apply.html"
 
 class Announcements(TemplateView):
@@ -59,31 +47,31 @@ class Starred(TemplateView):
 
 
 # Redesign Template Views:
-class AboutRedesign(TemplateView):
+class About(TemplateView):
     template_name = "redesign/about.html"
 
-class ConnectRedesign(TemplateView):
+class Connect(TemplateView):
     template_name = "redesign/connect.html"
 
-class FamilyResourceCentersRedesign(TemplateView):
+class FamilyResourceCenters(TemplateView):
     template_name = "redesign/family-resource-centers.html"       
 
-class FAQRedesign(TemplateView):
+class FAQ(TemplateView):
     template_name = "redesign/faq.html"
 
-class HowToApplyRedesign(TemplateView):
+class HowToApply(TemplateView):
     template_name = "redesign/how-to-apply.html"
 
-class IndexRedesign(TemplateView):
+class Index(TemplateView):
     template_name = "redesign/index.html"
 
 class OutreachRedesign(TemplateView):
     template_name = "redesign/outreach.html"
 
-class ProgramsRedesign(TemplateView):
+class Programs(TemplateView):
     template_name = "redesign/programs.html"
 
-class ResourcesRedesign(TemplateView):
+class Resources(TemplateView):
     template_name = "redesign/resources.html"
 
 

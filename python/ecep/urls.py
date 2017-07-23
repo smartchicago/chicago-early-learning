@@ -24,7 +24,6 @@ urlpatterns = patterns(
     url(r'^$', Index.as_view(), name='index'),
     url(r'^about$', About.as_view(), name='about'),
     url(r'^updates$', Updates.as_view(), name='updates'),
-    url(r'^families$', Families.as_view(), name='families'),
     url(r'^city-resources$', CityResources.as_view(), name='city-resources'),
     url(r'^how-to-apply$', HowToApply.as_view(), name='how-to-apply'),
     url(r'^connect$', Connect.as_view(), name='connect'),
@@ -34,14 +33,10 @@ urlpatterns = patterns(
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicons/favicon.ico')),
 
     # Redesign testing ground
-    url(r'^redesign/about$', AboutRedesign.as_view(), name='about-redesign'),
-    url(r'^redesign/connect$', ConnectRedesign.as_view(), name='connect-redesign'),
-    url(r'^redesign/family-resource-centers',  FamilyResourceCentersRedesign.as_view(), name='family-resource-centers'),
-    url(r'^redesign/faq$', FAQRedesign.as_view(), name='faq-redesign'),
-    url(r'^redesign/how-to-apply$', HowToApplyRedesign.as_view(), name='how-to-apply-redesign'),
-    url(r'^redesign/index$', IndexRedesign.as_view(), name="redesign-home"),
-    url(r'^redesign/programs$', ProgramsRedesign.as_view(), name='programs-redesign'),
-    url(r'^redesign/resources$', ResourcesRedesign.as_view(), name='resources-redesign'),
+    url(r'^family-resource-centers',  FamilyResourceCenters.as_view(), name='family-resource-centers'),
+    url(r'^faq$', FAQ.as_view(), name='faq'),
+    url(r'^programs$', Programs.as_view(), name='programs'),
+    url(r'^resources$', Resources.as_view(), name='resources'),
     
     # browse page
     url(r'^search/$', 'portal.views.browse', name='browse'),
@@ -87,7 +82,6 @@ urlpatterns = patterns(
     url(r'^jsi18n/$', 'django.views.i18n.javascript_catalog', kwargs=js_info_dict, name='javascript-catalog'),
     url(r'^rosetta/', include('rosetta.urls')),
     url(r'^i18n/(?P<language>.+)/$', 'portal.views.setlang', name='setlang'),
-    url(r'^faq$', 'portal.views.faq', name='faq'),
 
     # Admin interface
     url(r'^admin/', include(admin.site.urls)),
