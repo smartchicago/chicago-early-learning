@@ -71,10 +71,10 @@ $height: 20em;
     }
 
     .documents {
-      width: 80%;
-
       .verify-bullets {
         flex-grow: 1;
+
+        ul {}
       }
     }
 

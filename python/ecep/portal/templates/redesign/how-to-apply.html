@@ -145,29 +145,32 @@
             <p><i>{% trans "Follow these three steps to verify your child's placement:" %}</i></p>
             <div class="documents d-flex flex-row mx-auto">
               <div class="verify-bullets p-2">
-                <h3>one</h3>
+                <h3 class="orange">{% trans "Proof of child's age" %}</h3>
                 <ul>
-                  <li>one</li>
-                  <li>two</li>
-                  <li>three</li>
+                  <li>{% trans "Original birth certificate" %}</li>
+                  <li>{% trans "Passport" %}</li>
                 </ul>
-                <h3>two</h3>
+                <h3 class="orange">{% trans "Proof of Address" %}</h3>
                 <ul>
-                  <li>one</li>
-                  <li>two</li>
-                  <li>three</li>
-                  <li>four</li>
+                  <li>{% trans "Driver's License/ID card" %}</li>
+                  <li>{% trans "Utility" %}</li>
+                  <li>{% trans "Lease agreement/mortgage statement" %}</li>
+                  <li>{% trans "Current voter registration card" %}</li>
                 </ul>
               </div>
               <div class="verify-bullets p-2">
-                <h3>three</h3>
+                <h3 class="orange">{% trans "Proof of Income" %}</h3>
                 <ul>
-                  <li>one</li>
-                  <li>two</li>
-                  <li>three</li>
-                  <li>four</li>
-                  <li>five</li>
-                  <li>six</li>
+                  <li>{% trans "Current paystub" %}</li>
+                  <li>{% trans "1040/W-2" %}</li>
+                  <li>{% trans "SSI Letter" %}</li>
+                  <li>{% trans "Unemployment Letter/Stub" %}</li>
+                  <li>{% trans "Workers' compensation letter/stub" %}</li>
+                  <li>{% trans "Retirement or pension stub/letter" %}</li>
+                  <li>{% trans "Alimony" %}</li>
+                  <li>{% trans "Official child support letter" %}</li>
+                  <li>{% trans "TANF" %}</li>
+                  <li>{% trans "Income verification form" %}</li>
                 </ul>
               </div>
             </div>
@@ -214,10 +217,7 @@
       </div>
       <div class="row">
         <div class="col-md-8 offset-md-2 full-border-box mx-auto">
-          <p>{% blocktrans %}Note: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.{% endblocktrans %}</p>
+          <p>{% blocktrans %}Note:  If your family is in a temporary living situation, you are not required to present the documents listed above for verification.  All schools must immediately enroll students in temporary living situations even if the student lacks health, immunization or school records, proof of guardianship, proof of residency, or any other documentation normally required for school enrollment.{% endblocktrans %}</p>
         </div>
       </div>
     </div>
