@@ -1,8 +1,73 @@
-#faq-header {
-  $height: 20em;
+$height: 20em;
 
-  .curve-image {
+#faq-header {
+
+  .curve-header {
     background-image: url("../img/static-pages/resources-header.jpeg");
-    background-position: center center;
+    background-position: 50% (2*$height);
+  }
+}
+
+#faq {
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.6rem;
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+
+  #faq-contents {
+
+    h2 {padding: .5em 0;}
+
+    img {
+      height: 6em;
+      width: 8em;
+      background-color: black;
+    }
+
+    .faq-contents-block {
+      padding-top: 1em;
+      padding-bottom: 1em;
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  #faq-body {
+
+    h2 {padding: .5em 0;}
+
+    .body-header {
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+
+    .faq-block {
+
+      .faq-block-content {
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+  }
+
+  #faq-body-apply,
+  #faq-body-general {
+    h2 {color: $blue}
+  }
+
+  #faq-body-returning {
+    h2 {color: $green}
+  }
+
+  #faq-body-registration {
+    h2 {color: $orange}
   }
 }
