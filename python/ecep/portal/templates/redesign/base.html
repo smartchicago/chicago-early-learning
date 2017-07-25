@@ -92,7 +92,6 @@
     {% include "redesign/footer.html" %}
 </body>
 <footer>
-
   <!-- Bootstrap JS --> 
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -105,6 +104,57 @@
         $('a[href="' + this.location.pathname + '"]').addClass('nav-active');
       });
   </script>
+
+  {% compress js %}
+  <script src='{% static "js/require.js" %}'></script>
+  <script src='{% static "js/require-config.js" %}'></script>
+  {% endcompress %}
+  <script>
+      var inDevelopment = {{ settings.DEBUG|yesno:"true,false" }},
+          version = 9;
+
+      requirejs.config({
+          //By default load any module IDs from js/lib
+          // TODO: enable build in release mode once we start actually doing it
+          //baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
+              //'{% static "js/cel" %}' : '{% static "js/cel-build" %}')
+          baseUrl: '{% static "js/cel" %}',
+          urlArgs: "v=" + ((inDevelopment) ? (new Date()).getTime() : version)
+      });
+
+      // Cheat to win, make a global object
+      // We need this because:
+      //   a) We can only render this in a django template
+      //   b) We need access to the GOOGLE_MAPS_KEY to load google maps using require.
+      //      If we put it in an AMD module, we have to first load the module, then
+      //      have a nested require statement to load google maps, which is a PITA.
+      //
+      // So, if you need to require google maps, do something like
+      // define([CEL.serverVars.gmapRequire], function() { ... })
+      CEL = {
+          serverVars: {
+              latSettings: '{{ settings.LATITUDE|stringformat:'f' }}',
+              lngSettings: '{{ settings.LONGITUDE|stringformat:'f' }}',
+              zoomSettings: '{{ settings.ZOOM_THRESHOLD }}',
+              gmapKey: '{{ settings.GOOGLE_MAPS_KEY }}',
+              gmapRequire: 'async!https://maps.googleapis.com/maps/api/js?key=' +
+                  '{{ settings.GOOGLE_MAPS_KEY }}' + '&libraries=places',
+              autocomplete: {
+                  swlat: {{ settings.AUTOCOMPLETE.SW_LAT|stringformat:'f' }},
+                  swlng: {{ settings.AUTOCOMPLETE.SW_LNG|stringformat:'f' }},
+                  nelat: {{ settings.AUTOCOMPLETE.NE_LAT|stringformat:'f' }},
+                  nelng: {{ settings.AUTOCOMPLETE.NE_LNG|stringformat:'f' }}
+              },
+              staticRoot: '{% static "" %}',
+              language: '{{ LANGUAGE_CODE }}',
+              // settings.LANGUAGE_CODE instead of LANGUAGE_CODE because we want default, not
+              //      what is currently set
+              default_language: '{{ settings.LANGUAGE_CODE }}'
+          }
+      };
+      // This forces loading of minified common libs rather than loading them separately
+      require(['common'], function() { });
+   </script>
   <!-- Add'l Headers --> 
   {% block template_headers %}{% endblock %}
 </footer>

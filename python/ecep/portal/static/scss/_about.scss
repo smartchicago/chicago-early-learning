@@ -18,12 +18,20 @@ $height: 20em;
     margin-bottom: 1em;
   }
 
+  img {
+    max-width: 10em;
+    max-height: 6em;
+  }
+
   .partner {
 
     .partner-image,
     .partner-bio {
       padding-top: 2em;
-      padding-bottom: 2em;
+
+      @media (min-width: $break-medium) {
+        padding-right: 0;
+      }
     }
   }
 
