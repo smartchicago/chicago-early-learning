@@ -6,9 +6,15 @@
 
   .curve-header {
     height: 3*$height;
-    background-image: url("../img/scientist-girl.jpg");
-    background-position: 50% (2*$height);
-    margin-bottom: -3em;
+
+    .header-image {
+      height: $height;
+      top: 2*$height;
+      background-image: url("../img/scientist-girl.jpg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: 50% 20%;
+    }
   }
 
   .header-title {
