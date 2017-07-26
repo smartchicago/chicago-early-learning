@@ -17,19 +17,24 @@
 }
 
 .navbar-bottom {
+  z-index: 12;
   background-color: $white;
   padding: 1em 1em;
 
-  .nav-logo {
-    position: absolute;
+  .navbar-toggler {
+    border: 3px solid $orange !important;
 
-     .navbar-brand {
-      padding-top: 0;
+    .navbar-toggler-icon {
+
+    }
+  }
+
+  .navbar-brand {
+    padding-top: 0;
+    height: 2em;
+
+    img {
       height: 2em;
-
-      img {
-        height: 2em;
-      }
     }
   }
 
@@ -40,16 +45,31 @@
     vertical-align: center;
 
     .nav-item {
-      .nav-active {
-        border-radius: 0;
-        color: $deep-blue;
-        border-bottom: 3px solid $deep-blue;
+      padding: 0;
 
-        &:hover {
-          color: $blue;
-          border-bottom: 3px solid $blue;
+      .nav-active {
+
+        @media (min-width: $break-large) {
+          border-radius: 0;
+          color: $deep-blue !important;
+          border-bottom: 3px solid $deep-blue;
+
+          &:hover {
+            color: $blue !important;
+            border-bottom: 3px solid $blue;
+          }
+        }
+
+        @media (max-width: $break-large) {
+          color: $deep-blue !important;
+          font-style: bold !important;
         }
       }
+    }
+
+    @media (max-width: $break-large) {
+      margin-top: 1.5em;
+      border-top: 3px solid $deep-blue;
     }
 
     .apply-button a {

@@ -1,6 +1,6 @@
 @mixin link-variant($color, $deep-color) {
-  color: $color;
+  color: $color !important;
   &:hover {
-    color: $deep-color;
+    color: $deep-color !important;
   }
 }

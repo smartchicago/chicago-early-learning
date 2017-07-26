@@ -34,8 +34,8 @@
   transition: 0s;
   padding: .5em 2em;
   background-color: inherit;
-  border: 1px solid $white;
-  color: $white;
+  border: 1px solid $white !important;
+  color: $white !important;
   @include border-radius(2px);
   
   &:hover {
