@@ -25,9 +25,11 @@ $height: 20em;
 
 #resources-header {
 
-  .curve-header {
+  .header-image {
     background-image: url("../img/static-pages/resources-header.jpeg");
-    background-position: 50% (2*$height);
+    background-size: 140%;
+    background-position: 30% 30%;
+    background-repeat: no-repeat;
   }
 }
 

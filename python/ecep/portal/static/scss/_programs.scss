@@ -3,9 +3,11 @@ $block-height: 40em;
 
 #programs-header {
 
-  .curve-header {
-    background-image: url("../img/static-pages/resources-header.jpeg");
-    background-position: 50% (2*$height);
+  .header-image {
+    background-image: url("../img/redesign/programs/coloring-boy.jpg");
+    background-size: 100%;
+    background-position: 50% 60%;
+    background-repeat: no-repeat;
   }
 }
 
@@ -40,9 +42,14 @@ $block-height: 40em;
 
 }
 
-#programs-infants-image,
+#programs-infants-image {
+  background-image: url("../img/redesign/programs/woman-and-infant.jpg");
+  background-position: 40% 50%;
+}
+
 #programs-preschool-image {
-  background-color: $black;
+  background-image: url("../img/redesign/programs/phone-girl.jpg");
+  background-position: 40% 50%;
 }
 
 #programs-infants-info {
@@ -145,4 +152,8 @@ $block-height: 40em;
 #programs-resources {
   height: $height + 3em;
   background-color: $dark-gray;
+  background-image: url("../img/redesign/programs/cheering-kids.jpg");
+  background-size: 120%;
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
 }
