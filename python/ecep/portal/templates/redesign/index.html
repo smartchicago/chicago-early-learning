@@ -22,7 +22,7 @@
         <form>
           <div class="form-group row">
             <div id="search-bar-element" class="index-form col-sm-8 clear-padding-right">
-              <input type="text" class="form-control form-control-lg" placeholder="{% trans 'Enter your address or zip code' %}">
+              <input type="text" class="form-control form-control-lg autocomplete-searchbox" placeholder="{% trans 'Enter your address or zip code' %}">
             </div>
             <div id="search-button-element" class="index-form col-sm-4">
               <button class="btn btn-blue btn-lg btn-block">{% trans 'Search' %}</button>
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div id="index-intro" class="container-fluid container-top-2 bg-white">
+<div id="index-intro" class="container-fluid container-top-4 bg-white">
   <div class="intro text-center col-md-8 offset-md-2">
     <p>{% blocktrans %}“Every child in every neighborhood deserves a quality education and that must begin in their earliest years.”{% endblocktrans %}</p>
     <p>- Chicago Mayor Rahm Emanuel</p>
@@ -62,6 +62,9 @@
       </div>
     </div>
 
+    <div id="update-image" class="index-info-block col-md-6"></div>
+
+    <!-- 
     <div id="update-announcement" class="index-info-block col-md-6">
       <div id="update-announcement-header" class="sub-block-content full-width-header text-center white">
         <h1>{% trans 'Important Announcement' %}</h1>
@@ -75,6 +78,8 @@
         </div>
       </div>
     </div>
+    -->
+
   </div>
 </div>
 
@@ -91,9 +96,7 @@
       </div>
     </div>
 
-    <div id="programs-image" class="index-info-block col-md-6 pull-md-6">
-      
-    </div>
+    <div id="programs-image" class="index-info-block col-md-6 pull-md-6"></div>
 
   </div>
 </div>

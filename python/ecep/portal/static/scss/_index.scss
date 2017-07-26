@@ -55,10 +55,10 @@
 
 /* -- Intro Block -- */
 #index-intro {
-  background-image: url("../img/redesign/shapes_2x.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
   .intro {
     padding-top: 2em;
     padding-bottom: 2em;
@@ -131,9 +131,10 @@
     }
   }
 
-
   #update-image {
-    background-color: black;
+    background-image: url('../img/redesign/index/bullhorn-boy.jpg');
+    background-size: cover;
+    background-position: right center;
   }
 }
 
@@ -184,7 +185,9 @@
 
 /* -- Resources Block -- */
 #index-resources {
-  background-color: black;
+  background-image: url('../img/redesign/index/cheering-kids.jpg');
+  background-size: cover;
+  background-position: left 25%;
 }
 
 
