@@ -10,15 +10,17 @@
 
 {% block body %}
 <div id="about-header" class="container-fluid header">
-  <div class="curve-header"></div>
+  <div class="curve-header">
+    <div class="header-image"></div>
+  </div>
   <div class="header-title">
     <h1 class="text-center">About</h1>
   </div>
 </div>
 
-<div id="about-partners" class="container container-top-2">
+<div id="about-partners" class="container container-top-4">
   <div class="partners-header text-center">
-    <h1 class="orange">Partners</h1>
+    <h1 class="orange">{% trans 'Partners' %}</h1>
   </div>
   <div class="partners">
     
@@ -31,7 +33,7 @@
           </a> 
         </div>
         <div class="partner-bio col-md-9">
-          <h1><a class="a-blue" href="https://www.cityofchicago.org/city/en.html">{% trans "City of Chicago" %}</a></h1>
+          <h2><a class="a-blue" href="https://www.cityofchicago.org/city/en.html">{% trans "City of Chicago" %}</a></h2>
           <p>{% blocktrans %}Mayor Emanuel and the City of Chicago have made a firm commitment to providing children across the city with access to high-quality education, from early learning programs all the way up through college. Since taking office, Mayor Emanuel has invested over $45 million into expanding early childhood programs and building quality, access, and transparency throughout the city. Launched in 2012, the Early Learning Portal ensuring that parents have access to the information they need to make the choices that are best for their children and families.{% endblocktrans %}</p>
         </div>
         <span class="divider-thin b-light-gray"></span>
@@ -43,7 +45,7 @@
           </a> 
         </div>
         <div class="partner-bio col-md-9">
-          <h1><a class="a-blue" href="http://www.cps.edu/">{% trans "Chicago Public Schools" %}</a></h1>
+          <h2><a class="a-blue" href="http://www.cps.edu/">{% trans "Chicago Public Schools" %}</a></h2>
           <p>{% blocktrans %}Chicago Public Schools works to ensure that every student in every community has access to a high quality education that prepares them for success in college and career.{% endblocktrans %}</p>
         </div>
         <span class="divider-thin b-light-gray"></span>
@@ -55,7 +57,7 @@
           </a>
         </div>
         <div class="partner-bio col-md-9">
-          <h1><a class="a-blue" href="https://www.cityofchicago.org/city/en/depts/fss.html">{% trans "Chicago Department of Family and Support Services" %}</a></h1>
+          <h2><a class="a-blue" href="https://www.cityofchicago.org/city/en/depts/fss.html">{% trans "Chicago Department of Family and Support Services" %}</a></h2>
           <p>{% blocktrans %}The Chicago Department of Family and Support Services (DFSS) is dedicated to supporting a continuum of coordinated services to enhance the lives of Chicago residents, particularly those most in need, from birth through the senior years.{% endblocktrans %}</p>
         </div>
         <span class="divider-thin b-light-gray"></span>
@@ -67,14 +69,14 @@
           </a> 
         </div>
         <div class="partner-bio col-md-9">
-          <h1><a class="a-blue" href="http://www.smartchicagocollaborative.org/">{% trans "Smart Chicago Collaborative" %}</a></h1>
+          <h2><a class="a-blue" href="http://www.smartchicagocollaborative.org/">{% trans "Smart Chicago Collaborative" %}</a></h2>
           <p>{% blocktrans %}The Smart Chicago Collaborative is a civic organization devoted to using technology to make lives better in Chicago. We work to apply the transformative power of technology to solve problems for the people of Chicago.{% endblocktrans %}</p>
         </div>
         <span class="divider-thin b-light-gray"></span>
       </div>
     </div>
     <div id="minor-partners" class="col-md-12">
-      <h1 class="blue">Other Partners</h1>
+      <h2 class="orange">{% trans 'Other Partners' %}</h2>
       <div class="minor-partners d-flex flex-wrap">
         <div class="minor-partner p-2"><a href="https://uel.uchicago.edu/"><img class="img-fluid mx-auto" src="{% static 'img/logos/uel.png' %}"></a></div>
         <div class="minor-partner p-2"><a href="http://www.actforchildren.org/"><img class="img-fluid mx-auto" src="{% static 'img/logos/iafc.png' %}"></a></div>
