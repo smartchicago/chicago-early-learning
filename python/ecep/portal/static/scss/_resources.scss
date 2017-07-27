@@ -6,6 +6,13 @@ h3, h4 { font-size: 1.25rem; }
 
 .category-block {
 
+  .category-image {
+
+    svg {
+      width: 100%;
+    }
+  }
+
   .resources-category {
     padding: 2em 0;
   }
