@@ -12,7 +12,7 @@ footer {
     z-index: 10;
 
     @media (max-width: $break-small) {
-      height: ($height + 18em);
+      height: ($height + 10em);
     } 
     
     .curve {
@@ -81,11 +81,15 @@ footer {
 
       @media (max-width: $break-small) {
         .links-block {
-          .col-sm-2,
-          .col-sm-4 {
-            width: 100%;
-            padding: 1em 4em;
+          padding: 1em 2em;
+
+          .footer-description {
+            padding-bottom: 2em;
           }
+        }
+
+        .copyright {
+          padding: 1em 2em;
         }
       }
     }

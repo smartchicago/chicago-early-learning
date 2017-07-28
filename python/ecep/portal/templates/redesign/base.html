@@ -47,7 +47,15 @@
           <div id="phone-svg" class="inline-link-svg svg-blue">{% svg 'icons/phone' %}</div><span class="hidden-md-down">{% trans 'Call the Chicago Early Learning Hotline at' %}</span><a class="a-blue" href="tel:3122291690"> (312) 229-1690</a>
         </div>
         <div class="flex-sm-fill text-sm-center">
-          <a class="a-black-orange" href="#">{% trans 'Español' %}</a>  |  <a class="a-black-orange" href="#">{% trans 'Continue to Application Login' %} <div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+        {% if LANGUAGE_CODE == 'en' %}
+          <a class="a-black-orange" href="{% url 'setlang' language=LANGUAGES.1.0 %}" data-lang="{{ LANGUAGES.1.0 }}">Español</a></li>
+
+        {% elif LANGUAGE_CODE == 'es' %}
+          <a class="a-black-orange" href="{% url 'setlang' language=LANGUAGES.0.0 %}" data-lang="{{ LANGUAGES.0.0 }}">English</a>
+
+        {% endif %}
+
+            |  <a class="a-black-orange" href="#">{% trans 'Continue to Application Login' %} <div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
         </div>
       </nav>
     </div>
