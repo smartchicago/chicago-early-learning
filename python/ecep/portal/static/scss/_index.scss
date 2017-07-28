@@ -3,6 +3,11 @@
   $height: 30em;
   height: $height;
   margin-bottom: -3em;
+}
+
+#index-header,
+#index-mobile-search {
+  $height: 30em;
 
   .curve-header {
     height: 3*$height;
@@ -36,7 +41,8 @@
     .header-content {
 
       h1 {
-        font-size: 1em;
+        font-size: 3rem;
+        margin-bottom: .5rem;
       }
 
       img {
@@ -57,6 +63,34 @@
   }
 }
 
+#index-header {
+  @media (max-width: $break-medium) {
+    $height: 20em;
+    height: $height;
+
+    .curve-header {
+      height: 3*$height;
+
+      .header-image {
+        height: $height;
+        top: 2*$height;
+        background-size: 200%;
+        background-position: 90% 10%;
+      }
+    }
+  }
+}
+
+
+#index-mobile-search {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .index-header {
+    padding-bottom: 0;
+  }
+}
 
 /* -- Intro Block -- */
 #index-intro {

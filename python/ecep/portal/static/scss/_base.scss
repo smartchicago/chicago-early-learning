@@ -6,6 +6,13 @@ body {
   .body {
     min-height: 60em;
   }
+
+  .chalk {
+    display: table-cell;
+    border-bottom: 3px solid $white;
+    font-family: $chalkduster !important;
+    margin-bottom: 8px;
+  }
 }
 
 input {
