@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="236px" height="217px" viewBox="0 0 236 217" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Index" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Index---1-Feature" transform="translate(0.000000, -797.000000)">
+            <g id="Shapes-Copy-4" transform="translate(-72.000000, 796.000000)">
+                <g id="Group" transform="translate(0.000000, 1.000000)">
+                    <circle id="Oval-3-Copy-6" fill="#F07040" cx="106.5" cy="12.5" r="12.5"></circle>
+                    <circle id="Oval-3-Copy-7" fill="#1BA6D7" cx="268.5" cy="204.5" r="12.5"></circle>
+                    <path d="M8.50207244e-07,107.000022 C1.47089772,144.391271 32.2481799,174.252819 70.0000004,174.252819 C107.751821,174.252819 138.529103,144.391271 140,107.000022 L97.8836492,107 C96.4777166,121.160425 84.5303871,132.219807 70.0000004,132.219807 C55.4696138,132.219807 43.5222843,121.160425 42.1163517,107 L1.77635684e-14,107 Z" id="Combined-Shape-Copy" fill="#FFC010"></path>
+                    <path d="M233.109635,17.9022039 C233.854413,36.8349878 249.438263,51.9551629 268.553619,51.9551629 C287.668976,51.9551629 303.252826,36.8349878 303.997604,17.9022039 L282.6723,17.902193 C281.960416,25.0722199 275.910974,30.6720567 268.553619,30.6720567 C261.196265,30.6720567 255.146823,25.0722199 254.434939,17.902193 L233.109635,17.902193 Z" id="Combined-Shape-Copy-3" fill="#81C639" transform="translate(268.553619, 34.928678) rotate(143.000000) translate(-268.553619, -34.928678) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

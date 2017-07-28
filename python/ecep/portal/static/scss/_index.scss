@@ -41,8 +41,7 @@
 
       img {
         display: block;
-        max-height: 4em;
-        margin: auto;
+        max-height: 5em;
       }
     }
 
@@ -61,8 +60,9 @@
 
 /* -- Intro Block -- */
 #index-intro {
-  background-size: contain;
-  background-position: center;
+  background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'); 
+  background-size: 30%, 30%;
+  background-position: left center, right center;
   background-repeat: no-repeat;
 
   .intro {
@@ -73,6 +73,10 @@
       font-size: 1.4rem;
       font-weight: 400;
     }
+  }
+
+  @media (max-width: $break-medium) {
+    background-image: none;
   }
 }
 
@@ -106,7 +110,7 @@
     font-size: 1.1rem;
     font-weight: 400;
     margin-bottom: 0;
-    padding: .5em 0;
+    padding: .75em 1.5em;
   }
 
   p {
@@ -121,6 +125,7 @@
   .full-width-header {
     margin-left: -15px;
     margin-right: -15px;
+    width: 50%;
   }
 
   #update-content {
@@ -255,5 +260,10 @@
   h2 {
     margin-bottom: 0;
     //line-height: 2.875rem;
+  }
+
+  img {
+    padding-top: 2em;
+    max-height: 10em;
   }
 }

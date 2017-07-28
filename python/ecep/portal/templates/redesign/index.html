@@ -17,7 +17,7 @@
     <div class="homepage-header row">
       <div class="index-header col-md-7 offset-md-1">
         <div class="header-content">
-          <img class="img-fluid mx-auto" src='{% static "img/tagline_white_blue.png" %}'>
+          <img class="img-fluid" src='{% static "img/tagline_white_blue.png" %}'>
           <p class="white">{% blocktrans %}There is no limit to what your child can accomplish. Jumpstart your child's education with Chicago Early Learning!{% endblocktrans %}</p>
           <p class="yellow">{% blocktrans %}Enter your address (work, home, or somewhere else!) to find a preschool or early learning program convenient for you and your family.{% endblocktrans %}</p>
         </div>
@@ -184,19 +184,19 @@
   <div class="p-5">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h2 class="text-center">Meet all our partners and learn more about the Chicago Early Learning Portal.</h2>
+        <h2 class="gray text-center">Meet all our partners and learn more about the Chicago Early Learning Portal.</h2>
         <h2 class="text-center"><a class="a-orange" href="{% url 'about' %}">Read More</a></h2>
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-2">
-        <img class="img-fluid" src="">
+      <div class="col-md-3 text-center">
+        <img class="img-fluid partner-img" src="{% static 'img/logos/coc.png' %}" alt="City of Chicago">
       </div>
-      <div class="col-md-2">
-        <img class="img-fluid" src="">
+      <div class="col-md-3 text-center">
+        <img class="img-fluid partner-img" src="{% static 'img/logos/cps.png' %}" alt="Chicago Public Schools">
       </div>
-      <div class="col-md-2">
-        <img class="img-fluid" src="">
+      <div class="col-md-3 text-center">
+        <img class="img-fluid partner-img" src="{% static 'img/logos/dfss.png' %}" alt="Department of Family and Support Services">
       </div>
     </div>
   </div>
