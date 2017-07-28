@@ -31,6 +31,7 @@ $height: 20em;
 
   svg {
     max-height: 8em;
+    padding-bottom: 1em;
   }
 
   #apply-intro {}
@@ -56,6 +57,13 @@ $height: 20em;
       .or-break {
         padding-top: 1em;
         padding-bottom: 1em;
+      }
+    }
+
+    #enroll-links {
+      a {
+        margin-top: 1em;
+        margin-bottom: 1em;
       }
     }
   }

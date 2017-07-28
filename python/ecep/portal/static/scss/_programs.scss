@@ -20,9 +20,7 @@ $block-height: 40em;
   }
 }
 
-.programs-image-block {
-  background-color: $black;
-}
+.programs-image-block {}
 
 .programs-base {
   padding-top: 2em;
@@ -34,12 +32,27 @@ $block-height: 40em;
   img {
     width: 100%;
     height: 12em;
-    background-color: $black;
+  }
+
+  .rahm-quote {
+    border-left: 2px solid $orange;
+    padding-left: 1em;
   }
 }
 
 #programs-age-calculator {
+  background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'); 
+  background-size: 30%, 30%;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
 
+  p {
+    font-style: italic;
+  }
+
+  @media (max-width: $break-medium) {
+    background-image: none;
+  }
 }
 
 #programs-infants-image {
@@ -77,16 +90,21 @@ $block-height: 40em;
   color: $white;
 
   h1 {
-    font-size: 2em;
+    font-size: 2rem;
   }
 
-  h2, h3 {
-    font-size: 1.25em;
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   h3 {
-    color: lighten($light-gray, 10%);
+    font-size: 1.25rem;
+  }
+
+  h4 {
     font-style: italic;
+    color: lighten($light-gray, 10%);
   }
 
   ul {
@@ -106,12 +124,16 @@ $block-height: 40em;
     }
   }
 
+  #choose-break {
+    padding-top: 4em;
+    padding-bottom: 2em;
+  }
+
   .program-type {
 
     img {
       height: 8em;
       width: 8em;
-      background-color: $black;
       margin: 2em;
     }
 
@@ -142,18 +164,45 @@ $block-height: 40em;
     }
   }
 
+  #type-descriptions {
+    svg {
+      max-width: 50%;
+      padding-bottom: 1em;
+    }
+  }
+
+  .border-box-image {
+
+    svg {
+      height: 4em;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    } 
+  }
+
 }
 
 #programs-graphic {
   height: $block-height;
-  background-color: $black;
+  background-color: $dark-gray;
 }
 
 #programs-resources {
   height: $height + 3em;
   background-color: $dark-gray;
   background-image: url("../img/redesign/programs/cheering-kids.jpg");
-  background-size: 120%;
+  background-size: 100%;
   background-position: 50% 30%;
   background-repeat: no-repeat;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+  }
 }
