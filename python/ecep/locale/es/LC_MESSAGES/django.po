@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-20 21:39-0500\n"
+"POT-Creation-Date: 2017-07-27 18:58-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,81 +14,6 @@ msgstr ""
 
 #: portal/admin.py:36
 msgid "Yes"
-msgstr ""
-
-#: portal/forms.py:8
-msgid "Select an age range"
-msgstr ""
-
-#: portal/forms.py:10 portal/templatetags/portal_extras.py:38
-msgid "Email"
-msgstr "Correo electrónico"
-
-#: portal/forms.py:11 portal/models.py:458
-#, fuzzy
-#| msgid "Site Name"
-msgid "First Name"
-msgstr "Nombre del centro"
-
-#: portal/forms.py:12 portal/models.py:459
-#, fuzzy
-#| msgid "Site Name"
-msgid "Last Name"
-msgstr "Nombre del centro"
-
-#: portal/forms.py:13 portal/models.py:93 portal/models.py:374
-#: portal/models.py:460
-msgid "Phone Number"
-msgstr "Número de teléfono"
-
-#: portal/forms.py:14 portal/models.py:461
-#, fuzzy
-#| msgctxt ""
-#| msgid "Address"
-msgid "Address 1"
-msgstr "Dirección"
-
-#: portal/forms.py:15 portal/models.py:462
-#, fuzzy
-#| msgctxt ""
-#| msgid "Address"
-msgid "Address 2"
-msgstr "Dirección"
-
-#: portal/forms.py:16 portal/models.py:463
-msgid "City"
-msgstr "Ciudad"
-
-#: portal/forms.py:17 portal/models.py:464
-msgid "State"
-msgstr "Estado"
-
-#: portal/forms.py:18 portal/models.py:465
-msgid "Zip Code"
-msgstr "Código postal (ZIP)"
-
-#: portal/forms.py:20 portal/models.py:468
-msgid "Child 1's Age"
-msgstr ""
-
-#: portal/forms.py:21 portal/models.py:469
-msgid "Child 2's Age"
-msgstr ""
-
-#: portal/forms.py:22 portal/models.py:470
-msgid "Child 3's Age"
-msgstr ""
-
-#: portal/forms.py:23 portal/models.py:471
-msgid "Child 4's Age"
-msgstr ""
-
-#: portal/forms.py:24 portal/models.py:472
-msgid "Child 5's Age"
-msgstr ""
-
-#: portal/forms.py:26
-msgid "Anything else you'd like us to know?"
 msgstr ""
 
 #: portal/models.py:63
@@ -123,6 +48,10 @@ msgstr "Asientos Disponibles"
 #: portal/models.py:81
 msgid "Limited Availability"
 msgstr "Asientos limitados"
+
+#: portal/models.py:93 portal/models.py:374 portal/models.py:460
+msgid "Phone Number"
+msgstr "Número de teléfono"
 
 #: portal/models.py:94 portal/models.py:370 portal/templates/location.html:168
 msgid "Quality Rating"
@@ -180,7 +109,7 @@ msgstr "Año Escolar"
 msgid "Full Year"
 msgstr "Año completo"
 
-#: portal/models.py:106 portal/templates/location.html:81 portal/views.py:632
+#: portal/models.py:106 portal/templates/location.html:81 portal/views.py:566
 msgid "Ages Served"
 msgstr "Edades para las que se presta servicio"
 
@@ -232,7 +161,7 @@ msgstr ""
 msgid "Availability"
 msgstr "Disponibilidad"
 
-#: portal/models.py:334 portal/templates/location.html:137 portal/views.py:687
+#: portal/models.py:334 portal/templates/location.html:137 portal/views.py:621
 msgid "Program Information"
 msgstr "Información del programa"
 
@@ -240,11 +169,11 @@ msgstr "Información del programa"
 msgid "Languages"
 msgstr "Idiomas"
 
-#: portal/models.py:348 portal/templates/location.html:116 portal/views.py:653
+#: portal/models.py:348 portal/templates/location.html:116 portal/views.py:587
 msgid "No Hours Listed"
 msgstr "Horario no indicado"
 
-#: portal/models.py:351 portal/templates/location.html:115 portal/views.py:649
+#: portal/models.py:351 portal/templates/location.html:115 portal/views.py:583
 msgid "Duration and Hours"
 msgstr "Duración y Horas"
 
@@ -307,59 +236,67 @@ msgstr "Haga clic para guardarlo en su lista"
 msgid "Click to remove from your list"
 msgstr "Haga clic para guardarlo en su lista"
 
-#: portal/models.py:405 portal/templates/location.html:156 portal/views.py:740
+#: portal/models.py:405 portal/templates/location.html:156 portal/views.py:674
 msgid "Other Features"
 msgstr "Otras Características"
 
-#: portal/sms.py:116
-msgid "To get this message text \"h\".\n"
-msgstr "Para recibir este mensaje, envíe \"h\".\n"
+#: portal/models.py:458
+#, fuzzy
+#| msgid "Site Name"
+msgid "First Name"
+msgstr "Nombre del centro"
 
-#: portal/sms.py:119
-msgid "Sorry, I didn't understand that. Please text \"h\" for instructions"
+#: portal/models.py:459
+#, fuzzy
+#| msgid "Site Name"
+msgid "Last Name"
+msgstr "Nombre del centro"
+
+#: portal/models.py:461
+#, fuzzy
+#| msgctxt ""
+#| msgid "Address"
+msgid "Address 1"
+msgstr "Dirección"
+
+#: portal/models.py:462
+#, fuzzy
+#| msgctxt ""
+#| msgid "Address"
+msgid "Address 2"
+msgstr "Dirección"
+
+#: portal/models.py:463
+msgid "City"
+msgstr "Ciudad"
+
+#: portal/models.py:464
+msgid "State"
+msgstr "Estado"
+
+#: portal/models.py:465
+msgid "Zip Code"
+msgstr "Código postal (ZIP)"
+
+#: portal/models.py:468
+msgid "Child 1's Age"
 msgstr ""
-"Lamentablemente no comprendimos.  Envíe un mensaje de texto con  \"h\" para "
-"recibir instrucciones"
 
-#: portal/sms.py:120
-msgid "We're sorry, something went wrong with your request! Please try again"
+#: portal/models.py:469
+msgid "Child 2's Age"
 msgstr ""
-"Lamentablemente algo salió mal con su pedido. Por favor vuelva a intentarlo"
 
-#: portal/sms.py:121
-msgid "Reply \"m\" or \"more\" to receive the next few pages"
+#: portal/models.py:470
+msgid "Child 3's Age"
 msgstr ""
-"Envíe una respuesta con \"m\" o \"more\" para recibir las páginas siguientes"
 
-#: portal/sms.py:122
-#, python-format
-msgid "Places near %s. Reply with program number for more info\n"
+#: portal/models.py:471
+msgid "Child 4's Age"
 msgstr ""
-"Lugares cerca de %s. Envíe una respuesta con el número de programa para "
-"recibir más información\n"
 
-#: portal/sms.py:244
-#, python-format
-msgid "Sorry, I couldn't find any schools in %(zipcode)s"
-msgstr "Lamentablemente no pudimos encontrar ninguna escuela en %(zipcode)s"
-
-#: portal/sms.py:261
-#, python-format
-msgid "Sorry, I don't know about that school near zipcode %(zipcode)s. "
+#: portal/models.py:472
+msgid "Child 5's Age"
 msgstr ""
-"Lamentablemente no tenemos información sobre esa escuela cerca del código "
-"postal %(zipcode)s"
-
-#: portal/sms.py:271
-#, python-format
-msgid "Sorry, I didn't understand that number for zipcode %(zipcode)s. "
-msgstr ""
-"Lamentablemente no comprendimos ese número para el código postal %(zipcode)s"
-
-#: portal/sms.py:337
-#, python-format
-msgid "(page %(current)d/%(total)d)"
-msgstr "(página %(current)d/%(total)d)"
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
 msgid "About"
@@ -368,13 +305,13 @@ msgstr "Sobre Nosotros"
 #: portal/templates/about.html:9 portal/templates/announcements.html:7
 #: portal/templates/base.html:4 portal/templates/browse.html:7
 #: portal/templates/city-resources.html:7 portal/templates/connect.html:9
-#: portal/templates/contact.html:13 portal/templates/contact_thanks.html:13
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
 #: portal/templates/faq-models.html:5 portal/templates/how-to-apply.html:7
-#: portal/templates/location.html:12 portal/templates/outreach.html:7
-#: portal/templates/smsinfo.html:12 portal/templates/starred.html:7
-#: portal/templates/updates.html:5 templates/admin/base_site.html:15
+#: portal/templates/location.html:12 portal/templates/outreach-redesign.html:8
+#: portal/templates/outreach.html:7 portal/templates/smsinfo.html:12
+#: portal/templates/starred.html:7 portal/templates/updates.html:5
+#: templates/admin/base_site.html:15
 msgid "Chicago Early Learning"
 msgstr "Chicago Early Learning"
 
@@ -827,31 +764,6 @@ msgid ""
 "Stay up to date on Chicago Early Learning! Join our email and text lists."
 msgstr "el portal del Chicago Educacíon Temprana."
 
-#: portal/templates/contact.html:13 portal/templates/contact.html.py:22
-msgid "Contact"
-msgstr ""
-
-#: portal/templates/contact.html:23
-msgid ""
-"Fill out the form below to contact these locations from your list. Staff at "
-"these locations will then contact you to provide additional information "
-"about their programs and enrollment."
-msgstr ""
-
-#: portal/templates/contact.html:29
-msgid "Note: Required fields are in <strong>bold</strong>."
-msgstr ""
-
-#: portal/templates/contact_thanks.html:13
-msgid "Thank you"
-msgstr ""
-
-#: portal/templates/contact_thanks.html:22
-msgid ""
-"Thank you for submitting our form! Your request has been sent, and you "
-"should expect to hear back within 3 business days."
-msgstr ""
-
 #: portal/templates/enroll.html:10
 msgid "Enroll"
 msgstr "Matricular"
@@ -872,7 +784,13 @@ msgstr ""
 msgid "Apply Today"
 msgstr "Llene la solicitud hoy mismo"
 
-#: portal/templates/index.html:34 portal/templates/index.html.py:82
+#: portal/templates/index.html:34
+msgid ""
+"Parents! Join us on August 4 for a FREE, fun-filled conference designed "
+"specifically for parents of young children. Register today: "
+msgstr "¡Padres! Acompáñenos el 4 de agosto para una conferencia GRATUITA y divertida diseñada específicamente para padres de niños pequeños. Regístrese hoy:"
+
+#: portal/templates/index.html:36 portal/templates/index.html.py:82
 msgid ""
 "There is no limit to what your child can accomplish! Jumpstart your child's "
 "education with Chicago Early Learning!"
@@ -881,20 +799,9 @@ msgstr ""
 "comienzo en la educación de su niño, explore la Educación Temprana de "
 "Chicago!"
 
-#: portal/templates/index.html:36 portal/templates/index.html.py:84
+#: portal/templates/index.html:38 portal/templates/index.html.py:84
 msgid "Complete your child's preschool application online today!"
 msgstr "¡Complete hoy la solicitud al preescolar de su niño en línea!"
-
-#: portal/templates/index.html:38 portal/templates/index.html.py:86
-#, python-format
-msgid ""
-"The Colman Family Resource Center will be closed June 21st and 22nd. Please "
-"see <a href=\"%(how_to_apply_url)s\">this list</a> for other options, and "
-"plan to visit another Family Resource Center that day."
-msgstr ""
-"El Centro de Recursos Familiares en Colman estará cerrado los días 21 y 22 "
-"de junio. Por favor <a href=\"%(how_to_apply_url)s\">vea esta lista</a> para "
-"otras opciones, y planea visitar otro centro este día."
 
 #: portal/templates/index.html:40
 #, python-format
@@ -912,6 +819,17 @@ msgstr "Ingrese su dirección, escuela, o código postal"
 #: portal/templates/index.html:57
 msgid "Use your current location"
 msgstr "Usar su ubicación actual"
+
+#: portal/templates/index.html:86
+#, python-format
+msgid ""
+"The Colman Family Resource Center will be closed June 21st and 22nd. Please "
+"see <a href=\"%(how_to_apply_url)s\">this list</a> for other options, and "
+"plan to visit another Family Resource Center that day."
+msgstr ""
+"El Centro de Recursos Familiares en Colman estará cerrado los días 21 y 22 "
+"de junio. Por favor <a href=\"%(how_to_apply_url)s\">vea esta lista</a> para "
+"otras opciones, y planea visitar otro centro este día."
 
 #: portal/templates/index.html:88
 #, python-format
@@ -1014,15 +932,15 @@ msgstr ""
 "opciones o llamar al Chicago Early Learning línea de acceso directo al <a "
 "href=\"%(rtl_url)s\">(312) 229-1690</a></b></em>."
 
-#: portal/templates/location.html:96 portal/views.py:617
+#: portal/templates/location.html:96 portal/views.py:551
 msgid "Contact this site directly to apply."
 msgstr "Contacte directamente al programa para aplicar."
 
-#: portal/templates/location.html:108 portal/views.py:761
+#: portal/templates/location.html:108 portal/views.py:695
 msgid "Seats Available"
 msgstr "Asientos Disponibles"
 
-#: portal/templates/location.html:110 portal/views.py:764
+#: portal/templates/location.html:110 portal/views.py:698
 msgid "Note: Availability and placement are subject to eligibility."
 msgstr ""
 
@@ -1034,7 +952,7 @@ msgstr ""
 "Si está interesado en inscribir su hijo en esta programa de visitas "
 "domiciliarias, por favor contacte directamente al programa. "
 
-#: portal/templates/location.html:150 portal/views.py:733
+#: portal/templates/location.html:150 portal/views.py:667
 msgid "Languages (other than English)"
 msgstr "Idiomas (excepto Inglés)"
 
@@ -1050,8 +968,44 @@ msgstr ""
 msgid "Click here!"
 msgstr "¡Haga clic aquí!"
 
-#: portal/templates/outreach.html:7 portal/templates/outreach.html.py:15
+#: portal/templates/outreach-redesign.html:8 portal/templates/outreach.html:7
+#: portal/templates/outreach.html.py:15
 msgid "Outreach"
+msgstr ""
+
+#: portal/templates/outreach-redesign.html:53
+msgid ""
+"Thank you for helping spread the word about enrolling 3 and 4 year olds in "
+"early learning programs across Chicago. With your help, we will enroll more "
+"children than ever before, especially our highest need families."
+msgstr ""
+
+#: portal/templates/outreach-redesign.html:54
+msgid ""
+"Here you will find social media links, talking points, and outreach "
+"resources to help share information with Chicago families."
+msgstr ""
+
+#: portal/templates/outreach-redesign.html:55
+#, fuzzy
+#| msgid ""
+#| "If you’d like to talk to someone about your options, please call the "
+#| "Chicago Early Learning Hotline at "
+msgid ""
+"If you have questions, please visit ChicagoEarlyLearning.org, or call the "
+"Chicago Early Learning Hotline:"
+msgstr ""
+"Si desea hablar con alguien acerca de sus opciones, por favor llamar a "
+"Chicago Early Learning al "
+
+#: portal/templates/outreach-redesign.html:56
+msgid "There are also great resources on ChicagoEarlyLearning.org:"
+msgstr ""
+
+#: portal/templates/outreach-redesign.html:270
+msgid ""
+"Check back often to see where Chicago Early Learning teams are connecting "
+"with families throughout the 2017 summer months."
 msgstr ""
 
 #: portal/templates/smsinfo.html:12
@@ -1162,19 +1116,23 @@ msgstr "Ingrese el nombre de una escuela"
 msgid "Updates"
 msgstr "Actualizar"
 
-#: portal/views.py:529
+#: portal/templatetags/portal_extras.py:38
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: portal/views.py:478
 msgid "Explore"
 msgstr "Explorar"
 
-#: portal/views.py:530
+#: portal/views.py:479
 msgid "Click to see locations in this neighborhood"
 msgstr "Haga clic para ver ubicaciones en este vecindario"
 
-#: settings.py:46
+#: settings.py:39
 msgid "English"
 msgstr "Inglés"
 
-#: settings.py:47
+#: settings.py:40
 msgid "Spanish"
 msgstr "Español"
 
@@ -1267,6 +1225,46 @@ msgstr ""
 #: templates/admin/portal/location/delete_confirmation.html:30
 msgid "Yes, I'm sure"
 msgstr ""
+
+#~ msgid "To get this message text \"h\".\n"
+#~ msgstr "Para recibir este mensaje, envíe \"h\".\n"
+
+#~ msgid "Sorry, I didn't understand that. Please text \"h\" for instructions"
+#~ msgstr ""
+#~ "Lamentablemente no comprendimos.  Envíe un mensaje de texto con  \"h\" "
+#~ "para recibir instrucciones"
+
+#~ msgid ""
+#~ "We're sorry, something went wrong with your request! Please try again"
+#~ msgstr ""
+#~ "Lamentablemente algo salió mal con su pedido. Por favor vuelva a "
+#~ "intentarlo"
+
+#~ msgid "Reply \"m\" or \"more\" to receive the next few pages"
+#~ msgstr ""
+#~ "Envíe una respuesta con \"m\" o \"more\" para recibir las páginas "
+#~ "siguientes"
+
+#~ msgid "Places near %s. Reply with program number for more info\n"
+#~ msgstr ""
+#~ "Lugares cerca de %s. Envíe una respuesta con el número de programa para "
+#~ "recibir más información\n"
+
+#~ msgid "Sorry, I couldn't find any schools in %(zipcode)s"
+#~ msgstr "Lamentablemente no pudimos encontrar ninguna escuela en %(zipcode)s"
+
+#~ msgid "Sorry, I don't know about that school near zipcode %(zipcode)s. "
+#~ msgstr ""
+#~ "Lamentablemente no tenemos información sobre esa escuela cerca del código "
+#~ "postal %(zipcode)s"
+
+#~ msgid "Sorry, I didn't understand that number for zipcode %(zipcode)s. "
+#~ msgstr ""
+#~ "Lamentablemente no comprendimos ese número para el código postal "
+#~ "%(zipcode)s"
+
+#~ msgid "(page %(current)d/%(total)d)"
+#~ msgstr "(página %(current)d/%(total)d)"
 
 #~ msgid ""
 #~ "If your child qualifies, you will receive an email very soon with "
