@@ -57,9 +57,8 @@
       <div class="index-sub-block">
         <div class="sub-block-content">
           <h1 class="white">{% trans 'Important Update' %}</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua.</p>
-          <a href="" class="btn btn-cel btn-yellow btn-half ">Learn More</a>
+          <p>{% blocktrans %}Parents! Join us on August 4 for a FREE, fun-filled conference designed specifically for parents of young children.{% endblocktrans %}</p>
+          <a href="http://www.2017parentconference.eventbrite.com/" class="btn btn-cel btn-yellow btn-half ">{% trans 'Register Today' %}</a>
         </div>
       </div>
     </div>
@@ -169,7 +168,7 @@
   </div>
 </div>
 
-<div id="index-subscribe" class="container-fluid container-bottom bg-gray">
+<div id="index-subscribe" class="container-fluid bg-gray">
   <div class="subscribe-row p-5">
     <div class="subscribe-image text-center">
       <img src="">
@@ -177,6 +176,28 @@
     <div class="subscribe-text text-center">
       <p>Stay up to date on Chicago Early Learning!</p>
       <p>Subscribe to our email and text lists. <a class="a-orange" href="">Subscribe me!</a></p>
+    </div>
+  </div>
+</div>
+
+<div id="index-partners" class="container-fluid container-bottom bg-white">
+  <div class="p-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2 class="text-center">Meet all our partners and learn more about the Chicago Early Learning Portal.</h2>
+        <h2 class="text-center"><a class="a-orange" href="{% url 'about' %}">Read More</a></h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-2">
+        <img class="img-fluid" src="">
+      </div>
+      <div class="col-md-2">
+        <img class="img-fluid" src="">
+      </div>
+      <div class="col-md-2">
+        <img class="img-fluid" src="">
+      </div>
     </div>
   </div>
 </div>
