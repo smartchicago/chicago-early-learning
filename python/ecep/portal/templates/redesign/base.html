@@ -42,11 +42,11 @@
 <body>
     <!-- Top Navbar - CEL Hotline, Toggle Language, and Continue to Application --> 
     <div>
-      <nav class="navbar navbar-top flex-column flex-sm-row justify-content-between">
-        <div class="flex-sm-fill text-sm-center">
+      <nav class="navbar navbar-top d-flex flex-row">
+        <div class="mr-auto">
           <div id="phone-svg" class="inline-link-svg svg-blue">{% svg 'icons/phone' %}</div><span class="hidden-md-down">{% trans 'Call the Chicago Early Learning Hotline at' %}</span><a class="a-blue" href="tel:3122291690"> (312) 229-1690</a>
         </div>
-        <div class="flex-sm-fill text-sm-center">
+        <div class="">
         {% if LANGUAGE_CODE == 'en' %}
           <a class="a-black-orange" href="{% url 'setlang' language=LANGUAGES.1.0 %}" data-lang="{{ LANGUAGES.1.0 }}">Español</a></li>
 
@@ -55,7 +55,7 @@
 
         {% endif %}
 
-            |  <a class="a-black-orange" href="#">{% trans 'Continue to Application Login' %} <div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+            |  <a class="a-black-orange" href="#"><span class="hidden-md-up">{% trans 'Continue Application' %}</span><span class="hidden-sm-down">{% trans 'Continue to Application Login' %}</span> <div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
         </div>
       </nav>
     </div>
