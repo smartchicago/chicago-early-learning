@@ -114,3 +114,17 @@ span.divider-thin {
   width: 100%;
   margin: .5em 15px;
 }
+
+.svg-fluid-h {
+  height: 100%;
+  svg {
+    height: 100%;
+  }
+}
+
+.svg-fluid-w {
+  width: 100%;
+  svg {
+    width: 100%;
+  }
+}

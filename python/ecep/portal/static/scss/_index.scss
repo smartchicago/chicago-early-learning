@@ -189,15 +189,7 @@
 #index-programs {
 
   #programs-image {
-    .svg-fluid {
-      padding-top: 2em;
-      padding-bottom: 1em;
-      height: 100%;
-
-      svg {
-        height: 100%;
-      }
-    }
+    
   }
 
   #programs-content {
@@ -295,7 +287,7 @@
 
 
 /* -- Subscribe Block -- */
-#index-subscribe {
+#index-subscribe, {
   font-size: 1.5em;
   font-weight: 500;
 
@@ -307,8 +299,6 @@
     }
 
     .subscribe-image img {
-      height: 5em;
-      width: 8em;
       background-color: black;
     }
   }
@@ -317,9 +307,11 @@
 
 /* -- Partners Block -- */
 #index-partners {
-  h2 {
-    margin-bottom: 0;
-    //line-height: 2.875rem;
+  p {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: 0rem;
+    color: $dark-gray;
   }
 
   img {

@@ -72,8 +72,8 @@
 
 <div id="index-intro" class="container-fluid container-top-4 bg-white hidden-sm-down">
   <div class="intro text-center col-md-8 offset-md-2">
-    <p>{% blocktrans %}“Every child in every neighborhood deserves a quality education and that must begin in their earliest years.”{% endblocktrans %}</p>
-    <p>- Chicago Mayor Rahm Emanuel</p>
+    <p class="gray">{% blocktrans %}“Every child in every neighborhood deserves a quality education and that must begin in their earliest years.”{% endblocktrans %}</p>
+    <p class="gray">- Chicago Mayor Rahm Emanuel</p>
   </div>
 </div>
 
@@ -117,7 +117,7 @@
   <div class="row">
     
     <div id="programs-image" class="index-info-block col-md-6">
-      <div class="svg-fluid text-center">{% svg 'illustrations/family-2' %}</div>
+      <div class="svg-fluid-h text-center">{% svg 'illustrations/family-2' %}</div>
     </div>
     <div id="progams-content" class="index-info-block col-md-6">
       <div class="index-sub-block">
@@ -189,13 +189,14 @@
 </div>
 
 <div id="index-subscribe" class="container-fluid bg-gray">
-  <div class="subscribe-row p-5">
-    <div class="subscribe-image text-center">
-      <img src="">
+  <div class="row subscribe-row p-5">
+    <div class="col-4 offset-4 col-md-2 offset-md-1 subscribe-image text-center">
+      <div class="svg-fluid-w">{% svg 'illustrations/newsletter' %}</div>
     </div>
-    <div class="subscribe-text text-center">
-      <p>Stay up to date on Chicago Early Learning!</p>
-      <p>Subscribe to our email and text lists. <a class="a-orange" href="">Subscribe me!</a></p>
+    <div class="col-md-8 subscribe-text my-auto">
+      <p>{% blocktrans %}Stay up to date on Chicago Early Learning!{% endblocktrans %}</p>
+      <p>{% blocktrans %}Subscribe to our email and text lists.{% endblocktrans %}</p>
+      <p><a class="a-orange" href="">{% trans 'Subscribe!' %}</a></p>
     </div>
   </div>
 </div>
@@ -203,9 +204,9 @@
 <div id="index-partners" class="container-fluid container-bottom bg-white">
   <div class="p-5">
     <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h2 class="gray text-center">Meet all our partners and learn more about the Chicago Early Learning Portal.</h2>
-        <h2 class="text-center"><a class="a-orange" href="{% url 'about' %}">Read More</a></h2>
+      <div class="col-md-8 offset-md-2">
+        <p class="gray text-center">{% blocktrans %}Meet all our partners and learn more about the Chicago Early Learning Portal.{% endblocktrans %}</p>
+        <p class="text-center"><a class="a-orange" href="{% url 'about' %}">{% trans 'Read More' %}</a></p>
       </div>
     </div>
     <div class="row justify-content-center">
