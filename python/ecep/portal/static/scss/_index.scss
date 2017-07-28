@@ -117,7 +117,7 @@
 
 /* -- Content Blocks General -- */
 .index-section-block {
-  $block-height: 20em;
+  $block-height: 25em;
 
   .index-info-block {
     height: $block-height;
@@ -288,8 +288,6 @@
     }
 
     img {
-      height: 14em;
-      width: 100%;
       background-color: black;
     }
   }
