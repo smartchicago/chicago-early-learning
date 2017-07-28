@@ -29,6 +29,10 @@ $height: 20em;
     font-weight: 500;
   }
 
+  svg {
+    max-height: 8em;
+  }
+
   #apply-intro {}
 
   #apply-enroll {
@@ -93,24 +97,29 @@ $height: 20em;
 
       }
     }
+
+    .chalkduster {
+      font-family: $chalkduster !important;
+    }
   }
 
   #apply-links {
-    height: 2*$height;
     color: $white;
 
     .link-block {
-      width: 80%;
-
-      p {}
+      min-height: 0.5*$height;
     }
 
     #link-programs-block {
       background-color: $light-blue;
+      padding-top: 6em;
+      padding-bottom: 6em;
     }
 
     #link-support-block {
       background-color: $deep-blue;
+      padding-top: 6em;
+      padding-bottom: 6em;
     }
   }
 }
