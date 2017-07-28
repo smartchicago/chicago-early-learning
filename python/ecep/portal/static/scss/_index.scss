@@ -108,8 +108,8 @@
   }
 
   h1 {
-    font-size: 1.1rem;
-    font-weight: 400;
+    font-size: 1.125rem;
+    font-weight: 500;
     margin-bottom: 0;
     padding: .75em 1.5em;
   }
@@ -155,11 +155,27 @@
 #index-programs {
 
   #programs-image {
-    background-color: black;
+    .svg-fluid {
+      padding-top: 2em;
+      padding-bottom: 1em;
+      height: 100%;
+
+      svg {
+        height: 100%;
+      }
+    }
   }
 
   #programs-content {
 
+  }
+
+  @media (max-width: $break-medium) {
+    $block-height: 16em;
+
+    .index-info-block {
+      height: $block-height;
+    }
   }
 }
 
@@ -186,8 +202,10 @@
         margin: auto !important;
 
         h2 {
-          padding: 0;
-          font-size: 1.25em;
+          padding: .5em;
+          font-size: 1rem;
+          margin-bottom: 0;
+          font-weight: 400;
         }
       }
     }
@@ -200,6 +218,11 @@
   background-image: url('../img/redesign/index/cheering-kids.jpg');
   background-size: cover;
   background-position: left 25%;
+
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
 }
 
 
@@ -217,13 +240,17 @@
 
     h1 {
       font-size: 1.5rem;
-      font-weight: 400;
+      font-weight: 500;
       padding: .5em 0;
       margin-bottom: 0;
     }
 
     a {
       font-weight: 500;
+    }
+
+    p {
+      font-style: italic;
     }
 
     img {
