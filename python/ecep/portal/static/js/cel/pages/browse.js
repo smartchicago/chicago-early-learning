@@ -6,7 +6,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
     function($, L, Handlebars, neighborhoodList, locationList, topojson, favorites, location, common) {
 
         'use strict';
-
         var map,   // Leaflet map
             $map = $('#map'),
             $filters = $('.filters-inner :checkbox'),

@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load i18n staticfiles static compress %}
+<!DOCTYPE html>{% load i18n staticfiles static compress sass_tags %}
 <html>
   <head>
     <title>{% block title %}{% trans "Chicago Early Learning" %} - {% trans "Find early learning programs near your home or work." %}{% endblock %}</title>
@@ -13,7 +13,7 @@
     <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
-    <link href='{% static "css/application.css" %}' rel="stylesheet">
+    <link href='{% sass_src "scss/application-1.scss" %}' rel="stylesheet">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon.png' %}">
@@ -25,6 +25,7 @@
     <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}">
     <meta name="msapplication-TileColor" content="#1dc1ea">
     <meta name="msapplication-TileImage" content="{% static 'img/favicons/mstile-150x150.png' %}">
+
 
     <!-- Social Cards -->
     <!-- 
@@ -75,7 +76,7 @@
 
 
   </head>
-  <body lang="{{ LANGUAGE_CODE }}">
+  <body id="old" lang="{{ LANGUAGE_CODE }}">
     <!-- Navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -102,7 +103,7 @@
             --> 
             <li><a href="https://cys.mycopa.com/familyPortal/welcome.epl"><span class="icomoon-apply nav-icon"></span><span class="nav-text">{% trans "Apply Now!" %}</span></a></li>
 
-            <li><a href="{% url 'families' %}"><span class="icomoon-families nav-icon"></span><span class="nav-text">{% trans "For Families" %}</span></a></li>
+            <li><a href="{% url 'programs' %}"><span class="icomoon-families nav-icon"></span><span class="nav-text">{% trans "For Families" %}</span></a></li>
 
             <li><a href="{% url 'city-resources' %}"><span class="icomoon-city nav-icon"></span><span class="nav-text">{% trans "City Resources" %}</span></a></li>
 

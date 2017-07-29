@@ -1,4 +1,4 @@
-{% extends "base-search.html" %}
+{% extends "redesign/sub-base.html" %}
 
 {% load i18n %}
 {% load staticfiles %}
@@ -9,9 +9,9 @@
 {% block otherhead %}
 {% endblock %}
 
-{% block content %}
+{% block base %}
 <!-- Favorites top bar -->
-<div class="starred-container">
+<div id="old" class="container-fluid">
     <div class="contact-text">
         <h1>{% trans "Compare and Apply" %}</h1>
 
