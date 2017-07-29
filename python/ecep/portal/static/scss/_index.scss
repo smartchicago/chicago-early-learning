@@ -43,6 +43,10 @@
       h1 {
         font-size: 3rem;
         margin-bottom: .5rem;
+
+        @media (max-width: $break-large) {
+          font-size: 2.5rem;
+        }
       }
 
       img {
