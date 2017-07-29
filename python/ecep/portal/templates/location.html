@@ -1,4 +1,4 @@
-{% extends "base-search.html" %}
+{% extends "redesign/base.html" %}
 
 {% comment %}
 Copyright (c) 2012, 2013 Azavea, Inc.
@@ -26,8 +26,8 @@ See LICENSE in the project root for copying permission
 <meta property="og:phone_number" content="{{ loc.phone.number }}">
 {% endblock %}
 
-{% block content %}
-<div class="container">
+{% block body %}
+<div id="old" class="container">
   <div class="favorite" data-key="{{ loc.item.key }}" itemscope itemtype="http://schema.org/EducationalOrganization">
     <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>
     <a href="javascript:void(0)" class="none favs-close-button ga-track" data-ga-category="starred" data-ga-action="Remove Favorite">&times;</a>
