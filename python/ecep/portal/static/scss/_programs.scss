@@ -1,5 +1,13 @@
 $height: 20em;
 $block-height: 40em;
+#programs {
+
+  h3 {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+    margin-bottom: 0
+  }
+}
 
 #programs-header {
 
@@ -96,10 +104,6 @@ $block-height: 40em;
   h2 {
     font-size: 1.5rem;
     line-height: 2rem;
-  }
-
-  h3 {
-    font-size: 1.25rem;
   }
 
   h4 {

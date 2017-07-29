@@ -9,206 +9,208 @@
 {% endblock %}
 
 {% block body %}
-<div id="programs-header" class="container-fluid header">
-  <div class="curve-header">
-    <div class="header-image"></div>
+<div id="programs">
+  <div id="programs-header" class="container-fluid header">
+    <div class="curve-header">
+      <div class="header-image"></div>
+    </div>
+    <div class="header-title">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <h1 class="text-center">{% trans 'Programs' %}</h1>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="header-title">
+
+
+  <!--  Programs Intro  -->
+  <div id="programs-intro" class="container-fluid container-top-4 bg-gray programs-base">
+    <div class="row justify-content-center p-5">
+      <div class="col-md-4 offset-md-1">
+        <div class="svg-fluid-w">{% svg 'illustrations/science' %}</div>
+      </div>
+      <div class="col-md-5">
+        <h1 class="blue">{% blocktrans %}Look what <span class="d-inline"><span class="chalk blue b-blue">WE</span></span> can do!{% endblocktrans %}</h1>
+        <p>{% blocktrans %}Through Chicago Early Learning, all of our families—no matter their needs—will be able to find and secure a quality early learning program.{% endblocktrans %}</p>
+        <div class="rahm-quote">
+          <h3 class="deep-green">{% blocktrans %}“Every child in every neighborhood deserves a quality education and that must begin in their earliest years.”{% endblocktrans %}</h3> 
+        </div>
+        <p class="gray">– CHICAGO MAYOR RAHM EMANUEL</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  Programs Age Calculator  -->
+  <div id="programs-age-calculator" class="container-fluid bg-white programs-base hidden-xs-up">
+    <div class="py-5">
+      <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+          <h2>{% blocktrans %}What early learning program should your child(ren) be enrolling in?{% endblocktrans %}</h2>
+          <p class="gray">{% blocktrans %}Enter a birthdate. The result will reflect what you should enroll in Fall 2017.{% endblocktrans %}</p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="birthday-form col-md-8 text-center">
+          <form>
+            <div class="form-group">
+              <select class="custom-select">
+                <option selected>Open this select menu</option>
+              </select>
+            </div>
+          </form>
+          <button class="btn btn-blue btn-half" href="">Submit Birthday</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  Programs Infants  -->
+  <div id="programs-infants" class="container-fluid">
+    <div class="row h-100">
+      <div id="programs-infants-image" class="col-md-6 programs-block hidden-sm-down">
+        <div class="programs-image-block"></div>
+      </div>
+      <div id="programs-infants-info" class="col-md-6 programs-block d-flex">
+        <div class="programs-info-block">
+          <h1>{% trans 'Infants and Toddlers'%}</h1>
+          <h4>{% trans 'Ages Birth to 2' %}</h4>
+          <p>{% blocktrans %}These programs may also be referred to as Early Head Start, Prevention Initiative, or Early Intervention.{% endblocktrans %}</p>
+          <h3 class="light-yellow">{% trans 'Who do they serve?' %}</h3>
+          <p>{% blocktrans %}Children aged birth to three years old from qualifying families{% endblocktrans %}</p>
+          <h3 class="light-yellow">{% trans 'What do they provide?' %}</h3>
+          <ul>
+            <li>{% blocktrans %}Educational and social development activities.{% endblocktrans %}</li>
+            <li>{% blocktrans %}Programs may include free health services (medical, dental, mental health), nutritious meals, as well as parent education and training.{% endblocktrans %}</li>
+          </ul>
+          <a class="btn btn-yellow btn-half" href="">{% trans 'Find Sites'%}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  Programs Preschool  -->
+  <div id="programs-preschool" class="container-fluid">
+    <div class="row h-100">
+      <div id="programs-preschool-info" class="col-md-6 programs-block d-flex">
+        <div class="programs-info-block">
+          <h1>{% trans 'Preschool'%}</h1>
+          <h4>{% trans 'Ages 3 and 4' %}</h4>
+          <p>{% blocktrans %}Preschool programs may be referred to as Head Start or Preschool for All.{% endblocktrans %}</p>
+          <h3 class="light-yellow">{% trans 'Who do they serve?' %}</h3>
+          <p>{% blocktrans %}3- and 4-year-old children from qualifying families.{% endblocktrans %}</p>
+          <h3 class="light-yellow">{% trans 'What do they provide?' %}</h3>
+          <ul>
+            <li>{% blocktrans %}Educational and social development activities that promote school readiness.{% endblocktrans %}</li>
+            <li>{% blocktrans %}Either a half-day or a full-day of instruction.{% endblocktrans %}</li>
+            <li>{% blocktrans %}Programs may include free health services (medical, dental, mental health), nutritious meals, as well as parent education and training.{% endblocktrans %}</li>
+          </ul>
+          <a class="btn btn-green btn-half" href="">{% trans 'Find Sites'%}</a>
+        </div>
+      </div>
+      <div id="programs-preschool-image" class="col-md-6 programs-block hidden-sm-down">
+        <div class="programs-image-block"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  Programs Kindergarten  -->
+  <div id="programs-kindergarten" class="container-fluid">
+    <div class="row h-100">
+      <div id="programs-kindergarten-info" class="col-md-10 offset-md-1 programs-block d-flex">
+        <div class="programs-info-block text-center">
+          <h1>{% trans 'Kindergarten' %}</h1>
+          <h4>{% trans 'Age 5' %}</h4>
+          <p>{% blocktrans %}Children who are 5 years old by September 1st of the current school year should enroll in kindergarten at a CPS preschool. Visit the CPS website to enroll a child in kindergarten.{% endblocktrans %}</p>
+          <a class="btn btn-orange btn-half" href="">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  Programs Types  -->
+  <div id="programs-types" class="container-fluid bg-gray programs-base">
+    <div id="type-descriptions">
+      <div class="row text-center">
+        <div class="col-md-8 offset-md-2 justify-content-md-center">
+          <h1 class="orange text-center">{% trans 'Types of Programs' %}</h1>
+          <p>{% blocktrans %}The early education programs at the City of Chicago are available in a number of settings:{% endblocktrans %}</p>
+        </div>
+        <div id="program-types-cps" class="col-md-4 offset-md-2 program-type">
+          <div class="svg-fluid-w">{% svg 'illustrations/large-pencil' %}</div>
+          <h1 class="blue">{% trans 'Chicago Public Schools (CPS) Programs' %}</h1>
+          <h2 class="dark-gray">{% trans 'Age Group: 3 and 4' %}</h2>
+          <p>{% blocktrans %}Many CPS elementary schools offer early learning programs as a part of their services.{% endblocktrans %}</p>
+        </div>
+        <div id="program-types-community" class="col-md-4 program-type">
+          <div class="svg-fluid-w">{% svg 'illustrations/book' %}</div>
+          <h1 class="green">{% trans 'Community Based Programs' %}</h1>
+          <h2 class="dark-gray">{% trans 'Age Group: Birth to 4' %}</h2>
+          <p>{% blocktrans %}Neighborhood locations provide early childhood education and infant and toddler care. Hours vary by site.{% endblocktrans %}</p>
+        </div>
+      </div>
+    </div>
     <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <h1 class="text-center">{% trans 'Programs' %}</h1>
+      <div class="col-md-8 offset-md-2 full-border-box mx-auto">
+        <p>{% blocktrans %}Home Visiting Care is also available for qualifying families, for children between the ages of birth to 3. Visiting coaches provide early care and consulting in the family’s home to qualifying families.{% endblocktrans %}</p>
       </div>
     </div>
-  </div>
-</div>
-
-
-<!--  Programs Intro  -->
-<div id="programs-intro" class="container-fluid container-top-4 bg-gray programs-base">
-  <div class="row justify-content-center p-5">
-    <div class="col-md-4 offset-md-1">
-      <div class="svg-fluid-w">{% svg 'illustrations/science' %}</div>
-    </div>
-    <div class="col-md-5">
-      <h1 class="blue">{% blocktrans %}Look what <span class="d-inline"><span class="chalk blue b-blue">WE</span></span> can do!{% endblocktrans %}</h1>
-      <p>{% blocktrans %}Through Chicago Early Learning, all of our families—no matter their needs—will be able to find and secure a quality early learning program.{% endblocktrans %}</p>
-      <div class="rahm-quote">
-        <h3 class="deep-green">{% blocktrans %}“Every child in every neighborhood deserves a quality education and that must begin in their earliest years.”{% endblocktrans %}</h3> 
-      </div>
-      <p class="gray">– CHICAGO MAYOR RAHM EMANUEL</p>
-    </div>
-  </div>
-</div>
-
-
-<!--  Programs Age Calculator  -->
-<div id="programs-age-calculator" class="container-fluid bg-white programs-base">
-  <div class="p-5">
-    <div class="row">
-      <div class="col-md-8 offset-md-2 text-center">
-        <h2>{% blocktrans %}What early learning program should your child(ren) be enrolling in?{% endblocktrans %}</h2>
-        <p class="gray">{% blocktrans %}Enter a birthdate. The result will reflect what you should enroll in Fall 2017.{% endblocktrans %}</p>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="birthday-form col-md-8 text-center">
-        <form>
-          <div class="form-group">
-            <select class="custom-select">
-              <option selected>Open this select menu</option>
-            </select>
-          </div>
-        </form>
-        <button class="btn btn-blue btn-half" href="">Submit Birthday</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!--  Programs Infants  -->
-<div id="programs-infants" class="container-fluid">
-  <div class="row h-100">
-    <div id="programs-infants-image" class="col-md-6 programs-block hidden-sm-down">
-      <div class="programs-image-block"></div>
-    </div>
-    <div id="programs-infants-info" class="col-md-6 programs-block d-flex">
-      <div class="programs-info-block">
-        <h1>{% trans 'Infants and Toddlers'%}</h1>
-        <h4>{% trans 'Ages Birth to 2' %}</h4>
-        <p>{% blocktrans %}These programs may also be referred to as Early Head Start, Prevention Initiative, or Early Intervention.{% endblocktrans %}</p>
-        <h3 class="light-yellow">{% trans 'Who do they serve?' %}</h3>
-        <p>{% blocktrans %}Children aged birth to three years old from qualifying families{% endblocktrans %}</p>
-        <h3 class="light-yellow">{% trans 'What do they provide?' %}</h3>
-        <ul>
-          <li>{% blocktrans %}Educational and social development activities.{% endblocktrans %}</li>
-          <li>{% blocktrans %}Programs may include free health services (medical, dental, mental health), nutritious meals, as well as parent education and training.{% endblocktrans %}</li>
-        </ul>
-        <a class="btn btn-yellow btn-half" href="">{% trans 'Find Sites'%}</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!--  Programs Preschool  -->
-<div id="programs-preschool" class="container-fluid">
-  <div class="row h-100">
-    <div id="programs-preschool-info" class="col-md-6 programs-block d-flex">
-      <div class="programs-info-block">
-        <h1>{% trans 'Preschool'%}</h1>
-        <h4>{% trans 'Ages 3 and 4' %}</h4>
-        <p>{% blocktrans %}Preschool programs may be referred to as Head Start or Preschool for All.{% endblocktrans %}</p>
-        <h3 class="light-yellow">{% trans 'Who do they serve?' %}</h3>
-        <p>{% blocktrans %}3- and 4-year-old children from qualifying families.{% endblocktrans %}</p>
-        <h3 class="light-yellow">{% trans 'What do they provide?' %}</h3>
-        <ul>
-          <li>{% blocktrans %}Educational and social development activities that promote school readiness.{% endblocktrans %}</li>
-          <li>{% blocktrans %}Either a half-day or a full-day of instruction.{% endblocktrans %}</li>
-          <li>{% blocktrans %}Programs may include free health services (medical, dental, mental health), nutritious meals, as well as parent education and training.{% endblocktrans %}</li>
-        </ul>
-        <a class="btn btn-green btn-half" href="">{% trans 'Find Sites'%}</a>
-      </div>
-    </div>
-    <div id="programs-preschool-image" class="col-md-6 programs-block hidden-sm-down">
-      <div class="programs-image-block"></div>
-    </div>
-  </div>
-</div>
-
-
-<!--  Programs Kindergarten  -->
-<div id="programs-kindergarten" class="container-fluid">
-  <div class="row h-100">
-    <div id="programs-kindergarten-info" class="col-md-10 offset-md-1 programs-block d-flex">
-      <div class="programs-info-block text-center">
-        <h1>{% trans 'Kindergarten' %}</h1>
-        <h4>{% trans 'Age 5' %}</h4>
-        <p>{% blocktrans %}Children who are 5 years old by September 1st of the current school year should enroll in kindergarten at a CPS preschool. Visit the CPS website to enroll a child in kindergarten.{% endblocktrans %}</p>
-        <a class="btn btn-orange btn-half" href="">Learn More</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--  Programs Types  -->
-<div id="programs-types" class="container-fluid bg-gray programs-base">
-  <div id="type-descriptions">
-    <div class="row text-center">
+    <div id="choose-break" class="row">
       <div class="col-md-8 offset-md-2 justify-content-md-center">
-        <h1 class="orange text-center">{% trans 'Types of Programs' %}</h1>
-        <p>{% blocktrans %}The early education programs at the City of Chicago are available in a number of settings:{% endblocktrans %}</p>
-      </div>
-      <div id="program-types-cps" class="col-md-4 offset-md-2 program-type">
-        <div class="svg-fluid-w">{% svg 'illustrations/large-pencil' %}</div>
-        <h1 class="blue">{% trans 'Chicago Public Schools (CPS) Programs' %}</h1>
-        <h2 class="dark-gray">{% trans 'Age Group: 3 and 4' %}</h2>
-        <p>{% blocktrans %}Many CPS elementary schools offer early learning programs as a part of their services.{% endblocktrans %}</p>
-      </div>
-      <div id="program-types-community" class="col-md-4 program-type">
-        <div class="svg-fluid-w">{% svg 'illustrations/book' %}</div>
-        <h1 class="green">{% trans 'Community Based Programs' %}</h1>
-        <h2 class="dark-gray">{% trans 'Age Group: Birth to 4' %}</h2>
-        <p>{% blocktrans %}Neighborhood locations provide early childhood education and infant and toddler care. Hours vary by site.{% endblocktrans %}</p>
+        <h1 class="orange text-center">{% trans 'Choosing the Right Program' %}</h1>
+        <p>{% blocktrans %}Quality ratings for Chicago Early Learning programs, and programs across Illinois and the country, offer families more insight before they make final choices about a program for their child.{% endblocktrans %}</p>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8 offset-md-2 full-border-box mx-auto">
-      <p>{% blocktrans %}Home Visiting Care is also available for qualifying families, for children between the ages of birth to 3. Visiting coaches provide early care and consulting in the family’s home to qualifying families.{% endblocktrans %}</p>
+    <div class="row">
+      <div class="col-md-8 offset-md-2 top-border-box mx-auto">
+        <div class="border-box-image mx-auto">{% svg 'illustrations/ribbon' %}</div>
+        <h3 class="blue">{% trans 'What does “Quality Rating” (QRIS) mean?' %}</h3>
+        <p>{% blocktrans %}Quality Rating indicates the quality of a site based on the Excelerate Illinois system. Excelerate Illinois is the new quality rating and improvement system for Illinois. It has been designed to rate the quality of early learning programs and to set a research based standard for early learning and development providers. There are tiered Circles of Quality in Excelerate and the higher the awarded tier, the more the program has made meaningful improvements that better the child for school and life. More information about Excelerate can be found at ExcelerateIllinois.com.{% endblocktrans %}</p>
+      </div>
     </div>
-  </div>
-  <div id="choose-break" class="row">
-    <div class="col-md-8 offset-md-2 justify-content-md-center">
-      <h1 class="orange text-center">{% trans 'Choosing the Right Program' %}</h1>
-      <p>{% blocktrans %}Quality ratings for Chicago Early Learning programs, and programs across Illinois and the country, offer families more insight before they make final choices about a program for their child.{% endblocktrans %}</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8 offset-md-2 top-border-box mx-auto">
-      <div class="border-box-image mx-auto">{% svg 'illustrations/ribbon' %}</div>
-      <h3 class="blue">{% trans 'What does “Quality Rating” (QRIS) mean?' %}</h3>
-      <p>{% blocktrans %}Quality Rating indicates the quality of a site based on the Excelerate Illinois system. Excelerate Illinois is the new quality rating and improvement system for Illinois. It has been designed to rate the quality of early learning programs and to set a research based standard for early learning and development providers. There are tiered Circles of Quality in Excelerate and the higher the awarded tier, the more the program has made meaningful improvements that better the child for school and life. More information about Excelerate can be found at ExcelerateIllinois.com.{% endblocktrans %}</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8 offset-md-2 top-border-box mx-auto">
-      <div class="border-box-image mx-auto">{% svg 'illustrations/star' %}</div>
-      <h3 class="blue">{% trans 'What does "Accreditation" mean?' %}</h3>
-      <p>{% blocktrans %}Accreditation means that a program has met high standards of excellence determined by a national organization such as the National Association for the Education of Young Children (NAEYC), National Early Childhood Program Accreditation (NEPCA), or the Council on Accreditation (COA). Programs that receive national accreditation have demonstrated quality in areas such as teaching, curriculum, learning assessments, health, community relationships, physical environment, and management.{% endblocktrans %}</p>
-      <p>{% blocktrans %}To learn more about accreditation of early learning programs, click on one of the following links:{% endblocktrans %}</p>
-      <p><a class="a-orange" href=""><i>National Association for the Education of Young Children</i></a></p>
-      <p><a class="a-orange" href=""><i>National Early Childhood Program Accreditation</i></a></p>
-      <p><a class="a-orange" href=""><i>Council on Accreditation</i></a></p>
-    </div>
-  </div>
-</div>
-
-
-<!--  Programs Graphic  -->
-<div id="programs-graphic" class="container-fluid">
-  <img class="apple-graphic" src="">
-</div>
-
-
-<!--  Programs Resources  -->
-<div id="programs-resources" class="container-fluid container-bottom">
-  <div class="row h-100">
-    <div id="programs-resources-info" class="col-md-10 offset-md-1 d-flex flex-column justify-content-center">
-      <div class="text-center">
-        <h1 class="white">{% trans 'Other Local Activities and Resources' %}</h1>
-        <p class="white">{% blocktrans %}See our Resources page to learn more about programs for young children throughout the city that are not part of Chicago Early Learning.{% endblocktrans %}</p>
-        <a class="btn btn-orange btn-half" href="">{% trans 'Learn More' %}</a>
+    <div class="row">
+      <div class="col-md-8 offset-md-2 top-border-box mx-auto">
+        <div class="border-box-image mx-auto">{% svg 'illustrations/star' %}</div>
+        <h3 class="blue">{% trans 'What does "Accreditation" mean?' %}</h3>
+        <p>{% blocktrans %}Accreditation means that a program has met high standards of excellence determined by a national organization such as the National Association for the Education of Young Children (NAEYC), National Early Childhood Program Accreditation (NEPCA), or the Council on Accreditation (COA). Programs that receive national accreditation have demonstrated quality in areas such as teaching, curriculum, learning assessments, health, community relationships, physical environment, and management.{% endblocktrans %}</p>
+        <p>{% blocktrans %}To learn more about accreditation of early learning programs, click on one of the following links:{% endblocktrans %}</p>
+        <p><a class="a-orange" href=""><i>National Association for the Education of Young Children</i></a></p>
+        <p><a class="a-orange" href=""><i>National Early Childhood Program Accreditation</i></a></p>
+        <p><a class="a-orange" href=""><i>Council on Accreditation</i></a></p>
       </div>
     </div>
   </div>
-</div>
 
 
-<!--  Programs Testimonial  -->
-<div id="programs-testimonial" class="container-fluid hidden-xs-up">
-  <div class="row">
-    
+  <!--  Programs Graphic  -->
+  <div id="programs-graphic" class="container-fluid">
+    <img class="apple-graphic" src="">
+  </div>
+
+
+  <!--  Programs Resources  -->
+  <div id="programs-resources" class="container-fluid container-bottom">
+    <div class="row h-100">
+      <div id="programs-resources-info" class="col-md-10 offset-md-1 d-flex flex-column justify-content-center">
+        <div class="text-center">
+          <h1 class="white">{% trans 'Other Local Activities and Resources' %}</h1>
+          <p class="white">{% blocktrans %}See our Resources page to learn more about programs for young children throughout the city that are not part of Chicago Early Learning.{% endblocktrans %}</p>
+          <a class="btn btn-orange btn-half" href="">{% trans 'Learn More' %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  Programs Testimonial  -->
+  <div id="programs-testimonial" class="container-fluid hidden-xs-up">
+    <div class="row">
+      
+    </div>
   </div>
 </div>
 {% endblock %}
