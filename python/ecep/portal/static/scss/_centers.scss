@@ -1,10 +1,10 @@
 /* -- General -- */
 .info-row {
-  padding-top: 8em;
-  padding-bottom: 8em;
+  padding-bottom: 0 !important;
 
-  img {}
-
+  svg {
+    max-height: 16em;
+  }
 }
 
 /* -- General List -- */
