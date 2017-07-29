@@ -252,6 +252,17 @@
       }
     }
   }
+  
+  .index-info-block {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  @media (max-width: $break-medium) {
+    .index-info-block {
+      height: auto;
+    }
+  }
 }
 
 

@@ -23,7 +23,7 @@
 }
 
 .btn-yellow {
-  @include primary-variant($white, $yellow, $deep-yellow);
+  @include primary-variant($white, $deep-yellow, darken($deep-yellow, 5%));
 }
 
 .btn-gray {
