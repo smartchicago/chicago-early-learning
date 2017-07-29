@@ -1,11 +1,12 @@
 #connect {
   background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'), url('../img/redesign/elements/shapes_left_2x.png');
-  background-size: 30%, 30%, 30%, 30%;
+  background-size: 40%, 40%, 40%, 40%;
   background-position: left top, right top, left bottom, right bottom;
   background-repeat: no-repeat;
 
+  min-height: 60em;
+
   @media (max-width: $break-small) {
-    min-height: 50em;
     background-image: none;
   }
 }
@@ -54,4 +55,9 @@
   .size1of2 {
     width: inherit;
   }
+}
+
+#mc-embedded-subscribe {
+  width: 50%;
+  margin: 1em auto;
 }
