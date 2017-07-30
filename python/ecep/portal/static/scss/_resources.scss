@@ -46,4 +46,13 @@ $height: 20em;
   }
 }
 
-#resources-intro {}
+#resources-intro {
+  background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'); 
+  background-size: 30%, 30%;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
+
+  @media (max-width: $break-medium) {
+    background-image: none;
+  }
+}
