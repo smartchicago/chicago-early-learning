@@ -16,49 +16,104 @@
   </div>
 </div>
 
+{% url 'programs' as programs_url %}
+{% url 'browse' as browse_url %}
+{% url 'resources' as resources_url %}
+{% url 'how-to-apply' as how_to_apply_url %}
+
 <div id="faq">
   
   <div id="faq-contents" class="container-fluid container-top-4 bg-white">
     <p class="text-center"><i>Click on the topics below for more details</i></p>
     <div class="row">
-      <div id="faq-contents-apply" class="col-md-6">
-        <div class="faq-contents-block">
-          <img src="">
-          <h2 class="blue">{% trans 'Applying for Programs' %}</h2>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 1' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 2' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 3' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 4' %}</a></p>
+      <div id="faq-column-left" class="col-md-6">
+        
+        <div class="card contents-card">
+          <div class="faq-contents-block">
+            <h2 class="blue"><a data-toggle="collapse" href="#find-collapse">{% trans 'Finding a Preschool Program' %}</a></h2>
+          </div>
+
+          <div class="collapse faq-contents-block" id="find-collapse">
+            <p><a class="a-orange" href="#finding-1">{% blocktrans %}What is the difference between childcare (might also be called daycare) and preschool?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#finding-2">{% blocktrans %}Is my child eligible for preschool?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#finding-3">{% blocktrans %}What are the characteristics of a high-quality early learning program, such as accreditation?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#finding-4">{% blocktrans %}What are the similarities and differences between a CPS preschool and a community-based site?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#finding-5">{% blocktrans %}Are all Chicago Early Learning preschool programs free?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#finding-6">{% blocktrans %}What should I do if I want to enroll my child in preschool, but the school year has already started?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#finding-7">{% blocktrans %}What type of support can my child receive in preschool if he/she has an Individualized Education Plan (IEP) or an Individual Family Service Plan (IFSP)?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#finding-8">{% blocktrans %}If I don’t live in Chicago, can I apply to a preschool program?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#finding-9">{% blocktrans %}How do I know the hours of the preschool I want to apply to?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#finding-10">{% blocktrans %}How do I find a preschool program for summer?{% endblocktrans %}</a></p>
+          </div>
+        </div>
+
+        <div class="card contents-card">
+          <div class="faq-contents-block">
+            <h2 class="blue"><a data-toggle="collapse" href="#apply-collapse">{% trans 'Applying to a Preschool Program' %}</a></h2>
+          </div>
+          <div class="collapse faq-contents-block" id="apply-collapse">
+            <p><a class="a-orange" href="#applying-1">{% blocktrans %}How do I apply for Chicago Early Learning preschool for my three or four year-old?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-2">{% blocktrans %}What is the application process?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-3">{% blocktrans %}Does the application close?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-4">{% blocktrans %}How many sites can I apply to?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-5">{% blocktrans %}Can I submit more than one application?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-6">{% blocktrans %}Do I need to apply online?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-7">{% blocktrans %}What sites can my family apply to online?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-8">{% blocktrans %}Does the online preschool application come in multiple languages?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-9">{% blocktrans %}Is the online preschool application mobile-friendly?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-10">{% blocktrans %}Where can I receive support completing the preschool application and enrollment process?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-11">{% blocktrans %}How can I change something on my submitted preschool application?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-12">{% blocktrans %}When will I know if my child is placed at our preferred preschool site?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-13">{% blocktrans %}Is there a neighborhood preference for families applying to a nearby school?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-14">{% blocktrans %}How is it decided who gets an offer and who is on a waitlist?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-15">{% blocktrans %}Can I change my application after it has been submitted?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-16">{% blocktrans %}Do I need to apply to preschool if my child is already enrolled? For example: My three year-old is already enrolled, and would be going into their second year of preschool.{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-17">{% blocktrans %}What should I do if I’d like to transfer my child’s preschool site if he/she is currently enrolled?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-18">{% blocktrans %}If I have multiple children that I would like to enroll in preschool, how can I ensure that they are placed in the same site?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-19">{% blocktrans %}Is there a sibling preference for people with a child already enrolled at a school?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-20">{% blocktrans %}What should I do if I have more than one child (siblings) applying to preschool?
+  {% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-21">{% blocktrans %}My child is two years old, but will be three by September 1st, and is already enrolled in a community-based center. Do we need to apply for preschool if we want to continue at the same center?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-22">{% blocktrans %}Is a child’s immigration status a consideration in the preschool application process?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-23">{% blocktrans %}Can I apply online if my child has an Individualized Education Plan (IEP) or an Individual Family Service Plan (IFSP)?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#applying-24">{% blocktrans %}What support can families in temporary living situations receive during the preschool application process?{% endblocktrans %}</a></p>
+          </div>
         </div>
       </div>
-      <div id="faq-content-returning" class="col-md-6">
-        <div class="faq-contents-block">
-          <img src="">
-          <h2 class="blue">{% trans 'Returning Students and Families with Multiple Children' %}</h2>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 1' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 2' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 3' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 4' %}</a></p>
+
+      <div id="faq-column-right" class="col-md-6">
+        <div class="card contents-card">
+          <div class="faq-contents-block">
+            <h2 class="blue"><a data-toggle="collapse" href="#verify-collapse">{% trans 'Verifying an Application and Enrolling in a Preschool Program' %}</a></h2>
+          </div>
+          <div class="collapse faq-contents-block" id="verify-collapse">
+            <p><a class="a-orange" href="#verifying-1">{% blocktrans %}What happens after I submit my application?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-2">{% blocktrans %}What documents will I need to provide in order to complete the verification and enrollment process for the preschool application?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-3">{% blocktrans %}How long do I have to verify my documents after I’ve received an offer?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-4">{% blocktrans %}Where do I go to verify my application information? {% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-5">{% blocktrans %}What does it mean to be on the waitlist for a preschool site?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-6">{% blocktrans %}How can I get off of a preschool site’s waitlist?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-7">{% blocktrans %}Can I be waitlisted at multiple schools?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-8">{% blocktrans %}What number am I on the waitlist?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-9">{% blocktrans %}Why don’t I see an “offer” or a “wait list” status for one of my choices?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-10">{% blocktrans %}Can I verify my documents if I’m on a waitlist?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-11">{% blocktrans %}I was assigned a copay amount. How do I get more information or arrange payments?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-12">{% blocktrans %}What is CCAP?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#verifying-13">{% blocktrans %}What supports are available to preschool aged students who are enrolled in school and experiencing temporary living situations?{% endblocktrans %}</a></p>
+          </div>
         </div>
-      </div>
-      <div id="faq-content-registration" class="col-md-6">
-        <div class="faq-contents-block">
-          <img src="">
-          <h2 class="blue">{% trans 'Placement and Registration' %}</h2>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 1' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 2' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 3' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 4' %}</a></p>
-        </div>
-      </div>
-      <div id="faq-content-general" class="col-md-6">
-        <div class="faq-contents-block">
-          <img src="">
-          <h2 class="blue">{% trans 'General Questions' %}</h2>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 1' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 2' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 3' %}</a></p>
-          <p><a class="a-orange" href="">{% trans 'Programs Link 4' %}</a></p>
+
+        <div class="card contents-card">
+          <div class="faq-contents-block">
+            <h2 class="blue"><a data-toggle="collapse" href="#general-collapse">{% trans 'Other Questions' %}</a></h2>
+          </div>
+          <div class="collapse faq-contents-block" id="general-collapse">
+            <p><a class="a-orange" href="#other-1">{% blocktrans %}How do I find early learning opportunities for children under 3 years old?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#other-2">{% blocktrans %}How do I find learning and enrichment opportunities for children over 5 years old?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#other-3">{% blocktrans %}How can I enroll my 5-year-old to enroll in kindergarten?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#other-4">{% blocktrans %}What should I do if I suspect my 0 - 4-year-old child needs special education services?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#other-5">{% blocktrans %}Do you provide transportation to and/or from preschool?{% endblocktrans %}</a></p>
+          </div>
         </div>
       </div>
     </div>
@@ -69,87 +124,101 @@
       <div class="body-header">
         <div class="row">
           <div class="body-header col-md-12 bg-blue text-center">
-            <h2 class="white">{% trans 'Applying for Programs' %}</h2>
+            <h2 class="white">{% trans 'Finding a Preschool Program' %}</h2>
           </div>
         </div>
       </div>
       <div class="body-columns">
         <div class="row">
-          <div class="faq-block col-md-6">
+          <div class="faq-block col-md-8 offset-md-2" id="finding-1">
             <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h2>{% blocktrans %}What is the difference between childcare (might also be called daycare) and preschool?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}Childcare agencies are community-based sites. However, if they are not a part of Chicago Early Learning, we cannot guarantee that they meet the same standards.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
-          <div class="faq-block col-md-6">
+        </div>
+        <div class="row"> 
+          <div class="faq-block col-md-8 offset-md-2" id="finding-2">
             <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h2>{% blocktrans %}Is my child eligible for preschool?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}Visit our <a class="a-orange" href="{{ programs_url }}">Programs page</a> for more detailed information about types of programs available to children ages 0 - 5. Generally, children who are 0 - 3 can attend programs either through community-based sites, or programs through city agencies. Children who will be turning 3 or 4 by September 1st of the current school year are eligible to apply for preschool at a Chicago Public Schools (CPS) preschool or community-based site. Children who are 5 years old by September 1st of the current school year should enroll in kindergarten at a CPS preschool. Some children with Individualized Education Plans (IEPs) and some children who seek to enroll in the middle of a program year may also be considered preschool-eligible depending on the provider and the child’s needs. Families should reach out directly to an individual provider with questions.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
-          <div class="faq-block col-md-6">
+        </div>
+        <div class="row"> 
+          <div class="faq-block col-md-8 offset-md-2" id="finding-3">
             <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h2>{% blocktrans %}What are the characteristics of a high-quality early learning program, such as accreditation?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}hicago Early Learning preschool programs all meet rigorous federal, state, and local standards. The <a class="a-orange" href="{{ browse_url }}">Find and Compare Tool</a> allows anyone to view programs with accreditation and or a program’s quality ratings. Please review our <a class="a-orange" href="{{ programs_url }}">Programs Page</a> with detailed information about types of programs, and identifying characteristics of high quality early learning.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
-          <div class="faq-block col-md-6">
+        </div>
+        <div class="row"> 
+          <div class="faq-block col-md-8 offset-md-2" id="finding-4">
             <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h2>{% blocktrans %}What are the similarities and differences between a CPS preschool and a community-based site?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}All Chicago Early Learning programs, CPS or community-based, must meet rigorous state and federal standards. All Chicago Early Learning programs use evidence-based curriculums and assessments to ensure children are on track for kindergarten. All Chicago Early Learning programs have highly qualified teachers and a minimum of two teachers in the classroom.{% endblocktrans %}</p>
+              <p>{% blocktrans %}A Chicago Public Schools preschool site is affiliated with an elementary school run through CPS. A community-based site may be locally owned and operated. At this time, admission to a CPS preschool does not necessarily guarantee admission to kindergarten at that location. Hours may be longer than a traditional school day at a community-based site, often up to 10 hours, but they will vary location by location. Most community-based settings have services for younger children, ages 0 – 3 years old.  The Verify and Enroll steps of the preschool application process are a little bit different for a CPS school. Learn more on our <a class="a-orange" href="{{ how_to_apply_url }}">How to Apply page</a>.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
-          <div class="faq-block col-md-6">
+        </div>
+        <div class="row"> 
+          <div class="faq-block col-md-8 offset-md-2" id="finding-5">
             <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h2>{% blocktrans %}Are all Chicago Early Learning preschool programs free?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}Some programs are free to families, while other programs might require a small co-pay due to state or local funding requirements. Contact the program directly once you have received an offer to learn more about what co-payments, if any, are required for your family.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Depending on your family's income and other criteria, some families may be asked to pay a low cost for preschool. Chicago Public Schools preschools will ask families of certain income and household sizes to pay a small sliding scale fee, detailed in this letter. Children who are in a temporary living situation or who are receiving special education (IEP) service will not be charged.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
-          <div class="faq-block col-md-6">
+        </div>
+        <div class="row"> 
+          <div class="faq-block col-md-8 offset-md-2" id="finding-6">
             <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h2>{% blocktrans %}What should I do if I want to enroll my child in preschool, but the school year has already started?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}If the beginning of the school year has already passed, families seeking to enroll their child immediately should call the Chicago Early Learning hotline at <a class="a-orange" href="tel:3122291690">(312) 229-1690</a> for guidance or contact their preferred provider directly to inquire about availability. They may instruct you to complete the online application.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
-          <div class="faq-block col-md-6">
+        </div>
+        <div class="row"> 
+          <div class="faq-block col-md-8 offset-md-2" id="finding-7">
             <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <h2>{% blocktrans %}What type of support can my child receive in preschool if he/she has an Individualized Education Plan (IEP) or an Individual Family Service Plan (IFSP)?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}If your child already has been enrolled in school, please take a copy of the IEP and enrollment documentation to the school. The school's IEP team will review the IEP and determine if it can be implemented. If you are looking to enroll your child in a CPS school and you have questions about support services and/or enrollment, please contact the Office of Diverse Learner Supports and Services at  <a class="a-orange" href="tel:7735531800">773-553-1800</a>.{% endblocktrans %}</p>
+              <p>{% blocktrans %}To learn more about a community-based site’s offerings for students with special needs, please contact the site directly.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
+            </div>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="faq-block col-md-8 offset-md-2" id="finding-8">
+            <div class="faq-block-content">
+              <h2>{% blocktrans %}If I don’t live in Chicago, can I apply to a preschool program?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}In general, Chicago Early Learning Preschool programs are for Chicago residents. Certain community-based sites may take some out-of-city children. Contact your preferred community-based site directly for more information.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
+            </div>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="faq-block col-md-8 offset-md-2" id="finding-9">
+            <div class="faq-block-content">
+              <h2>{% blocktrans %}How do I know the hours of the preschool I want to apply to?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}Visit the <a class="a-orange" href="{{ browse_url }}">Find and Compare Tool</a> to explore early learning sites that meet the particular needs of your family. In order to find the hours of a site, click the “More Info” button. We recommend that you call the site directly to confirm any ongoing updates to the hours posted.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
+            </div>
+          </div>
+        </div>
+        <div class="row"> 
+          <div class="faq-block col-md-8 offset-md-2" id="finding-10">
+            <div class="faq-block-content">
+              <h2>{% blocktrans %}How do I find a preschool program for summer?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}Some Chicago Early Learning sites may offer summer hours, especially community-based sites. Contact the site of interest directly to learn more. Additionally, explore what other summer activities are offered citywide through other agencies and organizations – <a class="a-orange" href="{{ resources_url }}">click here</a> to learn more.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
         </div>
@@ -158,6 +227,8 @@
         <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
       </div>
     </div>
+
+
     <div id="faq-body-returning">
       <div class="body-header">
         <div class="row">
@@ -168,89 +239,14 @@
       </div>
       <div class="body-columns">
         <div class="row">
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
         </div>
       </div>
       <div class="to-top text-center p-4">
         <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
       </div>
     </div>
+
+
     <div id="faq-body-registration">
       <div class="body-header">
         <div class="row">
@@ -261,89 +257,14 @@
       </div>
       <div class="body-columns">
         <div class="row">
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
         </div>
       </div>
       <div class="to-top text-center p-4">
         <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
       </div>
     </div>
+
+
     <div id="faq-body-general">
       <div class="body-header">
         <div class="row">
@@ -354,83 +275,6 @@
       </div>
       <div class="body-columns">
         <div class="row">
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
-          <div class="faq-block col-md-6">
-            <div class="faq-block-content">
-              <h2>{% trans 'Lorem impsum dolor' %}</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-          </div>
         </div>
       </div>
       <div class="to-top text-center p-4">
