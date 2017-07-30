@@ -50,6 +50,9 @@ class Starred(TemplateView):
 class About(TemplateView):
     template_name = "redesign/about.html"
 
+class Blog(TemplateView):
+    template_name = "redesign/blog.html"
+
 class Connect(TemplateView):
     template_name = "redesign/connect.html"
 

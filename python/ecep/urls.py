@@ -37,6 +37,9 @@ urlpatterns = patterns(
     url(r'^faq$', FAQ.as_view(), name='faq'),
     url(r'^programs$', Programs.as_view(), name='programs'),
     url(r'^resources$', Resources.as_view(), name='resources'),
+
+    # Blog
+    url(r'^blog/$', Blog.as_view(), name="blog"),
     
     # browse page
     url(r'^search/$', 'portal.views.browse', name='browse'),
