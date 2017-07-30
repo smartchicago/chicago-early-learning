@@ -20,6 +20,7 @@
 {% url 'browse' as browse_url %}
 {% url 'resources' as resources_url %}
 {% url 'how-to-apply' as how_to_apply_url %}
+{% url 'family-resource-centers' as centers_url %}
 
 <div id="faq">
   
@@ -93,7 +94,7 @@
             <p><a class="a-orange" href="#verifying-4">{% blocktrans %}Where do I go to verify my application information? {% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#verifying-5">{% blocktrans %}What does it mean to be on the waitlist for a preschool site?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#verifying-6">{% blocktrans %}How can I get off of a preschool site’s waitlist?{% endblocktrans %}</a></p>
-            <p><a class="a-orange" href="#verifying-7">{% blocktrans %}Can I be waitlisted at multiple schools?{% endblocktrans %}</a></p>
+            <!--<p><a class="a-orange" href="#verifying-7">{% blocktrans %}Can I be waitlisted at multiple schools?{% endblocktrans %}</a></p>-->
             <p><a class="a-orange" href="#verifying-8">{% blocktrans %}What number am I on the waitlist?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#verifying-9">{% blocktrans %}Why don’t I see an “offer” or a “wait list” status for one of my choices?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#verifying-10">{% blocktrans %}Can I verify my documents if I’m on a waitlist?{% endblocktrans %}</a></p>
@@ -111,7 +112,7 @@
             <p><a class="a-orange" href="#other-1">{% blocktrans %}How do I find early learning opportunities for children under 3 years old?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#other-2">{% blocktrans %}How do I find learning and enrichment opportunities for children over 5 years old?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#other-3">{% blocktrans %}How can I enroll my 5-year-old to enroll in kindergarten?{% endblocktrans %}</a></p>
-            <p><a class="a-orange" href="#other-4">{% blocktrans %}What should I do if I suspect my 0 - 4-year-old child needs special education services?{% endblocktrans %}</a></p>
+            <p><a class="a-orange" href="#other-4">{% blocktrans %}What should I do if I suspect my child needs special education services?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#other-5">{% blocktrans %}Do you provide transportation to and/or from preschool?{% endblocktrans %}</a></p>
           </div>
         </div>
@@ -239,7 +240,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-1">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How do I apply for Chicago Early Learning preschool for my three or four year-old?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}If your child will be 3 or 4 years-old by September 1st this school year, please visit our <a class="a-orange" href="{{ how_to_apply_url }}">How to Apply page</a> where you can find detailed information about the online application process.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -248,7 +249,12 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-2">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What is the application process?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families with preschool-aged children can submit a single application for any Chicago Early Learning program. Enrolling your 3 or 4 year-old child in an early learning program is easy, and open year-round. Follow these easy steps for your application:{% endblocktrans %}</p>
+              <ul>
+                <li>{% blocktrans %} Visit chicagoearlylearning.org, click on the link to apply to preschool, and create an online account for your family{% endblocktrans %}</li>
+                <li>{% blocktrans %}Visit chicagoearlylearning.org, click on the link to apply to preschool, and create an online account for your family{% endblocktrans %}</li>
+                <li>{% blocktrans %}Fill in information on your family, such as employment and income, information on your child, and your top choice preschool sites{% endblocktrans %}</li>
+              </ul>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -257,7 +263,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-3">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Does the application close?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}No – if a child turned 3 or 4 by September 1st but did not apply before the beginning of the school year, families are still welcome to use the online application. However, availability may become increasingly limited.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -266,7 +272,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-4">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How many sites can I apply to?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families can apply for up to two different sites in the application. We limit families to two site preferences in order to match as many families as possible with their preferred programs. Families can compare the over 600 sites supported by Chicago Public Schools and community-based sites on the Chicago Early Learning website or with assistance on the phone at <a href="tel:3122291690">(312) 229-1690</a>.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -275,7 +281,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-5">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Can I submit more than one application?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Each preschool-aged child that is seeking to enroll in a new program is allowed only one application with two preferences. If you have multiple children that are applying for preschool, you may submit one application for each child.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -284,7 +290,8 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-6">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Do I need to apply online?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families have many choices for completing and submitting an application for preschool.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Complete and submit an application online; Call the Chicago Early Learning hotline at (312) 229-1690 to complete the application with assistance over the phone; visit a community-based site directly, or visit a Family Resource Center to review your options and submit an application with an application support representative.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -293,7 +300,9 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-7">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What sites can my family apply to online?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families can apply to over 600 sites through the Chicago Early Learning online preschool application. Sites include programs that are community-based and Chicago Public Schools. Visit the <a class="a-orange" href="{{ browse_url }}">Find and Compare Tool</a> to find the right site for your family.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Chicago Early Learning does not include private schools, magnet, Montessori, or tuition-based schools.{% endblocktrans %}</p>
+              <p>{% blocktrans %}A child placed in a CPS public school through Office of Diverse Learners Supports and Services (ODLSS) does not need to apply, but they are not prohibited from applying to community-based sites, as an additional option.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -302,7 +311,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-8">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Does the online preschool application come in multiple languages?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Yes. You can click “Español” in the corner of any page of this site and within your application to change the language to Spanish. That is the only additional language available at this time.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -311,7 +320,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-9">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Is the online preschool application mobile-friendly?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -320,7 +329,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-10">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Where can I receive support completing the preschool application and enrollment process?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families with questions or needing support completing the application can call (312) 229-1690 for assistance with applications for both schools and community-based providers. They can also visit any of the <a class="a-orange" href="{{ centers_url }}">Family Resource Centers</a> located around the city, or visit a community-based provider if they are interested in a site.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -329,7 +338,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-11">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How can I change something on my submitted preschool application?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}If you wish to alter information on a previously submitted application please call (312) 229-1690 to speak with a Family Resource Specialist directly.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -338,7 +347,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-12">
             <div class="faq-block-content">
               <h2>{% blocktrans %}When will I know if my child is placed at our preferred preschool site?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}You will know whether your child is offered a seat or is on a site’s waitlist immediately after submitting the application on the next screen, and through an email notification. See below for more information on next steps.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -347,7 +356,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-13">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Is there a neighborhood preference for families applying to a nearby school?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}No, eligibility for the Chicago Early Learning program is based on factors such as income, age, and gives preference to children who are homeless, in foster care, students with disabilities, and others.  There is no preference for a child based on where he/she lives. For Chicago Public Schools, in most cases, neighborhood preference begins at the kindergarten level.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -356,7 +365,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-14">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How is it decided who gets an offer and who is on a waitlist?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Priorities for offers include preferences for our city’s highest-needs families: low income families, students with disabilities, students in temporary living situations, foster children, and more. While there may be seats available at a given program, one family may meet priority qualifications and receive an offer for a seat, but another family may not and would be placed on the waitlist for that site.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -365,7 +374,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-15">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Can I change my application after it has been submitted?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}If you would like to change aspects of your application after it has been submitted, please call us at 312-744-9322.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -374,7 +383,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-16">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Do I need to apply to preschool if my child is already enrolled? For example: My three year-old is already enrolled, and would be going into their second year of preschool.{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Students that are currently in a preschool program and will not be entering kindergarten in the fall are not required to re-apply if they wish to continue in that program.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -383,7 +392,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-17">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What should I do if I’d like to transfer my child’s preschool site if he/she is currently enrolled?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}If you would like to change what preschool your child currently attends, you would need to fill in an online application. After confirming the application for a transfer, there is no guarantee of a spot at the child’s previous site.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -392,7 +401,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-18">
             <div class="faq-block-content">
               <h2>{% blocktrans %}If I have multiple children that I would like to enroll in preschool, how can I ensure that they are placed in the same site?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Unfortunately, we cannot guarantee that siblings will be placed at the same site. We will make every effort to keep preschool-aged siblings together, but factors such as space, age, and individual needs may prevent us from ensuring placement with siblings.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -401,7 +410,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-19">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Is there a sibling preference for people with a child already enrolled at a school?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}We cannot guarantee that siblings will be placed at the same site. We will make every effort to keep same age and old/younger preschool-aged siblings together, but factors such as space, age, and individual needs may prevent us from guaranteeing placement with siblings. Preschool applicants whose older siblings will be attending grades kindergarten and above do not receive any entrance priority into that preschool. {% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -409,15 +418,17 @@
         <div class="row">
           <div class="faq-block col-md-8 offset-md-2" id="applying-20">
             <div class="faq-block-content">
-              <h2>{% blocktrans %}What should I do if I have more than one child (siblings) applying to preschool?
-{% endblocktrans %}</h2>
-<p>{% blocktrans %}{% endblocktrans %}</p>
-<p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p></div></div></div>
+              <h2>{% blocktrans %}What should I do if I have more than one child (siblings) applying to preschool?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}If you are a parent or guardian with multiple children, you may create separate applications for each child in your family account and profile. If you are looking for services for a younger child, please verify with your provider first that programs for children younger than 3 years old are available, or visit the <a class="a-orange" href="{{ resources_url }}">City Resources page</a> to identify alternative programming.{% endblocktrans %}</p>
+              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
+            </div>
+          </div>
+        </div>
         <div class="row">
           <div class="faq-block col-md-8 offset-md-2" id="applying-21">
             <div class="faq-block-content">
               <h2>{% blocktrans %}My child is two years old, but will be three by September 1st, and is already enrolled in a community-based center. Do we need to apply for preschool if we want to continue at the same center?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}No—the child will be grandfathered in to their site’s 3 year-old program. They may need to provide additional information to the site. Please connect directly with your site.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -426,7 +437,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-22">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Is a child’s immigration status a consideration in the preschool application process?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}No, the preschool application will never ask you or anyone in your family for proof of citizenship.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -435,7 +446,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-23">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Can I apply online if my child has an Individualized Education Plan (IEP) or an Individual Family Service Plan (IFSP)?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Yes, you are able to indicate on your child’s preschool application if your child has an IEP or IFSP.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -444,7 +455,8 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-24">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What support can families in temporary living situations receive during the preschool application process?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families interested in a CPS preschool can reach out directly to the school to contact the Students in Temporary Living Situations (STLS) Liaison or Clerk.  Students in temporary living situations will be enrolled in school without documentation and have a right to fee waivers, free school meals, and help with school supplies and uniforms.  Transportation is provided to the school of origin upon request.  A student's school of origin is the school the student attended when permanently housed or the last school attended.  Having a school of origin in preschool does not guarantee entry into that school for kindergarten.  STLS students also have the right to the Dispute Resolution Process when a disagreement arises regarding eligibility, enrollment, or transportation.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Preschool students attending community-based preschool programs should check with the program to find out what supports are available.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -466,7 +478,10 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-1">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What happens after I submit my application?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families will instantly learn whether their child is on the waitlist or has received an offer at the site to which they applied.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families that receive a waitlist status are encouraged to consider applying to alternate sites by calling 312-744-9322. See more FAQs on the waitlist process below.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families that receive an offer will receive an email with information on how to verify the child’s preschool seat and enroll at the site. <a class="a-orange" href="{{ how_to_apply_url }}">Click here</a> to learn more about the entire application process.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Within two weeks of receiving a placement offer, a family member must visit a specified site (the site to which the child is offered for community-based programs, or a Family Resource Center for CPS preschoolers) to verify the information shared in the application. For more details on the verification and enrollment process, click here [link].{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -475,7 +490,10 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-2">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What documents will I need to provide in order to complete the verification and enrollment process for the preschool application?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families will provide proof of a student’s age, address, and family income. Individual sites may request additional documentation prior to full enrollment. Click here to learn more about the verification process and required documents [link].{% endblocktrans %}</p>
+              <p>{% blocktrans %}Failure to provide documentation that confirms the information provided on your application may affect your child’s placement.{% endblocktrans %}</p>
+              <p>{% blocktrans %}If you need assistance identifying the correct documentation or finding substitute documentation, please contact your preschool site directly, or visit a Family Resource Center.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Students in temporary living situations will be enrolled without any required documentation.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -484,7 +502,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-3">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How long do I have to verify my documents after I’ve received an offer?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families have two weeks to verify their documents from the date they received their offer online. If your family needs more time to verify the offer, call 312-744-9322 or email earlylearninghelp@cityofchicago.org.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -493,7 +511,9 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-4">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Where do I go to verify my application information? {% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}If you have an offer to a school-based preschool program (in other words, a preschool program within a CPS elementary school), you must visit a Family Resource Center with your documentation in order to verify your placement. Please do not visit the school directly, as they will not be able to help you verify your placement.{% endblocktrans %}</p>
+              <p>{% blocktrans %}If you have an offer for a community-based preschool program, you must visit that site directly with your required documentation.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Click here to learn more about the application and enrollment process [link].{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -502,7 +522,8 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-5">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What does it mean to be on the waitlist for a preschool site?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Due to limited availability at certain preschool programs, and the need to meet state and federal funding requirements, not all applicants receive preliminary offers to their desired choices. If a child and her family do not meet the eligibility requirements (such as age, income, or other eligibility factors) for an available seat at a given time, the child will be wait listed.  Additionally, a child may be waitlisted if the preschool program is completely full. Remaining on a waitlist means that a child will be offered a placement if a spot becomes available and certain eligibility criteria are met.{% endblocktrans %}</p>
+              <p>{% blocktrans %}The City of Chicago prioritizes eligibility based on factors such as age, income, and child or family history. Students may not be offered a placement from a waitlist on a first-come first-served basis. Because participation in early learning programs is an invaluable resource for your child, we encourage families that are on a waitlist to find a provider with availability that may also suit their needs by calling 312-744-9322.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -511,7 +532,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-6">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How can I get off of a preschool site’s waitlist?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Students will be offered a preliminary placement from a waitlist if a spot becomes available and certain eligibility criteria are met. If a seat becomes available to a particular applicant through the automatic placement system, the system will generate a notice to the family through email or phone. Families then follow the same procedures for confirming the selection as do applicants who receive offers at the time they submit their applications. {% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -520,7 +541,13 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-7">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Can I be waitlisted at multiple schools?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Applicants can only be waitlisted for one preschool program at any given time, and can only have an offer to one preschool site at any given time.  This allows as many families in need as possible to have access to Chicago Early Learning Preschool.{% endblocktrans %}</p>
+              <h4>{% blocktrans %}Scenario A: Offer Only{% endblocktrans %}</h4>
+              <p>{% blocktrans %}If a family receives an offer at their #1 preferred site, they will not be waitlisted at their second choice.{% endblocktrans %}</p>
+              <h4>{% blocktrans %}Scenario B: Waitlist and Offer{% endblocktrans %}</h4>
+              <p>{% blocktrans %}If a child is waitlisted at their first choice, they may receive an offer to their second choice at the same time. This is the only circumstance where a family will have a waitlist and offer status at two locations.{% endblocktrans %}</p>
+              <h4>{% blocktrans %}Scenario C: Waitlist Only{% endblocktrans %}</h4>
+              <p>{% blocktrans %}If a family is waitlisted at their first choice, and they do not qualify for their second choice, they will not have any official status at your second choice.  In other words, a family cannot be waitlisted at two sites at the same time.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -529,11 +556,12 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-8">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What number am I on the waitlist?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Waitlists are sorted by eligibility criteria. As new applicants are constantly added as they apply or are subtracted as they opt out of placements, applicants do not have waitlist numbers. Unfortunately, this means we cannot accurately predict whether a family will receive an offer off of the waitlist.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
         </div>
+        <!--
         <div class="row">
           <div class="faq-block col-md-8 offset-md-2" id="verifying-9">
             <div class="faq-block-content">
@@ -543,11 +571,12 @@
             </div>
           </div>
         </div>
+        -->
         <div class="row">
           <div class="faq-block col-md-8 offset-md-2" id="verifying-10">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Can I verify my documents if I’m on a waitlist?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}We recommend that all families wait to verify their documents until they have received an offer. If you have applied to a CPS school, you are welcome to bring in your documents to a Family Resource Center for verification while on the waitlist. However, verifying your documents will not increase your chances of receiving an offer.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -556,7 +585,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-11">
             <div class="faq-block-content">
               <h2>{% blocktrans %}I was assigned a copay amount. How do I get more information or arrange payments?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Work directly with your assigned preschool site to learn more, and arrange a system that works best for you.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -565,7 +594,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-12">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What is CCAP?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Child Care Assistance Program (CCAP) funding is provided by the state to ensure low-income working parents have access to full-day care. Many community-based providers have reserved slots for low-income working families who qualify for CCAP. Contact a provider directly to answer more specific questions about eligibility.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -574,7 +603,8 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-13">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What supports are available to preschool aged students who are enrolled in school and experiencing temporary living situations?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Preschool students enrolled in school-based preschool programs can ask to speak with the school's Students in Temporary Living Situations (STLS) Liaison or Clerk.  Students in temporary living situations will be enrolled in school without documentation and have a right to fee waivers, free school meals, and help with school supplies and uniforms.  Transportation is provided to the school of origin upon request.  A student's school of origin is the school the student attended when permanently housed or the last school attended.  Having a school of origin in preschool does not guarantee entry into that school for kindergarten.  STLS students also have the right to the Dispute Resolution Process when a disagreement arises regarding eligibility, enrollment, or transportation.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Preschool students enrolling in a community-based program are encouraged to contact their site directly to learn what supports they offer.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -596,7 +626,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="other-1">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How do I find early learning opportunities for children under 3 years old?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Visit our Find and Compare Tool [link] to find community-based sites that offer infant and toddler programs, or click here to learn more about programs offered by other city agencies around Chicago [click].{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -605,7 +635,8 @@
           <div class="faq-block col-md-8 offset-md-2" id="other-2">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How do I find learning and enrichment opportunities for children over 5 years old?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}The first effort of its kind to take place in a major city in the United States, Chicago City of Learning is a groundbreaking effort that joins together learning opportunities for young people in a way that allows them to think about, pursue, and develop their interests. Find 1000s of opportunities at parks, libraries, community- and faith-based programs, schools, museums and cultural institutions, colleges and universities, and more at www.chicagocityoflearning.org{% endblocktrans %}</p>
+              <p>{% blocktrans %}Other early learning resources are available on our City Resources page [link].{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -614,7 +645,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="other-3">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How can I enroll my 5-year-old to enroll in kindergarten?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}Visit the CPS website [link] to enroll a child in kindergarten.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -622,8 +653,8 @@
         <div class="row">
           <div class="faq-block col-md-8 offset-md-2" id="other-4">
             <div class="faq-block-content">
-              <h2>{% blocktrans %}What should I do if I suspect my 0 - 4-year-old child needs special education services?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <h2>{% blocktrans %}What should I do if I suspect my child needs special education services?{% endblocktrans %}</h2>
+              <p>{% blocktrans %}Please attend a Child Find Team Screening Site to obtain a free developmental screening. Developmental screenings can tell you if your child is having any difficulties with: hearing/vision, speech/language, problem solving, social skills, fine/gross motor and/or listening/attending. If a screening indicates a need for further evaluation then you will be referred to the CPS Office of Diverse Learner Supports and Services (ODLSS). Please contact ODLSS at 773-553-1800 for Child Find Screening locations and dates/times.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -632,7 +663,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="other-5">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Do you provide transportation to and/or from preschool?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}{% endblocktrans %}</p>
+              <p>{% blocktrans %}At this time, Chicago Early Learning programs do not provide regular transportation options to students. Families are encouraged to map out their daily routes through CTA or contact their preschool site directly for suggestions.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -646,9 +677,8 @@
       <div class="col-md-8 offset-md-2 d-flex flex-column justify-content-center">
         <div class="text-center">
           <h1 class="orange">{% trans 'Still have questions?' %}</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. </p>
-          <a class="btn btn-blue btn-half" href="">Learn More</a>
+          <h2>{% blocktrans %}Call the Chicago Early Learning Hotline!{% endblocktrans %}</h2>
+          <a class="btn btn-blue btn-half" href="tel:3122291690">(312) 229-1690</a>
         </div>
       </div>
     </div>
