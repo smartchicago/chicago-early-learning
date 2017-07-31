@@ -279,12 +279,6 @@
         max-height: 300px;
         overflow: auto;
     }
-    #location1 {
-        margin-top: 44px;
-    }
-    #location3 {
-        margin-top: 44px;
-    }
 
     #filter-options {
         position: relative;

@@ -12,8 +12,9 @@
     <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/bootstrap.css" %}' rel="stylesheet">
     <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
+    <link href='{% static "css/lib/outdatedbrowser.min.css" %}' rel="stylesheet" type="text/css">
     <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
-    <link href='{% sass_src "scss/application-1.scss" %}' rel="stylesheet">
+    <link href='{% sass_src "scss/application-2.scss" %}' rel="stylesheet">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon.png' %}">
@@ -50,11 +51,6 @@
             width: 100%;
         }
     </style>
-    <!--[if lt IE 9]>
-      <script src='{% static "js/lib/html5shiv.js" %}'></script>
-      <link href='{% static "css/lib/leaflet.ie.css" %}' rel="stylesheet">
-			<link href='{% static "css/lib/ie.css" %}' rel="stylesheet">
-    <![endif]-->
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', '{{ ga_key }}']);

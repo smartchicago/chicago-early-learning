@@ -35,6 +35,7 @@ urlpatterns = patterns(
     # Redesign testing ground
     url(r'^family-resource-centers',  FamilyResourceCenters.as_view(), name='family-resource-centers'),
     url(r'^faq$', FAQ.as_view(), name='faq'),
+    url(r'^families$', Programs.as_view(), name='families'),
     url(r'^programs$', Programs.as_view(), name='programs'),
     url(r'^resources$', Resources.as_view(), name='resources'),
 

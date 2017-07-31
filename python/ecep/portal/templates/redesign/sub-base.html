@@ -27,6 +27,9 @@
       /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
          We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
     </style> 
+
+    <!-- Outdated Browser Check -->
+    <link href='{% static "css/lib/outdatedbrowser.min.css" %}' rel="stylesheet" type="text/css">
       
     {% block pagestyle %}
     {% endblock %}
@@ -50,6 +53,36 @@
 <body>
     {% include "redesign/partials/_nav.html" %}
     {% block base %}{% endblock %}
+
+    <!-- Outdated Browser -->
+    <div id="outdated"></div>
+    <script src='{% static "js/lib/outdatedbrowser.min.js" %}'></script>
+    <script>
+        //event listener form DOM ready
+        function addLoadEvent(func) {
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function() {
+                    if (oldonload) {
+                        oldonload();
+                    }
+                    func();
+                }
+            }
+        }
+        //call function after DOM ready
+        addLoadEvent(function(){
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'transform',
+                languagePath: '{% static "files/en.html" %}'
+            })
+        });
+    </script>
+
 </body>
 <footer>
   <!-- Bootstrap JS --> 
