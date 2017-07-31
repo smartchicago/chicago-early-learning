@@ -1,29 +1,77 @@
 /* --- Global Nav --- */
 
-.navbar {
+.navbar-top {
+  font-size: .8rem;
+
+  .nav-link {
+    padding: .25em 0;
+  }
+
+  #phone-svg {
+    margin-right: .5em;
+  }
+
+  #arrow-svg {
+    margin-left: .5em;
+  }
+}
+
+.navbar-bottom {
+  z-index: 12;
   background-color: $white;
   padding: 1em 1em;
 
-  .nav-logo {
-    position: absolute;
+  .navbar-toggler {
+    border: 3px solid $orange !important;
+    font-size: 1rem;
 
-     .navbar-brand {
-      padding-top: 0;
+    .navbar-toggler-icon {
+
+    }
+  }
+
+  .navbar-brand {
+    padding-top: 0;
+    height: 2em;
+
+    img {
       height: 2em;
-
-      img {
-        height: 2em;
-      }
     }
   }
 
   .nav-content {
 
     line-height: 2em;
-    font-size: .8em;
+    font-size: .95rem;
     vertical-align: center;
 
-    .nav-link {}
+    .nav-item {
+      padding: 0;
+
+      .nav-active {
+
+        @media (min-width: $break-large) {
+          border-radius: 0;
+          color: $deep-blue !important;
+          border-bottom: 3px solid $deep-blue;
+
+          &:hover {
+            color: $blue !important;
+            border-bottom: 3px solid $blue;
+          }
+        }
+
+        @media (max-width: $break-large) {
+          color: $deep-blue !important;
+          font-style: bold !important;
+        }
+      }
+    }
+
+    @media (max-width: $break-large) {
+      margin-top: 1.5em;
+      border-top: 3px solid $deep-blue;
+    }
 
     .apply-button a {
       margin-left: 1em; 

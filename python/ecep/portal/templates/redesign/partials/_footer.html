@@ -1,0 +1,42 @@
+{% load i18n staticfiles static svg compress %}
+
+<footer class="footer">
+  <div class="container-fluid footer">
+    <div class="curve"></div>
+    <div class="footer-content">
+      <div class="logo-row row justify-content-center">
+        <img class="footer-logo" src="{% static 'img/logos/logo-white.png' %}">
+      </div>
+      <div class="links-block row justify-content-center">
+        <div class="footer-description col-12 col-sm-4">
+          <p>{% blocktrans %}For application information, please call the Chicago Early Learning Hotline at {% endblocktrans %}<a class="a-white-underline" href="tel:3122291690">(312) 229-1690</a>.</p>
+          <p>{% trans 'Follow us on Facebook and Twitter:' %}</p>
+          <div class="share-logos">
+            <div class="svg-white svg-share"><a class="" href="https://www.facebook.com/ChicagoEarlyLearning/">{% svg 'social/facebook' %}</a></div>
+            <div class="svg-white svg-share"><a class="" href="https://twitter.com/ChiEarlyLearn">{% svg 'social/twitter' %}</a></div> 
+          </div>
+        </div>
+        <div class="footer-links col-6 col-sm-3">
+          <ul>
+            <li><a class="a-white" href="{% url 'about' %}">{% trans 'About Chicago Early Learning' %}</a></li>
+            <li><a class="a-white" href="{% url 'programs' %}">{% trans 'Programs' %}</a></li>
+            <li><a class="a-white" href="{% url 'how-to-apply' %}">{% trans 'How to Apply' %}</a></li>
+            <li><a class="a-white" href="{% url 'browse' %}">{% trans 'Find Locations' %}</a></li>
+          </ul>
+        </div>
+        <div class="footer-links col-6 col-sm-2">
+          <ul>
+            <li><a class="a-white" href="{% url 'resources' %}">{% trans 'Resources' %}</a></li>
+            <li><a class="a-white" href="{% url 'faq' %}">{% trans 'FAQ' %}</a></li>
+            <li><a class="a-white" href="{% url 'index' %}">{% trans 'Latest News' %}</a></li>
+            <li><a class="a-white" href="{% url 'family-resource-centers' %}">{% trans 'Family Resource Centers' %}</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="copyright text-center">
+        <p>COPYRIGHT ©2017 CHICAGO EARLY LEARNING / BUILT BY <a class="a-yellow" href="http://www.smartchicagocollaborative.org">SMART CHICAGO COLLABORATIVE</a></p>
+      </div>
+    </div>
+  </div>
+</footer>

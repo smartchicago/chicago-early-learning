@@ -1,0 +1,230 @@
+
+{% extends 'redesign/base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load svg %}
+
+{% block title %}
+{% trans "Chicago Early Learning" %} - {% trans "How to Apply" %}
+{% endblock %}
+
+{% block body %}
+<div id="apply-header" class="container-fluid header">
+  <div class="curve-header">
+    <div class="header-image"></div>
+  </div>
+  <div class="header-title">
+    <h1 class="text-center">How To Apply</h1>
+  </div>
+</div>
+
+<div id="apply">
+  <div id="apply-intro" class="container-fluid container-top-2 bg-white">
+    <div class="row h-100">
+      <div id="apply-video" class="col-md-6 offset-md-1 apply-block">
+        <div class="embed-responsive embed-responsive-16by9 h-100">
+          <iframe src="https://www.youtube.com/embed/3La05TZZDe8" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-4 apply-block my-auto">
+        <h1 class="blue">{% blocktrans %}Are <span class="d-inline"><span class="chalk blue b-blue">YOU</span></span> ready to apply for preschool?{% endblocktrans %}</h1>
+        <p>{% blocktrans %}Enrolling your 3- or 4-year-old in a Chicago Early Learning preschool program is easy and open year-round. Follow these easy steps to get your child enrolled in preschool.{% endblocktrans %}</p>
+        {% url 'faq' as faq_url %}
+        <p>{% blocktrans %}If you have any questions, please reference our <a href="{{ faq_url }}">FAQ page</a> for more details.{% endblocktrans %}</p>
+      </div>
+    </div>
+    
+  </div>
+
+  <div id="apply-enroll" class="container-fluid bg-gray">
+    <div class="apply-block">
+      <div id="enroll-title" class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+          <h1 class="orange">{% trans 'Enrollment Process' %}</h1>
+        </div>
+      </div>
+      <div id="enroll-intro" class="row apply-block-steps">
+        <div class="col-md-2 offset-md-1 my-auto">
+          <div class="svg-fluid-w">{% svg 'illustrations/green-flag' %}</div>
+        </div>
+        <div class="col-md-8 my-auto">
+          <h2 class="deep-green">{% trans 'Search Locations' %}</h2>
+          <p>{% blocktrans %}Find and compare Chicago Early Learning programs to find the right one for your child. Get Started!{% endblocktrans %}</p>
+        </div>
+      </div>
+      <div id="enroll-one" class="row apply-block-steps">
+        <div class="col-md-2 offset-md-1 my-auto">
+          <div class="svg-fluid-w">{% svg 'illustrations/computer' %}</div>
+        </div>
+        <div class="col-md-8 my-auto">
+          <h2 class="deep-yellow">{% trans 'Apply to Program' %}</h2>
+          <p>{% blocktrans %}Narrow it down to your top two picks. Create an online account, fill out family information, and a child application to preschool sites. If your child qualifies for an offer, you will follow next steps verify their placement. If your child remains on a waitlist, stay tuned for more information from the Chicago Early Learning team.{% endblocktrans %}</p>
+        </div>
+      </div>
+      <div id="enroll-two" class="row apply-block-steps">
+        <div class="col-md-2 offset-md-1 my-auto">
+          <div class="svg-fluid-w">{% svg 'illustrations/newsletter' %}</div>
+        </div>
+        <div class="col-md-8 my-auto">
+         {% url 'family-resource-centers' as frc_url %}
+          <h2 class="deep-blue">{% trans 'For CPS Site Offers: Verify placement through a Family Resource Center' %}</h2>
+          <p>{% blocktrans %}Within two weeks of receiving your offer, bring proof of your family’s income, address, and your child’s birth to one of 12 Family Resource Center sites across the city. <a href="{{ frc_url }}">Click here</a> for more information about Family Resource Centers. See below for more details about what documents you will provide.{% endblocktrans %}</p>
+          <div class="or-break">
+            <h2>OR</h2>
+            <span class="line"></span>
+          </div>
+          <h2 class="deep-blue">{% trans 'For Community-Based Site Offers: Verify placement through your community-program location' %}</h2>
+          <p>{% blocktrans %}Within two weeks of receiving your offer, bring proof of your family’s income, address, and your child’s birth to your assigned community-based program location. See below for more details about what documents you will provide.{% endblocktrans %}</p>
+        </div>
+      </div>
+      <div id="enroll-three" class="row apply-block-steps">
+        <div class="col-md-2 offset-md-1 my-auto">
+          <div class="svg-fluid-w">{% svg 'illustrations/checklist' %}</div>
+        </div>
+        <div class="col-md-8 my-auto">
+          <h2 class="deep-green">{% trans 'Enrollment at CPS-Program Location' %}</h2>
+          <p>{% blocktrans %}Visit your child’s preschool over the summer or as soon as school starts to complete the enrollment process. The school may have more specific enrollment directions that they will communicate.{% endblocktrans %}</p>
+          <div class="or-break">
+            <h2>OR</h2>
+            <span class="line"></span>
+          </div>
+          <h2 class="deep-green">{% trans 'Enrollment at Community-Program Location' %}</h2>
+          <p>{% blocktrans %}When you visit your child’s community-based site to verify your child’s offer, your site will communicate any additional expectations they have to complete the enrollment process.{% endblocktrans %}</p>
+        </div>
+      </div>
+      <div id="enroll-finish" class="row apply-block-steps">
+        <div class="col-md-2 offset-md-1 my-auto">
+          <div class="svg-fluid-w">{% svg 'illustrations/checkered' %}</div>
+        </div>
+        <div class="col-md-8 my-auto">
+          <h2 class="deep-orange">{% trans 'Go to School!' %}</h2>
+          <p>{% blocktrans %}If you have questions, please call our Chicago Early Learning Hotline: <a href="tel3122291690">(312) 229-1690</a> or visit a Family Resource Center near you.{% endblocktrans %}</p>
+        </div>
+      </div>
+      <div id="enroll-links" class="row">
+        <div class="col-md-3 offset-md-3">
+          <a class="btn btn-orange btn-block" href="{% url 'browse' %}">{% trans 'Search Locations' %}</a>
+        </div>
+        <div class="col-md-3">
+          <a class="btn btn-orange btn-block" href="https://cys.mycopa.com/familyPortal/welcome.epl">{% trans 'Start an Application' %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="apply-verify" class="container-fluid bg-white">
+    <div class="apply-block">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <h1 class="orange">{% trans "How will you verify your child's placement?" %}</h1>
+          <p>{% blocktrans %}If your child is offered a preliminary preschool placement, you will receive an email with verification instructions.{% endblocktrans %}</p>
+          <p><i>{% trans "Follow these three steps to verify your child's placement:" %}</i></p>
+        </div>
+      </div>
+      <div class="row">
+        <div id="verify-one" class="col-md-8 offset-md-2 border-box">
+          <div class="mx-auto">
+            <h2 class="blue">{% trans 'Step 1: Gather Documents' %}</h2>
+            <p><i>{% trans "Follow these three steps to verify your child's placement:" %}</i></p>
+            <div class="documents row mx-auto">
+              <div class="verify-bullets p-2 col-sm-6">
+                <h3 class="orange">{% trans "Proof of child's age" %}</h3>
+                <ul>
+                  <li>{% trans "Original birth certificate" %}</li>
+                  <li>{% trans "Passport" %}</li>
+                </ul>
+                <h3 class="orange">{% trans "Proof of Address" %}</h3>
+                <ul>
+                  <li>{% trans "Driver's License/ID card" %}</li>
+                  <li>{% trans "Utility bill" %}</li>
+                  <li>{% trans "Lease agreement/mortgage statement" %}</li>
+                  <li>{% trans "Current voter registration card" %}</li>
+                </ul>
+              </div>
+              <div class="verify-bullets p-2 col-sm-6">
+                <h3 class="orange">{% trans "Proof of Income" %}</h3>
+                <ul>
+                  <li>{% trans "Current paystub" %}</li>
+                  <li>{% trans "1040/W-2" %}</li>
+                  <li>{% trans "SSI Letter" %}</li>
+                  <li>{% trans "Unemployment Letter/Stub" %}</li>
+                  <li>{% trans "Workers' compensation letter/stub" %}</li>
+                  <li>{% trans "Retirement or pension stub/letter" %}</li>
+                  <li>{% trans "Alimony" %}</li>
+                  <li>{% trans "Official child support letter" %}</li>
+                  <li>{% trans "TANF" %}</li>
+                  <li>{% trans "Income verification form" %}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div id="verify-two" class="col-md-8 offset-md-2 top-border-box mx-auto">
+          <h2 class="blue">{% trans 'Step 2: Bring and Verify Documents' %}</h2>
+          <div class="documents-note">
+            <div class="row">
+              <div class="documents-image col-md-2">
+                <div class="svg-fluid-w">{% svg 'illustrations/book' %}</div>
+              </div>
+              <div class="documents-description col-md-10">
+                <p>{% blocktrans %}If your child has a seat in a Community-based program, bring your documents directly to the site which your child was assigned.{% endblocktrans %}</p>
+              </div>
+            </div>
+          </div>
+          <div class="documents-note">
+            <div class="row">
+              <div class="documents-image col-md-2">
+                <div class="svg-fluid-w">{% svg 'illustrations/large-pencil' %}</div>
+              </div>
+              <div class="documents-description col-md-10">
+                <p>{% blocktrans %}If your child has a seat in a CPS-based program, bring your documents to a Family Resource Center.{% endblocktrans %}</p>
+              </div>
+            </div>
+          </div>
+          <div class="documents-note">
+            <a class="btn btn-orange btn-block" href="{% url 'family-resource-centers' %}">{% trans 'View Family Resource Centers' %}</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div id="verify-three" class="col-md-8 offset-md-2 top-border-box mx-auto">
+          <div class="mx-auto">
+            <h2 class="blue">{% trans 'Step 3: Bring your child on the first day of school in September.' %}</h2>
+            <h2 class="chalkduster orange">Let the learning begin!</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-2 full-border-box mx-auto">
+          <p>{% blocktrans %}Note:  If your family is in a temporary living situation, you are not required to present the documents listed above for verification.  All schools must immediately enroll students in temporary living situations even if the student lacks health, immunization or school records, proof of guardianship, proof of residency, or any other documentation normally required for school enrollment.{% endblocktrans %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="apply-links" class="container-fluid">
+    <div class="row">
+      <div id="link-programs-block" class="col-md-6 d-flex">
+        <div class="link-block text-center m-auto">
+          <h1 class="py-3">{% trans 'Have you found the right program for your child?' %}</h1>
+          <p>{% blocktrans %}The City of Chicago and its partners offer early learning programs at over 600 sites. Visit our search page to identify sites in areas near your home or work. The Chicago Early Learning Portal allows you to identify a program’s quality rating, schedule and ages served.{% endblocktrans %}</p>
+          <a href="{% url 'programs' %}" class="btn btn-orange">{% trans 'Learn About Program Types' %}</a>
+        </div>
+      </div>
+      <div id="link-support-block" class="col-md-6 d-flex flex-column">
+        <div class="link-block text-center m-auto">
+          <h1 class="py-3">{% trans 'Need application support?' %}</h1>
+          <p>{% blocktrans %}If you have any concerns with the online application, please call our Chicago Early Learning Hotline at (312) 229-1690, or visit any of the Family Resource Centers.{% endblocktrans %}</p> 
+          <a href="{% url 'family-resource-centers' %}" class="btn btn-orange">{% trans 'View Family Resource Centers' %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block template_headers %}
+{% endblock %}

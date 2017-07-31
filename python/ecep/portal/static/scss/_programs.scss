@@ -1,0 +1,256 @@
+$height: 20em;
+$block-height: 40em;
+#programs {
+
+  h3 {
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+    margin-bottom: 0
+  }
+}
+
+#programs-header {
+
+  .header-image {
+    background-image: url("../img/redesign/programs/coloring-boy.jpg");
+    background-size: 100%;
+    background-position: 50% 60%;
+    background-repeat: no-repeat;
+
+    @media (max-width: $break-medium) {
+      background-size: 150%;
+    }
+  }
+}
+
+
+.programs-block {
+
+  .programs-info-block {
+    width: 80%;
+    margin: auto !important;
+  }
+}
+
+.programs-image-block {}
+
+.programs-base {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+#programs-intro {
+
+  p {
+    margin-bottom: 0;
+  }
+  
+  img {
+    width: 100%;
+    height: 12em;
+  }
+
+  .rahm-quote {
+    border-left: 3px solid $yellow;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 1em;
+
+    h3 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-weight: 400;
+    }
+  }
+
+  .rahm {
+    font-size: .875rem;
+
+  }
+}
+
+#programs-age-calculator {
+  background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'); 
+  background-size: 30%, 30%;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
+
+  p {
+    font-style: italic;
+  }
+
+  @media (max-width: $break-medium) {
+    background-image: none;
+  }
+}
+
+#programs-infants-image {
+  background-image: url("../img/redesign/programs/woman-and-infant.jpg");
+  background-position: 40% 50%;
+}
+
+#programs-preschool-image {
+  background-image: url("../img/redesign/programs/phone-girl.jpg");
+  background-position: 40% 50%;
+}
+
+#programs-infants-info {
+  min-height: $block-height;
+  background-color: $orange;
+}
+
+#programs-preschool-info {
+  min-height: $block-height;
+  background-color: $blue;
+}
+
+#programs-kindergarten {
+  background-color: $deep-yellow;
+}
+
+#programs-kindergarten-info {
+  min-height: .5*$block-height;
+}
+
+
+#programs-infants-info,
+#programs-preschool-info,
+#programs-kindergarten-info {
+  color: $white;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  h4 {
+    font-style: italic;
+    color: lighten($light-gray, 10%);
+  }
+
+  ul {
+    padding-left: 2em;
+
+    li {
+
+    }
+  }
+}
+
+#programs-types {
+
+  @media (min-width: $break-medium) {
+    #program-types-cps {
+      border-right: 3px solid $white;
+    }
+  }
+
+  #choose-break {
+    padding-top: 4em;
+    padding-bottom: 2em;
+  }
+
+  .program-type {
+
+    img {
+      height: 8em;
+      width: 8em;
+      margin: 2em;
+    }
+
+    h1 {
+      font-size: 1.5em;
+    }
+
+    h2 {
+      font-size: 1em;
+      font-style: italic;
+    }
+
+    h1, h2 {
+      margin-bottom: 1em;
+    }
+
+  }
+
+  .home-visiting {
+    width: 90%;
+    border: 2px solid $blue;
+    padding: 2em 4em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  #type-descriptions {
+    svg {
+      max-width: 35%;
+      max-height: 10em;
+      padding-top: 1em;
+      padding-bottom: 1em;
+    }
+  }
+
+  .border-box-image {
+
+    svg {
+      height: 4em;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    } 
+  }
+
+}
+
+#programs-graphic {
+  background-color: $faint-gray;
+
+  h3 {
+    color: #292b2c;
+  }
+  .graphic-block {
+    padding-bottom: 0 !important;
+  }
+}
+
+#programs-graphic-mobile {
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  .graphic-svg {
+    max-height: 12em;
+
+    svg { 
+      max-height: 12em;
+    }
+  }
+} 
+
+#programs-resources {
+  height: $height + 3em;
+  background-color: $dark-gray;
+  background-image: url("../img/redesign/programs/cheering-kids.jpg");
+  background-size: 100%;
+  background-position: 50% 30%;
+  background-repeat: no-repeat;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+  }
+}

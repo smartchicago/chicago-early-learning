@@ -17,16 +17,32 @@ $deep-orange: #ee5713;
 $deep-yellow: #ffc104;
 
 $white: #ffffff;
+$faint-gray: #e6e6e6;
 $light-gray: #d6d6d6;
+$gray: #9b9b9b;
 $dark-gray: #787878;
 $black: #222222;
 
+$text-gray: #4a4a4a;
+
 $background-gray: #f1f1f1;
 
+$white-opaque: rgba($white, 0.6);
+
+// Fonts
+$times: 'Times New Roman', serif;
+$georgia: 'Georgia', serif;
+$montserrat: 'Montserrat', sans-serif;
+$chalkduster: 'Chalkduster', sans-serif;
 
 // Sizes
 $btn-font-weight: 400;
 
+// Variables
+$break-small: 576px;
+$break-medium: 768px;
+$break-large: 992px;
+$break-x-large: 1200px;
 
 // Misc Variables
 $enable-rounded: true;

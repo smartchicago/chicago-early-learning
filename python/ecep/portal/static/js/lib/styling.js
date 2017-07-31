@@ -11,20 +11,19 @@ define(['jquery'], function($) {
     $(document).ready(function(){
         var th;
 
-        
         $(window).on("resize", function(){
             th = $("#filter-options").height();
             $(".results-left").css("top", th);
         });
         $('#filter-options').on('shown', function () {
-            th = $("#filter-options").height();
+            th = $("#filter-options").height() + 74;
             $(".results-left").animate({
                 top: th 
             }, 175);
         });
             
         $('#filter-options').on('hidden', function () {
-            th = $("#filter-options").height();
+            th = $("#filter-options").height() + 74;
             $(".results-left").animate({
                 top: th
             }, 0);
@@ -38,7 +37,7 @@ define(['jquery'], function($) {
             
         $('#refineSearch').on('hidden', function () {
             $(".results-left").animate({
-                top: 0
+                top: 58
             }, 0);
         });
     });

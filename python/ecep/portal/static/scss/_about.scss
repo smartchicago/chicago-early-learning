@@ -1,0 +1,55 @@
+$height: 20em;
+
+#about-header {
+
+  .header-image {
+    background-image: url("../img/redesign/about/judge-boy.jpg");
+    background-size: 150%;
+    background-position: left 55%;
+    background-repeat: no-repeat;
+  }
+}
+
+#about-partners {
+  padding-top: 4em;
+  padding-bottom: 4em;
+
+  h1 {
+    font-size: 2.25em;
+  }
+
+  h2 { 
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: 1em;
+  }
+
+  img {
+    max-width: 10em;
+    max-height: 8em;
+  }
+
+  .partner {
+
+    .partner-image,
+    .partner-bio {
+      padding-top: 2em;
+
+      @media (min-width: $break-medium) {
+        padding-right: 0;
+      }
+    }
+  }
+
+  .minor-partners {
+
+    .minor-partner {
+      width: 25%;
+
+      img {
+        max-width: 90%;
+        max-height: 8em;
+      }
+    }
+  }
+}

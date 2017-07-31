@@ -1,0 +1,393 @@
+ /* -- Header -- */
+#index-header {
+  $height: 30em;
+  height: $height;
+  margin-bottom: -3em;
+}
+
+#index-header,
+#index-mobile-search {
+  $height: 30em;
+
+  .curve-header {
+    height: 3*$height;
+
+    .header-image {
+      height: $height;
+      top: 2*$height;
+      background-image: url("../img/scientist-girl.jpg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: 50% 20%;
+    }
+  }
+
+  .header-title {
+    top: -(3*$height)+3em;
+    height: $height;
+    margin-bottom: -3em;
+  }
+
+  .index-header {
+    padding-bottom: 2em;
+    
+    form {
+
+      .form-control-lg,
+      .btn-lg {
+        font-size: .9rem;
+      }
+    }
+    .header-content {
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: .5rem;
+
+        @media (max-width: $break-large) {
+          font-size: 2.5rem;
+        }
+      }
+
+      img {
+        display: block;
+        max-height: 5em;
+      }
+    }
+
+    #pin {
+      height: 1em;
+      width: 1em;
+
+      svg {
+        height: 1em;
+        width: 1em;
+      }
+    }
+
+    .index-form {
+      padding-top: 1rem;
+    }
+
+    @media (max-width: $break-small) {
+      .clear-padding-right {
+        padding-right: 15px;
+      }
+    }
+  }
+}
+
+#index-header {
+  @media (max-width: $break-medium) {
+    $height: 20em;
+    height: $height;
+
+    .curve-header {
+      height: 3*$height;
+
+      .header-image {
+        height: $height;
+        top: 2*$height;
+        background-size: 200%;
+        background-position: 90% 10%;
+      }
+    }
+  }
+}
+
+
+#index-mobile-search {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .index-header {
+    padding-bottom: 0;
+  }
+}
+
+/* -- Intro Block -- */
+#index-intro {
+  background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'); 
+  background-size: 30%, 30%;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
+
+  .intro {
+    padding-top: 2em;
+    padding-bottom: 2em;
+
+    h1 {
+      font-size: 1.375rem;
+      font-size: 1.875rem;
+      font-weight: 500;
+    }
+  }
+
+  @media (max-width: $break-medium) {
+    background-image: none;
+  }
+}
+
+/* -- Content Blocks General -- */
+.index-section-block {
+  $block-height: 25em;
+
+  .index-info-block {
+    height: $block-height;
+    display: inline-flex;
+    flex-direction: column;
+
+    .index-sub-block {
+      flex-grow: 2;
+      display: inline-flex;
+      flex-direction: column;
+
+      .sub-block-content {
+        width: 90%;
+        margin: auto !important;
+
+        h1 {
+          padding: 0;
+          font-size: 1.5em;
+        }
+      }
+
+      @media (max-width: $break-medium) {
+        width: 100%;
+        
+        h1 { padding-bottom: 1rem; }
+        iframe {
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+        }
+      }
+    }
+  }
+
+  h1 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 0;
+    padding: .75em 1.5em;
+  }
+
+  p {
+    padding: 1.5em 0;
+    margin-bottom: 0;
+  }
+}
+
+/* -- Update Block -- */
+#index-update {
+
+  .full-width-header {
+    margin-left: -15px;
+    margin-right: -15px;
+    width: 50%;
+  }
+
+  #update-content {
+    background-color: $blue;
+    #update-content-header {
+      background-color: $deep-yellow;
+    }
+  }
+
+  #update-announcement {
+    background-color: $blue;
+    #update-announcement-header {
+      background-color: $light-blue;
+    }
+  }
+
+  #update-image {
+    background-image: url('../img/redesign/index/bullhorn-boy.jpg');
+    background-size: cover;
+    background-position: right center;
+  }
+}
+
+
+/* -- Programs Block -- */
+#index-programs {
+
+  #programs-image {
+    .image-block {
+      height: 80%;
+    }
+  }
+
+  #programs-content {
+
+  }
+
+  @media (max-width: $break-medium) {
+    $block-height: 16em;
+
+    .index-info-block {
+      height: $block-height;
+    }
+  }
+}
+
+
+/* -- Application Block -- */
+#index-application {
+  #application-video {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    .application-youtube {
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      .application-youtube-embed {
+        margin: auto !important;
+        width: 90%;
+      }
+
+      .application-video-title {
+        width: 90%;
+        margin: auto !important;
+
+        h2 {
+          padding: .5em;
+          font-size: 1rem;
+          margin-bottom: 0;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  
+  .index-info-block {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+
+  @media (max-width: $break-medium) {
+    .index-info-block {
+      height: auto;
+    }
+  }
+}
+
+
+/* -- Resources Block -- */
+#index-resources {
+  background-image: url('../img/redesign/index/cheering-kids.jpg');
+  background-size: 120%;
+  background-position: 100% 20%;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.6));
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
+
+  @media (max-width: $break-large) {
+    h1 {
+      font-size: 1.5rem;
+      line-height: 1.75rem;
+    }
+  }
+
+  @media (max-width: $break-medium) {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0,0,0,0.6);
+    }
+  }
+
+  @media (max-width: $break-small) {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+
+/* -- News Block -- */
+#index-news {
+  padding-top: 4em;
+  padding-bottom: 4em;
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  .news-content {
+    padding: 1em 2em;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 2rem;
+      padding: .5em 0;
+      margin-bottom: 0;
+    }
+
+    a {
+      font-weight: 500;
+    }
+
+    p {
+      font-style: italic;
+    }
+
+    img {
+      background-color: black;
+    }
+  }
+}
+
+
+/* -- Subscribe Block -- */
+#index-subscribe, {
+  font-size: 1.5em;
+  font-weight: 500;
+
+  .subscribe-row {
+
+    p {
+      margin-bottom: 0rem;
+      color: $dark-gray;
+    }
+
+    .subscribe-image img {
+      background-color: black;
+    }
+  }
+}
+
+
+/* -- Partners Block -- */
+#index-partners {
+  p {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: 0rem;
+    color: $dark-gray;
+  }
+
+  img {
+    padding-top: 2em;
+    max-height: 10em;
+  }
+}

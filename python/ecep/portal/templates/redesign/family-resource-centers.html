@@ -1,0 +1,344 @@
+{% extends 'redesign/base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load svg %}
+
+{% block title %}
+{% trans "Family Resource Centers" %} - {% trans "Chicago Early Learning Portal" %}
+{% endblock %}
+
+{% block body %}
+<div id="centers-intro" class="container">
+  <div class="p-5 info-row row">
+    <div class="col-md-6">
+      <div class="svg-fluid-w p-5">{% svg 'illustrations/application' %}</div>
+    </div>
+    <div id="update-content" class="col-md-6">
+      <div class="">
+        <div class="">
+          <h1 class="orange">{% trans 'Family Resource Centers' %}</h1>
+          <p>{% blocktrans %}Family Resource Centers are a place for all Chicago families seeking more information or in-person support on preschool enrollment. Our friendly staff will help you answer questions about your child’s application.{% endblocktrans %}</p> 
+          <p class="blue">{% blocktrans %} For families with a preschool placement at a Chicago Public Schools site, staff at Family Resource Centers will also verify income and employment documentation. (Families with a preschool placement at a community-based site will verify their documentation directly at the site location.){% endblocktrans %}</p>
+          <p>{% blocktrans %}All visitors to Family Resource Centers will have access to internet and computers. If a family would like to use a library computer, the user must have a library card. Anyone with a valid ID with name, photo and Chicago address can sign up for a library card on site.{% endblocktrans %}</p>
+          <p><em><i>Applications will be taken 30 minutes after opening and will end 30 minutes before closing.</i></em></p>
+          <p><span class="inline-link-svg svg-orange mr-1">{% svg 'icons/message' %}</span> Bilingual support available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="centers-list" class="container">
+  <div class="center-list row">
+    <span class="divider b-yellow"></span>
+    <!--  Austin Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">Austin Library</h1>
+      </div>
+      <div class="center-address">
+        <p>5615 W. Race Ave</p>
+        <p>Chicago IL 60644</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127465038">(312) 746-5038</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 12PM-8PM</p>
+        <p>T+TH: 10AM-6PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions vertical-align-bottom">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/5615+W+Race+Ave,+Chicago,+IL+60644/@41.889016,-87.7679999,17z/data=!3m1!4b1!4m5!3m4!1s0x880e334fe8b68017:0x77ac716a833b6c1e!8m2!3d41.889016!4d-87.7658112?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+    <!--  Avalon Park Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">Avalon Park Library</h1>
+      </div>
+      <div class="center-address">
+        <p>8148 S. Stony Island</p>
+        <p>Chicago IL 60617</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127475234">(312) 747-5234</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 12PM-8PM</p>
+        <p>T+TH: 10AM-6PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/8148+S+Stony+Island+Ave,+Chicago,+IL+60617/@41.7463322,-87.5884372,17z/data=!3m1!4b1!4m5!3m4!1s0x880e288f740d0c13:0xbe70658f1220073d!8m2!3d41.7463322!4d-87.5862485?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+
+    <!--  Bezazian Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">Bezazian Library</h1>
+      </div>
+      <div class="center-address">
+        <p>1226 W. Ainslie St</p>
+        <p>Chicago IL 60640</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127440019">(312) 744-0019</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 12PM-8PM</p>
+        <p>T+TH: 10AM-6PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+
+    <!--  Budlong Woods Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">Budlong Woods Library</h1>
+      </div>
+      <div class="center-address">
+        <p>5630 N. Lincoln Ave</p>
+        <p>Chicago IL 60659</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127429590">(312) 742-9590</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 12PM-8PM</p>
+        <p>T+TH: 10AM-6PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/5630+N+Lincoln+Ave,+Chicago,+IL+60659/@41.9833634,-87.6985169,17z/data=!3m1!4b1!4m5!3m4!1s0x880fd1fd9ffe6da1:0xdcb488a3a5d6a88d!8m2!3d41.9833634!4d-87.6963282?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+
+    <!--  Colman  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">Colman</h1>
+      </div>
+      <div class="center-address">
+        <p>4655 S. Dearborn St</p>
+        <p>Chicago IL 60609</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:7735532010">(773) 553-2010</a>
+      </div>
+      <div class="center-hours">
+        <p>M-F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/4655+S+Dearborn+St,+Chicago,+IL+60609/@41.8101095,-87.6291247,17z/data=!3m1!4b1!4m5!3m4!1s0x880e2eaf3bbc767d:0x168afc59fd14a72!8m2!3d41.8101095!4d-87.626936?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+
+    <!--  Humboldt Park Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">Humboldt Park Library</h1>
+        <span class="inline-link-svg svg-orange">{% svg 'icons/message' %}</span>
+      </div>
+      <div class="center-address">
+        <p>1605 N. Troy</p>
+        <p>Chicago IL 60647</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127442244">(312) 744-2244</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 12PM-8PM</p>
+        <p>T+TH: 10AM-6PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/1605+N+Troy+St,+Chicago,+IL+60647/@41.9104659,-87.7075348,17z/data=!3m1!4b1!4m5!3m4!1s0x880fcd5b734a5a17:0xd0cd73baded3cb76!8m2!3d41.9104659!4d-87.7053461?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+
+    <!--  Legler Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">Legler Library</h1>
+      </div>
+      <div class="center-address">
+        <p>115 S. Pulaski Rd</p>
+        <p>Chicago IL 60624</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127467730">(312) 746-7730</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 12PM-8PM</p>
+        <p>T+TH: 10AM-6PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/115+S+Pulaski+Rd,+Chicago,+IL+60624/@41.8793122,-87.7274915,17z/data=!3m1!4b1!4m5!3m4!1s0x880e32c2fac680ab:0x42cbbca0262159e9!8m2!3d41.8793122!4d-87.7253028?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+
+    <!--  Little Village Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">Little Village Library</h1>
+        <span class="inline-link-svg svg-orange">{% svg 'icons/message' %}</span>
+      </div>
+      <div class="center-address">
+        <p>2311 S. Kedzie Ave</p>
+        <p>Chicago IL 60623</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127451862">(312) 745-1862</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 10AM-6PM</p>
+        <p>T+TH: 12PM-8PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/2311+S+Kedzie+Ave,+Chicago,+IL+60623/@41.8496377,-87.7069855,17z/data=!3m1!4b1!4m5!3m4!1s0x880e327a552c8d41:0x8d03af1f1f0a8647!8m2!3d41.8496377!4d-87.7047968?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+
+    <!--  McKinley Park Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">McKinley Park Library</h1>
+        <span class="inline-link-svg svg-orange">{% svg 'icons/message' %}</span>
+      </div>
+      <div class="center-address">
+        <p>1915 W. 35th St</p>
+        <p>Chicago IL 60609</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127476082">(312) 747-6082</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 12PM-8PM</p>
+        <p>T+TH: 10AM-6PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/1915+W+35th+St,+Chicago,+IL+60609/@41.8301512,-87.6757797,17z/data=!3m1!4b1!4m5!3m4!1s0x880e2dc38dc1a8dd:0x9b49ef4ad5bd370d!8m2!3d41.8301512!4d-87.673591?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+
+    <!--  Portage-Cragin Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">Portage-Cragin Library</h1>
+        <span class="inline-link-svg svg-orange">{% svg 'icons/message' %}</span>
+      </div>
+      <div class="center-address">
+        <p>5108 W. Belmont Ave</p>
+        <p>Chicago IL 60641</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127440152">(312) 744-0152</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 12PM-8PM</p>
+        <p>T+TH: 10AM-6PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/5108+W+Belmont+Ave,+Chicago,+IL+60641/@41.9389444,-87.7571573,17z/data=!3m1!4b1!4m5!3m4!1s0x880fcc5fbcb116df:0x814a88520e7b19ec!8m2!3d41.9389444!4d-87.7549686?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+
+    <!--  Thurgood Marshall Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">Thurgood Marshall Library</h1>
+      </div>
+      <div class="center-address">
+        <p>7506 S. Racine Ave</p>
+        <p>Chicago IL 60620</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127475927">(312) 747-5927</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 12PM-8PM</p>
+        <p>T+TH: 10AM-6PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/7506+S+Racine+Ave,+Chicago,+IL+60620/@41.7573801,-87.6565622,17z/data=!3m1!4b1!4m5!3m4!1s0x880e2f0b47f3a411:0xea0de1925a9d11b3!8m2!3d41.7573801!4d-87.6543735?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+
+
+    <!--  West Lawn Library  --> 
+    <div class="center-block col-md-4">
+      <img class="center-img" src="">
+      <div class="center-name">
+        <h1 class="blue">West Lawn Library</h1>
+        <span class="inline-link-svg svg-orange">{% svg 'icons/message' %}</span>
+      </div>
+      <div class="center-address">
+        <p>4020 W. 63rd St</p>
+        <p>Chicago IL 60629</p>
+      </div>
+      <div class="center-phone">
+        <a class="a-orange" href="tel:3127477381">(312) 747-7381</a>
+      </div>
+      <div class="center-hours">
+        <p>M+W: 12PM-8PM</p>
+        <p>T+TH: 10AM-6PM</p>
+        <p>F: 9AM-5PM</p>
+      </div>
+      <div class="center-directions">
+        <a class="btn btn-gray btn-block" href="https://www.google.com/maps/place/4020+W+63rd+St,+Chicago,+IL+60629/@41.7788952,-87.7257778,17z/data=!3m1!4b1!4m5!3m4!1s0x880e31b33ecb65c9:0xbf16ecffef926623!8m2!3d41.7788952!4d-87.7235891?hl=en&authuser=0">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+    <span class="divider b-yellow">
+  </div>
+</div>
+<div id="centers-info" class="container container-bottom">
+  <div class="info-row row">
+    <div class="col-md-4 offset-md-2 p-5">
+      <div class="svg-fluid-w">{% svg 'illustrations/flags' %}</div>
+    </div>
+    <div id="update-content" class="col-md-6 p-5">
+      <div class="">
+        <div class="">
+          <h2 class="orange">{% trans 'What is the application process?' %}</h2>
+          <p>{% blocktrans %}Are you ready to apply for a preschool program for your 3- or 4-year-old? Learn about the process here or call (312) 229-1690 with your questions.{% endblocktrans %}</p>
+          <a href="{% url 'how-to-apply' %}" class="btn btn-cel btn-yellow btn-lg btn-half">{% trans 'Learn More' %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block template_headers %}
+{% endblock %}

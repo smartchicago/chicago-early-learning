@@ -1,0 +1,174 @@
+{% extends 'redesign/base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load svg %}
+
+{% block title %}
+{% trans "Chicago Early Learning" %} - {% trans "Resources" %}
+{% endblock %}
+
+{% block body %}
+<div id="resources-header" class="container-fluid header">
+  <div class="curve-header">
+    <div class="header-image"></div>
+  </div>
+  <div class="header-title">
+    <h1 class="text-center">{% trans 'Resources' %}</h1>
+  </div>
+</div>
+
+<!-- Intro -->
+<div id="resources-intro" class="container-fluid container-top-2 bg-white">
+  <div class="intro text-center col-md-8 offset-md-2 p-5">
+    <p>{% blocktrans %}The City of Chicago and Mayor Rahm Emanuel are committed to bringing access to high quality early learning opportunities to families throughout the city. In addition to great programs for children at schools and community agencies, there are a number of opportunities to start stimulating your child with early learning in other environments.{% endblocktrans %}</p>
+  </div>
+</div>
+
+<!-- Play -->
+<div id="resources-play" class="container-fluid bg-white">
+  <div class="category-block col-md-8 offset-md-2">
+    <div class="resources-category row">
+      <div class="category-content col-md-8">
+        <h1 class="deep-orange">{% blocktrans %}<span class="d-inline"><span class="chalk deep-orange b-deep-orange">I</span></span> Play in Chicago!{% endblocktrans %}</h1>
+        <p>{% blocktrans %}For young children, time spent playing is time well-spent — especially for their cognitive, socio-emotional, and physical development. The City of Chicago provides a variety of play-based programming that gives kids an environment to explore new experiences and unleash their creativity.{% endblocktrans %}</p>
+      </div>
+      <div class="category-image col-md-4">
+        <div class="category-svg">{% svg 'illustrations/family-3' %}</div>
+      </div>
+    </div>
+    <div class="resource row">
+      <div class="resource-image col-md-3 text-center">
+        <img class="img-fluid" src="{% static 'img/logos/park-district.png' %}">
+      </div>
+      <div class="resource-content col-md-9">
+        <h2>Chicago Park District</h2>
+        <p>{% blocktrans %}Many parks offer early childhood recreation classes— moms, pops, and tots interaction, play group, preschool, puppetry, storytelling, and Moms, Dads, & Tots Gymnastics. Early childhood participants develop and enhance their motor, listening and social skills through movement education programming. <a class="a-orange" href="http://www.chicagoparkdistrict.com/">Visit the Chicago Park District</a> to find and sign up for a class near you.{% endblocktrans %}</p>
+      </div>
+    </div>
+    <div class="resource row">
+      <div class="resource-image col-md-3 text-center">
+        <img class="img-fluid" src="{% static 'img/logos/childrens-museum.jpg' %}">
+      </div>
+      <div class="resource-content col-md-9">
+        <h2>Chicago Children's Museum</h2>
+        <p>{% blocktrans %}The Chicago Children’s Museum features a number of early learning spaces for children to support the development of communities where play and learning connect. One permanent exhibit, The Tinkering Lab, features an early learning nook of safe interactive objects and touchable tools. The Children’s Museum also partners to bring early learning and engagement spaces to other places in the city. <a class="a-orange" href="http://www.chicagochildrensmuseum.org/">Contact the Chicago Children’s Museum</a> for details.{% endblocktrans %}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Learn -->
+<div id="resources-learn" class="container-fluid bg-gray">
+  <div class="category-block col-md-8 offset-md-2">
+    <div class="resources-category row">
+      <div class="category-content col-md-8">
+        <h1 class="deep-green">{% blocktrans %}<span class="d-inline"><span class="chalk deep-green b-deep-green">I</span></span> Learn in Chicago!{% endblocktrans %}</h1>
+        <p>{% blocktrans %}Young children absorb new information at an astounding rate — and that doesn’t stop in the classroom. That’s why city agencies focus on creating many avenues for early learning, from kid-friendly literacy support to programs that prime incoming kindergarteners for the school year ahead.{% endblocktrans %}</p>
+      </div>
+      <div class="category-image col-md-4">
+        <div class="category-svg">{% svg 'illustrations/learn' %}</div>
+      </div>
+    </div>
+    <div class="resource row">
+      <div class="resource-image col-md-3 text-center">
+        <img class="img-fluid" src="{% static 'img/logos/cpl.png' %}">
+      </div>
+      <div class="resource-content col-md-9">
+        <h2>Chicago Public Library</h2>
+        <p>{% blocktrans %}The Chicago Public Library (CPL) has many enriching opportunities for children including early learning spaces at libraries and preschool reading hours. CPL also features mobile units that bring hands-on STEAM (science, technology, engineering, arts and math) learning activities for young children along with family literacy programming facilitated by librarians throughout the city. The CPL has three mobile units with these STEAM-based learning kits deployed throughout the city – one for each Library District. <a class="a-orange" href="http://www.chipublib.org/">Contact CPL</a> for details.{% endblocktrans %}</p>
+      </div>
+    </div>
+    <div class="resource row">
+      <div class="resource-image col-md-3 text-center">
+        <img class="img-fluid" src="{% static 'img/logos/city-of-learning.png' %}">
+      </div>
+      <div class="resource-content col-md-9">
+        <h2>Chicago City of Learning</h2>
+        <p>{% blocktrans %}Chicago City of Learning (CCOL) is a groundbreaking initiative that joins together learning opportunities for young people in a way that allows them to think about, pursue, and develop their interests. CCOL partners to bring early childhood experiences to spaces during the summer to prepare children to enter kindergarten in the Fall. <a class="a-orange" href="https://chicagocityoflearning.org/">Visit CCOL</a> to find opportunities near you.{% endblocktrans %}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Grow -->
+<div id="resources-grow" class="container-fluid container-bottom bg-white">
+  <div class="category-block col-md-8 offset-md-2">
+    <div class="resources-category row">
+      <div class="category-content col-md-8">
+        <h1 class="deep-yellow">{% blocktrans %}<span class="d-inline"><span class="chalk deep-yellow b-deep-yellow">I</span></span> Grow in Chicago!{% endblocktrans %}</h1>
+        <p>{% blocktrans %}Chicago is committed to making young children’s rapid development free of growing pains and full of growing gains. That means creating opportunities to properly nourish and support children during this critical growth period, and to track their progress toward key health and wellness milestones.{% endblocktrans %}</p>
+      </div>
+      <div class="category-image col-md-4">
+        <div class="category-svg">{% svg 'illustrations/grow' %}</div>
+      </div>
+    </div>
+    <div class="resource row">
+      <div class="resource-image col-md-3 text-center">
+        <img class="img-fluid" src="{% static 'img/logos/cdph.png' %}">
+      </div>
+      <div class="resource-content col-md-9">
+        <h2>Chicago Department of Public Health</h2>
+        <p>{% blocktrans %}The foundation for early learning and a child’s success starts with maternal and infant health. The Chicago Department of Public Health (CDPH)’s neighborhood health clinics offer care support for expectant mothers and wellness services for children. CDPH also has a resource finder for many needs for families expecting or with young children, including health care and other supports like clothes, car seats and more. <a class="a-orange" href="http://www.healthychicagobabies.org/">Contact the Chicago Department of Public Health</a> for details.{% endblocktrans %}</p>
+      </div>
+    </div>
+    <div class="resource row">
+      <div class="resource-image col-md-3 text-center">
+        <img class="img-fluid" src="{% static 'img/logos/medicaid.png' %}">
+        <img class="img-fluid" src="{% static 'img/logos/snap.jpg' %}">
+      </div>
+      <div class="resource-content col-md-9">
+        <h2>Medicaid and SNAP (Food Stamps)</h2>
+        <p>{% blocktrans %}The Children and Family Benefits Unit (CFBU) of the Office of Student Health and Wellness (OSHW) can help families apply for Medicaid (low-cost or free health insurance) and SNAP benefits (food stamps) at no cost. Call <a class="a-orange" href="tel:7735535437">773-553-KIDS (5437)</a> to learn more.{% endblocktrans %}</p>
+      </div>
+    </div>
+    <div class="resource row">
+      <div class="resource-image col-md-3 text-center">
+        <img class="img-fluid" src="{% static 'img/logos/connect4tots.png' %}">
+      </div>
+      <div class="resource-content col-md-9">
+        <h2>Connect4Tots</h2>
+        <p>{% blocktrans %}Connect4Tots provides text messages on FREE resources for parents and guardians of toddlers ages 1 to 3. Connect4Tots parents and guardians receive 2-3 text messages weekly with information about child’s growth and development, connections to health & safety, education, public service, event resources in the City of Chicago, and more!{% endblocktrans %}</p>
+
+        <h4>{% trans 'Sign Up Today!' %}</h4>
+        
+        <p><b>{% blocktrans %}Text <span class="orange">TOT</span><span class="blue">OPT</span><span class="orange">7</span> to 311311 or use <a class="a-orange" href="http://chitot.org/enroll">this online form.</a>{% endblocktrans %}</b></p>
+        
+        <p>{% blocktrans %}When you enroll, you will be asked to provide your child’s date of birth and sex, your city address, and your preferred language (English, Spanish, or Polish) to receive texts. Once enrolled, you will automatically receive 2-3 messages per week with helpful guidance and tips.{% endblocktrans %}</p>
+        
+        <p>{% trans 'Standard text messaging rates may apply.' %}</p>
+
+        <h4>{% trans 'Tell your Chicago Friends!' %}</h4>
+
+        <p>{% blocktrans %}Are you already a Connect4Tots parent? Let your other Chicago friends who are parents of toddlers know so they can get important text messages on FREE resources for those who qualify.{% endblocktrans %}</p>
+        
+        <h4>{% trans 'Additional Information' %}</h4>
+        
+        <p>{% blocktrans %}Connect4Tots is sponsored by the City of Chicago and the University of Chicago Urban Labs. Urban Labs will evaluate the effects of the program by analyzing participants’ use of the information and resources included in the text messages. Please review <a class="a-orange" href="http://chitot.org/consent">our consent</a> for more information. For more information on the program, please contact Urban Labs at <a class="a-orange" href="mailto:Connect4TotsFeedback@cityofchicago.org">Connect4TotsFeedback@cityofchicago.org</a>.{% endblocktrans %}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="index-news" class="container-fluid container-bottom-4 bg-gray">
+  <div class="news-header text-center">
+    <h1 class="green">{% trans 'Latest News' %}</h1>
+  </div>
+  <div class="news-block">
+    <div class="row justify-content-center">
+      <div class="news-content col-md-4">
+        <img class="img-fluid" src="{% static 'img/redesign/blog/hughes-library.jpg' %}">
+        <h1 class="blue">{% trans "Thomas Hughes Children's Library Re-Opened" %}</h1>
+        <p>{% blocktrans %}The newly re-opened Thomas Hughes Children’s Library powered by Exelon, was dedicated by Mayor Emanuel on July 13th. The re-envisioned space boasts a maker space and distinct areas or “neighborhoods” for early learners: ages 0-5, middle-childhood learners: 6-10 and tweens: ages 11-14 with a full digital media lab...{% endblocktrans %}</p>
+        <div> 
+          <a class="a-black-orange" href="{% url 'blog' %}"><i>{% trans 'Read More' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block template_headers %}
+{% endblock %}

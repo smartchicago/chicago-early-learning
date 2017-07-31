@@ -1,0 +1,73 @@
+/* -- General Resources -- */
+
+h1 { 
+  font-size: 3rem;
+}
+h2 { font-size: 1.5rem; }
+h3, h4 { font-size: 1.25rem; }
+
+.category-block {
+
+  .category-image {
+
+    svg {
+      width: 100%;
+      max-height: 16em;
+    }
+  }
+
+  .resources-category {
+    padding: 2em 0;
+  }
+
+  .resource {
+    padding: 2em 0;
+    border-top: 2px solid $faint-gray;
+
+    h2 {
+      color: $blue;
+    }
+
+    a {
+      font-style: italic;
+    }
+  }
+}
+
+/* -- Header -- */
+$height: 20em;
+
+#resources-header {
+
+  .header-image {
+    background-image: url("../img/static-pages/resources-header.jpeg");
+    background-size: 100%;
+    background-position: 30% 45%;
+    background-repeat: no-repeat;
+
+    @media (max-width: $break-medium) {
+      background-size: 120%;
+    }
+  }
+}
+
+#resources-intro {
+  background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'); 
+  background-size: 30%, 30%;
+  background-position: left center, right center;
+  background-repeat: no-repeat;
+
+  @media (max-width: $break-medium) {
+    background-image: none;
+  }
+}
+
+#resources-play,
+#resources-learn,
+#resources-grow {
+
+  img {
+    max-height: 8em;
+    margin-bottom: 1em;
+  }
+}

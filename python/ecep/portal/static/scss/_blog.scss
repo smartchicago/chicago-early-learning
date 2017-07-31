@@ -1,0 +1,53 @@
+#blog-header {
+
+  .header-image {
+    background-image: url("../img/static-pages/resources-header.jpeg");
+    background-size: 140%;
+    background-position: 30% 30%;
+    background-repeat: no-repeat;
+  }
+}
+
+#blog-content {
+
+  .blog-post {
+    color: $text-gray;
+
+    h1, h2, h3 {
+      margin-bottom: 0;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      line-height: 2.125rem;
+      color: $gray;
+    }
+
+    h3 {
+      font-size: 2rem;
+      line-height: 2.375rem;
+    }
+
+    p {
+      font-family: $georgia;
+      font-size: 1.375rem;
+      line-height: 32px;
+    }
+
+    img {
+      padding: 1em 0;
+    }
+
+    .date {
+      font-size: .875rem;
+      color: $gray;
+      font-weight: 400;
+    }
+  }
+
+}

@@ -1,0 +1,237 @@
+{% extends 'redesign/base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load svg %}
+
+{% block title %}
+{% trans "Chicago Early Learning Portal" %}
+{% endblock %}
+
+{% block body %}
+<div id="index-header" class="container-fluid header">
+  <div class="curve-header">
+    <div class="header-image"></div>
+  </div>
+  <div class="header-title hidden-sm-down">
+    <div class="homepage-header row">
+      <div class="index-header col-md-7 offset-md-1">
+        <div class="header-content">
+          <h1>{% blocktrans %}Look What <span class="d-inline"><span class="chalk blue b-white">I</span></span> Can Do!{% endblocktrans %}</h1>
+          <p class="white">{% blocktrans %}There is no limit to what your child can accomplish. Jumpstart your child's education with Chicago Early Learning!{% endblocktrans %}</p>
+          <p class="yellow">{% blocktrans %}Enter your address (work, home, or somewhere else!) to find a preschool or early learning program convenient for you and your family.{% endblocktrans %}</p>
+        </div>
+        <form>
+          <div class="form-group row">
+            <div id="search-bar-element" class="index-form col-sm-8 clear-padding-right">
+              <input type="text" class="form-control form-control-lg autocomplete-searchbox" placeholder="{% trans 'Enter an address, site, or zip code' %}">
+            </div>
+            <div id="search-button-element" class="index-form col-sm-4">
+              <button class="btn btn-blue btn-lg btn-block autocomplete-submit">{% trans 'Search' %}</button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <a id="locate-main" class="btn btn-gray btn-lg btn-block"><div id="pin" class="inline-link-svg svg-blue">{% svg 'icons/pin' %}</div class=""> {% trans 'Use your current location' %}</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="index-mobile-search" class="container-fluid container-top-4 hidden-md-up">
+  <div class="p-3">
+    <div class="mobile-header row">
+      <div class="index-header col-md-7 offset-md-1">
+        <h1 class="orange">Look What <span class="d-inline"><span class="chalk orange b-orange">I</span></span> Can Do!</h1>
+        <p>{% blocktrans %}There is no limit to what your child can accomplish. Jumpstart your child's education with Chicago Early Learning!{% endblocktrans %}</p>
+        <p>{% blocktrans %}Enter your address (work, home, or somewhere else!) to find a preschool or early learning program convenient for you and your family.{% endblocktrans %}</p>
+        <form>
+          <div class="form-group row">
+            <div id="search-bar-element" class="index-form col-sm-8 clear-padding-right">
+              <input type="text" class="form-control form-control-lg autocomplete-searchbox" placeholder="{% trans 'Enter an address, site, or zip code' %}">
+            </div>
+            <div id="search-button-element" class="index-form col-sm-4">
+              <button class="btn btn-blue btn-lg btn-block">{% trans 'Search' %}</button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <a id="locate-main" class="btn btn-gray btn-lg btn-block"><div class="inline-link-svg svg-blue">{% svg 'icons/pin' %}</div class=""> {% trans 'Use your current location' %}</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="index-intro" class="container-fluid container-top-4 bg-white hidden-sm-down">
+  <div class="intro text-center col-md-8 offset-md-2">
+    <p class="gray">{% blocktrans %}“Every child in every neighborhood deserves a quality education and that must begin in their earliest years.”{% endblocktrans %}</p>
+    <p class="gray">- Chicago Mayor Rahm Emanuel</p>
+  </div>
+</div>
+
+<div id="index-update" class="container-fluid index-section-block">
+  <div class="row">
+    <div id="update-content" class="index-info-block col-md-6">
+      <div id="update-content-header" class="sub-block-content full-width-header text-center white">
+        <h1>{% trans 'Important Update' %}</h1>
+      </div>
+      <div class="index-sub-block">
+        <div class="sub-block-content">
+          <h1 class="white">{% trans 'Chicago Early Learning Parent Conference' %}</h1>
+          <p>{% blocktrans %}Parents! Join us on August 4 for a FREE, fun-filled conference designed specifically for parents of young children.{% endblocktrans %}</p>
+          <a href="http://www.2017parentconference.eventbrite.com/" class="btn btn-cel btn-green btn-half ">{% trans 'Register Today' %}</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="update-image" class="index-info-block col-md-6 hidden-sm-down"></div>
+
+    <!-- 
+    <div id="update-announcement" class="index-info-block col-md-6">
+      <div id="update-announcement-header" class="sub-block-content full-width-header text-center white">
+        <h1>{% trans 'Important Announcement' %}</h1>
+      </div>
+      <div class="index-sub-block">
+        <div class="sub-block-content">
+          <h1 class="white">{% trans 'Important Announcement' %}</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a href="" class="btn btn-cel btn-green btn-half">{% trans 'Learn More' %}</a>
+        </div>
+      </div>
+    </div>
+    -->
+
+  </div>
+</div>
+
+<div id="index-programs" class="container-fluid index-section-block bg-white">
+  <div class="row">
+    
+    <div id="programs-image" class="index-info-block col-md-6 justify-content-center">
+      <div class="image-block">
+        <div class="svg-fluid-h text-center">{% svg 'illustrations/family-2' %}</div>
+      </div>
+    </div>
+    <div id="progams-content" class="index-info-block col-md-6">
+      <div class="index-sub-block">
+        <div class="sub-block-content">
+          <h1 class="green">{% trans 'Explore our early learning programs!' %}</h1>
+          <p>{% blocktrans %}Children who participate in high-quality early learning experiences are better prepared for success in kindergarten and beyond.{% endblocktrans %}</p>
+          <a href="{% url 'programs' %}" class="btn btn-cel btn-orange btn-half">{% trans 'Learn More' %}</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="index-application" class="container-fluid index-section-block bg-gray">
+  <div class="row">
+    <div id="application-content" class="index-info-block col-md-6">
+      <div class="index-sub-block">
+        <div class="sub-block-content">
+          <h1 class="blue">{% trans 'What is the preschool application process?' %}</h1>
+          <div class="index-sub-block application-youtube hidden-md-up">
+            <div class="application-youtube-embed embed-responsive embed-responsive-16by9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/3La05TZZDe8" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="application-video-title embed">
+              <h2 class="orange">{% trans 'WATCH: How To Apply' %}</h2>
+            </div>
+          </div>
+          <p>{% blocktrans %}Are you ready to apply for a preschool program for your 3- or 4-year-old? Learn about the process here or call <a class="a-orange" href="tel:3122291690">(312) 229-1690</a> with your questions.{% endblocktrans %}</p>
+          <a href="https://cys.mycopa.com/familyPortal/welcome.epl" class="btn btn-cel btn-green btn-half ">{% trans 'Learn More' %}</a>
+        </div>
+      </div>
+    </div>
+    <div id="application-video" class="index-info-block col-md-6 hidden-sm-down">
+      <div class="index-sub-block application-youtube">
+        <div class="application-youtube-embed embed-responsive embed-responsive-16by9">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/3La05TZZDe8" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="application-video-title embed">
+          <h2 class="orange">{% trans 'WATCH: How To Apply' %}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="index-resources" class="container-fluid index-section-block">
+  <div class="row">
+    <div id="resources-content" class="index-info-block col-md-6 offset-md-6 text-center">
+      <div class="index-sub-block">
+        <div class="sub-block-content">
+          <h1 class="white">{% trans 'Early learning doesn’t only take place in a preschool classroom.' %}</h1>
+          <p class="white">{% blocktrans %}Chicago offers a variety of stimulating children’s activities to get kids learning, moving, and playing. Learn more about what is offered by city agencies and organizations.{% endblocktrans %}</p>
+          <a href="{% url 'resources' %}" class="btn btn-cel btn-blue btn-half ">{% trans 'Learn More' %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="index-news" class="container-fluid bg-white">
+  <div class="news-header text-center">
+    <h1 class="green">Latest News</h1>
+  </div>
+  <div class="news-block">
+    <div class="row justify-content-center">
+      <div class="news-content col-md-4">
+        <img class="img-fluid" src="{% static 'img/redesign/blog/hughes-library.jpg' %}">
+        <h1 class="blue">{% trans "Thomas Hughes Children's Library Re-Opened" %}</h1>
+        <p>{% blocktrans %}The newly re-opened Thomas Hughes Children’s Library powered by Exelon, was dedicated by Mayor Emanuel on July 13th. The re-envisioned space boasts a maker space and distinct areas or “neighborhoods” for early learners: ages 0-5, middle-childhood learners: 6-10 and tweens: ages 11-14 with a full digital media lab...{% endblocktrans %}</p>
+        <div> 
+          <a class="a-black-orange" href="{% url 'blog-hughes' %}"><i>{% trans 'Read More' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="index-subscribe" class="container-fluid bg-gray">
+  <div class="row subscribe-row justify-content-center p-5">
+    <div class="col-4 col-md-2 subscribe-image text-center">
+      <div class="svg-fluid-w">{% svg 'illustrations/newsletter' %}</div>
+    </div>
+    <div class="col-md-6 subscribe-text my-auto">
+      <p>{% blocktrans %}Stay up to date on Chicago Early Learning!{% endblocktrans %}</p>
+      <p><a class="a-orange" href="{% url 'connect' %}">{% trans 'Subscribe to our email and text lists.' %}</a></p>
+    </div>
+  </div>
+</div>
+
+<div id="index-partners" class="container-fluid container-bottom bg-white">
+  <div class="p-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <p class="gray text-center">{% blocktrans %}Meet all our partners and learn more about Chicago Early Learning.{% endblocktrans %}</p>
+        <p class="text-center"><a class="a-orange" href="{% url 'about' %}">{% trans 'Read More' %}</a></p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-3 text-center">
+        <img class="img-fluid partner-img" src="{% static 'img/logos/coc.png' %}" alt="City of Chicago">
+      </div>
+      <div class="col-md-3 text-center">
+        <img class="img-fluid partner-img" src="{% static 'img/logos/cps.png' %}" alt="Chicago Public Schools">
+      </div>
+      <div class="col-md-3 text-center">
+        <img class="img-fluid partner-img" src="{% static 'img/logos/dfss.png' %}" alt="Department of Family and Support Services">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block template_headers %}
+{% endblock %}

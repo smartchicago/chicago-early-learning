@@ -6,7 +6,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
     function($, L, Handlebars, neighborhoodList, locationList, topojson, favorites, location, common) {
 
         'use strict';
-
         var map,   // Leaflet map
             $map = $('#map'),
             $filters = $('.filters-inner :checkbox'),
@@ -427,8 +426,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
         var mapToggle = function() {
             $('.results-left').toggleClass('none');
             $('.results-right').toggleClass('visible');
-            var $toggleMapBtnIcon = $('#toggleMapBtn').children('i');
-            $toggleMapBtnIcon.toggleClass('icon-globe icon-list');
+            var $toggleMapBtnIcon = $('#toggleMapBtn').children('span');
+            $toggleMapBtnIcon.toggleClass('svg-orange');
         };
 
         /**
@@ -567,13 +566,16 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     var width = $(document).width(),
                         $refineBtn = $('#refineBtn');
 
+                    if (width <= common.breakpoints.tablet) {
+                        $('#collapseFilters').addClass('collapse');
+                    }
+
                     if (historyState.filtersVisible !== false && width >= common.breakpoints.desktop) {
-                        $collapseFilters.addClass('in');
-                        $refineBtn.find('i').toggleClass('icon-down-open icon-right-open');
+                        $refineBtn.find('span').toggleClass('svg-orange');
                     }
                     // Chevron change
                     $refineBtn.click(function() {
-                        $(this).find('i').toggleClass('icon-down-open icon-right-open');
+                        $(this).find('span').toggleClass('svg-orange');
                         if (updateUrl) {
                             updateUrl(map.getCenter(), map.getZoom(), !($collapseFilters.hasClass('in')));
                         }

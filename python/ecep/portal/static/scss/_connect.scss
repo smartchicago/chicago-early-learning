@@ -1,0 +1,65 @@
+#connect {
+  border-top: 1px solid $light-gray;
+  background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'), url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png');
+  background-size: 30%;
+  background-position: left top, right top, left center, right center, left bottom, right bottom;
+  background-repeat: no-repeat;
+
+  min-height: 60em;
+
+  @media (max-width: $break-small) {
+    background-image: none;
+  }
+}
+
+#mc_embed_signup {
+  background: none;
+  font-family: $montserrat;
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: $blue;
+  }
+
+  input {
+    border: none;
+  }
+
+  form {
+    padding: inherit;
+  }
+
+  .mc-field-group {
+    width: inherit;
+
+    input {
+      border-radius: 2px;
+      border: 2px solid $orange;
+      height: 4em;
+      min-width: 8em;
+
+      @include placeholder {
+        font-style:italic;
+        color: $dark-gray;
+      }
+    }
+
+    .mce_inline_error {
+      background-color: rgba(255, 255, 255, 0);
+    }
+
+    .phonefield {
+      padding: 0 0 !important;
+    }
+  }
+
+  .size1of2 {
+    width: inherit;
+  }
+}
+
+#mc-embedded-subscribe {
+  width: 50%;
+  margin: 1em auto;
+}

@@ -1,0 +1,14 @@
+{% extends 'redesign/sub-base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load svg %}
+
+{% block base %}
+
+<div class="body">
+{% block body %}{% endblock %}
+</div>
+{% include "redesign/partials/_footer.html" %}
+
+{% endblock %}

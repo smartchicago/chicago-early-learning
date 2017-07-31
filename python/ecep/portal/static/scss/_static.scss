@@ -1,0 +1,64 @@
+.header {
+  $height: 20em;
+
+  height: $height;
+  overflow: hidden;
+  margin-bottom: -2em;
+
+  .curve-header {
+    position: relative;
+    height: 3*$height;
+    width: 300%;
+    left: -100%;
+    top: -200%;
+    border-radius: 0 0 150% 150%;
+    overflow: hidden;
+    margin-bottom: -2em;
+    z-index: 10;
+
+    .header-image {
+      position: relative;
+      z-index: 11;
+      width: 36%;
+      left: 32%;
+      height: $height;
+      top: 2*$height;
+    }
+  }
+
+  .header-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    resize: vertical;
+    position: relative;
+    
+    top: -(3*$height) + 2em;
+    left: 0;
+    z-index: 11;
+    height: $height;
+    width: 100%;
+    margin-bottom: -2em;
+
+    h1 {
+      font-size: 3rem;
+      color: white;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  resize: vertical;
+  color: $deep-blue;
+  font-size: 1.5em;
+  font-weight: 500;
+
+  @media (max-width: $break-medium) {
+    font-size: 1em;
+    font-weight: 400;
+  }
+}

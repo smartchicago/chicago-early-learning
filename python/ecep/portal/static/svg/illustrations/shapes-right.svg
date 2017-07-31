@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="339px" height="213px" viewBox="0 0 339 213" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>Shapes-Right</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Index" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Index---1-Feature" transform="translate(-1061.000000, -808.000000)">
+            <g id="Shapes-Copy-4" transform="translate(-72.000000, 796.000000)">
+                <g id="Shapes-Right" transform="translate(1133.000000, 0.000000)">
+                    <circle id="Oval-3-Copy-8" fill="#F07040" cx="200.5" cy="211.5" r="12.5"></circle>
+                    <circle id="Oval-3-Copy-9" fill="#FFC010" cx="12.5" cy="26.5" r="12.5"></circle>
+                    <path d="M267.000001,72.0000216 C268.470898,109.391271 299.24818,139.252819 337,139.252819 C374.751821,139.252819 405.529103,109.391271 407,72.0000216 L364.883649,72 C363.477717,86.1604249 351.530387,97.2198073 337,97.2198073 C322.469614,97.2198073 310.522284,86.1604249 309.116352,72 L267,72 Z" id="Combined-Shape-Copy-2" fill="#1CA7D7" transform="translate(337.000000, 105.626410) rotate(-180.000000) translate(-337.000000, -105.626410) "></path>
+                    <polygon id="Triangle-Copy" fill="#1CA7D7" transform="translate(24.667335, 200.667335) rotate(-28.000000) translate(-24.667335, -200.667335) " points="24.6673352 183.167335 42.1673352 218.167335 7.16733522 218.167335"></polygon>
+                    <polygon id="Triangle-Copy-4" fill="#81C639" transform="translate(200.744968, 24.744968) rotate(-44.000000) translate(-200.744968, -24.744968) " points="200.744968 7.24496799 218.244968 42.244968 183.244968 42.244968"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

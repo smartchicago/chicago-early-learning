@@ -1,0 +1,119 @@
+$height: 20em;
+
+#faq-header {
+
+  .curve-header {
+    background-image: url("../img/static-pages/resources-header.jpeg");
+    background-position: 50% (2*$height);
+  }
+}
+
+#faq {
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  #faq-contents {
+
+    h2 {padding: .5em 0;}
+
+    img {
+      height: 6em;
+      width: 8em;
+      background-color: black;
+    }
+
+    .faq-contents-block {
+      padding-top: 1em;
+      padding-bottom: 1em;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .contents-card {
+      margin: 1em;
+
+      .toggle-block {
+        height: 6em;
+
+        svg {
+          padding: 1em;
+        }
+      }
+
+      .dropdown {
+        display: block;
+        width: 6em;
+        height: 100%;
+        padding: 1em 0;
+        border-left: 1px solid rgba(0, 0, 0, .125);
+
+        a {
+
+          svg {
+            width: 6em;
+
+            polygon {
+              fill: $orange;
+            }
+          }
+        }
+
+        a[aria-expanded="true"] {
+
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+
+  #faq-body {
+
+    h2 {padding: .5em 0;}
+
+    .body-header {
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+
+    .faq-block {
+
+      .faq-block-content {
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+  }
+
+  #faq-body-apply,
+  #faq-body-general {
+    h2 {color: $blue}
+  }
+
+  #faq-body-returning {
+    h2 {color: $green}
+  }
+
+  #faq-body-registration {
+    h2 {color: $orange}
+  }
+
+  #faq-links {
+    .inline-link-svg, svg {
+      height: 1em;
+      width: 1em;
+    }
+  }
+}
+
