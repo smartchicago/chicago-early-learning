@@ -2,5 +2,7 @@
 
 @font-face {
   font-family: 'Chalk';
-  src: url('../font/chalkduster/Chalkduster.svg') format('svg');
+  src: url('../font/chalkduster/Chalkduster.eot') format('embedded-opentype');
+  src: url('../font/chalkduster/Chalkduster.woff') format('woff');
+  src: url('../font/chalkduster/Chalkduster.ttf') format('truetype');
 }
