@@ -27,7 +27,7 @@ See LICENSE in the project root for copying permission
 {% endblock %}
 
 {% block body %}
-<div id="old" class="container">
+<div id="old" class="container container-bottom-4">
   <div class="favorite" data-key="{{ loc.item.key }}" itemscope itemtype="http://schema.org/EducationalOrganization">
     <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>
     <a href="javascript:void(0)" class="none favs-close-button ga-track" data-ga-category="starred" data-ga-action="Remove Favorite">&times;</a>

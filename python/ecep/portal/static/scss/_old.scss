@@ -1,6 +1,9 @@
 #old {
-  height: 100vh;
   margin-top: -115px;
+
+  .old-container {
+    height: 100vh;
+  }
 
   @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,700);
 
@@ -403,7 +406,7 @@
       width: 40%;
       position: absolute;
       left: 0;
-      top: 368px;
+      top: 306px;
       bottom: 0;
       z-index: 1001;
       border-right: 1px solid #cecece;
@@ -1005,7 +1008,6 @@
   /* Single School View */
   #location-map {
       height: 250px;
-      margin-top: 105px;
       margin-bottom: 25px;
       cursor: default;
   }
