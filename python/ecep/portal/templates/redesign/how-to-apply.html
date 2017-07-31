@@ -104,10 +104,10 @@
       </div>
       <div id="enroll-links" class="row">
         <div class="col-md-3 offset-md-3">
-          <a class="btn btn-orange btn-block" href="">{% trans 'Search Locations' %}</a>
+          <a class="btn btn-orange btn-block" href="{% url 'browse' %}">{% trans 'Search Locations' %}</a>
         </div>
         <div class="col-md-3">
-          <a class="btn btn-orange btn-block" href="">{% trans 'Start an Application' %}</a>
+          <a class="btn btn-orange btn-block" href="https://cys.mycopa.com/familyPortal/welcome.epl">{% trans 'Start an Application' %}</a>
         </div>
       </div>
     </div>
@@ -185,7 +185,7 @@
             </div>
           </div>
           <div class="documents-note col-md-6 offset-md-3">
-            <a class="btn btn-orange btn-block" href="">{% trans 'View Family Resource Centers' %}</a>
+            <a class="btn btn-orange btn-block" href="{% url 'family-resource-centers' %}">{% trans 'View Family Resource Centers' %}</a>
           </div>
         </div>
       </div>

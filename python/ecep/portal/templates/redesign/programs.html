@@ -85,7 +85,7 @@
             <li>{% blocktrans %}Educational and social development activities.{% endblocktrans %}</li>
             <li>{% blocktrans %}Programs may include free health services (medical, dental, mental health), nutritious meals, as well as parent education and training.{% endblocktrans %}</li>
           </ul>
-          <a class="btn btn-yellow btn-half" href="">{% trans 'Find Sites'%}</a>
+          <a class="btn btn-yellow btn-half" href="{% url 'browse' %}">{% trans 'Find Sites'%}</a>
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@
             <li>{% blocktrans %}Either a half-day or a full-day of instruction.{% endblocktrans %}</li>
             <li>{% blocktrans %}Programs may include free health services (medical, dental, mental health), nutritious meals, as well as parent education and training.{% endblocktrans %}</li>
           </ul>
-          <a class="btn btn-green btn-half" href="">{% trans 'Find Sites'%}</a>
+          <a class="btn btn-green btn-half" href="{% url 'browse' %}">{% trans 'Find Sites'%}</a>
         </div>
       </div>
       <div id="programs-preschool-image" class="col-md-6 programs-block hidden-sm-down">
@@ -126,7 +126,7 @@
           <h1>{% trans 'Kindergarten' %}</h1>
           <h4>{% trans 'Age 5' %}</h4>
           <p>{% blocktrans %}Children who are 5 years old by September 1st of the current school year should enroll in kindergarten at a CPS preschool. Visit the CPS website to enroll a child in kindergarten.{% endblocktrans %}</p>
-          <a class="btn btn-orange btn-half" href="">Learn More</a>
+          <a class="btn btn-orange btn-half" href="http://www.cps.edu">{% trans 'Learn More' %}</a>
         </div>
       </div>
     </div>
@@ -178,9 +178,9 @@
         <h3 class="blue">{% trans 'What does "Accreditation" mean?' %}</h3>
         <p>{% blocktrans %}Accreditation means that a program has met high standards of excellence determined by a national organization such as the National Association for the Education of Young Children (NAEYC), National Early Childhood Program Accreditation (NEPCA), or the Council on Accreditation (COA). Programs that receive national accreditation have demonstrated quality in areas such as teaching, curriculum, learning assessments, health, community relationships, physical environment, and management.{% endblocktrans %}</p>
         <p>{% blocktrans %}To learn more about accreditation of early learning programs, click on one of the following links:{% endblocktrans %}</p>
-        <p><a class="a-orange" href=""><i>National Association for the Education of Young Children</i></a></p>
-        <p><a class="a-orange" href=""><i>National Early Childhood Program Accreditation</i></a></p>
-        <p><a class="a-orange" href=""><i>Council on Accreditation</i></a></p>
+        <p><a class="a-orange" href="http://www.naeyc.org"><i>National Association for the Education of Young Children</i></a></p>
+        <p><a class="a-orange" href="http://necpa.net/?"><i>National Early Childhood Program Accreditation</i></a></p>
+        <p><a class="a-orange" href="http://coanet.org/home/"><i>Council on Accreditation</i></a></p>
       </div>
     </div>
   </div>
