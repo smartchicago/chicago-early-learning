@@ -76,13 +76,11 @@
             <p><a class="a-orange" href="#applying-6">{% blocktrans %}Do I need to apply online?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#applying-7">{% blocktrans %}What sites can my family apply to online?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#applying-8">{% blocktrans %}Does the online preschool application come in multiple languages?{% endblocktrans %}</a></p>
-            <p><a class="a-orange" href="#applying-9">{% blocktrans %}Is the online preschool application mobile-friendly?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#applying-10">{% blocktrans %}Where can I receive support completing the preschool application and enrollment process?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#applying-11">{% blocktrans %}How can I change something on my submitted preschool application?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#applying-12">{% blocktrans %}When will I know if my child is placed at our preferred preschool site?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#applying-13">{% blocktrans %}Is there a neighborhood preference for families applying to a nearby school?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#applying-14">{% blocktrans %}How is it decided who gets an offer and who is on a waitlist?{% endblocktrans %}</a></p>
-            <p><a class="a-orange" href="#applying-15">{% blocktrans %}Can I change my application after it has been submitted?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#applying-16">{% blocktrans %}Do I need to apply to preschool if my child is already enrolled? For example: My three year-old is already enrolled, and would be going into their second year of preschool.{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#applying-17">{% blocktrans %}What should I do if I’d like to transfer my child’s preschool site if he/she is currently enrolled?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#applying-18">{% blocktrans %}If I have multiple children that I would like to enroll in preschool, how can I ensure that they are placed in the same site?{% endblocktrans %}</a></p>
@@ -183,7 +181,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="finding-3">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What are the characteristics of a high-quality early learning program, such as accreditation?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}hicago Early Learning preschool programs all meet rigorous federal, state, and local standards. The <a class="a-orange" href="{{ browse_url }}">Find and Compare Tool</a> allows anyone to view programs with accreditation and or a program’s quality ratings. Please review our <a class="a-orange" href="{{ programs_url }}">Programs Page</a> with detailed information about types of programs, and identifying characteristics of high quality early learning.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Chicago Early Learning preschool programs all meet rigorous federal, state, and local standards. The <a class="a-orange" href="{{ browse_url }}">Find and Compare Tool</a> allows anyone to view programs with accreditation and or a program’s quality ratings. Please review our <a class="a-orange" href="{{ programs_url }}">Programs Page</a> with detailed information about types of programs, and identifying characteristics of high quality early learning.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -281,11 +279,11 @@
             <div class="faq-block-content">
               <h2>{% blocktrans %}What is the application process?{% endblocktrans %}</h2>
               <p>{% blocktrans %}Families with preschool-aged children can submit a single application for any Chicago Early Learning program. Enrolling your 3 or 4 year-old child in an early learning program is easy, and open year-round. Follow these easy steps for your application:{% endblocktrans %}</p>
-              <ul>
+              <ol>
                 <li>{% blocktrans %} Visit chicagoearlylearning.org, click on the link to apply to preschool, and create an online account for your family{% endblocktrans %}</li>
-                <li>{% blocktrans %}Visit chicagoearlylearning.org, click on the link to apply to preschool, and create an online account for your family{% endblocktrans %}</li>
                 <li>{% blocktrans %}Fill in information on your family, such as employment and income, information on your child, and your top choice preschool sites{% endblocktrans %}</li>
-              </ul>
+                <li>{% blocktrans %}If your child qualifies, you will be contacted with information on how to verify your child’s preschool seat{% endblocktrans %}</li>
+              </ol>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -303,7 +301,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-4">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How many sites can I apply to?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}Families can apply for up to two different sites in the application. We limit families to two site preferences in order to match as many families as possible with their preferred programs. Families can compare the over 600 sites supported by Chicago Public Schools and community-based sites on the Chicago Early Learning website or with assistance on the phone at <a href="tel:3122291690">(312) 229-1690</a>.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families can apply for up to two different sites in the application. We limit families to two site preferences in order to match as many families as possible with their preferred programs. Families can compare the over 600 sites supported by Chicago Public Schools and community-based sites on the Chicago Early Learning website or with assistance on the phone at <a class="a-orange" href="tel:3122291690">(312) 229-1690</a>.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -322,7 +320,7 @@
             <div class="faq-block-content">
               <h2>{% blocktrans %}Do I need to apply online?{% endblocktrans %}</h2>
               <p>{% blocktrans %}Families have many choices for completing and submitting an application for preschool.{% endblocktrans %}</p>
-              <p>{% blocktrans %}Complete and submit an application online; Call the Chicago Early Learning hotline at (312) 229-1690 to complete the application with assistance over the phone; visit a community-based site directly, or visit a Family Resource Center to review your options and submit an application with an application support representative.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Complete and submit an application online; Call the Chicago Early Learning hotline at <a class="a-orange" href="tel:3122291690">(312) 229-1690</a> to complete the application with assistance over the phone; visit a community-based site directly, or visit a Family Resource Center to review your options and submit an application with an application support representative.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -348,19 +346,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="faq-block col-md-8 offset-md-2" id="applying-9">
-            <div class="faq-block-content">
-              <h2>{% blocktrans %}Is the online preschool application mobile-friendly?{% endblocktrans %}</h2>
-
-              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
           <div class="faq-block col-md-8 offset-md-2" id="applying-10">
             <div class="faq-block-content">
               <h2>{% blocktrans %}Where can I receive support completing the preschool application and enrollment process?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}Families with questions or needing support completing the application can call (312) 229-1690 for assistance with applications for both schools and community-based providers. They can also visit any of the <a class="a-orange" href="{{ centers_url }}">Family Resource Centers</a> located around the city, or visit a community-based provider if they are interested in a site.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families with questions or needing support completing the application can call (<a class="a-orange" href="tel:3122291690">(312) 229-1690</a> for assistance with applications for both schools and community-based providers. They can also visit any of the <a class="a-orange" href="{{ centers_url }}">Family Resource Centers</a> located around the city, or visit a community-based provider if they are interested in a site.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -369,7 +358,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-11">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How can I change something on my submitted preschool application?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}If you wish to alter information on a previously submitted application please call (312) 229-1690 to speak with a Family Resource Specialist directly.{% endblocktrans %}</p>
+              <p>{% blocktrans %}If you wish to alter information on a previously submitted application please call <a class="a-orange" href="tel:3122291690">(312) 229-1690</a> to speak with a Family Resource Specialist directly.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -397,15 +386,6 @@
             <div class="faq-block-content">
               <h2>{% blocktrans %}How is it decided who gets an offer and who is on a waitlist?{% endblocktrans %}</h2>
               <p>{% blocktrans %}Priorities for offers include preferences for our city’s highest-needs families: low income families, students with disabilities, students in temporary living situations, foster children, and more. While there may be seats available at a given program, one family may meet priority qualifications and receive an offer for a seat, but another family may not and would be placed on the waitlist for that site.{% endblocktrans %}</p>
-              <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="faq-block col-md-8 offset-md-2" id="applying-15">
-            <div class="faq-block-content">
-              <h2>{% blocktrans %}Can I change my application after it has been submitted?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}If you would like to change aspects of your application after it has been submitted, please call us at 312-744-9322.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -533,7 +513,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-3">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How long do I have to verify my documents after I’ve received an offer?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}Families have two weeks to verify their documents from the date they received their offer online. If your family needs more time to verify the offer, call 312-744-9322 or email earlylearninghelp@cityofchicago.org.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families have two weeks to verify their documents from the date they received their offer online. If your family needs more time to verify the offer, call <a class="a-orange" href="tel:3127449322">312-744-9322</a> or email <a class="a-orange" href="mailto:earlylearninghelp@cityofchicago.org">earlylearninghelp@cityofchicago.org</a>.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
