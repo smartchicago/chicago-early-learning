@@ -16,6 +16,10 @@ $block-height: 40em;
     background-size: 100%;
     background-position: 50% 60%;
     background-repeat: no-repeat;
+
+    @media (max-width: $break-medium) {
+      background-size: 150%;
+    }
   }
 }
 
@@ -216,6 +220,21 @@ $block-height: 40em;
     padding-bottom: 0 !important;
   }
 }
+
+#programs-graphic-mobile {
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  .graphic-svg {
+    max-height: 12em;
+
+    svg { 
+      max-height: 12em;
+    }
+  }
+} 
 
 #programs-resources {
   height: $height + 3em;

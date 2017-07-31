@@ -68,7 +68,7 @@
 
 
   <!--  Programs Infants  -->
-  <div id="programs-infants" class="container-fluid">
+  <div id="programs-infants" class="container-fluid ">
     <div class="row h-100">
       <div id="programs-infants-image" class="col-md-6 programs-block hidden-sm-down">
         <div class="programs-image-block"></div>
@@ -187,13 +187,40 @@
 
 
   <!--  Programs Graphic  -->
-  <div id="programs-graphic" class="container-fluid">
+  <div id="programs-graphic" class="container-fluid hidden-sm-down">
     <div class="p-5 graphic-block text-center">
       <h1 class="orange">{% trans 'What Makes a Great Program?' %}</h1>
       <h3>{% blocktrans %}Visit your top choice early learning programs in person, if you can.{% endblocktrans %}</h3>
       <h3>{% blocktrans %}You will know it’s a strong program when you see the following:{% endblocktrans %}</h3>
     </div>
     <div class="p-5 svg-fluid-w">{% svg 'illustrations/apple-venn' %}</div>
+  </div>
+
+  <div id="programs-graphic-mobile" class="container-fluid hidden-md-up text-center bg-white py-5 justify-content-center">
+    <div class="row p-3">
+      <h1 class="orange">{% trans 'What Makes a Great Program?' %}</h1>
+      <p>{% blocktrans %}Visit your top choice early learning programs in person, if you can. You will know it’s a strong program when you see the following:{% endblocktrans %}</p>
+    </div>
+    <div class="row p-3">
+      <div class="graphic-svg svg-fluid-w">{% svg 'illustrations/blocks' %}</div>
+      <h2 class="deep-yellow mx-auto p-3">{% trans 'Kid-Friendly Spaces' %}</h2>
+      <p>{% blocktrans %}A safe, child-friendly space for 20 preschoolers at most, with toys and materials indoors and outdoors{% endblocktrans %}</p>
+    </div>
+    <div class="row p-3">
+      <div class="graphic-svg svg-fluid-w">{% svg 'illustrations/teacher' %}</div>
+      <h2 class="deep-yellow mx-auto p-3">{% trans 'Top-Notch Teachers' %}</h2>
+      <p>{% blocktrans %}Attentive, engaged teachers with 4-year degrees and training, 1:10 teacher-child ratios for Pre-K{% endblocktrans %}</p>
+    </div>
+    <div class="row p-3">
+      <div class="graphic-svg svg-fluid-w">{% svg 'illustrations/student' %}</div>
+      <h2 class="deep-yellow mx-auto p-3">{% trans 'Engaged Students' %}</h2>
+      <p>{% blocktrans %}Variety in 1-1, small and full group age appropriate activities, with meals and naptime offered{% endblocktrans %}</p>
+    </div>
+    <div class="row p-3">
+      <div class="graphic-svg svg-fluid-w">{% svg 'illustrations/more' %}</div>
+      <h2 class="deep-yellow mx-auto p-3">{% trans 'And So Much More...' %}</h2>
+      <p>{% blocktrans %}Visitors welcomed with required safety measures, frequent handwashing by children and adults{% endblocktrans %}</p>
+    </div>
   </div>
 
 
