@@ -36,6 +36,10 @@ $block-height: 40em;
 }
 
 #programs-intro {
+
+  p {
+    margin-bottom: 0;
+  }
   
   img {
     width: 100%;
@@ -43,8 +47,21 @@ $block-height: 40em;
   }
 
   .rahm-quote {
-    border-left: 2px solid $orange;
+    border-left: 3px solid $yellow;
+    margin-top: 1em;
+    margin-bottom: 1em;
     padding-left: 1em;
+
+    h3 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-weight: 400;
+    }
+  }
+
+  .rahm {
+    font-size: .875rem;
+
   }
 }
 
