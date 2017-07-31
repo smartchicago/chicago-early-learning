@@ -17,7 +17,7 @@ $height: 20em;
   h2 {
     font-size: 1.5rem;
     line-height: 1.6rem;
-    font-weight: normal;
+    font-weight: 500;
     margin-bottom: 0;
   }
 
@@ -36,6 +36,44 @@ $height: 20em;
       padding-bottom: 1em;
       width: 80%;
       margin: 0 auto;
+    }
+
+    .contents-card {
+      margin: 1em;
+
+      .toggle-block {
+        height: 6em;
+
+        svg {
+          padding: 1em;
+        }
+      }
+
+      .dropdown {
+        display: block;
+        width: 6em;
+        height: 100%;
+        padding: 1em;
+        border-left: 1px solid rgba(0, 0, 0, .125);
+
+        a {
+
+          svg {
+            width: 100%;
+
+            polygon {
+              fill: $orange;
+            }
+          }
+        }
+
+        a[aria-expanded="true"] {
+
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+      }
     }
   }
 
@@ -70,4 +108,9 @@ $height: 20em;
   #faq-body-registration {
     h2 {color: $orange}
   }
+
+  #faq-links {
+    
+  }
 }
+

@@ -25,15 +25,22 @@
 <div id="faq">
   
   <div id="faq-contents" class="container-fluid container-top-4 bg-white">
-    <p class="text-center"><i>Click on the topics below for more details</i></p>
+    <p class="text-center"><i>{% trans "Click on the topics below for more details" %}</i></p>
     <div class="row">
       <div id="faq-column-left" class="col-md-6">
         
         <div class="card contents-card">
-          <div class="faq-contents-block">
-            <h2 class="blue"><a data-toggle="collapse" href="#find-collapse">{% trans 'Finding a Preschool Program' %}</a></h2>
+          <div class="toggle-block d-flex">
+            <div class="svg-fluid-h">{% svg 'illustrations/search' %}</div>
+            <div class="mr-auto align-self-center">
+              <h2 class="blue">{% trans 'Finding Programs' %}</h2>
+            </div>
+            <div class="dropdown text-center">
+              <a class="triangle" data-toggle="collapse" href="#find-collapse">
+                <div class="svg-fluid-h svg-orange">{% svg 'triangle' %}</div>
+              </a>
+            </div>
           </div>
-
           <div class="collapse faq-contents-block" id="find-collapse">
             <p><a class="a-orange" href="#finding-1">{% blocktrans %}What is the difference between childcare (might also be called daycare) and preschool?{% endblocktrans %}</a></p>
             <p><a class="a-orange" href="#finding-2">{% blocktrans %}Is my child eligible for preschool?{% endblocktrans %}</a></p>
@@ -49,8 +56,16 @@
         </div>
 
         <div class="card contents-card">
-          <div class="faq-contents-block">
-            <h2 class="blue"><a data-toggle="collapse" href="#apply-collapse">{% trans 'Applying to a Preschool Program' %}</a></h2>
+          <div class="toggle-block d-flex">
+            <div class="svg-fluid-h">{% svg 'illustrations/newsletter' %}</div>
+            <div class="mr-auto align-self-center">
+              <h2 class="blue">{% trans 'Applying to Programs' %}</h2>
+            </div>
+            <div class="dropdown text-center">
+              <a class="triangle" data-toggle="collapse" href="#apply-collapse">
+                <div class="svg-fluid-h svg-orange">{% svg 'triangle' %}</div>
+              </a>
+            </div>
           </div>
           <div class="collapse faq-contents-block" id="apply-collapse">
             <p><a class="a-orange" href="#applying-1">{% blocktrans %}How do I apply for Chicago Early Learning preschool for my three or four year-old?{% endblocktrans %}</a></p>
@@ -84,8 +99,16 @@
 
       <div id="faq-column-right" class="col-md-6">
         <div class="card contents-card">
-          <div class="faq-contents-block">
-            <h2 class="blue"><a data-toggle="collapse" href="#verify-collapse">{% trans 'Verifying an Application and Enrolling in a Preschool Program' %}</a></h2>
+          <div class="toggle-block d-flex">
+            <div class="svg-fluid-h">{% svg 'illustrations/computer' %}</div>
+            <div class="mr-auto align-self-center">
+              <h2 class="blue">{% trans 'Verification and Enrollment' %}</h2>
+            </div>
+            <div class="dropdown text-center">
+              <a class="triangle" data-toggle="collapse" href="#verify-collapse">
+                <div class="svg-fluid-h svg-orange">{% svg 'triangle' %}</div>
+              </a>
+            </div>
           </div>
           <div class="collapse faq-contents-block" id="verify-collapse">
             <p><a class="a-orange" href="#verifying-1">{% blocktrans %}What happens after I submit my application?{% endblocktrans %}</a></p>
@@ -105,8 +128,16 @@
         </div>
 
         <div class="card contents-card">
-          <div class="faq-contents-block">
-            <h2 class="blue"><a data-toggle="collapse" href="#general-collapse">{% trans 'Other Questions' %}</a></h2>
+          <div class="toggle-block d-flex">
+            <div class="svg-fluid-h">{% svg 'illustrations/speech-bubbles' %}</div>
+            <div class="mr-auto align-self-center">
+              <h2 class="blue">{% trans 'Other Questions' %}</h2>
+            </div>
+            <div class="dropdown text-center">
+              <a class="triangle" data-toggle="collapse" href="#general-collapse">
+                <div class="svg-fluid-h svg-orange">{% svg 'triangle' %}</div>
+              </a>
+            </div>
           </div>
           <div class="collapse faq-contents-block" id="general-collapse">
             <p><a class="a-orange" href="#other-1">{% blocktrans %}How do I find early learning opportunities for children under 3 years old?{% endblocktrans %}</a></p>
@@ -481,7 +512,7 @@
               <p>{% blocktrans %}Families will instantly learn whether their child is on the waitlist or has received an offer at the site to which they applied.{% endblocktrans %}</p>
               <p>{% blocktrans %}Families that receive a waitlist status are encouraged to consider applying to alternate sites by calling 312-744-9322. See more FAQs on the waitlist process below.{% endblocktrans %}</p>
               <p>{% blocktrans %}Families that receive an offer will receive an email with information on how to verify the child’s preschool seat and enroll at the site. <a class="a-orange" href="{{ how_to_apply_url }}">Click here</a> to learn more about the entire application process.{% endblocktrans %}</p>
-              <p>{% blocktrans %}Within two weeks of receiving a placement offer, a family member must visit a specified site (the site to which the child is offered for community-based programs, or a Family Resource Center for CPS preschoolers) to verify the information shared in the application. For more details on the verification and enrollment process, click here [link].{% endblocktrans %}</p>
+              <p>{% blocktrans %}Within two weeks of receiving a placement offer, a family member must visit a specified site (the site to which the child is offered for community-based programs, or a Family Resource Center for CPS preschoolers) to verify the information shared in the application. For more details on the verification and enrollment process, <a class="a-orange" href="{{ how_to_apply_url }}">click here</a>.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -490,7 +521,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="verifying-2">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What documents will I need to provide in order to complete the verification and enrollment process for the preschool application?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}Families will provide proof of a student’s age, address, and family income. Individual sites may request additional documentation prior to full enrollment. Click here to learn more about the verification process and required documents [link].{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families will provide proof of a student’s age, address, and family income. Individual sites may request additional documentation prior to full enrollment. <a class="a-orange" href="{{ how_to_apply_url }}">Click here</a> to learn more about the verification process and required documents.{% endblocktrans %}</p>
               <p>{% blocktrans %}Failure to provide documentation that confirms the information provided on your application may affect your child’s placement.{% endblocktrans %}</p>
               <p>{% blocktrans %}If you need assistance identifying the correct documentation or finding substitute documentation, please contact your preschool site directly, or visit a Family Resource Center.{% endblocktrans %}</p>
               <p>{% blocktrans %}Students in temporary living situations will be enrolled without any required documentation.{% endblocktrans %}</p>
@@ -513,7 +544,7 @@
               <h2>{% blocktrans %}Where do I go to verify my application information? {% endblocktrans %}</h2>
               <p>{% blocktrans %}If you have an offer to a school-based preschool program (in other words, a preschool program within a CPS elementary school), you must visit a Family Resource Center with your documentation in order to verify your placement. Please do not visit the school directly, as they will not be able to help you verify your placement.{% endblocktrans %}</p>
               <p>{% blocktrans %}If you have an offer for a community-based preschool program, you must visit that site directly with your required documentation.{% endblocktrans %}</p>
-              <p>{% blocktrans %}Click here to learn more about the application and enrollment process [link].{% endblocktrans %}</p>
+              <p>{% blocktrans %}<a class="a-orange" href="{{ how_to_apply_url }}">Click here</a> to learn more about the application and enrollment process.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -626,7 +657,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="other-1">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How do I find early learning opportunities for children under 3 years old?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}Visit our Find and Compare Tool [link] to find community-based sites that offer infant and toddler programs, or click here to learn more about programs offered by other city agencies around Chicago [click].{% endblocktrans %}</p>
+              <p>{% blocktrans %}Visit our <a class="a-orange" href="{{ browse_url }}">Find and Compare Tool</a> to find community-based sites that offer infant and toddler programs, or click here to learn more about programs offered by other city agencies around Chicago [click].{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -636,7 +667,7 @@
             <div class="faq-block-content">
               <h2>{% blocktrans %}How do I find learning and enrichment opportunities for children over 5 years old?{% endblocktrans %}</h2>
               <p>{% blocktrans %}The first effort of its kind to take place in a major city in the United States, Chicago City of Learning is a groundbreaking effort that joins together learning opportunities for young people in a way that allows them to think about, pursue, and develop their interests. Find 1000s of opportunities at parks, libraries, community- and faith-based programs, schools, museums and cultural institutions, colleges and universities, and more at www.chicagocityoflearning.org{% endblocktrans %}</p>
-              <p>{% blocktrans %}Other early learning resources are available on our City Resources page [link].{% endblocktrans %}</p>
+              <p>{% blocktrans %}Other early learning resources are available on our <a class="a-orange" href="{{ resources_url }}">City Resources page</a>.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -645,7 +676,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="other-3">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How can I enroll my 5-year-old to enroll in kindergarten?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}Visit the CPS website [link] to enroll a child in kindergarten.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Visit the <a class="a-orange" href="http://cps.edu/Pages/home.aspx">CPS website</a> to enroll a child in kindergarten.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -677,7 +708,7 @@
       <div class="col-md-8 offset-md-2 d-flex flex-column justify-content-center">
         <div class="text-center">
           <h1 class="orange">{% trans 'Still have questions?' %}</h1>
-          <h2>{% blocktrans %}Call the Chicago Early Learning Hotline!{% endblocktrans %}</h2>
+          <h2 class="p-4">{% blocktrans %}Call the Chicago Early Learning Hotline!{% endblocktrans %}</h2>
           <a class="btn btn-blue btn-half" href="tel:3122291690">(312) 229-1690</a>
         </div>
       </div>
