@@ -110,7 +110,10 @@ $height: 20em;
   }
 
   #faq-links {
-
+    .inline-link-svg, svg {
+      height: 1em;
+      width: 1em;
+    }
   }
 }
 
