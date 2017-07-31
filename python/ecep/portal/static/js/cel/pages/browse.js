@@ -570,13 +570,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                         $collapseFilters.addClass('in');
                         $refineBtn.find('span').toggleClass('svg-orange');
                     }
-                    // Chevron change
-                    $refineBtn.click(function() {
-                        $(this).find('span').toggleClass('svg-orange');
-                        if (updateUrl) {
-                            updateUrl(map.getCenter(), map.getZoom(), !($collapseFilters.hasClass('in')));
-                        }
-                    });
                 });
 
                 autocompleteLocationId = $map.data('location-id');
