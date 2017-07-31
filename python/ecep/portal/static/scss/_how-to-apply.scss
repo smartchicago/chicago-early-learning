@@ -10,8 +10,12 @@ $height: 20em;
   .header-image {
     background-image: url("../img/redesign/how-to-apply/headphone-girls.jpg");
     background-repeat: no-repeat;
-    background-size: 120%;
+    background-size: 100%;
     background-position: 50% 25%;
+
+    @media (max-width: $break-medium) {
+      background-size: 140%;
+    }
   }
 }
 
