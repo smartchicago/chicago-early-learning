@@ -7,9 +7,11 @@ $height: 20em;
 
 #apply-header {
 
-  .curve-header {
-    background-image: url("../img/static-pages/resources-header.jpeg");
-    background-position: 50% (2*$height);
+  .header-image {
+    background-image: url("../img/redesign/how-to-apply/headphone-girls.jpg");
+    background-repeat: no-repeat;
+    background-size: 120%;
+    background-position: 50% 25%;
   }
 }
 

@@ -11,7 +11,9 @@
 
 {% block body %}
 <div id="apply-header" class="container-fluid header">
-  <div class="curve-header"></div>
+  <div class="curve-header">
+    <div class="header-image"></div>
+  </div>
   <div class="header-title">
     <h1 class="text-center">How To Apply</h1>
   </div>
@@ -208,16 +210,15 @@
       <div id="link-programs-block" class="col-md-6 d-flex">
         <div class="link-block text-center m-auto">
           <h1>{% trans 'Have you found the right program for your child?' %}</h1>
-          <p>{% blocktrans %}Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{% endblocktrans %}</p>
-          <a href="" class="btn btn-orange">{% trans 'Learn About Program Types' %}</a>
+          <p>{% blocktrans %}The City of Chicago and its partners offer early learning programs at over 600 sites. Visit our search page to identify sites in areas near your home or work. The Chicago Early Learning Portal allows you to identify a program’s quality rating, schedule and ages served.{% endblocktrans %}</p>
+          <a href="{% url 'programs' %}" class="btn btn-orange">{% trans 'Learn About Program Types' %}</a>
         </div>
       </div>
       <div id="link-support-block" class="col-md-6 d-flex flex-column">
         <div class="link-block text-center m-auto">
           <h1>{% trans 'Need application support?' %}</h1>
-          <p>{% blocktrans %}Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.{% endblocktrans %}</p> 
-          <p>{% blocktrans %}Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{% endblocktrans %}</p>
-          <a href="" class="btn btn-orange">{% trans 'Learn About Program Types' %}</a>
+          <p>{% blocktrans %}If you have any concerns with the online application, please call our Chicago Early Learning Hotline at (312) 229-1690, or visit any of the Family Resource Centers.{% endblocktrans %}</p> 
+          <a href="{% url 'family-resource-centers' %}" class="btn btn-orange">{% trans 'View Family Resource Centers' %}</a>
         </div>
       </div>
     </div>
