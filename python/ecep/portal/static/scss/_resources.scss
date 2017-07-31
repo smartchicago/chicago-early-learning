@@ -56,3 +56,13 @@ $height: 20em;
     background-image: none;
   }
 }
+
+#resources-play,
+#resources-learn,
+#resources-grow {
+
+  img {
+    max-height: 8em;
+    margin-bottom: 1em;
+  }
+}
