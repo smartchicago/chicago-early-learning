@@ -732,7 +732,7 @@ msgstr "Para Familias"
 #: portal/templates/redesign/partials/_footer.html:30
 #: portal/templates/redesign/partials/_nav.html:48
 msgid "FAQ"
-msgstr "Preguntas frecuentes"
+msgstr "FAQ"
 
 #: portal/templates/faq-models.html:24
 msgid "Frequently Asked Questions"
@@ -1032,10 +1032,8 @@ msgstr ""
 #: portal/templates/redesign/family-resource-centers.html:8
 #: portal/templates/redesign/family-resource-centers.html:20
 #: portal/templates/redesign/partials/_footer.html:32
-#, fuzzy
-#| msgid "City Resources"
 msgid "Family Resource Centers"
-msgstr "Recursos de la ciudad"
+msgstr "Centros de Recursos Familiares"
 
 #: portal/templates/redesign/family-resource-centers.html:21
 msgid ""
@@ -2642,26 +2640,19 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/partials/_footer.html:12
-#, fuzzy
-#| msgid ""
-#| "For application information please call the Chicago Early Learning "
-#| "Hotline at"
 msgid ""
 "For application information, please call the Chicago Early Learning Hotline "
 "at "
 msgstr ""
-"Para información acerca de la aplicación, por favor llamar al Chicago Early "
-"Learning línea de acceso directo al"
+"Para información acerca de la aplicación, por favor llamar al Chicago Early Learning línea de acceso directo al"
 
 #: portal/templates/redesign/partials/_footer.html:13
 msgid "Follow us on Facebook and Twitter:"
-msgstr ""
+msgstr "Síguenos en Facebook y Twitter:"
 
 #: portal/templates/redesign/partials/_footer.html:21
-#, fuzzy
-#| msgid "Chicago Early Learning"
 msgid "About Chicago Early Learning"
-msgstr "Chicago Early Learning"
+msgstr "Sobre Chicago Early Learning"
 
 #: portal/templates/redesign/partials/_footer.html:22
 #: portal/templates/redesign/partials/_nav.html:36
@@ -2684,28 +2675,20 @@ msgstr "Recursos"
 
 #: portal/templates/redesign/partials/_footer.html:31
 #: portal/templates/redesign/resources.html:155
-#, fuzzy
-#| msgid "Site Name"
 msgid "Latest News"
-msgstr "Nombre del centro"
+msgstr "Últimas noticias"
 
-#: portal/templates/redesign/partials/_nav.html:7
-#, fuzzy
-#| msgid "About the Chicago Early Learning Portal"
+#: portal/templates/redesign/partials/_nav.html:7 Llame al Chicago Early Learning al 
 msgid "Call the Chicago Early Learning Hotline at"
-msgstr "Sobre del portal del Chicago Educacíon Temprana"
+msgstr "Llame al Chicago Early Learning al"
 
 #: portal/templates/redesign/partials/_nav.html:18
-#, fuzzy
-#| msgid "Fill out an application online"
 msgid "Application"
-msgstr "Llene la solicitud en línea"
+msgstr "Solicitud"
 
 #: portal/templates/redesign/partials/_nav.html:18
-#, fuzzy
-#| msgid "Fill out an application online"
 msgid "Continue to Application Login"
-msgstr "Llene la solicitud en línea"
+msgstr "Continue a la solicitud"
 
 #: portal/templates/redesign/partials/_nav.html:51
 #: portal/templates/starred.html:49 portal/templates/starred.html.py:70
