@@ -50,7 +50,8 @@
         </div>
         <div class="col-md-8 my-auto">
           <h2 class="deep-green">{% trans 'Search Locations' %}</h2>
-          <p>{% blocktrans %}Find and compare Chicago Early Learning programs to find the right one for your child. Get Started!{% endblocktrans %}</p>
+          {% url 'browse' as search_url %}
+          <p>{% blocktrans %}Find and compare Chicago Early Learning programs to find the right one for your child. <a class="a-orange" href="{{ search_url }}">Get Started!</a>{% endblocktrans %}</p>
         </div>
       </div>
       <div id="enroll-one" class="row apply-block-steps">
