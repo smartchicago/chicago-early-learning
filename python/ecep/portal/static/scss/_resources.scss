@@ -42,8 +42,12 @@ $height: 20em;
   .header-image {
     background-image: url("../img/static-pages/resources-header.jpeg");
     background-size: 100%;
-    background-position: 30% 30%;
+    background-position: 30% 45%;
     background-repeat: no-repeat;
+
+    @media (max-width: $break-medium) {
+      background-size: 120%;
+    }
   }
 }
 
