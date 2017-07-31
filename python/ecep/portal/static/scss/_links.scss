@@ -44,7 +44,7 @@ a {
 }
 
 .a-white-underline {
-  @include link-variant($white, $white-opaque)
+  @include link-variant($white, $white-opaque);
   text-decoration: underline;
   &:hover {text-decoration: underline;}
 }
