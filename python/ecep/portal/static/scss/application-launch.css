@@ -1,10 +1,10 @@
 /* --- Variables --- */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700");
 @font-face {
-  font-family: 'Chalk';
+  font-family: 'Chalkduster';
   src: url("../font/chalkduster/Chalkduster.eot") format("embedded-opentype");
-  src: url("../font/chalkduster/Chalkduster.woff") format("woff");
-  src: url("../font/chalkduster/Chalkduster.ttf") format("truetype"); }
+  src: url("../font/chalkduster/Chalkduster.ttf") format("truetype");
+  src: url("../font/chalkduster/Chalkduster.woff") format("woff"); }
 .blue {
   color: #1dc1ea !important; }
 
@@ -346,7 +346,7 @@ body {
   body .chalk {
     display: table-cell;
     border-bottom: 3px solid #ffffff;
-    font-family: "Chalk", sans-serif !important;
+    font-family: "Chalkduster", sans-serif !important;
     margin-bottom: 8px; }
 
 input {
@@ -1084,7 +1084,7 @@ footer {
       height: 4em;
       background-color: #222222; }
   #apply #apply-verify .chalkduster {
-    font-family: "Chalk", sans-serif !important; }
+    font-family: "Chalkduster", sans-serif !important; }
 #apply #apply-links {
   color: #ffffff; }
   #apply #apply-links .link-block {
