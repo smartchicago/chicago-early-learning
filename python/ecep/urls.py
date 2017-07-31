@@ -40,7 +40,8 @@ urlpatterns = patterns(
 
     # Blog
     url(r'^blog/$', Blog.as_view(), name="blog"),
-    
+    url(r'^blog/hughes-library$', Blog.as_view(), name="blog"),
+
     # browse page
     url(r'^search/$', 'portal.views.browse', name='browse'),
 
