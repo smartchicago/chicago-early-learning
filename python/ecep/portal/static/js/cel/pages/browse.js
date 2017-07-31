@@ -566,8 +566,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                     var width = $(document).width(),
                         $refineBtn = $('#refineBtn');
 
+                    if (width <= common.breakpoints.tablet) {
+                        $('#collapseFilters').addClass('collapse');
+                    }
+
                     if (historyState.filtersVisible !== false && width >= common.breakpoints.desktop) {
-                        $collapseFilters.addClass('in');
                         $refineBtn.find('span').toggleClass('svg-orange');
                     }
                     // Chevron change
