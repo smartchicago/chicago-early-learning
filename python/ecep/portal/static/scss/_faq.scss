@@ -15,8 +15,8 @@ $height: 20em;
   }
 
   h2 {
-    font-size: 1.5rem;
-    line-height: 1.6rem;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
     font-weight: 500;
     margin-bottom: 0;
   }
@@ -53,13 +53,13 @@ $height: 20em;
         display: block;
         width: 6em;
         height: 100%;
-        padding: 1em;
+        padding: 1em 0;
         border-left: 1px solid rgba(0, 0, 0, .125);
 
         a {
 
           svg {
-            width: 100%;
+            width: 6em;
 
             polygon {
               fill: $orange;
@@ -110,7 +110,7 @@ $height: 20em;
   }
 
   #faq-links {
-    
+
   }
 }
 
