@@ -644,10 +644,6 @@ msgid ""
 "education with Chicago Early Learning!"
 msgstr ""
 
-#: portal/templates/index.html:36 portal/templates/index.html.py:82
-msgid "Complete your child's preschool application online today!"
-msgstr ""
-
 #: portal/templates/index.html:38
 #, python-format
 msgid ""
