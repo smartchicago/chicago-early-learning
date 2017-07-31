@@ -154,14 +154,6 @@
     .nav-icon { display: inline; }
     .nav-text { display: none; }
 
-    .results-right {
-        visibility: hidden;
-        top: 0;
-        left: 0px;
-        height: auto;
-        bottom: 0;
-    }
-
     .browse-container {
         top: 150px;
     }
@@ -311,15 +303,6 @@
     .cb_slide_panel {
         background: #fff;
         margin-top: 113px;
-    }
-
-    #toggleMapBtn {
-        float: right;
-        right: 10px;
-        position: absolute;
-        font-size: 16px;
-        width: 40px;
-        padding: 6px 8px 5px;
     }
 
     .container {
@@ -844,10 +827,6 @@
     .get-started {
         width: 92%;
         margin-bottom: 10px;
-    }
-
-    #toggleMapBtn {
-        margin-top: 4px;
     }
 
     .leaflet-container .leaflet-control-zoom {

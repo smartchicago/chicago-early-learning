@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load staticfiles %}
 {% load portal_extras %}
+{% load svg %}
 
 {% block title %}{% trans "Browse Locations" %} - {% trans "Chicago Early Learning" %}{% endblock %}
 
@@ -13,10 +14,25 @@
 
 <div id="old" class="container-fluid fluid-full">
   <div class="browse-container">
+    <div class="mobile-search hidden-lg-up bg-white">
+      <form class="navbar-form">
+        <div class="form-group d-flex">
+          <div class="mobile-nav-svg text-center">
+            <a id="refineBtn" class="collapsed" data-toggle="collapse" href="#collapseFilters"><span class="inline-link-svg">{% svg 'icons/toggles' %}</span></a>
+          </div>
+          <div class="mobile-nav-input">
+            <input class="form-control form-control-lg autocomplete-searchbox" id="search-bar-element" type="text" placeholder="Enter an address">
+          </div>
+          <div class="mobile-nav-svg text-center">
+            <a id="toggleMapBtn" href="" class=""><span class="inline-link-svg">{% svg 'icons/location' %}</span></a>
+          </div>
+        </div>
+      </form>
+    </div>
     <div class="filters">
       <div id="filter-options">
         <div id="toolbar-main">
-          <div id="collapseFilters" class="">
+          <div id="collapseFilters" class="filters-wrapper collapse">
             <p class="refine">{% trans "Refine your search" %}</p>
             <div class="filters-inner">
               <ul class="filters-list">

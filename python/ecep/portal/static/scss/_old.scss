@@ -336,10 +336,65 @@
   /* Results --------------------- */
 
   .browse-container {
-      position: fixed;
-      top: 116px;
-      width: 100%;
-      bottom:0
+    position: fixed;
+    top: 116px;
+    width: 100%;
+    bottom:0;
+
+    @media (max-width: $break-large) {
+      top: 107px;
+
+      h1 {
+        margin: 0;
+      }
+
+      .filters {
+        width: 100%;
+        top: 58px;
+      }
+
+      .row {
+        margin-bottom: 0;
+        padding: .5em;
+        width: 100%;
+        margin: 0;
+      }
+
+      .mobile-search {
+
+        input {
+          width: 100%;
+          margin: 0;
+          padding: .5em;
+          height: 3em;
+        }
+
+        .form-group {}
+
+        .mobile-nav-svg {
+          width: 4em;
+          padding: .5em;
+        }
+
+        .mobile-nav-input {
+          flex-grow: 1;
+        }
+      }
+
+      .results-left {
+        width: 100%;
+        top: 58px;
+      }
+
+      .results-right {
+        width: 100%;
+        left: 0;
+
+        #map {
+          width: 100%;
+        }
+      }
+    }
   }
 
   .results-left {
