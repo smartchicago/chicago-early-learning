@@ -16,14 +16,14 @@ define(['jquery'], function($) {
             $(".results-left").css("top", th);
         });
         $('#filter-options').on('shown', function () {
-            th = $("#filter-options").height() + 58;
+            th = $("#filter-options").height() + 78;
             $(".results-left").animate({
                 top: th 
             }, 175);
         });
             
         $('#filter-options').on('hidden', function () {
-            th = $("#filter-options").height() + 58;
+            th = $("#filter-options").height() + 78;
             $(".results-left").animate({
                 top: th
             }, 0);
