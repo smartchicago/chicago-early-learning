@@ -190,8 +190,14 @@ $block-height: 40em;
 }
 
 #programs-graphic {
-  height: $block-height;
-  background-color: $dark-gray;
+  background-color: $faint-gray;
+
+  h3 {
+    color: #292b2c;
+  }
+  .graphic-block {
+    padding-bottom: 0 !important;
+  }
 }
 
 #programs-resources {
