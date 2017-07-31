@@ -2,10 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700");
 @font-face {
   font-family: 'Chalk';
-  src: url("../font/chalkduster/Chalkduster.ttf.eot");
-  src: url("../font/chalkduster/Chalkduster.ttf.woff") type("woff");
-  src: url("../font/chalkduster/Chalkduster.ttf") type("truetype");
-  src: url("../font/chalkduster/Chalkduster.ttf.svg") type("svg"); }
+  src: url("../font/chalkduster/Chalkduster.svg") format("svg"); }
 .blue {
   color: #1dc1ea !important; }
 
