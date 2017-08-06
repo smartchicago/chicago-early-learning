@@ -16,7 +16,8 @@ requirejs.config({
         text: '../lib/require-plugins/text',
         topojson: '../lib/topojson',
         styling: '../lib/styling',
-        history: '../lib/native.history'
+        history: '../lib/native.history',
+        Clipboard: '../lib/clipboard.min'
     },
     shim: {
         'jquery-ui': {
