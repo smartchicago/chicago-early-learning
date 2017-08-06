@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Facebook_w_x2F__circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-	 x="0px" y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
-<path d="M10,0.4c-5.302,0-9.6,4.298-9.6,9.6s4.298,9.6,9.6,9.6s9.6-4.298,9.6-9.6S15.302,0.4,10,0.4z M12.274,7.034h-1.443
-	c-0.171,0-0.361,0.225-0.361,0.524V8.6h1.805l-0.273,1.486H10.47v4.461H8.767v-4.461H7.222V8.6h1.545V7.726
-	c0-1.254,0.87-2.273,2.064-2.273h1.443V7.034z"/>
+
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Social-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="social-icons" transform="translate(-40.000000, -40.000000)" fill="#FFFFFF">
+            <g id="facebook" transform="translate(40.000000, 40.000000)">
+                <path d="M22,44 C9.8497355,44 0,34.1502645 0,22 C0,9.8497355 9.8497355,0 22,0 C34.1502645,0 44,9.8497355 44,22 C44,34.1502645 34.1502645,44 22,44 Z M19.4372418,32 L24.3139606,32 L24.3139606,20.4985483 L27.5685836,20.4985483 L28,16.535534 L24.3139606,16.535534 L24.3206665,14.5518493 C24.3206665,13.5182719 24.4212558,12.964466 25.9435074,12.964466 L27.9776468,12.964466 L27.9776468,9 L24.7230238,9 C20.8127074,9 19.4372418,10.9234411 19.4372418,14.1562737 L19.4372418,16.535534 L17,16.535534 L17,20.4985483 L19.4372418,20.4985483 L19.4372418,32 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
 </svg>

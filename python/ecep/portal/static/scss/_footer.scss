@@ -64,12 +64,18 @@ footer {
           height: 3em;
 
           svg {
-            width: 3em;
+            width: 3.5em;
             height: 3em;
-            fill: $white;
+            
+            path {
+              fill: $white;
+            }
 
             &:hover {
-              fill: $white-opaque;
+
+              path {
+                fill: $white-opaque;
+              }
             }
           }
         }
