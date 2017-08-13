@@ -11,7 +11,7 @@ define([], function() {
     return {
         name: "CEL.starred",
         options: {
-            expires: 365,
+            expires: 30,
             path: '/'
         }
     };
