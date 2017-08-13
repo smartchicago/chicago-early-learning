@@ -43,24 +43,24 @@
 
 
   <!--  Programs Age Calculator  -->
-  <div id="programs-age-calculator" class="container-fluid bg-white programs-base hidden-xs-up">
+  <div id="programs-age-calculator" class="container-fluid bg-white programs-base">
     <div class="py-5">
       <div class="row">
         <div class="col-md-8 offset-md-2 text-center">
-          <h2>{% blocktrans %}What early learning program should your child(ren) be enrolling in?{% endblocktrans %}</h2>
+          <h2>{% blocktrans %}What early learning program should your child be enrolling in?{% endblocktrans %}</h2>
           <p class="gray">{% blocktrans %}Enter a birthdate. The result will reflect what you should enroll in Fall 2017.{% endblocktrans %}</p>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="birthday-form col-md-8 text-center">
-          <form>
-            <div class="form-group">
-              <select class="custom-select">
-                <option selected>Open this select menu</option>
-              </select>
+          <form id="calculator">
+            <div class="form-group form-inline row justify-content-center">
+              <input id="month" type="text" class="form-control col-sm-2" name="month" placeholder="MM">
+              <input id="day" type="text" class="form-control col-sm-2" name="day" placeholder="DD">
+              <input id="year" type="text" class="form-control col-sm-2" name="year" placeholder="YYYY">
             </div>
+            <button id="calculator-submit" type="submit" class="btn btn-blue btn-half">{% trans 'Find Program Type' %}</button>
           </form>
-          <button class="btn btn-blue btn-half" href="">Submit Birthday</button>
         </div>
       </div>
     </div>
@@ -248,4 +248,7 @@
 {% endblock %}
 
 {% block template_headers %}
+<script type="text/javascript">
+  require(['jquery', 'calculator'], function() {});
+</script>
 {% endblock %}
