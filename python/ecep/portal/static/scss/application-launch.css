@@ -822,7 +822,7 @@ footer {
     #index-news .news-content p {
       font-style: italic; }
     #index-news .news-content img {
-      background-color: black; }
+      border: none; }
 
 /* -- Subscribe Block -- */
 #index-subscribe {
