@@ -74,7 +74,7 @@ class Location(models.Model):
     )
 
     HIGH = 'Slots Available'
-    MEDIUM = 'Limited Availability'
+    MEDIUM = 'Few or No Slots'
 
     AVAILABILITY_CHOICES = (
         (HIGH, ugettext_lazy('Slots Available')),
