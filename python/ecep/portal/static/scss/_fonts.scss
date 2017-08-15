@@ -2,7 +2,10 @@
 
 @font-face {
   font-family: 'Chalkduster';
-  src: url('../font/chalkduster/Chalkduster.eot') format('embedded-opentype');
-  src: url('../font/chalkduster/Chalkduster.ttf') format('truetype');
-  src: url('../font/chalkduster/Chalkduster.woff') format('woff');
+  src: url('../font/chalkduster/Chalkduster.eot') format('embedded-opentype'),
+       url('../font/chalkduster/Chalkduster.otf') format('opentype'),
+       url('../font/chalkduster/Chalkduster.woff2') format('woff2'),
+       url('../font/chalkduster/Chalkduster.woff') format('woff'),
+       url('../font/chalkduster/Chalkduster.ttf') format('truetype'),
+       url('../font/chalkduster/Chalkduster.svg') format('svg');
 }
