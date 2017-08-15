@@ -85,9 +85,9 @@
       </div>
       <div class="index-sub-block">
         <div class="sub-block-content">
-          <h1 class="white">{% trans 'Chicago Early Learning Parent Conference' %}</h1>
-          <p>{% blocktrans %}Parents! Join us on August 4 for a FREE, fun-filled conference designed specifically for parents of young children.{% endblocktrans %}</p>
-          <a href="http://www.2017parentconference.eventbrite.com/" class="btn btn-cel btn-green btn-half ">{% trans 'Register Today' %}</a>
+          <h1 class="white">{% trans 'Apply Today!' %}</h1>
+          <p>{% blocktrans %}Over 11,000 preschool applications and counting! Are you ready to sign up your child? Learn more about the preschool application for 3 and 4 year-olds:{% endblocktrans %}</p>
+          <a href="{% url 'how-to-apply' %}" class="btn btn-cel btn-green btn-half ">{% trans 'Learn More' %}</a>
         </div>
       </div>
     </div>
@@ -142,7 +142,7 @@
           <h1 class="blue">{% trans 'What is the preschool application process?' %}</h1>
           <div class="index-sub-block application-youtube hidden-md-up">
             <div class="application-youtube-embed embed-responsive embed-responsive-16by9">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/3La05TZZDe8" frameborder="0" allowfullscreen></iframe>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/c_-11-esVY8" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="application-video-title embed">
               <h2 class="orange">{% trans 'WATCH: How To Apply' %}</h2>
@@ -156,7 +156,7 @@
     <div id="application-video" class="index-info-block col-md-6 hidden-sm-down">
       <div class="index-sub-block application-youtube">
         <div class="application-youtube-embed embed-responsive embed-responsive-16by9">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/3La05TZZDe8" frameborder="0" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/c_-11-esVY8" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="application-video-title embed">
           <h2 class="orange">{% trans 'WATCH: How To Apply' %}</h2>
@@ -186,6 +186,14 @@
   </div>
   <div class="news-block">
     <div class="row justify-content-center">
+      <div class="news-content col-md-4">
+        <img class="img-fluid" src="{% static 'img/redesign/blog/news-rahm.jpg' %}">
+        <h1 class="blue">{% trans "Mayor Emanuel Launches Improved Universal Preschool Application" %}</h1>
+        <p>{% blocktrans %}Mayor Emanuel visited Avalon Park Library to announce the revamped universal online preschool application, which gives families a single point of entry to access the more than 600 high-quality community and school based preschool programs throughout Chicago.{% endblocktrans %}</p>
+        <div> 
+          <a class="a-black-orange" href=""><i>{% trans 'Read More on the City of Chicago website' %} </i><div id="arrow-svg" class="inline-link-svg svg-orange">{% svg 'icons/arrow-thin-right' %}</div></a>
+        </div>
+      </div>
       <div class="news-content col-md-4">
         <img class="img-fluid" src="{% static 'img/redesign/blog/hughes-library.jpg' %}">
         <h1 class="blue">{% trans "Thomas Hughes Children's Library Re-Opened" %}</h1>

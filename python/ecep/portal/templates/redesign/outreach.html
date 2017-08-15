@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-wrapper" id="outreach-wrapper">
+<div class="container-wrapper container-bottom-4" id="outreach-wrapper">
     <div class="container" id="dummy-nav-container">
         <div id="outreach-nav">
             <ul class="nav nav-tabs nav-fill" role="tablist">
@@ -72,6 +72,18 @@
                                 </div>
                             </div>
                             <div class="downloads-list">
+                                <div class="download-item">
+                                    <div class="item-thumbnail">
+                                        <img src="{% static 'img/resource-thumbnails/guide-thumbnail.png' %}">
+                                    </div>
+                                    <div class="item-description">
+                                        <h1>Advocate Guide</h1>
+                                        <h2>PDF</h2>
+                                    </div>
+                                    <div class="download-icon">
+                                        <a href="{% static 'img/resource-downloads/Chicago-Early-Learning-Advocate-Guide.pdf' %}" class="link-svg-white" download>{% svg 'icons/cloud-download' %}</a>
+                                    </div>
+                                </div>
                                 <div class="download-item">
                                     <div class="item-thumbnail">
                                         <img src="{% static 'img/resource-thumbnails/flyer-en-thumbnail.png' %}">
@@ -310,19 +322,16 @@
 
 {% endblock %}
 
-{% block template_headers %}
-<!-- Allow for external linking to tabs --> 
-<script type="text/javascript">
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
-<script type="text/javascript">
-    var btns = document.querySelectorAll('.btn-copy')
+{% block scripts %}
+<script>
+require(['Clipboard'], function(Clipboard) {
+    var btns = document.querySelectorAll('.btn-copy');
     var clipboard = new Clipboard(btns);
 
     clipboard.on('success', function (e) {
         var btn = document.getElementById(e.trigger.id);
         btn.innerHTML = "Copied!";
     })
+});
 </script>
 {% endblock %}

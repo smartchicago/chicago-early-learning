@@ -529,10 +529,11 @@ footer {
           width: 3em;
           height: 3em; }
           footer .footer .footer-content .links-block .svg-share svg {
-            width: 3em;
-            height: 3em;
-            fill: #ffffff; }
-            footer .footer .footer-content .links-block .svg-share svg:hover {
+            width: 3.5em;
+            height: 3em; }
+            footer .footer .footer-content .links-block .svg-share svg path {
+              fill: #ffffff; }
+            footer .footer .footer-content .links-block .svg-share svg:hover path {
               fill: rgba(255, 255, 255, 0.6); }
       footer .footer .footer-content .copyright {
         padding-top: 1em;
@@ -823,7 +824,7 @@ footer {
     #index-news .news-content p {
       font-style: italic; }
     #index-news .news-content img {
-      background-color: black; }
+      border: none; }
 
 /* -- Subscribe Block -- */
 #index-subscribe {
