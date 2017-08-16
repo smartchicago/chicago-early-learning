@@ -4,12 +4,13 @@
 import logging
 import hashlib
 import json
+import time
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.views.decorators.cache import cache_control
+from django.views.decorators.cache import cache_control, cache_page
 from django.views.generic import TemplateView, DetailView
 from django.utils.translation import check_for_language
 from django.db.models import Count, Q
@@ -414,13 +415,13 @@ def clean_context_dict(context_dict):
     return fields
 
 
+@cache_page(60*60*24)
 def location_json_api(request):
     """
-
     API Endpoint for returning a full JSON list of names and IDs of schools and locations
     for use in the homepage search bar autocomplete dropdown.
-
     """
+    time.sleep(15)
     locs = Location.objects.all().values('site_name', 'id').order_by('site_name')
     loc_list = list(locs)
 
@@ -430,6 +431,11 @@ def location_json_api(request):
         location['category'] = 'Locations'
 
     return JsonResponse(loc_list, safe=False)
+
+
+@cache_page(60*60*24)
+def map_location_json_api(request):
+    pass
 
 
 def location_position(request, location_id):
