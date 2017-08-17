@@ -1266,11 +1266,29 @@ footer {
 
 #programs-age-calculator {
   background-image: url("../img/redesign/elements/shapes_left_2x.png"), url("../img/redesign/elements/shapes_right_2x.png");
-  background-size: 30%, 30%;
+  background-size: 25%, 25%;
   background-position: left center, right center;
   background-repeat: no-repeat; }
   #programs-age-calculator p {
     font-style: italic; }
+  #programs-age-calculator #calculator {
+    height: 8em; }
+    #programs-age-calculator #calculator #month,
+    #programs-age-calculator #calculator #day {
+      width: 4em; }
+    #programs-age-calculator #calculator #year {
+      width: 6em; }
+    #programs-age-calculator #calculator input[type=text] {
+      margin-left: .5em;
+      margin-right: .5em;
+      font-style: normal !important;
+      text-align: center;
+      border: 3px solid #ee8547;
+      border-radius: 0; }
+      #programs-age-calculator #calculator input[type=text]:focus {
+        border-color: #ee5713; }
+    #programs-age-calculator #calculator .hidden-block {
+      display: none; }
   @media (max-width: 768px) {
     #programs-age-calculator {
       background-image: none; } }

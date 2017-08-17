@@ -48,19 +48,43 @@
       <div class="row">
         <div class="col-md-8 offset-md-2 text-center">
           <h2>{% blocktrans %}What early learning program should your child be enrolling in?{% endblocktrans %}</h2>
-          <p class="gray">{% blocktrans %}Enter a birthdate. The result will reflect what you should enroll in Fall 2017.{% endblocktrans %}</p>
         </div>
       </div>
-      <div class="row justify-content-center">
-        <div class="birthday-form col-md-8 text-center">
-          <form id="calculator">
+      <div id="calculator" class="row">
+        <div id="calculator-block" class="birthday-form col-md-8 offset-md-2 text-center">
+          <p class="gray">{% blocktrans %}Enter a birthdate. The result will reflect what you should enroll in Fall 2017.{% endblocktrans %}</p>
+          <form>
             <div class="form-group form-inline row justify-content-center">
-              <input id="month" type="text" class="form-control col-sm-2" name="month" placeholder="MM">
-              <input id="day" type="text" class="form-control col-sm-2" name="day" placeholder="DD">
-              <input id="year" type="text" class="form-control col-sm-2" name="year" placeholder="YYYY">
+              <input id="month" type="text" maxlength="2" class="form-control input-two" name="month" placeholder="MM" required>
+              <input id="day" type="text" maxlength="2" class="form-control input-two" name="day" placeholder="DD" required>
+              <input id="year" type="text" maxlength="4" class="form-control" name="year" placeholder="YYYY" required>
             </div>
             <button id="calculator-submit" type="submit" class="btn btn-blue btn-half">{% trans 'Find Program Type' %}</button>
           </form>
+          <div id="error-block" class="hidden-block py-2">
+            <p>Please enter a valid date.</p>
+          </div>
+        </div>
+        <div id="infants-block" class="hidden-block col-md-6 offset-md-3 text-center py-3">
+          <div class="">
+            <p>Your child should enroll in a Infant and Toddler programs.</p>
+            <p>Learn more about these programs:</p>
+          </div>
+          <a href="#programs-infants" class="btn btn-orange btn-half">{% trans 'Learn More' %}</a>
+        </div>
+        <div id="preschool-block" class="hidden-block col-md-6 offset-md-3 text-center py-3">
+          <div class="">
+            <p>Your child should enroll in a Preschool program.</p>
+            <p>Learn more about these programs:</p>
+          </div>
+          <a href="#programs-preschool" class="btn btn-blue btn-half">{% trans 'Learn More' %}</a>
+        </div>
+        <div id="kindergarten-block" class="hidden-block col-md-6 offset-md-3 text-center py-3">
+          <div class="">
+            <p>Your child should enroll in Kindergarten.</p>
+            <p>Learn more about these programs:</p>
+          </div>
+          <a href="#programs-kindergarten" class="btn btn-yellow btn-half">{% trans 'Learn More' %}</a>
         </div>
       </div>
     </div>

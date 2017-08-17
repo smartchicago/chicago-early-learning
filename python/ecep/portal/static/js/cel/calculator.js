@@ -3,17 +3,29 @@ define(['jquery'],
         'use strict';
 
         $(document).ready(function() {
+
             var $month = $('#month'),
                 $day = $('#day'),
                 $year = $('#year'),
-                $infants = $('#programs-infants'),
-                $preschool = $('#programs-preschool'),
-                $kindergarten = $('#programs-kindergarten'),
-                $calculator = $('#calculator');
-
+                $input_two = $('.input-two'),
+                $preschool = $('#preschool-block'),
+                $kindergarten = $('#kindergarten-block'),
+                $calculator = $('#calculator'),
+                $calculator_block = $('#calculator-block'),
+                $error_block = $('#error-block');
 
             function validateDate(month, day, year) {
-                return true;
+                var date = new Date(year, month, day);
+
+                if (year < 1000 || year > 3000 || month < 0 || month > 12 || day > 31) {
+                    return false;
+                } else if ( isNaN(year) || isNaN(month) || isNaN(day) ) { 
+                    return false
+                } else if ( typeof date != 'undefined' ) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
 
             function calculateProgram(month, day, year) {
@@ -30,11 +42,23 @@ define(['jquery'],
                 }
             }
 
-            function scrollToProgram($target) {
-                $('html, body').animate({
-                    scrollTop: $target.offset().top
-                }, 500);
+            function displayProgramBlock($block) {
+                $calculator_block.fadeOut(500);
+                $block.delay(500).fadeIn(500);
             }
+
+            /* -- Focus Listener -- */
+            $month.keyup(function() {
+                if (this.value.length == 2) {
+                    $day.focus();
+                }
+            });
+
+            $day.keyup(function() {
+                if (this.value.length == 2) {
+                    $year.focus();
+                }
+            });
             
             /* -- Submit Listener -- */
             $calculator.submit(function(e) {
@@ -44,8 +68,10 @@ define(['jquery'],
 
                 e.preventDefault();
                 if ( validateDate(month, day, year) ) {
-                    var $scroll = calculateProgram(month, day, year);
-                    scrollToProgram($scroll);
+                    var $program = calculateProgram(month, day, year);
+                    displayProgramBlock($program);
+                } else {
+                    $error_block.show();
                 }
             });
         });
