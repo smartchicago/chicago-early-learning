@@ -1288,7 +1288,7 @@ footer {
       #programs-age-calculator #calculator input[type=text]:focus {
         border-color: #ee5713; }
     #programs-age-calculator #calculator a {
-      cursor: pointer; }
+      cursor: pointer !important; }
     #programs-age-calculator #calculator .hidden-block {
       display: none; }
   @media (max-width: 576px) {
