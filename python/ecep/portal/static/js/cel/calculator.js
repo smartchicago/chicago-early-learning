@@ -48,6 +48,13 @@ define(['jquery'],
                 $block.delay(500).fadeIn(500);
             }
 
+            function resetCalculator(target) {
+                var $target = $(target);
+                $calculator.find("input[type=text]").val("")
+                $target.fadeOut(500);
+                $calculator_block.delay(500).fadeIn(500);
+            }
+
             /* -- Focus Listener -- */
             $month.keyup(function() {
                 if (this.value.length == 2) {
@@ -69,11 +76,19 @@ define(['jquery'],
 
                 e.preventDefault();
                 if ( validateDate(month, day, year) ) {
+                    $error_block.hide()
                     var $program = calculateProgram(month, day, year);
                     displayProgramBlock($program);
                 } else {
                     $error_block.show();
                 }
+            });
+
+            /* -- Reset Listener -- */
+            $('.calculator-reset').on('click', function(e) {
+                var $this = $(this),
+                    target = $this.data("block");
+                resetCalculator(target);
             });
         });
     }

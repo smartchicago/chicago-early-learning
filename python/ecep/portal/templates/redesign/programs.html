@@ -65,26 +65,41 @@
             <p>Please enter a valid date.</p>
           </div>
         </div>
+
         <div id="infants-block" class="hidden-block col-md-6 offset-md-3 text-center py-3">
-          <div class="">
-            <p>Your child should enroll in a Infant and Toddler programs.</p>
-            <p>Learn more about these programs:</p>
+          <div class="row">
+            <p>{% blocktrans %}Your little one is the perfect age to start learning in our infant and toddler programs.{% endblocktrans %}</p>
           </div>
-          <a href="#programs-infants" class="btn btn-orange btn-half">{% trans 'Learn More' %}</a>
-        </div>
-        <div id="preschool-block" class="hidden-block col-md-6 offset-md-3 text-center py-3">
-          <div class="">
-            <p>Your child should enroll in a Preschool program.</p>
-            <p>Learn more about these programs:</p>
+          <div class="row">
+            <a href="#programs-infants" class="btn btn-orange btn-half">{% trans 'Learn More' %}</a>
           </div>
-          <a href="#programs-preschool" class="btn btn-blue btn-half">{% trans 'Learn More' %}</a>
+          <div class="row">
+            <a class="calculator-reset a-orange" data-block="#infants-block">{% trans 'Enter another birthdate' %}</a>
+          </div>
         </div>
+
+        <div id="preschool-block" class="hidden-block col-md-6 offset-md-3 justify-content-center py-3">
+          <div class="row">
+            <p>{% blocktrans %}Wow! Your child is ready for preschool.{% endblocktrans %}</p>
+          </div>
+          <div class="row">
+            <a href="#programs-preschool" class="btn btn-blue btn-half">{% trans 'Learn More' %}</a>
+          </div>
+          <div class="row">
+            <a class="calculator-reset a-orange" data-block="#preschool-block">{% trans 'Enter another birthdate' %}</a>
+          </div>
+        </div>
+
         <div id="kindergarten-block" class="hidden-block col-md-6 offset-md-3 text-center py-3">
-          <div class="">
-            <p>Your child should enroll in Kindergarten.</p>
-            <p>Learn more about these programs:</p>
+          <div class="row">
+            <p>{% blocktrans %}Believe it or not, it’s time for Kindergarten already!{% endblocktrans %}</p>
           </div>
-          <a href="#programs-kindergarten" class="btn btn-yellow btn-half">{% trans 'Learn More' %}</a>
+          <div class="row">
+            <a href="#programs-kindergarten" class="btn btn-yellow btn-half">{% trans 'Learn More' %}</a>
+          </div>
+          <div class="row">
+            <a class="calculator-reset a-orange" data-block="#kindergarten-block">{% trans 'Enter another birthdate' %}</a>
+          </div>
         </div>
       </div>
     </div>
