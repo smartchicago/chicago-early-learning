@@ -34,9 +34,9 @@ define(['jquery'],
                     preschool_cutoff = new Date(2012, 8, 2),
                     infants_cutoff = new Date(2014, 8, 2);
 
-                if ( date > infants_cutoff ) {
+                if ( date >= infants_cutoff ) {
                     return $infants;
-                } else if ( date < infants_cutoff && date > preschool_cutoff ) {
+                } else if ( date < infants_cutoff && date >= preschool_cutoff ) {
                     return $preschool;
                 } else {
                     return $kindergarten;
