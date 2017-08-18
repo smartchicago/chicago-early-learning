@@ -104,10 +104,21 @@ $block-height: 40em;
       }
     }
 
+    a {
+      cursor: pointer;
+    }
+
     .hidden-block {
       display: none;
     }
 
+  }
+
+  @media (max-width: $break-small) {
+    
+    .btn-half {
+      min-width: 80% !important;
+    }
   }
 
   @media (max-width: $break-medium) {
