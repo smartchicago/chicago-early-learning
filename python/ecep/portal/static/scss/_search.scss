@@ -1,0 +1,51 @@
+
+
+/* -- Search Viewport -- */
+#search {
+
+  @media (min-width: $break-small) {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+  }
+
+  .search-view {
+    @media (min-width: $break-small) { padding-top: 107px;}
+    @media (min-width: $break-large) { padding-top: 112px;}
+
+    #search-results {
+      height: 100%;
+
+      .form-group { margin-bottom: 0; }
+
+      #search-form {
+        background-color: $white;
+        border-top: 1px solid $light-gray;
+        border-bottom: 1px solid $light-gray;
+
+        .search-svg {
+          height: 3.5rem;
+          width: 3.5rem;
+          padding: 1rem;
+        }
+
+        .search-form {
+          flex: grow;
+          flex-grow: 1
+        }
+      }
+
+      #results {
+        flex-grow: 1;
+        overflow-y: scroll;
+      }
+    }
+
+    #search-map {
+      border-top: 1px solid $light-gray;
+      border-left: 1px solid $light-gray;
+    }
+  }
+}

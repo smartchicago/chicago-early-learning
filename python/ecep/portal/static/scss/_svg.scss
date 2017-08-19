@@ -18,9 +18,18 @@
   @include svg-variant($black);
 }
 
+.svg-gray {
+  @include svg-variant($gray)
+}
+
+.svg-light-gray {
+  @include svg-variant($light-gray)
+}
+
 .svg-white {
   @include svg-variant($white);
 }
+
 
 /* -- -- */
 

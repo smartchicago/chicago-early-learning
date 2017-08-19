@@ -1,4 +1,9 @@
 /* --- Base --- */
+
+html, body {
+  height: 100%;
+}
+
 body {
   background-color: $background-gray;
   font-family: $montserrat;

@@ -1,0 +1,55 @@
+{% extends 'redesign/sub-base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load svg %}
+
+{% block title %}
+{% trans "Chicago Early Learning" %} - {% trans "Search" %}
+{% endblock %}
+
+{% block base %}
+<div id="search" class="container-fluid fluid-full">
+  <div class="search-view h-100">
+    
+    <div class="row no-gutters h-100">
+      <div id="search-results" class="col-md-4 h-100 d-flex flex-column">
+
+        <div id="search-form" class="">
+          <form class="">
+            <div class="form-group d-flex">
+              <div class="search-svg">
+                <a class="inline-link-svg svg-gray">{% svg 'icons/location' %}</a>
+              </div>
+              <div class="search-form">
+                <input class="form-control map-search-form" type="text" name="">
+              </div>
+              <div class="search-svg">
+                <a class="inline-link-svg svg-gray">{% svg 'icons/location' %}</a>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div id="results">
+          <div class="results-scroll">
+          </div>
+        </div>
+      </div>
+
+      <div id="search-map" class="col-md-8 hidden-sm-down h-100">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block template_headers %}
+<script type="text/javascript">
+  require(['jquery', 'pages/search'], function($, search) {
+    $(document).ready(search.init);
+  });
+</script>
+{% endblock %}

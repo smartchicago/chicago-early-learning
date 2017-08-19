@@ -39,6 +39,9 @@ urlpatterns = patterns(
     url(r'^programs$', Programs.as_view(), name='programs'),
     url(r'^resources$', Resources.as_view(), name='resources'),
 
+    # Search
+    url(r'redesign/search/', Search.as_view(), name="search"),
+
     # Blog
     url(r'^blog/$', Blog.as_view(), name="blog"),
     url(r'^blog/hughes-library$', Blog.as_view(), name="blog-hughes"),

@@ -78,6 +78,8 @@ class Programs(TemplateView):
 class Resources(TemplateView):
     template_name = "redesign/resources.html"
 
+class Search(TemplateView):
+    template_name = "redesign/search.html"
 
 def browse(request):
     # If a search query was passed in, see if we can find a matching location
