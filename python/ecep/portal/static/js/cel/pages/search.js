@@ -1,6 +1,6 @@
 
-define(['jquery', 'Leaflet', 'common'],
-    function($, L, common) {
+define(['jquery', 'Leaflet', 'Handlebars', 'common', ],
+    function($, L, Handlebars, common) {
         var map,
             $map = $('#map');
 
@@ -28,7 +28,6 @@ define(['jquery', 'Leaflet', 'common'],
                 { attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>'});
 
             map = new L.map('map').setView(state, 13);
-            debugger;
             map.addLayer(mapboxTiles);
 
         }
