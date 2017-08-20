@@ -264,6 +264,25 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         return mapBounds.contains(this.getLatLng());
     };
 
+    var LocationManager = function($filters) {
+        this.locations = {};
+        this.neighborhoods = {
+            data: {}
+        };
+        this.events = $({});
+        this.filters = $filters;
+    }
+
+    LocationManager.prototype = {
+        $filters: null,
+
+        locationUpdate: function(map, locationLayer) {
+            this.events.trigger('MapManager.locationUpdating');
+
+            v
+        }
+    }
+
 
     /**
      * Creates a new DataManager object
@@ -278,6 +297,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             this.events = $({});
             this.$filters = $filters;
         }
+
+
 
     DataManager.prototype = {
         /**

@@ -24,7 +24,7 @@
               <div class="search-form">
                 <input class="form-control map-search-form" type="text" name="">
               </div>
-              <div class="search-svg">
+              <div id="filters-toggle" class="search-svg">
                 <a class="inline-link-svg svg-gray">{% svg 'icons/scale' %}</a>
               </div>
             </div>
@@ -39,6 +39,117 @@
             </div>
           </div>
           -->
+          <div id="filters" class="search-filters">
+            <div class="filter-header m-3">
+              <h1>{% trans 'Refine your search' %}</h1>
+            </div>
+            <div id="hours" class="filter-category m-3">
+              <div class="category-header py-3">
+                <div class="header-svg svg-white">
+                  {% svg 'icons/clock' %}
+                </div>
+                <div class="header-text">
+                  <h2>{% trans 'Hours' %}</h2>
+                </div>
+              </div>
+              <div class="category-filters d-flex flex-wrap">
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'Full Day' %}</span>
+                  </label>
+                </div>
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'Part Day' %}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div id="duration" class="filter-category m-3">
+              <div class="category-header py-3">
+                <div class="header-svg svg-white">
+                  {% svg 'icons/calendar' %}
+                </div>
+                <div class="header-text">
+                  <h2>{% trans 'Duration' %}</h2>
+                </div>
+              </div>
+              <div class="category-filters d-flex flex-wrap">
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'Full Week' %}</span>
+                  </label>
+                </div>
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'Part Week' %}</span>
+                  </label>
+                </div>
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'School Year' %}</span>
+                  </label>
+                </div>
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'Full Year' %}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div id="program" class="filter-category m-3">
+              <div class="category-header py-3">
+                <div class="header-svg svg-white">
+                  {% svg 'icons/pencil' %}
+                </div>
+                <div class="header-text">
+                  <h2>{% trans 'Program Features' %}</h2>
+                </div>
+              </div>
+              <div class="category-filters d-flex flex-wrap">
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'CPS Based' %}</span>
+                  </label>
+                </div>
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'Community Based' %}</span>
+                  </label>
+                </div>
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'Offers Home Visiting' %}</span>
+                  </label>
+                </div>
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" name="" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'Accepts CCAP' %}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div id="results" class="">
