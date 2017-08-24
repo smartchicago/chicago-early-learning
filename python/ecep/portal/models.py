@@ -1,6 +1,3 @@
-# Copyright (c) 2012, 2013 Azavea, Inc.
-# See LICENSE in the project root for copying permission
-
 from django.contrib.gis.db import models
 from portal.templatetags.portal_extras import nicephone
 from django.template.defaultfilters import title
@@ -79,7 +76,7 @@ class Location(models.Model):
     AVAILABILITY_CHOICES = (
         (HIGH, ugettext_lazy('Slots Available')),
         (MEDIUM, ugettext_lazy('Limited Availability')),
-    )    
+    )
 
     copa_key = models.IntegerField('COPA Key', default=0, blank=True)
     ecm_key = models.IntegerField('ECM Key', default=0, blank=True)
@@ -239,6 +236,60 @@ class Location(models.Model):
             return ''
         else:
             return 'https://cys.mycopa.com/familyPortal/welcome.epl'
+
+    def get_map_location_data(self):
+        location = {
+            'id': self.id,
+            'name': self.site_name,
+            'address': self.address,
+            'longitude': self.geom[0],
+            'latitude': self.geom[1],
+            'infants': self.is_age_lt_3,
+            'preschool': self.is_age_gt_3,
+            'full_day': self.is_full_day,
+            'part_day': self.is_part_day,
+            'full_week': self.is_full_week,
+            'part_week': self.is_full_year,
+            'full_year': self.is_school_year,
+            'school_year': self.is_part_week,
+            'cps': self.is_cps_based,
+            'community': self.is_community_based,
+            'home_visiting': self.is_home_visiting,
+            'ccap': self.accept_ccap,
+            'head_start': self.is_hs,
+            'early_head_start': self.is_ehs,
+            'accreditation': self.accred,
+        }
+
+        if self.availability == self.HIGH:
+            availability = 'high'
+        elif self.availability == self.MEDIUM:
+            availability = 'medium'
+        else:
+            availability = 'neutral'
+
+        location['availability'] = availability
+
+        return location
+
+    @classmethod
+    def get_location_display(self):
+        display = {
+            'full_day': _('Full Day'),
+            'part_day': _('Part Day'),
+            'full_week': _('Full Week'),
+            'part_week': _('Part Week'),
+            'full_year': _('Full Year'),
+            'school_year': _('School Year'),
+            'cps': _('CPS Based'),
+            'community': _('Community Based'),
+            'home_visiting': _('Home Visiting'),
+            'ccap': _('Accepts CCAP'),
+            'head_start': _('Head Start'),
+            'early_head_start': _('Early Head Start'),
+            'accreditation': _('Accreditation'),
+        }
+        return display
 
     def get_context_dict(self, short=False):
         """Gets a context dictionary for rendering this object in templates

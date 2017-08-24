@@ -1,6 +1,3 @@
-# Copyright (c) 2012, 2013 Azavea, Inc.
-# See LICENSE in the project root for copying permission
-
 import logging
 import hashlib
 import json
@@ -445,16 +442,11 @@ def api_map_json(request):
     """
     API endpoint for returning full JSON location data for search map.
     """
-    locations = Location.objects.all().values('site_name', 'id', 'geom')
-    location_list = list(locations)
+    locations = Location.objects.all()
+    location_list = [l.get_map_location_data() for l in locations]
+    location_description = Location.get_location_display()
 
-    for location in location_list:
-        geom = location.pop('geom')
-        location['name'] = location.pop('site_name')
-        location['longitude'] = geom[0]
-        location['latitude'] = geom[1]
-
-    return JsonResponse({ "locations": location_list })
+    return JsonResponse({ "locations": location_list, "display": location_description })
     
 
 

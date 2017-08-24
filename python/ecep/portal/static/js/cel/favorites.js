@@ -1,11 +1,3 @@
-/********************************************************
- * Copyright (c) 2013 Azavea, Inc.
- * See LICENSE in the project root for copying permission
- * Module for working with starred locations
- *  add/remove locations and add
- *      listeners for sharing/clearing/toggling favorites
- *********************************************************/
-
 define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcookie, common) {
 
     'use strict';

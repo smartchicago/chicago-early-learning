@@ -3,16 +3,16 @@
  * See http://requirejs.org/docs/api.html for details
  */
 
-define(['jquery', 'Leaflet', '../lib/response', 'Handlebars',
+define(['jquery', 'Leaflet', 'Handlebars',
         'jquery-ui', 'jquery-cookie', CEL.serverVars.gmapRequire, 'Clipboard'],
-function($, L, Response, Handlebars) {
+function($, L, Handlebars) {
     'use strict';
 
     var breakpoints = {
-        mobile: 420,
-        tablet: 767,
-        desktop: 1024,
-		desktopalt: 1140
+        small: 576,
+        medium: 768,
+        large: 992,
+		xlarge: 1200
     };
 
     var isTouchscreen = ('ontouchstart' in document.documentElement);
@@ -115,7 +115,8 @@ function($, L, Response, Handlebars) {
             case 'location-json':
                 return '/en/api/location/json/'
             case 'map-json':
-                return '/en/api/map/json/'
+                url = '/' + ($.cookie('django_language') || CEL.serverVars.default_language) + '/api/map/json/';
+                return url
             case 'favorites':
                 url = '/favorites/';
                 if (opts && opts.locations) {
@@ -409,17 +410,6 @@ function($, L, Response, Handlebars) {
         // END AUTOCOMPLETE
         //
     });
-
-    // Setup Response stuff
-    var breakpointsArray = [
-        0,
-        breakpoints.mobile,
-        breakpoints.tablet,
-        breakpoints.desktop,
-				breakpoints.desktopalt
-    ];
-    Response.create({ mode: 'markup', prefix: 'r', breakpoints: breakpointsArray });
-    Response.create({ mode: 'src',  prefix: 'src', breakpoints: breakpointsArray });
 
     // Handlebars helpers
 

@@ -1,0 +1,64 @@
+{{#each this}}
+<!--  Location {{ id }}  --> 
+<div id="location-{{ id }}" class="location-result p-3">
+  
+  <div class="location-info d-flex">
+    <div class="name">
+      <h1>{{ name }}</h1>
+    </div>
+    <div class="distance">
+      <p class="gray">{{ rounded_distance }} mi</p>
+    </div>
+  </div>
+  
+  <div class="location-address d-flex">
+    <div class="address">
+      <p class="">{{ address }}</p>
+    </div>
+  </div>
+
+  <div class="location-features d-flex flex-wrap">
+    
+    <div class="feature features-type">
+      <div class="feature-svg svg-gray">
+      </div>
+      <div class="feature-description">
+        <p class="gray">CPS Based</p>
+      </div>
+    </div>
+    
+    <div class="feature features-day">
+      <div class="feature-svg svg-gray">
+      </div>
+      <div class="feature-description">
+        <p class="gray">Full Day, Part Day</p>
+      </div>
+    </div>
+    
+    <div class="feature features-year">
+      <div class="feature-svg svg-gray">
+      </div>
+      <div class="feature-description">
+        <p class="gray">Full Year, School Year</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="location-actions">
+    <div class="more-info">
+      <a href="/location/{{ id }}/" class="btn btn-orange btn-block">More Info</a>
+    </div>
+    <div class="secondary-actions d-flex flex-wrap">
+      <div class="secondary compare">
+        <a href="/location/{{ id }}/" class="btn btn-gray btn-block">Compare</a>
+      </div>
+      <div class="secondary view-map hidden-md-up">
+        <a href="/location/{{ id }}/" class="btn btn-gray btn-block">View Map</a>
+      </div>
+      <div class="secondary hidden-sm-down">
+        <a href="/location/{{ id }}/" class="btn btn-gray btn-block">Apply</a>
+      </div>
+    </div>
+  </div>
+</div>
+{{/each}}

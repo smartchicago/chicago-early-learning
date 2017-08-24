@@ -1,5 +1,3 @@
-
-
 define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html', 'text!templates/locationList.html',
         'topojson', 'favorites', 'location', 'common', CEL.serverVars.gmapRequire,
         'leaflet-providers', 'history', 'styling'],

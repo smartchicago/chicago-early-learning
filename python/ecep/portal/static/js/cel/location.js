@@ -1,10 +1,3 @@
-/********************************************************
- * Copyright (c) 2013 Azavea, Inc.
- * See LICENSE in the project root for copying permission
- * Location with definition of location objects and
- * data loader object
- *********************************************************/
-
 define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     function($, L, Handlebars, favorites, topojson, common) {
 
@@ -273,14 +266,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         this.filters = $filters;
     }
 
-    LocationManager.prototype = {
-        $filters: null,
-
-        locationUpdate: function(map, locationLayer) {
-            this.events.trigger('MapManager.locationUpdating');
-        }
+    Location.prototype = {
+        
     }
-
 
     /**
      * Creates a new DataManager object

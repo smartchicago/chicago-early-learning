@@ -41,13 +41,6 @@ requirejs.config({
             deps: ['Leaflet'],
             exports: 'L'
         },
-        '../lib/response': {
-            deps: ['jquery'],
-            exports: 'Response',
-            init: function ($) {
-                return this.Response.noConflict();
-            }
-        },
         Handlebars: {
             exports: 'Handlebars'
         },
