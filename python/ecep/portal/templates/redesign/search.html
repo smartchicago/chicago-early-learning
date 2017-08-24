@@ -22,7 +22,7 @@
                 <a class="inline-link-svg svg-gray">{% svg 'icons/search' %}</a>
               </div>
               <div class="search-form">
-                <input class="form-control map-search-form" type="text" name="">
+                <input class="form-control map-search-form autocomplete-searchbox" type="text" name="">
               </div>
               <div id="filters-toggle" class="search-svg">
                 <a class="inline-link-svg svg-gray">{% svg 'icons/scale' %}</a>
@@ -40,8 +40,10 @@
           </div>
           -->
           <div id="filters" class="search-filters">
-            <div class="filter-header m-3">
-              <h1>{% trans 'Refine your search' %}</h1>
+            <div class="d-flex m-3">
+              <div class="filter-header">
+                <h2>{% trans 'Refine your search' %}</h2>
+              </div>
             </div>
             <div id="hours" class="filter-category m-3">
               <div class="category-header py-3">
@@ -564,7 +566,14 @@
       </div>
 
       <div id="search-map" class="col-md-8 hidden-sm-down h-100">
-        <div id="map"></div>
+        <div id="map"
+        {% if request.GET.address %} data-address="{{ request.GET.address }}"{% endif %}
+        {% if request.GET.lat %} data-latitude="{{ request.GET.lat }}"{% endif %}
+        {% if request.GET.lng %} data-longitude="{{ request.GET.lng }}"{% endif %}
+        {% if request.GET.zoom %} data-zoom="{{ request.GET.zoom }}"{% endif %}
+        {% if request.GET.neighborhood %} data-neighborhood-id="{{ request.GET.neighborhood }}"{% endif %}
+        {% if request.GET.location %} data-location-id="{{ request.GET.location }}"{% endif %}
+        ></div>
       </div>
     </div>
   </div>

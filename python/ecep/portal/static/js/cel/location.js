@@ -278,8 +278,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
 
         locationUpdate: function(map, locationLayer) {
             this.events.trigger('MapManager.locationUpdating');
-
-            v
         }
     }
 

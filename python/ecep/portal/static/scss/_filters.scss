@@ -1,5 +1,7 @@
 .search-filters {
   display: none;
+  $h1-font-size: 1.5rem;
+  $h1-line-height: 2rem;
   $h2-font-size: 1.25rem;
   $h2-line-height: 1.5rem;
   $p-font-size: 1rem;
@@ -13,8 +15,8 @@
   color: $white;
 
   h1 {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: $h1-line-height;
+    line-height: $h1-line-height;
     font-weight: 400;
     margin-bottom: 0;
   }

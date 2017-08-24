@@ -104,33 +104,8 @@ function($, L, Response, Handlebars) {
             case 'neighborhoods-geojson':
                 return '/static/js/neighborhoods.json';
             case 'browse':
-                if (!opts) {
-                    return '/search/';
-                }
-                switch (opts.type) {
-                    case 'latlng':
-                        url = '/search/?lat=' + opts.lat + '&lng=' + opts.lng;
-                        if (opts.zoom) {
-                            url += '&zoom=' + opts.zoom;
-                        }
-                        return url;
-                    case 'geo-latlng':
-                        url = '/search/?geolat=' + opts.lat + '&geolng=' + opts.lng;
-                        if (opts.label) {
-                            url += '&label=' + opts.label;
-                        }
-                        if (opts.zoom) {
-                            url += '&zoom=' + opts.zoom;
-                        }
-                        return url;
-                    case 'neighborhood':
-                        return '/search/?neighborhood=' + opts.neighborhood;
-                    case 'location':
-                        return '/search/?location=' + opts.location;
-                    default:
-                        break;
-                }
-                break;
+                var param_string = $.param(opts)
+                return '/redesign/search/?' + param_string
             case 'single-location':
                 url = '/location/' + opts.location + '/';
                 if (opts.slug) {
@@ -139,6 +114,8 @@ function($, L, Response, Handlebars) {
                 return url;
             case 'location-json':
                 return '/en/api/location/json/'
+            case 'map-json':
+                return '/en/api/map/json/'
             case 'favorites':
                 url = '/favorites/';
                 if (opts && opts.locations) {
@@ -250,10 +227,11 @@ function($, L, Response, Handlebars) {
                 getAutocompletePlaces(request, response);
             },
             select: function(event, ui) {
+                var label = ui.item.label
                 var place_id = ui.item.place_id;
                 var category = ui.item.category;
                 var types = ui.item.types;
-                selectPlace(place_id, category, types);
+                selectPlace(label, place_id, category, types);
             },
             focus: function(event, ui) {
                 var selection = ui.item
@@ -286,7 +264,7 @@ function($, L, Response, Handlebars) {
                 } else {
                     cleanedResults = predictions.map(function(obj) {
                         var rObj = {};
-                        rObj['label'] = obj.description.replace(", United States", "");
+                        rObj['label'] = obj.description.replace(", Chicago, IL, United States", "");
                         rObj['place_id'] = obj.place_id;
                         rObj['category'] = 'Addresses';
                         rObj['types'] = obj.types;
@@ -317,8 +295,7 @@ function($, L, Response, Handlebars) {
             });
         }
 
-        function selectPlace(place_id, category, types) {
-
+        function selectPlace(label, place_id, category, types) {
             switch (category) {
                 case 'None':
                     $('.error-message').css('visibility', 'visible');
@@ -337,7 +314,7 @@ function($, L, Response, Handlebars) {
                         if (isPostalCode != -1 || isNeighborhood != -1) {
                             zoom = 14;
                         }
-                        redirectToMap(lat, lng, zoom);
+                        redirectToMap(label, lat, lng, zoom);
                     });
                     break;
                 case 'Locations':
@@ -356,15 +333,15 @@ function($, L, Response, Handlebars) {
         }
 
         // Specific Address
-        function redirectToMap(lat, lng, zoom) {
-            window.location.href = getUrl(
-                'browse',
-                {
-                    type: 'geo-latlng',
-                    lat: lat,
-                    lng: lng,
-                    zoom: zoom
-                }
+        function redirectToMap(label, lat, lng, zoom) {
+            var opts = {
+                type: 'geo-latlng',
+                address: label,
+                lat: lat,
+                lng: lng,
+                zoom: zoom
+            }
+            window.location.href = getUrl('browse', opts
             );
             return;
         }
@@ -409,16 +386,18 @@ function($, L, Response, Handlebars) {
         // Button Press
         $('.autocomplete-submit').on('click', function(e) {
             e.preventDefault();
+            var label = $autocomplete.data().label;
             var place_id = $autocomplete.data().place_id;
             var category = $autocomplete.data().category;
             var types = $autocomplete.data().types;
-            selectPlace(place_id, category, types);
+            selectPlace(label, place_id, category, types);
             return false;
         });
 
         // Enter Press
         $autocomplete.keypress(function (e) {
             if (e.keyCode == 13) {
+                var label = $autocomplete.data().label;
                 var place_id = $autocomplete.data().place_id;
                 var category = $autocomplete.data().category;
                 var types = $autocomplete.data().types;
@@ -544,39 +523,6 @@ function($, L, Response, Handlebars) {
             window.location.href = getUrl('starred');
             return false;
         });
-    });
-
-    // Set up social sharing behavior
-    // The options argument must be an object that contains both a url and a title,
-    // which are used to construct the appropriate sharing links.
-    $('#share-modal').on('init-modal', function(e, options) {
-        // a lot of these urls won't work when passing 'localhost' urls, but once we
-        // move to a publically accessible url, they will work just fine
-        var templates = {
-                mail: 'mailto:?body={{ url }}&subject={{ title }}',
-                facebook: 'https://facebook.com/sharer.php?s=100&p[url]={{ url }}&p[title]={{ title }}',
-                twitter: 'https://twitter.com/share?text={{ title }}%20{{ url }}',
-
-                // looks like google recently broke their permalink that allows adding text:
-                // 'https://m.google.com/app/plus/x/?v=compose&content={{ title }}%20{{ url }}'
-                // until they fix it, the following will work, but will just share the url
-                gplus: 'https://plus.google.com/share?url={{ url }}'
-            },
-            $modal = $(this),
-            $text = $('#social-text');
-
-        // fill the input box in with the url
-        $text.attr('href', options.url).text(options.url);
-
-        // a url is generated for each template defined in 'templates'.
-        // to add a new service, create a link with the id 'social-[service]',
-        // and add a template to the 'templates' object.
-        $.each(templates, function (service, template) {
-            $('#social-' + service).attr('href', Handlebars.compile(template)(options));
-        });
-
-        // display the modal
-        $modal.modal('show');
     });
 
     return {

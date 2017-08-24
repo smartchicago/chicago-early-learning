@@ -106,6 +106,7 @@ urlpatterns += i18n_patterns(
     url(r'^api/location/$', 'portal.views.location_api'),
     url(r'^api/location/json/$', 'portal.views.location_json_api'),
     url(r'^api/starred-location/(?P<location_ids>[0-9,]*)/$', 'portal.views.starred_location_api'),
+    url(r'^api/map/json/$', 'portal.views.api_map_json'),
 
     # Neighborhood API
     url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),

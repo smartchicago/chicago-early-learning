@@ -11,7 +11,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views.decorators.cache import cache_control, cache_page
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import View, TemplateView, DetailView
 from django.utils.translation import check_for_language
 from django.db.models import Count, Q
 from django.contrib.gis.geos import Polygon
@@ -78,8 +78,14 @@ class Programs(TemplateView):
 class Resources(TemplateView):
     template_name = "redesign/resources.html"
 
-class Search(TemplateView):
+
+class Search(View):
     template_name = "redesign/search.html"
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+
+
 
 def browse(request):
     # If a search query was passed in, see if we can find a matching location
@@ -423,7 +429,6 @@ def location_json_api(request):
     API Endpoint for returning a full JSON list of names and IDs of schools and locations
     for use in the homepage search bar autocomplete dropdown.
     """
-    time.sleep(15)
     locs = Location.objects.all().values('site_name', 'id').order_by('site_name')
     loc_list = list(locs)
 
@@ -435,9 +440,22 @@ def location_json_api(request):
     return JsonResponse(loc_list, safe=False)
 
 
-@cache_page(60*60*24)
-def map_location_json_api(request):
-    pass
+# @cache_page(60*60*24)
+def api_map_json(request):
+    """
+    API endpoint for returning full JSON location data for search map.
+    """
+    locations = Location.objects.all().values('site_name', 'id', 'geom')
+    location_list = list(locations)
+
+    for location in location_list:
+        geom = location.pop('geom')
+        location['name'] = location.pop('site_name')
+        location['longitude'] = geom[0]
+        location['latitude'] = geom[1]
+
+    return JsonResponse({ "locations": location_list })
+    
 
 
 def location_position(request, location_id):
