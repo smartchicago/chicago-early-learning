@@ -6,6 +6,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $filters = $('#filters'),
             $filters_inputs = $filters.find('input:checkbox'),
             $filters_toggle = $('#filters-toggle'),
+            $filters_clear = $('#filters-clear'),
             $results_list = $('.results-list'),
             $locations_more = $('#locations-more'),
             $search_input = $('#search-input'),
@@ -88,11 +89,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         var listLocations = function(locations) {
             var sorted_locations = sortLocations(locations),
                 html = searchResultHTML,
-                first_ten = sorted_locations.slice(index, index+10),
+                first_ten = sorted_locations.slice(list_index, list_index+10),
                 template = Handlebars.compile(html),
                 rendered_locations = [];
 
-            index+=10;
+            list_index+=10;
             $results_list.append(template(first_ten));
         }
 
@@ -104,6 +105,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 location["distance"] = calculateHaversine(location.latitude, location.longitude, data_latitude, data_longitude);
                 location["rounded_distance"] = Math.round(location["distance"] * 10)/10;
                 location["labels"] = display_labels;
+                location["copa_url"] = common.getUrl('copa-apply', {ids: [location["copa_key"]]});
             });
             return locations.sort(function(a, b) { return a.distance - b.distance });
         }
@@ -121,9 +123,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         /* -- Initializer -- */
         return {
             init: function() {
-                index = 0;
+                list_index = 0;
                 $search_input.attr('placeholder', $map.data('address'));
-                console.log($filters);
 
                 /* -- Listeners -- */
                 $filters_toggle.on('click', function() {
@@ -138,7 +139,17 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     listLocations(locations);
                 });
 
-                $filters.on('change', function() {});
+                $filters_inputs.on('click', function() {
+                    list_index = 0;
+                    if ( width >= common.breakpoints.medium ) {
+                        drawMap(locations);
+                    }
+                    listLocations(locations)
+                });
+
+                $filters_clear.on('click', function() {
+
+                });
 
                 /* -- Fetch locationcs, Draw Map -- */
                 $.getJSON(common.getUrl('map-json'), function(response) {

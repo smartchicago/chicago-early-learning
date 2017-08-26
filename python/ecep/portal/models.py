@@ -240,6 +240,7 @@ class Location(models.Model):
     def get_map_location_data(self):
         location = {
             'id': self.id,
+            'copa_key': self.copa_key,
             'name': self.site_name,
             'address': self.address,
             'longitude': self.geom[0],

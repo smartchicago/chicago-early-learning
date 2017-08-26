@@ -107,9 +107,22 @@
           &:nth-child(3) {
             padding-left: 0.25em;
           }
+        }
 
-          @media (max-width: 300px),
-          (min-width: $break-medium) and (max-width: $break-large) {
+        @media (min-width:  $break-medium) {
+          .secondary-full {
+            flex: 1 1 100%;
+            &:first-child {
+              padding-right: 0em;
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        @media (max-width: 300px),
+        (min-width: $break-medium) and (max-width: $break-large) {
+          .secondary {
+
             flex: 1 1 100%;
 
             &:first-child {
@@ -132,8 +145,6 @@
           }
         }
       }
-
-
     }
   }
 }
