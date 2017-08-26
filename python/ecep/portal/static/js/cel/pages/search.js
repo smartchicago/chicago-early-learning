@@ -3,10 +3,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
     function($, L, Handlebars, searchResultHTML, common, favorites) {
         var map,
             $map = $('#map'),
-            $filters = $('#filters'),
+            $filters = $('#filters').find('input:checkbox'),
             $filters_toggle = $('#filters-toggle'),
             $results_list = $('.results-list'),
             $locations_more = $('#locations-more'),
+            $search_input = $('#search-input'),
             accessToken = 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg',
             mapboxURL,
             mapboxTiles,
@@ -120,6 +121,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         return {
             init: function() {
                 index = 0;
+                $search_input.attr('placeholder', $map.data('address'));
+                console.log($filters);
 
                 /* -- Listeners -- */
                 $filters_toggle.on('click', function() {
@@ -133,6 +136,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 $locations_more.on('click', function() {
                     listLocations(locations);
                 });
+
+                $filters.on('change', function() {});
 
                 /* -- Fetch locationcs, Draw Map -- */
                 $.getJSON(common.getUrl('map-json'), function(response) {

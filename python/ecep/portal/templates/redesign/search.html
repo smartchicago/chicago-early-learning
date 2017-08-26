@@ -22,7 +22,7 @@
                 <a class="inline-link-svg svg-gray">{% svg 'icons/search' %}</a>
               </div>
               <div class="search-form">
-                <input class="form-control map-search-form autocomplete-searchbox" type="text" name="">
+                <input id="search-input" class="form-control map-search-form autocomplete-searchbox" type="text" name="">
               </div>
               <div id="filters-toggle" class="search-svg">
                 <a class="inline-link-svg svg-gray">{% svg 'icons/scale' %}</a>
@@ -47,14 +47,14 @@
               <div class="category-filters d-flex flex-wrap">
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="" class="custom-control-input">
+                    <input type="checkbox" id="full_day" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Full Day' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="" class="custom-control-input">
+                    <input type="checkbox" id="part_day" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Part Day' %}</span>
                   </label>
@@ -73,28 +73,28 @@
               <div class="category-filters d-flex flex-wrap">
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="" class="custom-control-input">
+                    <input type="checkbox" id="full_week" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Full Week' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="" class="custom-control-input">
+                    <input type="checkbox" id="part_week" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Part Week' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="" class="custom-control-input">
+                    <input type="checkbox" id="school_year" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'School Year' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="" class="custom-control-input">
+                    <input type="checkbox" id="full_year" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Full Year' %}</span>
                   </label>
@@ -113,30 +113,44 @@
               <div class="category-filters d-flex flex-wrap">
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="" class="custom-control-input">
+                    <input type="checkbox" id="cps" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'CPS Based' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="" class="custom-control-input">
+                    <input type="checkbox" id="community" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Community Based' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="" class="custom-control-input">
+                    <input type="checkbox" id="home_visiting" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Offers Home Visiting' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="" class="custom-control-input">
+                    <input type="checkbox" id="ccap" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Accepts CCAP' %}</span>
+                  </label>
+                </div>
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" id="ccap" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'Head Start' %}</span>
+                  </label>
+                </div>
+                <div class="filter-input">
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" id="ccap" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{% trans 'Early Head Start' %}</span>
                   </label>
                 </div>
               </div>
