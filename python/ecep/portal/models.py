@@ -288,6 +288,10 @@ class Location(models.Model):
             'head_start': _('Head Start'),
             'early_head_start': _('Early Head Start'),
             'accreditation': _('Accreditation'),
+            'more_info': _('More Info'),
+            'compare': _('Compare'),
+            'view_map': _('Vew Map'),
+            'apply': _('Apply'),
         }
         return display
 
