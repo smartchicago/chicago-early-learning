@@ -4,8 +4,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         var map,
             $map = $('#map'),
             $filters = $('#filters'),
-            $filtersToggle = $('#filters-toggle'),
+            $filters_toggle = $('#filters-toggle'),
             $results_list = $('.results-list'),
+            $locations_more = $('#locations-more'),
             accessToken = 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg',
             mapboxURL,
             mapboxTiles,
@@ -85,13 +86,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         var listLocations = function(locations) {
             var sorted_locations = sortLocations(locations),
                 html = searchResultHTML,
-                first_ten = sorted_locations.slice(0,10),
+                first_ten = sorted_locations.slice(index, index+10),
                 template = Handlebars.compile(html),
                 rendered_locations = [];
 
-            console.log(first_ten);
-            console.log(display_labels);
-            $results_list.empty().append(template(first_ten));
+            index+=10;
+            $results_list.append(template(first_ten));
         }
 
         var sortLocations = function(locations) {
@@ -119,17 +119,20 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         /* -- Initializer -- */
         return {
             init: function() {
+                index = 0;
 
                 /* -- Listeners -- */
-                $filtersToggle.on('click', function() {
+                $filters_toggle.on('click', function() {
                     var $this = $(this),
                         $filterLink = $this.find('a');
                     $filterLink.toggleClass('svg-gray');
                     $filterLink.toggleClass('svg-orange');
                     $filters.toggle();
-                    console.log(locations);
                 });
 
+                $locations_more.on('click', function() {
+                    listLocations(locations);
+                });
 
                 /* -- Fetch locationcs, Draw Map -- */
                 $.getJSON(common.getUrl('map-json'), function(response) {
@@ -138,9 +141,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
                     var width = $(document).width();
                     if ( width >= common.breakpoints.medium ) {
-                        drawMap(response.locations);
+                        drawMap(locations);
                     }
-                    listLocations(response.locations);
+                    listLocations(locations);
                 });
             }
         }
