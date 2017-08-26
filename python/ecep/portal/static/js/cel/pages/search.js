@@ -7,6 +7,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $filters_inputs = $filters.find('input:checkbox'),
             $filters_toggle = $('#filters-toggle'),
             $filters_clear = $('#filters-clear'),
+            $results_wrapper = $('#results'),
             $results_list = $('.results-list'),
             $locations_more = $('#locations-more'),
             $search_input = $('#search-input'),
@@ -86,28 +87,55 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             map.addLayer(locationLayer);
         }
 
+        var updateMap = function(locations) {
+
+        }
+
         var listLocations = function(locations) {
-            var sorted_locations = sortLocations(locations),
+            var filtered_locations = filterLocations(locations),
+                sorted_locations = sortLocations(filtered_locations),
                 html = searchResultHTML,
                 first_ten = sorted_locations.slice(list_index, list_index+10),
-                template = Handlebars.compile(html),
-                rendered_locations = [];
+                template = Handlebars.compile(html);
 
             list_index+=10;
             $results_list.append(template(first_ten));
         }
 
         var sortLocations = function(locations) {
-            var data_latitude = $map.data('latitude'),
-                data_longitude = $map.data('longitude');
-
-            locations = $.each(locations, function(i, location) {
-                location["distance"] = calculateHaversine(location.latitude, location.longitude, data_latitude, data_longitude);
-                location["rounded_distance"] = Math.round(location["distance"] * 10)/10;
-                location["labels"] = display_labels;
-                location["copa_url"] = common.getUrl('copa-apply', {ids: [location["copa_key"]]});
-            });
             return locations.sort(function(a, b) { return a.distance - b.distance });
+        }
+
+        var currentFilters = function() {
+            var inputs = $filters_inputs.filter(":checked");
+            var ids = $.map(inputs, function(element) {
+                return element.id;
+            });
+            return ids;
+        }
+
+        var clearFilters = function() {
+            $filters_inputs.prop('checked', false);
+        }
+
+        var filterLocations = function(location_list) {
+            function allTrue(element, index, array) {
+                return element == true;
+            }
+
+            var filter_ids = currentFilters();
+            var filtered_locations = location_list.filter(function(current_location) {
+                var filter_bools = $.map(filter_ids, function(f) { 
+                    // Protect against nulls
+                    if (current_location[f]) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+                return filter_bools.every(allTrue);
+            });
+            return filtered_locations;
         }
 
         var calculateHaversine = function(latitude_to, longitude_to, latitude_from, longitude_from) {
@@ -124,9 +152,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         return {
             init: function() {
                 list_index = 0;
-                $search_input.attr('placeholder', $map.data('address'));
+                $search_input.attr('placeholder', ($map.data('address') || 'Enter an address'));
 
                 /* -- Listeners -- */
+                /* Filter Pane Toggle */ 
                 $filters_toggle.on('click', function() {
                     var $this = $(this),
                         $filterLink = $this.find('a');
@@ -135,26 +164,47 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     $filters.toggle();
                 });
 
-                $locations_more.on('click', function() {
+                /* Add a filter */
+                $filters_inputs.on('click', function() {
+                    $filters.trigger('filters-update')
+                });
+
+                /* Remove all filters */
+                $filters_clear.on('click', function() {
+                    clearFilters();
+                    $filters.trigger('filters-update')
+                });
+
+                /* Filters Update event */
+                $filters.on('filters-update', function() {
+                    $results_wrapper.animate({
+                        scrollTop: 0,
+                    }, 100);
+                    
+                    list_index = 0;
+                    $results_list.empty();
                     listLocations(locations);
                 });
 
-                $filters_inputs.on('click', function() {
-                    list_index = 0;
-                    if ( width >= common.breakpoints.medium ) {
-                        drawMap(locations);
-                    }
-                    listLocations(locations)
-                });
-
-                $filters_clear.on('click', function() {
-
+                /* Filter Pane Toggle */
+                $locations_more.on('click', function() {
+                    listLocations(locations);
                 });
 
                 /* -- Fetch locationcs, Draw Map -- */
                 $.getJSON(common.getUrl('map-json'), function(response) {
                     locations = response.locations;
                     display_labels = response.display;
+
+                    locations = $.each(locations, function(i, location) {
+                        var data_latitude = $map.data('latitude'),
+                            data_longitude = $map.data('longitude');
+
+                        location["distance"] = calculateHaversine(location.latitude, location.longitude, data_latitude, data_longitude);
+                        location["rounded_distance"] = Math.round(location["distance"] * 10)/10;
+                        location["labels"] = display_labels;
+                        location["copa_url"] = common.getUrl('copa-apply', {ids: [location["copa_key"]]});
+                    });
 
                     var width = $(document).width();
                     if ( width >= common.breakpoints.medium ) {

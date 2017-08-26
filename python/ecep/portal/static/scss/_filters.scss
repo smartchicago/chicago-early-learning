@@ -34,8 +34,11 @@
     margin-bottom: 0;
   }
 
+  .search-svg,
   .filter-clear {
-    
+    cursor: pointer !important;
+    pointer-events: auto;
+    z-index: 500;
   }
 
   .category-header {
