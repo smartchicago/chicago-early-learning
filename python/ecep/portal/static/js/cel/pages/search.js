@@ -86,9 +86,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             var sorted_locations = sortLocations(locations),
                 html = searchResultHTML,
                 first_ten = sorted_locations.slice(0,10),
-                template = Handlebars.compile(html);
+                template = Handlebars.compile(html),
+                rendered_locations = [];
 
             console.log(first_ten);
+            console.log(display_labels);
             $results_list.empty().append(template(first_ten));
         }
 
@@ -99,6 +101,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             locations = $.each(locations, function(i, location) {
                 location["distance"] = calculateHaversine(location.latitude, location.longitude, data_latitude, data_longitude);
                 location["rounded_distance"] = Math.round(location["distance"] * 10)/10;
+                location["labels"] = display_labels;
             });
             return locations.sort(function(a, b) { return a.distance - b.distance });
         }
