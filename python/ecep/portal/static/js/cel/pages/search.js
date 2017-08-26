@@ -3,7 +3,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
     function($, L, Handlebars, searchResultHTML, common, favorites) {
         var map,
             $map = $('#map'),
-            $filters = $('#filters').find('input:checkbox'),
+            $filters = $('#filters'),
+            $filters_inputs = $filters.find('input:checkbox'),
             $filters_toggle = $('#filters-toggle'),
             $results_list = $('.results-list'),
             $locations_more = $('#locations-more'),
