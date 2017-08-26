@@ -88,7 +88,18 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         }
 
         var updateMap = function(locations) {
+            var filtered_locations = filterLocations(locations);
+            locationMarkers = [];
 
+            $.each(filtered_locations, function(i, location) {
+                var location_icon = new L.icon(getMarkerIcon(location));
+                var location = L.marker([location.latitude, location.longitude], {icon: location_icon});
+                locationMarkers.push(location);
+            });
+            var filteredLayer = new L.layerGroup(locationMarkers);
+            map.removeLayer(locationLayer);
+            map.addLayer(filteredLayer);
+            locationLayer = filteredLayer;
         }
 
         var listLocations = function(locations) {
@@ -184,6 +195,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     list_index = 0;
                     $results_list.empty();
                     listLocations(locations);
+                    updateMap(locations);
                 });
 
                 /* Filter Pane Toggle */
