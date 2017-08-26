@@ -34,16 +34,20 @@
     margin-bottom: 0;
   }
 
+  .filter-clear {
+    
+  }
+
   .category-header {
 
     .header-svg {
       display: inline-block;
-      height: $h2-line-height;
-      width: $h2-line-height;
+      height: $p-line-height;
+      width: $p-line-height;
 
       svg {
-        height: $h2-line-height;
-        width: $h2-line-height;
+        height: $p-line-height;
+        width: $p-line-height;
       }
     }
 

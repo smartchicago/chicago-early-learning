@@ -31,17 +31,20 @@
           </form>
           <div id="filters" class="search-filters">
             <div class="d-flex m-3">
-              <div class="filter-header">
-                <h2>{% trans 'Refine your search' %}</h2>
+              <div class="filter-header mr-auto align-middle d-inline-flex align-items-center">
+                <h2 class="">{% trans 'Refine your search' %}</h2>
+              </div>
+              <div class="filter-clear">
+                <a class="btn btn-clear" id="filters-clear">{% trans 'Clear' %}</a>
               </div>
             </div>
-            <div id="hours" class="filter-category m-3">
+            <div id="hours" class="filter-category mx-3 my-2">
               <div class="category-header py-3">
                 <div class="header-svg svg-white">
                   {% svg 'icons/clock' %}
                 </div>
                 <div class="header-text">
-                  <h2>{% trans 'Hours' %}</h2>
+                  <p>{% trans 'Hours' %}</p>
                 </div>
               </div>
               <div class="category-filters d-flex flex-wrap">
@@ -61,13 +64,13 @@
                 </div>
               </div>
             </div>
-            <div id="duration" class="filter-category m-3">
+            <div id="duration" class="filter-category m-2 mx-3">
               <div class="category-header py-3">
                 <div class="header-svg svg-white">
                   {% svg 'icons/calendar' %}
                 </div>
                 <div class="header-text">
-                  <h2>{% trans 'Duration' %}</h2>
+                  <p>{% trans 'Duration' %}</p>
                 </div>
               </div>
               <div class="category-filters d-flex flex-wrap">
@@ -101,13 +104,13 @@
                 </div>
               </div>
             </div>
-            <div id="program" class="filter-category m-3">
+            <div id="program" class="filter-category m-2 mx-3">
               <div class="category-header py-3">
                 <div class="header-svg svg-white">
                   {% svg 'icons/pencil' %}
                 </div>
                 <div class="header-text">
-                  <h2>{% trans 'Program Features' %}</h2>
+                  <p>{% trans 'Program Features' %}</p>
                 </div>
               </div>
               <div class="category-filters d-flex flex-wrap">
@@ -115,28 +118,28 @@
                   <label class="custom-control custom-checkbox">
                     <input type="checkbox" id="cps" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">{% trans 'CPS Based' %}</span>
+                    <span class="custom-control-description">{% trans 'CPS' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
                     <input type="checkbox" id="community" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">{% trans 'Community Based' %}</span>
+                    <span class="custom-control-description">{% trans 'Community' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
                     <input type="checkbox" id="home_visiting" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">{% trans 'Offers Home Visiting' %}</span>
+                    <span class="custom-control-description">{% trans 'Home Visiting' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
                     <input type="checkbox" id="ccap" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">{% trans 'Accepts CCAP' %}</span>
+                    <span class="custom-control-description">{% trans 'CCAP' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
