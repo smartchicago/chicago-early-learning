@@ -36,13 +36,8 @@
           flex-grow: 1
         }
 
-        .compare-banner {
-          border-top: 1px solid $light-gray;
-          background-color: $blue;
-
-          .compare-link {
-            flex-grow: 1;
-          }
+        #compare {
+          display: none;
         }
       }
 

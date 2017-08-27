@@ -11,6 +11,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $results_list = $('.results-list'),
             $locations_more = $('#locations-more'),
             $search_input = $('#search-input'),
+            $compare = $('#compare'),
+            $compare_buttons = $('.compare-btn'),
+            $compare_count = $('#compare-count'),
+            $compare_site = $('#compare-site'),
+            $compare_sites = $('#compare-sites'),
             accessToken = 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg',
             mapboxURL,
             mapboxTiles,
@@ -48,28 +53,32 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                      zoom: zoom };
         }
 
-        var getMarkerIcon = function(location) {
+        var getMarkerIcon = function(current_location) {
             var defaults = {
-                key: null,
-                highlighted: false,
                 iconUrl: '/static/img/map-icons/2x/CBO/neutral.png',
                 shadowUrl: '/static/img/leaflet-icons/marker-shadow.png',
                 iconSize: [50, 50],
                 shadowSize: [41, 41],
                 iconAnchor: [25, 50],
                 shadowAnchor: [10, 41],
-                popupAnchor: [0, -60]
+                popupAnchor: [0, -60],
+                className: 'location-id-'
             };
 
+            defaults.iconUrl = getMarkerUrl(current_location);
+            defaults.className += current_location.id;
+            return defaults;
+        }
+
+        var getMarkerUrl = function(current_location) {
             var icon_url = '/static/img/map-icons/2x/';
-            icon_url += location.cps ? 'CPS/' : 'CBO/';
-            icon_url += location.availability;
-            icon_url += (location.accred == "") ? '-accredited' : '';
-            icon_url += (favorites.isStarred(location.id)) ? '-selected' : '';
+            icon_url += current_location.cps ? 'CPS/' : 'CBO/';
+            icon_url += (current_location.availability) ? current_location.availability : 'neutral';
+            icon_url += (current_location.accred == "") ? '-accredited' : '';
+            icon_url += (favorites.isStarred(current_location.id)) ? '-selected' : '';
             icon_url += '.png';
 
-            defaults.iconUrl = icon_url;
-            return defaults;
+            return icon_url;
         }
 
         var drawMap = function(locations) {
@@ -102,6 +111,15 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             locationLayer = filteredLayer;
         }
 
+        var toggleFavoriteMarker = function(current_location) {
+            var favorite_ids = favorites.getFavoriteIds(),
+                icon_url = getMarkerUrl(current_location),
+                location_class = '.location-id-' + current_location.id,
+                $marker = $map.find('.leaflet-marker-icon' + location_class);
+
+            $marker.attr('src', icon_url);
+        }
+
         var listLocations = function(locations) {
             var filtered_locations = filterLocations(locations),
                 sorted_locations = sortLocations(filtered_locations),
@@ -111,6 +129,18 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
             list_index+=10;
             $results_list.append(template(first_ten));
+
+            syncFavorites();
+
+            $('.compare-btn').off().on('click', function() {
+                var $this = $(this),
+                    this_id = $this.data('location'),
+                    this_location = locations.filter(function(toggled_location) { return (toggled_location.id == this_id) })[0];
+
+                favorites.toggleFavoriteButton($this);
+                toggleFavoriteMarker(this_location);
+                $compare.trigger('favorites-update');
+            });
         }
 
         var sortLocations = function(locations) {
@@ -159,6 +189,38 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 return 12742 * Math.asin(Math.sqrt(a)) * 0.621371192;
         }
 
+        var syncFavorites = function() {
+            var favorite_sites = favorites.getFavoriteIds(),
+                $compare_buttons = $results_wrapper.find('.compare-btn'),
+                $favorited_buttons;
+
+            $favorited_buttons = $compare_buttons.filter(function(i, button) {
+                var $button = $(button),
+                    button_id = $button.data('location');
+
+                return ($.inArray(String(button_id), favorite_sites)  >= 0);
+            });
+
+            $.each($favorited_buttons, function(i, button) {
+                var $button = $(button);
+                favorites.toggleFavoriteButton($button, 'add');
+            });
+
+            if (favorite_sites.length > 1) {
+                $compare_count.html(favorite_sites.length);
+                $compare_site.hide();
+                $compare_sites.show();
+                $compare.show();
+            } else if (favorite_sites.length > 0) {
+                $compare_count.html(favorite_sites.length);
+                $compare_sites.hide();
+                $compare_site.show();
+                $compare.show();
+            } else {
+                $compare.hide();
+            }
+        }
+
         /* -- Initializer -- */
         return {
             init: function() {
@@ -177,13 +239,13 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
                 /* Add a filter */
                 $filters_inputs.on('click', function() {
-                    $filters.trigger('filters-update')
+                    $filters.trigger('filters-update');
                 });
 
                 /* Remove all filters */
                 $filters_clear.on('click', function() {
                     clearFilters();
-                    $filters.trigger('filters-update')
+                    $filters.trigger('filters-update');
                 });
 
                 /* Filters Update event */
@@ -201,6 +263,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 /* Filter Pane Toggle */
                 $locations_more.on('click', function() {
                     listLocations(locations);
+                });
+
+
+                $compare.on('favorites-update', function() {
+                    syncFavorites();
                 });
 
                 /* -- Fetch locationcs, Draw Map -- */

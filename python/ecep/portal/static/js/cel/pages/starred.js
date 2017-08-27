@@ -141,7 +141,6 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
             }
 
             favorites.addClearListener();
-            favorites.addShareListener();
 
             // Handle back button logic.  If there is a history.length greater than 2,
             // take them to /search/ otherwise do history.go(-1)

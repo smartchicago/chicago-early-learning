@@ -29,6 +29,13 @@
               </div>
             </div>
           </form>
+          <div id="compare">
+            <div class="p-3">
+              <a href="{% url 'favorites' %}" class="btn btn-blue btn-block">
+                {% trans 'Compare' %} <span id="compare-count"></span> <span id="compare-site">{% trans 'Site' %}</span><span id="compare-sites">{% trans 'Sites' %}</span>
+              </a>
+            </div>
+          </div>
           <div id="filters" class="search-filters">
             <div class="d-flex m-3">
               <div class="filter-header mr-auto align-middle d-inline-flex align-items-center">

@@ -221,14 +221,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/neighborhoodList.html
                 });
             });
 
-            favorites.syncUI();
-            // favorites.addToggleListener({
-            //     button: '.favs-toggle'
-            // });
-
-            /**
-             * Watch for favorite events, if there is one, then setIcon again
-             */
             $('body').off('click.favs').on('click.favs', '.favs-toggle', function(e) {
                 var $this = $(this);
                 // Toggle all favorites
