@@ -8,6 +8,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $filters_toggle = $('#filters-toggle'),
             $filters_clear = $('#filters-clear'),
             $results_wrapper = $('#results'),
+            $results_default = $('.results-default'),
+            $results_calculator = $('.results-calculator'),
+            $results_scroll = $('.results-scroll'),
             $results_list = $('.results-list'),
             $locations_more = $('#locations-more'),
             $search_input = $('#search-input'),
@@ -20,6 +23,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             mapboxURL,
             mapboxTiles,
             locationLayer = new L.layerGroup(),
+            neighborhoodLayer = new L.layerGroup(),
             default_longitude = -87.6207733154,
             default_latitude = 41.8725248264,
             default_zoom = 13,
@@ -35,6 +39,25 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         } else {
             mapboxURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token='
         }
+
+        neighborhoodLayer = L.geoJson(null, {
+            style: {
+                color: '#317DC1',
+                fillColor: '#91C73D',
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.3
+            },
+            onEachFeature: function(feature, layer) {
+                layer.on('click', function(e) {
+                    neighborhoodPan(feature.properties.primary_name,
+                        feature.properties.num_schools,
+                        feature.properties.center.lat,
+                        feature.properties.center.lng,
+                        false);
+                });
+            }
+        });
 
         /* -- Functions -- */
         var getMapState = function() {
@@ -81,12 +104,15 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             return icon_url;
         }
 
+        var build
+
         var drawMap = function(locations) {
             $.each(locations, function(i, location) {
                 var location_icon = new L.icon(getMarkerIcon(location));
                 var location = L.marker([location.latitude, location.longitude], {icon: location_icon});
                 locationMarkers.push(location);
             });
+            
             state = getMapState();
             locationLayer = new L.layerGroup(locationMarkers);
             map = new L.map('map').setView(state.point, state.zoom);
@@ -94,6 +120,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     { attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>'});
             map.addLayer(mapboxTiles);
             map.addLayer(locationLayer);
+
+            if (state.isGeolocated) {
+                var geolocatedIcon = L.icon({iconUrl: common.getUrl('icon-geolocation'), iconSize: [50, 50], iconAnchor: [17, 45]}),
+                    geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map).setZIndexOffset(1000);
+            }
         }
 
         var updateMap = function(locations) {
@@ -272,13 +303,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
                 /* -- Fetch locationcs, Draw Map -- */
                 $.getJSON(common.getUrl('map-json'), function(response) {
+                    var data_latitude = $map.data('latitude') || default_latitude,
+                        data_longitude = $map.data('longitude') || default_longitude;
+
                     locations = response.locations;
                     display_labels = response.display;
 
-                    locations = $.each(locations, function(i, location) {
-                        var data_latitude = $map.data('latitude'),
-                            data_longitude = $map.data('longitude');
 
+                    locations = $.each(locations, function(i, location) {
                         location["distance"] = calculateHaversine(location.latitude, location.longitude, data_latitude, data_longitude);
                         location["rounded_distance"] = Math.round(location["distance"] * 10)/10;
                         location["labels"] = display_labels;
@@ -289,7 +321,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     if ( width >= common.breakpoints.medium ) {
                         drawMap(locations);
                     }
-                    listLocations(locations);
+
+                    if ($map.data('latitude') && $map.data('longitude')) {
+                        listLocations(locations);
+                    } else {
+
+                    }
                 });
             }
         }

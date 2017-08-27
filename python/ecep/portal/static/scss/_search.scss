@@ -44,6 +44,18 @@
       #results {
         flex-grow: 1;
         overflow-y: scroll;
+
+        .results-scroll {
+          display: none;
+        }
+
+        .results-default {
+
+        }
+
+        .results-calculator {
+
+        }
       }
     }
 

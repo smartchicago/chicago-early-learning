@@ -168,16 +168,31 @@
           </div>
         </div>
 
-        <div id="results" class="">
+        <div id="results" class="bg-lightest-gray">
+          {% if request.GET.address %}
+          <div class="results-calculator p-3">
+            <h2 class="orange">Calculator</h2>
+          </div>
           <div class="results-scroll p-3">
             <div class="results-list"></div>
-
             <div class="results-load-more">
               <div class="">
                 <a id="locations-more" class="btn btn-blue btn-block">{% trans 'See More Locations' %}</a>
               </div>
             </div>
           </div>
+          {% else %}
+          <div class="results-default">
+            <div class="mx-5">
+              <div class="results-default-graphic m-5 b-blue">
+                <div class="svg-fluid-w">{% svg 'illustrations/location' %}</div>
+              </div>
+              <div class="results-default-message text-center">
+                <h2 class="blue">{% blocktrans %}Please enter your address in the search bar above to begin.{% endblocktrans %}</h2>
+              </div>
+            </div>
+          </div>
+          {% endif %}
         </div>
       </div>
 
