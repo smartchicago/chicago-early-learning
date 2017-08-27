@@ -51,6 +51,9 @@
 .bg-white {
   background-color: #ffffff !important; }
 
+.bg-lightest-gray {
+  background-color: #fafafa !important; }
+
 .bg-light-gray {
   background-color: #d6d6d6 !important; }
 
@@ -591,14 +594,13 @@ footer {
     #search .search-view #search-results #search-form .search-form {
       flex: grow;
       flex-grow: 1; }
-    #search .search-view #search-results #search-form .compare-banner {
-      border-top: 1px solid #d6d6d6;
-      background-color: #1dc1ea; }
-      #search .search-view #search-results #search-form .compare-banner .compare-link {
-        flex-grow: 1; }
+    #search .search-view #search-results #search-form #compare {
+      display: none; }
   #search .search-view #search-results #results {
     flex-grow: 1;
     overflow-y: scroll; }
+    #search .search-view #search-results #results .results-calculator {
+      display: none; }
 #search .search-view #search-map {
   border-top: 1px solid #d6d6d6;
   border-left: 1px solid #d6d6d6;
