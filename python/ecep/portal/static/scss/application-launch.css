@@ -608,6 +608,8 @@ footer {
   height: 100%; }
   #search .search-view #search-map #map {
     height: 100%; }
+    #search .search-view #search-map #map .legend img {
+      width: 24em; }
 
 .results-list .location-result {
   margin-bottom: 1em;
