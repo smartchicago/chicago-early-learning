@@ -1,6 +1,6 @@
 
-define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-result.html', 'common', 'favorites'],
-    function($, L, Handlebars, searchResultHTML, common, favorites) {
+define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-result.html', 'text!templates/location-popup.html', 'common', 'favorites'],
+    function($, L, Handlebars, searchResultHTML, popupHTML, common, favorites) {
         var map,
             $map = $('#map'),
             $filters = $('#filters'),
@@ -138,12 +138,22 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         }
 
 
+        /*  Construct Location Popup  */
+        var setPopup = function(location_data) {
+            console.log(location_data);
+        }
+
+
         /*  Initialize Map  */
         var drawMap = function(locations) {
-            $.each(locations, function(i, location) {
-                var location_icon = new L.icon(getMarkerIcon(location));
-                var location = L.marker([location.latitude, location.longitude], {icon: location_icon});
-                locationMarkers.push(location);
+            $.each(locations, function(i, location_data) {
+                var location_icon = new L.icon(getMarkerIcon(location_data));
+                var locationMarker = L.marker([location_data.latitude, location_data.longitude], {icon: location_icon});
+                locationMarkers.push(locationMarker);
+
+                locationMarker.on('click', function(e) {
+                    setPopup(location_data);
+                });
             });
             
             state = getMapState();
