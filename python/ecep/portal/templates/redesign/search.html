@@ -204,6 +204,7 @@
         {% if request.GET.zoom %} data-zoom="{{ request.GET.zoom }}"{% endif %}
         {% if request.GET.neighborhood %} data-neighborhood-id="{{ request.GET.neighborhood }}"{% endif %}
         {% if request.GET.location %} data-location-id="{{ request.GET.location }}"{% endif %}
+        {% if request.LANGUAGE_CODE %} data-language="{{ request.LANGUAGE_CODE }}"{% endif %}
         ></div>
       </div>
     </div>

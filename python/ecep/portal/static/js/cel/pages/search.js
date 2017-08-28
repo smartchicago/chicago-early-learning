@@ -79,7 +79,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
         legend.onAdd = function (map) {
             var div = L.DomUtil.create('div', 'legend');
-            div.innerHTML += '<img src="/static/img/legend_' + CEL.serverVars.language + '.png">';
+            div.innerHTML += '<img src="/static/img/legend_' + $map.data('language') + '.png">';
             return div;
         }
         
@@ -211,9 +211,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                         popupLayer.clearLayers();
                         map.removeLayer(locationLayer);
                         map.removeControl(legend);
-                        map.removeLayer(geolocatedMarker);
                         map.addLayer(neighborhoodLayer);
                         current_layer = layerType.neighborhood;
+
+                        if (geolocatedMarker) { map.removeLayer(geolocatedMarker); }
                     }
                     break;
                 case layerType.neighborhood:
@@ -222,8 +223,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                         map.removeLayer(neighborhoodLayer);
                         map.addLayer(locationLayer);
                         map.addControl(legend);
-                        map.addLayer(geolocatedMarker);
                         current_layer = layerType.location;
+
+                        if (geolocatedMarker) { map.addLayer(geolocatedMarker); }
                     }
                     break;
             }
