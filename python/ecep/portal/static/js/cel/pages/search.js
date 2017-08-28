@@ -25,16 +25,18 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             locationLayer = new L.layerGroup(),
             neighborhoodLayer = new L.layerGroup(),
             popupLayer = new L.LayerGroup(),
+            legend = L.control({position: 'bottomright'}),
             default_longitude = -87.6207733154,
             default_latitude = 41.8725248264,
             default_zoom = 11,
             location_zoom = 15,
-            neighborhood_zoom_cutoff = 12,
+            neighborhood_zoom_cutoff = 13,
             list_index = 0,
             neighborhoods_data = {},
             locations = [],
             display_labels = [],
-            locationMarkers = [];
+            locationMarkers = [],
+            geolocatedMarker;
 
         var layerType = {
                 // No map layer is currently selected
@@ -75,7 +77,15 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             }
         });
 
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'legend');
+            div.innerHTML += '<img src="/static/img/legend_' + CEL.serverVars.language + '.png">';
+            return div;
+        }
+        
         /* -- Functions -- */
+
+        /*  Get basic map stats  */
         var getMapState = function() {
             var latitude = $map.data('latitude') || default_latitude,
                 longitude = $map.data('longitude') || default_longitude,
@@ -95,6 +105,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                      zoom: zoom };
         }
 
+
+        /*  Icon wrapper function  */
         var getMarkerIcon = function(current_location) {
             var defaults = {
                 iconUrl: '/static/img/map-icons/2x/CBO/neutral.png',
@@ -112,6 +124,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             return defaults;
         }
 
+
+        /*  Construct Marker image URL from location data  */
         var getMarkerUrl = function(current_location) {
             var icon_url = '/static/img/map-icons/2x/';
             icon_url += current_location.cps ? 'CPS/' : 'CBO/';
@@ -123,6 +137,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             return icon_url;
         }
 
+
+        /*  Initialize Map  */
         var drawMap = function(locations) {
             $.each(locations, function(i, location) {
                 var location_icon = new L.icon(getMarkerIcon(location));
@@ -145,20 +161,22 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     break;
                 case layerType.location:
                     map.addLayer(locationLayer);
+                    map.addControl(legend);
                     break;
             }
 
             map.on('zoomend', function(e) {
-                console.log(map.getZoom());
                 updateLayer(map.getZoom());
             });
 
             if (state.isGeolocated) {
-                var geolocatedIcon = L.icon({iconUrl: common.getUrl('icon-geolocation'), iconSize: [50, 50], iconAnchor: [17, 45]}),
-                    geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map).setZIndexOffset(1000);
+                var geolocatedIcon = L.icon({iconUrl: common.getUrl('icon-geolocation'), iconSize: [50, 50], iconAnchor: [17, 45]});
+                geolocatedMarker = L.marker(state.point, {icon: geolocatedIcon}).addTo(map).setZIndexOffset(1000);
             }
         }
 
+
+        /*  Update Map with new data  */
         var updateMap = function(locations) {
             var filtered_locations = filterLocations(locations);
             locationMarkers = [];
@@ -174,12 +192,16 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             locationLayer = filteredLayer;
         }
 
+
+        /*  Switch between neighborhood and location layers  */
         var updateLayer = function(zoom) {
             switch (current_layer) {
                 case layerType.location:
                     if ( zoom <= neighborhood_zoom_cutoff ) {
                         popupLayer.clearLayers();
                         map.removeLayer(locationLayer);
+                        map.removeControl(legend);
+                        map.removeLayer(geolocatedMarker);
                         map.addLayer(neighborhoodLayer);
                         current_layer = layerType.neighborhood;
                     }
@@ -189,6 +211,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                         popupLayer.clearLayers();
                         map.removeLayer(neighborhoodLayer);
                         map.addLayer(locationLayer);
+                        map.addControl(legend);
+                        map.addLayer(geolocatedMarker);
                         current_layer = layerType.location;
                     }
                     break;
@@ -196,6 +220,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             console.log(current_layer);
         }
 
+
+        /*  Change location marker image when adding location to favorites  */
         var toggleFavoriteMarker = function(current_location) {
             var favorite_ids = favorites.getFavoriteIds(),
                 icon_url = getMarkerUrl(current_location),
@@ -205,6 +231,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $marker.attr('src', icon_url);
         }
 
+
+        /*  Add locations to results column  */
         var listLocations = function(locations) {
             var filtered_locations = filterLocations(locations),
                 sorted_locations = sortLocations(filtered_locations),
@@ -228,10 +256,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             });
         }
 
+
+        /*  Calculate and sort locations by distance from query  */
         var sortLocations = function(locations) {
             return locations.sort(function(a, b) { return a.distance - b.distance });
         }
 
+
+        /*  Grab current active filters  */
         var currentFilters = function() {
             var inputs = $filters_inputs.filter(":checked");
             var ids = $.map(inputs, function(element) {
@@ -240,10 +272,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             return ids;
         }
 
+
+        /*  Clear filters  */
         var clearFilters = function() {
             $filters_inputs.prop('checked', false);
         }
 
+
+        /*  Apply current filters to location list  */
         var filterLocations = function(location_list) {
             function allTrue(element, index, array) {
                 return element == true;
@@ -264,6 +300,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             return filtered_locations;
         }
 
+
+        /*  Distance between two lat/long pairs  */
         var calculateHaversine = function(latitude_to, longitude_to, latitude_from, longitude_from) {
             var p = 0.017453292519943295,
                 c = Math.cos,
@@ -274,6 +312,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 return 12742 * Math.asin(Math.sqrt(a)) * 0.621371192;
         }
 
+
+        /*  Apply favorite styles to buttons, compare link button, and location icons on load  */
         var syncFavorites = function() {
             var favorite_sites = favorites.getFavoriteIds(),
                 $compare_buttons = $results_wrapper.find('.compare-btn'),
