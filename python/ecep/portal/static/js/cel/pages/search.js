@@ -24,13 +24,29 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             mapboxTiles,
             locationLayer = new L.layerGroup(),
             neighborhoodLayer = new L.layerGroup(),
+            popupLayer = new L.LayerGroup(),
             default_longitude = -87.6207733154,
             default_latitude = 41.8725248264,
-            default_zoom = 13,
+            default_zoom = 11,
+            location_zoom = 15,
+            neighborhood_zoom_cutoff = 12,
             list_index = 0,
+            neighborhoods_data = {},
             locations = [],
             display_labels = [],
             locationMarkers = [];
+
+        var layerType = {
+                // No map layer is currently selected
+                none: 'none',
+
+                // Neighborhood polygons layer
+                neighborhood: 'neighborhood',
+
+                // Individual locations/schools layer
+                location: 'location'
+            },
+            current_layer = layerType.none;
 
         var filterset = $filters.find('input');
 
@@ -42,11 +58,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
         neighborhoodLayer = L.geoJson(null, {
             style: {
-                color: '#317DC1',
-                fillColor: '#91C73D',
+                color: '#ee5713',
+                fillColor: '#ee703f',
                 weight: 1,
                 opacity: 1,
-                fillOpacity: 0.3
+                fillOpacity: 0.7
             },
             onEachFeature: function(feature, layer) {
                 layer.on('click', function(e) {
@@ -64,11 +80,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             var latitude = $map.data('latitude') || default_latitude,
                 longitude = $map.data('longitude') || default_longitude,
                 isGeolocated = false;
-                zoom = default_zoom
+                zoom = default_zoom;
+
+            current_layer = layerType.neighborhood;
 
             if ($map.data('latitude') && $map.data('longitude')) {
                 isGeolocated = true;
                 zoom = 15;
+                current_layer = layerType.location;
             }
 
             return { point: [latitude, longitude],
@@ -104,8 +123,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             return icon_url;
         }
 
-        var build
-
         var drawMap = function(locations) {
             $.each(locations, function(i, location) {
                 var location_icon = new L.icon(getMarkerIcon(location));
@@ -115,11 +132,26 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             
             state = getMapState();
             locationLayer = new L.layerGroup(locationMarkers);
+            neighborhoodLayer.addData(neighborhoods_data);
             map = new L.map('map').setView(state.point, state.zoom);
             mapboxTiles = L.tileLayer(mapboxURL + accessToken,
                     { attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>'});
             map.addLayer(mapboxTiles);
-            map.addLayer(locationLayer);
+            map.addLayer(popupLayer);
+
+            switch (current_layer) {
+                case layerType.neighborhood:
+                    map.addLayer(neighborhoodLayer);
+                    break;
+                case layerType.location:
+                    map.addLayer(locationLayer);
+                    break;
+            }
+
+            map.on('zoomend', function(e) {
+                console.log(map.getZoom());
+                updateLayer(map.getZoom());
+            });
 
             if (state.isGeolocated) {
                 var geolocatedIcon = L.icon({iconUrl: common.getUrl('icon-geolocation'), iconSize: [50, 50], iconAnchor: [17, 45]}),
@@ -137,9 +169,31 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 locationMarkers.push(location);
             });
             var filteredLayer = new L.layerGroup(locationMarkers);
-            map.removeLayer(locationLayer);
+            (locationLayer);
             map.addLayer(filteredLayer);
             locationLayer = filteredLayer;
+        }
+
+        var updateLayer = function(zoom) {
+            switch (current_layer) {
+                case layerType.location:
+                    if ( zoom <= neighborhood_zoom_cutoff ) {
+                        popupLayer.clearLayers();
+                        map.removeLayer(locationLayer);
+                        map.addLayer(neighborhoodLayer);
+                        current_layer = layerType.neighborhood;
+                    }
+                    break;
+                case layerType.neighborhood:
+                    if ( zoom > neighborhood_zoom_cutoff) {
+                        popupLayer.clearLayers();
+                        map.removeLayer(neighborhoodLayer);
+                        map.addLayer(locationLayer);
+                        current_layer = layerType.location;
+                    }
+                    break;
+            }
+            console.log(current_layer);
         }
 
         var toggleFavoriteMarker = function(current_location) {
@@ -252,6 +306,22 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             }
         }
 
+        var neighborhoodPan = function(name, numSchools, lat, lng, panFlag) {
+            popupLayer.clearLayers();
+            if (panFlag) {
+                map.panTo([lat, lng]);
+                if ( map.getZoom() <= default_zoom ) {
+                    map.setZoom(location_zoom);
+                }
+            }
+            var popupContent = '<b>' + name + '</b><br>' + gettext('Number of Locations') + ': ' + numSchools + '<br><a class="neighborhood-popup" href="#">' + gettext('Explore') + '</a>',
+                popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
+
+            $('.neighborhood-popup').on('click', function(e) {
+                map.setView([lat, lng], location_zoom);
+            });
+        };
+
         /* -- Initializer -- */
         return {
             init: function() {
@@ -301,6 +371,12 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     syncFavorites();
                 });
 
+
+                /* -- Fetch Neighborhoods -- */
+                $.getJSON(common.getUrl('neighborhoods-geojson'), function(data) {
+                    neighborhoods_data = data;
+                });
+
                 /* -- Fetch locationcs, Draw Map -- */
                 $.getJSON(common.getUrl('map-json'), function(response) {
                     var data_latitude = $map.data('latitude') || default_latitude,
@@ -321,6 +397,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     if ( width >= common.breakpoints.medium ) {
                         drawMap(locations);
                     }
+
+                    console.log(neighborhoods_data);
 
                     if ($map.data('latitude') && $map.data('longitude')) {
                         listLocations(locations);
