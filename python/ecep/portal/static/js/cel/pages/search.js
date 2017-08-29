@@ -130,7 +130,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             var icon_url = '/static/img/map-icons/2x/';
             icon_url += current_location.cps ? 'CPS/' : 'CBO/';
             icon_url += (current_location.availability) ? current_location.availability : 'neutral';
-            icon_url += (current_location.accred == "") ? '-accredited' : '';
+            icon_url += (current_location.accreditation == "") ? '' : '-accredited';
             icon_url += (favorites.isStarred(current_location.id)) ? '-selected' : '';
             icon_url += '.png';
 
