@@ -31,9 +31,13 @@
           </form>
           <div id="compare">
             <div class="p-3">
-              <a href="{% url 'favorites' %}" class="btn btn-blue btn-block">
-                {% trans 'Compare' %} <span id="compare-count"></span> <span id="compare-site">{% trans 'Site' %}</span><span id="compare-sites">{% trans 'Sites' %}</span>
-              </a>
+              <form action="{% url 'favorites' %}">
+                <input type="hidden" name="lat" value="{{ request.GET.lat }}">
+                <input type="hidden" name="lng" value="{{ request.GET.lng }}">
+                <button type="submit" href="" class="btn btn-blue btn-block">
+                  {% trans 'Compare' %} <span id="compare-count"></span> <span id="compare-site">{% trans 'Site' %}</span><span id="compare-sites">{% trans 'Sites' %}</span>
+                </button>
+              </form>
             </div>
           </div>
           <div id="filters" class="search-filters">

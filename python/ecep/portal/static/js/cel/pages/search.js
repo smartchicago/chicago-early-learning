@@ -15,6 +15,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $locations_more = $('#locations-more'),
             $search_input = $('#search-input'),
             $compare = $('#compare'),
+            $compare_submit = $('#compare_submit'),
             $compare_buttons = $('.compare-btn'),
             $compare_count = $('#compare-count'),
             $compare_site = $('#compare-site'),
