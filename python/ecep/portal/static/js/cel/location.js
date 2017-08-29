@@ -1,3 +1,10 @@
+/********************************************************
+ * Copyright (c) 2013 Azavea, Inc.
+ * See LICENSE in the project root for copying permission
+ * Location with definition of location objects and
+ * data loader object
+ *********************************************************/
+
 define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
     function($, L, Handlebars, favorites, topojson, common) {
 
@@ -257,18 +264,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
         return mapBounds.contains(this.getLatLng());
     };
 
-    var LocationManager = function($filters) {
-        this.locations = {};
-        this.neighborhoods = {
-            data: {}
-        };
-        this.events = $({});
-        this.filters = $filters;
-    }
-
-    Location.prototype = {
-        
-    }
 
     /**
      * Creates a new DataManager object
@@ -283,8 +278,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'favorites', 'topojson', 'common'],
             this.events = $({});
             this.$filters = $filters;
         }
-
-
 
     DataManager.prototype = {
         /**

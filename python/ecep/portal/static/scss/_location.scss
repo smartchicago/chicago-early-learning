@@ -1,0 +1,39 @@
+#location {
+
+  #location-map {
+    height: 24em;
+  }
+
+  .location-divider {
+    width: 100%;
+    border-bottom: 4px solid $deep-yellow;
+    margin: 3em 0;
+  }
+
+  .location-top-headers {
+
+    h1 {
+      font-size: 2rem;
+      line-height: 3rem;
+      font-weight: 500;
+    }
+
+    a {
+      font-style: italic;
+      font-size: 1.5rem;
+    }
+  }
+
+  .location-action-button {
+    padding: 0.5em 0;
+  }
+
+  .location-top {
+    padding-bottom: 3em;
+  }
+
+  .location-block {
+    border-bottom: 2px solid $light-gray;
+  }
+
+}
