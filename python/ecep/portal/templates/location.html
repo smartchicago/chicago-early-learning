@@ -1,10 +1,5 @@
 {% extends "redesign/base.html" %}
 
-{% comment %}
-Copyright (c) 2012, 2013 Azavea, Inc.
-See LICENSE in the project root for copying permission
-{% endcomment %}
-
 {% load i18n %}
 {% load staticfiles %}
 {% load portal_extras %}
@@ -12,21 +7,14 @@ See LICENSE in the project root for copying permission
 {% block title %}{{ loc.item.site_name }} - {{ loc_neighborhood }} - {% trans "Chicago Early Learning" %}{% endblock %}
 
 {% block otherhead %}
-<meta name="description" content="{{ loc_description }}">
-
-<meta property="og:title" content="{{ loc.item.site_name }}">
-<meta property="og:type" content="school">
-<meta property="og:latitude" content="{{ loc.position.lat|stringformat:"f" }}">
-<meta property="og:longitude" content="{{ loc.position.lng|stringformat:"f" }}">
-<meta property="og:street-address" content="{{ loc.item.address }}">
-<meta property="og:locality" content="{{ loc.item.city }}">
-<meta property="og:region" content="{{ loc.item.state }}">
-<meta property="og:postal-code" content="{{ loc.item.zip }}">
-<meta property="og:country-name" content="USA">
-<meta property="og:phone_number" content="{{ loc.phone.number }}">
 {% endblock %}
 
 {% block body %}
+<div id="location" class="container container-bottom-4">
+  <div></div>
+</div>
+
+
 <div id="old" class="container container-bottom-4">
   <div class="favorite" data-key="{{ loc.item.key }}" itemscope itemtype="http://schema.org/EducationalOrganization">
     <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>

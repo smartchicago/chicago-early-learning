@@ -37,7 +37,7 @@ define(['jquery', 'Leaflet', 'location',
             }
 
             if (favorites.isStarred(location_id)) {
-                favorites.toggle($star);
+                //favorites.toggle($star);
             }
 
             $('.single-share').show().on('click', function(e) {
@@ -56,7 +56,7 @@ define(['jquery', 'Leaflet', 'location',
                 loc.getMarker().addTo(map);
 
                 $star.on('click', function(e) {
-                    favorites.toggle($star);
+                    //favorites.toggle($star);
                     loc.setMarker();
 
                     // If the user toggled it on, redirect them
