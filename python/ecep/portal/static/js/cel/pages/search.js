@@ -141,7 +141,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
         /*  Construct Location Popup  */
         var setPopup = function(location_data) {
-            console.log(location_data);
+            var popup_template = Handlebars.compile(popupHTML),
+                content = popup_template(location_data);
+
+            return L.popup().setContent(content);
         }
 
 
@@ -153,7 +156,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 locationMarkers.push(locationMarker);
 
                 locationMarker.on('click', function(e) {
-                    setPopup(location_data);
+                    var popup = setPopup(location_data);
+                    this.bindPopup(popup);
                 });
             });
             
