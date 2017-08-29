@@ -11,6 +11,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $results_default = $('.results-default'),
             $results_calculator = $('.results-calculator'),
             $results_scroll = $('.results-scroll'),
+            $results_age = $('#calculated-age'),
             $results_list = $('.results-list'),
             $locations_more = $('#locations-more'),
             $search_input = $('#search-input'),
@@ -247,11 +248,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
 
         /*    */
-        var initializeList = function(program) {
-            var age_filter = $filters_inputs.filter(program);
+        var initializeList = function(calculated) {
+            var age_filter = $filters_inputs.filter(calculated.program);
             age_filter.prop('checked', true);
             $filters.trigger('filters-update');
-            
+            $results_age.text(calculated.years);
             $results_calculator.hide();
             $results_scroll.show();
         }
@@ -411,15 +412,27 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         var calculateProgram = function(month, day, year) {
             var date = new Date(year, month, day),
                 preschool_cutoff = new Date(2012, 8, 2),
-                infants_cutoff = new Date(2014, 8, 2);
+                infants_cutoff = new Date(2014, 8, 2),
+                program = '',
+                calculated = { years: calculateYears(date) };
 
             if ( date >= infants_cutoff ) {
-                return "#infants";
+                program = '#infants';
             } else if ( date < infants_cutoff && date >= preschool_cutoff ) {
-                return "#preschool";
+                program = "#preschool";
             } else {
                 console.log('other');
             }
+
+            calculated.program = program;
+            return calculated;
+        }
+
+        var calculateYears = function(date) {
+            var now = new Date(2017, 9, 1),
+                date_diff = now - date;
+
+            return Math.floor(date_diff/(365*24*60*60*1000));
         }
 
         var displayProgramBlock = function($block) {
@@ -499,8 +512,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
                     e.preventDefault();
                     if ( validateDate(month, day, year) ) {
-                        var program = calculateProgram(month, day, year);
-                        initializeList(program);
+                        var calculated = calculateProgram(month, day, year);
+                        initializeList(calculated);
                     }
                 });
 
