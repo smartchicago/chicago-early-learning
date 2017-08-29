@@ -455,10 +455,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                         drawMap(locations);
                     }
 
-                    console.log(neighborhoods_data);
-
                     if ($map.data('latitude') && $map.data('longitude')) {
-                        listLocations(locations);
+                        // listLocations(locations);
                     } else {
 
                     }
