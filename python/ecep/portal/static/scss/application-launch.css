@@ -599,7 +599,7 @@ footer {
   #search .search-view #search-results #results {
     flex-grow: 1;
     overflow-y: scroll; }
-    #search .search-view #search-results #results .results-calculator {
+    #search .search-view #search-results #results .results-scroll {
       display: none; }
 #search .search-view #search-map {
   border-top: 1px solid #d6d6d6;
@@ -746,6 +746,54 @@ footer {
     .search-filters .filter-category .category-filters .custom-control-input:checked ~ .custom-control-indicator {
       color: #fff;
       background-color: #ee703f; }
+
+.calculator {
+  height: 8em; }
+  .calculator #month,
+  .calculator #day,
+  .calculator #year-2 {
+    width: 4em; }
+  .calculator #year-4 {
+    width: 6em; }
+  .calculator input[type=text] {
+    margin-left: .5em;
+    margin-right: .5em;
+    font-style: normal !important;
+    text-align: center;
+    border: 3px solid #ee8547;
+    border-radius: 0; }
+    .calculator input[type=text]:focus {
+      border-color: #ee5713; }
+  .calculator a {
+    cursor: pointer !important; }
+  .calculator .hidden-block {
+    display: none; }
+
+.leaflet-popup-content-wrapper {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 4px; }
+  .leaflet-popup-content-wrapper .popup h1 {
+    font-size: 1rem; }
+
+#location #location-map {
+  height: 24em; }
+#location .location-divider {
+  width: 100%;
+  border-bottom: 4px solid #ffc104;
+  margin: 3em 0; }
+#location .location-top-headers h1 {
+  font-size: 2rem;
+  line-height: 3rem;
+  font-weight: 500; }
+#location .location-top-headers a {
+  font-style: italic;
+  font-size: 1.5rem; }
+#location .location-action-button {
+  padding: 0.5em 0; }
+#location .location-top {
+  padding-bottom: 3em; }
+#location .location-block {
+  border-bottom: 2px solid #d6d6d6; }
 
 .header {
   height: 20em;
@@ -1474,26 +1522,6 @@ footer {
   background-repeat: no-repeat; }
   #programs-age-calculator p {
     font-style: italic; }
-  #programs-age-calculator #calculator {
-    height: 8em; }
-    #programs-age-calculator #calculator #month,
-    #programs-age-calculator #calculator #day {
-      width: 4em; }
-    #programs-age-calculator #calculator #year {
-      width: 6em; }
-    #programs-age-calculator #calculator input[type=text] {
-      margin-left: .5em;
-      margin-right: .5em;
-      font-style: normal !important;
-      text-align: center;
-      border: 3px solid #ee8547;
-      border-radius: 0; }
-      #programs-age-calculator #calculator input[type=text]:focus {
-        border-color: #ee5713; }
-    #programs-age-calculator #calculator a {
-      cursor: pointer !important; }
-    #programs-age-calculator #calculator .hidden-block {
-      display: none; }
   @media (max-width: 576px) {
     #programs-age-calculator .btn-half {
       min-width: 80% !important; } }
