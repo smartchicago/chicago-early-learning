@@ -51,8 +51,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             },
             current_layer = layerType.none;
 
-        var filterset = $filters.find('input');
-
         if (common.isRetinaDisplay()) {
             mapboxURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}@2x.png?access_token='
         } else {
@@ -202,7 +200,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 locationMarkers.push(location);
             });
             var filteredLayer = new L.layerGroup(locationMarkers);
-            (locationLayer);
+            map.removeLayer(locationLayer);
             map.addLayer(filteredLayer);
             locationLayer = filteredLayer;
         }
@@ -234,7 +232,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     }
                     break;
             }
-            console.log(current_layer);
         }
 
 
@@ -248,6 +245,16 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $marker.attr('src', icon_url);
         }
 
+
+        /*    */
+        var initializeList = function(program) {
+            var age_filter = $filters_inputs.filter(program);
+            age_filter.prop('checked', true);
+            $filters.trigger('filters-update');
+            
+            $results_calculator.hide();
+            $results_scroll.show();
+        }
 
         /*  Add locations to results column  */
         var listLocations = function(locations) {
@@ -377,7 +384,49 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $('.neighborhood-popup').on('click', function(e) {
                 map.setView([lat, lng], location_zoom);
             });
-        };
+        }
+
+        /* -- Calculator -- */
+        var $month = $('#month'),
+            $day = $('#day'),
+            $year = $('#year'),
+            $input_two = $('.input-two'),
+            $calculator = $('.calculator'),
+            $calculator_block = $('.results-calculator-form');
+
+        var validateDate = function(month, day, year) {
+            var date = new Date(year, month, day);
+
+            if (year < 1000 || year > 3000 || month < 0 || month > 12 || day > 31) {
+                return false;
+            } else if ( isNaN(year) || isNaN(month) || isNaN(day) ) { 
+                return false
+            } else if ( typeof date != 'undefined' ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        var calculateProgram = function(month, day, year) {
+            var date = new Date(year, month, day),
+                preschool_cutoff = new Date(2012, 8, 2),
+                infants_cutoff = new Date(2014, 8, 2);
+
+            if ( date >= infants_cutoff ) {
+                return "#infants";
+            } else if ( date < infants_cutoff && date >= preschool_cutoff ) {
+                return "#preschool";
+            } else {
+                console.log('other');
+            }
+        }
+
+        var displayProgramBlock = function($block) {
+            $calculator_block.fadeOut(500);
+            $block.delay(500).fadeIn(500);
+        }
+
 
         /* -- Initializer -- */
         return {
@@ -429,10 +478,37 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 });
 
 
+                /* -- Calculator Focus Listener -- */
+                $month.keyup(function() {
+                    if (this.value.length == 2) {
+                        $day.focus();
+                    }
+                });
+
+                $day.keyup(function() {
+                    if (this.value.length == 2) {
+                        $year.focus();
+                    }
+                });
+
+                /* -- Submit Listener -- */
+                $calculator.submit(function(e) {
+                    var month = parseInt($month.val()) - 1,
+                        day = parseInt($day.val()),
+                        year = parseInt($year.val()) + 2000;
+
+                    e.preventDefault();
+                    if ( validateDate(month, day, year) ) {
+                        var program = calculateProgram(month, day, year);
+                        initializeList(program);
+                    }
+                });
+
                 /* -- Fetch Neighborhoods -- */
                 $.getJSON(common.getUrl('neighborhoods-geojson'), function(data) {
                     neighborhoods_data = data;
                 });
+
 
                 /* -- Fetch locationcs, Draw Map -- */
                 $.getJSON(common.getUrl('map-json'), function(response) {
@@ -455,10 +531,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                         drawMap(locations);
                     }
 
-                    if ($map.data('latitude') && $map.data('longitude')) {
-                        // listLocations(locations);
-                    } else {
-
+                    if ( $map.data('latitude') ) {
+                        listLocations(locations);
                     }
                 });
             }

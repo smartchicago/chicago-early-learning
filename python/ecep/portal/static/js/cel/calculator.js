@@ -6,12 +6,12 @@ define(['jquery'],
 
             var $month = $('#month'),
                 $day = $('#day'),
-                $year = $('#year'),
+                $year = $('#year-4'),
                 $input_two = $('.input-two'),
                 $infants = $('#infants-block'),
                 $preschool = $('#preschool-block'),
                 $kindergarten = $('#kindergarten-block'),
-                $calculator = $('#calculator'),
+                $calculator = $('.calculator'),
                 $calculator_block = $('#calculator-block'),
                 $error_block = $('#error-block');
 

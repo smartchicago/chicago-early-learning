@@ -50,14 +50,14 @@
           <h2>{% blocktrans %}What early learning program should your child be enrolling in?{% endblocktrans %}</h2>
         </div>
       </div>
-      <div id="calculator" class="row">
+      <div class="calculator row">
         <div id="calculator-block" class="birthday-form col-md-8 offset-md-2 text-center">
           <p class="gray">{% blocktrans %}Enter a birthdate. The result will reflect what you should enroll in Fall 2017.{% endblocktrans %}</p>
           <form>
             <div class="form-group form-inline row justify-content-center">
               <input id="month" type="text" maxlength="2" class="form-control input-two" name="month" placeholder="MM" required>
               <input id="day" type="text" maxlength="2" class="form-control input-two" name="day" placeholder="DD" required>
-              <input id="year" type="text" maxlength="4" class="form-control" name="year" placeholder="YYYY" required>
+              <input id="year-4" type="text" maxlength="4" class="form-control" name="year" placeholder="YYYY" required>
             </div>
             <button id="calculator-submit" type="submit" class="btn btn-blue btn-half">{% trans 'Find Program Type' %}</button>
           </form>

@@ -13,7 +13,7 @@
   <div class="search-view h-100">
     
     <div class="row no-gutters h-100">
-      <div id="search-results" class="col-md-4 h-100 d-flex flex-column">
+      <div id="search-results" class="col-md-4 h-100 d-flex flex-column bg-lightest-gray">
 
         <div id="search-form" class="sticky-top">
           <form class="">
@@ -59,6 +59,10 @@
                 </div>
               </div>
               <div class="category-filters d-flex flex-wrap">
+                <div class="filter-input-hidden" style="display: none">
+                  <input type="checkbox" id="infants">
+                  <input type="checkbox" id="preschool">
+                </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
                     <input type="checkbox" id="full_day" class="custom-control-input">
@@ -174,10 +178,28 @@
 
         <div id="results" class="bg-lightest-gray">
           {% if request.GET.address %}
-          <div class="results-calculator p-3">
-            <h2 class="orange">Calculator</h2>
+          <div class="results-calculator p-4">
+            <div class="results-calculator-header text-center">
+              <h2 class="blue">{% blocktrans %}Enter your child's birthdate to find the right program.{% endblocktrans %}</h2>
+            </div>
+            <div class="results-calculator-form">
+              <form class="calculator">
+                <div class="form-group form-inline row justify-content-center p-3">
+                  <input id="month" type="text" maxlength="2" class="form-control col-3 input-two" name="month" placeholder="MM" required>
+                  <input id="day" type="text" maxlength="2" class="form-control col-3 input-two" name="day" placeholder="DD" required>
+                  <input id="year" type="text" maxlength="2" class="form-control col-3" name="year" placeholder="YY" required>
+                </div>
+                <!-- 
+                <div class="add-calculator p-3 text-center">
+                  <a class="a-orange">+ {% trans 'Add Another Child' %}</a>
+                </div>
+                -->
+                <button id="calculator-submit" type="submit" class="btn btn-orange btn-block">{% trans 'Find Programs' %}</button>
+              </form>
+            </div>
           </div>
           <div class="results-scroll p-3">
+            <div class="results-description"></div>
             <div class="results-list"></div>
             <div class="results-load-more">
               <div class="">
