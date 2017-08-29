@@ -195,10 +195,15 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             var filtered_locations = filterLocations(locations);
             locationMarkers = [];
 
-            $.each(filtered_locations, function(i, location) {
-                var location_icon = new L.icon(getMarkerIcon(location));
-                var location = L.marker([location.latitude, location.longitude], {icon: location_icon});
-                locationMarkers.push(location);
+            $.each(filtered_locations, function(i, location_data) {
+                var location_icon = new L.icon(getMarkerIcon(location_data));
+                var locationMarker = L.marker([location_data.latitude, location_data.longitude], {icon: location_icon});
+                locationMarkers.push(locationMarker);
+
+                locationMarker.on('click', function(e) {
+                    var popup = setPopup(location_data);
+                    this.bindPopup(popup);
+                });
             });
             var filteredLayer = new L.layerGroup(locationMarkers);
             map.removeLayer(locationLayer);
@@ -470,6 +475,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
                 /* Filters Update event */
                 $filters.on('filters-update', function() {
+                    console.log('here');
                     $results_wrapper.animate({
                         scrollTop: 0,
                     }, 100);
