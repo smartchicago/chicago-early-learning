@@ -65,8 +65,10 @@
   }
 
   .location-dividers {
-    .location-divider-block:nth-child(odd) {
-      border-right: 2px solid $light-gray;
+    @media (min-width: $break-medium) {
+      .location-divider-block:nth-child(odd) {
+        border-right: 2px solid $light-gray;
+      }
     }
   }
 

@@ -150,9 +150,9 @@
 
   <!-- Duration and Program Info --> 
   <div class="location-block">
-    <div class="location-group-info py-5">
+    <div class="location-group-info">
       <div class="location-dividers row">
-        <div class="location-divider-block col-md-6">
+        <div class="location-divider-block col-md-6 my-5">
           <div class="location-group-header">
             <h2 class="blue">{% trans 'Duration and Hours' %}</h2>
           </div>
@@ -177,7 +177,7 @@
             {% if location.prg_hours %}<p>{{ location.prg_hours }}</p>{% else %}<p><em>{% trans 'No Hours Listed' %}</em></p>{% endif %}
           </div>
         </div>
-        <div class="location-divider-block col-md-6">
+        <div class="location-divider-block col-md-6 my-5">
           <div class="location-group-header">
             <h2 class="blue">{% trans 'Program Information' %}</h2>
           </div>
@@ -199,10 +199,10 @@
   <!-- Languages, Other Features -->
   {% if location.language_1 or fields.other_features %}
   <div class="location-block">
-    <div class="location-group-info py-5">
+    <div class="location-group-info">
       <div class="location-dividers row">
         {% if location.language_1 %}
-        <div class="location-divider-block col-md-6">
+        <div class="location-divider-block col-md-6 my-5">
           <div class="location-group-header">
             <h2 class="blue">{% trans 'Languages' %}</h2>
           </div>
@@ -212,7 +212,7 @@
         </div>
         {% endif %}
         {% if loc.other_features %}
-        <div class="location-divider-block col-md-6">
+        <div class="location-divider-block col-md-6 my-5">
           <div class="location-group-header">
             <h2 class="blue">{% trans 'Other Features' %}</h2>
           </div>
@@ -228,9 +228,9 @@
 
   <!-- Accreditation, Quality Rating --> 
   <div class="location-block">
-    <div class="location-special py-5">
+    <div class="location-special">
       <div class="location-dividers row">
-        <div class="location-divider-block col-md-6">
+        <div class="location-divider-block col-md-6 my-5">
           <div class="location-block-header">
             <h2 class="blue">{% trans 'Accreditation' %}</h2>
           </div>
@@ -253,7 +253,7 @@
             <p><a class="a-orange" href="http://coanet.org/home/"><i>Council on Accreditation</i></a></p>
           </div>
         </div>
-        <div class="location-divider-block col-md-6">
+        <div class="location-divider-block col-md-6 my-5">
           <div class="location-block-header">
             <h2 class="blue">{% trans 'Quality Rating' %}</h2>
           </div>
