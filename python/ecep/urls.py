@@ -73,6 +73,7 @@ urlpatterns = patterns(
     url(r'^location/(\d+)/$', 'portal.views.location', name='location-view'),
     url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location', name='location-view'),
     url(r'^location/(?P<location_id>\d+)/(?P<slug>[\w-]+)/$', 'portal.views.location', name='location-view'),
+    url(r'^map/(\d+)/$', 'portal.views.location_map', name='location-map-view'),
 
     # Starred Location Views
     url(

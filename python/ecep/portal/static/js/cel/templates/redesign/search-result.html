@@ -101,7 +101,7 @@
         <a data-location="{{ id }}" class="btn btn-gray btn-block compare-btn">{{ labels.compare }}</a>
       </div>
       <div class="secondary view-map hidden-md-up">
-        <a href="/map/{{ id }}/" class="btn btn-gray btn-block">{{ labels.view_map }}</a>
+        <a href="/map/{{ id }}/?lat={{ address_latitude }}&lng={{ address_longitude }}" class="btn btn-gray btn-block">{{ labels.view_map }}</a>
       </div>
       <div class="secondary hidden-sm-down">
         <a href="{{ copa_url }}" class="btn btn-gray btn-block">{{ labels.apply }}</a>
@@ -111,7 +111,7 @@
         <a data-location="{{ id }}" class="btn btn-gray btn-block compare-btn">{{ labels.compare }}</a>
       </div>
       <div class="secondary view-map hidden-md-up">
-        <a href="/map/{{ id }}/" class="btn btn-gray btn-block">{{ labels.view_map }}</a>
+        <a href="/map/{{ id }}/?lat={{ address_latitude }}&lng={{ address_longitude }}" class="btn btn-gray btn-block">{{ labels.view_map }}</a>
       </div>
       {{/if}}
     </div>

@@ -396,8 +396,26 @@ def location(request, location_id=None, slug=None):
     else:
         no_es_description = False
 
-
     return render(request, 'location.html', {
+        'loc': loc,
+        'loc_description': location.q_stmt,
+        'loc_neighborhood': location.neighborhood,
+        'location': location,
+        'fields': fields,
+        'no_es_description': no_es_description
+    })
+
+def location_map(request, location_id=None):
+    location = get_object_or_404(Location, id=location_id)
+    loc = location_details(location_id)
+    fields = clean_context_dict(loc)
+
+    if request.LANGUAGE_CODE == 'es' and location.q_stmt_es == '':
+        no_es_description = True
+    else:
+        no_es_description = False
+
+    return render(request, 'location-map.html', {
         'loc': loc,
         'loc_description': location.q_stmt,
         'loc_neighborhood': location.neighborhood,

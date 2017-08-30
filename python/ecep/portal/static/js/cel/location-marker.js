@@ -25,8 +25,12 @@ define(['jquery', 'Leaflet', 'location',
                 url = common.getUrl('location-api', { locations: location_id }),
                 width = $(document).width(),
                 $map = $('#location-map'),
-                latLng = new L.LatLng($map.data('lat'), $map.data('lng')),
-                map = new L.Map('location-map', { center: latLng, zoom: 13, dragging: false, scrollWheelZoom: false, doubleClickZoom: false }),
+                latLng = new L.LatLng($map.data('lat'), $map.data('lng'));
+
+            if ($map.data("address-latitude") && $map.data("address-longitude")) {
+                latLng = new L.LatLng($map.data("address-latitude"), $map.data("address-longitude"));
+            }
+            var map = new L.Map('location-map', { center: latLng, zoom: 13, dragging: false, scrollWheelZoom: false, doubleClickZoom: false }),
                 $star = $('.compare-btn');
 
             map.addLayer(mapboxTiles);
@@ -36,7 +40,6 @@ define(['jquery', 'Leaflet', 'location',
                 $('.favs-toggle').show();
             }
 
-            console.log('here');
             if (favorites.isStarred(location_id)) {
                 favorites.toggleFavoriteButton($star, 'add');
             }
@@ -46,6 +49,11 @@ define(['jquery', 'Leaflet', 'location',
 
                 loc.setMarker({ popup: false });
                 loc.getMarker().addTo(map);
+
+                if ($map.data("address-latitude") && $map.data("address-longitude")) {
+                    var geolocatedIcon = L.icon({iconUrl: common.getUrl('icon-geolocation'), iconSize: [50, 50], iconAnchor: [17, 45]});
+                    var geolocatedMarker = L.marker([$map.data("address-latitude"), $map.data("address-longitude")], {icon: geolocatedIcon}).addTo(map);
+                }
 
                 $star.on('click', function(e) {
                     favorites.toggleFavoriteButton($star);

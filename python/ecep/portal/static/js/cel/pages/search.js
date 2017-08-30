@@ -543,12 +543,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                         location["rounded_distance"] = Math.round(location["distance"] * 10)/10;
                         location["labels"] = display_labels;
                         location["copa_url"] = common.getUrl('copa-apply', {ids: [location["copa_key"]]});
+                        location["address_latitude"] = $map.data("latitude");
+                        location["address_longitude"] = $map.data("longitude");
                     });
 
-                    var width = $(document).width();
-                    if ( width >= common.breakpoints.medium ) {
-                        drawMap(locations);
-                    }
+                    drawMap(locations);
 
                     if ( $map.data('latitude') ) {
                         listLocations(locations);
