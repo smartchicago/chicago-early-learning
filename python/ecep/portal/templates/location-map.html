@@ -30,6 +30,25 @@
       {% endif %}
       class="single-location-map"></div>
   </div>
+  <div class="row py-3">
+    <div class="col-sm-12">
+      <div class="location-action-button">
+        <a href="{% url 'location-view' location_id=location.id %}" class="btn btn-orange btn-block">{% trans 'More Info' %}</a>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="location-action-button">
+        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{location.address}}+{{location.city}}+{{location.state}}+{{location.zip}}" class="btn btn-gray btn-block">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+    {% if location.copa_key > 0 %}
+    <div class="col-sm-12">
+      <div class="location-action-button">
+        <a href="{{ location.get_copa_url }}?site1={{ location.copa_key }}" class="btn btn-blue btn-block">{% trans 'Apply Today!' %}</a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
   <!--
   <div class="location-block">
     <div class="location-top row">
