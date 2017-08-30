@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load staticfiles %}
 {% load portal_extras %}
+{% load svg %}
 
 {% block title %}{{ loc.item.site_name }} - {{ loc_neighborhood }} - {% trans "Chicago Early Learning" %}{% endblock %}
 
@@ -10,14 +11,14 @@
 {% endblock %}
 
 {% block body %}
-<div id="location" class="container container-top-2 container-bottom-4">
+<div id="location-container" class="container container-top-2 container-bottom-4">
   <div class="location-map hidden-md-down">
     <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>
     <div class="location-divider"></div>
   </div>
-  <div class="location-info location-block">
+  <div class="location-block">
     <div class="location-top row">
-      <div class="location-top-headers col-md-9">
+      <div class="location-top-headers col-md-8">
         <div class="location-name">
           <h1 class="black">{{ location.site_name }}</h1>
         </div>
@@ -35,24 +36,181 @@
         </div>
         {% endif %}
       </div>
-      <div class="location-top-actions col-md-3">
+      <div class="location-top-actions col-md-4">
+        {% if location.copa_key > 0 %}
         <div class="location-action-button">
-          <a href="" class="btn btn-orange btn-lg btn-block">{% trans 'Apply Today!' %}</a>
+          <a href="" class="btn btn-orange btn-block">{% trans 'Apply Today!' %}</a>
+        </div>
+        {% endif %}
+        <div class="location-action-button">
+          <a href="" class="btn btn-blue btn-block">{% trans 'Compare Location' %}</a>
         </div>
         <div class="location-action-button">
-          <a href="" class="btn btn-blue btn-lg btn-block">{% trans 'Compare Location' %}</a>
-        </div>
-        <div class="location-action-button">
-          <a href="" class="btn btn-gray btn-lg btn-block">{% trans 'Get Directions' %}</a>
+          <a href="" class="btn btn-gray btn-block">{% trans 'Get Directions' %}</a>
         </div>
       </div>
     </div>
   </div>
-  <div class="location-body">
-    
-  </div>
-</div>
 
+  {% if location.q_stmt %}
+  <!-- Location description -->
+  <div class="location-block">
+    <div class="location-description py-5">
+      <div class="row">
+        <div class="location-description-header col-md-12">
+          <h2 class="blue">{% trans 'Description' %}</h2>
+        </div>
+        <div class="location-description-content col-md-12">
+          {{ location.q_stmt|safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Ages Served -->
+  <div class="location-block">
+    <div class="location-ages py-5">
+      <div class="row">
+        <div class="location-ages-header col-md-12">
+          <h2 class="blue">{% trans 'Ages Served' %}</h2>
+        </div>
+        <div class="location-ages-content col-md-12">
+          <div class="location-inline">
+            <div class="location-infants">
+              <div class="location-svg">
+                {% if location.is_age_lt_3 %} 
+                  <div class="svg-inline-link svg-green">{% svg 'icons/checkmark' %}</div>
+                {% else%}
+                  <div class="svg-inline-link svg-red">{% svg 'icons/cross' %}</div>
+                {% endif %}
+              </div>
+              <div class="location-message">
+                <span>{% trans 'Ages 0 to 3' %}</span>
+              </div>
+            </div>
+            <div class="location-preschool">
+              <div class="location-svg">
+                {% if location.is_age_gt_3 %} 
+                  <div class="svg-inline-link svg-green">{% svg 'icons/checkmark' %}</div>
+                {% else%}
+                  <div class="svg-inline-link svg-red">{% svg 'icons/cross' %}</div>
+                {% endif %}
+              </div>
+              <div class="location-message">
+                <span>{% trans 'Ages 3 to 5' %}</span>
+              </div>
+            </div>
+            <div class="location-ages-disclaimer">
+            {% if location.is_age_lt_3 %}
+              <p><em>{% blocktrans %}<b>Ages 0 - 3:</b> If your child will be younger than 3 years old prior to September 1, 2017, there are infant/toddler programs available. Please contact the site directly for enrollment information for these programs.{% endblocktrans %}</em></p>
+            {% endif %}
+
+            {% if location.is_age_gt_3 and location.copa_key == 0 %}
+              <p><em>{% blocktrans %}<b>Ages 3 - 5:</b> If your child is 3 or 4 years old prior to September 1, 2017, your child will be eligible for preschool programs.{% endblocktrans %}</em></p>
+            {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if location.availability %}
+  <!-- Availability -->
+  <div class="location-block">
+    <div class="location-availability py-5">
+      <div class="row">
+        <div class="location-availability-header col-md-12">
+          <h2 class="blue">{% trans 'Seats Available' %}</h2>
+        </div>
+        <div class="location-availability-content col-md-12">
+          <div class="location-inline">
+            <div class="location-availability-block">
+              <div class="location-svg">
+                {% if location.availability == 'Slots Available' %} 
+                  <div class="svg-inline-link svg-green">{% svg 'icons/checkmark' %}</div>
+                {% elif location.availability == 'Few or No Slots' %} 
+                  <div class="svg-inline-link svg-yellow">{% svg 'icons/checkmark' %}</div>
+                {% endif %}
+              </div>
+              <div class="location-message">
+                <span>{{ location.get_availability_display }}</span>
+              </div>
+            </div>
+            <div class="location-availability-disclaimer">
+              <p><em>{% blocktrans %}Note: Availability and placement are subject to eligibility{% endblocktrans %}</em></p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Duration, Info, Languages, Other Features --> 
+  <div class="location-block">
+    <div class="location-group-info py-5"></div>
+  </div>
+
+
+  <!-- Accreditation, Quality Rating --> 
+  <div class="location-block">
+    <div class="location-special py-5">
+      <div class="location-dividers row">
+        <div class="location-divider-block col-md-6">
+          <div class="location-block-header">
+            <h2 class="blue">{% trans 'Accreditation' %}</h2>
+          </div>
+          <div class="location-block-content">
+            <p>{{ location.accred }}</p>
+          </div>
+          <div class="location-inline">
+            <div class="location-svg">
+              <div class="svg-inline-link svg-star">{% svg 'illustrations/star' %}</div>
+            </div>
+            <div class="location-message">
+              <h3 class="blue"><span>{% trans 'What does "Accreditation" mean?' %}</span></h3>
+            </div>
+          </div>
+          <div class="location-special-description">
+            <p>{% blocktrans %}Accreditation is another way of measuring and understanding early learning program quality; accredited status means that a program has met high standards of excellence determined by a national organization such as the National Association for the Education of Young Children (NAEYC), National Early Childhood Program Accreditation (NEPCA), or the Council on Accreditation (COA). These quality standards measure areas such as teaching, curriculum, learning assessments, health, community relationships, physical environment, and management.{% endblocktrans %}</p>
+            <p>{% blocktrans %}To learn more about accreditation of early learning programs and how such standards can help guide families searching for early learning programs, click on one of the following links:{% endblocktrans %}</p>
+            <p><a class="a-orange" href="http://www.naeyc.org"><i>National Association for the Education of Young Children</i></a></p>
+            <p><a class="a-orange" href="http://necpa.net/?"><i>National Early Childhood Program Accreditation</i></a></p>
+            <p><a class="a-orange" href="http://coanet.org/home/"><i>Council on Accreditation</i></a></p>
+          </div>
+        </div>
+        <div class="location-divider-block col-md-6">
+          <div class="location-block-header">
+            <h2 class="blue">{% trans 'Quality Rating' %}</h2>
+          </div>
+          <div class="location-block-content">
+            <p>{{ location.get_q_rating_display }}</p>
+          </div>
+          <div class="location-inline">
+            <div class="location-svg">
+              <div class="svg-inline-link svg-ribbon">{% svg 'illustrations/ribbon' %}</div>
+            </div>
+            <div class="location-message">
+              <h3 class="blue"><span>{% trans 'What does "Quality Rating" mean?' %}</span></h3>
+            </div>
+          </div>
+          <div class="location-special-description">
+            <p>{% blocktrans %}Quality Ratings are assessments of early learning programs used by Excelerate Illinois to help families understand program quality and help providers prioritize improvements. Excelerate Illinois, the state’s rating and improvement system, sets a research-based standard for early learning and development providers, reflected in its tiered Circles of Quality. The higher the tier, the more the program has made meaningful improvements that better the child for school and life. Reviewing a potential preschool program’s rating in Excelerate’s Circles of Quality can help Illinois families make a more informed decision for their child. More information can be found at <a class="a-orange" href="http://excelerateillinois.com">ExcelerateIllinois.com</a>.{% endblocktrans %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- End block -->
+  <div class="location-provider-message py-5">
+    <p>{% blocktrans %}Are you a provider  who works at this early learning center and needs to make changes to information on this page? <a class="a-orange" href="https://smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-form/">Click here!</a><b>{% endblocktrans %}</b></p>
+  </div>
+
+</div>
 {% endblock %}
 
 {% block scripts %}
