@@ -43,7 +43,7 @@
         </div>
         {% endif %}
         <div class="location-action-button">
-          <a href="" class="btn btn-blue btn-block">{% trans 'Compare Location' %}</a>
+          <a data-redirect="/favorites/" data-location="{{ location.id }}" class="btn btn-gray btn-block compare-btn">{% trans 'Compare Location' %}</a>
         </div>
         <div class="location-action-button">
           <a href="" class="btn btn-gray btn-block">{% trans 'Get Directions' %}</a>

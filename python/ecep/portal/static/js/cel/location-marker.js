@@ -27,7 +27,7 @@ define(['jquery', 'Leaflet', 'location',
                 $map = $('#location-map'),
                 latLng = new L.LatLng($map.data('lat'), $map.data('lng')),
                 map = new L.Map('location-map', { center: latLng, zoom: 13, dragging: false, scrollWheelZoom: false, doubleClickZoom: false }),
-                $star = $('.favs-toggle');
+                $star = $('.compare-btn');
 
             map.addLayer(mapboxTiles);
 
@@ -36,18 +36,10 @@ define(['jquery', 'Leaflet', 'location',
                 $('.favs-toggle').show();
             }
 
+            console.log('here');
             if (favorites.isStarred(location_id)) {
-                //favorites.toggle($star);
+                favorites.toggleFavoriteButton($star, 'add');
             }
-
-            $('.single-share').show().on('click', function(e) {
-                $('#share-modal').trigger('init-modal', {                                           
-                    // the url is passed in to the sharing urls, so it must be absolute             
-                    url: common.getUrl('origin') + 
-                        common.getUrl('single-location', { location: location_id }), 
-                    title: 'Check out this early learning program'                                  
-                });
-            });
 
             $.getJSON(url, function(data) {
                 var loc = new location.Location(data.locations[0]);
@@ -56,11 +48,11 @@ define(['jquery', 'Leaflet', 'location',
                 loc.getMarker().addTo(map);
 
                 $star.on('click', function(e) {
-                    //favorites.toggle($star);
+                    favorites.toggleFavoriteButton($star);
                     loc.setMarker();
 
                     // If the user toggled it on, redirect them
-                    if ($star.hasClass('favs-button-selected') && $star.data('redirect')) {
+                    if ($star.hasClass('btn-blue') && $star.data('redirect')) {
                         setTimeout(function () {
                             window.location = $star.data('redirect');
                         }, 300);
