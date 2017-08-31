@@ -40,14 +40,11 @@ urlpatterns = patterns(
     url(r'^resources$', Resources.as_view(), name='resources'),
 
     # Search
-    url(r'redesign/search/', Search.as_view(), name="search"),
+    url(r'search/', Search.as_view(), name="search"),
 
     # Blog
     url(r'^blog/$', Blog.as_view(), name="blog"),
     url(r'^blog/hughes-library$', Blog.as_view(), name="blog-hughes"),
-
-    # browse page
-    url(r'^search/$', 'portal.views.browse', name='browse'),
 
     # portal autocomplete api
     url(r'^api/autocomplete/$', 'portal.views.portal_autocomplete'),

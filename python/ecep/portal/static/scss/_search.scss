@@ -36,6 +36,11 @@
           flex-grow: 1
         }
 
+        input[type=text]:focus::-webkit-input-placeholder { color:transparent; }
+        input[type=text]:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+        input[type=text]:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+        input[type=text]:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
         #compare {
           display: none;
         }
