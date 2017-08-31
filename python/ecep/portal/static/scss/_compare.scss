@@ -85,10 +85,10 @@
       .custom-control-input:checked ~ .custom-control-indicator {
         background-color: $orange;
       }
-
-      #non-copa {
-        display: none;
-      }
     }
   }
+}
+
+#non-copa {
+  display: none;
 }
