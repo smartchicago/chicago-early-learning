@@ -104,9 +104,8 @@ function($, L, Handlebars) {
             case 'neighborhoods-geojson':
                 return '/static/js/neighborhoods.json';
             case 'browse':
-                debugger;
                 if (opts) {
-                    var param_string = $.params(opts);
+                    var param_string = $.param(opts);
                     return '/search/?' + param_string;
                 } else {
                     return '/search';

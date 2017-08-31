@@ -294,7 +294,7 @@ class Location(models.Model):
             'accreditation': _('Accreditation'),
             'more_info': _('More Info'),
             'compare': _('Compare'),
-            'view_map': _('Vew Map'),
+            'view_map': _('View on Map'),
             'apply': _('Apply'),
         }
         return display
