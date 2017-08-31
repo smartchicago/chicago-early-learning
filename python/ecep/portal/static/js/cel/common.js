@@ -104,8 +104,13 @@ function($, L, Handlebars) {
             case 'neighborhoods-geojson':
                 return '/static/js/neighborhoods.json';
             case 'browse':
-                var param_string = $.param(opts)
-                return '/redesign/search/?' + param_string
+                debugger;
+                if (opts) {
+                    var param_string = $.params(opts);
+                    return '/search/?' + param_string;
+                } else {
+                    return '/search';
+                }
             case 'single-location':
                 url = '/location/' + opts.location + '/';
                 if (opts.slug) {
