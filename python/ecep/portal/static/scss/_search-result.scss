@@ -100,7 +100,7 @@
           flex: 0 1 50%;
 
           &:first-child,
-          &:nth-child(2), {
+          &:nth-child(2) {
             padding-right: 0.25em;
           }
 
@@ -112,7 +112,8 @@
         @media (min-width:  $break-medium) {
           .secondary-full {
             flex: 1 1 100%;
-            &:first-child {
+            &:first-child,
+            &:nth-child(2) {
               padding-right: 0em;
               margin-bottom: 0;
             }
