@@ -31,7 +31,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             default_longitude = -87.6207733154,
             default_latitude = 41.8725248264,
             default_zoom = 11,
-            location_zoom = 15,
+            location_zoom = 16,
             neighborhood_zoom_cutoff = 13,
             list_index = 0,
             neighborhoods_data = {},
