@@ -742,6 +742,12 @@ def starred_location_api(request, location_ids=None):
         availability['note'] = ugettext('Note: Availability and placement are subject to eligibility.')
         l['availability'] = availability
 
+        # Geometry
+        geometry = {}
+        geometry["latitude"] = location.geom[1]
+        geometry["longitude"] = location.geom[0]
+        l["geometry"] = geometry
+
         # Add to final location array
         locations_array.append(l)
 

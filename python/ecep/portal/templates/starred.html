@@ -34,16 +34,14 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-m-8 offset-md-2">
-            <div class="location-map">
-                <div id="location-map" 
-                  {% if request.GET.lat and request.GET.lng %}
-                  data-address-latitude="{{ request.GET.lat }}"
-                  data-address-longitude="{{ request.GET.lng }}"
-                  {% endif %}
-                  class="single-location-map"></div>
-              </div>
+    <div class="row py-3">
+        <div class="col-md-8 offset-md-2">
+            <div id="location-map" 
+              {% if request.GET.lat and request.GET.lng %}
+              data-address-latitude="{{ request.GET.lat }}"
+              data-address-longitude="{{ request.GET.lng }}"
+              {% endif %}
+              class="location-map"></div>
         </div>
     </div>
     

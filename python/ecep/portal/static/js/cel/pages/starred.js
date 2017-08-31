@@ -82,6 +82,65 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
 
             }
 
+            function drawMap(data, copa_locations, non_copa_locations) {
+                var mapboxURL = '',
+                    $map = $('#location-map'),
+                    latLng;
+
+                if ($map.data("address-latitude") && $map.data("address-longitude")) {
+                    latLng = new L.LatLng($map.data("address-latitude"), $map.data("address-longitude"));
+                }
+
+                if (common.isRetinaDisplay()) {
+                    mapboxURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}@2x.png?access_token='
+                } else {
+                    mapboxURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token='
+                }
+
+                var accessToken = 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg';
+                
+                var mapboxTiles = L.tileLayer(mapboxURL + accessToken,
+                    {attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>'});
+
+                var map = new L.Map('location-map', { center: latLng, zoom: 15});
+
+                var copa_markers = []
+                $.each(copa_locations, function(i, location) {
+                    var copa_icon = new L.divIcon({
+                        className: "cel-icon copa-location-icon",
+                        iconSize: new L.point(50, 50),
+                        html: i + 1
+                    });
+                    
+                    copa_markers.push(L.marker([location.geometry.latitude, location.geometry.longitude], {icon: copa_icon}));
+                });
+
+                var non_copa_markers = []
+                $.each(non_copa_locations, function(i, location) {
+                    var copa_icon = new L.divIcon({
+                        className: "cel-icon non-copa-location-icon",
+                        iconSize: new L.point(50, 50),
+                        html: i + 1
+                    });
+                    
+                    non_copa_markers.push(L.marker([location.geometry.latitude, location.geometry.longitude], {icon: copa_icon}));
+                });
+
+                var bounds = L.featureGroup($.merge(copa_markers, non_copa_markers)).getBounds();
+                map.fitBounds(bounds, {padding: [50, 50]});
+
+                var copaLayer = new L.layerGroup(copa_markers),
+                    nonCopaLayer = new L.layerGroup(non_copa_markers);
+                map.addLayer(mapboxTiles);
+                map.addLayer(copaLayer);
+                map.addLayer(nonCopaLayer);
+
+                if (latLng) {
+                    var geolocatedIcon = L.icon({iconUrl: common.getUrl('icon-geolocation'), iconSize: [50, 50], iconAnchor: [17, 45]}),
+                        geolocatedMarker = L.marker([latLng.lat, latLng.lng], {icon: geolocatedIcon}).addTo(map).setZIndexOffset(1000);
+                }
+            }
+
             function checkSite(id, key) {
                 apply_sites.push(key);
                 if (apply_sites.length > 0) { $apply_button.removeClass('disabled'); }
@@ -129,7 +188,8 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                     }
 
                     if ( copa.length == 0 ) { $('.empty-faves').show(); }
-                        drawTable(results, copa, non_copa);
+                    drawTable(results, copa, non_copa);
+                    drawMap(results, copa, non_copa);
                 });
             } else {
                 $('.empty-faves').show();

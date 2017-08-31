@@ -530,7 +530,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     if ( validateDate(month, day, year) ) {
                         var calculated = calculateProgram(month, day, year);
                         addAgeToUrl(calculated);
-                        initializeList(calculated.years);
+                        initializeList(calculated);
                     }
                 });
 
