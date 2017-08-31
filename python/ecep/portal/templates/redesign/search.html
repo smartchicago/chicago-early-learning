@@ -177,7 +177,7 @@
         </div>
 
         <div id="results" class="bg-lightest-gray">
-          {% if request.GET.address %}
+          {% if request.GET.address or request.GET.type == 'geo-latlng' %}
           <div class="results-calculator p-4">
             <div class="results-calculator-header text-center">
               <h2 class="blue">{% blocktrans %}Enter your child's birthdate to find the right program.{% endblocktrans %}</h2>
@@ -226,6 +226,7 @@
 
       <div id="search-map" class="col-md-8 hidden-sm-down h-100">
         <div id="map"
+        {% if request.GET.type %} data-type="{{ request.GET.type }}"{% endif %}
         {% if request.GET.address %} data-address="{{ request.GET.address }}"{% endif %}
         {% if request.GET.lat %} data-latitude="{{ request.GET.lat }}"{% endif %}
         {% if request.GET.lng %} data-longitude="{{ request.GET.lng }}"{% endif %}

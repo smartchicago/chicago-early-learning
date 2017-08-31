@@ -340,7 +340,7 @@ function($, L, Handlebars) {
         // Specific Address
         function redirectToMap(label, lat, lng, zoom) {
             var opts = {
-                type: 'geo-latlng',
+                type: 'latlng',
                 address: label,
                 lat: lat,
                 lng: lng,
