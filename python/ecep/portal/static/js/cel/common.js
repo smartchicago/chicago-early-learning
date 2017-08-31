@@ -492,7 +492,7 @@ function($, L, Handlebars) {
 
     // Homepage Geolocation
     $(document).ready(function() {
-        $('#locate-main').bind('click', function(e) {
+        $('.locate-main').bind('click', function(e) {
             e.preventDefault();
             navigator.geolocation.getCurrentPosition(function(position) {
                 window.location.href = getUrl(
