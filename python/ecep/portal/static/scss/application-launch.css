@@ -881,7 +881,8 @@ footer {
   color: #ee5713; }
 .compare-container .faves-table table .custom-control-input:checked ~ .custom-control-indicator {
   background-color: #ee703f; }
-.compare-container .faves-table table #non-copa {
+
+#non-copa {
   display: none; }
 
 .header {
