@@ -99,11 +99,11 @@
         .secondary {
           flex: 0 1 50%;
 
-          &:first-child {
+          &:first-child,
+          &:nth-child(2), {
             padding-right: 0.25em;
           }
 
-          &:nth-child(2),
           &:nth-child(3) {
             padding-left: 0.25em;
           }

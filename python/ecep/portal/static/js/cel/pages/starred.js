@@ -109,6 +109,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                     var copa_icon = new L.divIcon({
                         className: "cel-icon copa-location-icon",
                         iconSize: new L.point(50, 50),
+                        iconAnchor: [17, 45],
                         html: i + 1
                     });
                     
