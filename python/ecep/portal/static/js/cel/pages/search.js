@@ -449,8 +449,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             var current_url = window.location.href,
                 age_url = current_url + "&" + $.param({age: age.years});
 
-            //debugger;
-            //window.history.pushState();
+            window.history.pushState(
+                {age: age.years}, 
+                "Search for " + age.years + " year old",
+                age_url);
         }
 
 
@@ -528,7 +530,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     if ( validateDate(month, day, year) ) {
                         var calculated = calculateProgram(month, day, year);
                         addAgeToUrl(calculated);
-                        initializeList(calculated);
+                        initializeList(calculated.years);
                     }
                 });
 
@@ -560,6 +562,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
                     if ( $map.data('latitude') ) {
                         listLocations(locations);
+                    }
+
+                    if ( $map.data('age') ) {
+                        var now = new Date();
+                        year = 365*24*60*60;
+
+                        var calculated = calculateProgram(now.getMonth() + 1, now.getDay() + 1, now.getFullYear() - parseInt($map.data('age')));
+                        initializeList(calculated);
                     }
                 });
             }
