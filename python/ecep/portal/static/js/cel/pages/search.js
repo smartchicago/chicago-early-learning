@@ -460,7 +460,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         return {
             init: function() {
                 list_index = 0;
-                $search_input.attr('placeholder', ($map.data('address') || 'Enter an address'));
+                var address_string = ($map.data('type') == 'geo-latlng') ? 'Current Location' : $map.data('address');
+                $search_input.attr('placeholder', (address_string || 'Enter an address'));
 
                 /* -- Listeners -- */
                 /* Filter Pane Toggle */ 
