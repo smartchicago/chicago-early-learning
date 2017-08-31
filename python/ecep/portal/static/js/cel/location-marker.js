@@ -30,7 +30,7 @@ define(['jquery', 'Leaflet', 'location',
             if ($map.data("address-latitude") && $map.data("address-longitude")) {
                 latLng = new L.LatLng($map.data("address-latitude"), $map.data("address-longitude"));
             }
-            var map = new L.Map('location-map', { center: latLng, zoom: 13, dragging: false, scrollWheelZoom: false, doubleClickZoom: false }),
+            var map = new L.Map('location-map', { center: latLng, zoom: 15, dragging: false, scrollWheelZoom: false, doubleClickZoom: false }),
                 $star = $('.compare-btn');
 
             map.addLayer(mapboxTiles);
