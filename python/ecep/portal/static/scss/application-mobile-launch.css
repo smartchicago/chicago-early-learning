@@ -843,7 +843,10 @@ footer {
     line-height: 2rem; }
 
 .compare-container .scroll-message {
-  height: 2rem; }
+  height: 2rem;
+  flex-grow: 1; }
+  .compare-container .scroll-message svg {
+    width: 2rem; }
   .compare-container .scroll-message .scroll-note {
     height: 100%; }
     .compare-container .scroll-message .scroll-note h1 {
@@ -852,7 +855,8 @@ footer {
       line-height: 1rem;
       font-weight: 400;
       font-style: italic;
-      margin-bottom: 0; }
+      margin-bottom: 0;
+      white-space: nowrap; }
 @media (max-width: 992px) {
   .compare-container .faves-table {
     width: 1200px;

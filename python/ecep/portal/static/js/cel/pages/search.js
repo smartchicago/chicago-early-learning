@@ -445,6 +445,20 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $block.delay(500).fadeIn(500);
         }
 
+        var updateUrl = function() {
+            windowistory.pushState(
+                {
+                    isGeolocated: false,
+                    filtersVisible: filtersVisible
+                },
+                null,
+                common.getUrl(
+                    'browse',
+                    {type: 'latlng', lat: mapCenter.lat, lng: mapCenter.lng, zoom: zoomLevel}
+                )
+            );
+        }
+
 
         /* -- Initializer -- */
         return {
