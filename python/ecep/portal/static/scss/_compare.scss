@@ -2,6 +2,11 @@
 
   .scroll-message {
     height: 2rem;
+    flex-grow: 1;
+
+    svg {
+      width: 2rem;
+    }
 
     .scroll-note {
       height: 100%;
@@ -13,6 +18,7 @@
         font-weight: 400;
         font-style: italic;
         margin-bottom: 0;
+        white-space: nowrap;
       }
     }
   }
