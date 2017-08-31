@@ -22,12 +22,14 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
 
                 for (var i=0; i < copa_total; i++) {
                     var loc = copa_locations[i];
+                    loc.index = i + 1;
                     var $location = $(template(loc));
                     copa_faves.push($location);
                 }
 
                 for (var i=0; i < non_copa_total; i++) {
                     var loc = non_copa_locations[i];
+                    loc.index = i + 1;
                     var $location = $(template(loc));
                     non_copa_faves.push($location);
                 }
@@ -127,7 +129,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                     }
 
                     if ( copa.length == 0 ) { $('.empty-faves').show(); }
-                    drawTable(results, copa, non_copa);
+                        drawTable(results, copa, non_copa);
                 });
             } else {
                 $('.empty-faves').show();
