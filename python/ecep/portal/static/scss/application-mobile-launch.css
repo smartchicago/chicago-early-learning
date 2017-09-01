@@ -867,12 +867,19 @@ footer {
   border-bottom: 4px solid #ffc104;
   margin: 3em 0; }
 #location-container .location-top-headers h1 {
-  font-size: 2rem;
-  line-height: 3rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
   font-weight: 500; }
+#location-container .location-top-headers h2 {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  font-weight: 400; }
 #location-container .location-top-headers a {
   font-style: italic;
-  font-size: 1.5rem; }
+  font-size: 1.25rem; }
+@media (max-width: 768px) {
+  #location-container .location-top-headers a {
+    font-size: 1rem; } }
 #location-container .location-action-button {
   padding: 0.5em 0; }
 #location-container .location-top {
