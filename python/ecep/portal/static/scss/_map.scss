@@ -7,9 +7,13 @@
 }
 
 .copa-location-icon {
-  background: $blue;
+  background-image: url('../img/map-icons/2x/CPS/high.png');
+  background-size: cover;
+  background-repeat: none;
 }
 
 .non-copa-location-icon {
-  background: $orange;
+  background-image: url('../img/map-icons/2x/CPS/low.png');
+  background-size: cover;
+  background-repeat: none;
 }

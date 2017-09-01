@@ -308,6 +308,7 @@ function($, L, Handlebars) {
                 case 'Addresses':
                     var geocoder = new google.maps.Geocoder();
                     geocoder.geocode({'placeId': place_id}, function(results, status) {
+                        var age;
                         var result = results[0];
                         var lat = result.geometry.location.lat();
                         var lng = result.geometry.location.lng();
@@ -319,7 +320,11 @@ function($, L, Handlebars) {
                         if (isPostalCode != -1 || isNeighborhood != -1) {
                             zoom = 14;
                         }
-                        redirectToMap(label, lat, lng, zoom);
+
+                        if (urlParam('age')) {
+                            age = urlParam('age');
+                        }
+                        redirectToMap(label, lat, lng, zoom, age);
                     });
                     break;
                 case 'Locations':
@@ -331,6 +336,16 @@ function($, L, Handlebars) {
             }
         }
 
+        function urlParam(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results==null){
+               return null;
+            }
+            else{
+               return decodeURI(results[1]) || 0;
+            }
+        }
+
         // No input, default map at neighborhood-view level
         function redirectToDefaultMap() {
             window.location.href = getUrl('browse');
@@ -338,14 +353,17 @@ function($, L, Handlebars) {
         }
 
         // Specific Address
-        function redirectToMap(label, lat, lng, zoom) {
+        function redirectToMap(label, lat, lng, zoom, age) {
             var opts = {
                 type: 'latlng',
                 address: label,
                 lat: lat,
                 lng: lng,
-                zoom: zoom
+                zoom: zoom,
             }
+
+            if (age) { opts['age'] = age; }
+            debugger;
             window.location.href = getUrl('browse', opts
             );
             return;
