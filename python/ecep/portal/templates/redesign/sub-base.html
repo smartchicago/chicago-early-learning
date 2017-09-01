@@ -114,12 +114,12 @@
   </script>
 
   {% compress js %}
-  <script src='{% static "js/require.js" %}'></script>
-  <script src='{% static "js/require-config.js" %}'></script>
+  <script src='{% static "js/require.js" %}?version=1'></script>
+  <script src='{% static "js/require-config.js" %}?version=1'></script>
   {% endcompress %}
   <script>
       var inDevelopment = {{ settings.DEBUG|yesno:"true,false" }},
-          version = 9;
+          version = 10;
 
       requirejs.config({
           //By default load any module IDs from js/lib
