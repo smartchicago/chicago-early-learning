@@ -149,28 +149,84 @@ a {
     text-decoration: underline; }
 
 .svg-blue {
-  fill: #1dc1ea; }
+  fill: #1dc1ea !important;
+  stroke: #1dc1ea !important; }
+  .svg-blue svg {
+    fill: #1dc1ea !important;
+    stroke: #1dc1ea !important; }
+  .svg-blue path {
+    fill: #1dc1ea !important;
+    stroke: #1dc1ea !important; }
 
 .svg-green {
-  fill: #a3d65e; }
+  fill: #a3d65e !important;
+  stroke: #a3d65e !important; }
+  .svg-green svg {
+    fill: #a3d65e !important;
+    stroke: #a3d65e !important; }
+  .svg-green path {
+    fill: #a3d65e !important;
+    stroke: #a3d65e !important; }
 
 .svg-orange {
-  fill: #ee703f; }
+  fill: #ee703f !important;
+  stroke: #ee703f !important; }
+  .svg-orange svg {
+    fill: #ee703f !important;
+    stroke: #ee703f !important; }
+  .svg-orange path {
+    fill: #ee703f !important;
+    stroke: #ee703f !important; }
 
 .svg-yellow {
-  fill: #ffe009; }
+  fill: #ffe009 !important;
+  stroke: #ffe009 !important; }
+  .svg-yellow svg {
+    fill: #ffe009 !important;
+    stroke: #ffe009 !important; }
+  .svg-yellow path {
+    fill: #ffe009 !important;
+    stroke: #ffe009 !important; }
 
 .svg-black {
-  fill: #222222; }
+  fill: #222222 !important;
+  stroke: #222222 !important; }
+  .svg-black svg {
+    fill: #222222 !important;
+    stroke: #222222 !important; }
+  .svg-black path {
+    fill: #222222 !important;
+    stroke: #222222 !important; }
 
 .svg-gray {
-  fill: #9b9b9b; }
+  fill: #9b9b9b !important;
+  stroke: #9b9b9b !important; }
+  .svg-gray svg {
+    fill: #9b9b9b !important;
+    stroke: #9b9b9b !important; }
+  .svg-gray path {
+    fill: #9b9b9b !important;
+    stroke: #9b9b9b !important; }
 
 .svg-light-gray {
-  fill: #d6d6d6; }
+  fill: #d6d6d6 !important;
+  stroke: #d6d6d6 !important; }
+  .svg-light-gray svg {
+    fill: #d6d6d6 !important;
+    stroke: #d6d6d6 !important; }
+  .svg-light-gray path {
+    fill: #d6d6d6 !important;
+    stroke: #d6d6d6 !important; }
 
 .svg-white {
-  fill: #ffffff; }
+  fill: #ffffff !important;
+  stroke: #ffffff !important; }
+  .svg-white svg {
+    fill: #ffffff !important;
+    stroke: #ffffff !important; }
+  .svg-white path {
+    fill: #ffffff !important;
+    stroke: #ffffff !important; }
 
 /* -- -- */
 .inline-link-svg {
@@ -794,10 +850,14 @@ footer {
   color: #ffffff; }
 
 .copa-location-icon {
-  background: #1dc1ea; }
+  background-image: url("../img/map-icons/pins/pin-blue@2x.png");
+  background-size: 50px 50px;
+  background-repeat: none; }
 
 .non-copa-location-icon {
-  background: #ee703f; }
+  background-image: url("../img/map-icons/pins/pin-orange@2x.png");
+  background-size: 50px 50px;
+  background-repeat: none; }
 
 #location-container h2 {
   margin-bottom: 1rem; }
