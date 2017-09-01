@@ -37,6 +37,12 @@
         {% endif %}
       </div>
       <div class="location-top-actions col-md-4">
+        <div class="location-action-button">
+          <a href="https://maps.google.com/maps?saddr=current+location&daddr={{location.address}}+{{location.city}}+{{location.state}}+{{location.zip}}" class="btn btn-gray btn-block">{% trans 'Get Directions' %}</a>
+        </div>
+        <div class="location-action-button">
+          <a class="btn btn-gray btn-block" href="{% url 'location-map-view' location.id %}">{% trans 'View On Map' %}</a>
+        </div>
         {% if location.copa_key > 0 %}
         <div class="location-action-button">
           <a href="{{ location.get_copa_url }}?site1={{ location.copa_key }}" class="btn btn-orange btn-block">{% trans 'Apply Today!' %}</a>
@@ -44,9 +50,6 @@
         {% endif %}
         <div class="location-action-button">
           <a data-redirect="/favorites/" data-location="{{ location.id }}" class="btn btn-gray btn-block compare-btn">{% trans 'Compare Location' %}</a>
-        </div>
-        <div class="location-action-button">
-          <a href="https://maps.google.com/maps?saddr=current+location&daddr={{location.address}}+{{location.city}}+{{location.state}}+{{location.zip}}" class="btn btn-gray btn-block">{% trans 'Get Directions' %}</a>
         </div>
       </div>
     </div>
