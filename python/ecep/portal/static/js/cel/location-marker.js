@@ -35,7 +35,6 @@ define(['jquery', 'Leaflet', 'location',
 
             map.addLayer(mapboxTiles);
 
-
             if (width >= common.breakpoints.desktop) {
                 $('.favs-toggle').show();
             }
@@ -46,14 +45,22 @@ define(['jquery', 'Leaflet', 'location',
 
             $.getJSON(url, function(data) {
                 var loc = new location.Location(data.locations[0]);
-
+                var group = [];
                 loc.setMarker({ popup: false });
-                loc.getMarker().addTo(map);
+                group.push(loc.getMarker());
 
                 if ($map.data("address-latitude") && $map.data("address-longitude")) {
                     var geolocatedIcon = L.icon({iconUrl: common.getUrl('icon-geolocation'), iconSize: [50, 50]});
-                    var geolocatedMarker = L.marker([$map.data("address-latitude"), $map.data("address-longitude")], {icon: geolocatedIcon}).addTo(map);
+                    var geolocatedMarker = L.marker([$map.data("address-latitude"), $map.data("address-longitude")], {icon: geolocatedIcon});
+                    group.push(geolocatedMarker);
                 }
+                var groupLayer = new L.layerGroup(group);
+                var bounds = L.featureGroup(group).getBounds();
+                map.fitBounds(bounds);
+
+                map.addLayer(groupLayer);
+
+                
 
                 $star.on('click', function(e) {
                     favorites.toggleFavoriteButton($star);
