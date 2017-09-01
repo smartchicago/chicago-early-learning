@@ -24,8 +24,8 @@
               <div class="search-form">
                 <input id="search-input" class="form-control map-search-form autocomplete-searchbox" type="text" name="">
               </div>
-              <div id="filters-toggle" class="search-svg">
-                <a class="inline-link-svg svg-gray">{% svg 'icons/scale' %}</a>
+              <div class="filters-toggle search-svg">
+                <a class="filters-svg inline-link-svg svg-gray">{% svg 'icons/scale' %}</a>
               </div>
             </div>
           </form>
@@ -43,7 +43,7 @@
           <div id="filters" class="search-filters">
             <div class="d-flex m-3">
               <div class="filter-header mr-auto align-middle d-inline-flex align-items-center">
-                <h2 class="">{% trans 'Refine your search' %}</h2>
+                <h2 class="">{% trans 'Refine Your Search' %}</h2>
               </div>
               <div class="filter-clear">
                 <a class="btn btn-clear" id="filters-clear">{% trans 'Clear' %}</a>
@@ -199,8 +199,9 @@
             </div>
           </div>
           <div class="results-scroll p-3">
-            <div class="results-description">
+            <div class="results-description py-3">
               <p>{% trans 'All locations near you for a ' %} <b class="blue"><span id="calculated-age"></span> {% trans 'year old' %}</b> child:</p>
+              <h4 class="a-orange filters-toggle">{% trans 'Refine Your Search' %}</h4>
             </div>
             <div class="results-list"></div>
             <div class="results-load-more">

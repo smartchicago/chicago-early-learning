@@ -5,7 +5,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $map = $('#map'),
             $filters = $('#filters'),
             $filters_inputs = $filters.find('input:checkbox'),
-            $filters_toggle = $('#filters-toggle'),
+            $filters_toggle = $('.filters-toggle'),
+            $filters_svg = $('.filters-svg'),
             $filters_clear = $('#filters-clear'),
             $results_wrapper = $('#results'),
             $results_default = $('.results-default'),
@@ -466,10 +467,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 /* -- Listeners -- */
                 /* Filter Pane Toggle */ 
                 $filters_toggle.on('click', function() {
-                    var $this = $(this),
-                        $filterLink = $this.find('a');
-                    $filterLink.toggleClass('svg-gray');
-                    $filterLink.toggleClass('svg-orange');
+                    $filters_svg.toggleClass('svg-gray');
+                    $filters_svg.toggleClass('svg-orange');
                     $filters.toggle();
                 });
 
