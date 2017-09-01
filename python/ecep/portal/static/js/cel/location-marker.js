@@ -51,7 +51,7 @@ define(['jquery', 'Leaflet', 'location',
                 loc.getMarker().addTo(map);
 
                 if ($map.data("address-latitude") && $map.data("address-longitude")) {
-                    var geolocatedIcon = L.icon({iconUrl: common.getUrl('icon-geolocation'), iconSize: [50, 50], iconAnchor: [17, 45]});
+                    var geolocatedIcon = L.icon({iconUrl: common.getUrl('icon-geolocation'), iconSize: [50, 50]});
                     var geolocatedMarker = L.marker([$map.data("address-latitude"), $map.data("address-longitude")], {icon: geolocatedIcon}).addTo(map);
                 }
 
