@@ -461,7 +461,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             init: function() {
                 list_index = 0;
                 var address_string = ($map.data('type') == 'geo-latlng') ? 'Current Location' : $map.data('address');
-                $search_input.attr('placeholder', (address_string || 'Enter an address'));
+                $search_input.attr('placeholder', (address_string || 'Enter an address, site, or zip code'));
 
                 /* -- Listeners -- */
                 /* Filter Pane Toggle */ 
