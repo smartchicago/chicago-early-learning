@@ -1,0 +1,19 @@
+.cel-icon {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 50px;
+  font-family: $montserrat;
+  color: $white;
+}
+
+.copa-location-icon {
+  background-image: url('../img/map-icons/pins/pin-blue@2x.png');
+  background-size: 50px 50px;
+  background-repeat: none;
+}
+
+.non-copa-location-icon {
+  background-image: url('../img/map-icons/pins/pin-orange@2x.png');
+  background-size: 50px 50px;
+  background-repeat: none;
+}

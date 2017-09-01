@@ -1,0 +1,10 @@
+.leaflet-popup-content-wrapper {
+  font-family: $montserrat;
+  border-radius: 4px;
+
+  .popup {
+    h1 {
+      font-size: 1rem;
+    }
+  }
+}

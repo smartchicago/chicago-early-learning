@@ -1,16 +1,14 @@
-# Copyright (c) 2012, 2013 Azavea, Inc.
-# See LICENSE in the project root for copying permission
-
 import logging
 import hashlib
 import json
+import time
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.views.decorators.cache import cache_control
-from django.views.generic import TemplateView, DetailView
+from django.views.decorators.cache import cache_control, cache_page
+from django.views.generic import View, TemplateView, DetailView
 from django.utils.translation import check_for_language
 from django.db.models import Count, Q
 from django.contrib.gis.geos import Polygon
@@ -76,6 +74,14 @@ class Programs(TemplateView):
 
 class Resources(TemplateView):
     template_name = "redesign/resources.html"
+
+
+class Search(View):
+    template_name = "redesign/search.html"
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+
 
 
 def browse(request):
@@ -390,8 +396,26 @@ def location(request, location_id=None, slug=None):
     else:
         no_es_description = False
 
-
     return render(request, 'location.html', {
+        'loc': loc,
+        'loc_description': location.q_stmt,
+        'loc_neighborhood': location.neighborhood,
+        'location': location,
+        'fields': fields,
+        'no_es_description': no_es_description
+    })
+
+def location_map(request, location_id=None):
+    location = get_object_or_404(Location, id=location_id)
+    loc = location_details(location_id)
+    fields = clean_context_dict(loc)
+
+    if request.LANGUAGE_CODE == 'es' and location.q_stmt_es == '':
+        no_es_description = True
+    else:
+        no_es_description = False
+
+    return render(request, 'location-map.html', {
         'loc': loc,
         'loc_description': location.q_stmt,
         'loc_neighborhood': location.neighborhood,
@@ -414,12 +438,11 @@ def clean_context_dict(context_dict):
     return fields
 
 
+@cache_page(60*60*24)
 def location_json_api(request):
     """
-
     API Endpoint for returning a full JSON list of names and IDs of schools and locations
     for use in the homepage search bar autocomplete dropdown.
-
     """
     locs = Location.objects.all().values('site_name', 'id').order_by('site_name')
     loc_list = list(locs)
@@ -430,6 +453,19 @@ def location_json_api(request):
         location['category'] = 'Locations'
 
     return JsonResponse(loc_list, safe=False)
+
+
+# @cache_page(60*60*24)
+def api_map_json(request):
+    """
+    API endpoint for returning full JSON location data for search map.
+    """
+    locations = Location.objects.all()
+    location_list = [l.get_map_location_data() for l in locations]
+    location_description = Location.get_location_display()
+
+    return JsonResponse({ "locations": location_list, "display": location_description })
+    
 
 
 def location_position(request, location_id):
@@ -705,6 +741,12 @@ def starred_location_api(request, location_ids=None):
         availability['value'] = location.get_availability_display()
         availability['note'] = ugettext('Note: Availability and placement are subject to eligibility.')
         l['availability'] = availability
+
+        # Geometry
+        geometry = {}
+        geometry["latitude"] = location.geom[1]
+        geometry["longitude"] = location.geom[0]
+        l["geometry"] = geometry
 
         # Add to final location array
         locations_array.append(l)

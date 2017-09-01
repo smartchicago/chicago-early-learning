@@ -1,11 +1,3 @@
-/********************************************************
- * Copyright (c) 2013 Azavea, Inc.
- * See LICENSE in the project root for copying permission
- * Module for working with starred locations
- *  add/remove locations and add
- *      listeners for sharing/clearing/toggling favorites
- *********************************************************/
-
 define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcookie, common) {
 
     'use strict';
@@ -108,11 +100,20 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
             $.cookie(cookie.name, cookieString, cookie.options);
         },
 
+        getFavoriteIds: function() {
+            var cookie = favs.getCookie(),
+                starredIds,
+                starredIdsLength;
+
+            return starredIds = cookie ? cookie.split(',') : [];
+        },
+
         /*
          * Sync the view with a set cookie on page load
          *
          * Properly sets buttons for all starred locations
          */
+
         syncUI: function(options) {
             var defaults = {
                     button: '#faves-clear',
@@ -144,7 +145,32 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
          *
          * Optional options argument allows for changing some of the default settings
          */
-        toggle: function($elt, options) {
+        toggleFavoriteButton: function($element, action) {
+            var button_id = $element.data("location"),
+                favorite_ids = favs.getFavoriteIds();
+
+            if (!action) {
+                action = ($.inArray(String(button_id), favorite_ids) >= 0) ? 'remove' : 'add';
+            }
+
+            switch (action) {
+                case 'add':
+                    favs.addIdToCookie(button_id);
+                    $element.removeClass('btn-gray');
+                    $element.addClass('btn-blue');
+                    break;
+                case 'remove':
+                    favs.removeIdFromCookie(button_id);
+                    $element.removeClass('btn-blue');
+                    $element.addClass('btn-gray');
+                    break;
+                default:
+                    console.log('ruh roh');
+                    break;
+            }
+        },
+
+        oldtoggle: function($elt, options) {
             var defaults = {
                     imgpath: '/static/img/icons/',
                     idAttribute: 'data-loc-id',
@@ -180,25 +206,6 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
         },
 
         /*
-         * Adds a click listener for toggling a favorite on/off to the button specified
-         *      in the options object.
-         */
-        // addToggleListener: function(options) {
-        //     var defaults = {
-        //             button: '.faves-add'
-        //         },
-        //         opts = $.extend({}, defaults, options),
-        //         self = favs,
-        //         button = $(opts.button);
-
-        //     // toggle the button/cookie state
-        //     button.on('click', function(e) {
-        //         e.preventDefault()
-        //         self.toggle($(this));
-        //     });
-        // },
-
-        /*
          * Adds a click listener to the specified selector for clearing all favorites
          *      from the cookie.
          */
@@ -218,34 +225,6 @@ define(['jquery', 'cel-cookie', 'common', 'jquery-cookie'], function($, celcooki
                 $.removeCookie(self.cookie.name, self.cookie.options);
             });
         },
-
-        /*
-         * Initializes a share modal with the stored favorites information
-         */
-        initShareModal: function() {
-            var ids = favs.getCookie(),
-                count = ids ? ids.split(',').length : 0;
-
-            $('#share-modal').trigger('init-modal', {
-                // the url is passed in to the sharing urls, so it must be absolute
-                url: common.getUrl('origin') + common.getUrl('favorites', { locations: ids }),
-                title: 'I just starred ' + count + ' locations'
-            });
-        },
-
-        /*
-         * Adds a click listener to the specified selector for sharing current favorites.
-         */
-        addShareListener: function(options) {
-            var defaults = {
-                    button: '#faves-share'
-                },
-                opts = $.extend({}, defaults, options),
-                self = favs,
-                sharebutton = $(opts.button);
-
-            sharebutton.on('click', favs.initShareModal);
-        }
     };
     return favs;
 });

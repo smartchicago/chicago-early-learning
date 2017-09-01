@@ -1,0 +1,151 @@
+.results-list {
+  $h1-size: 1rem;
+  $h1-line-height: 1.375rem;
+  $lines: 2;
+
+  $p-size: 0.875rem;
+  $p-line-height: 1.25rem;
+
+  .location-result {
+    margin-bottom: 1em;
+    background-color: $white;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px $shadow-gray;
+
+    h1 {
+      display: block;
+      display: -webkit-box;
+      max-height: $lines*$h1-line-height;
+      font-size: $h1-size;
+      line-height: $h1-line-height;
+      font-weight: 400;
+      color: $text-gray;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: $lines;
+      -webkit-box-orient: vertical;
+      margin-bottom: 0;
+    }
+    
+    p {
+      font-size: $p-size;
+      line-height: $p-line-height;
+      font-weight: 400;
+      color: $text-gray;
+      margin-bottom: 0;
+    }
+
+    .location-info {
+      margin-bottom: 0.5em;
+
+      .name {
+        flex-grow: 1;
+      }
+
+      .distance {
+        white-space: nowrap; 
+        padding-left: 1em;
+        // p { white-space: nowrap; }
+      }
+    }
+
+    .location-address {
+      margin-bottom: 0.5em;
+      white-space: nowrap;
+
+      .address {
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .location-features {
+      margin-bottom: 0.5em;
+      vertical-align: middle;
+
+      .feature {
+        flex-grow: 1;
+        margin-bottom: 0.25rem;
+      }
+
+      .feature-svg {
+        display: inline-block;
+        height: $p-line-height;
+        width: $p-line-height;
+
+        svg {
+          height: $p-line-height;
+          width: $p-line-height;
+        }
+      }
+
+      .feature-description {
+        display: inline-block;
+        padding-left: 0.25em;
+        padding-right: 0.75em;
+        height: 100%;
+        vertical-align: top;
+      }
+    }
+
+    .location-actions {
+
+      .more-info {
+        padding-bottom: 0.5em;
+      }
+
+      .secondary-actions {
+
+        .secondary {
+          flex: 0 1 50%;
+
+          &:first-child,
+          &:nth-child(2) {
+            padding-right: 0.25em;
+          }
+
+          &:nth-child(3) {
+            padding-left: 0.25em;
+          }
+        }
+
+        @media (min-width:  $break-medium) {
+          .secondary-full {
+            flex: 1 1 100%;
+            &:first-child,
+            &:nth-child(2) {
+              padding-right: 0em;
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        @media (max-width: 300px),
+        (min-width: $break-medium) and (max-width: $break-large) {
+          .secondary {
+
+            flex: 1 1 100%;
+
+            &:first-child {
+              padding-right: 0;
+              margin-bottom: 0.5em;
+            }
+
+            &:nth-child(2) {
+              margin-bottom: 0.5em;
+            }
+
+            &:nth-child(2),
+            &:nth-child(3) {
+              padding-left: 0;
+            }
+          }
+
+          .btn {
+            min-width: 7em;
+          }
+        }
+      }
+    }
+  }
+}

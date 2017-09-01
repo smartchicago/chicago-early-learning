@@ -25,42 +25,49 @@ define(['jquery', 'Leaflet', 'location',
                 url = common.getUrl('location-api', { locations: location_id }),
                 width = $(document).width(),
                 $map = $('#location-map'),
-                latLng = new L.LatLng($map.data('lat'), $map.data('lng')),
-                map = new L.Map('location-map', { center: latLng, zoom: 13, dragging: false, scrollWheelZoom: false, doubleClickZoom: false }),
-                $star = $('.favs-toggle');
+                latLng = new L.LatLng($map.data('lat'), $map.data('lng'));
+
+            if ($map.data("address-latitude") && $map.data("address-longitude")) {
+                latLng = new L.LatLng($map.data("address-latitude"), $map.data("address-longitude"));
+            }
+            var map = new L.Map('location-map', { center: latLng, zoom: 15, dragging: false, scrollWheelZoom: false, doubleClickZoom: false }),
+                $star = $('.compare-btn');
 
             map.addLayer(mapboxTiles);
-
 
             if (width >= common.breakpoints.desktop) {
                 $('.favs-toggle').show();
             }
 
             if (favorites.isStarred(location_id)) {
-                favorites.toggle($star);
+                favorites.toggleFavoriteButton($star, 'add');
             }
-
-            $('.single-share').show().on('click', function(e) {
-                $('#share-modal').trigger('init-modal', {                                           
-                    // the url is passed in to the sharing urls, so it must be absolute             
-                    url: common.getUrl('origin') + 
-                        common.getUrl('single-location', { location: location_id }), 
-                    title: 'Check out this early learning program'                                  
-                });
-            });
 
             $.getJSON(url, function(data) {
                 var loc = new location.Location(data.locations[0]);
-
+                var group = [];
                 loc.setMarker({ popup: false });
-                loc.getMarker().addTo(map);
+                group.push(loc.getMarker());
+
+                if ($map.data("address-latitude") && $map.data("address-longitude")) {
+                    var geolocatedIcon = L.icon({iconUrl: common.getUrl('icon-geolocation'), iconSize: [50, 50]});
+                    var geolocatedMarker = L.marker([$map.data("address-latitude"), $map.data("address-longitude")], {icon: geolocatedIcon});
+                    group.push(geolocatedMarker);
+                }
+                var groupLayer = new L.layerGroup(group);
+                var bounds = L.featureGroup(group).getBounds();
+                map.fitBounds(bounds);
+
+                map.addLayer(groupLayer);
+
+                
 
                 $star.on('click', function(e) {
-                    favorites.toggle($star);
+                    favorites.toggleFavoriteButton($star);
                     loc.setMarker();
 
                     // If the user toggled it on, redirect them
-                    if ($star.hasClass('favs-button-selected') && $star.data('redirect')) {
+                    if ($star.hasClass('btn-blue') && $star.data('redirect')) {
                         setTimeout(function () {
                             window.location = $star.data('redirect');
                         }, 300);

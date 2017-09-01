@@ -9,8 +9,8 @@
     outline: none;
     text-align: center;
     text-decoration: none;
-    color: $color;
-    background-color: $background;
+    color: $color !important;
+    background-color: $background !important;
     border: none;
     box-shadow: 0 0.25em $border;
     transition-duration: 0s; 
@@ -20,14 +20,14 @@
 
     &:hover {
         border: none;
-        background-color: $active-background;
+        background-color: $active-background !important;
         box-shadow: 0 0.25em $active-border;
-        color: $color;
+        color: $color !important;
     }
 
     &:active {
         text-decoration: none;
-        color: $color;
+        color: $color !important;
         box-shadow: 0 0.15em $active-border;
         transform: translateY(0.1em);
     }

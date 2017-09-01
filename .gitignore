@@ -14,6 +14,9 @@ config/django-celery.local.config
 .rope*/
 /src
 
+# Node Modules
+node_modules/
+
 # Compiled message files
 *mo
 

@@ -1,0 +1,120 @@
+#location-container {
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  #location-map {
+    height: 24rem;
+  }
+
+  .location-divider {
+    border-bottom: 4px solid $deep-yellow;
+    margin: 3em 0;
+  }
+
+  .location-top-headers {
+
+    h1 {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+      font-weight: 400;
+    }
+
+    a {
+      font-style: italic;
+      font-size: 1.25rem;
+    }
+
+    @media (max-width: $break-medium) {
+      a {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .location-action-button {
+    padding: 0.5em 0;
+  }
+
+  .location-top {
+    padding-bottom: 3em;
+  }
+
+  .location-block {
+    border-bottom: 2px solid $light-gray;
+  }
+
+  .location-inline {
+
+    .location-svg {
+      display: inline-block;
+      height: 2.5rem;
+      width: 2.5rem;
+
+      svg {
+        height: 2.5rem;
+        width: 2.5rem;
+      }
+    }
+
+    .location-message {
+      height: 2.5rem;
+      display: inline-block;
+      vertical-align: top;
+
+      span {
+        margin-bottom: 0;
+        line-height: 2.5rem;
+      }
+    }
+  }
+
+  .location-dividers {
+    @media (min-width: $break-medium) {
+      .location-divider-block:nth-child(odd) {
+        border-right: 2px solid $light-gray;
+      }
+    }
+  }
+
+  .location-special {
+    .location-inline {
+      padding-bottom: 1rem;
+    }
+
+    .location-svg {
+      height: 2rem;
+      width: auto;
+      padding-right: .5rem;
+
+      svg {
+        height: 2rem;
+        width: inherit;
+      }
+
+      .svg-star {
+        width: 2rem;
+      }
+
+      .svg-ribbon {}
+    }
+
+    .location-message {
+      height: 2rem;
+      display: inline-block;
+      vertical-align: top;
+
+      span {
+        margin-bottom: 0;
+        line-height: 2rem;
+      }
+    }
+  }
+}

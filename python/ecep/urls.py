@@ -39,12 +39,12 @@ urlpatterns = patterns(
     url(r'^programs$', Programs.as_view(), name='programs'),
     url(r'^resources$', Resources.as_view(), name='resources'),
 
+    # Search
+    url(r'search/', Search.as_view(), name="search"),
+
     # Blog
     url(r'^blog/$', Blog.as_view(), name="blog"),
     url(r'^blog/hughes-library$', Blog.as_view(), name="blog-hughes"),
-
-    # browse page
-    url(r'^search/$', 'portal.views.browse', name='browse'),
 
     # portal autocomplete api
     url(r'^api/autocomplete/$', 'portal.views.portal_autocomplete'),
@@ -70,6 +70,7 @@ urlpatterns = patterns(
     url(r'^location/(\d+)/$', 'portal.views.location', name='location-view'),
     url(r'^location/(?P<location_id>\d+)/$', 'portal.views.location', name='location-view'),
     url(r'^location/(?P<location_id>\d+)/(?P<slug>[\w-]+)/$', 'portal.views.location', name='location-view'),
+    url(r'^map/(\d+)/$', 'portal.views.location_map', name='location-map-view'),
 
     # Starred Location Views
     url(
@@ -103,6 +104,7 @@ urlpatterns += i18n_patterns(
     url(r'^api/location/$', 'portal.views.location_api'),
     url(r'^api/location/json/$', 'portal.views.location_json_api'),
     url(r'^api/starred-location/(?P<location_ids>[0-9,]*)/$', 'portal.views.starred_location_api'),
+    url(r'^api/map/json/$', 'portal.views.api_map_json'),
 
     # Neighborhood API
     url(r'^api/neighborhood/$', 'portal.views.neighborhood_api'),

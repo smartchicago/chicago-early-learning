@@ -1,0 +1,35 @@
+.calculator {
+  height: 8em;
+
+  #month,
+  #day, 
+  #year-2 {
+    width: 4em;
+  }
+
+  #year-4 {
+    width: 6em;
+  }
+
+  input[type=text] {
+    margin-left: .5em;
+    margin-right: .5em;
+    font-style: normal !important;
+    text-align: center;
+    border: 3px solid $light-orange;
+    border-radius: 0;
+
+    &:focus {
+      border-color: $deep-orange;
+    }
+  }
+
+  a {
+    cursor: pointer !important;
+  }
+
+  .hidden-block {
+    display: none;
+  }
+
+}

@@ -18,15 +18,16 @@ $deep-yellow: #ffc104;
 
 $white: #ffffff;
 $faint-gray: #e6e6e6;
+$lightest-gray: #fafafa;
 $light-gray: #d6d6d6;
 $gray: #9b9b9b;
 $dark-gray: #787878;
 $black: #222222;
 
-$text-gray: #4a4a4a;
-
+// Special Grays
 $background-gray: #f1f1f1;
-
+$text-gray: #4a4a4a;
+$shadow-gray: rgba($gray, 0.6);
 $white-opaque: rgba($white, 0.6);
 
 // Fonts

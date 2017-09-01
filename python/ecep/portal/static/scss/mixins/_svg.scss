@@ -1,3 +1,14 @@
 @mixin svg-variant($color) {
-  fill: $color;
+  fill: $color !important;
+  stroke: $color !important;
+
+  svg {
+    fill: $color !important;
+    stroke: $color !important;
+  }
+
+  path {
+    fill: $color !important;
+    stroke: $color !important;
+  }
 }

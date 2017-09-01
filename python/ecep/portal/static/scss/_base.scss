@@ -1,6 +1,11 @@
 /* --- Base --- */
+
+html, body {
+  height: 100%;
+}
+
 body {
-  background-color: $background-gray;
+  background-color: $lightest-gray;
   font-family: $montserrat;
 
   .body {

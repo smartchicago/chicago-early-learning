@@ -1,0 +1,104 @@
+.compare-container {
+
+  #location-map {
+    height: 24rem;
+  }
+
+  .scroll-message {
+    height: 2rem;
+    flex-grow: 1;
+
+    svg {
+      width: 2rem;
+    }
+
+    .scroll-note {
+      height: 100%;
+
+      h1 {
+        padding: .5rem 0;
+        font-size: 1rem;
+        line-height: 1rem;
+        font-weight: 400;
+        font-style: italic;
+        margin-bottom: 0;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .faves-table {
+    @media (max-width: $break-large) {
+      width: 1200px;
+      overflow-x: auto;
+
+      table {
+        width: 1200px;
+      }
+    }
+
+    table {
+
+      th {
+        text-align: center;
+        font-weight: 500;
+        background-color: $deep-blue;
+        vertical-align: middle;
+      }
+
+      td {
+        font-weight: 400;
+        background-color: darken($lightest-gray, 2%);
+        color: $black;
+        vertical-align: middle;
+
+        &:nth-child(2) {
+          min-width: 20rem;
+        }
+      }
+
+      h1 {
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+      }
+
+      p { margin-bottom: 0; }
+
+      .number-full {
+        height: auto;
+      }
+
+      .cell-half {
+        height: 50%;
+      }
+
+      .table-bordered {
+        border-color: rgba(255, 255, 255, 0.5) !important;
+      }
+
+      .empty-faves {
+        display: none;
+      }
+
+      .cell-ages {
+        white-space: nowrap;
+      }
+
+      .icon-ok {
+        color: $green;
+      }
+
+      .icon-cancel {
+        color: $deep-orange;
+      }
+
+      .custom-control-input:checked ~ .custom-control-indicator {
+        background-color: $orange;
+      }
+    }
+  }
+}
+
+#non-copa {
+  display: none;
+}

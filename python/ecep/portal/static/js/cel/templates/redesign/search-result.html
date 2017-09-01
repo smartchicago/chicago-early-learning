@@ -1,0 +1,120 @@
+{{#each this}}
+<!--  Location {{ id }}  --> 
+<div id="location-{{ id }}" class="location-result p-3">
+  
+  <div class="location-info d-flex">
+    <div class="name">
+      <h1>{{ name }}</h1>
+    </div>
+    <div class="distance">
+      <p class="gray">{{ rounded_distance }} mi</p>
+    </div>
+  </div>
+  
+  <div class="location-address d-flex">
+    <div class="address">
+      <p class="">{{ address }}</p>
+    </div>
+  </div>
+
+  <div class="location-features d-flex flex-wrap">
+    
+    <div class="feature features-type">
+
+    {{#if cps }}  
+      <div class="feature-svg svg-gray">
+        <svg>
+          <use xlink:href="#cel-icon-pencil-small"></use>
+        </svg>
+      </div>
+      <div class="feature-description">
+        <p class="gray">{{ labels.cps }}</p>
+      </div>
+    {{/if}}
+    {{#if community }}
+      <div class="feature-svg svg-gray">
+        <svg>
+          <use xlink:href="#cel-icon-book-small"></use>
+        </svg>
+      </div>
+      <div class="feature-description">
+        <p class="gray">{{ labels.community }}</p>
+      </div>
+    {{/if}}
+    </div>
+    
+    {{#if day_or }}
+    <div class="feature features-day">
+      <div class="feature-svg svg-gray">
+        <svg>
+          <use xlink:href="#cel-icon-clock">
+        </svg>
+      </div>
+      <div class="feature-description">
+      {{#if full_day }}
+        {{#if part_day }}
+          <p class="gray">{{ labels.full_day }}, {{ labels.part_day }}</p>
+        {{else}}
+          <p class="gray">{{ labels.full_day }}</p>
+        {{/if}}
+      {{else}}
+        {{#if part_day}}
+          <p class="gray">{{ labels.part_day}}</p>
+        {{/if}}
+      {{/if}}
+      </div>
+    </div>
+    {{/if}}
+      
+    {{#if year_or }}
+    <div class="feature features-year">
+      <div class="feature-svg svg-gray">
+        <svg>
+          <use xlink:href="#cel-icon-calendar">
+        </svg>
+      </div>
+      <div class="feature-description">
+      {{#if full_year }}
+        {{#if school_year }}
+          <p class="gray">{{ labels.full_year }}, {{ labels.school_year }}</p>
+        {{else}}
+          <p class="gray">{{ labels.full_year }}</p>
+        {{/if}}
+      {{else}}
+        {{#if school_year }}
+          <p class="gray">{{ labels.school_year}}</p>
+        {{/if}}
+      {{/if}}
+      </div>
+    </div>
+    {{/if}}
+    
+  </div>
+
+  <div class="location-actions">
+    <div class="more-info">
+      <a href="/location/{{ id }}/" class="btn btn-orange btn-block">{{ labels.more_info }}</a>
+    </div>
+    <div class="secondary-actions d-flex flex-wrap">
+      {{#if copa_key }}
+      <div class="secondary view-map hidden-md-up">
+        <a href="/map/{{ id }}/?lat={{ address_latitude }}&lng={{ address_longitude }}" class="btn btn-gray btn-block">{{ labels.view_map }}</a>
+      </div>
+      <div class="secondary compare">
+        <a data-location="{{ id }}" class="btn btn-gray btn-block compare-btn">{{ labels.compare }}</a>
+      </div>
+      <div class="secondary hidden-sm-down">
+        <a href="{{ copa_url }}" class="btn btn-gray btn-block">{{ labels.apply }}</a>
+      </div>
+      {{else}}
+      <div class="secondary view-map hidden-md-up">
+        <a href="/map/{{ id }}/?lat={{ address_latitude }}&lng={{ address_longitude }}" class="btn btn-gray btn-block">{{ labels.view_map }}</a>
+      </div>
+      <div class="secondary secondary-full compare">
+        <a data-location="{{ id }}" class="btn btn-gray btn-block compare-btn">{{ labels.compare }}</a>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</div>
+{{/each}}

@@ -71,7 +71,7 @@ $block-height: 40em;
 
 #programs-age-calculator {
   background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'); 
-  background-size: 30%, 30%;
+  background-size: 25%, 25%;
   background-position: left center, right center;
   background-repeat: no-repeat;
 
@@ -79,9 +79,17 @@ $block-height: 40em;
     font-style: italic;
   }
 
+  @media (max-width: $break-small) {
+    
+    .btn-half {
+      min-width: 80% !important;
+    }
+  }
+
   @media (max-width: $break-medium) {
     background-image: none;
   }
+
 }
 
 #programs-infants-image {

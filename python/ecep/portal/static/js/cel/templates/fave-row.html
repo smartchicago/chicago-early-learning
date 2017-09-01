@@ -1,41 +1,39 @@
-{{#if not_enrollment_site}}
-<tr id="fave-{{id}}" >   
-  <td>
-      {{# if copa.value }}
-      {{else}}
-        <p><input class="apply-checkbox" type="checkbox" data-id="{{id}}" data-key="{{copa.key}}" name="{{id}}"></p>
-      {{/if}}
-      <div class="hide-fave hint--right remove-fave" data-key="{{copa.key}}" data-id="{{id}}" data-hint="Remove site from your list">
-        <a href="javascript:void(0)">&times;</a>
-      </div>
-
+<tr>   
+  {{# if copa.value }}
+  <td class="cell-full text-center" rowspan="2">
+    <h2 class="orange text-center">{{ index }}</h2>
   </td>
-  <td>
-      <h1><a href="{{location-page}}">{{site_name}}</a></h1>
+  {{else}}
+  <td class="cell-half">
+    <h2 class="blue text-center">{{ index }}</h2>
+  </td>
+  {{/if}}
+  <td rowspan="2">
+      <h1><a class="a-orange" href="{{location-page}}">{{site_name}}</a></h1>
       <p>{{address}}</p>
       <p>{{city}}, {{state}} {{zip}}</p> 
       {{#if prg_hours.value }}
       <p>{{ prg_hours.value }}</p>
       {{/if}}
       {{#if phone }}
-      <p><a href="tel:{{phone}}">{{phone}}</a></p>
+      <p><a class="a-blue" href="tel:{{phone}}">{{phone}}</a></p>
       {{/if}}
       {{#if url}}
-      <p><a href="{{url}}" target="_blank">Website &#x2197;</a></p>
+      <p><a class="a-blue" href="{{url}}" target="_blank">Website &#x2197;</a></p>
       {{/if}}
   </td>
-  <td>
+  <td class="cell-ages" rowspan="2">
       <p>{{#if ages_0_to_3.value }}<i class="icon-ok"></i>{{else}}<i class="icon-cancel"></i>{{/if}} 0 to 3</p>
       <p>{{#if ages_3_to_5.value }}<i class="icon-ok"></i>{{else}}<i class="icon-cancel"></i>{{/if}} 3 to 5</p>
   </td>
-  <td>
+  <td rowspan="2">
     {{#if availability.value }}
     {{ availability.value }}
     {{else}}
       <p class="na">N/A</p>
     {{/if}}
   </td>
-  <td>
+  <td rowspan="2">
     {{#if part_day.value }}
     <p>{{ part_day.display }}</p>
     {{/if}}
@@ -49,7 +47,7 @@
     <p>{{ full_year.display }}</p>
     {{/if}}
   </td>
-  <td>
+  <td rowspan="2">
     {{#if cps_based.value }}
     <p>{{ cps_based.display }}</p>
     {{/if}}
@@ -72,7 +70,7 @@
     <p>{{ ccap.display }}</p>
     {{/if}}
   </td>
-  <td>
+  <td rowspan="2">
     {{#if accreditation.value }}
     <p>{{ accreditation.value }}</p>
     {{/if}}
@@ -81,7 +79,20 @@
     {{/if}}
   </td>
 </tr>
-<tr class="remove-row" id="remove-{{id}}">
-  <td colspan="7">Remove {{site_name}} from your list?</td>
+
+{{#if copa.value}}
+<!--
+We need this here so the rowspan="2" rows will properly render
+-->
+<tr></tr>
+{{else}}
+<tr>
+  <td class="cell-half text-center">
+    <label class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input apply-checkbox" data-id="{{id}}" data-key="{{copa.key}}" name="{{id}}">
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description"><i>select</i></span>
+    </label>
+  </td>
 </tr>
 {{/if}}

@@ -16,6 +16,16 @@
 @import "nav";
 @import "footer";
 
+// Dynamic Page
+@import "search";
+@import "search-result";
+@import "filters";
+@import "calculator";
+@import "leaflet";
+@import "map";
+@import "location";
+@import "compare";
+
 // Static Pages
 @import "static";
 @import "index";

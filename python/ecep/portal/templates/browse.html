@@ -79,8 +79,6 @@
       <!-- MAP -->
       <div class="results-right">
           <div id="map" class="ga-track"
-              {% if request.GET.geolat %} data-geolat="{{ request.GET.geolat }}"{% endif %}
-              {% if request.GET.geolng %} data-geolng="{{ request.GET.geolng }}"{% endif %}
               {% if request.GET.lat %} data-lat="{{ request.GET.lat }}"{% endif %}
               {% if request.GET.lng %} data-lng="{{ request.GET.lng }}"{% endif %}
               {% if request.GET.zoom %} data-zoom="{{ request.GET.zoom }}"{% endif %}

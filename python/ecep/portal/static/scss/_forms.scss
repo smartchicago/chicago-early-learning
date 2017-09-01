@@ -2,5 +2,15 @@
   border-radius: 2px;
   font-style: italic;
   border: 1px solid $white;
+}
 
+.map-search-form {
+  border: none;
+  line-height: 1.5rem;
+  padding: 1rem 0;
+  font-style: normal;
+
+  &:focus {
+    border: none;
+  }
 }
