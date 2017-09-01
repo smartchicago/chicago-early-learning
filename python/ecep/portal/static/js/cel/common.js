@@ -363,7 +363,6 @@ function($, L, Handlebars) {
             }
 
             if (age) { opts['age'] = age; }
-            debugger;
             window.location.href = getUrl('browse', opts
             );
             return;
