@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-31 02:20-0500\n"
+"POT-Creation-Date: 2017-09-12 21:43-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -21,275 +21,303 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: portal/models.py:63
+#: portal/models.py:60
 msgid "Select a rating"
 msgstr ""
 
-#: portal/models.py:64 portal/models.py:160 portal/models.py:327
-#: portal/models.py:335 portal/models.py:352 portal/models.py:359
+#: portal/models.py:61 portal/models.py:157 portal/models.py:386
+#: portal/models.py:394 portal/models.py:411 portal/models.py:418
 msgid "None"
 msgstr ""
 
-#: portal/models.py:65 portal/models.py:161
+#: portal/models.py:62 portal/models.py:158
 msgid "Licensed"
 msgstr ""
 
-#: portal/models.py:66 portal/models.py:162
+#: portal/models.py:63 portal/models.py:159
 msgid "Bronze"
 msgstr ""
 
-#: portal/models.py:67 portal/models.py:163
+#: portal/models.py:64 portal/models.py:160
 msgid "Silver"
 msgstr ""
 
-#: portal/models.py:68 portal/models.py:164
+#: portal/models.py:65 portal/models.py:161
 msgid "Gold"
 msgstr ""
 
-#: portal/models.py:80
+#: portal/models.py:77
 msgid "Slots Available"
 msgstr ""
 
-#: portal/models.py:81
+#: portal/models.py:78
 msgid "Limited Availability"
 msgstr ""
 
-#: portal/models.py:93 portal/models.py:374 portal/models.py:460
+#: portal/models.py:90 portal/models.py:433 portal/models.py:519
 msgid "Phone Number"
 msgstr ""
 
-#: portal/models.py:94 portal/models.py:370 portal/templates/location.html:168
+#: portal/models.py:91 portal/models.py:429 portal/templates/location.html:259
 msgid "Quality Rating"
 msgstr ""
 
-#: portal/models.py:95 portal/models.py:390
+#: portal/models.py:92 portal/models.py:449
 #: portal/templatetags/portal_extras.py:30
 msgid "Website"
 msgstr ""
 
-#: portal/models.py:96 portal/models.py:381 portal/templates/location.html:74
+#: portal/models.py:93 portal/models.py:440 portal/templates/location.html:64
 msgid "Description"
 msgstr ""
 
-#: portal/models.py:97 portal/templates/redesign/how-to-apply.html:44
+#: portal/models.py:94 portal/templates/redesign/how-to-apply.html:44
 msgid "Enrollment Process"
 msgstr ""
 
-#: portal/models.py:98 portal/templates/location.html:162
-#: portal/templates/starred.html:76 portal/templates/starred.html.py:101
+#: portal/models.py:95 portal/models.py:294 portal/templates/location.html:239
+#: portal/templates/starred.html:69 portal/templates/starred.html.py:120
 msgid "Accreditation"
 msgstr ""
 
-#: portal/models.py:99
+#: portal/models.py:96
 msgid "Program Hours"
 msgstr ""
 
-#: portal/models.py:100 portal/templates/location.html:82
-#: portal/templates/location.html.py:85
+#: portal/models.py:97
 msgid "Ages 0 - 3"
 msgstr ""
 
-#: portal/models.py:101 portal/templates/location.html:83
-#: portal/templates/location.html.py:90
+#: portal/models.py:98
 msgid "Ages 3 - 5"
 msgstr ""
 
-#: portal/models.py:102 portal/models.py:393
-#: portal/templates/location.html:119 portal/templates/location.html.py:121
+#: portal/models.py:99 portal/models.py:282 portal/models.py:452
+#: portal/templates/location.html:165 portal/templates/location.html.py:167
+#: portal/templates/redesign/search.html:70
 msgid "Full Day"
 msgstr ""
 
-#: portal/models.py:103 portal/models.py:393
-#: portal/templates/location.html:119 portal/templates/location.html.py:123
+#: portal/models.py:100 portal/models.py:283 portal/models.py:452
+#: portal/templates/location.html:165 portal/templates/location.html.py:169
+#: portal/templates/redesign/search.html:77
 msgid "Part Day"
 msgstr ""
 
-#: portal/models.py:104 portal/templates/location.html:127
-#: portal/templates/location.html.py:131
+#: portal/models.py:101 portal/models.py:287
+#: portal/templates/location.html:173 portal/templates/location.html.py:177
+#: portal/templates/redesign/search.html:117
 msgid "School Year"
 msgstr ""
 
-#: portal/models.py:105 portal/templates/location.html:127
-#: portal/templates/location.html.py:129
+#: portal/models.py:102 portal/models.py:286
+#: portal/templates/location.html:173 portal/templates/location.html.py:175
+#: portal/templates/redesign/search.html:110
 msgid "Full Year"
 msgstr ""
 
-#: portal/models.py:106 portal/templates/location.html:81 portal/views.py:574
+#: portal/models.py:103 portal/templates/location.html:79 portal/views.py:610
 msgid "Ages Served"
 msgstr ""
 
-#: portal/models.py:107
+#: portal/models.py:104 portal/models.py:284
+#: portal/templates/redesign/search.html:96
 msgid "Full Week"
 msgstr ""
 
-#: portal/models.py:108
+#: portal/models.py:105 portal/models.py:285
+#: portal/templates/redesign/search.html:103
 msgid "Part Week"
 msgstr ""
 
-#: portal/models.py:112 portal/templates/location.html:139
+#: portal/models.py:109 portal/models.py:289
+#: portal/templates/location.html:189
 msgid "Community Based"
 msgstr ""
 
-#: portal/models.py:113 portal/templates/location.html:138
+#: portal/models.py:110 portal/models.py:288
+#: portal/templates/location.html:188
 msgid "CPS Based"
 msgstr ""
 
-#: portal/models.py:114 portal/templates/location.html:143
+#: portal/models.py:111 portal/templates/location.html:193
 msgid "Offers Home Visiting"
 msgstr ""
 
-#: portal/models.py:115
+#: portal/models.py:112 portal/models.py:291
+#: portal/templates/redesign/search.html:157
 msgid "Accepts CCAP"
 msgstr ""
 
-#: portal/models.py:116 portal/templates/location.html:140
+#: portal/models.py:113 portal/models.py:292
+#: portal/templates/location.html:190
+#: portal/templates/redesign/search.html:164
 msgid "Head Start"
 msgstr ""
 
-#: portal/models.py:117 portal/templates/location.html:141
+#: portal/models.py:114 portal/models.py:293
+#: portal/templates/location.html:191
+#: portal/templates/redesign/search.html:171
 msgid "Early Head Start"
 msgstr ""
 
-#: portal/models.py:118
+#: portal/models.py:115
 msgid "Open House"
 msgstr ""
 
-#: portal/models.py:119
+#: portal/models.py:116
 msgid "Curriculum"
 msgstr ""
 
-#: portal/models.py:123
+#: portal/models.py:120
 msgid "Approved"
 msgstr ""
 
-#: portal/models.py:126
+#: portal/models.py:123
 msgid "Availability"
 msgstr ""
 
-#: portal/models.py:334 portal/templates/location.html:137 portal/views.py:629
-msgid "Program Information"
+#: portal/models.py:290 portal/templates/redesign/search.html:150
+msgid "Home Visiting"
 msgstr ""
 
-#: portal/models.py:342
-msgid "Languages"
-msgstr ""
-
-#: portal/models.py:348 portal/templates/location.html:116 portal/views.py:595
-msgid "No Hours Listed"
-msgstr ""
-
-#: portal/models.py:351 portal/templates/location.html:115 portal/views.py:591
-msgid "Duration and Hours"
-msgstr ""
-
-#: portal/models.py:358
-msgid "Weekday Availability"
-msgstr ""
-
-#: portal/models.py:390
-msgid "More"
-msgstr ""
-
-#: portal/models.py:390
-msgid "Directions"
-msgstr ""
-
-#: portal/models.py:391 portal/templates/location.html:54
-#: portal/templates/location.html.py:57 portal/templates/starred.html:54
-msgid "Share"
-msgstr ""
-
-#: portal/models.py:391
-msgid "QRIS Rating"
-msgstr ""
-
-#: portal/models.py:391 portal/templates/browse.html:58
-#: portal/templates/location.html:65 portal/templates/starred.html:7
-#: portal/templates/starred.html.py:16
-msgid "Compare and Apply"
-msgstr ""
-
-#: portal/models.py:392
+#: portal/models.py:295 portal/models.py:451
+#: portal/templates/location-map.html:36
 msgid "More Info"
 msgstr ""
 
-#: portal/models.py:392
+#: portal/models.py:296 portal/templates/redesign/search.html:38
+msgid "Compare"
+msgstr ""
+
+#: portal/models.py:297
+msgid "View on Map"
+msgstr ""
+
+#: portal/models.py:298 portal/templates/redesign/partials/_nav.html:51
+#: portal/templates/starred.html:63 portal/templates/starred.html.py:87
+#: portal/templates/starred.html:114
+msgid "Apply"
+msgstr ""
+
+#: portal/models.py:393 portal/templates/location.html:185 portal/views.py:665
+msgid "Program Information"
+msgstr ""
+
+#: portal/models.py:401 portal/templates/location.html:210
+msgid "Languages"
+msgstr ""
+
+#: portal/models.py:407 portal/templates/location.html:180 portal/views.py:631
+msgid "No Hours Listed"
+msgstr ""
+
+#: portal/models.py:410 portal/templates/location.html:160 portal/views.py:627
+msgid "Duration and Hours"
+msgstr ""
+
+#: portal/models.py:417
+msgid "Weekday Availability"
+msgstr ""
+
+#: portal/models.py:449
+msgid "More"
+msgstr ""
+
+#: portal/models.py:449
+msgid "Directions"
+msgstr ""
+
+#: portal/models.py:450
+msgid "Share"
+msgstr ""
+
+#: portal/models.py:450
+msgid "QRIS Rating"
+msgstr ""
+
+#: portal/models.py:450 portal/templates/browse.html:58
+#: portal/templates/starred.html:8 portal/templates/starred.html.py:18
+msgid "Compare and Apply"
+msgstr ""
+
+#: portal/models.py:451
 msgid "Serves ages 0 - 3"
 msgstr ""
 
-#: portal/models.py:392
+#: portal/models.py:451
 msgid "Serves ages 3 - 5"
 msgstr ""
 
-#: portal/models.py:393
+#: portal/models.py:452
 msgid "Serves ages 0 - 3, 3 - 5"
 msgstr ""
 
-#: portal/models.py:400
+#: portal/models.py:459
 msgid "Directions from Google"
 msgstr ""
 
-#: portal/models.py:400
+#: portal/models.py:459
 msgid "Click to show more information"
 msgstr ""
 
-#: portal/models.py:401
+#: portal/models.py:460
 msgid "Click to save to your list"
 msgstr ""
 
-#: portal/models.py:401
+#: portal/models.py:460
 msgid "Click to remove from your list"
 msgstr ""
 
-#: portal/models.py:405 portal/templates/location.html:156 portal/views.py:682
+#: portal/models.py:464 portal/templates/location.html:220 portal/views.py:718
 msgid "Other Features"
 msgstr ""
 
-#: portal/models.py:458
+#: portal/models.py:517
 msgid "First Name"
 msgstr ""
 
-#: portal/models.py:459
+#: portal/models.py:518
 msgid "Last Name"
 msgstr ""
 
-#: portal/models.py:461
+#: portal/models.py:520
 msgid "Address 1"
 msgstr ""
 
-#: portal/models.py:462
+#: portal/models.py:521
 msgid "Address 2"
 msgstr ""
 
-#: portal/models.py:463
+#: portal/models.py:522
 msgid "City"
 msgstr ""
 
-#: portal/models.py:464
+#: portal/models.py:523
 msgid "State"
 msgstr ""
 
-#: portal/models.py:465
+#: portal/models.py:524
 msgid "Zip Code"
 msgstr ""
 
-#: portal/models.py:468
+#: portal/models.py:527
 msgid "Child 1's Age"
 msgstr ""
 
-#: portal/models.py:469
+#: portal/models.py:528
 msgid "Child 2's Age"
 msgstr ""
 
-#: portal/models.py:470
+#: portal/models.py:529
 msgid "Child 3's Age"
 msgstr ""
 
-#: portal/models.py:471
+#: portal/models.py:530
 msgid "Child 4's Age"
 msgstr ""
 
-#: portal/models.py:472
+#: portal/models.py:531
 msgid "Child 5's Age"
 msgstr ""
 
@@ -304,15 +332,16 @@ msgstr ""
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
 #: portal/templates/faq-models.html:5 portal/templates/how-to-apply.html:7
-#: portal/templates/location.html:12 portal/templates/outreach.html:7
-#: portal/templates/redesign/blog.html:8
+#: portal/templates/location-map.html:8 portal/templates/location.html:8
+#: portal/templates/outreach.html:7 portal/templates/redesign/blog.html:8
 #: portal/templates/redesign/connect.html:6
 #: portal/templates/redesign/faq.html:8
 #: portal/templates/redesign/how-to-apply.html:9
 #: portal/templates/redesign/outreach.html:8
 #: portal/templates/redesign/programs.html:8
-#: portal/templates/redesign/resources.html:8 portal/templates/smsinfo.html:12
-#: portal/templates/starred.html:7 portal/templates/sub-base.html:4
+#: portal/templates/redesign/resources.html:8
+#: portal/templates/redesign/search.html:8 portal/templates/smsinfo.html:12
+#: portal/templates/starred.html:8 portal/templates/sub-base.html:4
 #: portal/templates/updates.html:5 templates/admin/base_site.html:15
 msgid "Chicago Early Learning"
 msgstr ""
@@ -415,10 +444,11 @@ msgstr ""
 msgid "Click to use your current location"
 msgstr ""
 
-#: portal/templates/base-search.html:26 portal/templates/index.html:50
-#: portal/templates/index.html.py:68 portal/templates/index.html:69
+#: portal/templates/base-search.html:26 portal/templates/index.html:52
+#: portal/templates/index.html.py:70 portal/templates/index.html:71
 #: portal/templates/redesign/index.html:30
 #: portal/templates/redesign/index.html:58
+#: portal/templates/redesign/search.html:8
 msgid "Search"
 msgstr ""
 
@@ -434,7 +464,7 @@ msgstr ""
 msgid "Click to view your list"
 msgstr ""
 
-#: portal/templates/browse.html:68
+#: portal/templates/browse.html:68 portal/templates/redesign/search.html:143
 msgid "Community"
 msgstr ""
 
@@ -618,8 +648,7 @@ msgid "For Families"
 msgstr ""
 
 #: portal/templates/faq-models.html:5 portal/templates/redesign/faq.html:8
-#: portal/templates/redesign/partials/_footer.html:30
-#: portal/templates/redesign/partials/_nav.html:48
+#: portal/templates/redesign/partials/_footer.html:31
 msgid "FAQ"
 msgstr ""
 
@@ -629,38 +658,48 @@ msgstr ""
 
 #: portal/templates/how-to-apply.html:7
 #: portal/templates/redesign/how-to-apply.html:9
-#: portal/templates/redesign/partials/_footer.html:23
+#: portal/templates/redesign/partials/_footer.html:24
 #: portal/templates/redesign/partials/_nav.html:39
 msgid "How to Apply"
 msgstr ""
 
-#: portal/templates/how-to-apply.html:15 portal/templates/index.html:111
+#: portal/templates/how-to-apply.html:15 portal/templates/index.html:113
 msgid "Apply Today"
 msgstr ""
 
-#: portal/templates/index.html:34 portal/templates/index.html.py:80
+#: portal/templates/index.html:34
+msgid ""
+"Parents! Join us on August 4 for a FREE, fun-filled conference designed "
+"specifically for parents of young children. Register today: "
+msgstr ""
+
+#: portal/templates/index.html:36 portal/templates/index.html.py:82
 msgid ""
 "There is no limit to what your child can accomplish! Jumpstart your child's "
 "education with Chicago Early Learning!"
 msgstr ""
 
-#: portal/templates/index.html:38
+#: portal/templates/index.html:38 portal/templates/index.html.py:84
+msgid "Complete your child's preschool application online today!"
+msgstr ""
+
+#: portal/templates/index.html:40
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
 "information."
 msgstr ""
 
-#: portal/templates/index.html:47
+#: portal/templates/index.html:49
 msgid "Enter an address, center, or zip code"
 msgstr ""
 
-#: portal/templates/index.html:55 portal/templates/redesign/index.html:35
+#: portal/templates/index.html:57 portal/templates/redesign/index.html:35
 #: portal/templates/redesign/index.html:63
 msgid "Use your current location"
 msgstr ""
 
-#: portal/templates/index.html:84
+#: portal/templates/index.html:86
 #, python-format
 msgid ""
 "The Colman Family Resource Center will be closed June 21st and 22nd. Please "
@@ -668,51 +707,55 @@ msgid ""
 "plan to visit another Family Resource Center that day."
 msgstr ""
 
-#: portal/templates/index.html:86
+#: portal/templates/index.html:88
 #, python-format
 msgid ""
 "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
 "information, or call the Chicago Early Learning Hotline:"
 msgstr ""
 
-#: portal/templates/index.html:97
+#: portal/templates/index.html:99
 #: portal/templates/redesign/family-resource-centers.html:335
+#: portal/templates/redesign/index.html:90
 #: portal/templates/redesign/index.html:107
 #: portal/templates/redesign/index.html:129
 #: portal/templates/redesign/index.html:152
 #: portal/templates/redesign/index.html:176
-#: portal/templates/redesign/programs.html:129
-#: portal/templates/redesign/programs.html:234
+#: portal/templates/redesign/programs.html:74
+#: portal/templates/redesign/programs.html:86
+#: portal/templates/redesign/programs.html:98
+#: portal/templates/redesign/programs.html:168
+#: portal/templates/redesign/programs.html:278
 msgid "Learn More"
 msgstr ""
 
-#: portal/templates/index.html:99
+#: portal/templates/index.html:101
 msgid ""
 "Children who participate in high-quality early learning experiences are "
 "better prepared for success in both kindergarten and over a lifetime of "
 "learning."
 msgstr ""
 
-#: portal/templates/index.html:100
+#: portal/templates/index.html:102
 msgid "Learn more about high quality early learning programs"
 msgstr ""
 
-#: portal/templates/index.html:104
+#: portal/templates/index.html:106
 msgid "Find & Compare"
 msgstr ""
 
-#: portal/templates/index.html:106
+#: portal/templates/index.html:108
 msgid ""
 "Find the right preschool program for your child. Search by the address where "
 "you live or work, or by other features you care most about and then compare "
 "your favorite programs."
 msgstr ""
 
-#: portal/templates/index.html:107
+#: portal/templates/index.html:109
 msgid "Find and compare locations now"
 msgstr ""
 
-#: portal/templates/index.html:113
+#: portal/templates/index.html:115
 #, python-format
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year old? <a "
@@ -721,61 +764,112 @@ msgid ""
 "your questions. Then fill out a preschool application."
 msgstr ""
 
-#: portal/templates/index.html:114
+#: portal/templates/index.html:116
 msgid "Fill out an application online"
 msgstr ""
 
-#: portal/templates/location.html:85
+#: portal/templates/location-map.html:41 portal/templates/location-map.html:83
+#: portal/templates/location.html:41
+#: portal/templates/redesign/family-resource-centers.html:53
+#: portal/templates/redesign/family-resource-centers.html:76
+#: portal/templates/redesign/family-resource-centers.html:100
+#: portal/templates/redesign/family-resource-centers.html:124
+#: portal/templates/redesign/family-resource-centers.html:146
+#: portal/templates/redesign/family-resource-centers.html:171
+#: portal/templates/redesign/family-resource-centers.html:195
+#: portal/templates/redesign/family-resource-centers.html:220
+#: portal/templates/redesign/family-resource-centers.html:245
+#: portal/templates/redesign/family-resource-centers.html:270
+#: portal/templates/redesign/family-resource-centers.html:294
+#: portal/templates/redesign/family-resource-centers.html:319
+msgid "Get Directions"
+msgstr ""
+
+#: portal/templates/location-map.html:47 portal/templates/location-map.html:76
+#: portal/templates/location.html:51 portal/templates/redesign/index.html:88
+msgid "Apply Today!"
+msgstr ""
+
+#: portal/templates/location-map.html:69
+msgid "Location Website"
+msgstr ""
+
+#: portal/templates/location-map.html:80 portal/templates/location.html:47
+msgid "Compare Location"
+msgstr ""
+
+#: portal/templates/location.html:35
+msgid "View Website"
+msgstr ""
+
+#: portal/templates/location.html:44
+msgid "View On Map"
+msgstr ""
+
+#: portal/templates/location.html:92
+msgid "Ages 0 to 3"
+msgstr ""
+
+#: portal/templates/location.html:104
+msgid "Ages 3 to 5"
+msgstr ""
+
+#: portal/templates/location.html:109
 msgid ""
-"If your child will be younger than 3 years old prior to September 1, 2017, "
-"there are infant/toddler programs available. Please contact the site "
-"directly for enrollment information for these programs."
+"<b>Ages 0 - 3:</b> If your child will be younger than 3 years old prior to "
+"September 1, 2017, there are infant/toddler programs available. Please "
+"contact the site directly for enrollment information for these programs."
 msgstr ""
 
-#: portal/templates/location.html:90
+#: portal/templates/location.html:113
 msgid ""
-"If your child is 3 or 4 years old prior to September 1, 2017, your child "
-"will be eligible for preschool programs."
+"<b>Ages 3 - 5:</b> If your child is 3 or 4 years old prior to September 1, "
+"2017, your child will be eligible for preschool programs."
 msgstr ""
 
-#: portal/templates/location.html:93
-#, python-format
-msgid ""
-"Click <a href=\"%(copa_url)s\" target=\"_blank\">here</a> to fill out an "
-"application for two preferred sites or call the Chicago Early Learning "
-"Hotline at <a href=\"%(rtl_url)s\">(312) 229-1690</a> for assistance."
-msgstr ""
-
-#: portal/templates/location.html:96 portal/views.py:559
-msgid "Contact this site directly to apply."
-msgstr ""
-
-#: portal/templates/location.html:108 portal/views.py:703
+#: portal/templates/location.html:128 portal/views.py:739
 msgid "Seats Available"
 msgstr ""
 
-#: portal/templates/location.html:110 portal/views.py:706
-msgid "Note: Availability and placement are subject to eligibility."
+#: portal/templates/location.html:145
+msgid "Note: Availability and placement are subject to eligibility"
 msgstr ""
 
-#: portal/templates/location.html:144
+#: portal/templates/location.html:194
 msgid ""
 "If you are interested in enrolling your child in this home visiting program "
 "please contact this site directly."
 msgstr ""
 
-#: portal/templates/location.html:150 portal/views.py:675
-msgid "Languages (other than English)"
+#: portal/templates/location.html:249
+#: portal/templates/redesign/programs.html:222
+msgid "What does \"Accreditation\" mean?"
 msgstr ""
 
-#: portal/templates/location.html:173
+#: portal/templates/location.html:253
 msgid ""
-"Are you a <b>provider</b> who works at this early learning center and needs "
-"to make changes to information on this page?"
+"Programs that receive national accreditation have demonstrated quality in "
+"areas such as teaching, curriculum, learning assessments, health, community "
+"relationships, physical environment, and management."
 msgstr ""
 
-#: portal/templates/location.html:173
-msgid "Click here!"
+#: portal/templates/location.html:269
+msgid "What does \"Quality Rating\" mean?"
+msgstr ""
+
+#: portal/templates/location.html:273
+msgid ""
+"Quality Rating indicates the quality of a site based on the Excelerate "
+"Illinois system. More information can be found at <a class=\"a-orange\" href="
+"\"http://excelerateillinois.com\">ExcelerateIllinois.com</a>."
+msgstr ""
+
+#: portal/templates/location.html:283
+msgid ""
+"Are you a provider  who works at this early learning center and needs to "
+"make changes to information on this page? <a class=\"a-orange\" href="
+"\"https://smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-"
+"form/\">Click here!</a><b>"
 msgstr ""
 
 #: portal/templates/outreach.html:7 portal/templates/outreach.html.py:15
@@ -818,7 +912,7 @@ msgid "Learning Blog"
 msgstr ""
 
 #: portal/templates/redesign/blog.html:25
-#: portal/templates/redesign/index.html:191
+#: portal/templates/redesign/index.html:199
 #: portal/templates/redesign/resources.html:161
 msgid "Thomas Hughes Children's Library Re-Opened"
 msgstr ""
@@ -852,7 +946,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/connect.html:16
-#: portal/templates/redesign/index.html:207
+#: portal/templates/redesign/index.html:215
 msgid "Stay up to date on Chicago Early Learning!"
 msgstr ""
 
@@ -866,7 +960,7 @@ msgstr ""
 
 #: portal/templates/redesign/family-resource-centers.html:8
 #: portal/templates/redesign/family-resource-centers.html:20
-#: portal/templates/redesign/partials/_footer.html:32
+#: portal/templates/redesign/partials/_footer.html:33
 msgid "Family Resource Centers"
 msgstr ""
 
@@ -893,19 +987,60 @@ msgid ""
 "address can sign up for a library card on site."
 msgstr ""
 
-#: portal/templates/redesign/family-resource-centers.html:53
-#: portal/templates/redesign/family-resource-centers.html:76
-#: portal/templates/redesign/family-resource-centers.html:100
-#: portal/templates/redesign/family-resource-centers.html:124
-#: portal/templates/redesign/family-resource-centers.html:146
-#: portal/templates/redesign/family-resource-centers.html:171
-#: portal/templates/redesign/family-resource-centers.html:195
-#: portal/templates/redesign/family-resource-centers.html:220
-#: portal/templates/redesign/family-resource-centers.html:245
-#: portal/templates/redesign/family-resource-centers.html:270
-#: portal/templates/redesign/family-resource-centers.html:294
-#: portal/templates/redesign/family-resource-centers.html:319
-msgid "Get Directions"
+#: portal/templates/redesign/family-resource-centers.html:24
+msgid ""
+"Applications will be taken 30 minutes after opening and will end 30 minutes "
+"before closing."
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:25
+msgid "Bilingual support available"
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:48
+#: portal/templates/redesign/family-resource-centers.html:71
+#: portal/templates/redesign/family-resource-centers.html:95
+#: portal/templates/redesign/family-resource-centers.html:119
+#: portal/templates/redesign/family-resource-centers.html:166
+#: portal/templates/redesign/family-resource-centers.html:190
+#: portal/templates/redesign/family-resource-centers.html:215
+#: portal/templates/redesign/family-resource-centers.html:240
+#: portal/templates/redesign/family-resource-centers.html:265
+#: portal/templates/redesign/family-resource-centers.html:289
+#: portal/templates/redesign/family-resource-centers.html:314
+msgid "M+W"
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:49
+#: portal/templates/redesign/family-resource-centers.html:72
+#: portal/templates/redesign/family-resource-centers.html:96
+#: portal/templates/redesign/family-resource-centers.html:120
+#: portal/templates/redesign/family-resource-centers.html:167
+#: portal/templates/redesign/family-resource-centers.html:191
+#: portal/templates/redesign/family-resource-centers.html:216
+#: portal/templates/redesign/family-resource-centers.html:241
+#: portal/templates/redesign/family-resource-centers.html:266
+#: portal/templates/redesign/family-resource-centers.html:290
+#: portal/templates/redesign/family-resource-centers.html:315
+msgid "T+TH"
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:50
+#: portal/templates/redesign/family-resource-centers.html:73
+#: portal/templates/redesign/family-resource-centers.html:97
+#: portal/templates/redesign/family-resource-centers.html:121
+#: portal/templates/redesign/family-resource-centers.html:168
+#: portal/templates/redesign/family-resource-centers.html:192
+#: portal/templates/redesign/family-resource-centers.html:217
+#: portal/templates/redesign/family-resource-centers.html:242
+#: portal/templates/redesign/family-resource-centers.html:267
+#: portal/templates/redesign/family-resource-centers.html:291
+#: portal/templates/redesign/family-resource-centers.html:316
+msgid "F"
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:143
+msgid "M-F"
 msgstr ""
 
 #: portal/templates/redesign/family-resource-centers.html:333
@@ -1954,6 +2089,10 @@ msgstr ""
 msgid "Call the Chicago Early Learning Hotline!"
 msgstr ""
 
+#: portal/templates/redesign/how-to-apply.html:18
+msgid "How To Apply"
+msgstr ""
+
 #: portal/templates/redesign/how-to-apply.html:31
 msgid ""
 "Are <span class=\"d-inline\"><span class=\"chalk blue b-blue\">YOU</span></"
@@ -1975,21 +2114,22 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/how-to-apply.html:52
-#: portal/templates/redesign/how-to-apply.html:107
+#: portal/templates/redesign/how-to-apply.html:108
 msgid "Search Locations"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:53
+#: portal/templates/redesign/how-to-apply.html:54
+#, python-format
 msgid ""
 "Find and compare Chicago Early Learning programs to find the right one for "
-"your child. Get Started!"
-msgstr ""
-
-#: portal/templates/redesign/how-to-apply.html:61
-msgid "Apply to Program"
+"your child. <a class=\"a-orange\" href=\"%(search_url)s\">Get Started!</a>"
 msgstr ""
 
 #: portal/templates/redesign/how-to-apply.html:62
+msgid "Apply to Program"
+msgstr ""
+
+#: portal/templates/redesign/how-to-apply.html:63
 msgid ""
 "Narrow it down to your top two picks. Create an online account, fill out "
 "family information, and a child application to preschool sites. If your "
@@ -1998,11 +2138,11 @@ msgid ""
 "information from the Chicago Early Learning team."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:71
+#: portal/templates/redesign/how-to-apply.html:72
 msgid "For CPS Site Offers: Verify placement through a Family Resource Center"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:72
+#: portal/templates/redesign/how-to-apply.html:73
 #, python-format
 msgid ""
 "Within two weeks of receiving your offer, bring proof of your family’s "
@@ -2012,13 +2152,13 @@ msgid ""
 "what documents you will provide."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:77
+#: portal/templates/redesign/how-to-apply.html:78
 msgid ""
 "For Community-Based Site Offers: Verify placement through your community-"
 "program location"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:78
+#: portal/templates/redesign/how-to-apply.html:79
 msgid ""
 "Within two weeks of receiving your offer, bring proof of your family’s "
 "income, address, and your child’s birth to your assigned community-based "
@@ -2026,59 +2166,58 @@ msgid ""
 "provide."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:86
+#: portal/templates/redesign/how-to-apply.html:87
 msgid "Enrollment at CPS-Program Location"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:87
+#: portal/templates/redesign/how-to-apply.html:88
 msgid ""
 "Visit your child’s preschool over the summer or as soon as school starts to "
 "complete the enrollment process. The school may have more specific "
 "enrollment directions that they will communicate."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:92
+#: portal/templates/redesign/how-to-apply.html:93
 msgid "Enrollment at Community-Program Location"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:93
+#: portal/templates/redesign/how-to-apply.html:94
 msgid ""
 "When you visit your child’s community-based site to verify your child’s "
 "offer, your site will communicate any additional expectations they have to "
 "complete the enrollment process."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:101
+#: portal/templates/redesign/how-to-apply.html:102
 msgid "Go to School!"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:102
+#: portal/templates/redesign/how-to-apply.html:103
 msgid ""
 "If you have questions, please call our Chicago Early Learning Hotline: <a "
 "href=\"tel3122291690\">(312) 229-1690</a> or visit a Family Resource Center "
 "near you."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:110
+#: portal/templates/redesign/how-to-apply.html:111
 msgid "Start an Application"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:120
+#: portal/templates/redesign/how-to-apply.html:121
 msgid "How will you verify your child's placement?"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:121
+#: portal/templates/redesign/how-to-apply.html:122
 msgid ""
 "If your child is offered a preliminary preschool placement, you will receive "
 "an email with verification instructions."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:122
-#: portal/templates/redesign/how-to-apply.html:129
+#: portal/templates/redesign/how-to-apply.html:123
 msgid "Follow these three steps to verify your child's placement:"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:128
+#: portal/templates/redesign/how-to-apply.html:129
 msgid "Step 1: Gather Documents"
 msgstr ""
 
@@ -2183,6 +2322,10 @@ msgstr ""
 msgid "Step 3: Bring your child on the first day of school in September."
 msgstr ""
 
+#: portal/templates/redesign/how-to-apply.html:196
+msgid "Let the learning begin!"
+msgstr ""
+
 #: portal/templates/redesign/how-to-apply.html:202
 msgid ""
 "Note:  If your family is in a temporary living situation, you are not "
@@ -2252,22 +2395,18 @@ msgid ""
 "must begin in their earliest years.”"
 msgstr ""
 
+#: portal/templates/redesign/index.html:76
+msgid "Chicago Mayor Rahm Emanuel"
+msgstr ""
+
 #: portal/templates/redesign/index.html:84
 msgid "Important Update"
 msgstr ""
 
-#: portal/templates/redesign/index.html:88
-msgid "Chicago Early Learning Parent Conference"
-msgstr ""
-
 #: portal/templates/redesign/index.html:89
 msgid ""
-"Parents! Join us on August 4 for a FREE, fun-filled conference designed "
-"specifically for parents of young children."
-msgstr ""
-
-#: portal/templates/redesign/index.html:90
-msgid "Register Today"
+"Over 11,000 preschool applications and counting! Are you ready to sign up "
+"your child? Learn more about the preschool application for 3 and 4 year-olds:"
 msgstr ""
 
 #: portal/templates/redesign/index.html:100
@@ -2312,7 +2451,23 @@ msgid ""
 "agencies and organizations."
 msgstr ""
 
+#: portal/templates/redesign/index.html:191
+msgid "Mayor Emanuel Launches Improved Universal Preschool Application"
+msgstr ""
+
 #: portal/templates/redesign/index.html:192
+msgid ""
+"Mayor Emanuel visited Avalon Park Library to announce the revamped universal "
+"online preschool application, which gives families a single point of entry "
+"to access the more than 600 high-quality community and school based "
+"preschool programs throughout Chicago."
+msgstr ""
+
+#: portal/templates/redesign/index.html:194
+msgid "Read More on the City of Chicago website"
+msgstr ""
+
+#: portal/templates/redesign/index.html:200
 #: portal/templates/redesign/resources.html:162
 msgid ""
 "The newly re-opened Thomas Hughes Children’s Library powered by Exelon, was "
@@ -2322,17 +2477,17 @@ msgid ""
 "digital media lab..."
 msgstr ""
 
-#: portal/templates/redesign/index.html:194
-#: portal/templates/redesign/index.html:218
+#: portal/templates/redesign/index.html:202
+#: portal/templates/redesign/index.html:226
 #: portal/templates/redesign/resources.html:164
 msgid "Read More"
 msgstr ""
 
-#: portal/templates/redesign/index.html:208
+#: portal/templates/redesign/index.html:216
 msgid "Subscribe to our email and text lists."
 msgstr ""
 
-#: portal/templates/redesign/index.html:217
+#: portal/templates/redesign/index.html:225
 msgid "Meet all our partners and learn more about Chicago Early Learning."
 msgstr ""
 
@@ -2359,7 +2514,7 @@ msgstr ""
 msgid "There are also great resources on ChicagoEarlyLearning.org:"
 msgstr ""
 
-#: portal/templates/redesign/outreach.html:270
+#: portal/templates/redesign/outreach.html:282
 msgid ""
 "Check back often to see where Chicago Early Learning teams are connecting "
 "with families throughout the 2017 summer months."
@@ -2372,33 +2527,33 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/partials/_footer.html:13
-msgid "Follow us on Facebook and Twitter:"
-msgstr ""
-
-#: portal/templates/redesign/partials/_footer.html:21
-msgid "About Chicago Early Learning"
+msgid "Follow us on Facebook, Twitter, and Instagram:"
 msgstr ""
 
 #: portal/templates/redesign/partials/_footer.html:22
+msgid "About Chicago Early Learning"
+msgstr ""
+
+#: portal/templates/redesign/partials/_footer.html:23
 #: portal/templates/redesign/partials/_nav.html:36
 #: portal/templates/redesign/programs.html:8
 #: portal/templates/redesign/programs.html:20
 msgid "Programs"
 msgstr ""
 
-#: portal/templates/redesign/partials/_footer.html:24
+#: portal/templates/redesign/partials/_footer.html:25
 #: portal/templates/redesign/partials/_nav.html:42
 msgid "Find Locations"
 msgstr ""
 
-#: portal/templates/redesign/partials/_footer.html:29
+#: portal/templates/redesign/partials/_footer.html:30
 #: portal/templates/redesign/partials/_nav.html:45
 #: portal/templates/redesign/resources.html:8
 #: portal/templates/redesign/resources.html:17
 msgid "Resources"
 msgstr ""
 
-#: portal/templates/redesign/partials/_footer.html:31
+#: portal/templates/redesign/partials/_footer.html:32
 #: portal/templates/redesign/resources.html:155
 msgid "Latest News"
 msgstr ""
@@ -2413,11 +2568,6 @@ msgstr ""
 
 #: portal/templates/redesign/partials/_nav.html:18
 msgid "Continue to Application Login"
-msgstr ""
-
-#: portal/templates/redesign/partials/_nav.html:51
-#: portal/templates/starred.html:49 portal/templates/starred.html.py:70
-msgid "Apply"
 msgstr ""
 
 #: portal/templates/redesign/partials/_nav.html:54
@@ -2438,257 +2588,303 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/programs.html:50
-msgid "What early learning program should your child(ren) be enrolling in?"
+msgid "What early learning program should your child be enrolling in?"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:51
+#: portal/templates/redesign/programs.html:55
 msgid ""
 "Enter a birthdate. The result will reflect what you should enroll in Fall "
 "2017."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:78
+#: portal/templates/redesign/programs.html:62
+msgid "Find Program Type"
+msgstr ""
+
+#: portal/templates/redesign/programs.html:71
+msgid ""
+"Your little one is the perfect age to start learning in our infant and "
+"toddler programs."
+msgstr ""
+
+#: portal/templates/redesign/programs.html:77
+#: portal/templates/redesign/programs.html:89
+#: portal/templates/redesign/programs.html:101
+msgid "Enter another birthdate"
+msgstr ""
+
+#: portal/templates/redesign/programs.html:83
+msgid "Wow! Your child is ready for preschool."
+msgstr ""
+
+#: portal/templates/redesign/programs.html:95
+msgid "Believe it or not, it’s already time for Kindergarten!"
+msgstr ""
+
+#: portal/templates/redesign/programs.html:117
 msgid "Infants and Toddlers"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:79
+#: portal/templates/redesign/programs.html:118
 msgid "Ages Birth to 2"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:80
+#: portal/templates/redesign/programs.html:119
 msgid ""
 "These programs may also be referred to as Early Head Start, Prevention "
 "Initiative, or Early Intervention."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:81
-#: portal/templates/redesign/programs.html:103
+#: portal/templates/redesign/programs.html:120
+#: portal/templates/redesign/programs.html:142
 msgid "Who do they serve?"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:82
+#: portal/templates/redesign/programs.html:121
 msgid "Children aged birth to three years old from qualifying families"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:83
-#: portal/templates/redesign/programs.html:105
+#: portal/templates/redesign/programs.html:122
+#: portal/templates/redesign/programs.html:144
 msgid "What do they provide?"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:85
+#: portal/templates/redesign/programs.html:124
 msgid "Educational and social development activities."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:86
-#: portal/templates/redesign/programs.html:109
+#: portal/templates/redesign/programs.html:125
+#: portal/templates/redesign/programs.html:148
 msgid ""
 "Programs may include free health services (medical, dental, mental health), "
 "nutritious meals, as well as parent education and training."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:88
-#: portal/templates/redesign/programs.html:111
+#: portal/templates/redesign/programs.html:127
+#: portal/templates/redesign/programs.html:150
 msgid "Find Sites"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:100
+#: portal/templates/redesign/programs.html:139
 msgid "Preschool"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:101
+#: portal/templates/redesign/programs.html:140
 msgid "Ages 3 and 4"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:102
+#: portal/templates/redesign/programs.html:141
 msgid ""
 "Preschool programs may be referred to as Head Start or Preschool for All."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:104
+#: portal/templates/redesign/programs.html:143
 msgid "3- and 4-year-old children from qualifying families."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:107
+#: portal/templates/redesign/programs.html:146
 msgid ""
 "Educational and social development activities that promote school readiness."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:108
+#: portal/templates/redesign/programs.html:147
 msgid "Either a half-day or a full-day of instruction."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:126
+#: portal/templates/redesign/programs.html:165
 msgid "Kindergarten"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:127
+#: portal/templates/redesign/programs.html:166
 msgid "Age 5"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:128
+#: portal/templates/redesign/programs.html:167
 msgid ""
 "Children who are 5 years old by September 1st of the current school year "
 "should enroll in kindergarten at a CPS preschool. Visit the CPS website to "
 "enroll a child in kindergarten."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:140
+#: portal/templates/redesign/programs.html:179
 msgid "Types of Programs"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:141
+#: portal/templates/redesign/programs.html:180
 msgid ""
 "The early education programs at the City of Chicago are available in a "
 "number of settings:"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:145
+#: portal/templates/redesign/programs.html:184
 msgid "Chicago Public Schools (CPS) Programs"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:146
+#: portal/templates/redesign/programs.html:185
 msgid "Age Group: 3 and 4"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:147
+#: portal/templates/redesign/programs.html:186
 msgid ""
 "Many CPS elementary schools offer early learning programs as a part of their "
 "services."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:151
+#: portal/templates/redesign/programs.html:190
 msgid "Community Based Programs"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:152
+#: portal/templates/redesign/programs.html:191
 msgid "Age Group: Birth to 4"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:153
+#: portal/templates/redesign/programs.html:192
 msgid ""
 "Neighborhood locations provide early childhood education and infant and "
 "toddler care. Hours vary by site."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:159
+#: portal/templates/redesign/programs.html:198
 msgid ""
 "Home Visiting Care is also available for qualifying families, for children "
 "between the ages of birth to 3. Visiting coaches provide early care and "
 "consulting in the family’s home to qualifying families."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:164
+#: portal/templates/redesign/programs.html:203
+msgid ""
+"Note: Chicago Public Schools and community-based sites are not able to "
+"provide transportation to all early learning programs across the city. "
+"However, Chicago Early Learning encourages families to take advantage of "
+"public transit opportunities. Learn more at the <a class=\"a-orange\" href="
+"\"http://www.transitchicago.com\">CTA website</a>."
+msgstr ""
+
+#: portal/templates/redesign/programs.html:208
 msgid "Choosing the Right Program"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:165
+#: portal/templates/redesign/programs.html:209
 msgid ""
 "Quality ratings for Chicago Early Learning programs, and programs across "
 "Illinois and the country, offer families more insight before they make final "
 "choices about a program for their child."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:171
+#: portal/templates/redesign/programs.html:215
 msgid "What does “Quality Rating” (QRIS) mean?"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:172
+#: portal/templates/redesign/programs.html:216
 msgid ""
-"Quality Rating indicates the quality of a site based on the Excelerate "
-"Illinois system. Excelerate Illinois is the new quality rating and "
-"improvement system for Illinois. It has been designed to rate the quality of "
-"early learning programs and to set a research based standard for early "
-"learning and development providers. There are tiered Circles of Quality in "
-"Excelerate and the higher the awarded tier, the more the program has made "
-"meaningful improvements that better the child for school and life. More "
-"information about Excelerate can be found at ExcelerateIllinois.com."
+"Quality Ratings are assessments of early learning programs used by "
+"Excelerate Illinois to help families understand program quality and help "
+"providers prioritize improvements. Excelerate Illinois, the state’s rating "
+"and improvement system, sets a research-based standard for early learning "
+"and development providers, reflected in its tiered Circles of Quality. The "
+"higher the tier, the more the program has made meaningful improvements that "
+"better the child for school and life. Reviewing a potential preschool "
+"program’s rating in Excelerate’s Circles of Quality can help Illinois "
+"families make a more informed decision for their child. More information can "
+"be found at <a class=\"a-orange\" href=\"http://excelerateillinois.com"
+"\">ExcelerateIllinois.com</a>."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:178
-msgid "What does \"Accreditation\" mean?"
-msgstr ""
-
-#: portal/templates/redesign/programs.html:179
+#: portal/templates/redesign/programs.html:223
 msgid ""
-"Accreditation means that a program has met high standards of excellence "
-"determined by a national organization such as the National Association for "
-"the Education of Young Children (NAEYC), National Early Childhood Program "
-"Accreditation (NEPCA), or the Council on Accreditation (COA). Programs that "
-"receive national accreditation have demonstrated quality in areas such as "
-"teaching, curriculum, learning assessments, health, community relationships, "
-"physical environment, and management."
+"Accreditation is another way of measuring and understanding early learning "
+"program quality; accredited status means that a program has met high "
+"standards of excellence determined by a national organization such as the "
+"National Association for the Education of Young Children (NAEYC), National "
+"Early Childhood Program Accreditation (NEPCA), or the Council on "
+"Accreditation (COA). These quality standards measure areas such as teaching, "
+"curriculum, learning assessments, health, community relationships, physical "
+"environment, and management."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:180
+#: portal/templates/redesign/programs.html:224
 msgid ""
-"To learn more about accreditation of early learning programs, click on one "
-"of the following links:"
+"To learn more about accreditation of early learning programs and how such "
+"standards can help guide families searching for early learning programs, "
+"click on one of the following links:"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:192
-#: portal/templates/redesign/programs.html:201
+#: portal/templates/redesign/programs.html:225
+msgid "National Association for the Education of Young Children"
+msgstr ""
+
+#: portal/templates/redesign/programs.html:226
+msgid "National Early Childhood Program Accreditation"
+msgstr ""
+
+#: portal/templates/redesign/programs.html:227
+msgid "Council on Accreditation"
+msgstr ""
+
+#: portal/templates/redesign/programs.html:236
+#: portal/templates/redesign/programs.html:245
 msgid "What Makes a Great Program?"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:193
+#: portal/templates/redesign/programs.html:237
 msgid "Visit your top choice early learning programs in person, if you can."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:194
+#: portal/templates/redesign/programs.html:238
 msgid "You will know it’s a strong program when you see the following:"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:202
+#: portal/templates/redesign/programs.html:246
 msgid ""
 "Visit your top choice early learning programs in person, if you can. You "
 "will know it’s a strong program when you see the following:"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:206
-msgid "Kid-Friendly Spaces"
+#: portal/templates/redesign/programs.html:250
+msgid "Child-Friendly Spaces"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:207
+#: portal/templates/redesign/programs.html:251
 msgid ""
 "A safe, child-friendly space for 20 preschoolers at most, with toys and "
 "materials indoors and outdoors"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:211
+#: portal/templates/redesign/programs.html:255
 msgid "Top-Notch Teachers"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:212
+#: portal/templates/redesign/programs.html:256
 msgid ""
 "Attentive, engaged teachers with 4-year degrees and training, 1:10 teacher-"
 "child ratios for Pre-K"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:216
+#: portal/templates/redesign/programs.html:260
 msgid "Engaged Students"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:217
+#: portal/templates/redesign/programs.html:261
 msgid ""
 "Variety in 1-1, small and full group age appropriate activities, with meals "
 "and naptime offered"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:221
+#: portal/templates/redesign/programs.html:265
 msgid "And So Much More..."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:222
+#: portal/templates/redesign/programs.html:266
 msgid ""
 "Visitors welcomed with required safety measures, frequent handwashing by "
 "children and adults"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:232
+#: portal/templates/redesign/programs.html:276
 msgid "Other Local Activities and Resources"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:233
+#: portal/templates/redesign/programs.html:277
 msgid ""
 "See our Resources page to learn more about programs for young children "
 "throughout the city that are not part of Chicago Early Learning."
@@ -2820,6 +3016,68 @@ msgid ""
 "org</a>."
 msgstr ""
 
+#: portal/templates/redesign/search.html:38
+msgid "Site"
+msgstr ""
+
+#: portal/templates/redesign/search.html:38
+msgid "Sites"
+msgstr ""
+
+#: portal/templates/redesign/search.html:46
+#: portal/templates/redesign/search.html:204
+msgid "Refine Your Search"
+msgstr ""
+
+#: portal/templates/redesign/search.html:49
+msgid "Clear"
+msgstr ""
+
+#: portal/templates/redesign/search.html:58
+msgid "Hours"
+msgstr ""
+
+#: portal/templates/redesign/search.html:88 portal/templates/starred.html:67
+#: portal/templates/starred.html.py:118
+msgid "Duration"
+msgstr ""
+
+#: portal/templates/redesign/search.html:128
+msgid "Program Features"
+msgstr ""
+
+#: portal/templates/redesign/search.html:136
+msgid "CPS"
+msgstr ""
+
+#: portal/templates/redesign/search.html:183
+msgid "Enter your child's birthdate to find the right program."
+msgstr ""
+
+#: portal/templates/redesign/search.html:194
+msgid "Add Another Child"
+msgstr ""
+
+#: portal/templates/redesign/search.html:197
+msgid "Find Programs"
+msgstr ""
+
+#: portal/templates/redesign/search.html:203
+msgid "All locations near you for a "
+msgstr ""
+
+#: portal/templates/redesign/search.html:203
+msgid "year old"
+msgstr ""
+
+#: portal/templates/redesign/search.html:209
+msgid "See More Locations"
+msgstr ""
+
+#: portal/templates/redesign/search.html:220
+msgid "Please enter your address in the search bar above to begin."
+msgstr ""
+
 #: portal/templates/smsinfo.html:12
 msgid "Text For Info"
 msgstr ""
@@ -2856,53 +3114,38 @@ msgid ""
 "Early Learning Hotline at "
 msgstr ""
 
-#: portal/templates/starred.html:45
-msgid ""
-"Please select no more than 6 locations to continue to the application "
-"process. Compare your favorites below to pick the best options for your "
-"family."
+#: portal/templates/starred.html:54 portal/templates/starred.html.py:105
+msgid "Scroll to View Location Details"
 msgstr ""
 
-#: portal/templates/starred.html:57
-msgid "Clear All Sites"
-msgstr ""
-
-#: portal/templates/starred.html:60
-msgid "Back to Search"
-msgstr ""
-
-#: portal/templates/starred.html:71 portal/templates/starred.html.py:96
+#: portal/templates/starred.html:64 portal/templates/starred.html.py:115
 msgid "Site Info"
 msgstr ""
 
-#: portal/templates/starred.html:72 portal/templates/starred.html.py:97
+#: portal/templates/starred.html:65 portal/templates/starred.html.py:116
 msgid "Ages"
 msgstr ""
 
-#: portal/templates/starred.html:73 portal/templates/starred.html.py:98
+#: portal/templates/starred.html:66 portal/templates/starred.html.py:117
 msgid "Seats"
 msgstr ""
 
-#: portal/templates/starred.html:74 portal/templates/starred.html.py:99
-msgid "Duration"
-msgstr ""
-
-#: portal/templates/starred.html:75 portal/templates/starred.html.py:100
+#: portal/templates/starred.html:68 portal/templates/starred.html.py:119
 msgid "Program Info"
 msgstr ""
 
-#: portal/templates/starred.html:81
+#: portal/templates/starred.html:74
 msgid "No Saved Locations"
 msgstr ""
 
-#: portal/templates/starred.html:91
+#: portal/templates/starred.html:92
+msgid "Clear All Selected Sites"
+msgstr ""
+
+#: portal/templates/starred.html:99
 msgid ""
 "The following sites do not have online enrollment. Contact these sites "
 "directly to apply."
-msgstr ""
-
-#: portal/templates/starred.html:95
-msgid "Remove"
 msgstr ""
 
 #: portal/templates/sub-base.html:106
@@ -2959,12 +3202,24 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: portal/views.py:486
+#: portal/views.py:522
 msgid "Explore"
 msgstr ""
 
-#: portal/views.py:487
+#: portal/views.py:523
 msgid "Click to see locations in this neighborhood"
+msgstr ""
+
+#: portal/views.py:595
+msgid "Contact this site directly to apply."
+msgstr ""
+
+#: portal/views.py:711
+msgid "Languages (other than English)"
+msgstr ""
+
+#: portal/views.py:742
+msgid "Note: Availability and placement are subject to eligibility."
 msgstr ""
 
 #: settings.py:39
