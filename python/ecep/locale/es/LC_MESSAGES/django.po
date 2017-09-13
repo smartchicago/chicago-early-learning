@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-12 21:01-0500\n"
+"POT-Creation-Date: 2017-09-12 21:10-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -764,9 +764,8 @@ msgstr "Para Familias"
 
 #: portal/templates/faq-models.html:5 portal/templates/redesign/faq.html:8
 #: portal/templates/redesign/partials/_footer.html:31
-#: portal/templates/redesign/partials/_nav.html:48
 msgid "FAQ"
-msgstr "FAQ"
+msgstr "Preguntas frecuentes"
 
 #: portal/templates/faq-models.html:24
 msgid "Frequently Asked Questions"
@@ -1081,7 +1080,15 @@ msgid ""
 "the city. Launched in 2012, the Early Learning Portal ensuring that parents "
 "have access to the information they need to make the choices that are best "
 "for their children and families."
-msgstr "El alcalde Rahm Emanuel y la ciudad de Chicago tienen el compromiso de apoyar a los niños de toda la ciudad para que tengan acceso a educación de alta calidad, desde los programas de educación temprana hasta la universidad. Desde que comenzó a fungir en su puesto, el Alcalde Emanuel ha invertido más de $75 millones para expandir los programas de Educación Temprana y asegurar la calidad y el acceso a lo largo de la ciudad. Lanzado en 2012, el Portal de Educación Temprana en línea ha ayudado a los padres a realizar las mejores selecciones para sus niños y familias."
+msgstr ""
+"El alcalde Rahm Emanuel y la ciudad de Chicago tienen el compromiso de "
+"apoyar a los niños de toda la ciudad para que tengan acceso a educación de "
+"alta calidad, desde los programas de educación temprana hasta la "
+"universidad. Desde que comenzó a fungir en su puesto, el Alcalde Emanuel ha "
+"invertido más de $75 millones para expandir los programas de Educación "
+"Temprana y asegurar la calidad y el acceso a lo largo de la ciudad. Lanzado "
+"en 2012, el Portal de Educación Temprana en línea ha ayudado a los padres a "
+"realizar las mejores selecciones para sus niños y familias."
 
 #: portal/templates/redesign/blog.html:8
 msgid "Blog"
@@ -2769,7 +2776,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Follow us on Facebook and Twitter:"
 msgid "Follow us on Facebook, Twitter, and Instagram:"
-msgstr "Síguenos en Facebook y Twitter:"
+msgstr "Síguenos en Facebook, Twitter, y Instagram:"
 
 #: portal/templates/redesign/partials/_footer.html:22
 msgid "About Chicago Early Learning"
