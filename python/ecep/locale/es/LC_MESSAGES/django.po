@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-12 21:21-0500\n"
+"POT-Creation-Date: 2017-09-12 21:26-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -742,11 +742,9 @@ msgid "Connect"
 msgstr ""
 
 #: portal/templates/connect.html:29
-#, fuzzy
-#| msgid "to help make the Chicago Early Learning Portal better."
 msgid ""
 "Stay up to date on Chicago Early Learning! Join our email and text lists."
-msgstr "el portal del Chicago Educacíon Temprana."
+msgstr "¡Manténgase actualizado sobre la Educación Temprana de Chicago!"
 
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/sub-base.html:4
@@ -2674,6 +2672,9 @@ msgid ""
 "Enter your address (work, home, or somewhere else!) to find a preschool or "
 "early learning program convenient for you and your family."
 msgstr ""
+"Ponga su dirección (trabajo, casa ¡o de algún otro lugar!) para encontrar un "
+"programa preescolar y de educación temprana conveniente para usted y su "
+"familia."
 
 #: portal/templates/redesign/index.html:27
 #: portal/templates/redesign/index.html:55
@@ -2688,6 +2689,10 @@ msgid ""
 msgstr ""
 "“Cada niño, en cada vecindario, se merece una educación de calidad y esta "
 "debe comenzar en sus años tempranos.”"
+
+#: portal/templates/redesign/index.html:76
+msgid "Chicago Mayor Rahm Emanuel"
+msgstr "Rahm Emanuel, Alcalde de Chicago"
 
 #: portal/templates/redesign/index.html:84
 msgid "Important Update"
@@ -2722,7 +2727,7 @@ msgstr ""
 
 #: portal/templates/redesign/index.html:142
 msgid "What is the preschool application process?"
-msgstr ""
+msgstr "¿Cuál es el proceso de inscripción?"
 
 #: portal/templates/redesign/index.html:148
 #: portal/templates/redesign/index.html:162
@@ -2742,7 +2747,7 @@ msgstr ""
 
 #: portal/templates/redesign/index.html:174
 msgid "Early learning doesn’t only take place in a preschool classroom."
-msgstr ""
+msgstr "El aprendizaje temprano no ocurre solamente en una aula de preescolar."
 
 #: portal/templates/redesign/index.html:175
 msgid ""
@@ -2750,6 +2755,9 @@ msgid ""
 "learning, moving, and playing. Learn more about what is offered by city "
 "agencies and organizations."
 msgstr ""
+"Chicago ofrece una variedad de actividades estimulantes para los niños para "
+"que ellos aprendan, se muevan y jueguen. Conozca más acerca de lo que las "
+"agencias y organizaciones de la ciudad ofrecen."
 
 #: portal/templates/redesign/index.html:191
 msgid "Mayor Emanuel Launches Improved Universal Preschool Application"
@@ -2786,6 +2794,7 @@ msgstr "Aprenda más"
 #: portal/templates/redesign/index.html:216
 msgid "Subscribe to our email and text lists."
 msgstr ""
+"¡Subscríbase a nuestro correo electrónico y las listas para recibir textos!"
 
 #: portal/templates/redesign/index.html:225
 #, fuzzy
