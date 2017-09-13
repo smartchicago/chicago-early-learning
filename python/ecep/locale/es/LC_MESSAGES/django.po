@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-12 20:05-0500\n"
+"POT-Creation-Date: 2017-09-12 21:01-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1018,7 +1018,7 @@ msgstr ""
 #: portal/templates/location.html:249
 #: portal/templates/redesign/programs.html:222
 msgid "What does \"Accreditation\" mean?"
-msgstr ""
+msgstr "¿Qué es la \"acreditación\"?"
 
 #: portal/templates/location.html:253
 msgid ""
@@ -1081,7 +1081,7 @@ msgid ""
 "the city. Launched in 2012, the Early Learning Portal ensuring that parents "
 "have access to the information they need to make the choices that are best "
 "for their children and families."
-msgstr ""
+msgstr "El alcalde Rahm Emanuel y la ciudad de Chicago tienen el compromiso de apoyar a los niños de toda la ciudad para que tengan acceso a educación de alta calidad, desde los programas de educación temprana hasta la universidad. Desde que comenzó a fungir en su puesto, el Alcalde Emanuel ha invertido más de $75 millones para expandir los programas de Educación Temprana y asegurar la calidad y el acceso a lo largo de la ciudad. Lanzado en 2012, el Portal de Educación Temprana en línea ha ayudado a los padres a realizar las mejores selecciones para sus niños y familias."
 
 #: portal/templates/redesign/blog.html:8
 msgid "Blog"
@@ -2214,14 +2214,23 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/faq.html:649
+#, fuzzy
+#| msgid ""
+#| "Chicago City of Learning (CCOL) is a groundbreaking initiative that joins "
+#| "together learning opportunities for young people in a way that allows "
+#| "them to think about, pursue, and develop their interests. CCOL partners "
+#| "to bring early childhood experiences to spaces during the summer to "
+#| "prepare children to enter kindergarten in the Fall. <a href=\"https://"
+#| "chicagocityoflearning.org/\">Visit CCOL</a> to find opportunities near "
+#| "you."
 msgid ""
-"Chicago City of Learning (CCOL) is a groundbreaking initiative that joins "
-"together learning opportunities for young people in a way that allows "
-"them to think about, pursue, and develop their interests. CCOL partners "
-"to bring early childhood experiences to spaces during the summer to "
-"prepare children to enter kindergarten in the Fall. <a href=\"https://"
-"chicagocityoflearning.org/\">Visit CCOL</a> to find opportunities near "
-"you."
+"The first effort of its kind to take place in a major city in the United "
+"States, Chicago City of Learning is a groundbreaking effort that joins "
+"together learning opportunities for young people in a way that allows them "
+"to think about, pursue, and develop their interests. Find 1000s of "
+"opportunities at parks, libraries, community- and faith-based programs, "
+"schools, museums and cultural institutions, colleges and universities, and "
+"more at www.chicagocityoflearning.org"
 msgstr ""
 "Chicago City of Learning (CCOL) es una iniciativa pionera que reúne "
 "oportunidades de aprendizaje para jóvenes de tal forma que les permite "
@@ -2812,22 +2821,17 @@ msgid ""
 "Look what <span class=\"d-inline\"><span class=\"chalk blue b-blue\">WE</"
 "span></span> can do!"
 msgstr ""
-"Look what <span class=\"d-inline\"><span class=\"chalk blue b-blue\">WE</"
-"span></span> can do!"
+"¡Mira lo que <span class=\"d-inline\"><span class=\"chalk blue b-blue"
+"\">NUESTRO</span></span> podemos hacer!"
 
 #: portal/templates/redesign/programs.html:35
-#, fuzzy
-#| msgid ""
-#| "The City of Chicago’s Early Learning Portal is the place for families to "
-#| "learn, find and apply for high quality early learning programs across the "
-#| "city."
 msgid ""
 "Through Chicago Early Learning, all of our families—no matter their needs—"
 "will be able to find and secure a quality early learning program."
 msgstr ""
-"El portal de la ciudad Chicago Early Learning es un lugar para las familias "
-"donde podrán aprender, solicitar y encontrar los programas de aprendizaje "
-"temprano en la ciudad de Chicago. "
+"En la Educación Temprana de Chicago, todas nuestras familias, sin importar "
+"cuales sean sus necesidades, podrán encontrar y asegurar un programa de "
+"educación temprana de calidad."
 
 #: portal/templates/redesign/programs.html:50
 #, fuzzy
@@ -2869,35 +2873,39 @@ msgstr ""
 
 #: portal/templates/redesign/programs.html:117
 msgid "Infants and Toddlers"
-msgstr ""
+msgstr "Infantes y los que comienzan a dar sus primeros pasos"
 
 #: portal/templates/redesign/programs.html:118
 msgid "Ages Birth to 2"
-msgstr ""
+msgstr "0 a 2 años"
 
 #: portal/templates/redesign/programs.html:119
 msgid ""
 "These programs may also be referred to as Early Head Start, Prevention "
 "Initiative, or Early Intervention."
 msgstr ""
+"Estos programas pueden llamarse “Early Head Start” (Comienzo temprano), "
+"“Prevention Initiative” (Iniciativa de prevención), o “Early "
+"Intervention” (Intervención temprana)."
 
 #: portal/templates/redesign/programs.html:120
 #: portal/templates/redesign/programs.html:142
 msgid "Who do they serve?"
-msgstr ""
+msgstr "¿A quienes sirven?"
 
 #: portal/templates/redesign/programs.html:121
 msgid "Children aged birth to three years old from qualifying families"
 msgstr ""
+"Desde los niños recién nacidos hasta los niños de 3 años que califiquen."
 
 #: portal/templates/redesign/programs.html:122
 #: portal/templates/redesign/programs.html:144
 msgid "What do they provide?"
-msgstr ""
+msgstr "¿Qué proporcionan?"
 
 #: portal/templates/redesign/programs.html:124
 msgid "Educational and social development activities."
-msgstr ""
+msgstr "Actividades educativas y para el desarrollo social."
 
 #: portal/templates/redesign/programs.html:125
 #: portal/templates/redesign/programs.html:148
@@ -2905,6 +2913,9 @@ msgid ""
 "Programs may include free health services (medical, dental, mental health), "
 "nutritious meals, as well as parent education and training."
 msgstr ""
+"Los programas pueden incluir servicios gratis para la salud (médicos, "
+"dentales, salud mental), comidas nutritivas, así como educación y "
+"capacitación para los padres."
 
 #: portal/templates/redesign/programs.html:127
 #: portal/templates/redesign/programs.html:150
@@ -2915,31 +2926,33 @@ msgstr "Encuéntreme"
 
 #: portal/templates/redesign/programs.html:139
 msgid "Preschool"
-msgstr ""
+msgstr "Preescolar"
 
 #: portal/templates/redesign/programs.html:140
-#, fuzzy
-#| msgid "Ages 3 - 5"
 msgid "Ages 3 and 4"
-msgstr "3 ‐ 5 años"
+msgstr "3 y 4 años"
 
 #: portal/templates/redesign/programs.html:141
 msgid ""
 "Preschool programs may be referred to as Head Start or Preschool for All."
 msgstr ""
+"Los programas preescolares pueden llamarse “Head Start” (Comienzo temprano) "
+"o “Preschool for All” (Preescolar para todos)."
 
 #: portal/templates/redesign/programs.html:143
 msgid "3- and 4-year-old children from qualifying families."
-msgstr ""
+msgstr "A los niños de 3 y 4 años de edad que califiquen."
 
 #: portal/templates/redesign/programs.html:146
 msgid ""
 "Educational and social development activities that promote school readiness."
 msgstr ""
+"Actividades educativas y para su desarrollo social que promueven su "
+"preparación para la escuela."
 
 #: portal/templates/redesign/programs.html:147
 msgid "Either a half-day or a full-day of instruction."
-msgstr ""
+msgstr "Ya sea medio día o un día completo de instrucción."
 
 #: portal/templates/redesign/programs.html:165
 msgid "Kindergarten"
@@ -2957,48 +2970,49 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/programs.html:179
-#, fuzzy
-#| msgid "Programs"
 msgid "Types of Programs"
-msgstr "Programas"
+msgstr "Tipos de programas"
 
 #: portal/templates/redesign/programs.html:180
 msgid ""
 "The early education programs at the City of Chicago are available in a "
 "number of settings:"
 msgstr ""
+"Los programas de educación temprana en la Ciudad de Chicago están "
+"disponibles en una variedad de sitios diferentes:"
 
 #: portal/templates/redesign/programs.html:184
-#, fuzzy
-#| msgid "Chicago Public Schools"
 msgid "Chicago Public Schools (CPS) Programs"
-msgstr "Escuelas Públicas de Chicago"
+msgstr "Escuelas Públicas de Chicago (CPS)"
 
 #: portal/templates/redesign/programs.html:185
 msgid "Age Group: 3 and 4"
-msgstr ""
+msgstr "Edades 3 y 4 años"
 
 #: portal/templates/redesign/programs.html:186
 msgid ""
 "Many CPS elementary schools offer early learning programs as a part of their "
 "services."
 msgstr ""
+"Muchas escuelas primarias de CPS ofrecen programas de educación temprana "
+"como parte de sus servicios."
 
 #: portal/templates/redesign/programs.html:190
-#, fuzzy
-#| msgid "Community Based"
 msgid "Community Based Programs"
-msgstr "Organizaciones comunitarias"
+msgstr "Basados en la comunidad"
 
 #: portal/templates/redesign/programs.html:191
 msgid "Age Group: Birth to 4"
-msgstr ""
+msgstr "Edades 0 a 5 años"
 
 #: portal/templates/redesign/programs.html:192
 msgid ""
 "Neighborhood locations provide early childhood education and infant and "
 "toddler care. Hours vary by site."
 msgstr ""
+"Hay lugares en el vecindario que proporcionan educación temprana, así como "
+"cuidado infantil para infantes y aquellos que comienzan a dar sus primeros "
+"pasos. Las horas varían por sitio."
 
 #: portal/templates/redesign/programs.html:198
 msgid ""
@@ -3006,6 +3020,8 @@ msgid ""
 "between the ages of birth to 3. Visiting coaches provide early care and "
 "consulting in the family’s home to qualifying families."
 msgstr ""
+"Los entrenadores que visitan casas proveen cuidado temprano y asesoría en "
+"casa a las familias que califiquen."
 
 #: portal/templates/redesign/programs.html:203
 msgid ""
@@ -3029,7 +3045,7 @@ msgstr ""
 
 #: portal/templates/redesign/programs.html:215
 msgid "What does “Quality Rating” (QRIS) mean?"
-msgstr ""
+msgstr "¿Qué significa “calificación de calidad”?"
 
 #: portal/templates/redesign/programs.html:216
 msgid ""
@@ -3045,6 +3061,18 @@ msgid ""
 "be found at <a class=\"a-orange\" href=\"http://excelerateillinois.com"
 "\">ExcelerateIllinois.com</a>."
 msgstr ""
+"La calificación de calidad indica qué calidad tiene un sitio en base al "
+"sistema “ExceleRate Illinois”. Este es un nuevo sistema para calificar la "
+"calidad y la mejoría de los sistemas en Illinois. Ha sido diseñado para "
+"calificar la calidad de los programas de educación temprana y para "
+"establecer un estándar, basado en los resultados de investigación, para los "
+"proveedores de educación temprana y de desarrollo. Hay Círculos de Calidad "
+"en ExceleRate en diferentes niveles y mientras más alto se encuentra el "
+"nivel otorgado a un programa, quiere decir que el programa ha realizado más "
+"mejorías significativas en cuanto a la preparación del niño para la escuela "
+"y para la vida. Se puede encontrar más información sobre ExceleRate en <a "
+"class=\"a-orange\" href=\"http://excelerateillinois.com\">ExcelerateIllinois."
+"com</a>."
 
 #: portal/templates/redesign/programs.html:223
 msgid ""
@@ -3057,6 +3085,15 @@ msgid ""
 "curriculum, learning assessments, health, community relationships, physical "
 "environment, and management."
 msgstr ""
+"La acreditación significa que un programa ha alcanzado los estándares altos "
+"de excelencia determinados por una organización nacional como la Asociación "
+"Nacional para la Educación de los Niños Pequeños (NAEYC por sus siglas en "
+"inglés), la Acreditación Nacional de los Programas de Educación Temprana "
+"(NEPCA por sus siglas en inglés), o el Consejo de Acreditación (COA por sus "
+"siglas en inglés). Los programas que reciben acreditación nacional han "
+"demostrado su calidad en áreas como la enseñanza, el currículum, las "
+"evaluaciones del aprendizaje, la salud, las relaciones comunitarias, el "
+"entorno físico y la administración escolar."
 
 #: portal/templates/redesign/programs.html:224
 msgid ""
@@ -3064,6 +3101,20 @@ msgid ""
 "standards can help guide families searching for early learning programs, "
 "click on one of the following links:"
 msgstr ""
+"Para aprender más acerca de la acreditación de los programas de educación "
+"temprana, presione en uno de los siguientes enlaces:"
+
+#: portal/templates/redesign/programs.html:225
+msgid "National Association for the Education of Young Children"
+msgstr "Asociación Nacional para la Educación de los Niños Pequeños"
+
+#: portal/templates/redesign/programs.html:226
+msgid "National Early Childhood Program Accreditation"
+msgstr "Acreditación Nacional de los Programas de Educación Temprana"
+
+#: portal/templates/redesign/programs.html:227
+msgid "Council on Accreditation"
+msgstr "Consejo de Acreditación"
 
 #: portal/templates/redesign/programs.html:236
 #: portal/templates/redesign/programs.html:245
@@ -3261,8 +3312,8 @@ msgid ""
 "<span class=\"d-inline\"><span class=\"chalk deep-yellow b-deep-yellow\">I</"
 "span></span> Grow in Chicago!"
 msgstr ""
-"¡<span class=\"d-inline\"><span class=\"chalk deep-yellow b-deep-yellow\">Yo</"
-"span></span> crezco en Chicago!"
+"¡<span class=\"d-inline\"><span class=\"chalk deep-yellow b-deep-yellow"
+"\">Yo</span></span> crezco en Chicago!"
 
 #: portal/templates/redesign/resources.html:100
 msgid ""
@@ -3306,7 +3357,13 @@ msgid ""
 "and Wellness (OSHW) can help families apply for Medicaid (low-cost or free "
 "health insurance) and SNAP benefits (food stamps) at no cost. Call <a class="
 "\"a-orange\" href=\"tel:7735535437\">773-553-KIDS (5437)</a> to learn more."
-msgstr "La Unidad de Beneficios para Niños y Familias (CFBU por sus siglas en inglés) de la Oficina para la Salud y el Bienestar de los Estudiantes (OSHW por sus siglas en inglés) puede ayudar a las familias a solicitar Medicaid (seguro médico de bajo costo o gratis) y beneficios SNAP (estampillas para comida) sin costo alguno. Llame al <a class=\"a-orange\" href=\"tel:7735535437\">773-553-KIDS (5437)</a> para obtener mayor información."
+msgstr ""
+"La Unidad de Beneficios para Niños y Familias (CFBU por sus siglas en "
+"inglés) de la Oficina para la Salud y el Bienestar de los Estudiantes (OSHW "
+"por sus siglas en inglés) puede ayudar a las familias a solicitar Medicaid "
+"(seguro médico de bajo costo o gratis) y beneficios SNAP (estampillas para "
+"comida) sin costo alguno. Llame al <a class=\"a-orange\" href="
+"\"tel:7735535437\">773-553-KIDS (5437)</a> para obtener mayor información."
 
 #: portal/templates/redesign/resources.html:135
 #, fuzzy

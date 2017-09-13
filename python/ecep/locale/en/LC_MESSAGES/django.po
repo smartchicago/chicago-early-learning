@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-12 20:05-0500\n"
+"POT-Creation-Date: 2017-09-12 21:01-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -2745,6 +2745,18 @@ msgid ""
 "To learn more about accreditation of early learning programs and how such "
 "standards can help guide families searching for early learning programs, "
 "click on one of the following links:"
+msgstr ""
+
+#: portal/templates/redesign/programs.html:225
+msgid "National Association for the Education of Young Children"
+msgstr ""
+
+#: portal/templates/redesign/programs.html:226
+msgid "National Early Childhood Program Accreditation"
+msgstr ""
+
+#: portal/templates/redesign/programs.html:227
+msgid "Council on Accreditation"
 msgstr ""
 
 #: portal/templates/redesign/programs.html:236
