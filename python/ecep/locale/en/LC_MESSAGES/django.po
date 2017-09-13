@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-12 21:10-0500\n"
+"POT-Creation-Date: 2017-09-12 21:21-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -985,6 +985,62 @@ msgid ""
 "computers. If a family would like to use a library computer, the user must "
 "have a library card. Anyone with a valid ID with name, photo and Chicago "
 "address can sign up for a library card on site."
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:24
+msgid ""
+"Applications will be taken 30 minutes after opening and will end 30 minutes "
+"before closing."
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:25
+msgid "Bilingual support available"
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:48
+#: portal/templates/redesign/family-resource-centers.html:71
+#: portal/templates/redesign/family-resource-centers.html:95
+#: portal/templates/redesign/family-resource-centers.html:119
+#: portal/templates/redesign/family-resource-centers.html:166
+#: portal/templates/redesign/family-resource-centers.html:190
+#: portal/templates/redesign/family-resource-centers.html:215
+#: portal/templates/redesign/family-resource-centers.html:240
+#: portal/templates/redesign/family-resource-centers.html:265
+#: portal/templates/redesign/family-resource-centers.html:289
+#: portal/templates/redesign/family-resource-centers.html:314
+msgid "M+W"
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:49
+#: portal/templates/redesign/family-resource-centers.html:72
+#: portal/templates/redesign/family-resource-centers.html:96
+#: portal/templates/redesign/family-resource-centers.html:120
+#: portal/templates/redesign/family-resource-centers.html:167
+#: portal/templates/redesign/family-resource-centers.html:191
+#: portal/templates/redesign/family-resource-centers.html:216
+#: portal/templates/redesign/family-resource-centers.html:241
+#: portal/templates/redesign/family-resource-centers.html:266
+#: portal/templates/redesign/family-resource-centers.html:290
+#: portal/templates/redesign/family-resource-centers.html:315
+msgid "T+TH"
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:50
+#: portal/templates/redesign/family-resource-centers.html:73
+#: portal/templates/redesign/family-resource-centers.html:97
+#: portal/templates/redesign/family-resource-centers.html:121
+#: portal/templates/redesign/family-resource-centers.html:168
+#: portal/templates/redesign/family-resource-centers.html:192
+#: portal/templates/redesign/family-resource-centers.html:217
+#: portal/templates/redesign/family-resource-centers.html:242
+#: portal/templates/redesign/family-resource-centers.html:267
+#: portal/templates/redesign/family-resource-centers.html:291
+#: portal/templates/redesign/family-resource-centers.html:316
+msgid "F"
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:143
+msgid "M-F"
 msgstr ""
 
 #: portal/templates/redesign/family-resource-centers.html:333
