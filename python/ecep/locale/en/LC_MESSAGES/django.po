@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-12 21:26-0500\n"
+"POT-Creation-Date: 2017-09-12 21:43-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -2214,7 +2214,6 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/how-to-apply.html:123
-#: portal/templates/redesign/how-to-apply.html:130
 msgid "Follow these three steps to verify your child's placement:"
 msgstr ""
 
@@ -2222,108 +2221,112 @@ msgstr ""
 msgid "Step 1: Gather Documents"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:133
+#: portal/templates/redesign/how-to-apply.html:132
 msgid "Proof of child's age"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:135
+#: portal/templates/redesign/how-to-apply.html:134
 msgid "Original birth certificate"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:136
+#: portal/templates/redesign/how-to-apply.html:135
 msgid "Passport"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:138
+#: portal/templates/redesign/how-to-apply.html:137
 msgid "Proof of Address"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:140
+#: portal/templates/redesign/how-to-apply.html:139
 msgid "Driver's License/ID card"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:141
+#: portal/templates/redesign/how-to-apply.html:140
 msgid "Utility bill"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:142
+#: portal/templates/redesign/how-to-apply.html:141
 msgid "Lease agreement/mortgage statement"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:143
+#: portal/templates/redesign/how-to-apply.html:142
 msgid "Current voter registration card"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:147
+#: portal/templates/redesign/how-to-apply.html:146
 msgid "Proof of Income"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:149
+#: portal/templates/redesign/how-to-apply.html:148
 msgid "Current paystub"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:150
+#: portal/templates/redesign/how-to-apply.html:149
 msgid "1040/W-2"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:151
+#: portal/templates/redesign/how-to-apply.html:150
 msgid "SSI Letter"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:152
+#: portal/templates/redesign/how-to-apply.html:151
 msgid "Unemployment Letter/Stub"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:153
+#: portal/templates/redesign/how-to-apply.html:152
 msgid "Workers' compensation letter/stub"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:154
+#: portal/templates/redesign/how-to-apply.html:153
 msgid "Retirement or pension stub/letter"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:155
+#: portal/templates/redesign/how-to-apply.html:154
 msgid "Alimony"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:156
+#: portal/templates/redesign/how-to-apply.html:155
 msgid "Official child support letter"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:157
+#: portal/templates/redesign/how-to-apply.html:156
 msgid "TANF"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:158
+#: portal/templates/redesign/how-to-apply.html:157
 msgid "Income verification form"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:167
+#: portal/templates/redesign/how-to-apply.html:166
 msgid "Step 2: Bring and Verify Documents"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:174
+#: portal/templates/redesign/how-to-apply.html:173
 msgid ""
 "If your child has a seat in a Community-based program, bring your documents "
 "directly to the site which your child was assigned."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:184
+#: portal/templates/redesign/how-to-apply.html:183
 msgid ""
 "If your child has a seat in a CPS-based program, bring your documents to a "
 "Family Resource Center."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:189
-#: portal/templates/redesign/how-to-apply.html:222
+#: portal/templates/redesign/how-to-apply.html:188
+#: portal/templates/redesign/how-to-apply.html:221
 msgid "View Family Resource Centers"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:196
+#: portal/templates/redesign/how-to-apply.html:195
 msgid "Step 3: Bring your child on the first day of school in September."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:203
+#: portal/templates/redesign/how-to-apply.html:196
+msgid "Let the learning begin!"
+msgstr ""
+
+#: portal/templates/redesign/how-to-apply.html:202
 msgid ""
 "Note:  If your family is in a temporary living situation, you are not "
 "required to present the documents listed above for verification.  All "
@@ -2333,11 +2336,11 @@ msgid ""
 "required for school enrollment."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:213
+#: portal/templates/redesign/how-to-apply.html:212
 msgid "Have you found the right program for your child?"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:214
+#: portal/templates/redesign/how-to-apply.html:213
 msgid ""
 "The City of Chicago and its partners offer early learning programs at over "
 "600 sites. Visit our search page to identify sites in areas near your home "
@@ -2345,15 +2348,15 @@ msgid ""
 "program’s quality rating, schedule and ages served."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:215
+#: portal/templates/redesign/how-to-apply.html:214
 msgid "Learn About Program Types"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:220
+#: portal/templates/redesign/how-to-apply.html:219
 msgid "Need application support?"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:221
+#: portal/templates/redesign/how-to-apply.html:220
 msgid ""
 "If you have any concerns with the online application, please call our "
 "Chicago Early Learning Hotline at (312) 229-1690, or visit any of the Family "

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-12 21:26-0500\n"
+"POT-Creation-Date: 2017-09-12 21:43-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr "Descripción"
 
 #: portal/models.py:94 portal/templates/redesign/how-to-apply.html:44
 msgid "Enrollment Process"
-msgstr ""
+msgstr "El Proceso de Inscripción"
 
 #: portal/models.py:95 portal/models.py:294 portal/templates/location.html:239
 #: portal/templates/starred.html:69 portal/templates/starred.html.py:120
@@ -2363,6 +2363,8 @@ msgid ""
 "Are <span class=\"d-inline\"><span class=\"chalk blue b-blue\">YOU</span></"
 "span> ready to apply for preschool?"
 msgstr ""
+"¿Está listo para comenzar la solicitud para preescolar de su niño de tres o "
+"cuatro años?"
 
 #: portal/templates/redesign/how-to-apply.html:32
 msgid ""
@@ -2370,18 +2372,18 @@ msgid ""
 "program is easy and open year-round. Follow these easy steps to get your "
 "child enrolled in preschool."
 msgstr ""
+"La inscripción de su niño de 3 o 4 años de edad en un programa de educación "
+"temprana es fácil y está abierta todo el año. Siga estos simples pasos para "
+"inscribir a su niño en preescolar."
 
 #: portal/templates/redesign/how-to-apply.html:34
-#, fuzzy, python-format
-#| msgid ""
-#| "Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
-#| "information."
+#, python-format
 msgid ""
 "If you have any questions, please reference our <a href=\"%(faq_url)s\">FAQ "
 "page</a> for more details."
 msgstr ""
-"¿Preguntas? Explore nuestra <a href=\"%(faq_url)s\">pagina de Preguntas y "
-"Respuestas</a> para obtener mayor información. "
+"Si tiene preguntas visite nuestra pagina de<a href=\"%(faq_url)s\">Preguntas "
+"y Respuestas</a> para obtener mayor información."
 
 #: portal/templates/redesign/how-to-apply.html:52
 #: portal/templates/redesign/how-to-apply.html:108
@@ -2489,127 +2491,137 @@ msgstr "Llene la solicitud en línea"
 
 #: portal/templates/redesign/how-to-apply.html:121
 msgid "How will you verify your child's placement?"
-msgstr ""
+msgstr "¿Cómo puede verificar la asignación de su niño?"
 
 #: portal/templates/redesign/how-to-apply.html:122
 msgid ""
 "If your child is offered a preliminary preschool placement, you will receive "
 "an email with verification instructions."
 msgstr ""
+"Si se le ofrece de manera preliminar un espacio a su niño en un programa "
+"preescolar, usted recibirá un correo electrónico con las instrucciones que "
+"tiene que seguir para la verificación."
 
 #: portal/templates/redesign/how-to-apply.html:123
-#: portal/templates/redesign/how-to-apply.html:130
 msgid "Follow these three steps to verify your child's placement:"
-msgstr ""
+msgstr "Siga estos tres pasos para aceptar la asignación de su niño:"
 
 #: portal/templates/redesign/how-to-apply.html:129
 msgid "Step 1: Gather Documents"
-msgstr ""
+msgstr "Paso 1: Reúna sus documentos"
 
-#: portal/templates/redesign/how-to-apply.html:133
+#: portal/templates/redesign/how-to-apply.html:132
 msgid "Proof of child's age"
-msgstr ""
+msgstr "Comprobante de la edad del niño"
+
+#: portal/templates/redesign/how-to-apply.html:134
+msgid "Original birth certificate"
+msgstr "Acta de nacimiento original"
 
 #: portal/templates/redesign/how-to-apply.html:135
-msgid "Original birth certificate"
-msgstr ""
-
-#: portal/templates/redesign/how-to-apply.html:136
-#, fuzzy
-#| msgid "Password:"
 msgid "Passport"
-msgstr "Contraseña"
+msgstr "Pasaporte"
 
-#: portal/templates/redesign/how-to-apply.html:138
+#: portal/templates/redesign/how-to-apply.html:137
 msgid "Proof of Address"
-msgstr ""
+msgstr "Comprobante de domicilio"
+
+#: portal/templates/redesign/how-to-apply.html:139
+msgid "Driver's License/ID card"
+msgstr "Licencia de conducir o identificación estatal"
 
 #: portal/templates/redesign/how-to-apply.html:140
-msgid "Driver's License/ID card"
-msgstr ""
+msgid "Utility bill"
+msgstr "Recibo de luz, teléfono, gas, etc."
 
 #: portal/templates/redesign/how-to-apply.html:141
-msgid "Utility bill"
-msgstr ""
+msgid "Lease agreement/mortgage statement"
+msgstr "Convenio de renta/Hipoteca"
 
 #: portal/templates/redesign/how-to-apply.html:142
-msgid "Lease agreement/mortgage statement"
-msgstr ""
-
-#: portal/templates/redesign/how-to-apply.html:143
 msgid "Current voter registration card"
-msgstr ""
+msgstr "Tarjeta electoral actualizada"
 
-#: portal/templates/redesign/how-to-apply.html:147
+#: portal/templates/redesign/how-to-apply.html:146
 msgid "Proof of Income"
-msgstr ""
+msgstr "Talón o comprobante de pago reciente"
+
+#: portal/templates/redesign/how-to-apply.html:148
+msgid "Current paystub"
+msgstr "Comprobante de ingresos económicos"
 
 #: portal/templates/redesign/how-to-apply.html:149
-msgid "Current paystub"
-msgstr ""
-
-#: portal/templates/redesign/how-to-apply.html:150
 msgid "1040/W-2"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:151
+#: portal/templates/redesign/how-to-apply.html:150
 msgid "SSI Letter"
-msgstr ""
+msgstr "Carta del SSI"
+
+#: portal/templates/redesign/how-to-apply.html:151
+msgid "Unemployment Letter/Stub"
+msgstr "Carta o talón de pago por desempleo"
 
 #: portal/templates/redesign/how-to-apply.html:152
-msgid "Unemployment Letter/Stub"
-msgstr ""
+msgid "Workers' compensation letter/stub"
+msgstr "Carta o talón de pago de la Compensación Laboral"
 
 #: portal/templates/redesign/how-to-apply.html:153
-msgid "Workers' compensation letter/stub"
-msgstr ""
+msgid "Retirement or pension stub/letter"
+msgstr "Carta o talón de pago por jubilación o pensión"
 
 #: portal/templates/redesign/how-to-apply.html:154
-msgid "Retirement or pension stub/letter"
-msgstr ""
+msgid "Alimony"
+msgstr "Pensión alimenticia"
 
 #: portal/templates/redesign/how-to-apply.html:155
-msgid "Alimony"
-msgstr ""
+msgid "Official child support letter"
+msgstr "Carta oficial sobre el mantenimiento de los niños"
 
 #: portal/templates/redesign/how-to-apply.html:156
-msgid "Official child support letter"
-msgstr ""
-
-#: portal/templates/redesign/how-to-apply.html:157
 msgid "TANF"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:158
+#: portal/templates/redesign/how-to-apply.html:157
 msgid "Income verification form"
-msgstr ""
+msgstr "Formulario de verificación de ingresos"
 
-#: portal/templates/redesign/how-to-apply.html:167
+#: portal/templates/redesign/how-to-apply.html:166
 msgid "Step 2: Bring and Verify Documents"
-msgstr ""
+msgstr "Paso 2: Lleve y verifique sus documentos"
 
-#: portal/templates/redesign/how-to-apply.html:174
+#: portal/templates/redesign/how-to-apply.html:173
 msgid ""
 "If your child has a seat in a Community-based program, bring your documents "
 "directly to the site which your child was assigned."
 msgstr ""
+"Si le han asignado preliminarmente un espacio a su niño en un sitio que esté "
+"basado en la comunidad, lleve sus documentos directamente al sitio al que "
+"fue asignado su niño."
 
-#: portal/templates/redesign/how-to-apply.html:184
+#: portal/templates/redesign/how-to-apply.html:183
 msgid ""
 "If your child has a seat in a CPS-based program, bring your documents to a "
 "Family Resource Center."
 msgstr ""
+"Si le han asignado preliminarmente un espacio a su niño en un sitio de las "
+"Escuelas Públicas de Chicago (CPS), lleve sus documentos al Centro de "
+"Recursos para la Familia."
 
-#: portal/templates/redesign/how-to-apply.html:189
-#: portal/templates/redesign/how-to-apply.html:222
+#: portal/templates/redesign/how-to-apply.html:188
+#: portal/templates/redesign/how-to-apply.html:221
 msgid "View Family Resource Centers"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:196
+#: portal/templates/redesign/how-to-apply.html:195
 msgid "Step 3: Bring your child on the first day of school in September."
-msgstr ""
+msgstr "Paso 3) Lleve a su niño al primer día de clases en septiembre."
 
-#: portal/templates/redesign/how-to-apply.html:203
+#: portal/templates/redesign/how-to-apply.html:196
+msgid "Let the learning begin!"
+msgstr "¡Y que dé comienzo el aprendizaje!"
+
+#: portal/templates/redesign/how-to-apply.html:202
 msgid ""
 "Note:  If your family is in a temporary living situation, you are not "
 "required to present the documents listed above for verification.  All "
@@ -2617,36 +2629,34 @@ msgid ""
 "if the student lacks health, immunization or school records, proof of "
 "guardianship, proof of residency, or any other documentation normally "
 "required for school enrollment."
-msgstr ""
+msgstr "Nota: Si su familia se encuentra en una situación de vivienda temporal, no necesita presentar los documentos enlistados arriba para su verificación. Todas las escuelas deben de inscribir inmediatamente a los estudiantes que se encuentren en una situación de vivienda temporal, aun si el estudiante no tiene sus expedientes escolares, de salud o de vacunas, comprobante de tutelaje, comprobante de residencia o cualquier otro documento que normalmente se requiera para la inscripción."
+
+#: portal/templates/redesign/how-to-apply.html:212
+msgid "Have you found the right program for your child?"
+msgstr "¿Ha encontrado el programa apropiado para su niño?"
 
 #: portal/templates/redesign/how-to-apply.html:213
-#, fuzzy
-#| msgid "Find the right program for your child."
-msgid "Have you found the right program for your child?"
-msgstr "Encuentre el programa adecuado para su hijo."
-
-#: portal/templates/redesign/how-to-apply.html:214
 msgid ""
 "The City of Chicago and its partners offer early learning programs at over "
 "600 sites. Visit our search page to identify sites in areas near your home "
 "or work. The Chicago Early Learning Portal allows you to identify a "
 "program’s quality rating, schedule and ages served."
-msgstr ""
+msgstr "La Ciudad de Chicago y sus socios ofrecen programas de educación temprana en más de 600 sitios a lo largo de la ciudad.  Visit our search page to identify sites in areas near your home or work. The Chicago Early Learning Portal allows you to identify a program’s quality rating, schedule and ages served."
 
-#: portal/templates/redesign/how-to-apply.html:215
+#: portal/templates/redesign/how-to-apply.html:214
 msgid "Learn About Program Types"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:220
+#: portal/templates/redesign/how-to-apply.html:219
 msgid "Need application support?"
-msgstr ""
+msgstr "¿Necesita ayuda con la solicitud?"
 
-#: portal/templates/redesign/how-to-apply.html:221
+#: portal/templates/redesign/how-to-apply.html:220
 msgid ""
 "If you have any concerns with the online application, please call our "
 "Chicago Early Learning Hotline at (312) 229-1690, or visit any of the Family "
 "Resource Centers."
-msgstr ""
+msgstr "Si tiene alguna preocupación acerca de la solicitud en línea, llame a la línea de acceso directo de Apoyo para la Familia: (312) 229-1690, o visite cualquiera de los Centros de Recursos para la Familia."
 
 #: portal/templates/redesign/index.html:20
 msgid ""
