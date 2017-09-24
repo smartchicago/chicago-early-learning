@@ -420,10 +420,8 @@ msgstr ""
 "problemas de las personas de esta ciudad."
 
 #: portal/templates/about.html:67 portal/templates/redesign/about.html:79
-#, fuzzy
-#| msgid "Other Features"
 msgid "Other Partners"
-msgstr "Otras Características"
+msgstr ""
 
 #: portal/templates/announcements.html:7
 #: portal/templates/announcements.html:15
