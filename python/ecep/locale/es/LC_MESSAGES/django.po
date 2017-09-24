@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-12 21:43-0500\n"
+"POT-Creation-Date: 2017-09-24 12:01-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2629,7 +2629,14 @@ msgid ""
 "if the student lacks health, immunization or school records, proof of "
 "guardianship, proof of residency, or any other documentation normally "
 "required for school enrollment."
-msgstr "Nota: Si su familia se encuentra en una situación de vivienda temporal, no necesita presentar los documentos enlistados arriba para su verificación. Todas las escuelas deben de inscribir inmediatamente a los estudiantes que se encuentren en una situación de vivienda temporal, aun si el estudiante no tiene sus expedientes escolares, de salud o de vacunas, comprobante de tutelaje, comprobante de residencia o cualquier otro documento que normalmente se requiera para la inscripción."
+msgstr ""
+"Nota: Si su familia se encuentra en una situación de vivienda temporal, no "
+"necesita presentar los documentos enlistados arriba para su verificación. "
+"Todas las escuelas deben de inscribir inmediatamente a los estudiantes que "
+"se encuentren en una situación de vivienda temporal, aun si el estudiante no "
+"tiene sus expedientes escolares, de salud o de vacunas, comprobante de "
+"tutelaje, comprobante de residencia o cualquier otro documento que "
+"normalmente se requiera para la inscripción."
 
 #: portal/templates/redesign/how-to-apply.html:212
 msgid "Have you found the right program for your child?"
@@ -2641,7 +2648,12 @@ msgid ""
 "600 sites. Visit our search page to identify sites in areas near your home "
 "or work. The Chicago Early Learning Portal allows you to identify a "
 "program’s quality rating, schedule and ages served."
-msgstr "La Ciudad de Chicago y sus socios ofrecen programas de educación temprana en más de 600 sitios a lo largo de la ciudad.  Visit our search page to identify sites in areas near your home or work. The Chicago Early Learning Portal allows you to identify a program’s quality rating, schedule and ages served."
+msgstr ""
+"La Ciudad de Chicago y sus socios ofrecen programas de educación temprana en "
+"más de 600 sitios a lo largo de la ciudad.  Visit our search page to "
+"identify sites in areas near your home or work. The Chicago Early Learning "
+"Portal allows you to identify a program’s quality rating, schedule and ages "
+"served."
 
 #: portal/templates/redesign/how-to-apply.html:214
 msgid "Learn About Program Types"
@@ -2656,7 +2668,10 @@ msgid ""
 "If you have any concerns with the online application, please call our "
 "Chicago Early Learning Hotline at (312) 229-1690, or visit any of the Family "
 "Resource Centers."
-msgstr "Si tiene alguna preocupación acerca de la solicitud en línea, llame a la línea de acceso directo de Apoyo para la Familia: (312) 229-1690, o visite cualquiera de los Centros de Recursos para la Familia."
+msgstr ""
+"Si tiene alguna preocupación acerca de la solicitud en línea, llame a la "
+"línea de acceso directo de Apoyo para la Familia: (312) 229-1690, o visite "
+"cualquiera de los Centros de Recursos para la Familia."
 
 #: portal/templates/redesign/index.html:20
 msgid ""
@@ -2701,6 +2716,7 @@ msgstr ""
 "debe comenzar en sus años tempranos.”"
 
 #: portal/templates/redesign/index.html:76
+#: portal/templates/redesign/programs.html:39
 msgid "Chicago Mayor Rahm Emanuel"
 msgstr "Rahm Emanuel, Alcalde de Chicago"
 
@@ -3093,7 +3109,7 @@ msgstr "Basados en la comunidad"
 
 #: portal/templates/redesign/programs.html:191
 msgid "Age Group: Birth to 4"
-msgstr "Edades 0 a 5 años"
+msgstr "Edades 0 a 4 años"
 
 #: portal/templates/redesign/programs.html:192
 msgid ""

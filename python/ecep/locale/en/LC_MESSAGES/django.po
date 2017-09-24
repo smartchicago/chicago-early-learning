@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-12 21:43-0500\n"
+"POT-Creation-Date: 2017-09-24 12:01-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -2396,6 +2396,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/index.html:76
+#: portal/templates/redesign/programs.html:39
 msgid "Chicago Mayor Rahm Emanuel"
 msgstr ""
 
