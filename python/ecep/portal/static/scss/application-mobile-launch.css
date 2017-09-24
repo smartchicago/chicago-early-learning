@@ -415,8 +415,6 @@ html, body {
 body {
   background-color: #fafafa;
   font-family: "Montserrat", sans-serif; }
-  body .body {
-    min-height: 60em; }
   body .chalk {
     display: table-cell;
     border-bottom: 3px solid #ffffff;
@@ -1026,11 +1024,12 @@ footer {
   justify-content: center;
   resize: vertical;
   color: #1ba7d5;
-  font-size: 1.5em;
+  font-size: 1.25rem;
+  line-height: 1.375rem;
   font-weight: 500; }
   @media (max-width: 768px) {
     .intro {
-      font-size: 1em;
+      font-size: 1rem;
       font-weight: 400; } }
 
 /* -- Header -- */
@@ -1048,7 +1047,7 @@ footer {
     background-image: url("../img/scientist-girl.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
-    background-position: 50% 20%; }
+    background-position: 50% 10%; }
 #index-header .header-title,
 #index-mobile-search .header-title {
   top: -87em;
@@ -1109,7 +1108,7 @@ footer {
 /* -- Intro Block -- */
 #index-intro {
   background-image: url("../img/redesign/elements/shapes_left_2x.png"), url("../img/redesign/elements/shapes_right_2x.png");
-  background-size: 30%, 30%;
+  background-size: 15%, 20%;
   background-position: left center, right center;
   background-repeat: no-repeat; }
   #index-intro .intro {
@@ -1137,7 +1136,7 @@ footer {
       margin: auto !important; }
       .index-section-block .index-info-block .index-sub-block .sub-block-content h1 {
         padding: 0;
-        font-size: 1.5em; }
+        font-size: 2.25rem; }
     @media (max-width: 768px) {
       .index-section-block .index-info-block .index-sub-block {
         width: 100%; }
@@ -1189,17 +1188,18 @@ footer {
   #index-application #application-video .application-youtube {
     padding-top: 15px;
     padding-bottom: 15px; }
-    #index-application #application-video .application-youtube .application-youtube-embed {
-      margin: auto !important;
-      width: 90%; }
-    #index-application #application-video .application-youtube .application-video-title {
-      width: 90%;
-      margin: auto !important; }
-      #index-application #application-video .application-youtube .application-video-title h2 {
-        padding: .5em;
-        font-size: 1rem;
-        margin-bottom: 0;
-        font-weight: 400; }
+    #index-application #application-video .application-youtube .application-video-title h2 {
+      display: inline;
+      padding: .5rem 0;
+      font-size: 1rem;
+      margin-bottom: 0;
+      font-weight: 400; }
+    #index-application #application-video .application-youtube .application-video-title .inline-link-svg {
+      height: 1rem;
+      width: 1rem; }
+      #index-application #application-video .application-youtube .application-video-title .inline-link-svg svg {
+        height: 1rem;
+        width: 1rem; }
 #index-application .index-info-block {
   padding-top: 1em;
   padding-bottom: 1em; }
@@ -1261,6 +1261,19 @@ footer {
       font-style: italic; }
     #index-news .news-content img {
       border: none; }
+    #index-news .news-content .news-blurb {
+      position: relative;
+      max-height: 8rem;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+      #index-news .news-content .news-blurb:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: linear-gradient(transparent 4rem, white); }
 
 /* -- Subscribe Block -- */
 #index-subscribe {
@@ -1318,8 +1331,7 @@ footer {
   background-image: url("../img/redesign/elements/shapes_left_2x.png"), url("../img/redesign/elements/shapes_right_2x.png"), url("../img/redesign/elements/shapes_right_2x.png"), url("../img/redesign/elements/shapes_left_2x.png"), url("../img/redesign/elements/shapes_left_2x.png"), url("../img/redesign/elements/shapes_right_2x.png");
   background-size: 30%;
   background-position: left top, right top, left center, right center, left bottom, right bottom;
-  background-repeat: no-repeat;
-  min-height: 60em; }
+  background-repeat: no-repeat; }
   @media (max-width: 576px) {
     #connect {
       background-image: none; } }
@@ -1434,7 +1446,7 @@ footer {
     display: block;
     width: 6em;
     height: 100%;
-    padding: 1em 0;
+    padding: 1.25em 0;
     border-left: 1px solid rgba(0, 0, 0, 0.125); }
     #faq #faq-contents .contents-card .dropdown a svg {
       width: 6em; }
