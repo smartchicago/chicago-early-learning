@@ -2382,7 +2382,7 @@ msgid ""
 "If you have any questions, please reference our <a href=\"%(faq_url)s\">FAQ "
 "page</a> for more details."
 msgstr ""
-"Si tiene preguntas visite nuestra pagina de<a href=\"%(faq_url)s\">Preguntas "
+"Si tiene preguntas visite nuestra pagina de <a href=\"%(faq_url)s\">Preguntas "
 "y Respuestas</a> para obtener mayor información."
 
 #: portal/templates/redesign/how-to-apply.html:52
