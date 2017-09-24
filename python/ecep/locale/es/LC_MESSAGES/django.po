@@ -3659,7 +3659,7 @@ msgstr ""
 
 #: portal/templates/sub-base.html:106
 msgid "FAQs"
-msgstr ""
+msgstr "Preguntas"
 
 #: portal/templates/sub-base.html:130
 msgid ""
