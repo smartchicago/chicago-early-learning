@@ -1261,19 +1261,6 @@ footer {
       font-style: italic; }
     #index-news .news-content img {
       border: none; }
-    #index-news .news-content .news-blurb {
-      position: relative;
-      max-height: 8rem;
-      overflow: hidden;
-      text-overflow: ellipsis; }
-      #index-news .news-content .news-blurb:before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: linear-gradient(transparent 4rem, white); }
 
 /* -- Subscribe Block -- */
 #index-subscribe {

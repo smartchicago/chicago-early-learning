@@ -360,20 +360,7 @@
     }
 
     .news-blurb {
-      position: relative;
-      max-height: 8rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
 
-      &:before {
-        content:'';
-        width:100%;
-        height:100%;    
-        position:absolute;
-        left:0;
-        top:0;
-        background:linear-gradient(transparent 4rem, white);
-      }
     }
   }
 }
