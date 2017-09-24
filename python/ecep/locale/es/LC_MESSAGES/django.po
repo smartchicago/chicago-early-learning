@@ -1153,7 +1153,7 @@ msgstr ""
 #: portal/templates/redesign/family-resource-centers.html:20
 #: portal/templates/redesign/partials/_footer.html:33
 msgid "Family Resource Centers"
-msgstr "Centros de Recursos para la Familia"
+msgstr "Centros de Recursos Familiares"
 
 #: portal/templates/redesign/family-resource-centers.html:21
 msgid ""
@@ -2867,11 +2867,9 @@ msgid ""
 "at "
 msgstr ""
 "Para información acerca de la aplicación, por favor llamar al Chicago Early "
-"Learning línea de acceso directo al"
+"Learning línea de acceso directo al "
 
 #: portal/templates/redesign/partials/_footer.html:13
-#, fuzzy
-#| msgid "Follow us on Facebook and Twitter:"
 msgid "Follow us on Facebook, Twitter, and Instagram:"
 msgstr "Síguenos en Facebook, Twitter, y Instagram:"
 
