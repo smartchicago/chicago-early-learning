@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-12 21:43-0500\n"
+"POT-Creation-Date: 2017-09-24 13:51-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -332,6 +332,7 @@ msgstr ""
 
 #: portal/templates/about.html:9 portal/templates/about.html.py:18
 #: portal/templates/redesign/about.html:8
+#: portal/templates/redesign/about.html:17
 msgid "About"
 msgstr "Sobre Nosotros"
 
@@ -420,10 +421,8 @@ msgstr ""
 "problemas de las personas de esta ciudad."
 
 #: portal/templates/about.html:67 portal/templates/redesign/about.html:79
-#, fuzzy
-#| msgid "Other Features"
 msgid "Other Partners"
-msgstr "Otras Características"
+msgstr ""
 
 #: portal/templates/announcements.html:7
 #: portal/templates/announcements.html:15
@@ -1155,7 +1154,7 @@ msgstr ""
 #: portal/templates/redesign/family-resource-centers.html:20
 #: portal/templates/redesign/partials/_footer.html:33
 msgid "Family Resource Centers"
-msgstr "Centros de Recursos para la Familia"
+msgstr "Centros de Recursos Familiares"
 
 #: portal/templates/redesign/family-resource-centers.html:21
 msgid ""
@@ -1255,7 +1254,7 @@ msgstr "L-V"
 
 #: portal/templates/redesign/family-resource-centers.html:333
 #: portal/templates/redesign/faq.html:72
-#: portal/templates/redesign/faq.html:280
+#: portal/templates/redesign/faq.html:281
 msgid "What is the application process?"
 msgstr "¿Cuál es el proceso de inscripción?"
 
@@ -1279,47 +1278,47 @@ msgid "Finding Programs"
 msgstr "Chicago Early Learning Portal (Portal de Aprendizaje Temprano)"
 
 #: portal/templates/redesign/faq.html:45
-#: portal/templates/redesign/faq.html:165
+#: portal/templates/redesign/faq.html:166
 msgid ""
 "What is the difference between childcare (might also be called daycare) and "
 "preschool?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:46
-#: portal/templates/redesign/faq.html:174
+#: portal/templates/redesign/faq.html:175
 msgid "Is my child eligible for preschool?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:47
-#: portal/templates/redesign/faq.html:183
+#: portal/templates/redesign/faq.html:184
 msgid ""
 "What are the characteristics of a high-quality early learning program, such "
 "as accreditation?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:48
-#: portal/templates/redesign/faq.html:192
+#: portal/templates/redesign/faq.html:193
 msgid ""
 "What are the similarities and differences between a CPS preschool and a "
 "community-based site?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:49
-#: portal/templates/redesign/faq.html:202
+#: portal/templates/redesign/faq.html:203
 #, fuzzy
 #| msgid "About the Chicago Early Learning Portal"
 msgid "Are all Chicago Early Learning preschool programs free?"
 msgstr "Sobre del portal del Chicago Educacíon Temprana"
 
 #: portal/templates/redesign/faq.html:50
-#: portal/templates/redesign/faq.html:212
+#: portal/templates/redesign/faq.html:213
 msgid ""
 "What should I do if I want to enroll my child in preschool, but the school "
 "year has already started?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:51
-#: portal/templates/redesign/faq.html:221
+#: portal/templates/redesign/faq.html:222
 msgid ""
 "What type of support can my child receive in preschool if he/she has an "
 "Individualized Education Plan (IEP) or an Individual Family Service Plan "
@@ -1327,97 +1326,98 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/faq.html:52
-#: portal/templates/redesign/faq.html:231
+#: portal/templates/redesign/faq.html:232
 msgid "If I don’t live in Chicago, can I apply to a preschool program?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:53
-#: portal/templates/redesign/faq.html:240
+#: portal/templates/redesign/faq.html:241
 msgid "How do I know the hours of the preschool I want to apply to?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:54
-#: portal/templates/redesign/faq.html:249
+#: portal/templates/redesign/faq.html:250
 msgid "How do I find a preschool program for summer?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:62
+#: portal/templates/redesign/faq.html:264
 #, fuzzy
 #| msgid "Chicago Early Learning Portal"
 msgid "Applying to Programs"
 msgstr "Chicago Early Learning Portal (Portal de Aprendizaje Temprano)"
 
 #: portal/templates/redesign/faq.html:71
-#: portal/templates/redesign/faq.html:271
+#: portal/templates/redesign/faq.html:272
 msgid ""
 "How do I apply for Chicago Early Learning preschool for my three or four "
 "year-old?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:73
-#: portal/templates/redesign/faq.html:294
+#: portal/templates/redesign/faq.html:295
 #, fuzzy
 #| msgid "Fill out an application online"
 msgid "Does the application close?"
 msgstr "Llene la solicitud en línea"
 
 #: portal/templates/redesign/faq.html:74
-#: portal/templates/redesign/faq.html:303
+#: portal/templates/redesign/faq.html:304
 msgid "How many sites can I apply to?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:75
-#: portal/templates/redesign/faq.html:312
+#: portal/templates/redesign/faq.html:313
 msgid "Can I submit more than one application?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:76
-#: portal/templates/redesign/faq.html:321
+#: portal/templates/redesign/faq.html:322
 msgid "Do I need to apply online?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:77
-#: portal/templates/redesign/faq.html:331
+#: portal/templates/redesign/faq.html:332
 msgid "What sites can my family apply to online?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:78
-#: portal/templates/redesign/faq.html:342
+#: portal/templates/redesign/faq.html:343
 #, fuzzy
 #| msgid "Complete your child's preschool application online today!"
 msgid "Does the online preschool application come in multiple languages?"
 msgstr "¡Complete hoy la solicitud al preescolar de su niño en línea!"
 
 #: portal/templates/redesign/faq.html:79
-#: portal/templates/redesign/faq.html:351
+#: portal/templates/redesign/faq.html:352
 msgid ""
 "Where can I receive support completing the preschool application and "
 "enrollment process?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:80
-#: portal/templates/redesign/faq.html:360
+#: portal/templates/redesign/faq.html:361
 msgid "How can I change something on my submitted preschool application?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:81
-#: portal/templates/redesign/faq.html:369
+#: portal/templates/redesign/faq.html:370
 msgid "When will I know if my child is placed at our preferred preschool site?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:82
-#: portal/templates/redesign/faq.html:378
+#: portal/templates/redesign/faq.html:379
 msgid ""
 "Is there a neighborhood preference for families applying to a nearby school?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:83
-#: portal/templates/redesign/faq.html:387
+#: portal/templates/redesign/faq.html:388
 msgid "How is it decided who gets an offer and who is on a waitlist?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:84
-#: portal/templates/redesign/faq.html:396
+#: portal/templates/redesign/faq.html:397
 msgid ""
 "Do I need to apply to preschool if my child is already enrolled? For "
 "example: My three year-old is already enrolled, and would be going into "
@@ -1425,21 +1425,21 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/faq.html:85
-#: portal/templates/redesign/faq.html:405
+#: portal/templates/redesign/faq.html:406
 msgid ""
 "What should I do if I’d like to transfer my child’s preschool site if he/she "
 "is currently enrolled?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:86
-#: portal/templates/redesign/faq.html:414
+#: portal/templates/redesign/faq.html:415
 msgid ""
 "If I have multiple children that I would like to enroll in preschool, how "
 "can I ensure that they are placed in the same site?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:87
-#: portal/templates/redesign/faq.html:423
+#: portal/templates/redesign/faq.html:424
 msgid ""
 "Is there a sibling preference for people with a child already enrolled at a "
 "school?"
@@ -1453,7 +1453,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/faq.html:90
-#: portal/templates/redesign/faq.html:441
+#: portal/templates/redesign/faq.html:442
 msgid ""
 "My child is two years old, but will be three by September 1st, and is "
 "already enrolled in a community-based center. Do we need to apply for "
@@ -1461,206 +1461,216 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/faq.html:91
-#: portal/templates/redesign/faq.html:450
+#: portal/templates/redesign/faq.html:451
 msgid ""
 "Is a child’s immigration status a consideration in the preschool application "
 "process?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:92
-#: portal/templates/redesign/faq.html:459
+#: portal/templates/redesign/faq.html:460
 msgid ""
 "Can I apply online if my child has an Individualized Education Plan (IEP) or "
 "an Individual Family Service Plan (IFSP)?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:93
-#: portal/templates/redesign/faq.html:468
+#: portal/templates/redesign/faq.html:469
 msgid ""
 "What support can families in temporary living situations receive during the "
 "preschool application process?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:103
-msgid "Verification and Enrollment"
+msgid "Verifying and Enrolling"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:112
-#: portal/templates/redesign/faq.html:491
+#: portal/templates/redesign/faq.html:492
 msgid "What happens after I submit my application?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:113
-#: portal/templates/redesign/faq.html:503
+#: portal/templates/redesign/faq.html:504
 msgid ""
 "What documents will I need to provide in order to complete the verification "
 "and enrollment process for the preschool application?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:114
-#: portal/templates/redesign/faq.html:515
+#: portal/templates/redesign/faq.html:516
 msgid "How long do I have to verify my documents after I’ve received an offer?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:115
-#: portal/templates/redesign/faq.html:524
+#: portal/templates/redesign/faq.html:525
 msgid "Where do I go to verify my application information? "
 msgstr ""
 
 #: portal/templates/redesign/faq.html:116
-#: portal/templates/redesign/faq.html:535
+#: portal/templates/redesign/faq.html:536
 msgid "What does it mean to be on the waitlist for a preschool site?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:117
-#: portal/templates/redesign/faq.html:545
+#: portal/templates/redesign/faq.html:546
 msgid "How can I get off of a preschool site’s waitlist?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:118
-#: portal/templates/redesign/faq.html:554
-msgid "Can I be waitlisted at multiple schools?"
+#: portal/templates/redesign/faq.html:555
+#: portal/templates/redesign/faq.html:564
+msgid ""
+"I’m on a waitlist and I want to consider a different site for my child. How "
+"do I do that?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:119
-#: portal/templates/redesign/faq.html:569
-msgid "What number am I on the waitlist?"
+#: portal/templates/redesign/faq.html:578
+msgid "Can I be waitlisted at multiple schools?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:120
-#: portal/templates/redesign/faq.html:579
+#: portal/templates/redesign/faq.html:593
+msgid "What number am I on the waitlist?"
+msgstr ""
+
+#: portal/templates/redesign/faq.html:121
+#: portal/templates/redesign/faq.html:603
 msgid ""
 "Why don’t I see an “offer” or a “wait list” status for one of my choices?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:121
-#: portal/templates/redesign/faq.html:589
+#: portal/templates/redesign/faq.html:122
+#: portal/templates/redesign/faq.html:613
 msgid "Can I verify my documents if I’m on a waitlist?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:122
-#: portal/templates/redesign/faq.html:598
+#: portal/templates/redesign/faq.html:123
+#: portal/templates/redesign/faq.html:622
 msgid ""
 "I was assigned a copay amount. How do I get more information or arrange "
 "payments?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:123
-#: portal/templates/redesign/faq.html:607
+#: portal/templates/redesign/faq.html:124
+#: portal/templates/redesign/faq.html:631
 #, fuzzy
 #| msgid "What Is This?"
 msgid "What is CCAP?"
 msgstr "¿Qué significa esto?"
 
-#: portal/templates/redesign/faq.html:124
-#: portal/templates/redesign/faq.html:616
+#: portal/templates/redesign/faq.html:125
+#: portal/templates/redesign/faq.html:640
 msgid ""
 "What supports are available to preschool aged students who are enrolled in "
 "school and experiencing temporary living situations?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:132
+#: portal/templates/redesign/faq.html:133
 #, fuzzy
 #| msgid "Other Features"
 msgid "Other Questions"
 msgstr "Otras Características"
 
-#: portal/templates/redesign/faq.html:141
-#: portal/templates/redesign/faq.html:639
+#: portal/templates/redesign/faq.html:142
+#: portal/templates/redesign/faq.html:663
 msgid ""
 "How do I find early learning opportunities for children under 3 years old?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:142
-#: portal/templates/redesign/faq.html:648
+#: portal/templates/redesign/faq.html:143
+#: portal/templates/redesign/faq.html:672
 msgid ""
 "How do I find learning and enrichment opportunities for children over 5 "
 "years old?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:143
-#: portal/templates/redesign/faq.html:658
+#: portal/templates/redesign/faq.html:144
+#: portal/templates/redesign/faq.html:682
 msgid "How can I enroll my 5-year-old to enroll in kindergarten?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:144
-#: portal/templates/redesign/faq.html:667
+#: portal/templates/redesign/faq.html:145
+#: portal/templates/redesign/faq.html:691
 msgid ""
 "What should I do if I suspect my child needs special education services?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:145
-#: portal/templates/redesign/faq.html:676
+#: portal/templates/redesign/faq.html:146
+#: portal/templates/redesign/faq.html:700
 msgid "Do you provide transportation to and/or from preschool?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:157
+#: portal/templates/redesign/faq.html:158
 msgid "Finding a Preschool Program"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:166
+#: portal/templates/redesign/faq.html:167
 msgid ""
 "Childcare agencies are community-based sites. However, if they are not a "
 "part of Chicago Early Learning, we cannot guarantee that they meet the same "
 "standards."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:167
-#: portal/templates/redesign/faq.html:176
-#: portal/templates/redesign/faq.html:185
-#: portal/templates/redesign/faq.html:195
-#: portal/templates/redesign/faq.html:205
-#: portal/templates/redesign/faq.html:214
-#: portal/templates/redesign/faq.html:224
-#: portal/templates/redesign/faq.html:233
-#: portal/templates/redesign/faq.html:242
-#: portal/templates/redesign/faq.html:251
-#: portal/templates/redesign/faq.html:273
-#: portal/templates/redesign/faq.html:287
-#: portal/templates/redesign/faq.html:296
-#: portal/templates/redesign/faq.html:305
-#: portal/templates/redesign/faq.html:314
-#: portal/templates/redesign/faq.html:324
-#: portal/templates/redesign/faq.html:335
-#: portal/templates/redesign/faq.html:344
-#: portal/templates/redesign/faq.html:353
-#: portal/templates/redesign/faq.html:362
-#: portal/templates/redesign/faq.html:371
-#: portal/templates/redesign/faq.html:380
-#: portal/templates/redesign/faq.html:389
-#: portal/templates/redesign/faq.html:398
-#: portal/templates/redesign/faq.html:407
-#: portal/templates/redesign/faq.html:416
-#: portal/templates/redesign/faq.html:425
-#: portal/templates/redesign/faq.html:434
-#: portal/templates/redesign/faq.html:443
-#: portal/templates/redesign/faq.html:452
-#: portal/templates/redesign/faq.html:461
-#: portal/templates/redesign/faq.html:471
-#: portal/templates/redesign/faq.html:496
-#: portal/templates/redesign/faq.html:508
-#: portal/templates/redesign/faq.html:517
-#: portal/templates/redesign/faq.html:528
-#: portal/templates/redesign/faq.html:538
-#: portal/templates/redesign/faq.html:547
-#: portal/templates/redesign/faq.html:562
+#: portal/templates/redesign/faq.html:168
+#: portal/templates/redesign/faq.html:177
+#: portal/templates/redesign/faq.html:186
+#: portal/templates/redesign/faq.html:196
+#: portal/templates/redesign/faq.html:206
+#: portal/templates/redesign/faq.html:215
+#: portal/templates/redesign/faq.html:225
+#: portal/templates/redesign/faq.html:234
+#: portal/templates/redesign/faq.html:243
+#: portal/templates/redesign/faq.html:252
+#: portal/templates/redesign/faq.html:274
+#: portal/templates/redesign/faq.html:288
+#: portal/templates/redesign/faq.html:297
+#: portal/templates/redesign/faq.html:306
+#: portal/templates/redesign/faq.html:315
+#: portal/templates/redesign/faq.html:325
+#: portal/templates/redesign/faq.html:336
+#: portal/templates/redesign/faq.html:345
+#: portal/templates/redesign/faq.html:354
+#: portal/templates/redesign/faq.html:363
+#: portal/templates/redesign/faq.html:372
+#: portal/templates/redesign/faq.html:381
+#: portal/templates/redesign/faq.html:390
+#: portal/templates/redesign/faq.html:399
+#: portal/templates/redesign/faq.html:408
+#: portal/templates/redesign/faq.html:417
+#: portal/templates/redesign/faq.html:426
+#: portal/templates/redesign/faq.html:435
+#: portal/templates/redesign/faq.html:444
+#: portal/templates/redesign/faq.html:453
+#: portal/templates/redesign/faq.html:462
+#: portal/templates/redesign/faq.html:472
+#: portal/templates/redesign/faq.html:497
+#: portal/templates/redesign/faq.html:509
+#: portal/templates/redesign/faq.html:518
+#: portal/templates/redesign/faq.html:529
+#: portal/templates/redesign/faq.html:539
+#: portal/templates/redesign/faq.html:548
+#: portal/templates/redesign/faq.html:557
 #: portal/templates/redesign/faq.html:571
-#: portal/templates/redesign/faq.html:581
-#: portal/templates/redesign/faq.html:591
-#: portal/templates/redesign/faq.html:600
-#: portal/templates/redesign/faq.html:609
-#: portal/templates/redesign/faq.html:619
-#: portal/templates/redesign/faq.html:641
-#: portal/templates/redesign/faq.html:651
-#: portal/templates/redesign/faq.html:660
-#: portal/templates/redesign/faq.html:669
-#: portal/templates/redesign/faq.html:678
+#: portal/templates/redesign/faq.html:586
+#: portal/templates/redesign/faq.html:595
+#: portal/templates/redesign/faq.html:605
+#: portal/templates/redesign/faq.html:615
+#: portal/templates/redesign/faq.html:624
+#: portal/templates/redesign/faq.html:633
+#: portal/templates/redesign/faq.html:643
+#: portal/templates/redesign/faq.html:665
+#: portal/templates/redesign/faq.html:675
+#: portal/templates/redesign/faq.html:684
+#: portal/templates/redesign/faq.html:693
+#: portal/templates/redesign/faq.html:702
 #, fuzzy
 #| msgid "Back to Search"
 msgid "Back to Top"
 msgstr "Regrese a Búsqueda"
 
-#: portal/templates/redesign/faq.html:175
+#: portal/templates/redesign/faq.html:176
 #, python-format
 msgid ""
 "Visit our <a class=\"a-orange\" href=\"%(programs_url)s\">Programs page</a> "
@@ -1677,7 +1687,7 @@ msgid ""
 "should reach out directly to an individual provider with questions."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:184
+#: portal/templates/redesign/faq.html:185
 #, python-format
 msgid ""
 "Chicago Early Learning preschool programs all meet rigorous federal, state, "
@@ -1688,7 +1698,7 @@ msgid ""
 "of programs, and identifying characteristics of high quality early learning."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:193
+#: portal/templates/redesign/faq.html:194
 msgid ""
 "All Chicago Early Learning programs, CPS or community-based, must meet "
 "rigorous state and federal standards. All Chicago Early Learning programs "
@@ -1697,7 +1707,7 @@ msgid ""
 "qualified teachers and a minimum of two teachers in the classroom."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:194
+#: portal/templates/redesign/faq.html:195
 #, python-format
 msgid ""
 "A Chicago Public Schools preschool site is affiliated with an elementary "
@@ -1712,7 +1722,7 @@ msgid ""
 "\"%(how_to_apply_url)s\">How to Apply page</a>."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:203
+#: portal/templates/redesign/faq.html:204
 msgid ""
 "Some programs are free to families, while other programs might require a "
 "small co-pay due to state or local funding requirements. Contact the program "
@@ -1720,7 +1730,7 @@ msgid ""
 "payments, if any, are required for your family."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:204
+#: portal/templates/redesign/faq.html:205
 msgid ""
 "Depending on your family's income and other criteria, some families may be "
 "asked to pay a low cost for preschool. Chicago Public Schools preschools "
@@ -1730,7 +1740,7 @@ msgid ""
 "not be charged."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:213
+#: portal/templates/redesign/faq.html:214
 msgid ""
 "If the beginning of the school year has already passed, families seeking to "
 "enroll their child immediately should call the Chicago Early Learning "
@@ -1739,7 +1749,7 @@ msgid ""
 "availability. They may instruct you to complete the online application."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:222
+#: portal/templates/redesign/faq.html:223
 msgid ""
 "If your child already has been enrolled in school, please take a copy of the "
 "IEP and enrollment documentation to the school. The school's IEP team will "
@@ -1750,20 +1760,20 @@ msgid ""
 "\"tel:7735531800\">773-553-1800</a>."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:223
+#: portal/templates/redesign/faq.html:224
 msgid ""
 "To learn more about a community-based site’s offerings for students with "
 "special needs, please contact the site directly."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:232
+#: portal/templates/redesign/faq.html:233
 msgid ""
 "In general, Chicago Early Learning Preschool programs are for Chicago "
 "residents. Certain community-based sites may take some out-of-city children. "
 "Contact your preferred community-based site directly for more information."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:241
+#: portal/templates/redesign/faq.html:242
 #, python-format
 msgid ""
 "Visit the <a class=\"a-orange\" href=\"%(browse_url)s\">Find and Compare "
@@ -1773,7 +1783,7 @@ msgid ""
 "updates to the hours posted."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:250
+#: portal/templates/redesign/faq.html:251
 #, python-format
 msgid ""
 "Some Chicago Early Learning sites may offer summer hours, especially "
@@ -1783,11 +1793,7 @@ msgid ""
 "\"%(resources_url)s\">click here</a> to learn more."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:263
-msgid "Returning Students and Families with Multiple Children"
-msgstr ""
-
-#: portal/templates/redesign/faq.html:272
+#: portal/templates/redesign/faq.html:273
 #, python-format
 msgid ""
 "If your child will be 3 or 4 years-old by September 1st this school year, "
@@ -1796,7 +1802,7 @@ msgid ""
 "application process."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:281
+#: portal/templates/redesign/faq.html:282
 msgid ""
 "Families with preschool-aged children can submit a single application for "
 "any Chicago Early Learning program. Enrolling your 3 or 4 year-old child in "
@@ -1804,19 +1810,19 @@ msgid ""
 "steps for your application:"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:283
+#: portal/templates/redesign/faq.html:284
 msgid ""
 " Visit chicagoearlylearning.org, click on the link to apply to preschool, "
 "and create an online account for your family"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:284
+#: portal/templates/redesign/faq.html:285
 msgid ""
 "Fill in information on your family, such as employment and income, "
 "information on your child, and your top choice preschool sites"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:285
+#: portal/templates/redesign/faq.html:286
 #, fuzzy
 #| msgid ""
 #| "If your child qualifies, you will receive an email very soon with "
@@ -1828,14 +1834,14 @@ msgstr ""
 "Si su niño califica, usted recibirá un correo electrónico este verano con "
 "información acerca de cómo puede verificar la asignación de su niño."
 
-#: portal/templates/redesign/faq.html:295
+#: portal/templates/redesign/faq.html:296
 msgid ""
 "No – if a child turned 3 or 4 by September 1st but did not apply before the "
 "beginning of the school year, families are still welcome to use the online "
 "application. However, availability may become increasingly limited."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:304
+#: portal/templates/redesign/faq.html:305
 msgid ""
 "Families can apply for up to two different sites in the application. We "
 "limit families to two site preferences in order to match as many families as "
@@ -1845,7 +1851,7 @@ msgid ""
 "\"a-orange\" href=\"tel:3122291690\">(312) 229-1690</a>."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:313
+#: portal/templates/redesign/faq.html:314
 msgid ""
 "Each preschool-aged child that is seeking to enroll in a new program is "
 "allowed only one application with two preferences. If you have multiple "
@@ -1853,13 +1859,13 @@ msgid ""
 "each child."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:322
+#: portal/templates/redesign/faq.html:323
 msgid ""
 "Families have many choices for completing and submitting an application for "
 "preschool."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:323
+#: portal/templates/redesign/faq.html:324
 msgid ""
 "Complete and submit an application online; Call the Chicago Early Learning "
 "hotline at <a class=\"a-orange\" href=\"tel:3122291690\">(312) 229-1690</a> "
@@ -1869,7 +1875,7 @@ msgid ""
 "representative."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:332
+#: portal/templates/redesign/faq.html:333
 #, python-format
 msgid ""
 "Families can apply to over 600 sites through the Chicago Early Learning "
@@ -1879,27 +1885,27 @@ msgid ""
 "family."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:333
+#: portal/templates/redesign/faq.html:334
 msgid ""
 "Chicago Early Learning does not include private schools, magnet, Montessori, "
 "or tuition-based schools."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:334
+#: portal/templates/redesign/faq.html:335
 msgid ""
 "A child placed in a CPS public school through Office of Diverse Learners "
 "Supports and Services (ODLSS) does not need to apply, but they are not "
 "prohibited from applying to community-based sites, as an additional option."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:343
+#: portal/templates/redesign/faq.html:344
 msgid ""
 "Yes. You can click “Español” in the corner of any page of this site and "
 "within your application to change the language to Spanish. That is the only "
 "additional language available at this time."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:352
+#: portal/templates/redesign/faq.html:353
 #, python-format
 msgid ""
 "Families with questions or needing support completing the application can "
@@ -1910,7 +1916,7 @@ msgid ""
 "based provider if they are interested in a site."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:361
+#: portal/templates/redesign/faq.html:362
 #, fuzzy
 #| msgid ""
 #| "Are you ready to apply for a preschool program for your 3- or 4-year old? "
@@ -1927,7 +1933,7 @@ msgstr ""
 "de la solicitud y el proceso de inscripción o llame al 312-229-1690 con sus "
 "preguntas. Luego llene la solicitud para el preescolar."
 
-#: portal/templates/redesign/faq.html:370
+#: portal/templates/redesign/faq.html:371
 msgid ""
 "You will know whether your child is offered a seat or is on a site’s "
 "waitlist immediately after submitting the application on the next screen, "
@@ -1935,7 +1941,7 @@ msgid ""
 "steps."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:379
+#: portal/templates/redesign/faq.html:380
 msgid ""
 "No, eligibility for the Chicago Early Learning program is based on factors "
 "such as income, age, and gives preference to children who are homeless, in "
@@ -1944,7 +1950,7 @@ msgid ""
 "cases, neighborhood preference begins at the kindergarten level."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:388
+#: portal/templates/redesign/faq.html:389
 msgid ""
 "Priorities for offers include preferences for our city’s highest-needs "
 "families: low income families, students with disabilities, students in "
@@ -1954,14 +1960,14 @@ msgid ""
 "and would be placed on the waitlist for that site."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:397
+#: portal/templates/redesign/faq.html:398
 msgid ""
 "Students that are currently in a preschool program and will not be entering "
 "kindergarten in the fall are not required to re-apply if they wish to "
 "continue in that program."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:406
+#: portal/templates/redesign/faq.html:407
 msgid ""
 "If you would like to change what preschool your child currently attends, you "
 "would need to fill in an online application. After confirming the "
@@ -1969,7 +1975,7 @@ msgid ""
 "previous site."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:415
+#: portal/templates/redesign/faq.html:416
 msgid ""
 "Unfortunately, we cannot guarantee that siblings will be placed at the same "
 "site. We will make every effort to keep preschool-aged siblings together, "
@@ -1977,7 +1983,7 @@ msgid ""
 "ensuring placement with siblings."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:424
+#: portal/templates/redesign/faq.html:425
 msgid ""
 "We cannot guarantee that siblings will be placed at the same site. We will "
 "make every effort to keep same age and old/younger preschool-aged siblings "
@@ -1987,13 +1993,13 @@ msgid ""
 "receive any entrance priority into that preschool. "
 msgstr ""
 
-#: portal/templates/redesign/faq.html:432
+#: portal/templates/redesign/faq.html:433
 msgid ""
 "What should I do if I have more than one child (siblings) applying to "
 "preschool?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:433
+#: portal/templates/redesign/faq.html:434
 #, python-format
 msgid ""
 "If you are a parent or guardian with multiple children, you may create "
@@ -2004,26 +2010,26 @@ msgid ""
 "\">City Resources page</a> to identify alternative programming."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:442
+#: portal/templates/redesign/faq.html:443
 msgid ""
 "No—the child will be grandfathered in to their site’s 3 year-old program. "
 "They may need to provide additional information to the site. Please connect "
 "directly with your site."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:451
+#: portal/templates/redesign/faq.html:452
 msgid ""
 "No, the preschool application will never ask you or anyone in your family "
 "for proof of citizenship."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:460
+#: portal/templates/redesign/faq.html:461
 msgid ""
 "Yes, you are able to indicate on your child’s preschool application if your "
 "child has an IEP or IFSP."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:469
+#: portal/templates/redesign/faq.html:470
 msgid ""
 "Families interested in a CPS preschool can reach out directly to the school "
 "to contact the Students in Temporary Living Situations (STLS) Liaison or "
@@ -2038,30 +2044,30 @@ msgid ""
 "enrollment, or transportation."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:470
+#: portal/templates/redesign/faq.html:471
 msgid ""
 "Preschool students attending community-based preschool programs should check "
 "with the program to find out what supports are available."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:483
+#: portal/templates/redesign/faq.html:484
 msgid "Placement and Registration"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:492
+#: portal/templates/redesign/faq.html:493
 msgid ""
 "Families will instantly learn whether their child is on the waitlist or has "
 "received an offer at the site to which they applied."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:493
+#: portal/templates/redesign/faq.html:494
 msgid ""
 "Families that receive a waitlist status are encouraged to consider applying "
 "to alternate sites by calling 312-744-9322. See more FAQs on the waitlist "
 "process below."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:494
+#: portal/templates/redesign/faq.html:495
 #, python-format
 msgid ""
 "Families that receive an offer will receive an email with information on how "
@@ -2070,7 +2076,7 @@ msgid ""
 "the entire application process."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:495
+#: portal/templates/redesign/faq.html:496
 #, python-format
 msgid ""
 "Within two weeks of receiving a placement offer, a family member must visit "
@@ -2081,7 +2087,7 @@ msgid ""
 "\">click here</a>."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:504
+#: portal/templates/redesign/faq.html:505
 #, python-format
 msgid ""
 "Families will provide proof of a student’s age, address, and family income. "
@@ -2090,26 +2096,26 @@ msgid ""
 "a> to learn more about the verification process and required documents."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:505
+#: portal/templates/redesign/faq.html:506
 msgid ""
 "Failure to provide documentation that confirms the information provided on "
 "your application may affect your child’s placement."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:506
+#: portal/templates/redesign/faq.html:507
 msgid ""
 "If you need assistance identifying the correct documentation or finding "
 "substitute documentation, please contact your preschool site directly, or "
 "visit a Family Resource Center."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:507
+#: portal/templates/redesign/faq.html:508
 msgid ""
 "Students in temporary living situations will be enrolled without any "
 "required documentation."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:516
+#: portal/templates/redesign/faq.html:517
 msgid ""
 "Families have two weeks to verify their documents from the date they "
 "received their offer online. If your family needs more time to verify the "
@@ -2118,7 +2124,7 @@ msgid ""
 "org\">earlylearninghelp@cityofchicago.org</a>."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:525
+#: portal/templates/redesign/faq.html:526
 msgid ""
 "If you have an offer to a school-based preschool program (in other words, a "
 "preschool program within a CPS elementary school), you must visit a Family "
@@ -2127,20 +2133,20 @@ msgid ""
 "you verify your placement."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:526
+#: portal/templates/redesign/faq.html:527
 msgid ""
 "If you have an offer for a community-based preschool program, you must visit "
 "that site directly with your required documentation."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:527
+#: portal/templates/redesign/faq.html:528
 #, python-format
 msgid ""
 "<a class=\"a-orange\" href=\"%(how_to_apply_url)s\">Click here</a> to learn "
 "more about the application and enrollment process."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:536
+#: portal/templates/redesign/faq.html:537
 msgid ""
 "Due to limited availability at certain preschool programs, and the need to "
 "meet state and federal funding requirements, not all applicants receive "
@@ -2153,7 +2159,7 @@ msgid ""
 "criteria are met."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:537
+#: portal/templates/redesign/faq.html:538
 msgid ""
 "The City of Chicago prioritizes eligibility based on factors such as age, "
 "income, and child or family history. Students may not be offered a placement "
@@ -2163,7 +2169,8 @@ msgid ""
 "availability that may also suit their needs by calling 312-744-9322."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:546
+#: portal/templates/redesign/faq.html:547
+#: portal/templates/redesign/faq.html:556
 msgid ""
 "Students will be offered a preliminary placement from a waitlist if a spot "
 "becomes available and certain eligibility criteria are met. If a seat "
@@ -2174,7 +2181,7 @@ msgid ""
 "applications. "
 msgstr ""
 
-#: portal/templates/redesign/faq.html:555
+#: portal/templates/redesign/faq.html:579
 msgid ""
 "Applicants can only be waitlisted for one preschool program at any given "
 "time, and can only have an offer to one preschool site at any given time.  "
@@ -2182,32 +2189,32 @@ msgid ""
 "Early Learning Preschool."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:556
+#: portal/templates/redesign/faq.html:580
 msgid "Scenario A: Offer Only"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:557
+#: portal/templates/redesign/faq.html:581
 msgid ""
 "If a family receives an offer at their #1 preferred site, they will not be "
 "waitlisted at their second choice."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:558
+#: portal/templates/redesign/faq.html:582
 msgid "Scenario B: Waitlist and Offer"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:559
+#: portal/templates/redesign/faq.html:583
 msgid ""
 "If a child is waitlisted at their first choice, they may receive an offer to "
 "their second choice at the same time. This is the only circumstance where a "
 "family will have a waitlist and offer status at two locations."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:560
+#: portal/templates/redesign/faq.html:584
 msgid "Scenario C: Waitlist Only"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:561
+#: portal/templates/redesign/faq.html:585
 msgid ""
 "If a family is waitlisted at their first choice, and they do not qualify for "
 "their second choice, they will not have any official status at your second "
@@ -2215,7 +2222,7 @@ msgid ""
 "same time."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:570
+#: portal/templates/redesign/faq.html:594
 msgid ""
 "Waitlists are sorted by eligibility criteria. As new applicants are "
 "constantly added as they apply or are subtracted as they opt out of "
@@ -2224,7 +2231,7 @@ msgid ""
 "off of the waitlist."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:590
+#: portal/templates/redesign/faq.html:614
 msgid ""
 "We recommend that all families wait to verify their documents until they "
 "have received an offer. If you have applied to a CPS school, you are welcome "
@@ -2233,13 +2240,13 @@ msgid ""
 "your chances of receiving an offer."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:599
+#: portal/templates/redesign/faq.html:623
 msgid ""
 "Work directly with your assigned preschool site to learn more, and arrange a "
 "system that works best for you."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:608
+#: portal/templates/redesign/faq.html:632
 msgid ""
 "Child Care Assistance Program (CCAP) funding is provided by the state to "
 "ensure low-income working parents have access to full-day care. Many "
@@ -2248,7 +2255,7 @@ msgid ""
 "specific questions about eligibility."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:617
+#: portal/templates/redesign/faq.html:641
 msgid ""
 "Preschool students enrolled in school-based preschool programs can ask to "
 "speak with the school's Students in Temporary Living Situations (STLS) "
@@ -2263,26 +2270,26 @@ msgid ""
 "eligibility, enrollment, or transportation."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:618
+#: portal/templates/redesign/faq.html:642
 msgid ""
 "Preschool students enrolling in a community-based program are encouraged to "
 "contact their site directly to learn what supports they offer."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:631
+#: portal/templates/redesign/faq.html:655
 msgid "General Questions"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:640
+#: portal/templates/redesign/faq.html:664
 #, python-format
 msgid ""
 "Visit our <a class=\"a-orange\" href=\"%(browse_url)s\">Find and Compare "
 "Tool</a> to find community-based sites that offer infant and toddler "
-"programs, or click here to learn more about programs offered by other city "
-"agencies around Chicago [click]."
+"programs, or <a class=\"a-orange\" href=\"%(resources_url)s\">click here</a> "
+"a to learn more about programs offered by other city agencies around Chicago."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:649
+#: portal/templates/redesign/faq.html:673
 #, fuzzy
 #| msgid ""
 #| "Chicago City of Learning (CCOL) is a groundbreaking initiative that joins "
@@ -2309,20 +2316,20 @@ msgstr ""
 "href=\"https://chicagocityoflearning.org/\">Visita CCOL</a> para encontrar "
 "las oportunidades que existen cerca de usted."
 
-#: portal/templates/redesign/faq.html:650
+#: portal/templates/redesign/faq.html:674
 #, python-format
 msgid ""
 "Other early learning resources are available on our <a class=\"a-orange\" "
 "href=\"%(resources_url)s\">City Resources page</a>."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:659
+#: portal/templates/redesign/faq.html:683
 msgid ""
 "Visit the <a class=\"a-orange\" href=\"http://cps.edu/Pages/home.aspx\">CPS "
 "website</a> to enroll a child in kindergarten."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:668
+#: portal/templates/redesign/faq.html:692
 msgid ""
 "Please attend a Child Find Team Screening Site to obtain a free "
 "developmental screening. Developmental screenings can tell you if your child "
@@ -2334,7 +2341,7 @@ msgid ""
 "times."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:677
+#: portal/templates/redesign/faq.html:701
 msgid ""
 "At this time, Chicago Early Learning programs do not provide regular "
 "transportation options to students. Families are encouraged to map out their "
@@ -2342,11 +2349,11 @@ msgid ""
 "suggestions."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:690
+#: portal/templates/redesign/faq.html:714
 msgid "Still have questions?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:691
+#: portal/templates/redesign/faq.html:715
 #, fuzzy
 #| msgid "About the Chicago Early Learning Portal"
 msgid "Call the Chicago Early Learning Hotline!"
@@ -2382,8 +2389,8 @@ msgid ""
 "If you have any questions, please reference our <a href=\"%(faq_url)s\">FAQ "
 "page</a> for more details."
 msgstr ""
-"Si tiene preguntas visite nuestra pagina de<a href=\"%(faq_url)s\">Preguntas "
-"y Respuestas</a> para obtener mayor información."
+"Si tiene preguntas visite nuestra pagina de <a href=\"%(faq_url)s"
+"\">Preguntas y Respuestas</a> para obtener mayor información."
 
 #: portal/templates/redesign/how-to-apply.html:52
 #: portal/templates/redesign/how-to-apply.html:108
@@ -2629,7 +2636,14 @@ msgid ""
 "if the student lacks health, immunization or school records, proof of "
 "guardianship, proof of residency, or any other documentation normally "
 "required for school enrollment."
-msgstr "Nota: Si su familia se encuentra en una situación de vivienda temporal, no necesita presentar los documentos enlistados arriba para su verificación. Todas las escuelas deben de inscribir inmediatamente a los estudiantes que se encuentren en una situación de vivienda temporal, aun si el estudiante no tiene sus expedientes escolares, de salud o de vacunas, comprobante de tutelaje, comprobante de residencia o cualquier otro documento que normalmente se requiera para la inscripción."
+msgstr ""
+"Nota: Si su familia se encuentra en una situación de vivienda temporal, no "
+"necesita presentar los documentos enlistados arriba para su verificación. "
+"Todas las escuelas deben de inscribir inmediatamente a los estudiantes que "
+"se encuentren en una situación de vivienda temporal, aun si el estudiante no "
+"tiene sus expedientes escolares, de salud o de vacunas, comprobante de "
+"tutelaje, comprobante de residencia o cualquier otro documento que "
+"normalmente se requiera para la inscripción."
 
 #: portal/templates/redesign/how-to-apply.html:212
 msgid "Have you found the right program for your child?"
@@ -2641,7 +2655,12 @@ msgid ""
 "600 sites. Visit our search page to identify sites in areas near your home "
 "or work. The Chicago Early Learning Portal allows you to identify a "
 "program’s quality rating, schedule and ages served."
-msgstr "La Ciudad de Chicago y sus socios ofrecen programas de educación temprana en más de 600 sitios a lo largo de la ciudad.  Visit our search page to identify sites in areas near your home or work. The Chicago Early Learning Portal allows you to identify a program’s quality rating, schedule and ages served."
+msgstr ""
+"La Ciudad de Chicago y sus socios ofrecen programas de educación temprana en "
+"más de 600 sitios a lo largo de la ciudad.  Visit our search page to "
+"identify sites in areas near your home or work. The Chicago Early Learning "
+"Portal allows you to identify a program’s quality rating, schedule and ages "
+"served."
 
 #: portal/templates/redesign/how-to-apply.html:214
 msgid "Learn About Program Types"
@@ -2656,7 +2675,10 @@ msgid ""
 "If you have any concerns with the online application, please call our "
 "Chicago Early Learning Hotline at (312) 229-1690, or visit any of the Family "
 "Resource Centers."
-msgstr "Si tiene alguna preocupación acerca de la solicitud en línea, llame a la línea de acceso directo de Apoyo para la Familia: (312) 229-1690, o visite cualquiera de los Centros de Recursos para la Familia."
+msgstr ""
+"Si tiene alguna preocupación acerca de la solicitud en línea, llame a la "
+"línea de acceso directo de Apoyo para la Familia: (312) 229-1690, o visite "
+"cualquiera de los Centros de Recursos para la Familia."
 
 #: portal/templates/redesign/index.html:20
 msgid ""
@@ -2701,6 +2723,7 @@ msgstr ""
 "debe comenzar en sus años tempranos.”"
 
 #: portal/templates/redesign/index.html:76
+#: portal/templates/redesign/programs.html:39
 msgid "Chicago Mayor Rahm Emanuel"
 msgstr "Rahm Emanuel, Alcalde de Chicago"
 
@@ -2710,7 +2733,7 @@ msgstr "Noticia Importante"
 
 #: portal/templates/redesign/index.html:89
 msgid ""
-"Over 11,000 preschool applications and counting! Are you ready to sign up "
+"Over 14,000 preschool applications and counting! Are you ready to sign up "
 "your child? Learn more about the preschool application for 3 and 4 year-olds:"
 msgstr ""
 
@@ -2853,11 +2876,9 @@ msgid ""
 "at "
 msgstr ""
 "Para información acerca de la aplicación, por favor llamar al Chicago Early "
-"Learning línea de acceso directo al"
+"Learning línea de acceso directo al "
 
 #: portal/templates/redesign/partials/_footer.html:13
-#, fuzzy
-#| msgid "Follow us on Facebook and Twitter:"
 msgid "Follow us on Facebook, Twitter, and Instagram:"
 msgstr "Síguenos en Facebook, Twitter, y Instagram:"
 
@@ -3093,7 +3114,7 @@ msgstr "Basados en la comunidad"
 
 #: portal/templates/redesign/programs.html:191
 msgid "Age Group: Birth to 4"
-msgstr "Edades 0 a 5 años"
+msgstr "Edades 0 a 4 años"
 
 #: portal/templates/redesign/programs.html:192
 msgid ""
@@ -3643,7 +3664,7 @@ msgstr ""
 
 #: portal/templates/sub-base.html:106
 msgid "FAQs"
-msgstr ""
+msgstr "Preguntas"
 
 #: portal/templates/sub-base.html:130
 msgid ""

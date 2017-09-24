@@ -54,11 +54,12 @@
   justify-content: center;
   resize: vertical;
   color: $deep-blue;
-  font-size: 1.5em;
+  font-size: 1.25rem;
+  line-height: 1.375rem;
   font-weight: 500;
 
   @media (max-width: $break-medium) {
-    font-size: 1em;
+    font-size: 1rem;
     font-weight: 400;
   }
 }

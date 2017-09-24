@@ -18,7 +18,7 @@
       background-image: url("../img/scientist-girl.jpg");
       background-size: 100%;
       background-repeat: no-repeat;
-      background-position: 50% 20%;
+      background-position: 50% 10%;
     }
   }
 
@@ -109,7 +109,7 @@
 /* -- Intro Block -- */
 #index-intro {
   background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'); 
-  background-size: 30%, 30%;
+  background-size: 15%, 20%;
   background-position: left center, right center;
   background-repeat: no-repeat;
 
@@ -149,7 +149,7 @@
 
         h1 {
           padding: 0;
-          font-size: 1.5em;
+          font-size: 2.25rem;
         }
       }
 
@@ -244,20 +244,24 @@
       padding-top: 15px;
       padding-bottom: 15px;
 
-      .application-youtube-embed {
-        margin: auto !important;
-        width: 90%;
-      }
-
       .application-video-title {
-        width: 90%;
-        margin: auto !important;
 
         h2 {
-          padding: .5em;
+          display: inline;
+          padding: .5rem 0;
           font-size: 1rem;
           margin-bottom: 0;
           font-weight: 400;
+        }
+
+        .inline-link-svg {
+          height: 1rem;
+          width: 1rem;
+
+          svg {
+            height: 1rem;
+            width: 1rem;
+          }
         }
       }
     }
@@ -353,6 +357,23 @@
 
     img {
       border: none;
+    }
+
+    .news-blurb {
+      position: relative;
+      max-height: 8rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:before {
+        content:'';
+        width:100%;
+        height:100%;    
+        position:absolute;
+        left:0;
+        top:0;
+        background:linear-gradient(transparent 4rem, white);
+      }
     }
   }
 }
