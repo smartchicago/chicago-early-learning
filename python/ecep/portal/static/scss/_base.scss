@@ -8,10 +8,6 @@ body {
   background-color: $lightest-gray;
   font-family: $montserrat;
 
-  .body {
-    min-height: 60em;
-  }
-
   .chalk {
     display: table-cell;
     border-bottom: 3px solid $white;

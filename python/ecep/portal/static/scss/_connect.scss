@@ -5,8 +5,6 @@
   background-position: left top, right top, left center, right center, left bottom, right bottom;
   background-repeat: no-repeat;
 
-  min-height: 60em;
-
   @media (max-width: $break-small) {
     background-image: none;
   }
