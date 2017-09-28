@@ -28,10 +28,10 @@
         </div>
       </div>
       <div class="col-md-4 apply-block my-auto">
-        <h1 class="blue">{% blocktrans %}Are <span class="d-inline"><span class="chalk blue b-blue">YOU</span></span> ready to apply for preschool?{% endblocktrans %}</h1>
+        <h1 class="blue py-3">{% blocktrans %}Are <span class="d-inline"><span class="chalk blue b-blue">YOU</span></span> ready to apply for preschool?{% endblocktrans %}</h1>
         <p>{% blocktrans %}Enrolling your 3- or 4-year-old in a Chicago Early Learning preschool program is easy and open year-round. Follow these easy steps to get your child enrolled in preschool.{% endblocktrans %}</p>
         {% url 'faq' as faq_url %}
-        <p>{% blocktrans %}If you have any questions, please reference our <a href="{{ faq_url }}">FAQ page</a> for more details.{% endblocktrans %}</p>
+        <p>{% blocktrans %}If you have any questions, please reference our <a href="{{ faq_url }}"><i>FAQ page</i></a> for more details.{% endblocktrans %}</p>
       </div>
     </div>
     
@@ -100,7 +100,7 @@
         </div>
         <div class="col-md-8 my-auto">
           <h2 class="deep-orange">{% trans 'Go to School!' %}</h2>
-          <p>{% blocktrans %}If you have questions, please call our Chicago Early Learning Hotline: <a href="tel3122291690">(312) 229-1690</a> or visit a Family Resource Center near you.{% endblocktrans %}</p>
+          <p>{% blocktrans %}If you have questions, please call our Chicago Early Learning Hotline: <a class="a-orange" href="tel:3122291690"><i>(312) 229-1690</i></a> or visit a Family Resource Center near you.{% endblocktrans %}</p>
         </div>
       </div>
       <div id="enroll-links" class="row">
@@ -124,7 +124,7 @@
         </div>
       </div>
       <div class="row">
-        <div id="verify-one" class="col-md-8 offset-md-2 border-box">
+        <div id="verify-one" class="col-md-8 offset-md-2 top-border-box">
           <div class="mx-auto">
             <h2 class="blue">{% trans 'Step 1: Gather Documents' %}</h2>
             <div class="documents row mx-auto">
@@ -184,8 +184,8 @@
               </div>
             </div>
           </div>
-          <div class="documents-note">
-            <a class="btn btn-orange btn-block" href="{% url 'family-resource-centers' %}">{% trans 'View Family Resource Centers' %}</a>
+          <div class="documents-note text-center">
+            <a class="btn btn-orange" href="{% url 'family-resource-centers' %}">{% trans 'View Family Resource Centers' %}</a>
           </div>
         </div>
       </div>
@@ -208,14 +208,14 @@
   <div id="apply-links" class="container-fluid">
     <div class="row">
       <div id="link-programs-block" class="col-md-6 d-flex">
-        <div class="link-block text-center m-auto">
+        <div class="link-block text-center m-auto p-5">
           <h1 class="py-3">{% trans 'Have you found the right program for your child?' %}</h1>
           <p>{% blocktrans %}The City of Chicago and its partners offer early learning programs at over 600 sites. Visit our search page to identify sites in areas near your home or work. The Chicago Early Learning Portal allows you to identify a program’s quality rating, schedule and ages served.{% endblocktrans %}</p>
           <a href="{% url 'programs' %}" class="btn btn-orange">{% trans 'Learn About Program Types' %}</a>
         </div>
       </div>
       <div id="link-support-block" class="col-md-6 d-flex flex-column">
-        <div class="link-block text-center m-auto">
+        <div class="link-block text-center m-auto p-5">
           <h1 class="py-3">{% trans 'Need application support?' %}</h1>
           <p>{% blocktrans %}If you have any concerns with the online application, please call our Chicago Early Learning Hotline at (312) 229-1690, or visit any of the Family Resource Centers.{% endblocktrans %}</p> 
           <a href="{% url 'family-resource-centers' %}" class="btn btn-orange">{% trans 'View Family Resource Centers' %}</a>
