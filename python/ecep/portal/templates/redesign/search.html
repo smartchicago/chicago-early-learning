@@ -46,7 +46,7 @@
                 <h2 class="">{% trans 'Refine Your Search' %}</h2>
               </div>
               <div class="filter-clear">
-                <a class="btn btn-clear" id="filters-clear">{% trans 'Clear' %}</a>
+                <a class="btn btn-clear filters-toggle">{% trans 'Close' %}</a>
               </div>
             </div>
             <div id="hours" class="filter-category mx-3 my-2">
@@ -199,9 +199,14 @@
             </div>
           </div>
           <div class="results-scroll p-3">
-            <div class="results-description py-3">
-              <p>{% trans 'All locations near you for a ' %} <b class="blue"><span id="calculated-age"></span> {% trans 'year old' %}</b> child:</p>
-              <h4 class="a-orange filters-toggle">{% trans 'Refine Your Search' %}</h4>
+            <div class="results-description">
+              <div class="results-actions close-buttons">
+                <a class="btn btn-orange btn-block filters-toggle">{% trans 'Refine Your Search' %}</a>
+                <a id="filters-clear" class="btn btn-gray btn-block">{% trans 'Reset Filters' %}</a>
+              </div>
+              <div class="pt-3">
+                <p>{% trans 'All locations near you for a ' %} <b class="blue"><span id="calculated-age"></span> {% trans 'year old' %}</b> child:</p>
+              </div>
             </div>
             <div class="results-list"></div>
             <div class="results-load-more">
