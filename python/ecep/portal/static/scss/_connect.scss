@@ -1,8 +1,8 @@
 #connect {
   border-top: 1px solid $light-gray;
-  background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'), url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png');
-  background-size: 30%;
-  background-position: left top, right top, left center, right center, left bottom, right bottom;
+  background-image: url('../img/redesign/elements/shapes_left_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'), url('../img/redesign/elements/shapes_right_2x.png'), url('../img/redesign/elements/shapes_left_2x.png');
+  background-size: 20%;
+  background-position: left 25%, right 25%, left 75%, right 75%;
   background-repeat: no-repeat;
 
   @media (max-width: $break-small) {

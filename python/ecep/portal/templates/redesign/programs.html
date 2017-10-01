@@ -28,7 +28,7 @@
   <div id="programs-intro" class="container-fluid container-top-4 bg-gray programs-base">
     <div class="row justify-content-center p-5">
       <div class="col-md-4 offset-md-1">
-        <div class="svg-fluid-w mx-auto">{% svg 'illustrations/science' %}</div>
+        <div class="svg-fluid-w mx-auto">{% svg 'illustrations/kids' %}</div>
       </div>
       <div class="col-md-5">
         <h1 class="blue">{% blocktrans %}Look what <span class="d-inline"><span class="chalk blue b-blue">WE</span></span> can do!{% endblocktrans %}</h1>
@@ -59,7 +59,7 @@
               <input id="day" type="text" maxlength="2" class="form-control input-two" name="day" placeholder="DD" required>
               <input id="year-4" type="text" maxlength="4" class="form-control" name="year" placeholder="YYYY" required>
             </div>
-            <button id="calculator-submit" type="submit" class="btn btn-blue btn-half">{% trans 'Find Program Type' %}</button>
+            <button id="calculator-submit" type="submit" class="btn btn-blue">{% trans 'Find Program Type' %}</button>
           </form>
           <div id="error-block" class="hidden-block py-2">
             <p>Please enter a valid date.</p>
@@ -71,7 +71,7 @@
             <p>{% blocktrans %}Your little one is the perfect age to start learning in our infant and toddler programs.{% endblocktrans %}</p>
           </div>
           <div class="row justify-content-center">
-            <a href="#programs-infants" class="btn btn-orange btn-half">{% trans 'Learn More' %}</a>
+            <a href="#programs-infants" class="btn btn-orange">{% trans 'Learn More' %}</a>
           </div>
           <div class="row justify-content-center">
             <a class="calculator-reset a-orange py-3" data-block="#infants-block">{% trans 'Enter another birthdate' %}</a>
@@ -83,7 +83,7 @@
             <p>{% blocktrans %}Wow! Your child is ready for preschool.{% endblocktrans %}</p>
           </div>
           <div class="row justify-content-center">
-            <a href="#programs-preschool" class="btn btn-blue btn-half">{% trans 'Learn More' %}</a>
+            <a href="#programs-preschool" class="btn btn-blue">{% trans 'Learn More' %}</a>
           </div>
           <div class="row justify-content-center">
             <a class="calculator-reset a-orange py-3" data-block="#preschool-block">{% trans 'Enter another birthdate' %}</a>
@@ -95,7 +95,7 @@
             <p>{% blocktrans %}Believe it or not, it’s already time for Kindergarten!{% endblocktrans %}</p>
           </div>
           <div class="row justify-content-center">
-            <a href="#programs-kindergarten" class="btn btn-yellow btn-half">{% trans 'Learn More' %}</a>
+            <a href="#programs-kindergarten" class="btn btn-yellow">{% trans 'Learn More' %}</a>
           </div>
           <div class="row justify-content-center">
             <a class="calculator-reset a-orange py-3" data-block="#kindergarten-block">{% trans 'Enter another birthdate' %}</a>
@@ -107,7 +107,7 @@
             <p>{% blocktrans %}Looks like your child is ready for elementary school! The Chicago Public Schools website has more information about what learning is like across the city.{% endblocktrans %}</p>
           </div>
           <div class="row justify-content-center">
-            <a href="http://www.cps.edu/Pages/home.aspx" class="btn btn-yellow btn-half">{% trans 'Learn More at CPS.edu' %}</a>
+            <a href="http://www.cps.edu/Pages/home.aspx" class="btn btn-yellow">{% trans 'Learn More at CPS.edu' %}</a>
           </div>
           <div class="row justify-content-center">
             <a class="calculator-reset a-orange py-3" data-block="#kindergarten-block">{% trans 'Enter another birthdate' %}</a>
@@ -136,7 +136,7 @@
             <li>{% blocktrans %}Educational and social development activities.{% endblocktrans %}</li>
             <li>{% blocktrans %}Programs may include free health services (medical, dental, mental health), nutritious meals, as well as parent education and training.{% endblocktrans %}</li>
           </ul>
-          <a class="btn btn-yellow btn-half" href="{% url 'search' %}">{% trans 'Find Sites'%}</a>
+          <a class="btn btn-yellow" href="{% url 'search' %}">{% trans 'Find Sites'%}</a>
         </div>
       </div>
     </div>
@@ -159,7 +159,7 @@
             <li>{% blocktrans %}Either a half-day or a full-day of instruction.{% endblocktrans %}</li>
             <li>{% blocktrans %}Programs may include free health services (medical, dental, mental health), nutritious meals, as well as parent education and training.{% endblocktrans %}</li>
           </ul>
-          <a class="btn btn-green btn-half" href="{% url 'search' %}">{% trans 'Find Sites'%}</a>
+          <a class="btn btn-green" href="{% url 'search' %}">{% trans 'Find Sites'%}</a>
         </div>
       </div>
       <div id="programs-preschool-image" class="col-md-6 programs-block hidden-sm-down">
@@ -177,7 +177,7 @@
           <h1>{% trans 'Kindergarten' %}</h1>
           <h4>{% trans 'Age 5' %}</h4>
           <p>{% blocktrans %}Children who are 5 years old by September 1st of the current school year should enroll in kindergarten at a CPS preschool. Visit the CPS website to enroll a child in kindergarten.{% endblocktrans %}</p>
-          <a class="btn btn-orange btn-half" href="http://www.cps.edu">{% trans 'Learn More' %}</a>
+          <a class="btn btn-orange" href="http://www.cps.edu">{% trans 'Learn More' %}</a>
         </div>
       </div>
     </div>
@@ -287,7 +287,7 @@
         <div class="text-center">
           <h1 class="white">{% trans 'Other Local Activities and Resources' %}</h1>
           <p class="white">{% blocktrans %}See our Resources page to learn more about programs for young children throughout the city that are not part of Chicago Early Learning.{% endblocktrans %}</p>
-          <a class="btn btn-orange btn-half" href="{% url 'resources' %}">{% trans 'Learn More' %}</a>
+          <a class="btn btn-orange" href="{% url 'resources' %}">{% trans 'Learn More' %}</a>
         </div>
       </div>
     </div>

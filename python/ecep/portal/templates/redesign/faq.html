@@ -17,7 +17,7 @@
 </div>
 
 {% url 'programs' as programs_url %}
-{% url 'browse' as browse_url %}
+{% url 'search' as search_url %}
 {% url 'resources' as resources_url %}
 {% url 'how-to-apply' as how_to_apply_url %}
 {% url 'family-resource-centers' as centers_url %}
@@ -182,7 +182,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="finding-3">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What are the characteristics of a high-quality early learning program, such as accreditation?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}Chicago Early Learning preschool programs all meet rigorous federal, state, and local standards. The <a class="a-orange" href="{{ browse_url }}">Find and Compare Tool</a> allows anyone to view programs with accreditation and or a program’s quality ratings. Please review our <a class="a-orange" href="{{ programs_url }}">Programs Page</a> with detailed information about types of programs, and identifying characteristics of high quality early learning.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Chicago Early Learning preschool programs all meet rigorous federal, state, and local standards. The <a class="a-orange" href="{{ search_url }}">Find and Compare Tool</a> allows anyone to view programs with accreditation and or a program’s quality ratings. Please review our <a class="a-orange" href="{{ programs_url }}">Programs Page</a> with detailed information about types of programs, and identifying characteristics of high quality early learning.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -239,7 +239,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="finding-9">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How do I know the hours of the preschool I want to apply to?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}Visit the <a class="a-orange" href="{{ browse_url }}">Find and Compare Tool</a> to explore early learning sites that meet the particular needs of your family. In order to find the hours of a site, click the “More Info” button. We recommend that you call the site directly to confirm any ongoing updates to the hours posted.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Visit the <a class="a-orange" href="{{ search_url }}">Find and Compare Tool</a> to explore early learning sites that meet the particular needs of your family. In order to find the hours of a site, click the “More Info” button. We recommend that you call the site directly to confirm any ongoing updates to the hours posted.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>
@@ -281,7 +281,7 @@
               <h2>{% blocktrans %}What is the application process?{% endblocktrans %}</h2>
               <p>{% blocktrans %}Families with preschool-aged children can submit a single application for any Chicago Early Learning program. Enrolling your 3 or 4 year-old child in an early learning program is easy, and open year-round. Follow these easy steps for your application:{% endblocktrans %}</p>
               <ol>
-                <li>{% blocktrans %} Visit chicagoearlylearning.org, click on the link to apply to preschool, and create an online account for your family{% endblocktrans %}</li>
+                <li>{% blocktrans %}Click on <a class="a-orange" href="https://cys.mycopa.com/familyPortal/welcome.epl">"Apply"</a> and create an online account for your family{% endblocktrans %}</li>
                 <li>{% blocktrans %}Fill in information on your family, such as employment and income, information on your child, and your top choice preschool sites{% endblocktrans %}</li>
                 <li>{% blocktrans %}If your child qualifies, you will be contacted with information on how to verify your child’s preschool seat{% endblocktrans %}</li>
               </ol>
@@ -330,7 +330,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="applying-7">
             <div class="faq-block-content">
               <h2>{% blocktrans %}What sites can my family apply to online?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}Families can apply to over 600 sites through the Chicago Early Learning online preschool application. Sites include programs that are community-based and Chicago Public Schools. Visit the <a class="a-orange" href="{{ browse_url }}">Find and Compare Tool</a> to find the right site for your family.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Families can apply to over 600 sites through the Chicago Early Learning online preschool application. Sites include programs that are community-based and Chicago Public Schools. Visit the <a class="a-orange" href="{{ search_url }}">Find and Compare Tool</a> to find the right site for your family.{% endblocktrans %}</p>
               <p>{% blocktrans %}Chicago Early Learning does not include private schools, magnet, Montessori, or tuition-based schools.{% endblocktrans %}</p>
               <p>{% blocktrans %}A child placed in a CPS public school through Office of Diverse Learners Supports and Services (ODLSS) does not need to apply, but they are not prohibited from applying to community-based sites, as an additional option.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
@@ -563,7 +563,7 @@
             <div class="faq-block-content">
               <h2>{% blocktrans %}I’m on a waitlist and I want to consider a different site for my child. How do I do that?{% endblocktrans %}</h2>
               <ul>
-                <li>Visit ChicagoEarlyLearning.org to compare other preschool sites and consider new options</li>
+                <li>Use the <a class="a-orange" href="{{ search_url }}">Find and Compare tool</a> to compare other preschool sites and consider new options</li>
                 <li>Visit a <a class="a-orange" href="{{ centers_url }}">Family Resource Center</a> near you for support</li>
                 <li>Call our Family Support Hotline at <a class="a-orange" href="tel:3127449322">312-744-9322</a></li>
                 <li>Call the preschool site that you are interested in directly</li>
@@ -651,7 +651,7 @@
           <div class="faq-block col-md-8 offset-md-2" id="other-1">
             <div class="faq-block-content">
               <h2>{% blocktrans %}How do I find early learning opportunities for children under 3 years old?{% endblocktrans %}</h2>
-              <p>{% blocktrans %}Visit our <a class="a-orange" href="{{ browse_url }}">Find and Compare Tool</a> to find community-based sites that offer infant and toddler programs, or <a class="a-orange" href="{{ resources_url }}">click here</a> a to learn more about programs offered by other city agencies around Chicago.{% endblocktrans %}</p>
+              <p>{% blocktrans %}Visit our <a class="a-orange" href="{{ search_url }}">Find and Compare Tool</a> to find community-based sites that offer infant and toddler programs, or <a class="a-orange" href="{{ resources_url }}">click here</a> a to learn more about programs offered by other city agencies around Chicago.{% endblocktrans %}</p>
               <p><i><a class="a-orange" href="#faq-header">{% trans 'Back to Top' %}</a></i></p>
             </div>
           </div>

@@ -2,14 +2,6 @@
   padding-bottom: 5px;
 }
 
-.btn-lg {
-  padding-bottom: 12px;
-}
-
-.btn-half {
-  width: 50%;
-}
-
 .btn-orange {
   @include primary-variant($white, $orange, $deep-orange);
 }
@@ -45,4 +37,21 @@
   }
   &:active {}
 
+}
+
+.btn-lg {
+  padding-bottom: .75rem;
+}
+
+.btn-nav {
+  padding: .5rem 1rem;
+}
+
+.btn-half {
+  width: 50%;
+  padding: 1rem 0;
+}
+
+.btn-block {
+  padding: 1rem 0;
 }

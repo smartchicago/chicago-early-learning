@@ -422,7 +422,7 @@ msgstr ""
 
 #: portal/templates/about.html:67 portal/templates/redesign/about.html:79
 msgid "Other Partners"
-msgstr ""
+msgstr "Otros socios"
 
 #: portal/templates/announcements.html:7
 #: portal/templates/announcements.html:15
@@ -914,10 +914,8 @@ msgid "Chicago Early Learning Portal"
 msgstr "Chicago Early Learning Portal (Portal de Aprendizaje Temprano)"
 
 #: portal/templates/redesign/about.html:23
-#, fuzzy
-#| msgid "Other Features"
 msgid "Partners"
-msgstr "Otras Características"
+msgstr "Socios"
 
 #: portal/templates/redesign/about.html:37
 msgid ""
