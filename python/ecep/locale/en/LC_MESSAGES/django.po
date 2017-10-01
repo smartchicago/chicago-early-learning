@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-01 12:29-0500\n"
+"POT-Creation-Date: 2017-10-01 12:46-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -332,9 +332,9 @@ msgstr ""
 #: portal/templates/connect.html:9
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
-#: portal/templates/faq-models.html:5 portal/templates/how-to-apply.html:7
-#: portal/templates/location-map.html:8 portal/templates/location.html:8
-#: portal/templates/outreach.html:7 portal/templates/redesign/blog.html:8
+#: portal/templates/faq-models.html:5 portal/templates/location-map.html:8
+#: portal/templates/location.html:8 portal/templates/outreach.html:7
+#: portal/templates/redesign/blog.html:8
 #: portal/templates/redesign/connect.html:6
 #: portal/templates/redesign/faq.html:8
 #: portal/templates/redesign/how-to-apply.html:9
@@ -655,17 +655,6 @@ msgstr ""
 
 #: portal/templates/faq-models.html:24
 msgid "Frequently Asked Questions"
-msgstr ""
-
-#: portal/templates/how-to-apply.html:7
-#: portal/templates/redesign/how-to-apply.html:9
-#: portal/templates/redesign/partials/_footer.html:24
-#: portal/templates/redesign/partials/_nav.html:39
-msgid "How to Apply"
-msgstr ""
-
-#: portal/templates/how-to-apply.html:15
-msgid "Apply Today"
 msgstr ""
 
 #: portal/templates/location-map.html:41 portal/templates/location-map.html:83
@@ -1959,6 +1948,12 @@ msgstr ""
 msgid "Call the Chicago Early Learning Hotline!"
 msgstr ""
 
+#: portal/templates/redesign/how-to-apply.html:9
+#: portal/templates/redesign/partials/_footer.html:24
+#: portal/templates/redesign/partials/_nav.html:39
+msgid "How to Apply"
+msgstr ""
+
 #: portal/templates/redesign/how-to-apply.html:18
 msgid "How To Apply"
 msgstr ""
@@ -2020,6 +2015,11 @@ msgid ""
 "sites across the city. <a href=\"%(frc_url)s\">Click here</a> for more "
 "information about Family Resource Centers. See below for more details about "
 "what documents you will provide."
+msgstr ""
+
+#: portal/templates/redesign/how-to-apply.html:75
+#: portal/templates/redesign/how-to-apply.html:90
+msgid "OR"
 msgstr ""
 
 #: portal/templates/redesign/how-to-apply.html:78

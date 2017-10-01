@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-01 12:29-0500\n"
+"POT-Creation-Date: 2017-10-01 12:46-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -341,9 +341,9 @@ msgstr "Sobre Nosotros"
 #: portal/templates/connect.html:9
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
-#: portal/templates/faq-models.html:5 portal/templates/how-to-apply.html:7
-#: portal/templates/location-map.html:8 portal/templates/location.html:8
-#: portal/templates/outreach.html:7 portal/templates/redesign/blog.html:8
+#: portal/templates/faq-models.html:5 portal/templates/location-map.html:8
+#: portal/templates/location.html:8 portal/templates/outreach.html:7
+#: portal/templates/redesign/blog.html:8
 #: portal/templates/redesign/connect.html:6
 #: portal/templates/redesign/faq.html:8
 #: portal/templates/redesign/how-to-apply.html:9
@@ -767,17 +767,6 @@ msgstr "Preguntas frecuentes"
 #: portal/templates/faq-models.html:24
 msgid "Frequently Asked Questions"
 msgstr ""
-
-#: portal/templates/how-to-apply.html:7
-#: portal/templates/redesign/how-to-apply.html:9
-#: portal/templates/redesign/partials/_footer.html:24
-#: portal/templates/redesign/partials/_nav.html:39
-msgid "How to Apply"
-msgstr "Proceso de inscripción"
-
-#: portal/templates/how-to-apply.html:15
-msgid "Apply Today"
-msgstr "Llene la solicitud hoy mismo"
 
 #: portal/templates/location-map.html:41 portal/templates/location-map.html:83
 #: portal/templates/location.html:41
@@ -2226,6 +2215,12 @@ msgstr ""
 msgid "Call the Chicago Early Learning Hotline!"
 msgstr "Sobre del portal del Chicago Educacíon Temprana"
 
+#: portal/templates/redesign/how-to-apply.html:9
+#: portal/templates/redesign/partials/_footer.html:24
+#: portal/templates/redesign/partials/_nav.html:39
+msgid "How to Apply"
+msgstr "Proceso de inscripción"
+
 #: portal/templates/redesign/how-to-apply.html:18
 #, fuzzy
 #| msgid "How to Apply"
@@ -2264,10 +2259,8 @@ msgstr ""
 
 #: portal/templates/redesign/how-to-apply.html:52
 #: portal/templates/redesign/how-to-apply.html:108
-#, fuzzy
-#| msgid "Locations"
 msgid "Search Locations"
-msgstr "Su ubicación"
+msgstr "Busque los sitios"
 
 #: portal/templates/redesign/how-to-apply.html:54
 #, python-format
@@ -2275,10 +2268,13 @@ msgid ""
 "Find and compare Chicago Early Learning programs to find the right one for "
 "your child. <a class=\"a-orange\" href=\"%(search_url)s\">Get Started!</a>"
 msgstr ""
+"Busque y compare los programas de Educación Temprana de Chicago para "
+"encontrar el más apropiado para su niño. <a class=\"a-orange\" href="
+"\"%(search_url)s\">¡Comience!</a>"
 
 #: portal/templates/redesign/how-to-apply.html:62
 msgid "Apply to Program"
-msgstr ""
+msgstr "Haga la solicitud para un programa"
 
 #: portal/templates/redesign/how-to-apply.html:63
 msgid ""
@@ -2288,10 +2284,18 @@ msgid ""
 "placement. If your child remains on a waitlist, stay tuned for more "
 "information from the Chicago Early Learning team."
 msgstr ""
+"Reduzca sus opciones a sus dos sitios preferidos. Cree una cuenta en línea, "
+"ingrese la información de la familia y haga la solicitud a los sitios "
+"preescolares. Si su niño cualifica y le hacen una oferta, entonces tendrá "
+"que seguir los pasos siguientes para verificar su colocación. Si ponen a su "
+"niño en una lista de espera, esté al pendiente pues recibirá más información "
+"de parte del equipo de Educación Temprana de Chicago"
 
 #: portal/templates/redesign/how-to-apply.html:72
 msgid "For CPS Site Offers: Verify placement through a Family Resource Center"
 msgstr ""
+"Para las ofertas que reciba de los sitios de CPS: Verifique su colocación a "
+"través de un Centro de Recursos para la Familia."
 
 #: portal/templates/redesign/how-to-apply.html:73
 #, python-format
@@ -2302,12 +2306,25 @@ msgid ""
 "information about Family Resource Centers. See below for more details about "
 "what documents you will provide."
 msgstr ""
+"Dentro de las dos siguientes semanas después de recibir la oferta lleve "
+"prueba de los ingresos familiares, dirección y el nacimiento de su niño a "
+"alguno de los 12 Centros de Recursos para la Familia que se encuentran en la "
+"ciudad. <a href=\"%(frc_url)s\">Oprima aquí</a> para obtener más información "
+"acerca de los Centros de Recursos para la Familia. Vea abajo para obtener "
+"más detalles acerca de los documentos que tiene que llevar."
+
+#: portal/templates/redesign/how-to-apply.html:75
+#: portal/templates/redesign/how-to-apply.html:90
+msgid "OR"
+msgstr "O"
 
 #: portal/templates/redesign/how-to-apply.html:78
 msgid ""
 "For Community-Based Site Offers: Verify placement through your community-"
 "program location"
 msgstr ""
+"Para las ofertas que reciba de los sitios basados en la comunidad: Verifique "
+"su colocación a través del sitio del programa en la comunidad."
 
 #: portal/templates/redesign/how-to-apply.html:79
 msgid ""
@@ -2316,55 +2333,48 @@ msgid ""
 "program location. See below for more details about what documents you will "
 "provide."
 msgstr ""
+"Dentro de las dos siguientes semanas después de recibir la oferta lleve "
+"prueba de los ingresos familiares, dirección y el nacimiento de su niño al "
+"sitio del programa en la comunidad que le fue asignado. Vea abajo para "
+"obtener más detalles acerca de los documentos que tiene que llevar."
 
 #: portal/templates/redesign/how-to-apply.html:87
-#, fuzzy
-#| msgid "No Saved Locations"
 msgid "Enrollment at CPS-Program Location"
-msgstr "No Hay Ubicaciones Favoritas"
+msgstr "Inscripción en un sitio de un programa de CPS"
 
 #: portal/templates/redesign/how-to-apply.html:88
 msgid ""
 "Visit your child’s preschool over the summer or as soon as school starts to "
 "complete the enrollment process. The school may have more specific "
 "enrollment directions that they will communicate."
-msgstr ""
+msgstr "Visite el preescolar de su niño en el verano o tan pronto como comience la escuela para completar el proceso de inscripción. La escuela puede tener instrucciones más específicas para la inscripción sobre las cuales le informarán."
 
 #: portal/templates/redesign/how-to-apply.html:93
-#, fuzzy
-#| msgid "No Saved Locations"
 msgid "Enrollment at Community-Program Location"
-msgstr "No Hay Ubicaciones Favoritas"
+msgstr "Inscripción en un sitio de un programa en la comunidad"
 
 #: portal/templates/redesign/how-to-apply.html:94
 msgid ""
 "When you visit your child’s community-based site to verify your child’s "
 "offer, your site will communicate any additional expectations they have to "
 "complete the enrollment process."
-msgstr ""
+msgstr "Cuando usted visite el sitio basado en la comunidad para verificar la oferta que le hicieron a su niño, ahí le informarán cualquier expectativa adicional que ellos tengan para poder completar el proceso."
 
 #: portal/templates/redesign/how-to-apply.html:102
 msgid "Go to School!"
-msgstr ""
+msgstr "¡Vaya a la escuela!"
 
 #: portal/templates/redesign/how-to-apply.html:103
-#, fuzzy
-#| msgid ""
-#| "For any other questions, please call the Chicago Early Learning Hotline: "
-#| "<a href=\"tel:3122291690\">312-229-1690</a>."
 msgid ""
 "If you have questions, please call our Chicago Early Learning Hotline: <a "
 "class=\"a-orange\" href=\"tel:3122291690\"><i>(312) 229-1690</i></a> or "
 "visit a Family Resource Center near you."
 msgstr ""
-"Para otras preguntas, por favor llame a nuestra línea directa para el apoyo "
-"familiar: <a href=\"tel:7735532010\">312-229-1690</a>."
+"Si tiene alguna pregunta por favor llame a la línea telefónica directa de la Educación Temprana de Chicago <a class=\"a-orange\" href=\"tel:3122291690\"><i>(312) 229-1690</i></a> o visite a un Centro de Recursos para la Familia cercano a usted."
 
 #: portal/templates/redesign/how-to-apply.html:111
-#, fuzzy
-#| msgid "Fill out an application online"
 msgid "Start an Application"
-msgstr "Llene la solicitud en línea"
+msgstr "Comience la inscripción"
 
 #: portal/templates/redesign/how-to-apply.html:121
 msgid "How will you verify your child's placement?"
@@ -2488,7 +2498,7 @@ msgstr ""
 #: portal/templates/redesign/how-to-apply.html:188
 #: portal/templates/redesign/how-to-apply.html:221
 msgid "View Family Resource Centers"
-msgstr ""
+msgstr "Vea los Centros de Recursos para la Familia"
 
 #: portal/templates/redesign/how-to-apply.html:195
 msgid "Step 3: Bring your child on the first day of school in September."
@@ -2534,7 +2544,7 @@ msgstr ""
 
 #: portal/templates/redesign/how-to-apply.html:214
 msgid "Learn About Program Types"
-msgstr ""
+msgstr "Aprenda más acerca de los tipos de programas que hay"
 
 #: portal/templates/redesign/how-to-apply.html:219
 msgid "Need application support?"
@@ -2681,7 +2691,8 @@ msgstr "Últimas noticias"
 
 #: portal/templates/redesign/index.html:201
 msgid "Mayor Emanuel Launches Improved Universal Preschool Application"
-msgstr "El alcalde Emanuel lanza la Solicitud Universal para Preescolar Mejorada"
+msgstr ""
+"El alcalde Emanuel lanza la Solicitud Universal para Preescolar Mejorada"
 
 #: portal/templates/redesign/index.html:204
 msgid ""
@@ -2689,7 +2700,12 @@ msgid ""
 "online preschool application, which gives families a single point of entry "
 "to access the more than 600 high-quality community and school based "
 "preschool programs throughout Chicago."
-msgstr "El alcalde Emanuel visitó la Biblioteca Avalon Park para anunciar la solicitud universal en línea para preescolar que ha sido renovada y le da a las familias un solo punto de entrada para tener acceso a más de 600 programas preescolares de alta calidad basados en escuelas y en la comunidad a lo largo de Chicago."
+msgstr ""
+"El alcalde Emanuel visitó la Biblioteca Avalon Park para anunciar la "
+"solicitud universal en línea para preescolar que ha sido renovada y le da a "
+"las familias un solo punto de entrada para tener acceso a más de 600 "
+"programas preescolares de alta calidad basados en escuelas y en la comunidad "
+"a lo largo de Chicago."
 
 #: portal/templates/redesign/index.html:207
 msgid "Read More on the City of Chicago website"
@@ -2703,7 +2719,15 @@ msgid ""
 "maker space and distinct areas or “neighborhoods” for early learners: ages "
 "0-5, middle-childhood learners: 6-10 and tweens: ages 11-14 with a full "
 "digital media lab..."
-msgstr "La recientemente reabierta Biblioteca para Niños Thomas Hughes apoyada por Exelon, fue inaugurada por el alcalde Emanuel el 13 de julio. Este espacio tiene una nueva visión y se enorgullece de tener un espacio “Maker Lab” en donde se pueden aprender nuevas tecnologías y áreas específicas llamadas “vecindarios”, las cuales son para los niños que están en la etapa del aprendizaje temprano: edades de 0 a 5 años; para los aprendices en la etapa media: edades de 6 a 10 años; y para los adolescentes: edades de 11 a 14 años; además hay un laboratorio completo de medios digitales..."
+msgstr ""
+"La recientemente reabierta Biblioteca para Niños Thomas Hughes apoyada por "
+"Exelon, fue inaugurada por el alcalde Emanuel el 13 de julio. Este espacio "
+"tiene una nueva visión y se enorgullece de tener un espacio “Maker Lab” en "
+"donde se pueden aprender nuevas tecnologías y áreas específicas llamadas "
+"“vecindarios”, las cuales son para los niños que están en la etapa del "
+"aprendizaje temprano: edades de 0 a 5 años; para los aprendices en la etapa "
+"media: edades de 6 a 10 años; y para los adolescentes: edades de 11 a 14 "
+"años; además hay un laboratorio completo de medios digitales..."
 
 #: portal/templates/redesign/index.html:219
 #: portal/templates/redesign/index.html:243
@@ -2718,7 +2742,9 @@ msgstr ""
 
 #: portal/templates/redesign/index.html:242
 msgid "Meet all our partners and learn more about Chicago Early Learning."
-msgstr "Conozca a todos nuestros socios y conozca más acerca de la Educación Temprana de Chicago."
+msgstr ""
+"Conozca a todos nuestros socios y conozca más acerca de la Educación "
+"Temprana de Chicago."
 
 #: portal/templates/redesign/outreach.html:53
 msgid ""
@@ -3727,6 +3753,9 @@ msgstr ""
 #: templates/admin/portal/location/delete_confirmation.html:30
 msgid "Yes, I'm sure"
 msgstr ""
+
+#~ msgid "Apply Today"
+#~ msgstr "Llene la solicitud hoy mismo"
 
 #~ msgid "M+W"
 #~ msgstr "L+X"
