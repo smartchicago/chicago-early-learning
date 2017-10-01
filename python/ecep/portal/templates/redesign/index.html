@@ -9,6 +9,13 @@
 {% endblock %}
 
 {% block body %}
+
+{% url 'programs' as programs_url %}
+{% url 'browse' as browse_url %}
+{% url 'resources' as resources_url %}
+{% url 'how-to-apply' as how_to_apply_url %}
+{% url 'family-resource-centers' as centers_url %}
+
 <div id="index-header" class="container-fluid header">
   <div class="curve-header">
     <div class="header-image"></div>
@@ -84,10 +91,10 @@
         <h1>{% trans 'Important Update' %}</h1>
       </div>
       <div class="index-sub-block">
-        <div class="sub-block-content">
-          <h1 class="white">{% trans 'Apply Today!' %}</h1>
-          <p>{% blocktrans %}Over 14,000 preschool applications and counting! Are you ready to sign up your child? Learn more about the preschool application for 3 and 4 year-olds:{% endblocktrans %}</p>
-          <a href="{% url 'how-to-apply' %}" class="btn btn-cel btn-green btn-half ">{% trans 'Learn More' %}</a>
+        <div class="sub-block-content p-5">
+          <h1 class="white">{% trans 'Pre-K Application Process Announcement' %}</h1>
+          <p>{% blocktrans %}As of October 2, 2017, summer sites for <a class="a-yellow" href="{{ centers_url }}">Family Resource Centers</a> will close until next year. Colman, 4655 S. Dearborn St., will remain open as the central location for Chicago Public Schools verification every Monday - Friday, 9AM - 5PM. For more information on the Pre-K application process, <a class="a-yellow" href="{{ how_to_apply_url }}">click here</a>.{% endblocktrans %}</p>
+          <a href="{% url 'family-resource-centers' %}" class="btn btn-cel btn-green btn-half ">{% trans 'Learn More' %}</a>
         </div>
       </div>
     </div>
@@ -96,11 +103,11 @@
 
     <!-- 
     <div id="update-announcement" class="index-info-block col-md-6">
-      <div id="update-announcement-header" class="sub-block-content full-width-header text-center white">
+      <div id="update-announcement-header" class="sub-block-content p-5 full-width-header text-center white">
         <h1>{% trans 'Important Announcement' %}</h1>
       </div>
       <div class="index-sub-block">
-        <div class="sub-block-content">
+        <div class="sub-block-content p-5">
           <h1 class="white">{% trans 'Important Announcement' %}</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -118,12 +125,12 @@
     
     <div id="programs-image" class="index-info-block col-md-6 justify-content-center">
       <div class="image-block">
-        <div class="svg-fluid-h text-center">{% svg 'illustrations/family-2' %}</div>
+        <div class="svg-illustration text-center">{% svg 'illustrations/family-2' %}</div>
       </div>
     </div>
     <div id="progams-content" class="index-info-block col-md-6">
       <div class="index-sub-block">
-        <div class="sub-block-content">
+        <div class="sub-block-content p-5">
           <h1 class="green">{% trans 'Explore our early learning programs!' %}</h1>
           <p>{% blocktrans %}Children who participate in high-quality early learning experiences are better prepared for success in kindergarten and beyond.{% endblocktrans %}</p>
           <a href="{% url 'programs' %}" class="btn btn-cel btn-orange btn-half">{% trans 'Learn More' %}</a>
@@ -138,7 +145,7 @@
   <div class="row">
     <div id="application-content" class="index-info-block col-md-6">
       <div class="index-sub-block">
-        <div class="sub-block-content">
+        <div class="sub-block-content p-5">
           <h1 class="blue">{% trans 'What is the preschool application process?' %}</h1>
           <div class="index-sub-block application-youtube hidden-md-up">
             <div class="application-youtube-embed embed-responsive embed-responsive-16by9">
@@ -172,7 +179,7 @@
   <div class="row">
     <div id="resources-content" class="index-info-block col-md-6 offset-md-6 text-center">
       <div class="index-sub-block">
-        <div class="sub-block-content">
+        <div class="sub-block-content p-5">
           <h1 class="white">{% trans 'Early learning doesn’t only take place in a preschool classroom.' %}</h1>
           <p class="white">{% blocktrans %}Chicago offers a variety of stimulating children’s activities to get kids learning, moving, and playing. Learn more about what is offered by city agencies and organizations.{% endblocktrans %}</p>
           <a href="{% url 'resources' %}" class="btn btn-cel btn-blue btn-half ">{% trans 'Learn More' %}</a>

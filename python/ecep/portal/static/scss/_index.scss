@@ -134,7 +134,7 @@
   $block-height: 25em;
 
   .index-info-block {
-    height: $block-height;
+    min-height: $block-height;
     display: inline-flex;
     flex-direction: column;
 
@@ -144,8 +144,6 @@
       flex-direction: column;
 
       .sub-block-content {
-        width: 90%;
-        margin: auto !important;
 
         h1 {
           padding: 0;

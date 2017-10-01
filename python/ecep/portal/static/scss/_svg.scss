@@ -44,3 +44,11 @@
     width: 1.5em;
   }
 }
+
+.svg-illustration {
+  $svg-height: 20rem;
+  max-height: $svg-height;
+  svg {
+    max-height: $svg-height;
+  }
+}
