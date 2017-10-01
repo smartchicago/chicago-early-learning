@@ -11,6 +11,7 @@ define(['jquery'],
                 $infants = $('#infants-block'),
                 $preschool = $('#preschool-block'),
                 $kindergarten = $('#kindergarten-block'),
+                $over_seven = $('#seven-plus-block'),
                 $calculator = $('.calculator'),
                 $calculator_block = $('#calculator-block'),
                 $error_block = $('#error-block');
@@ -31,6 +32,7 @@ define(['jquery'],
 
             function calculateProgram(month, day, year) {
                 var date = new Date(year, month, day),
+                    kindergarten_cutoff = new Date(2010, 8, 2),
                     preschool_cutoff = new Date(2012, 8, 2),
                     infants_cutoff = new Date(2014, 8, 2);
 
@@ -38,8 +40,10 @@ define(['jquery'],
                     return $infants;
                 } else if ( date < infants_cutoff && date >= preschool_cutoff ) {
                     return $preschool;
-                } else {
+                } else if ( date < preschool_cutoff && date >= kindergarten_cutoff ) {
                     return $kindergarten;
+                } else {
+                    return $over_seven;
                 }
             }
 

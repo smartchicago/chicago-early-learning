@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-01 12:13-0500\n"
+"POT-Creation-Date: 2017-10-01 13:07-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -332,9 +332,9 @@ msgstr ""
 #: portal/templates/connect.html:9
 #: portal/templates/enroll-plan-community.html:4
 #: portal/templates/enroll.html:10 portal/templates/families.html:7
-#: portal/templates/faq-models.html:5 portal/templates/how-to-apply.html:7
-#: portal/templates/location-map.html:8 portal/templates/location.html:8
-#: portal/templates/outreach.html:7 portal/templates/redesign/blog.html:8
+#: portal/templates/faq-models.html:5 portal/templates/location-map.html:8
+#: portal/templates/location.html:8 portal/templates/outreach.html:7
+#: portal/templates/redesign/blog.html:8
 #: portal/templates/redesign/connect.html:6
 #: portal/templates/redesign/faq.html:8
 #: portal/templates/redesign/how-to-apply.html:9
@@ -649,22 +649,12 @@ msgstr ""
 
 #: portal/templates/faq-models.html:5 portal/templates/redesign/faq.html:8
 #: portal/templates/redesign/partials/_footer.html:31
+#: portal/templates/redesign/partials/_nav.html:48
 msgid "FAQ"
 msgstr ""
 
 #: portal/templates/faq-models.html:24
 msgid "Frequently Asked Questions"
-msgstr ""
-
-#: portal/templates/how-to-apply.html:7
-#: portal/templates/redesign/how-to-apply.html:9
-#: portal/templates/redesign/partials/_footer.html:24
-#: portal/templates/redesign/partials/_nav.html:39
-msgid "How to Apply"
-msgstr ""
-
-#: portal/templates/how-to-apply.html:15
-msgid "Apply Today"
 msgstr ""
 
 #: portal/templates/location-map.html:41 portal/templates/location-map.html:83
@@ -730,7 +720,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/location.html:249
-#: portal/templates/redesign/programs.html:222
+#: portal/templates/redesign/programs.html:234
 msgid "What does \"Accreditation\" mean?"
 msgstr ""
 
@@ -919,8 +909,8 @@ msgstr ""
 #: portal/templates/redesign/programs.html:74
 #: portal/templates/redesign/programs.html:86
 #: portal/templates/redesign/programs.html:98
-#: portal/templates/redesign/programs.html:168
-#: portal/templates/redesign/programs.html:278
+#: portal/templates/redesign/programs.html:180
+#: portal/templates/redesign/programs.html:290
 msgid "Learn More"
 msgstr ""
 
@@ -1958,6 +1948,12 @@ msgstr ""
 msgid "Call the Chicago Early Learning Hotline!"
 msgstr ""
 
+#: portal/templates/redesign/how-to-apply.html:9
+#: portal/templates/redesign/partials/_footer.html:24
+#: portal/templates/redesign/partials/_nav.html:39
+msgid "How to Apply"
+msgstr ""
+
 #: portal/templates/redesign/how-to-apply.html:18
 msgid "How To Apply"
 msgstr ""
@@ -2019,6 +2015,11 @@ msgid ""
 "sites across the city. <a href=\"%(frc_url)s\">Click here</a> for more "
 "information about Family Resource Centers. See below for more details about "
 "what documents you will provide."
+msgstr ""
+
+#: portal/templates/redesign/how-to-apply.html:75
+#: portal/templates/redesign/how-to-apply.html:90
+msgid "OR"
 msgstr ""
 
 #: portal/templates/redesign/how-to-apply.html:78
@@ -2501,6 +2502,7 @@ msgstr ""
 #: portal/templates/redesign/programs.html:77
 #: portal/templates/redesign/programs.html:89
 #: portal/templates/redesign/programs.html:101
+#: portal/templates/redesign/programs.html:113
 msgid "Enter another birthdate"
 msgstr ""
 
@@ -2512,137 +2514,148 @@ msgstr ""
 msgid "Believe it or not, it’s already time for Kindergarten!"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:117
+#: portal/templates/redesign/programs.html:107
+msgid ""
+"Looks like your child is ready for elementary school! The Chicago Public "
+"Schools website has more information about what learning is like across the "
+"city."
+msgstr ""
+
+#: portal/templates/redesign/programs.html:110
+msgid "Learn More at CPS.edu"
+msgstr ""
+
+#: portal/templates/redesign/programs.html:129
 msgid "Infants and Toddlers"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:118
+#: portal/templates/redesign/programs.html:130
 msgid "Ages Birth to 2"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:119
+#: portal/templates/redesign/programs.html:131
 msgid ""
 "These programs may also be referred to as Early Head Start, Prevention "
 "Initiative, or Early Intervention."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:120
-#: portal/templates/redesign/programs.html:142
+#: portal/templates/redesign/programs.html:132
+#: portal/templates/redesign/programs.html:154
 msgid "Who do they serve?"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:121
+#: portal/templates/redesign/programs.html:133
 msgid "Children aged birth to three years old from qualifying families"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:122
-#: portal/templates/redesign/programs.html:144
+#: portal/templates/redesign/programs.html:134
+#: portal/templates/redesign/programs.html:156
 msgid "What do they provide?"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:124
+#: portal/templates/redesign/programs.html:136
 msgid "Educational and social development activities."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:125
-#: portal/templates/redesign/programs.html:148
+#: portal/templates/redesign/programs.html:137
+#: portal/templates/redesign/programs.html:160
 msgid ""
 "Programs may include free health services (medical, dental, mental health), "
 "nutritious meals, as well as parent education and training."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:127
-#: portal/templates/redesign/programs.html:150
+#: portal/templates/redesign/programs.html:139
+#: portal/templates/redesign/programs.html:162
 msgid "Find Sites"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:139
+#: portal/templates/redesign/programs.html:151
 msgid "Preschool"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:140
+#: portal/templates/redesign/programs.html:152
 msgid "Ages 3 and 4"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:141
+#: portal/templates/redesign/programs.html:153
 msgid ""
 "Preschool programs may be referred to as Head Start or Preschool for All."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:143
+#: portal/templates/redesign/programs.html:155
 msgid "3- and 4-year-old children from qualifying families."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:146
+#: portal/templates/redesign/programs.html:158
 msgid ""
 "Educational and social development activities that promote school readiness."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:147
+#: portal/templates/redesign/programs.html:159
 msgid "Either a half-day or a full-day of instruction."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:165
+#: portal/templates/redesign/programs.html:177
 msgid "Kindergarten"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:166
+#: portal/templates/redesign/programs.html:178
 msgid "Age 5"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:167
+#: portal/templates/redesign/programs.html:179
 msgid ""
 "Children who are 5 years old by September 1st of the current school year "
 "should enroll in kindergarten at a CPS preschool. Visit the CPS website to "
 "enroll a child in kindergarten."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:179
+#: portal/templates/redesign/programs.html:191
 msgid "Types of Programs"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:180
+#: portal/templates/redesign/programs.html:192
 msgid ""
 "The early education programs at the City of Chicago are available in a "
 "number of settings:"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:184
+#: portal/templates/redesign/programs.html:196
 msgid "Chicago Public Schools (CPS) Programs"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:185
+#: portal/templates/redesign/programs.html:197
 msgid "Age Group: 3 and 4"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:186
+#: portal/templates/redesign/programs.html:198
 msgid ""
 "Many CPS elementary schools offer early learning programs as a part of their "
 "services."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:190
+#: portal/templates/redesign/programs.html:202
 msgid "Community Based Programs"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:191
+#: portal/templates/redesign/programs.html:203
 msgid "Age Group: Birth to 4"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:192
+#: portal/templates/redesign/programs.html:204
 msgid ""
 "Neighborhood locations provide early childhood education and infant and "
 "toddler care. Hours vary by site."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:198
+#: portal/templates/redesign/programs.html:210
 msgid ""
 "Home Visiting Care is also available for qualifying families, for children "
 "between the ages of birth to 3. Visiting coaches provide early care and "
 "consulting in the family’s home to qualifying families."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:203
+#: portal/templates/redesign/programs.html:215
 msgid ""
 "Note: Chicago Public Schools and community-based sites are not able to "
 "provide transportation to all early learning programs across the city. "
@@ -2651,22 +2664,22 @@ msgid ""
 "\"http://www.transitchicago.com\">CTA website</a>."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:208
+#: portal/templates/redesign/programs.html:220
 msgid "Choosing the Right Program"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:209
+#: portal/templates/redesign/programs.html:221
 msgid ""
 "Quality ratings for Chicago Early Learning programs, and programs across "
 "Illinois and the country, offer families more insight before they make final "
 "choices about a program for their child."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:215
+#: portal/templates/redesign/programs.html:227
 msgid "What does “Quality Rating” (QRIS) mean?"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:216
+#: portal/templates/redesign/programs.html:228
 msgid ""
 "Quality Ratings are assessments of early learning programs used by "
 "Excelerate Illinois to help families understand program quality and help "
@@ -2681,7 +2694,7 @@ msgid ""
 "\">ExcelerateIllinois.com</a>."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:223
+#: portal/templates/redesign/programs.html:235
 msgid ""
 "Accreditation is another way of measuring and understanding early learning "
 "program quality; accredited status means that a program has met high "
@@ -2693,89 +2706,89 @@ msgid ""
 "environment, and management."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:224
+#: portal/templates/redesign/programs.html:236
 msgid ""
 "To learn more about accreditation of early learning programs and how such "
 "standards can help guide families searching for early learning programs, "
 "click on one of the following links:"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:225
+#: portal/templates/redesign/programs.html:237
 msgid "National Association for the Education of Young Children"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:226
+#: portal/templates/redesign/programs.html:238
 msgid "National Early Childhood Program Accreditation"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:227
+#: portal/templates/redesign/programs.html:239
 msgid "Council on Accreditation"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:236
-#: portal/templates/redesign/programs.html:245
+#: portal/templates/redesign/programs.html:248
+#: portal/templates/redesign/programs.html:257
 msgid "What Makes a Great Program?"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:237
+#: portal/templates/redesign/programs.html:249
 msgid "Visit your top choice early learning programs in person, if you can."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:238
+#: portal/templates/redesign/programs.html:250
 msgid "You will know it’s a strong program when you see the following:"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:246
+#: portal/templates/redesign/programs.html:258
 msgid ""
 "Visit your top choice early learning programs in person, if you can. You "
 "will know it’s a strong program when you see the following:"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:250
+#: portal/templates/redesign/programs.html:262
 msgid "Child-Friendly Spaces"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:251
+#: portal/templates/redesign/programs.html:263
 msgid ""
 "A safe, child-friendly space for 20 preschoolers at most, with toys and "
 "materials indoors and outdoors"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:255
+#: portal/templates/redesign/programs.html:267
 msgid "Top-Notch Teachers"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:256
+#: portal/templates/redesign/programs.html:268
 msgid ""
 "Attentive, engaged teachers with 4-year degrees and training, 1:10 teacher-"
 "child ratios for Pre-K"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:260
+#: portal/templates/redesign/programs.html:272
 msgid "Engaged Students"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:261
+#: portal/templates/redesign/programs.html:273
 msgid ""
 "Variety in 1-1, small and full group age appropriate activities, with meals "
 "and naptime offered"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:265
+#: portal/templates/redesign/programs.html:277
 msgid "And So Much More..."
 msgstr ""
 
-#: portal/templates/redesign/programs.html:266
+#: portal/templates/redesign/programs.html:278
 msgid ""
 "Visitors welcomed with required safety measures, frequent handwashing by "
 "children and adults"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:276
+#: portal/templates/redesign/programs.html:288
 msgid "Other Local Activities and Resources"
 msgstr ""
 
-#: portal/templates/redesign/programs.html:277
+#: portal/templates/redesign/programs.html:289
 msgid ""
 "See our Resources page to learn more about programs for young children "
 "throughout the city that are not part of Chicago Early Learning."
