@@ -2627,11 +2627,8 @@ msgid "Important Announcement"
 msgstr ""
 
 #: portal/templates/redesign/index.html:134
-#, fuzzy
-#| msgid "Learn more about high quality early learning programs"
 msgid "Explore our early learning programs!"
-msgstr ""
-"Aprenda más acerca de los programas de educación temprana de alta calidad"
+msgstr "¡Explore nuestros programas de Educación Temprana!"
 
 #: portal/templates/redesign/index.html:135
 msgid ""
@@ -2649,7 +2646,7 @@ msgstr "¿Cuál es el proceso de inscripción?"
 #: portal/templates/redesign/index.html:155
 #: portal/templates/redesign/index.html:170
 msgid "WATCH: How To Apply"
-msgstr ""
+msgstr "VEA: Cómo hacer la solicitud"
 
 #: portal/templates/redesign/index.html:159
 msgid ""
@@ -2684,7 +2681,7 @@ msgstr "Últimas noticias"
 
 #: portal/templates/redesign/index.html:201
 msgid "Mayor Emanuel Launches Improved Universal Preschool Application"
-msgstr ""
+msgstr "El alcalde Emanuel lanza la Solicitud Universal para Preescolar Mejorada"
 
 #: portal/templates/redesign/index.html:204
 msgid ""
@@ -2692,11 +2689,11 @@ msgid ""
 "online preschool application, which gives families a single point of entry "
 "to access the more than 600 high-quality community and school based "
 "preschool programs throughout Chicago."
-msgstr ""
+msgstr "El alcalde Emanuel visitó la Biblioteca Avalon Park para anunciar la solicitud universal en línea para preescolar que ha sido renovada y le da a las familias un solo punto de entrada para tener acceso a más de 600 programas preescolares de alta calidad basados en escuelas y en la comunidad a lo largo de Chicago."
 
 #: portal/templates/redesign/index.html:207
 msgid "Read More on the City of Chicago website"
-msgstr ""
+msgstr "Lea más en el sitio Web de la Ciudad de Chicago"
 
 #: portal/templates/redesign/index.html:216
 #: portal/templates/redesign/resources.html:162
@@ -2706,7 +2703,7 @@ msgid ""
 "maker space and distinct areas or “neighborhoods” for early learners: ages "
 "0-5, middle-childhood learners: 6-10 and tweens: ages 11-14 with a full "
 "digital media lab..."
-msgstr ""
+msgstr "La recientemente reabierta Biblioteca para Niños Thomas Hughes apoyada por Exelon, fue inaugurada por el alcalde Emanuel el 13 de julio. Este espacio tiene una nueva visión y se enorgullece de tener un espacio “Maker Lab” en donde se pueden aprender nuevas tecnologías y áreas específicas llamadas “vecindarios”, las cuales son para los niños que están en la etapa del aprendizaje temprano: edades de 0 a 5 años; para los aprendices en la etapa media: edades de 6 a 10 años; y para los adolescentes: edades de 11 a 14 años; además hay un laboratorio completo de medios digitales..."
 
 #: portal/templates/redesign/index.html:219
 #: portal/templates/redesign/index.html:243
@@ -2720,10 +2717,8 @@ msgstr ""
 "¡Subscríbase a nuestro correo electrónico y las listas para recibir textos!"
 
 #: portal/templates/redesign/index.html:242
-#, fuzzy
-#| msgid "to help make the Chicago Early Learning Portal better."
 msgid "Meet all our partners and learn more about Chicago Early Learning."
-msgstr "el portal del Chicago Educacíon Temprana."
+msgstr "Conozca a todos nuestros socios y conozca más acerca de la Educación Temprana de Chicago."
 
 #: portal/templates/redesign/outreach.html:53
 msgid ""
