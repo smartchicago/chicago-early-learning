@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-01 11:33-0500\n"
+"POT-Creation-Date: 2017-10-01 11:41-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -445,10 +445,9 @@ msgstr ""
 msgid "Click to use your current location"
 msgstr ""
 
-#: portal/templates/base-search.html:26 portal/templates/index.html:52
-#: portal/templates/index.html.py:70 portal/templates/index.html:71
-#: portal/templates/redesign/index.html:30
-#: portal/templates/redesign/index.html:58
+#: portal/templates/base-search.html:26
+#: portal/templates/redesign/index.html:37
+#: portal/templates/redesign/index.html:65
 #: portal/templates/redesign/search.html:8
 msgid "Search"
 msgstr ""
@@ -664,109 +663,8 @@ msgstr ""
 msgid "How to Apply"
 msgstr ""
 
-#: portal/templates/how-to-apply.html:15 portal/templates/index.html:113
+#: portal/templates/how-to-apply.html:15
 msgid "Apply Today"
-msgstr ""
-
-#: portal/templates/index.html:34
-msgid ""
-"Parents! Join us on August 4 for a FREE, fun-filled conference designed "
-"specifically for parents of young children. Register today: "
-msgstr ""
-
-#: portal/templates/index.html:36 portal/templates/index.html.py:82
-msgid ""
-"There is no limit to what your child can accomplish! Jumpstart your child's "
-"education with Chicago Early Learning!"
-msgstr ""
-
-#: portal/templates/index.html:38 portal/templates/index.html.py:84
-msgid "Complete your child's preschool application online today!"
-msgstr ""
-
-#: portal/templates/index.html:40
-#, python-format
-msgid ""
-"Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
-"information."
-msgstr ""
-
-#: portal/templates/index.html:49
-msgid "Enter an address, center, or zip code"
-msgstr ""
-
-#: portal/templates/index.html:57 portal/templates/redesign/index.html:35
-#: portal/templates/redesign/index.html:63
-msgid "Use your current location"
-msgstr ""
-
-#: portal/templates/index.html:86
-#, python-format
-msgid ""
-"The Colman Family Resource Center will be closed June 21st and 22nd. Please "
-"see <a href=\"%(how_to_apply_url)s\">this list</a> for other options, and "
-"plan to visit another Family Resource Center that day."
-msgstr ""
-
-#: portal/templates/index.html:88
-#, python-format
-msgid ""
-"Questions? Browse our <a href=\"%(faq_url)s\">FAQ page</a> for more "
-"information, or call the Chicago Early Learning Hotline:"
-msgstr ""
-
-#: portal/templates/index.html:99
-#: portal/templates/redesign/family-resource-centers.html:335
-#: portal/templates/redesign/index.html:90
-#: portal/templates/redesign/index.html:107
-#: portal/templates/redesign/index.html:129
-#: portal/templates/redesign/index.html:153
-#: portal/templates/redesign/index.html:178
-#: portal/templates/redesign/programs.html:74
-#: portal/templates/redesign/programs.html:86
-#: portal/templates/redesign/programs.html:98
-#: portal/templates/redesign/programs.html:168
-#: portal/templates/redesign/programs.html:278
-msgid "Learn More"
-msgstr ""
-
-#: portal/templates/index.html:101
-msgid ""
-"Children who participate in high-quality early learning experiences are "
-"better prepared for success in both kindergarten and over a lifetime of "
-"learning."
-msgstr ""
-
-#: portal/templates/index.html:102
-msgid "Learn more about high quality early learning programs"
-msgstr ""
-
-#: portal/templates/index.html:106
-msgid "Find & Compare"
-msgstr ""
-
-#: portal/templates/index.html:108
-msgid ""
-"Find the right preschool program for your child. Search by the address where "
-"you live or work, or by other features you care most about and then compare "
-"your favorite programs."
-msgstr ""
-
-#: portal/templates/index.html:109
-msgid "Find and compare locations now"
-msgstr ""
-
-#: portal/templates/index.html:115
-#, python-format
-msgid ""
-"Are you ready to apply for a preschool program for your 3- or 4-year old? <a "
-"href=\"%(how_to_apply_url)s\">Learn more</a> about the application and "
-"enrollment process or call <a href=\"tel:3122291690\">312-229-1690</a> with "
-"your questions. Then fill out a preschool application."
-msgstr ""
-
-#: portal/templates/index.html:116
-msgid "Fill out an application online"
 msgstr ""
 
 #: portal/templates/location-map.html:41 portal/templates/location-map.html:83
@@ -787,7 +685,7 @@ msgid "Get Directions"
 msgstr ""
 
 #: portal/templates/location-map.html:47 portal/templates/location-map.html:76
-#: portal/templates/location.html:51 portal/templates/redesign/index.html:88
+#: portal/templates/location.html:51 portal/templates/redesign/index.html:95
 msgid "Apply Today!"
 msgstr ""
 
@@ -913,7 +811,7 @@ msgid "Learning Blog"
 msgstr ""
 
 #: portal/templates/redesign/blog.html:25
-#: portal/templates/redesign/index.html:206
+#: portal/templates/redesign/index.html:213
 #: portal/templates/redesign/resources.html:161
 msgid "Thomas Hughes Children's Library Re-Opened"
 msgstr ""
@@ -947,7 +845,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/connect.html:16
-#: portal/templates/redesign/index.html:225
+#: portal/templates/redesign/index.html:232
 msgid "Stay up to date on Chicago Early Learning!"
 msgstr ""
 
@@ -1054,6 +952,20 @@ msgstr ""
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year-old? "
 "Learn about the process here or call (312) 229-1690 with your questions."
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:335
+#: portal/templates/redesign/index.html:97
+#: portal/templates/redesign/index.html:114
+#: portal/templates/redesign/index.html:136
+#: portal/templates/redesign/index.html:160
+#: portal/templates/redesign/index.html:185
+#: portal/templates/redesign/programs.html:74
+#: portal/templates/redesign/programs.html:86
+#: portal/templates/redesign/programs.html:98
+#: portal/templates/redesign/programs.html:168
+#: portal/templates/redesign/programs.html:278
+msgid "Learn More"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:28
@@ -2366,106 +2278,116 @@ msgid ""
 "Resource Centers."
 msgstr ""
 
-#: portal/templates/redesign/index.html:20
+#: portal/templates/redesign/index.html:27
 msgid ""
 "Look What <span class=\"d-inline\"><span class=\"chalk blue b-white\">I</"
 "span></span> Can Do!"
 msgstr ""
 
-#: portal/templates/redesign/index.html:21
-#: portal/templates/redesign/index.html:50
+#: portal/templates/redesign/index.html:28
+#: portal/templates/redesign/index.html:57
 msgid ""
 "There is no limit to what your child can accomplish. Jumpstart your child's "
 "education with Chicago Early Learning!"
 msgstr ""
 
-#: portal/templates/redesign/index.html:22
-#: portal/templates/redesign/index.html:51
+#: portal/templates/redesign/index.html:29
+#: portal/templates/redesign/index.html:58
 msgid ""
 "Enter your address (work, home, or somewhere else!) to find a preschool or "
 "early learning program convenient for you and your family."
 msgstr ""
 
-#: portal/templates/redesign/index.html:27
-#: portal/templates/redesign/index.html:55
+#: portal/templates/redesign/index.html:34
+#: portal/templates/redesign/index.html:62
 msgid "Enter an address, site, or zip code"
 msgstr ""
 
-#: portal/templates/redesign/index.html:75
+#: portal/templates/redesign/index.html:42
+#: portal/templates/redesign/index.html:70
+msgid "Use your current location"
+msgstr ""
+
+#: portal/templates/redesign/index.html:82
 #: portal/templates/redesign/programs.html:37
 msgid ""
 "“Every child in every neighborhood deserves a quality education and that "
 "must begin in their earliest years.”"
 msgstr ""
 
-#: portal/templates/redesign/index.html:76
+#: portal/templates/redesign/index.html:83
 #: portal/templates/redesign/programs.html:39
 msgid "Chicago Mayor Rahm Emanuel"
 msgstr ""
 
-#: portal/templates/redesign/index.html:84
+#: portal/templates/redesign/index.html:91
 msgid "Important Update"
 msgstr ""
 
-#: portal/templates/redesign/index.html:89
+#: portal/templates/redesign/index.html:96
+#, python-format
 msgid ""
-"Over 14,000 preschool applications and counting! Are you ready to sign up "
-"your child? Learn more about the preschool application for 3 and 4 year-olds:"
+"Pre-K Application Process Announcement: As of October 2, 2017, summer sites "
+"for <a class=\"a-yellow\" href=\"%(centers_url)s\">Family Resource Centers</"
+"a> will close until next year. Colman, 4655 S. Dearborn St., will remain "
+"open as the central location for Chicago Public Schools verification every "
+"Monday - Friday, 9AM - 5PM. For more information on the Pre-K application "
+"process, <a class=\"a-yellow\" href=\"%(how_to_apply_url)s\">click here</a>."
 msgstr ""
 
-#: portal/templates/redesign/index.html:100
-#: portal/templates/redesign/index.html:104
+#: portal/templates/redesign/index.html:107
+#: portal/templates/redesign/index.html:111
 msgid "Important Announcement"
 msgstr ""
 
-#: portal/templates/redesign/index.html:127
+#: portal/templates/redesign/index.html:134
 msgid "Explore our early learning programs!"
 msgstr ""
 
-#: portal/templates/redesign/index.html:128
+#: portal/templates/redesign/index.html:135
 msgid ""
 "Children who participate in high-quality early learning experiences are "
 "better prepared for success in kindergarten and beyond."
 msgstr ""
 
-#: portal/templates/redesign/index.html:142
+#: portal/templates/redesign/index.html:149
 msgid "What is the preschool application process?"
 msgstr ""
 
-#: portal/templates/redesign/index.html:148
-#: portal/templates/redesign/index.html:163
+#: portal/templates/redesign/index.html:155
+#: portal/templates/redesign/index.html:170
 msgid "WATCH: How To Apply"
 msgstr ""
 
-#: portal/templates/redesign/index.html:152
+#: portal/templates/redesign/index.html:159
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year-old? "
 "Learn about the process here or call <a class=\"a-orange\" href="
 "\"tel:3122291690\">(312) 229-1690</a> with your questions."
 msgstr ""
 
-#: portal/templates/redesign/index.html:176
+#: portal/templates/redesign/index.html:183
 msgid "Early learning doesn’t only take place in a preschool classroom."
 msgstr ""
 
-#: portal/templates/redesign/index.html:177
+#: portal/templates/redesign/index.html:184
 msgid ""
 "Chicago offers a variety of stimulating children’s activities to get kids "
 "learning, moving, and playing. Learn more about what is offered by city "
 "agencies and organizations."
 msgstr ""
 
-#: portal/templates/redesign/index.html:187
+#: portal/templates/redesign/index.html:194
 #: portal/templates/redesign/partials/_footer.html:32
 #: portal/templates/redesign/resources.html:155
 msgid "Latest News"
 msgstr ""
 
-#: portal/templates/redesign/index.html:194
+#: portal/templates/redesign/index.html:201
 msgid "Mayor Emanuel Launches Improved Universal Preschool Application"
 msgstr ""
 
-#: portal/templates/redesign/index.html:197
+#: portal/templates/redesign/index.html:204
 msgid ""
 "Mayor Emanuel visited Avalon Park Library to announce the revamped universal "
 "online preschool application, which gives families a single point of entry "
@@ -2473,11 +2395,11 @@ msgid ""
 "preschool programs throughout Chicago."
 msgstr ""
 
-#: portal/templates/redesign/index.html:200
+#: portal/templates/redesign/index.html:207
 msgid "Read More on the City of Chicago website"
 msgstr ""
 
-#: portal/templates/redesign/index.html:209
+#: portal/templates/redesign/index.html:216
 #: portal/templates/redesign/resources.html:162
 msgid ""
 "The newly re-opened Thomas Hughes Children’s Library powered by Exelon, was "
@@ -2487,17 +2409,17 @@ msgid ""
 "digital media lab..."
 msgstr ""
 
-#: portal/templates/redesign/index.html:212
-#: portal/templates/redesign/index.html:236
+#: portal/templates/redesign/index.html:219
+#: portal/templates/redesign/index.html:243
 #: portal/templates/redesign/resources.html:164
 msgid "Read More"
 msgstr ""
 
-#: portal/templates/redesign/index.html:226
+#: portal/templates/redesign/index.html:233
 msgid "Subscribe to our email and text lists."
 msgstr ""
 
-#: portal/templates/redesign/index.html:235
+#: portal/templates/redesign/index.html:242
 msgid "Meet all our partners and learn more about Chicago Early Learning."
 msgstr ""
 
