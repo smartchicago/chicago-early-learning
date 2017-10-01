@@ -246,6 +246,7 @@ a {
 .form-control {
   border-radius: 2px;
   font-style: italic;
+  padding: 1rem 1rem;
   border: 1px solid #ffffff; }
 
 .map-search-form {
@@ -258,12 +259,6 @@ a {
 
 .btn {
   padding-bottom: 5px; }
-
-.btn-lg {
-  padding-bottom: 12px; }
-
-.btn-half {
-  width: 50%; }
 
 .btn-orange {
   font-family: "Montserrat", sans-serif;
@@ -278,6 +273,8 @@ a {
   box-shadow: 0 0.25em #ee5713;
   transition-duration: 0s;
   margin-bottom: 4px;
+  padding: 1rem 5rem;
+  line-height: 1.125rem;
   border-radius: 2px; }
   .btn-orange:hover {
     border: none;
@@ -303,6 +300,8 @@ a {
   box-shadow: 0 0.25em #1ba7d5;
   transition-duration: 0s;
   margin-bottom: 4px;
+  padding: 1rem 5rem;
+  line-height: 1.125rem;
   border-radius: 2px; }
   .btn-blue:hover {
     border: none;
@@ -328,6 +327,8 @@ a {
   box-shadow: 0 0.25em #81c538;
   transition-duration: 0s;
   margin-bottom: 4px;
+  padding: 1rem 5rem;
+  line-height: 1.125rem;
   border-radius: 2px; }
   .btn-green:hover {
     border: none;
@@ -353,6 +354,8 @@ a {
   box-shadow: 0 0.25em #eab000;
   transition-duration: 0s;
   margin-bottom: 4px;
+  padding: 1rem 5rem;
+  line-height: 1.125rem;
   border-radius: 2px; }
   .btn-yellow:hover {
     border: none;
@@ -378,6 +381,8 @@ a {
   box-shadow: 0 0.25em #a3a3a3;
   transition-duration: 0s;
   margin-bottom: 4px;
+  padding: 1rem 5rem;
+  line-height: 1.125rem;
   border-radius: 2px; }
   .btn-gray:hover {
     border: none;
@@ -401,6 +406,19 @@ a {
     transition: 0s;
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.07); }
+
+.btn-lg {
+  padding-bottom: .75rem; }
+
+.btn-nav {
+  padding: .5rem 1rem; }
+
+.btn-half {
+  width: 50%;
+  padding: 1rem 0; }
+
+.btn-block {
+  padding: 1rem 0; }
 
 /* ---  JQuery Autocomplete Dropdown  --- */
 .ui-autocomplete {
@@ -560,7 +578,8 @@ span.divider-thin {
     .navbar-bottom .nav-content .apply-button a {
       margin-left: 1em;
       width: 7em;
-      font-size: 1.1em; }
+      font-size: 1.1em;
+      padding: 0.5rem 1rem; }
 
 footer {
   font-size: .8rem;
@@ -1065,7 +1084,7 @@ footer {
   #index-header .index-header form .btn-lg,
   #index-mobile-search .index-header form .form-control-lg,
   #index-mobile-search .index-header form .btn-lg {
-    font-size: .9rem; }
+    font-size: 1rem; }
   #index-header .index-header .header-content h1,
   #index-mobile-search .index-header .header-content h1 {
     font-size: 3rem;
@@ -1317,9 +1336,9 @@ footer {
 
 #connect {
   border-top: 1px solid #d6d6d6;
-  background-image: url("../img/redesign/elements/shapes_left_2x.png"), url("../img/redesign/elements/shapes_right_2x.png"), url("../img/redesign/elements/shapes_right_2x.png"), url("../img/redesign/elements/shapes_left_2x.png"), url("../img/redesign/elements/shapes_left_2x.png"), url("../img/redesign/elements/shapes_right_2x.png");
-  background-size: 30%;
-  background-position: left top, right top, left center, right center, left bottom, right bottom;
+  background-image: url("../img/redesign/elements/shapes_left_2x.png"), url("../img/redesign/elements/shapes_right_2x.png"), url("../img/redesign/elements/shapes_right_2x.png"), url("../img/redesign/elements/shapes_left_2x.png");
+  background-size: 20%;
+  background-position: left 25%, right 25%, left 75%, right 75%;
   background-repeat: no-repeat; }
   @media (max-width: 576px) {
     #connect {
