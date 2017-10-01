@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-01 11:41-0500\n"
+"POT-Creation-Date: 2017-10-01 12:13-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -669,23 +669,12 @@ msgstr ""
 
 #: portal/templates/location-map.html:41 portal/templates/location-map.html:83
 #: portal/templates/location.html:41
-#: portal/templates/redesign/family-resource-centers.html:53
-#: portal/templates/redesign/family-resource-centers.html:76
-#: portal/templates/redesign/family-resource-centers.html:100
-#: portal/templates/redesign/family-resource-centers.html:124
-#: portal/templates/redesign/family-resource-centers.html:146
-#: portal/templates/redesign/family-resource-centers.html:171
-#: portal/templates/redesign/family-resource-centers.html:195
-#: portal/templates/redesign/family-resource-centers.html:220
-#: portal/templates/redesign/family-resource-centers.html:245
-#: portal/templates/redesign/family-resource-centers.html:270
-#: portal/templates/redesign/family-resource-centers.html:294
-#: portal/templates/redesign/family-resource-centers.html:319
+#: portal/templates/redesign/family-resource-centers.html:52
 msgid "Get Directions"
 msgstr ""
 
 #: portal/templates/location-map.html:47 portal/templates/location-map.html:76
-#: portal/templates/location.html:51 portal/templates/redesign/index.html:95
+#: portal/templates/location.html:51
 msgid "Apply Today!"
 msgstr ""
 
@@ -873,88 +862,55 @@ msgstr ""
 #: portal/templates/redesign/family-resource-centers.html:22
 msgid ""
 " For families with a preschool placement at a Chicago Public Schools site, "
-"staff at Family Resource Centers will also verify income and employment "
-"documentation. (Families with a preschool placement at a community-based "
-"site will verify their documentation directly at the site location.)"
+"staff at Family Resource Centers will also verify income, employment, and "
+"birth record documentation. (Families with a preschool placement at a "
+"community-based site will verify their documentation directly at the site "
+"location.)"
 msgstr ""
 
 #: portal/templates/redesign/family-resource-centers.html:23
 msgid ""
-"All visitors to Family Resource Centers will have access to internet and "
-"computers. If a family would like to use a library computer, the user must "
-"have a library card. Anyone with a valid ID with name, photo and Chicago "
-"address can sign up for a library card on site."
+"At least one Family Resource Center is available year-round for families "
+"verifying their documentation. For the 2017 - 2018 school year, Colman, 4655 "
+"S. Dearborn St., is open from 9AM - 5PM, Monday - Friday."
 msgstr ""
 
 #: portal/templates/redesign/family-resource-centers.html:24
+msgid ""
+"In the summer months, about a dozen Chicago Public Libraries across the city "
+"serve as Family Resource Centers. All summer visitors will have access to "
+"internet and computers. If a family would like to use a library computer, "
+"the user must have a library card. Anyone with a valid ID with name, photo "
+"and Chicago address can sign up for a library card on site."
+msgstr ""
+
+#: portal/templates/redesign/family-resource-centers.html:25
 msgid ""
 "Applications will be taken 30 minutes after opening and will end 30 minutes "
 "before closing."
 msgstr ""
 
-#: portal/templates/redesign/family-resource-centers.html:25
+#: portal/templates/redesign/family-resource-centers.html:26
 msgid "Bilingual support available"
 msgstr ""
 
-#: portal/templates/redesign/family-resource-centers.html:48
-#: portal/templates/redesign/family-resource-centers.html:71
-#: portal/templates/redesign/family-resource-centers.html:95
-#: portal/templates/redesign/family-resource-centers.html:119
-#: portal/templates/redesign/family-resource-centers.html:166
-#: portal/templates/redesign/family-resource-centers.html:190
-#: portal/templates/redesign/family-resource-centers.html:215
-#: portal/templates/redesign/family-resource-centers.html:240
-#: portal/templates/redesign/family-resource-centers.html:265
-#: portal/templates/redesign/family-resource-centers.html:289
-#: portal/templates/redesign/family-resource-centers.html:314
-msgid "M+W"
-msgstr ""
-
 #: portal/templates/redesign/family-resource-centers.html:49
-#: portal/templates/redesign/family-resource-centers.html:72
-#: portal/templates/redesign/family-resource-centers.html:96
-#: portal/templates/redesign/family-resource-centers.html:120
-#: portal/templates/redesign/family-resource-centers.html:167
-#: portal/templates/redesign/family-resource-centers.html:191
-#: portal/templates/redesign/family-resource-centers.html:216
-#: portal/templates/redesign/family-resource-centers.html:241
-#: portal/templates/redesign/family-resource-centers.html:266
-#: portal/templates/redesign/family-resource-centers.html:290
-#: portal/templates/redesign/family-resource-centers.html:315
-msgid "T+TH"
-msgstr ""
-
-#: portal/templates/redesign/family-resource-centers.html:50
-#: portal/templates/redesign/family-resource-centers.html:73
-#: portal/templates/redesign/family-resource-centers.html:97
-#: portal/templates/redesign/family-resource-centers.html:121
-#: portal/templates/redesign/family-resource-centers.html:168
-#: portal/templates/redesign/family-resource-centers.html:192
-#: portal/templates/redesign/family-resource-centers.html:217
-#: portal/templates/redesign/family-resource-centers.html:242
-#: portal/templates/redesign/family-resource-centers.html:267
-#: portal/templates/redesign/family-resource-centers.html:291
-#: portal/templates/redesign/family-resource-centers.html:316
-msgid "F"
-msgstr ""
-
-#: portal/templates/redesign/family-resource-centers.html:143
 msgid "M-F"
 msgstr ""
 
-#: portal/templates/redesign/family-resource-centers.html:333
+#: portal/templates/redesign/family-resource-centers.html:66
 #: portal/templates/redesign/faq.html:72
 #: portal/templates/redesign/faq.html:281
 msgid "What is the application process?"
 msgstr ""
 
-#: portal/templates/redesign/family-resource-centers.html:334
+#: portal/templates/redesign/family-resource-centers.html:67
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year-old? "
 "Learn about the process here or call (312) 229-1690 with your questions."
 msgstr ""
 
-#: portal/templates/redesign/family-resource-centers.html:335
+#: portal/templates/redesign/family-resource-centers.html:68
 #: portal/templates/redesign/index.html:97
 #: portal/templates/redesign/index.html:114
 #: portal/templates/redesign/index.html:136
@@ -1229,66 +1185,65 @@ msgid "What number am I on the waitlist?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:121
-#: portal/templates/redesign/faq.html:603
 msgid ""
 "Why don’t I see an “offer” or a “wait list” status for one of my choices?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:122
-#: portal/templates/redesign/faq.html:613
+#: portal/templates/redesign/faq.html:603
 msgid "Can I verify my documents if I’m on a waitlist?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:123
-#: portal/templates/redesign/faq.html:622
+#: portal/templates/redesign/faq.html:612
 msgid ""
 "I was assigned a copay amount. How do I get more information or arrange "
 "payments?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:124
-#: portal/templates/redesign/faq.html:631
+#: portal/templates/redesign/faq.html:621
 msgid "What is CCAP?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:125
-#: portal/templates/redesign/faq.html:640
+#: portal/templates/redesign/faq.html:630
 msgid ""
 "What supports are available to preschool aged students who are enrolled in "
 "school and experiencing temporary living situations?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:133
-#: portal/templates/redesign/faq.html:655
+#: portal/templates/redesign/faq.html:645
 msgid "Other Questions"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:142
-#: portal/templates/redesign/faq.html:663
+#: portal/templates/redesign/faq.html:653
 msgid ""
 "How do I find early learning opportunities for children under 3 years old?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:143
-#: portal/templates/redesign/faq.html:672
+#: portal/templates/redesign/faq.html:662
 msgid ""
 "How do I find learning and enrichment opportunities for children over 5 "
 "years old?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:144
-#: portal/templates/redesign/faq.html:682
+#: portal/templates/redesign/faq.html:672
 msgid "How can I enroll my 5-year-old to enroll in kindergarten?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:145
-#: portal/templates/redesign/faq.html:691
+#: portal/templates/redesign/faq.html:681
 msgid ""
 "What should I do if I suspect my child needs special education services?"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:146
-#: portal/templates/redesign/faq.html:700
+#: portal/templates/redesign/faq.html:690
 msgid "Do you provide transportation to and/or from preschool?"
 msgstr ""
 
@@ -1342,15 +1297,14 @@ msgstr ""
 #: portal/templates/redesign/faq.html:586
 #: portal/templates/redesign/faq.html:595
 #: portal/templates/redesign/faq.html:605
-#: portal/templates/redesign/faq.html:615
-#: portal/templates/redesign/faq.html:624
+#: portal/templates/redesign/faq.html:614
+#: portal/templates/redesign/faq.html:623
 #: portal/templates/redesign/faq.html:633
-#: portal/templates/redesign/faq.html:643
+#: portal/templates/redesign/faq.html:655
 #: portal/templates/redesign/faq.html:665
-#: portal/templates/redesign/faq.html:675
-#: portal/templates/redesign/faq.html:684
-#: portal/templates/redesign/faq.html:693
-#: portal/templates/redesign/faq.html:702
+#: portal/templates/redesign/faq.html:674
+#: portal/templates/redesign/faq.html:683
+#: portal/templates/redesign/faq.html:692
 msgid "Back to Top"
 msgstr ""
 
@@ -1897,7 +1851,7 @@ msgid ""
 "off of the waitlist."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:614
+#: portal/templates/redesign/faq.html:604
 msgid ""
 "We recommend that all families wait to verify their documents until they "
 "have received an offer. If you have applied to a CPS school, you are welcome "
@@ -1906,13 +1860,13 @@ msgid ""
 "your chances of receiving an offer."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:623
+#: portal/templates/redesign/faq.html:613
 msgid ""
 "Work directly with your assigned preschool site to learn more, and arrange a "
 "system that works best for you."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:632
+#: portal/templates/redesign/faq.html:622
 msgid ""
 "Child Care Assistance Program (CCAP) funding is provided by the state to "
 "ensure low-income working parents have access to full-day care. Many "
@@ -1921,7 +1875,7 @@ msgid ""
 "specific questions about eligibility."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:641
+#: portal/templates/redesign/faq.html:631
 msgid ""
 "Preschool students enrolled in school-based preschool programs can ask to "
 "speak with the school's Students in Temporary Living Situations (STLS) "
@@ -1936,13 +1890,13 @@ msgid ""
 "eligibility, enrollment, or transportation."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:642
+#: portal/templates/redesign/faq.html:632
 msgid ""
 "Preschool students enrolling in a community-based program are encouraged to "
 "contact their site directly to learn what supports they offer."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:664
+#: portal/templates/redesign/faq.html:654
 #, python-format
 msgid ""
 "Visit our <a class=\"a-orange\" href=\"%(browse_url)s\">Find and Compare "
@@ -1951,7 +1905,7 @@ msgid ""
 "a to learn more about programs offered by other city agencies around Chicago."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:673
+#: portal/templates/redesign/faq.html:663
 msgid ""
 "The first effort of its kind to take place in a major city in the United "
 "States, Chicago City of Learning is a groundbreaking effort that joins "
@@ -1963,20 +1917,20 @@ msgid ""
 "\">www.chicagocityoflearning.org</a>"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:674
+#: portal/templates/redesign/faq.html:664
 #, python-format
 msgid ""
 "Other early learning resources are available on our <a class=\"a-orange\" "
 "href=\"%(resources_url)s\">City Resources page</a>."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:683
+#: portal/templates/redesign/faq.html:673
 msgid ""
 "Visit the <a class=\"a-orange\" href=\"http://cps.edu/Pages/home.aspx\">CPS "
 "website</a> to enroll a child in kindergarten."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:692
+#: portal/templates/redesign/faq.html:682
 msgid ""
 "Please attend a Child Find Team Screening Site to obtain a free "
 "developmental screening. Developmental screenings can tell you if your child "
@@ -1988,7 +1942,7 @@ msgid ""
 "times."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:701
+#: portal/templates/redesign/faq.html:691
 msgid ""
 "At this time, Chicago Early Learning programs do not provide regular "
 "transportation options to students. Families are encouraged to map out their "
@@ -1996,11 +1950,11 @@ msgid ""
 "suggestions."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:714
+#: portal/templates/redesign/faq.html:704
 msgid "Still have questions?"
 msgstr ""
 
-#: portal/templates/redesign/faq.html:715
+#: portal/templates/redesign/faq.html:705
 msgid "Call the Chicago Early Learning Hotline!"
 msgstr ""
 
@@ -2324,15 +2278,19 @@ msgstr ""
 msgid "Important Update"
 msgstr ""
 
+#: portal/templates/redesign/index.html:95
+msgid "Pre-K Application Process Announcement"
+msgstr ""
+
 #: portal/templates/redesign/index.html:96
 #, python-format
 msgid ""
-"Pre-K Application Process Announcement: As of October 2, 2017, summer sites "
-"for <a class=\"a-yellow\" href=\"%(centers_url)s\">Family Resource Centers</"
-"a> will close until next year. Colman, 4655 S. Dearborn St., will remain "
-"open as the central location for Chicago Public Schools verification every "
-"Monday - Friday, 9AM - 5PM. For more information on the Pre-K application "
-"process, <a class=\"a-yellow\" href=\"%(how_to_apply_url)s\">click here</a>."
+"As of October 2, 2017, summer sites for <a class=\"a-yellow\" href="
+"\"%(centers_url)s\">Family Resource Centers</a> will close until next year. "
+"Colman, 4655 S. Dearborn St., will remain open as the central location for "
+"Chicago Public Schools verification every Monday - Friday, 9AM - 5PM. For "
+"more information on the Pre-K application process, <a class=\"a-yellow\" "
+"href=\"%(how_to_apply_url)s\">click here</a>."
 msgstr ""
 
 #: portal/templates/redesign/index.html:107

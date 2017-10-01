@@ -238,6 +238,11 @@ a {
     height: 1.5em;
     width: 1.5em; }
 
+.svg-illustration {
+  max-height: 20rem; }
+  .svg-illustration svg {
+    max-height: 20rem; }
+
 .form-control {
   border-radius: 2px;
   font-style: italic;
@@ -1124,19 +1129,16 @@ footer {
 
 /* -- Content Blocks General -- */
 .index-section-block .index-info-block {
-  height: 25em;
+  min-height: 25em;
   display: inline-flex;
   flex-direction: column; }
   .index-section-block .index-info-block .index-sub-block {
     flex-grow: 2;
     display: inline-flex;
     flex-direction: column; }
-    .index-section-block .index-info-block .index-sub-block .sub-block-content {
-      width: 90%;
-      margin: auto !important; }
-      .index-section-block .index-info-block .index-sub-block .sub-block-content h1 {
-        padding: 0;
-        font-size: 2.25rem; }
+    .index-section-block .index-info-block .index-sub-block .sub-block-content h1 {
+      padding: 0;
+      font-size: 2.25rem; }
     @media (max-width: 768px) {
       .index-section-block .index-info-block .index-sub-block {
         width: 100%; }
@@ -1478,7 +1480,9 @@ footer {
   font-weight: 500; }
 #apply h2 {
   font-size: 1.5em;
-  font-weight: 500; }
+  line-height: 1.875rem;
+  font-weight: 500;
+  margin-bottom: 0; }
 #apply h3 {
   font-size: 1.2em;
   font-weight: 500; }
@@ -1732,34 +1736,41 @@ footer {
   background-color: #1dc1ea; }
 
 #programs-kindergarten {
-  background-color: #ffc104; }
+  background-color: #ffe009; }
 
 #programs-kindergarten-info {
   min-height: 20em; }
 
 #programs-infants-info,
 #programs-preschool-info,
-#programs-kindergarten-info {
+#programs-kindergarten-info,
+#programs-resources-info {
   color: #ffffff; }
   #programs-infants-info h1,
   #programs-preschool-info h1,
-  #programs-kindergarten-info h1 {
+  #programs-kindergarten-info h1,
+  #programs-resources-info h1 {
     font-size: 2rem; }
   #programs-infants-info h2,
   #programs-preschool-info h2,
-  #programs-kindergarten-info h2 {
+  #programs-kindergarten-info h2,
+  #programs-resources-info h2 {
     font-size: 1.5rem;
     line-height: 2rem; }
   #programs-infants-info h4,
   #programs-preschool-info h4,
-  #programs-kindergarten-info h4 {
+  #programs-kindergarten-info h4,
+  #programs-resources-info h4 {
     font-style: italic;
     color: #f0f0f0; }
   #programs-infants-info ul,
   #programs-preschool-info ul,
-  #programs-kindergarten-info ul {
+  #programs-kindergarten-info ul,
+  #programs-resources-info ul {
     padding-left: 2em; }
 
+#programs-types h1 {
+  font-size: 2rem; }
 @media (min-width: 768px) {
   #programs-types #program-types-cps {
     border-right: 3px solid #ffffff; } }
@@ -1828,7 +1839,7 @@ footer {
 
 /* -- General Resources -- */
 h1 {
-  font-size: 3rem; }
+  font-size: 2rem; }
 
 h2 {
   font-size: 1.5rem; }
