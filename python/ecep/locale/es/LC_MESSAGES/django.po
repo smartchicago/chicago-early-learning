@@ -2945,10 +2945,8 @@ msgstr ""
 
 #: portal/templates/redesign/programs.html:127
 #: portal/templates/redesign/programs.html:150
-#, fuzzy
-#| msgid "Find Me"
 msgid "Find Sites"
-msgstr "Encuéntreme"
+msgstr "Encuentre los sitios"
 
 #: portal/templates/redesign/programs.html:139
 msgid "Preschool"
@@ -2982,18 +2980,18 @@ msgstr "Ya sea medio día o un día completo de instrucción."
 
 #: portal/templates/redesign/programs.html:165
 msgid "Kindergarten"
-msgstr ""
+msgstr "Jardín de niños"
 
 #: portal/templates/redesign/programs.html:166
 msgid "Age 5"
-msgstr ""
+msgstr "5 años de edad"
 
 #: portal/templates/redesign/programs.html:167
 msgid ""
 "Children who are 5 years old by September 1st of the current school year "
 "should enroll in kindergarten at a CPS preschool. Visit the CPS website to "
 "enroll a child in kindergarten."
-msgstr ""
+msgstr "Los niños que han cumplido 5 años de edad para el 1º de septiembre del año escolar corriente deben inscribirse en un jardín de niños en un preescolar de CPS. Visite el sitio Web de CPS para inscribir a su niño en el jardín de niños."
 
 #: portal/templates/redesign/programs.html:179
 msgid "Types of Programs"
@@ -3056,18 +3054,19 @@ msgid ""
 "However, Chicago Early Learning encourages families to take advantage of "
 "public transit opportunities. Learn more at the <a class=\"a-orange\" href="
 "\"http://www.transitchicago.com\">CTA website</a>."
-msgstr ""
+msgstr "Nota: Las Escuelas Públicas de Chicago y los sitios basados en la comunidad no pueden proporcionar transportación hacia todos los programas de Educación Temprana a lo largo de la ciudad. Sin embrago, el programa de Educación Temprana de Chicago recomienda a las familias que tomen ventaja de las oportunidades que ofrece el transporte público. Conozca más en <a class=\"a-orange\" href="
+"\"http://www.transitchicago.com\">el sitio Web de CTA</a>."
 
 #: portal/templates/redesign/programs.html:208
 msgid "Choosing the Right Program"
-msgstr ""
+msgstr "Cómo escoger el programa apropiado"
 
 #: portal/templates/redesign/programs.html:209
 msgid ""
 "Quality ratings for Chicago Early Learning programs, and programs across "
 "Illinois and the country, offer families more insight before they make final "
 "choices about a program for their child."
-msgstr ""
+msgstr "Las clasificaciones de calidad de los programas de Educación Temprana de Chicago y de otros programas en Illinois y el país ofrecen a las familias información adicional para que puedan hacer sus decisiones finales acerca del mejor programa para su niño."
 
 #: portal/templates/redesign/programs.html:215
 msgid "What does “Quality Rating” (QRIS) mean?"
@@ -3145,71 +3144,71 @@ msgstr "Consejo de Acreditación"
 #: portal/templates/redesign/programs.html:236
 #: portal/templates/redesign/programs.html:245
 msgid "What Makes a Great Program?"
-msgstr ""
+msgstr "¿Qué es lo que hace que los programas sean estupendos?"
 
 #: portal/templates/redesign/programs.html:237
 msgid "Visit your top choice early learning programs in person, if you can."
-msgstr ""
+msgstr "Visite sus programas preferidos en persona si puede hacerlo."
 
 #: portal/templates/redesign/programs.html:238
 msgid "You will know it’s a strong program when you see the following:"
-msgstr ""
+msgstr "Usted sabrá si un programa es sólido cuando vea lo siguiente:"
 
 #: portal/templates/redesign/programs.html:246
 msgid ""
 "Visit your top choice early learning programs in person, if you can. You "
 "will know it’s a strong program when you see the following:"
-msgstr ""
+msgstr "Visite sus programas preferidos en persona si puede hacerlo. Usted sabrá si un programa es sólido cuando vea lo siguiente:"
 
 #: portal/templates/redesign/programs.html:250
 msgid "Child-Friendly Spaces"
-msgstr ""
+msgstr "Espacios especiales para niños"
 
 #: portal/templates/redesign/programs.html:251
 msgid ""
 "A safe, child-friendly space for 20 preschoolers at most, with toys and "
 "materials indoors and outdoors"
-msgstr ""
+msgstr "Un espacio seguro especial para hasta 20 niños en edad preescolar con juguetes y materiales, tanto en el interior como en el exterior."
 
 #: portal/templates/redesign/programs.html:255
 msgid "Top-Notch Teachers"
-msgstr ""
+msgstr "Maestros de alta calidad"
 
 #: portal/templates/redesign/programs.html:256
 msgid ""
 "Attentive, engaged teachers with 4-year degrees and training, 1:10 teacher-"
 "child ratios for Pre-K"
-msgstr ""
+msgstr "Maestros atentos e involucrados con carreras de cuatro años y capacitación; 1 maestro por cada diez estudiantes en los programas antes del jardín de niños."
 
 #: portal/templates/redesign/programs.html:260
 msgid "Engaged Students"
-msgstr ""
+msgstr "Estudiantes involucrados"
 
 #: portal/templates/redesign/programs.html:261
 msgid ""
 "Variety in 1-1, small and full group age appropriate activities, with meals "
 "and naptime offered"
-msgstr ""
+msgstr "Una variedad de actividades apropiadas uno a uno, en grupos pequeños y grandes, junto con la oferta de comidas y tiempo para la siesta."
 
 #: portal/templates/redesign/programs.html:265
 msgid "And So Much More..."
-msgstr ""
+msgstr "Y mucho más…"
 
 #: portal/templates/redesign/programs.html:266
 msgid ""
 "Visitors welcomed with required safety measures, frequent handwashing by "
 "children and adults"
-msgstr ""
+msgstr "Los visitantes son bienvenidos pero tienen que pasar por medidas de seguridad requeridas; los adultos y niños se lavan las manos frecuentemente."
 
 #: portal/templates/redesign/programs.html:276
 msgid "Other Local Activities and Resources"
-msgstr ""
+msgstr "Otras actividades y recursos locales"
 
 #: portal/templates/redesign/programs.html:277
 msgid ""
 "See our Resources page to learn more about programs for young children "
 "throughout the city that are not part of Chicago Early Learning."
-msgstr ""
+msgstr "Vea nuestra página de recursos para conocer más acerca de los programas que hay para los niños a lo largo de la ciudad y que no son parte de la Educación Temprana de Chicago."
 
 #: portal/templates/redesign/resources.html:33
 msgid ""
