@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-24 13:51-0500\n"
+"POT-Creation-Date: 2017-10-01 11:33-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -848,8 +848,8 @@ msgstr ""
 #: portal/templates/redesign/index.html:90
 #: portal/templates/redesign/index.html:107
 #: portal/templates/redesign/index.html:129
-#: portal/templates/redesign/index.html:152
-#: portal/templates/redesign/index.html:176
+#: portal/templates/redesign/index.html:153
+#: portal/templates/redesign/index.html:178
 #: portal/templates/redesign/programs.html:74
 #: portal/templates/redesign/programs.html:86
 #: portal/templates/redesign/programs.html:98
@@ -999,7 +999,8 @@ msgstr "Asientos Disponibles"
 
 #: portal/templates/location.html:145
 msgid "Note: Availability and placement are subject to eligibility"
-msgstr "Nota: La disponibilidad y la colocación están sujetas a la elegibilidad"
+msgstr ""
+"Nota: La disponibilidad y la colocación están sujetas a la elegibilidad"
 
 #: portal/templates/location.html:194
 msgid ""
@@ -1019,7 +1020,11 @@ msgid ""
 "Programs that receive national accreditation have demonstrated quality in "
 "areas such as teaching, curriculum, learning assessments, health, community "
 "relationships, physical environment, and management."
-msgstr "Los programas que reciben acreditación nacional han demostrado su calidad en áreas como la enseñanza, el currículo, las evaluaciones del aprendizaje, la salud, las relaciones con la comunidad, el entorno físico y la administración escolar."
+msgstr ""
+"Los programas que reciben acreditación nacional han demostrado su calidad en "
+"áreas como la enseñanza, el currículo, las evaluaciones del aprendizaje, la "
+"salud, las relaciones con la comunidad, el entorno físico y la "
+"administración escolar."
 
 #: portal/templates/location.html:269
 msgid "What does \"Quality Rating\" mean?"
@@ -1030,18 +1035,23 @@ msgid ""
 "Quality Rating indicates the quality of a site based on the Excelerate "
 "Illinois system. More information can be found at <a class=\"a-orange\" href="
 "\"http://excelerateillinois.com\">ExcelerateIllinois.com</a>."
-msgstr "Las clasificaciones de calidad indican la calidad de un sitio en base al sistema Excelerate Illinois. Más información acerca de esto se puede encontrar en <a class=\"a-orange\" href="
-"\"http://excelerateillinois.com\">ExcelerateIllinois.com</a>."
+msgstr ""
+"Las clasificaciones de calidad indican la calidad de un sitio en base al "
+"sistema Excelerate Illinois. Más información acerca de esto se puede "
+"encontrar en <a class=\"a-orange\" href=\"http://excelerateillinois.com"
+"\">ExcelerateIllinois.com</a>."
 
 #: portal/templates/location.html:283
 msgid ""
-"Are you a provider who works at this early learning center and needs to "
-"make changes to information on this page? <a class=\"a-orange\" href="
-"\"https://smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-"
-"form/\">Click here!</a><b>"
-msgstr "¿Es usted un proveedor que trabaja en este centro de Educación Temprana y necesita hacer cambios a la información en esta página? <a class=\"a-orange\" href="
-"\"https://smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-"
-"form/\">¡Oprima aquí!</a><b>"
+"Are you a provider who works at this early learning center and needs to make "
+"changes to information on this page? <a class=\"a-orange\" href=\"https://"
+"smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-form/"
+"\">Click here!</a><b>"
+msgstr ""
+"¿Es usted un proveedor que trabaja en este centro de Educación Temprana y "
+"necesita hacer cambios a la información en esta página? <a class=\"a-orange"
+"\" href=\"https://smartchicago2012.wufoo.com/forms/chicago-early-learning-"
+"provider-form/\">¡Oprima aquí!</a><b>"
 
 #: portal/templates/outreach.html:7 portal/templates/outreach.html.py:15
 #: portal/templates/redesign/outreach.html:8
@@ -1097,7 +1107,7 @@ msgid "Learning Blog"
 msgstr "Chicago Early Learning Portal (Portal de Aprendizaje Temprano)"
 
 #: portal/templates/redesign/blog.html:25
-#: portal/templates/redesign/index.html:199
+#: portal/templates/redesign/index.html:206
 #: portal/templates/redesign/resources.html:161
 msgid "Thomas Hughes Children's Library Re-Opened"
 msgstr "Reapertura de la Biblioteca para Niños Thomas Hughes"
@@ -1116,7 +1126,19 @@ msgid ""
 "sharing, called the Plaza, programming rooms, a Quiet Suite with a family "
 "washroom, a mother’s room and a quiet sitting area, and areas for STEM "
 "programming, story hours and conferences."
-msgstr "La recientemente reabierta Biblioteca para Niños Thomas Hughes apoyada por Exelon, fue inaugurada por el alcalde Emanuel el 13 de julio. Este espacio tiene una nueva visión y se enorgullece de tener un espacio “Maker Lab” en donde se pueden aprender nuevas tecnologías y áreas específicas llamadas “vecindarios”, las cuales son para los niños que están en la etapa del aprendizaje temprano: edades de 0 a 5 años; para los aprendices en la etapa media: edades de 6 a 10 años; y para los adolescentes: edades de 11 a 14 años; además hay un laboratorio completo de medios digitales. También hay un área común para compartir, llamada La Plaza, cuartos de programación, una sala tranquila con un baño familiar, una sala para mamás y un área para sentarse en silencio, así como áreas para la programación STEM, horas de cuentos y conferencias."
+msgstr ""
+"La recientemente reabierta Biblioteca para Niños Thomas Hughes apoyada por "
+"Exelon, fue inaugurada por el alcalde Emanuel el 13 de julio. Este espacio "
+"tiene una nueva visión y se enorgullece de tener un espacio “Maker Lab” en "
+"donde se pueden aprender nuevas tecnologías y áreas específicas llamadas "
+"“vecindarios”, las cuales son para los niños que están en la etapa del "
+"aprendizaje temprano: edades de 0 a 5 años; para los aprendices en la etapa "
+"media: edades de 6 a 10 años; y para los adolescentes: edades de 11 a 14 "
+"años; además hay un laboratorio completo de medios digitales. También hay un "
+"área común para compartir, llamada La Plaza, cuartos de programación, una "
+"sala tranquila con un baño familiar, una sala para mamás y un área para "
+"sentarse en silencio, así como áreas para la programación STEM, horas de "
+"cuentos y conferencias."
 
 #: portal/templates/redesign/blog.html:29
 msgid ""
@@ -1128,10 +1150,20 @@ msgid ""
 "has also provided funds to re-imagine additional branches early learning "
 "spaces and provide curated collections of toys and early STEM for families "
 "across the city."
-msgstr "Este nuevo espacio está acompañado con una programación renovada que integra las actividades STEM/STEAM a las colecciones de impresos, trae los programas de arte y “maker lab” a los pasillos de la biblioteca, e invita a todos a nuestro espacio a leer, descubrir y crear: todo lo cual comprende las tres áreas de aprendizaje en nuestro galardonado programa Reto de Aprendizaje para el Verano para los Lectores Rahm. Como parte del financiamiento, Exelon también ha proporcionado fondos para reimaginar otros espacios de aprendizaje temprano y proporcionar a las familias que viven a lo largo de la ciudad colecciones conservadas de juguetes y actividades STEM para el aprendizaje temprano."
+msgstr ""
+"Este nuevo espacio está acompañado con una programación renovada que integra "
+"las actividades STEM/STEAM a las colecciones de impresos, trae los programas "
+"de arte y “maker lab” a los pasillos de la biblioteca, e invita a todos a "
+"nuestro espacio a leer, descubrir y crear: todo lo cual comprende las tres "
+"áreas de aprendizaje en nuestro galardonado programa Reto de Aprendizaje "
+"para el Verano para los Lectores Rahm. Como parte del financiamiento, Exelon "
+"también ha proporcionado fondos para reimaginar otros espacios de "
+"aprendizaje temprano y proporcionar a las familias que viven a lo largo de "
+"la ciudad colecciones conservadas de juguetes y actividades STEM para el "
+"aprendizaje temprano."
 
 #: portal/templates/redesign/connect.html:16
-#: portal/templates/redesign/index.html:215
+#: portal/templates/redesign/index.html:225
 #, fuzzy
 #| msgid "to help make the Chicago Early Learning Portal better."
 msgid "Stay up to date on Chicago Early Learning!"
@@ -1267,6 +1299,7 @@ msgid "Click on the topics below for more details"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:36
+#: portal/templates/redesign/faq.html:158
 #, fuzzy
 #| msgid "Chicago Early Learning Portal"
 msgid "Finding Programs"
@@ -1477,6 +1510,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/faq.html:103
+#: portal/templates/redesign/faq.html:484
 msgid "Verifying and Enrolling"
 msgstr ""
 
@@ -1563,6 +1597,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/faq.html:133
+#: portal/templates/redesign/faq.html:655
 #, fuzzy
 #| msgid "Other Features"
 msgid "Other Questions"
@@ -1595,10 +1630,6 @@ msgstr ""
 #: portal/templates/redesign/faq.html:146
 #: portal/templates/redesign/faq.html:700
 msgid "Do you provide transportation to and/or from preschool?"
-msgstr ""
-
-#: portal/templates/redesign/faq.html:158
-msgid "Finding a Preschool Program"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:167
@@ -2045,10 +2076,6 @@ msgid ""
 "with the program to find out what supports are available."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:484
-msgid "Placement and Registration"
-msgstr ""
-
 #: portal/templates/redesign/faq.html:493
 msgid ""
 "Families will instantly learn whether their child is on the waitlist or has "
@@ -2058,8 +2085,9 @@ msgstr ""
 #: portal/templates/redesign/faq.html:494
 msgid ""
 "Families that receive a waitlist status are encouraged to consider applying "
-"to alternate sites by calling 312-744-9322. See more FAQs on the waitlist "
-"process below."
+"to alternate sites by calling <a class=\"a-orange\" href="
+"\"tel:3127449322\">312-744-9322</a>. See more FAQs on the waitlist process "
+"below."
 msgstr ""
 
 #: portal/templates/redesign/faq.html:495
@@ -2161,7 +2189,8 @@ msgid ""
 "from a waitlist on a first-come first-served basis. Because participation in "
 "early learning programs is an invaluable resource for your child, we "
 "encourage families that are on a waitlist to find a provider with "
-"availability that may also suit their needs by calling 312-744-9322."
+"availability that may also suit their needs by calling <a class=\"a-orange\" "
+"href=\"tel:3127449322\">312-744-9322</a>."
 msgstr ""
 
 #: portal/templates/redesign/faq.html:547
@@ -2271,10 +2300,6 @@ msgid ""
 "contact their site directly to learn what supports they offer."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:655
-msgid "General Questions"
-msgstr ""
-
 #: portal/templates/redesign/faq.html:664
 #, python-format
 msgid ""
@@ -2301,7 +2326,8 @@ msgid ""
 "to think about, pursue, and develop their interests. Find 1000s of "
 "opportunities at parks, libraries, community- and faith-based programs, "
 "schools, museums and cultural institutions, colleges and universities, and "
-"more at www.chicagocityoflearning.org"
+"more at <a class=\"a-orange\" href=\"http://www.chicagocityoflearning.org"
+"\">www.chicagocityoflearning.org</a>"
 msgstr ""
 "Chicago City of Learning (CCOL) es una iniciativa pionera que reúne "
 "oportunidades de aprendizaje para jóvenes de tal forma que les permite "
@@ -2379,10 +2405,13 @@ msgstr ""
 "inscribir a su niño en preescolar."
 
 #: portal/templates/redesign/how-to-apply.html:34
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "If you have any questions, please reference our <a href=\"%(faq_url)s"
+#| "\">FAQ page</a> for more details."
 msgid ""
-"If you have any questions, please reference our <a href=\"%(faq_url)s\">FAQ "
-"page</a> for more details."
+"If you have any questions, please reference our <a href=\"%(faq_url)s"
+"\"><i>FAQ page</i></a> for more details."
 msgstr ""
 "Si tiene preguntas visite nuestra pagina de <a href=\"%(faq_url)s"
 "\">Preguntas y Respuestas</a> para obtener mayor información."
@@ -2479,8 +2508,8 @@ msgstr ""
 #| "<a href=\"tel:3122291690\">312-229-1690</a>."
 msgid ""
 "If you have questions, please call our Chicago Early Learning Hotline: <a "
-"href=\"tel3122291690\">(312) 229-1690</a> or visit a Family Resource Center "
-"near you."
+"class=\"a-orange\" href=\"tel:3122291690\"><i>(312) 229-1690</i></a> or "
+"visit a Family Resource Center near you."
 msgstr ""
 "Para otras preguntas, por favor llame a nuestra línea directa para el apoyo "
 "familiar: <a href=\"tel:7735532010\">312-229-1690</a>."
@@ -2758,11 +2787,11 @@ msgid "What is the preschool application process?"
 msgstr "¿Cuál es el proceso de inscripción?"
 
 #: portal/templates/redesign/index.html:148
-#: portal/templates/redesign/index.html:162
+#: portal/templates/redesign/index.html:163
 msgid "WATCH: How To Apply"
 msgstr ""
 
-#: portal/templates/redesign/index.html:151
+#: portal/templates/redesign/index.html:152
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year-old? "
 "Learn about the process here or call <a class=\"a-orange\" href="
@@ -2773,11 +2802,11 @@ msgstr ""
 "inscripción o llame al <a href=\"tel:3122291690\">312-229-1690</a> con sus "
 "preguntas."
 
-#: portal/templates/redesign/index.html:174
+#: portal/templates/redesign/index.html:176
 msgid "Early learning doesn’t only take place in a preschool classroom."
 msgstr "El aprendizaje temprano no ocurre solamente en una aula de preescolar."
 
-#: portal/templates/redesign/index.html:175
+#: portal/templates/redesign/index.html:177
 msgid ""
 "Chicago offers a variety of stimulating children’s activities to get kids "
 "learning, moving, and playing. Learn more about what is offered by city "
@@ -2787,11 +2816,17 @@ msgstr ""
 "que ellos aprendan, se muevan y jueguen. Conozca más acerca de lo que las "
 "agencias y organizaciones de la ciudad ofrecen."
 
-#: portal/templates/redesign/index.html:191
+#: portal/templates/redesign/index.html:187
+#: portal/templates/redesign/partials/_footer.html:32
+#: portal/templates/redesign/resources.html:155
+msgid "Latest News"
+msgstr "Últimas noticias"
+
+#: portal/templates/redesign/index.html:194
 msgid "Mayor Emanuel Launches Improved Universal Preschool Application"
 msgstr ""
 
-#: portal/templates/redesign/index.html:192
+#: portal/templates/redesign/index.html:197
 msgid ""
 "Mayor Emanuel visited Avalon Park Library to announce the revamped universal "
 "online preschool application, which gives families a single point of entry "
@@ -2799,11 +2834,11 @@ msgid ""
 "preschool programs throughout Chicago."
 msgstr ""
 
-#: portal/templates/redesign/index.html:194
+#: portal/templates/redesign/index.html:200
 msgid "Read More on the City of Chicago website"
 msgstr ""
 
-#: portal/templates/redesign/index.html:200
+#: portal/templates/redesign/index.html:209
 #: portal/templates/redesign/resources.html:162
 msgid ""
 "The newly re-opened Thomas Hughes Children’s Library powered by Exelon, was "
@@ -2813,18 +2848,18 @@ msgid ""
 "digital media lab..."
 msgstr ""
 
-#: portal/templates/redesign/index.html:202
-#: portal/templates/redesign/index.html:226
+#: portal/templates/redesign/index.html:212
+#: portal/templates/redesign/index.html:236
 #: portal/templates/redesign/resources.html:164
 msgid "Read More"
 msgstr "Aprenda más"
 
-#: portal/templates/redesign/index.html:216
+#: portal/templates/redesign/index.html:226
 msgid "Subscribe to our email and text lists."
 msgstr ""
 "¡Subscríbase a nuestro correo electrónico y las listas para recibir textos!"
 
-#: portal/templates/redesign/index.html:225
+#: portal/templates/redesign/index.html:235
 #, fuzzy
 #| msgid "to help make the Chicago Early Learning Portal better."
 msgid "Meet all our partners and learn more about Chicago Early Learning."
@@ -2900,10 +2935,12 @@ msgstr "Encuentre centros"
 msgid "Resources"
 msgstr "Recursos"
 
-#: portal/templates/redesign/partials/_footer.html:32
-#: portal/templates/redesign/resources.html:155
-msgid "Latest News"
-msgstr "Últimas noticias"
+#: portal/templates/redesign/partials/_footer.html:39
+msgid ""
+"COPYRIGHT ©2017 CHICAGO EARLY LEARNING / BUILT BY <a class=\"a-yellow\" href="
+"\"http://www.smartchicagocollaborative.org\">SMART CHICAGO COLLABORATIVE</a>"
+msgstr "DERECHOS DE AUTOR ©2017 CHICAGO EARLY LEARNING / CONSTRUIDO POR <a class=\"a-yellow\" href="
+"\"http://www.smartchicagocollaborative.org\">SMART CHICAGO COLLABORATIVE</a>"
 
 #: portal/templates/redesign/partials/_nav.html:7
 msgid "Call the Chicago Early Learning Hotline at"
@@ -3547,7 +3584,9 @@ msgstr ""
 
 #: portal/templates/redesign/search.html:183
 msgid "Enter your child's birthdate to find the right program."
-msgstr "Ingrese la fecha de nacimiento de su niño para encontrar el programa apropiado."
+msgstr ""
+"Ingrese la fecha de nacimiento de su niño para encontrar el programa "
+"apropiado."
 
 #: portal/templates/redesign/search.html:194
 msgid "Add Another Child"
@@ -3573,7 +3612,8 @@ msgstr "Vea más sitios"
 
 #: portal/templates/redesign/search.html:220
 msgid "Please enter your address in the search bar above to begin."
-msgstr "Por favor ponga su dirección en la barra de búsqueda de arriba para comenzar."
+msgstr ""
+"Por favor ponga su dirección en la barra de búsqueda de arriba para comenzar."
 
 #: portal/templates/smsinfo.html:12
 msgid "Text For Info"

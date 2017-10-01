@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-24 13:51-0500\n"
+"POT-Creation-Date: 2017-10-01 11:33-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -720,8 +720,8 @@ msgstr ""
 #: portal/templates/redesign/index.html:90
 #: portal/templates/redesign/index.html:107
 #: portal/templates/redesign/index.html:129
-#: portal/templates/redesign/index.html:152
-#: portal/templates/redesign/index.html:176
+#: portal/templates/redesign/index.html:153
+#: portal/templates/redesign/index.html:178
 #: portal/templates/redesign/programs.html:74
 #: portal/templates/redesign/programs.html:86
 #: portal/templates/redesign/programs.html:98
@@ -867,10 +867,10 @@ msgstr ""
 
 #: portal/templates/location.html:283
 msgid ""
-"Are you a provider  who works at this early learning center and needs to "
-"make changes to information on this page? <a class=\"a-orange\" href="
-"\"https://smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-"
-"form/\">Click here!</a><b>"
+"Are you a provider who works at this early learning center and needs to make "
+"changes to information on this page? <a class=\"a-orange\" href=\"https://"
+"smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-form/"
+"\">Click here!</a><b>"
 msgstr ""
 
 #: portal/templates/outreach.html:7 portal/templates/outreach.html.py:15
@@ -913,7 +913,7 @@ msgid "Learning Blog"
 msgstr ""
 
 #: portal/templates/redesign/blog.html:25
-#: portal/templates/redesign/index.html:199
+#: portal/templates/redesign/index.html:206
 #: portal/templates/redesign/resources.html:161
 msgid "Thomas Hughes Children's Library Re-Opened"
 msgstr ""
@@ -947,7 +947,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/connect.html:16
-#: portal/templates/redesign/index.html:215
+#: portal/templates/redesign/index.html:225
 msgid "Stay up to date on Chicago Early Learning!"
 msgstr ""
 
@@ -1061,6 +1061,7 @@ msgid "Click on the topics below for more details"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:36
+#: portal/templates/redesign/faq.html:158
 msgid "Finding Programs"
 msgstr ""
 
@@ -1261,6 +1262,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/faq.html:103
+#: portal/templates/redesign/faq.html:484
 msgid "Verifying and Enrolling"
 msgstr ""
 
@@ -1345,6 +1347,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/faq.html:133
+#: portal/templates/redesign/faq.html:655
 msgid "Other Questions"
 msgstr ""
 
@@ -1375,10 +1378,6 @@ msgstr ""
 #: portal/templates/redesign/faq.html:146
 #: portal/templates/redesign/faq.html:700
 msgid "Do you provide transportation to and/or from preschool?"
-msgstr ""
-
-#: portal/templates/redesign/faq.html:158
-msgid "Finding a Preschool Program"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:167
@@ -1807,10 +1806,6 @@ msgid ""
 "with the program to find out what supports are available."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:484
-msgid "Placement and Registration"
-msgstr ""
-
 #: portal/templates/redesign/faq.html:493
 msgid ""
 "Families will instantly learn whether their child is on the waitlist or has "
@@ -1820,8 +1815,9 @@ msgstr ""
 #: portal/templates/redesign/faq.html:494
 msgid ""
 "Families that receive a waitlist status are encouraged to consider applying "
-"to alternate sites by calling 312-744-9322. See more FAQs on the waitlist "
-"process below."
+"to alternate sites by calling <a class=\"a-orange\" href="
+"\"tel:3127449322\">312-744-9322</a>. See more FAQs on the waitlist process "
+"below."
 msgstr ""
 
 #: portal/templates/redesign/faq.html:495
@@ -1923,7 +1919,8 @@ msgid ""
 "from a waitlist on a first-come first-served basis. Because participation in "
 "early learning programs is an invaluable resource for your child, we "
 "encourage families that are on a waitlist to find a provider with "
-"availability that may also suit their needs by calling 312-744-9322."
+"availability that may also suit their needs by calling <a class=\"a-orange\" "
+"href=\"tel:3127449322\">312-744-9322</a>."
 msgstr ""
 
 #: portal/templates/redesign/faq.html:547
@@ -2033,10 +2030,6 @@ msgid ""
 "contact their site directly to learn what supports they offer."
 msgstr ""
 
-#: portal/templates/redesign/faq.html:655
-msgid "General Questions"
-msgstr ""
-
 #: portal/templates/redesign/faq.html:664
 #, python-format
 msgid ""
@@ -2054,7 +2047,8 @@ msgid ""
 "to think about, pursue, and develop their interests. Find 1000s of "
 "opportunities at parks, libraries, community- and faith-based programs, "
 "schools, museums and cultural institutions, colleges and universities, and "
-"more at www.chicagocityoflearning.org"
+"more at <a class=\"a-orange\" href=\"http://www.chicagocityoflearning.org"
+"\">www.chicagocityoflearning.org</a>"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:674
@@ -2118,8 +2112,8 @@ msgstr ""
 #: portal/templates/redesign/how-to-apply.html:34
 #, python-format
 msgid ""
-"If you have any questions, please reference our <a href=\"%(faq_url)s\">FAQ "
-"page</a> for more details."
+"If you have any questions, please reference our <a href=\"%(faq_url)s"
+"\"><i>FAQ page</i></a> for more details."
 msgstr ""
 
 #: portal/templates/redesign/how-to-apply.html:52
@@ -2204,8 +2198,8 @@ msgstr ""
 #: portal/templates/redesign/how-to-apply.html:103
 msgid ""
 "If you have questions, please call our Chicago Early Learning Hotline: <a "
-"href=\"tel3122291690\">(312) 229-1690</a> or visit a Family Resource Center "
-"near you."
+"class=\"a-orange\" href=\"tel:3122291690\"><i>(312) 229-1690</i></a> or "
+"visit a Family Resource Center near you."
 msgstr ""
 
 #: portal/templates/redesign/how-to-apply.html:111
@@ -2439,33 +2433,39 @@ msgid "What is the preschool application process?"
 msgstr ""
 
 #: portal/templates/redesign/index.html:148
-#: portal/templates/redesign/index.html:162
+#: portal/templates/redesign/index.html:163
 msgid "WATCH: How To Apply"
 msgstr ""
 
-#: portal/templates/redesign/index.html:151
+#: portal/templates/redesign/index.html:152
 msgid ""
 "Are you ready to apply for a preschool program for your 3- or 4-year-old? "
 "Learn about the process here or call <a class=\"a-orange\" href="
 "\"tel:3122291690\">(312) 229-1690</a> with your questions."
 msgstr ""
 
-#: portal/templates/redesign/index.html:174
+#: portal/templates/redesign/index.html:176
 msgid "Early learning doesn’t only take place in a preschool classroom."
 msgstr ""
 
-#: portal/templates/redesign/index.html:175
+#: portal/templates/redesign/index.html:177
 msgid ""
 "Chicago offers a variety of stimulating children’s activities to get kids "
 "learning, moving, and playing. Learn more about what is offered by city "
 "agencies and organizations."
 msgstr ""
 
-#: portal/templates/redesign/index.html:191
+#: portal/templates/redesign/index.html:187
+#: portal/templates/redesign/partials/_footer.html:32
+#: portal/templates/redesign/resources.html:155
+msgid "Latest News"
+msgstr ""
+
+#: portal/templates/redesign/index.html:194
 msgid "Mayor Emanuel Launches Improved Universal Preschool Application"
 msgstr ""
 
-#: portal/templates/redesign/index.html:192
+#: portal/templates/redesign/index.html:197
 msgid ""
 "Mayor Emanuel visited Avalon Park Library to announce the revamped universal "
 "online preschool application, which gives families a single point of entry "
@@ -2473,11 +2473,11 @@ msgid ""
 "preschool programs throughout Chicago."
 msgstr ""
 
-#: portal/templates/redesign/index.html:194
+#: portal/templates/redesign/index.html:200
 msgid "Read More on the City of Chicago website"
 msgstr ""
 
-#: portal/templates/redesign/index.html:200
+#: portal/templates/redesign/index.html:209
 #: portal/templates/redesign/resources.html:162
 msgid ""
 "The newly re-opened Thomas Hughes Children’s Library powered by Exelon, was "
@@ -2487,17 +2487,17 @@ msgid ""
 "digital media lab..."
 msgstr ""
 
-#: portal/templates/redesign/index.html:202
-#: portal/templates/redesign/index.html:226
+#: portal/templates/redesign/index.html:212
+#: portal/templates/redesign/index.html:236
 #: portal/templates/redesign/resources.html:164
 msgid "Read More"
 msgstr ""
 
-#: portal/templates/redesign/index.html:216
+#: portal/templates/redesign/index.html:226
 msgid "Subscribe to our email and text lists."
 msgstr ""
 
-#: portal/templates/redesign/index.html:225
+#: portal/templates/redesign/index.html:235
 msgid "Meet all our partners and learn more about Chicago Early Learning."
 msgstr ""
 
@@ -2563,9 +2563,10 @@ msgstr ""
 msgid "Resources"
 msgstr ""
 
-#: portal/templates/redesign/partials/_footer.html:32
-#: portal/templates/redesign/resources.html:155
-msgid "Latest News"
+#: portal/templates/redesign/partials/_footer.html:39
+msgid ""
+"COPYRIGHT ©2017 CHICAGO EARLY LEARNING / BUILT BY <a class=\"a-yellow\" href="
+"\"http://www.smartchicagocollaborative.org\">SMART CHICAGO COLLABORATIVE</a>"
 msgstr ""
 
 #: portal/templates/redesign/partials/_nav.html:7
