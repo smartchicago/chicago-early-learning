@@ -1105,7 +1105,7 @@ msgstr "Chicago Early Learning Portal (Portal de Aprendizaje Temprano)"
 #: portal/templates/redesign/index.html:199
 #: portal/templates/redesign/resources.html:161
 msgid "Thomas Hughes Children's Library Re-Opened"
-msgstr ""
+msgstr "Reapertura de la Biblioteca para Niños Thomas Hughes"
 
 #: portal/templates/redesign/blog.html:26
 msgid "July 31, 2017"
@@ -1121,7 +1121,7 @@ msgid ""
 "sharing, called the Plaza, programming rooms, a Quiet Suite with a family "
 "washroom, a mother’s room and a quiet sitting area, and areas for STEM "
 "programming, story hours and conferences."
-msgstr ""
+msgstr "La recientemente reabierta Biblioteca para Niños Thomas Hughes apoyada por Exelon, fue inaugurada por el alcalde Emanuel el 13 de julio. Este espacio tiene una nueva visión y se enorgullece de tener un espacio “Maker Lab” en donde se pueden aprender nuevas tecnologías y áreas específicas llamadas “vecindarios”, las cuales son para los niños que están en la etapa del aprendizaje temprano: edades de 0 a 5 años; para los aprendices en la etapa media: edades de 6 a 10 años; y para los adolescentes: edades de 11 a 14 años; además hay un laboratorio completo de medios digitales. También hay un área común para compartir, llamada La Plaza, cuartos de programación, una sala tranquila con un baño familiar, una sala para mamás y un área para sentarse en silencio, así como áreas para la programación STEM, horas de cuentos y conferencias."
 
 #: portal/templates/redesign/blog.html:29
 msgid ""
@@ -1133,7 +1133,7 @@ msgid ""
 "has also provided funds to re-imagine additional branches early learning "
 "spaces and provide curated collections of toys and early STEM for families "
 "across the city."
-msgstr ""
+msgstr "Este nuevo espacio está acompañado con una programación renovada que integra las actividades STEM/STEAM a las colecciones de impresos, trae los programas de arte y “maker lab” a los pasillos de la biblioteca, e invita a todos a nuestro espacio a leer, descubrir y crear: todo lo cual comprende las tres áreas de aprendizaje en nuestro galardonado programa Reto de Aprendizaje para el Verano para los Lectores Rahm. Como parte del financiamiento, Exelon también ha proporcionado fondos para reimaginar otros espacios de aprendizaje temprano y proporcionar a las familias que viven a lo largo de la ciudad colecciones conservadas de juguetes y actividades STEM para el aprendizaje temprano."
 
 #: portal/templates/redesign/connect.html:16
 #: portal/templates/redesign/index.html:215
