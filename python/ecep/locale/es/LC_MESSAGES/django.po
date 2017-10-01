@@ -3524,18 +3524,16 @@ msgstr "Encuéntreme"
 
 #: portal/templates/redesign/search.html:46
 #: portal/templates/redesign/search.html:204
-#, fuzzy
-#| msgid "Refine your search"
 msgid "Refine Your Search"
 msgstr "Refine su búsqueda"
 
 #: portal/templates/redesign/search.html:49
 msgid "Clear"
-msgstr ""
+msgstr "Borrar"
 
 #: portal/templates/redesign/search.html:58
 msgid "Hours"
-msgstr ""
+msgstr "Horas"
 
 #: portal/templates/redesign/search.html:88 portal/templates/starred.html:67
 #: portal/templates/starred.html.py:118
@@ -3554,7 +3552,7 @@ msgstr ""
 
 #: portal/templates/redesign/search.html:183
 msgid "Enter your child's birthdate to find the right program."
-msgstr ""
+msgstr "Ingrese la fecha de nacimiento de su niño para encontrar el programa apropiado."
 
 #: portal/templates/redesign/search.html:194
 msgid "Add Another Child"
@@ -3575,14 +3573,12 @@ msgid "year old"
 msgstr ""
 
 #: portal/templates/redesign/search.html:209
-#, fuzzy
-#| msgid "Locations"
 msgid "See More Locations"
-msgstr "Su ubicación"
+msgstr "Vea más sitios"
 
 #: portal/templates/redesign/search.html:220
 msgid "Please enter your address in the search bar above to begin."
-msgstr ""
+msgstr "Por favor ponga su dirección en la barra de búsqueda de arriba para comenzar."
 
 #: portal/templates/smsinfo.html:12
 msgid "Text For Info"
