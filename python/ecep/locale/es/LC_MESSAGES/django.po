@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-01 12:13-0500\n"
+"POT-Creation-Date: 2017-10-01 12:29-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -760,6 +760,7 @@ msgstr "Para Familias"
 
 #: portal/templates/faq-models.html:5 portal/templates/redesign/faq.html:8
 #: portal/templates/redesign/partials/_footer.html:31
+#: portal/templates/redesign/partials/_nav.html:48
 msgid "FAQ"
 msgstr "Preguntas frecuentes"
 
@@ -1062,8 +1063,11 @@ msgid ""
 "location.)"
 msgstr ""
 "Para el caso de las familias que tengan una asignación preescolar en una "
-"Escuela Pública de Chicago, el personal en los Centros de Recursos para la Familia también verifica la documentación sobre el ingreso económico, el empleo, y el nacimiento. (Las familias que tengan asignación preescolar en un sitio basado en "
-"la comunidad verificarán su documentación directamente en ese sitio)."
+"Escuela Pública de Chicago, el personal en los Centros de Recursos para la "
+"Familia también verifica la documentación sobre el ingreso económico, el "
+"empleo, y el nacimiento. (Las familias que tengan asignación preescolar en "
+"un sitio basado en la comunidad verificarán su documentación directamente en "
+"ese sitio)."
 
 #: portal/templates/redesign/family-resource-centers.html:23
 msgid ""

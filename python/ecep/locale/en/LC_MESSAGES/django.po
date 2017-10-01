@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-01 12:13-0500\n"
+"POT-Creation-Date: 2017-10-01 12:29-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -649,6 +649,7 @@ msgstr ""
 
 #: portal/templates/faq-models.html:5 portal/templates/redesign/faq.html:8
 #: portal/templates/redesign/partials/_footer.html:31
+#: portal/templates/redesign/partials/_nav.html:48
 msgid "FAQ"
 msgstr ""
 
