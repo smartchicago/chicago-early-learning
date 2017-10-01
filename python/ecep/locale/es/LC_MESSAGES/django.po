@@ -942,7 +942,7 @@ msgstr "Sitio web"
 #, fuzzy
 #| msgid "No Saved Locations"
 msgid "Compare Location"
-msgstr "No Hay Ubicaciones Favoritas"
+msgstr "Compare los sitios"
 
 #: portal/templates/location.html:35
 #, fuzzy
@@ -999,7 +999,7 @@ msgstr "Asientos Disponibles"
 
 #: portal/templates/location.html:145
 msgid "Note: Availability and placement are subject to eligibility"
-msgstr ""
+msgstr "Nota: La disponibilidad y la colocación están sujetas a la elegibilidad"
 
 #: portal/templates/location.html:194
 msgid ""
@@ -1019,34 +1019,29 @@ msgid ""
 "Programs that receive national accreditation have demonstrated quality in "
 "areas such as teaching, curriculum, learning assessments, health, community "
 "relationships, physical environment, and management."
-msgstr ""
+msgstr "Los programas que reciben acreditación nacional han demostrado su calidad en áreas como la enseñanza, el currículo, las evaluaciones del aprendizaje, la salud, las relaciones con la comunidad, el entorno físico y la administración escolar."
 
 #: portal/templates/location.html:269
-#, fuzzy
-#| msgid "Quality Rating"
 msgid "What does \"Quality Rating\" mean?"
-msgstr "Evaluación de calidad"
+msgstr "¿Qué significa \"calificación de calidad\"?"
 
 #: portal/templates/location.html:273
 msgid ""
 "Quality Rating indicates the quality of a site based on the Excelerate "
 "Illinois system. More information can be found at <a class=\"a-orange\" href="
 "\"http://excelerateillinois.com\">ExcelerateIllinois.com</a>."
-msgstr ""
+msgstr "Las clasificaciones de calidad indican la calidad de un sitio en base al sistema Excelerate Illinois. Más información acerca de esto se puede encontrar en <a class=\"a-orange\" href="
+"\"http://excelerateillinois.com\">ExcelerateIllinois.com</a>."
 
 #: portal/templates/location.html:283
-#, fuzzy
-#| msgid ""
-#| "Are you a <b>provider</b> who works at this early learning center and "
-#| "needs to make changes to information on this page?"
 msgid ""
-"Are you a provider  who works at this early learning center and needs to "
+"Are you a provider who works at this early learning center and needs to "
 "make changes to information on this page? <a class=\"a-orange\" href="
 "\"https://smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-"
 "form/\">Click here!</a><b>"
-msgstr ""
-"¿Es usted un <b>proveedor</b> de esta programa de aprendizaje temprano y "
-"necesita cambiar esta información?"
+msgstr "¿Es usted un proveedor que trabaja en este centro de Educación Temprana y necesita hacer cambios a la información en esta página? <a class=\"a-orange\" href="
+"\"https://smartchicago2012.wufoo.com/forms/chicago-early-learning-provider-"
+"form/\">¡Oprima aquí!</a><b>"
 
 #: portal/templates/outreach.html:7 portal/templates/outreach.html.py:15
 #: portal/templates/redesign/outreach.html:8
