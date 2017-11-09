@@ -3,4 +3,3 @@
  - include: database.yml
  - include: server.yml
  - include: django.yml
- - include: rabbitmq.yml
