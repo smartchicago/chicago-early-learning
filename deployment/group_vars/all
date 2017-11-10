@@ -30,8 +30,6 @@ env_path: /cel/env/
 
 django_debug: True
 
-django_secret_key: 'jl3ioa@kd&(200jliga_ts!d)a)f^qq&(^!(@8f1a43u-q!i49'
-
 admin_name: 'Admin'
 admin_email: 'azaveadev@azavea.com'
 
