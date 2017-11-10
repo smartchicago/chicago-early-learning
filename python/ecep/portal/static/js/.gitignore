@@ -1,4 +1,3 @@
 # Ignore build artifact
 cel-build/
-neighborhoods*.json
 

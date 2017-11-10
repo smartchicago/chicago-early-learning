@@ -9,11 +9,7 @@ Vagrant.configure("2") do |config|
   # Do *not* use the default precise32 box for vagrant - encodings
   # are all messed up which causes a world of hurt when trying to set
   # up postgres/postgis...
-  config.vm.box = "precise32-server"
-
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  config.vm.box_url = "http://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-vagrant-i386-disk1.box"
+  config.vm.box = "ubuntu/trusty64"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,

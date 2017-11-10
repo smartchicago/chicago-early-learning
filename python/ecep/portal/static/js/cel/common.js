@@ -100,9 +100,9 @@ function($, L, Handlebars) {
                 return '/' + ($.cookie('django_language') || CEL.serverVars.default_language) +
                     '/api/neighborhood/';
             case 'neighborhoods-topo':
-                return '/static/js/neighborhoods-topo.json';
+                return '/static/js/lib/neighborhoods-topo.json';
             case 'neighborhoods-geojson':
-                return '/static/js/neighborhoods.json';
+                return '/static/js/lib/neighborhoods.json';
             case 'browse':
                 if (opts) {
                     var param_string = $.param(opts);

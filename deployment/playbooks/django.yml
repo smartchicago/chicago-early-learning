@@ -19,12 +19,6 @@
     django_manage: command=syncdb app_path={{app_path}}/python/ecep/ virtualenv={{env_path}}
     register: sync_ecep_database
 
-  - name: Load FAQ Data into Django
-    command: "{{env_path}}/bin/python {{app_path}}/python/ecep/manage.py loaddata {{item}}"
-    # when: sync_ecep_database == 'True'
-    with_items:
-       - faq
-
   - name: Create static/files files folders
     file: path={{static_path}} state=directory owner={{ansible_ssh_user}}
     file: path={{media_path}} state=directory owner={{ansible_ssh_user}}

@@ -3,7 +3,6 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 
-from portal.sms import Sms, Conversation, SmsCallback
 from django.views.generic import TemplateView, RedirectView
 from sitemap import LocationSiteMap, StaticViewSitemap
 from django.contrib.gis import admin
@@ -48,19 +47,6 @@ urlpatterns = patterns(
 
     # portal autocomplete api
     url(r'^api/autocomplete/$', 'portal.views.portal_autocomplete'),
-
-    # Telephony
-    url(r'^sms/handler/?$', Sms.as_view()),
-    url(r'^sms/error/?$', 'django_twilio.views.sms', {
-        'message': Conversation.FATAL,
-        'method': 'POST',
-        # Due to a bug in django-twilio, method must be set to GET or POST
-        # it works no matter what the request is
-        }),
-    url(r'^sms/callback/?$', SmsCallback.as_view(), name='sms-callback'),
-
-    # sms info page
-    url(r'^sms/?$', SMSInfo.as_view(), name='sms-info'),
 
     # Enroll
     url(r'enroll/?$', HowToApply.as_view(), name='enroll-faq'),
