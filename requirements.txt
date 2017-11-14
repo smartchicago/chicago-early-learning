@@ -10,12 +10,10 @@ Django==1.8.18
 django-appconf==1.0.1
 django-celery==3.0.21
 django-compressor==1.5
--e git://github.com/bhuber/django-faq.git@c7d052401b571599c76b18477e596c031c5b1fb9#egg=django_faq
 django-forms-bootstrap==2.0.3.post1
 django-inline-svg==0.1.1
 django-modeltranslation==0.9
 django-phonenumber-field==0.7.2
--e git://github.com/mazelife/django-redactoreditor.git@222bbe364d2fb1445ffb185644716d171f11cc98#egg=django_redactoreditor
 django-rest-framework==0.1.0
 django-rosetta==0.7.6
 django-sass-processor==0.5.4

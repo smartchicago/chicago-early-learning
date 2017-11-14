@@ -133,7 +133,6 @@ INSTALLED_APPS = (
     'portal',
     'gunicorn',
     'rosetta',
-    'redactor',
     'djrill',
 )
 
