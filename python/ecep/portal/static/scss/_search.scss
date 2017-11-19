@@ -54,18 +54,37 @@
           display: none;
         }
 
-        .results-default {
+        .results-message {
+          p {
+            margin-bottom: 0.5rem;
 
-        }
-
-        .results-calculator {
-          
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
         }
 
         .results-actions {
+          .result-button {
+            flex: 0 1 50%;
+            &:first-child {
+              padding-right: 0.25em;
+            }
+            &:nth-child(2) {
+              padding-left: 0.25em;
+            }
+          }
 
-          .close-buttons {
-            
+          @media (min-width: $break-medium) and (max-width: $break-large) {
+            .result-button {
+              flex: 1 1 100%;
+              padding-left: 0 !important;
+              padding-right: 0 !important;
+
+              &:first-child {
+                margin-bottom: 0.5em;
+              }
+            }
           }
         }
       }
