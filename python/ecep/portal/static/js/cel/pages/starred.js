@@ -98,7 +98,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                 }
 
                 var accessToken = 'pk.eyJ1IjoidGhlYW5kcmV3YnJpZ2dzIiwiYSI6ImNpaHh2Z2hpcDAzZnd0bG0xeDNqYXdiOGkifQ.jV7_LuEh4KX2r5RudiQdIg';
-                
+
                 var mapboxTiles = L.tileLayer(mapboxURL + accessToken,
                     {attribution: 'Imagery from <a href="http://mapbox.com/about/maps/">MapBox</a>'});
 
@@ -112,7 +112,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                         iconAnchor: [17, 45],
                         html: i + 1
                     });
-                    
+
                     copa_markers.push(L.marker([location.geometry.latitude, location.geometry.longitude], {icon: copa_icon}));
                 });
 
@@ -123,7 +123,7 @@ define(['jquery', 'Leaflet', 'text!templates/location.html', 'text!templates/fav
                         iconSize: new L.point(50, 50),
                         html: i + 1
                     });
-                    
+
                     non_copa_markers.push(L.marker([location.geometry.latitude, location.geometry.longitude], {icon: copa_icon}));
                 });
 
