@@ -1,8 +1,6 @@
 {{#if under_five }}
-<p>All {{#if location_types }}{{ location_types }} {{/if}}locations near you for a {{ age }} year old child{{#if filter_string }} that is{{/if}}:</p>
+<p>All {{#if location_types }}{{{ location_types }}} {{/if}}locations near you{{#if age}} for a <b class="blue">{{ age }} year old</b> child{{/if}}{{#if filter_string }} that {{{ filter_string }}}{{/if}}:</p>
 {{/if}}
 
 {{#if over_five }}
-<p></p>
-<p>All {{#if location_types }}{{ location_types }} {{/if}}locations near you {{#if filter_string }} that are{{/if}}:</p>
 {{/if}}
