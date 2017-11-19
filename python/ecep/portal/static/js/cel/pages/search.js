@@ -1,6 +1,6 @@
 
-define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-result.html', 'text!templates/location-popup.html', 'text!templates/results-message.html', 'common', 'favorites'],
-    function($, L, Handlebars, searchResultHTML, popupHTML, resultsMessageHTML, common, favorites) {
+define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-result.html', 'text!templates/location-popup.html', 'common', 'favorites'],
+    function($, L, Handlebars, searchResultHTML, popupHTML, common, favorites) {
         var map,
             $map = $('#map'),
             $filters = $('#filters'),
@@ -11,10 +11,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $results_wrapper = $('#results'),
             $results_default = $('.results-default'),
             $results_calculator = $('.results-calculator'),
-            $results_loading = $('.results-loading'),
             $results_scroll = $('.results-scroll'),
             $results_age = $('#calculated-age'),
-            $results_message = $('#results-message'),
             $results_list = $('.results-list'),
             $locations_more = $('#locations-more'),
             $search_input = $('#search-input'),
@@ -85,7 +83,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             div.innerHTML += '<img src="/static/img/legend_' + $map.data('language') + '.png">';
             return div;
         }
-
+        
         /* -- Functions -- */
 
         /*  Get basic map stats  */
@@ -162,7 +160,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     this.bindPopup(popup);
                 });
             });
-
+            
             state = getMapState();
             locationLayer = new L.layerGroup(locationMarkers);
             neighborhoodLayer.addData(neighborhoods_data);
@@ -254,54 +252,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $marker.attr('src', icon_url);
         }
 
-        var displayMessage = function() {
-            var html = resultsMessageHTML,
-                filter_texts = currentFilterText(),
-                template = Handlebars.compile(html),
-                location_types,
-                age = $map.data('age'),
-                filter_html,
-                filter_string,
-                args = { under_five: ( parseInt(age) <= 5 || typeof(age) == 'undefined' ),
-                         over_five: ( parseInt(age) > 5 ),
-                         age: age };
 
-            if ( filter_texts.includes("CPS-based") && filter_texts.includes("Community-based") ) {
-                location_types = "<b class='blue'>CPS-based</b> and <b class='blue'>Community-based</b>";
-                filter_texts.splice(filter_texts.indexOf("CPS-based"), 1);
-                filter_texts.splice(filter_texts.indexOf("Community-based"), 1);
-            } else if ( filter_texts.includes("CPS-based")) {
-                location_types = "<b class='blue'>CPS-based</b>";
-                filter_texts.splice(filter_texts.indexOf("CPS-based"), 1);
-            } else if ( filter_texts.includes("Community-based") ) {
-                location_types = "<b class='blue'>Community-based</b>";
-                filter_texts.splice(filter_texts.indexOf("Community-based"), 1);
-            }
-
-            filter_html = $.map(filter_texts, function(string) {
-                return "<b class='blue'>" + string + "</b>";
-            });
-
-            var filter_length = filter_html.length;
-            if (filter_length > 2) {
-                filter_string = filter_html.slice(0, filter_length-1).join(", ") + ", and " + filter_html[filter_length - 1];
-            } else if (filter_length == 2) {
-                filter_string = filter_html[0] + " and " + filter_html[1];
-            } else {
-                filter_string = filter_html;
-            }
-
-            args.location_types = location_types;
-            args.filter_string = filter_string;
-            $results_message.html(template(args));
-        }
-
+        /*    */
         var initializeList = function(calculated) {
             var age_filter = $filters_inputs.filter(calculated.program);
             age_filter.prop('checked', true);
             $filters.trigger('filters-update');
+            $results_age.text(calculated.years);
             $results_calculator.hide();
-            $results_loading.hide();
             $results_scroll.show();
         }
 
@@ -335,6 +293,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             return locations.sort(function(a, b) { return a.distance - b.distance });
         }
 
+
         /*  Grab current active filters  */
         var currentFilters = function() {
             var inputs = $filters_inputs.filter(":checked");
@@ -344,15 +303,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             return ids;
         }
 
-        /* Grab display text for current active filters */
-        var currentFilterText = function() {
-            var inputs = $filters_inputs.filter(":checked");
-            var ids = $.map(inputs, function(element) {
-                var $this = $(element);
-                return $this.data("text");
-            });
-            return ids;
-        }
 
         /*  Clear filters  */
         var clearFilters = function() {
@@ -449,7 +399,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $year = $('#year'),
             $input_two = $('.input-two'),
             $calculator = $('.calculator'),
-            $skip = $('#skip-calculator'),
             $calculator_block = $('.results-calculator-form');
 
         var validateDate = function(month, day, year) {
@@ -477,9 +426,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 program = '#infants';
             } else if ( date < infants_cutoff && date >= preschool_cutoff ) {
                 program = "#preschool";
-            } else if ( date < preschool_cutoff ) {
-                program = ['#infants', '#preschool']
-                displayMessage();
+            } else {
+                console.log('other');
             }
 
             calculated.program = program;
@@ -502,9 +450,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             var current_url = window.location.href,
                 age_url = current_url + "&" + $.param({age: age.years});
 
-            $map.attr("data-age", age.years);
             window.history.pushState(
-                {age: age.years},
+                {age: age.years}, 
                 "Search for " + age.years + " year old",
                 age_url);
         }
@@ -517,17 +464,8 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 var address_string = ($map.data('type') == 'geo-latlng') ? 'Current Location' : $map.data('address');
                 $search_input.attr('placeholder', (address_string || 'Enter an address, site, or zip code'));
 
-                /* -- Set Initial View -- */
-                if ( $map.data('age') ) {
-                    $results_loading.show();
-                } else if ( $map.data('type') == 'geo-latlng' || $map.data('address') ) {
-                    $results_calculator.show();
-                } else {
-                    $results_default.show();
-                }
-
                 /* -- Listeners -- */
-                /* Filter Pane Toggle */
+                /* Filter Pane Toggle */ 
                 $filters_toggle.on('click', function() {
                     $filters_svg.toggleClass('svg-gray');
                     $filters_svg.toggleClass('svg-orange');
@@ -547,14 +485,14 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
                 /* Filters Update event */
                 $filters.on('filters-update', function() {
+                    console.log('here');
                     $results_wrapper.animate({
                         scrollTop: 0,
                     }, 100);
-
+                    
                     list_index = 0;
                     $results_list.empty();
                     listLocations(locations);
-                    displayMessage();
                     updateMap(locations);
                 });
 
@@ -596,15 +534,6 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     }
                 });
 
-                /* -- Skip Calculator Listener -- */
-
-                $skip.on('click', function(e) {
-                    e.preventDefault();
-
-                    var calculated = { program: ['#infants', '#preschool'] };
-                    initializeList(calculated);
-                });
-
                 /* -- Fetch Neighborhoods -- */
                 $.getJSON(common.getUrl('neighborhoods-geojson'), function(data) {
                     neighborhoods_data = data;
@@ -639,7 +568,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                         var now = new Date();
                         year = 365*24*60*60;
 
-                        var calculated = calculateProgram(now.getMonth() + 1, now.getDay() + 1, (now.getFullYear() - parseInt($map.data('age'))-1));
+                        var calculated = calculateProgram(now.getMonth() + 1, now.getDay() + 1, now.getFullYear() - parseInt($map.data('age')));
                         initializeList(calculated);
                     }
                 });
