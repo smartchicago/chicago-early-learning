@@ -17,8 +17,6 @@ from django.utils.encoding import force_unicode
 from django.utils.translation import ugettext_lazy as _, ugettext
 from django.template.defaultfilters import slugify
 
-from faq.models import Topic, Question
-
 from models import Location, Neighborhood, Contact
 from operator import attrgetter
 
@@ -110,38 +108,6 @@ def browse(request):
         'filters_main': fields[:6],
         'filters_more': fields[6:],
     })
-
-# This can probably go - ajb 9 July 2017
-class TopicWrapper(object):
-    """Wrapper for Topic model, enforces visibility rules for anonymous users"""
-
-    topic = None
-    questions = None
-
-    def __init__(self, t, request):
-        self.topic = t
-        qs = Question.objects.filter(topic=t, status=Question.ACTIVE)
-        if request.user.is_anonymous():
-            qs = qs.exclude(protected=True)
-        self.questions = list(qs)
-
-
-def faq(request):
-    # get the language of the request
-    lang = request.LANGUAGE_CODE
-
-    # get the topics in this language
-    topics = Topic.objects.filter(slug__startswith=lang + '-')
-
-    if topics.count() == 0:
-        topics = Topic.objects.filter(
-            slug__startswith=settings.LANGUAGE_CODE[0:2] + '-',
-        )
-
-    return render(request, 'faq-models.html', {
-        'topics': [TopicWrapper(t, request) for t in topics],
-    })
-
 
 def setlang(request, language):
     """Set Language cookie, reload current page"""
