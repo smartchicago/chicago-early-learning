@@ -36,7 +36,7 @@
 
     <div class="row py-3">
         <div class="col-md-8 offset-md-2">
-            <div id="location-map"
+            <div id="location-map" 
               {% if request.GET.lat and request.GET.lng %}
               data-address-latitude="{{ request.GET.lat }}"
               data-address-longitude="{{ request.GET.lng }}"
@@ -44,10 +44,10 @@
               class="location-map"></div>
         </div>
     </div>
-
+    
     <!-- Favorite list -->
     <div class="row">
-        <div class="col-md-12 hidden-lg-up">
+        <div class="col-md-12 hidden-lg-up"> 
             <div class="scroll-message d-flex justify-content-between">
                 <div class="svg-gray svg-fluid-h">{% svg 'icons/arrow-thin-left' %}</div>
                 <div class="scroll-note">
@@ -58,7 +58,7 @@
         </div>
         <div class="faves-table col-md-12 py-1" id="copa">
             <table class="table table-inverse table-bordered">
-                <thead>
+                <thead>    
                     <tr>
                         <th>{% trans 'Apply' %}</th>
                         <th>{% trans 'Site Info' %}</th>
@@ -85,12 +85,12 @@
         <div class="row py-1" id="starred-actions">
             <div class="col-md-6 offset-md-3">
                 <a href="" class="btn btn-block btn-orange btn-lg" target="_blank" id="faves-contact">{% trans 'Apply' %}</a>
-            </div>
+            </div>        
         </div>
         <div class="row py-1" id="">
             <div class="col-md-6 offset-md-3">
                 <a href="" class="btn btn-block btn-lg btn-gray" id="faves-clear">{% trans 'Clear All Selected Sites' %}</a>
-            </div>
+            </div>       
         </div>
     </div>
 
@@ -98,7 +98,7 @@
         <div class="col-md-8 offset-md-2 text-center py-3">
             <h4 id="non-ecm-header">{% trans 'The following sites do not have online enrollment. Contact these sites directly to apply.' %}</h4>
         </div>
-        <div class="col-md-12 hidden-lg-up">
+        <div class="col-md-12 hidden-lg-up"> 
             <div class="scroll-message d-flex justify-content-between">
                 <div class="svg-gray svg-fluid-h">{% svg 'icons/arrow-thin-left' %}</div>
                 <div class="scroll-note">
@@ -109,7 +109,7 @@
         </div>
         <div class="faves-table col-md-12 py-1">
             <table class="table table-inverse table-bordered">
-                <thead>
+                <thead>    
                     <tr>
                         <th>{% trans 'Apply' %}</th>
                         <th>{% trans 'Site Info' %}</th>
@@ -137,5 +137,5 @@ require(['pages/starred'], function() { });
 {% endblock %}
 
 {% block footer %}
-<!-- No footer on Starred page -->
+<!-- No footer on Starred page --> 
 {% endblock %}

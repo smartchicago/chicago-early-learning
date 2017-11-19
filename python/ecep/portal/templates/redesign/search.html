@@ -65,14 +65,14 @@
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'are Full Day' %}" id="full_day" class="custom-control-input">
+                    <input type="checkbox" id="full_day" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Full Day' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'Part Day' %}" id="part_day" class="custom-control-input">
+                    <input type="checkbox" id="part_day" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Part Day' %}</span>
                   </label>
@@ -91,28 +91,28 @@
               <div class="category-filters d-flex flex-wrap">
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'are Full Week' %}" id="full_week" class="custom-control-input">
+                    <input type="checkbox" id="full_week" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Full Week' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'are Part Week' %}" id="part_week" class="custom-control-input">
+                    <input type="checkbox" id="part_week" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Part Week' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'are Full Year' %}" id="full_year" class="custom-control-input">
+                    <input type="checkbox" id="full_year" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Full Year' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'are School Year' %}" id="school_year" class="custom-control-input">
+                    <input type="checkbox" id="school_year" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'School Year' %}</span>
                   </label>
@@ -131,42 +131,42 @@
               <div class="category-filters d-flex flex-wrap">
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'CPS-based' %}" id="cps" class="custom-control-input">
+                    <input type="checkbox" id="cps" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'CPS' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'Community-based' %}" id="community" class="custom-control-input">
+                    <input type="checkbox" id="community" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Community' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'offer Home Visiting' %}" id="home_visiting" class="custom-control-input">
+                    <input type="checkbox" id="home_visiting" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Home Visiting' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'accept CCAP' %}" id="ccap" class="custom-control-input">
+                    <input type="checkbox" id="ccap" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description">{% trans 'Accept CCAP' %}</span>
+                    <span class="custom-control-description">{% trans 'Accepts CCAP' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'are Head Start' %}" id="ccap" class="custom-control-input">
+                    <input type="checkbox" id="ccap" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Head Start' %}</span>
                   </label>
                 </div>
                 <div class="filter-input">
                   <label class="custom-control custom-checkbox">
-                    <input type="checkbox" data-text="{% trans 'are Early Head Start' %}" id="ccap" class="custom-control-input">
+                    <input type="checkbox" id="ccap" class="custom-control-input">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description">{% trans 'Early Head Start' %}</span>
                   </label>
@@ -177,10 +177,8 @@
         </div>
 
         <div id="results" class="bg-lightest-gray">
-          <div class="results-loading p-4 text-center" style="display: none;">
-            <h2 class="blue"><i>{% trans 'Loading...' %}</i></h2>
-          </div>
-          <div class="results-calculator p-4" style="display: none;">
+          {% if request.GET.address or request.GET.type == 'geo-latlng' %}
+          <div class="results-calculator p-4">
             <div class="results-calculator-header text-center">
               <h2 class="blue">{% blocktrans %}Enter your child's birthdate to find the right program.{% endblocktrans %}</h2>
             </div>
@@ -198,31 +196,27 @@
                 -->
                 <button id="calculator-submit" type="submit" class="btn btn-orange btn-block">{% trans 'Find Programs' %}</button>
               </form>
-              <div class="p-4 text-center">
-                <a id="skip-calculator" class="a-blue" href=""><i>{% trans 'Skip Age Calculator' %}</i></a>
-              </div>
             </div>
           </div>
           <div class="results-scroll p-3">
             <div class="results-description">
-              <div class="results-actions close-buttons d-flex flex-wrap w-100">
-                <div class="result-button">
-                  <a class="btn btn-block btn-clear-orange filters-toggle">{% trans 'Refine Search' %}</a>
-                </div>
-                <div class="result-button">
-                  <a id="filters-clear" class="btn btn-block btn-clear-gray">{% trans 'Reset Filters' %}</a>
-                </div>
+              <div class="results-actions close-buttons">
+                <a class="btn btn-orange btn-block filters-toggle">{% trans 'Refine Your Search' %}</a>
+                <a id="filters-clear" class="btn btn-gray btn-block">{% trans 'Reset Filters' %}</a>
               </div>
-              <div id="results-message" class="results-message pt-3"></div>
+              <div class="pt-3">
+                <p>{% trans 'All locations near you for a ' %} <b class="blue"><span id="calculated-age"></span> {% trans 'year old' %}</b> child:</p>
+              </div>
             </div>
-            <div class="results-list pt-3"></div>
+            <div class="results-list"></div>
             <div class="results-load-more">
               <div class="">
                 <a id="locations-more" class="btn btn-blue btn-block">{% trans 'See More Locations' %}</a>
               </div>
             </div>
           </div>
-          <div class="results-default" style="display: none;">
+          {% else %}
+          <div class="results-default">
             <div class="mx-5">
               <div class="results-default-graphic m-5 b-blue">
                 <div class="svg-fluid-w">{% svg 'illustrations/location' %}</div>
@@ -232,6 +226,7 @@
               </div>
             </div>
           </div>
+          {% endif %}
         </div>
       </div>
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-19 12:53-0600\n"
+"POT-Creation-Date: 2017-10-01 13:07-0500\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: portal/admin.py:35
+#: portal/admin.py:36
 msgid "Yes"
 msgstr ""
 
@@ -94,44 +94,38 @@ msgstr ""
 
 #: portal/models.py:99 portal/models.py:282 portal/models.py:452
 #: portal/templates/location.html:165 portal/templates/location.html.py:167
-#: portal/templates/redesign/search.html:68
 #: portal/templates/redesign/search.html:70
 msgid "Full Day"
 msgstr ""
 
 #: portal/models.py:100 portal/models.py:283 portal/models.py:452
 #: portal/templates/location.html:165 portal/templates/location.html.py:169
-#: portal/templates/redesign/search.html:75
 #: portal/templates/redesign/search.html:77
 msgid "Part Day"
 msgstr ""
 
 #: portal/models.py:101 portal/models.py:287
 #: portal/templates/location.html:173 portal/templates/location.html.py:177
-#: portal/templates/redesign/search.html:115
 #: portal/templates/redesign/search.html:117
 msgid "School Year"
 msgstr ""
 
 #: portal/models.py:102 portal/models.py:286
 #: portal/templates/location.html:173 portal/templates/location.html.py:175
-#: portal/templates/redesign/search.html:108
 #: portal/templates/redesign/search.html:110
 msgid "Full Year"
 msgstr ""
 
-#: portal/models.py:103 portal/templates/location.html:79 portal/views.py:576
+#: portal/models.py:103 portal/templates/location.html:79 portal/views.py:610
 msgid "Ages Served"
 msgstr ""
 
 #: portal/models.py:104 portal/models.py:284
-#: portal/templates/redesign/search.html:94
 #: portal/templates/redesign/search.html:96
 msgid "Full Week"
 msgstr ""
 
 #: portal/models.py:105 portal/models.py:285
-#: portal/templates/redesign/search.html:101
 #: portal/templates/redesign/search.html:103
 msgid "Part Week"
 msgstr ""
@@ -151,21 +145,18 @@ msgid "Offers Home Visiting"
 msgstr ""
 
 #: portal/models.py:112 portal/models.py:291
-#: portal/templates/redesign/search.html:155
 #: portal/templates/redesign/search.html:157
 msgid "Accepts CCAP"
 msgstr ""
 
 #: portal/models.py:113 portal/models.py:292
 #: portal/templates/location.html:190
-#: portal/templates/redesign/search.html:162
 #: portal/templates/redesign/search.html:164
 msgid "Head Start"
 msgstr ""
 
 #: portal/models.py:114 portal/models.py:293
 #: portal/templates/location.html:191
-#: portal/templates/redesign/search.html:169
 #: portal/templates/redesign/search.html:171
 msgid "Early Head Start"
 msgstr ""
@@ -186,13 +177,12 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-#: portal/models.py:290 portal/templates/redesign/search.html:148
-#: portal/templates/redesign/search.html:150
+#: portal/models.py:290 portal/templates/redesign/search.html:150
 msgid "Home Visiting"
 msgstr ""
 
 #: portal/models.py:295 portal/models.py:451
-#: portal/templates/location-map.html:37
+#: portal/templates/location-map.html:36
 msgid "More Info"
 msgstr ""
 
@@ -210,7 +200,7 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: portal/models.py:393 portal/templates/location.html:185 portal/views.py:631
+#: portal/models.py:393 portal/templates/location.html:185 portal/views.py:665
 msgid "Program Information"
 msgstr ""
 
@@ -218,11 +208,11 @@ msgstr ""
 msgid "Languages"
 msgstr ""
 
-#: portal/models.py:407 portal/templates/location.html:180 portal/views.py:597
+#: portal/models.py:407 portal/templates/location.html:180 portal/views.py:631
 msgid "No Hours Listed"
 msgstr ""
 
-#: portal/models.py:410 portal/templates/location.html:160 portal/views.py:593
+#: portal/models.py:410 portal/templates/location.html:160 portal/views.py:627
 msgid "Duration and Hours"
 msgstr ""
 
@@ -279,7 +269,7 @@ msgstr ""
 msgid "Click to remove from your list"
 msgstr ""
 
-#: portal/models.py:464 portal/templates/location.html:220 portal/views.py:684
+#: portal/models.py:464 portal/templates/location.html:220 portal/views.py:718
 msgid "Other Features"
 msgstr ""
 
@@ -667,26 +657,22 @@ msgstr ""
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: portal/templates/location-map.html:22
-msgid "Use two fingers to navigate the map."
-msgstr ""
-
-#: portal/templates/location-map.html:42 portal/templates/location-map.html:84
+#: portal/templates/location-map.html:41 portal/templates/location-map.html:83
 #: portal/templates/location.html:41
 #: portal/templates/redesign/family-resource-centers.html:52
 msgid "Get Directions"
 msgstr ""
 
-#: portal/templates/location-map.html:48 portal/templates/location-map.html:77
+#: portal/templates/location-map.html:47 portal/templates/location-map.html:76
 #: portal/templates/location.html:51
 msgid "Apply Today!"
 msgstr ""
 
-#: portal/templates/location-map.html:70
+#: portal/templates/location-map.html:69
 msgid "Location Website"
 msgstr ""
 
-#: portal/templates/location-map.html:81 portal/templates/location.html:47
+#: portal/templates/location-map.html:80 portal/templates/location.html:47
 msgid "Compare Location"
 msgstr ""
 
@@ -719,7 +705,7 @@ msgid ""
 "2017, your child will be eligible for preschool programs."
 msgstr ""
 
-#: portal/templates/location.html:128 portal/views.py:705
+#: portal/templates/location.html:128 portal/views.py:739
 msgid "Seats Available"
 msgstr ""
 
@@ -1333,7 +1319,7 @@ msgstr ""
 #, python-format
 msgid ""
 "Chicago Early Learning preschool programs all meet rigorous federal, state, "
-"and local standards. The <a class=\"a-orange\" href=\"%(search_url)s\">Find "
+"and local standards. The <a class=\"a-orange\" href=\"%(browse_url)s\">Find "
 "and Compare Tool</a> allows anyone to view programs with accreditation and "
 "or a program’s quality ratings. Please review our <a class=\"a-orange\" href="
 "\"%(programs_url)s\">Programs Page</a> with detailed information about types "
@@ -1418,7 +1404,7 @@ msgstr ""
 #: portal/templates/redesign/faq.html:242
 #, python-format
 msgid ""
-"Visit the <a class=\"a-orange\" href=\"%(search_url)s\">Find and Compare "
+"Visit the <a class=\"a-orange\" href=\"%(browse_url)s\">Find and Compare "
 "Tool</a> to explore early learning sites that meet the particular needs of "
 "your family. In order to find the hours of a site, click the “More Info” "
 "button. We recommend that you call the site directly to confirm any ongoing "
@@ -1454,8 +1440,8 @@ msgstr ""
 
 #: portal/templates/redesign/faq.html:284
 msgid ""
-"Click on <a class=\"a-orange\" href=\"https://cys.mycopa.com/familyPortal/"
-"welcome.epl\">\"Apply\"</a> and create an online account for your family"
+" Visit chicagoearlylearning.org, click on the link to apply to preschool, "
+"and create an online account for your family"
 msgstr ""
 
 #: portal/templates/redesign/faq.html:285
@@ -1517,7 +1503,7 @@ msgid ""
 "Families can apply to over 600 sites through the Chicago Early Learning "
 "online preschool application. Sites include programs that are community-"
 "based and Chicago Public Schools. Visit the <a class=\"a-orange\" href="
-"\"%(search_url)s\">Find and Compare Tool</a> to find the right site for your "
+"\"%(browse_url)s\">Find and Compare Tool</a> to find the right site for your "
 "family."
 msgstr ""
 
@@ -1903,7 +1889,7 @@ msgstr ""
 #: portal/templates/redesign/faq.html:654
 #, python-format
 msgid ""
-"Visit our <a class=\"a-orange\" href=\"%(search_url)s\">Find and Compare "
+"Visit our <a class=\"a-orange\" href=\"%(browse_url)s\">Find and Compare "
 "Tool</a> to find community-based sites that offer infant and toddler "
 "programs, or <a class=\"a-orange\" href=\"%(resources_url)s\">click here</a> "
 "a to learn more about programs offered by other city agencies around Chicago."
@@ -1993,7 +1979,7 @@ msgid ""
 msgstr ""
 
 #: portal/templates/redesign/how-to-apply.html:52
-#: portal/templates/redesign/how-to-apply.html:110
+#: portal/templates/redesign/how-to-apply.html:108
 msgid "Search Locations"
 msgstr ""
 
@@ -2004,11 +1990,11 @@ msgid ""
 "your child. <a class=\"a-orange\" href=\"%(search_url)s\">Get Started!</a>"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:64
+#: portal/templates/redesign/how-to-apply.html:62
 msgid "Apply to Program"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:65
+#: portal/templates/redesign/how-to-apply.html:63
 msgid ""
 "Narrow it down to your top two picks. Create an online account, fill out "
 "family information, and a child application to preschool sites. If your "
@@ -2017,11 +2003,11 @@ msgid ""
 "information from the Chicago Early Learning team."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:74
+#: portal/templates/redesign/how-to-apply.html:72
 msgid "For CPS Site Offers: Verify placement through a Family Resource Center"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:75
+#: portal/templates/redesign/how-to-apply.html:73
 #, python-format
 msgid ""
 "Within two weeks of receiving your offer, bring proof of your family’s "
@@ -2031,18 +2017,18 @@ msgid ""
 "what documents you will provide."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:77
-#: portal/templates/redesign/how-to-apply.html:92
+#: portal/templates/redesign/how-to-apply.html:75
+#: portal/templates/redesign/how-to-apply.html:90
 msgid "OR"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:80
+#: portal/templates/redesign/how-to-apply.html:78
 msgid ""
 "For Community-Based Site Offers: Verify placement through your community-"
 "program location"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:81
+#: portal/templates/redesign/how-to-apply.html:79
 msgid ""
 "Within two weeks of receiving your offer, bring proof of your family’s "
 "income, address, and your child’s birth to your assigned community-based "
@@ -2050,167 +2036,167 @@ msgid ""
 "provide."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:89
+#: portal/templates/redesign/how-to-apply.html:87
 msgid "Enrollment at CPS-Program Location"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:90
+#: portal/templates/redesign/how-to-apply.html:88
 msgid ""
 "Visit your child’s preschool over the summer or as soon as school starts to "
 "complete the enrollment process. The school may have more specific "
 "enrollment directions that they will communicate."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:95
+#: portal/templates/redesign/how-to-apply.html:93
 msgid "Enrollment at Community-Program Location"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:96
+#: portal/templates/redesign/how-to-apply.html:94
 msgid ""
 "When you visit your child’s community-based site to verify your child’s "
 "offer, your site will communicate any additional expectations they have to "
 "complete the enrollment process."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:104
+#: portal/templates/redesign/how-to-apply.html:102
 msgid "Go to School!"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:105
+#: portal/templates/redesign/how-to-apply.html:103
 msgid ""
 "If you have questions, please call our Chicago Early Learning Hotline: <a "
 "class=\"a-orange\" href=\"tel:3122291690\"><i>(312) 229-1690</i></a> or "
 "visit a Family Resource Center near you."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:113
+#: portal/templates/redesign/how-to-apply.html:111
 msgid "Start an Application"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:123
+#: portal/templates/redesign/how-to-apply.html:121
 msgid "How will you verify your child's placement?"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:124
+#: portal/templates/redesign/how-to-apply.html:122
 msgid ""
 "If your child is offered a preliminary preschool placement, you will receive "
 "an email with verification instructions."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:125
+#: portal/templates/redesign/how-to-apply.html:123
 msgid "Follow these three steps to verify your child's placement:"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:131
+#: portal/templates/redesign/how-to-apply.html:129
 msgid "Step 1: Gather Documents"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:134
+#: portal/templates/redesign/how-to-apply.html:132
 msgid "Proof of child's age"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:136
+#: portal/templates/redesign/how-to-apply.html:134
 msgid "Original birth certificate"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:137
+#: portal/templates/redesign/how-to-apply.html:135
 msgid "Passport"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:139
+#: portal/templates/redesign/how-to-apply.html:137
 msgid "Proof of Address"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:141
+#: portal/templates/redesign/how-to-apply.html:139
 msgid "Driver's License/ID card"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:142
+#: portal/templates/redesign/how-to-apply.html:140
 msgid "Utility bill"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:143
+#: portal/templates/redesign/how-to-apply.html:141
 msgid "Lease agreement/mortgage statement"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:144
+#: portal/templates/redesign/how-to-apply.html:142
 msgid "Current voter registration card"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:148
+#: portal/templates/redesign/how-to-apply.html:146
 msgid "Proof of Income"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:150
+#: portal/templates/redesign/how-to-apply.html:148
 msgid "Current paystub"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:151
+#: portal/templates/redesign/how-to-apply.html:149
 msgid "1040/W-2"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:152
+#: portal/templates/redesign/how-to-apply.html:150
 msgid "SSI Letter"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:153
+#: portal/templates/redesign/how-to-apply.html:151
 msgid "Unemployment Letter/Stub"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:154
+#: portal/templates/redesign/how-to-apply.html:152
 msgid "Workers' compensation letter/stub"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:155
+#: portal/templates/redesign/how-to-apply.html:153
 msgid "Retirement or pension stub/letter"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:156
+#: portal/templates/redesign/how-to-apply.html:154
 msgid "Alimony"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:157
+#: portal/templates/redesign/how-to-apply.html:155
 msgid "Official child support letter"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:158
+#: portal/templates/redesign/how-to-apply.html:156
 msgid "TANF"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:159
+#: portal/templates/redesign/how-to-apply.html:157
 msgid "Income verification form"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:168
+#: portal/templates/redesign/how-to-apply.html:166
 msgid "Step 2: Bring and Verify Documents"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:175
+#: portal/templates/redesign/how-to-apply.html:173
 msgid ""
 "If your child has a seat in a Community-based program, bring your documents "
 "directly to the site which your child was assigned."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:185
+#: portal/templates/redesign/how-to-apply.html:183
 msgid ""
 "If your child has a seat in a CPS-based program, bring your documents to a "
 "Family Resource Center."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:190
-#: portal/templates/redesign/how-to-apply.html:223
+#: portal/templates/redesign/how-to-apply.html:188
+#: portal/templates/redesign/how-to-apply.html:221
 msgid "View Family Resource Centers"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:197
+#: portal/templates/redesign/how-to-apply.html:195
 msgid "Step 3: Bring your child on the first day of school in September."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:198
+#: portal/templates/redesign/how-to-apply.html:196
 msgid "Let the learning begin!"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:204
+#: portal/templates/redesign/how-to-apply.html:202
 msgid ""
 "Note:  If your family is in a temporary living situation, you are not "
 "required to present the documents listed above for verification.  All "
@@ -2220,11 +2206,11 @@ msgid ""
 "required for school enrollment."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:214
+#: portal/templates/redesign/how-to-apply.html:212
 msgid "Have you found the right program for your child?"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:215
+#: portal/templates/redesign/how-to-apply.html:213
 msgid ""
 "The City of Chicago and its partners offer early learning programs at over "
 "600 sites. Visit our search page to identify sites in areas near your home "
@@ -2232,15 +2218,15 @@ msgid ""
 "program’s quality rating, schedule and ages served."
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:216
+#: portal/templates/redesign/how-to-apply.html:214
 msgid "Learn About Program Types"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:221
+#: portal/templates/redesign/how-to-apply.html:219
 msgid "Need application support?"
 msgstr ""
 
-#: portal/templates/redesign/how-to-apply.html:222
+#: portal/templates/redesign/how-to-apply.html:220
 msgid ""
 "If you have any concerns with the online application, please call our "
 "Chicago Early Learning Hotline at (312) 229-1690, or visit any of the Family "
@@ -2537,7 +2523,7 @@ msgstr ""
 
 #: portal/templates/redesign/programs.html:110
 msgid "Learn More at CPS.edu"
-msgstr "Aprenda más en el sitio Web de CPS"
+msgstr ""
 
 #: portal/templates/redesign/programs.html:129
 msgid "Infants and Toddlers"
@@ -2943,11 +2929,12 @@ msgid "Sites"
 msgstr ""
 
 #: portal/templates/redesign/search.html:46
+#: portal/templates/redesign/search.html:204
 msgid "Refine Your Search"
 msgstr ""
 
 #: portal/templates/redesign/search.html:49
-msgid "Close"
+msgid "Clear"
 msgstr ""
 
 #: portal/templates/redesign/search.html:58
@@ -2963,47 +2950,35 @@ msgstr ""
 msgid "Program Features"
 msgstr ""
 
-#: portal/templates/redesign/search.html:134
-msgid "CPS-based"
-msgstr ""
-
 #: portal/templates/redesign/search.html:136
 msgid "CPS"
 msgstr ""
 
-#: portal/templates/redesign/search.html:141
-msgid "Community-Based"
-msgstr ""
-
-#: portal/templates/redesign/search.html:185
+#: portal/templates/redesign/search.html:183
 msgid "Enter your child's birthdate to find the right program."
 msgstr ""
 
-#: portal/templates/redesign/search.html:196
+#: portal/templates/redesign/search.html:194
 msgid "Add Another Child"
 msgstr ""
 
-#: portal/templates/redesign/search.html:199
+#: portal/templates/redesign/search.html:197
 msgid "Find Programs"
 msgstr ""
 
-#: portal/templates/redesign/search.html:202
-msgid "Skip Age Calculator"
+#: portal/templates/redesign/search.html:203
+msgid "All locations near you for a "
 msgstr ""
 
-#: portal/templates/redesign/search.html:210
-msgid "Refine Search"
+#: portal/templates/redesign/search.html:203
+msgid "year old"
 msgstr ""
 
-#: portal/templates/redesign/search.html:213
-msgid "Reset Filters"
-msgstr ""
-
-#: portal/templates/redesign/search.html:221
+#: portal/templates/redesign/search.html:209
 msgid "See More Locations"
 msgstr ""
 
-#: portal/templates/redesign/search.html:231
+#: portal/templates/redesign/search.html:220
 msgid "Please enter your address in the search bar above to begin."
 msgstr ""
 
@@ -3131,23 +3106,23 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: portal/views.py:488
+#: portal/views.py:522
 msgid "Explore"
 msgstr ""
 
-#: portal/views.py:489
+#: portal/views.py:523
 msgid "Click to see locations in this neighborhood"
 msgstr ""
 
-#: portal/views.py:561
+#: portal/views.py:595
 msgid "Contact this site directly to apply."
 msgstr ""
 
-#: portal/views.py:677
+#: portal/views.py:711
 msgid "Languages (other than English)"
 msgstr ""
 
-#: portal/views.py:708
+#: portal/views.py:742
 msgid "Note: Availability and placement are subject to eligibility."
 msgstr ""
 

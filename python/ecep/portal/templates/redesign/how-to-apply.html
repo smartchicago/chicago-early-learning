@@ -56,9 +56,7 @@
       </div>
       <div id="enroll-one" class="row apply-block-steps">
         <div class="col-md-2 offset-md-1 my-auto">
-          <div class="w-100 text-align-center">
-            <img class="d-block mx-auto" src="{% static 'img/redesign/how-to-apply/step-1.png' %}">
-          </div>
+          <div class="svg-fluid-w">{% svg 'illustrations/computer' %}</div>
         </div>
         <div class="col-md-8 my-auto">
           <h2 class="deep-yellow">{% trans 'Apply to Program' %}</h2>
@@ -66,8 +64,8 @@
         </div>
       </div>
       <div id="enroll-two" class="row apply-block-steps">
-        <div class="col-md-2 offset-md-1 my-auto text-align-center">
-          <img class="d-block mx-auto" src="{% static 'img/redesign/how-to-apply/step-2.png' %}">
+        <div class="col-md-2 offset-md-1 my-auto">
+          <div class="svg-fluid-w">{% svg 'illustrations/newsletter' %}</div>
         </div>
         <div class="col-md-8 my-auto">
          {% url 'family-resource-centers' as frc_url %}
@@ -83,7 +81,7 @@
       </div>
       <div id="enroll-three" class="row apply-block-steps">
         <div class="col-md-2 offset-md-1 my-auto">
-          <img class="d-block mx-auto" src="{% static 'img/redesign/how-to-apply/step-3.png' %}">
+          <div class="svg-fluid-w">{% svg 'illustrations/checklist' %}</div>
         </div>
         <div class="col-md-8 my-auto">
           <h2 class="deep-green">{% trans 'Enrollment at CPS-Program Location' %}</h2>
