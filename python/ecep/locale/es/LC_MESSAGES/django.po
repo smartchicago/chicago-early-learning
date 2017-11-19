@@ -2915,7 +2915,7 @@ msgstr "¡Parece que su niño está listo para ir a la primaria! El sitio Web de
 #, fuzzy
 #| msgid "Learn More"
 msgid "Learn More at CPS.edu"
-msgstr "Aprenda más"
+msgstr "Aprenda más en el sitio Web de CPS"
 
 #: portal/templates/redesign/programs.html:129
 msgid "Infants and Toddlers"

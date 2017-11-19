@@ -2523,7 +2523,7 @@ msgstr ""
 
 #: portal/templates/redesign/programs.html:110
 msgid "Learn More at CPS.edu"
-msgstr ""
+msgstr "Aprenda más en el sitio Web de CPS"
 
 #: portal/templates/redesign/programs.html:129
 msgid "Infants and Toddlers"
