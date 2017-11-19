@@ -1,6 +1,6 @@
 
-define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-result.html', 'text!templates/location-popup.html', 'common', 'favorites'],
-    function($, L, Handlebars, searchResultHTML, popupHTML, common, favorites) {
+define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-result.html', 'text!templates/location-popup.html', 'text!templates/results-message.html', 'common', 'favorites'],
+    function($, L, Handlebars, searchResultHTML, popupHTML, resultsMessageHTML, common, favorites) {
         var map,
             $map = $('#map'),
             $filters = $('#filters'),
@@ -255,9 +255,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
         }
 
         var displayMessage = function() {
-            var message = "Test message";
+            var html = resultsMessageHTML,
+                args = { age: 7, location_types: "CPS and Community-based", over_five: true},
+                template = Handlebars.compile(html);
 
-            $results_message.text(message);
+            $results_message.html(template(args));
         }
 
         var initializeList = function(calculated) {
@@ -405,6 +407,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $year = $('#year'),
             $input_two = $('.input-two'),
             $calculator = $('.calculator'),
+            $skip = $('#skip-calculator'),
             $calculator_block = $('.results-calculator-form');
 
         var validateDate = function(month, day, year) {
@@ -504,6 +507,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 /* Filters Update event */
                 $filters.on('filters-update', function() {
                     console.log('here');
+                    console.log(currentFilters());
                     $results_wrapper.animate({
                         scrollTop: 0,
                     }, 100);
@@ -551,6 +555,15 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                         addAgeToUrl(calculated);
                         initializeList(calculated);
                     }
+                });
+
+                /* -- Skip Calculator Listener -- */
+
+                $skip.on('click', function(e) {
+                    e.preventDefault();
+
+                    var calculated = { program: ['#infants', '#preschool'] };
+                    initializeList(calculated);
                 });
 
                 /* -- Fetch Neighborhoods -- */

@@ -54,8 +54,14 @@
           display: none;
         }
 
-        .results-default {
+        .results-message {
+          p {
+            margin-bottom: 0.5rem;
 
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
         }
 
         .results-actions {
