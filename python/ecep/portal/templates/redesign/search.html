@@ -177,8 +177,10 @@
         </div>
 
         <div id="results" class="bg-lightest-gray">
-          {% if request.GET.address or request.GET.type == 'geo-latlng' %}
-          <div class="results-calculator p-4">
+          <div class="results-loading p-3" style="display: none;">
+            <h1>Loading...</h1>
+          </div>
+          <div class="results-calculator p-4" style="display: none;">
             <div class="results-calculator-header text-center">
               <h2 class="blue">{% blocktrans %}Enter your child's birthdate to find the right program.{% endblocktrans %}</h2>
             </div>
@@ -200,23 +202,24 @@
           </div>
           <div class="results-scroll p-3">
             <div class="results-description">
-              <div class="results-actions close-buttons">
-                <a class="btn btn-orange btn-block filters-toggle">{% trans 'Refine Your Search' %}</a>
-                <a id="filters-clear" class="btn btn-gray btn-block">{% trans 'Reset Filters' %}</a>
+              <div class="results-actions close-buttons d-flex flex-wrap w-100">
+                <div class="result-button">
+                  <a class="btn btn-block btn-clear-orange filters-toggle">{% trans 'Refine Search' %}</a>
+                </div>
+                <div class="result-button">
+                  <a id="filters-clear" class="btn btn-block btn-clear-gray">{% trans 'Reset Filters' %}</a>
+                </div>
               </div>
-              <div class="pt-3">
-                <p>{% trans 'All locations near you for a ' %} <b class="blue"><span id="calculated-age"></span> {% trans 'year old' %}</b> child:</p>
-              </div>
+              <div id="results-message" class="results-message pt-3"></div>
             </div>
-            <div class="results-list"></div>
+            <div class="results-list pt-3"></div>
             <div class="results-load-more">
               <div class="">
                 <a id="locations-more" class="btn btn-blue btn-block">{% trans 'See More Locations' %}</a>
               </div>
             </div>
           </div>
-          {% else %}
-          <div class="results-default">
+          <div class="results-default" style="display: none;">
             <div class="mx-5">
               <div class="results-default-graphic m-5 b-blue">
                 <div class="svg-fluid-w">{% svg 'illustrations/location' %}</div>
@@ -226,7 +229,6 @@
               </div>
             </div>
           </div>
-          {% endif %}
         </div>
       </div>
 

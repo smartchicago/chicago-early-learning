@@ -11,8 +11,10 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $results_wrapper = $('#results'),
             $results_default = $('.results-default'),
             $results_calculator = $('.results-calculator'),
+            $results_loading = $('.results-loading'),
             $results_scroll = $('.results-scroll'),
             $results_age = $('#calculated-age'),
+            $results_message = $('#results-message'),
             $results_list = $('.results-list'),
             $locations_more = $('#locations-more'),
             $search_input = $('#search-input'),
@@ -83,7 +85,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             div.innerHTML += '<img src="/static/img/legend_' + $map.data('language') + '.png">';
             return div;
         }
-        
+
         /* -- Functions -- */
 
         /*  Get basic map stats  */
@@ -160,7 +162,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     this.bindPopup(popup);
                 });
             });
-            
+
             state = getMapState();
             locationLayer = new L.layerGroup(locationMarkers);
             neighborhoodLayer.addData(neighborhoods_data);
@@ -252,14 +254,18 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
             $marker.attr('src', icon_url);
         }
 
+        var displayMessage = function() {
+            var message = "Test message";
 
-        /*    */
+            $results_message.text(message);
+        }
+
         var initializeList = function(calculated) {
             var age_filter = $filters_inputs.filter(calculated.program);
             age_filter.prop('checked', true);
             $filters.trigger('filters-update');
-            $results_age.text(calculated.years);
             $results_calculator.hide();
+            $results_loading.hide();
             $results_scroll.show();
         }
 
@@ -426,8 +432,9 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 program = '#infants';
             } else if ( date < infants_cutoff && date >= preschool_cutoff ) {
                 program = "#preschool";
-            } else {
-                console.log('other');
+            } else if ( date < preschool_cutoff ) {
+                program = ['#infants', '#preschool']
+                displayMessage();
             }
 
             calculated.program = program;
@@ -451,7 +458,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 age_url = current_url + "&" + $.param({age: age.years});
 
             window.history.pushState(
-                {age: age.years}, 
+                {age: age.years},
                 "Search for " + age.years + " year old",
                 age_url);
         }
@@ -463,6 +470,17 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                 list_index = 0;
                 var address_string = ($map.data('type') == 'geo-latlng') ? 'Current Location' : $map.data('address');
                 $search_input.attr('placeholder', (address_string || 'Enter an address, site, or zip code'));
+
+                console.log($map.data('age'));
+
+                /* -- Set Initial View -- */
+                if ( $map.data('age') ) {
+                    $results_loading.show();
+                } else if ( $map.data('type') == 'geo-latlng' || $map.data('address') ) {
+                    $results_calculator.show();
+                } else {
+                    $results_default.show();
+                }
 
                 /* -- Listeners -- */
                 /* Filter Pane Toggle */ 
@@ -489,10 +507,11 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     $results_wrapper.animate({
                         scrollTop: 0,
                     }, 100);
-                    
+
                     list_index = 0;
                     $results_list.empty();
                     listLocations(locations);
+                    displayMessage();
                     updateMap(locations);
                 });
 
@@ -568,7 +587,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                         var now = new Date();
                         year = 365*24*60*60;
 
-                        var calculated = calculateProgram(now.getMonth() + 1, now.getDay() + 1, now.getFullYear() - parseInt($map.data('age')));
+                        var calculated = calculateProgram(now.getMonth() + 1, now.getDay() + 1, (now.getFullYear() - parseInt($map.data('age'))-1));
                         initializeList(calculated);
                     }
                 });
