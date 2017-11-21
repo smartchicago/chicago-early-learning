@@ -19,6 +19,10 @@
       justify-content: flex-start;
       padding-top: 2em;
       padding-bottom: 2em;
+
+      img {
+        background-color: black;
+      }
       
       h1 {
         font-size: 1.25em;
@@ -26,11 +30,6 @@
 
       p {
         margin-bottom: 0;
-      }
-
-      .center-map {
-        height: 20em;
-        margin-bottom: 1em;
       }
 
       .center-name {
