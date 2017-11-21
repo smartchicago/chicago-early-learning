@@ -284,11 +284,13 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
 
             var filter_length = filter_html.length;
             if (filter_length > 2) {
-                filter_string = filter_html.slice(0, filter_length-1).join(", ") + ", and " + filter_html[filter_length - 1];
+                filter_string = "are " + filter_html.slice(0, filter_length-1).join(", ") + ", and " + filter_html[filter_length - 1];
             } else if (filter_length == 2) {
-                filter_string = filter_html[0] + " and " + filter_html[1];
-            } else {
+                filter_string = "are " + filter_html[0] + " and " + filter_html[1];
+            } else if (filter_html[0] == "<b class='blue'>accept CCAP</b>") {
                 filter_string = filter_html;
+            } else {
+                filter_string = "are " + filter_html[0];
             }
 
             args.location_types = location_types;
