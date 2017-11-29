@@ -21,7 +21,10 @@
   }
 
   input {
-    border: none;
+
+    &.email-btn {
+      border: none !important;
+    }
   }
 
   form {
@@ -58,6 +61,6 @@
 }
 
 #mc-embedded-subscribe {
-  width: 50%;
-  margin: 1em auto;
+  width: 50% !important;
+  margin: 1em auto !important;
 }

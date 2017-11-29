@@ -1398,8 +1398,8 @@ footer {
     font-size: 1.5rem;
     text-align: center;
     color: #1dc1ea; }
-  #mc_embed_signup input {
-    border: none; }
+  #mc_embed_signup input.email-btn {
+    border: none !important; }
   #mc_embed_signup form {
     padding: inherit; }
   #mc_embed_signup .mc-field-group {
@@ -1429,8 +1429,8 @@ footer {
     width: inherit; }
 
 #mc-embedded-subscribe {
-  width: 50%;
-  margin: 1em auto; }
+  width: 50% !important;
+  margin: 1em auto !important; }
 
 /* -- General -- */
 .info-row {
