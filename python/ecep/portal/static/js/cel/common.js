@@ -419,11 +419,12 @@ function($, L, Handlebars) {
         // Enter Press
         $autocomplete.keypress(function (e) {
             if (e.keyCode == 13) {
+                e.preventDefault();
                 var label = $autocomplete.data().label;
                 var place_id = $autocomplete.data().place_id;
                 var category = $autocomplete.data().category;
                 var types = $autocomplete.data().types;
-                selectPlace(place_id, category, types);
+                selectPlace(label, place_id, category, types);
             }
         });
 

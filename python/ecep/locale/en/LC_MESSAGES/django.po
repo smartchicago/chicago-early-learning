@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-19 12:53-0600\n"
+"POT-Creation-Date: 2017-12-01 14:38-0600\n"
 "PO-Revision-Date: 2013-01-10 09:19-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language: en\n"
@@ -103,21 +103,21 @@ msgstr ""
 #: portal/templates/location.html:165 portal/templates/location.html.py:169
 #: portal/templates/redesign/search.html:75
 #: portal/templates/redesign/search.html:77
-msgid "Part Day"
+msgid "Half Day"
 msgstr ""
 
 #: portal/models.py:101 portal/models.py:287
 #: portal/templates/location.html:173 portal/templates/location.html.py:177
-#: portal/templates/redesign/search.html:115
-#: portal/templates/redesign/search.html:117
+#: portal/templates/redesign/search.html:101
+#: portal/templates/redesign/search.html:103
 msgid "School Year"
 msgstr ""
 
 #: portal/models.py:102 portal/models.py:286
 #: portal/templates/location.html:173 portal/templates/location.html.py:175
-#: portal/templates/redesign/search.html:108
-#: portal/templates/redesign/search.html:110
-msgid "Full Year"
+#: portal/templates/redesign/search.html:94
+#: portal/templates/redesign/search.html:96
+msgid "Year-round"
 msgstr ""
 
 #: portal/models.py:103 portal/templates/location.html:79 portal/views.py:576
@@ -125,14 +125,10 @@ msgid "Ages Served"
 msgstr ""
 
 #: portal/models.py:104 portal/models.py:284
-#: portal/templates/redesign/search.html:94
-#: portal/templates/redesign/search.html:96
 msgid "Full Week"
 msgstr ""
 
 #: portal/models.py:105 portal/models.py:285
-#: portal/templates/redesign/search.html:101
-#: portal/templates/redesign/search.html:103
 msgid "Part Week"
 msgstr ""
 
@@ -151,22 +147,20 @@ msgid "Offers Home Visiting"
 msgstr ""
 
 #: portal/models.py:112 portal/models.py:291
-#: portal/templates/redesign/search.html:155
-#: portal/templates/redesign/search.html:157
 msgid "Accepts CCAP"
 msgstr ""
 
 #: portal/models.py:113 portal/models.py:292
 #: portal/templates/location.html:190
-#: portal/templates/redesign/search.html:162
-#: portal/templates/redesign/search.html:164
+#: portal/templates/redesign/search.html:134
+#: portal/templates/redesign/search.html:136
 msgid "Head Start"
 msgstr ""
 
 #: portal/models.py:114 portal/models.py:293
 #: portal/templates/location.html:191
-#: portal/templates/redesign/search.html:169
-#: portal/templates/redesign/search.html:171
+#: portal/templates/redesign/search.html:141
+#: portal/templates/redesign/search.html:143
 msgid "Early Head Start"
 msgstr ""
 
@@ -474,7 +468,7 @@ msgstr ""
 msgid "Click to view your list"
 msgstr ""
 
-#: portal/templates/browse.html:68 portal/templates/redesign/search.html:143
+#: portal/templates/browse.html:68 portal/templates/redesign/search.html:129
 msgid "Community"
 msgstr ""
 
@@ -837,17 +831,13 @@ msgid ""
 "across the city."
 msgstr ""
 
-#: portal/templates/redesign/connect.html:16
+#: portal/templates/redesign/connect.html:23
 #: portal/templates/redesign/index.html:232
 msgid "Stay up to date on Chicago Early Learning!"
 msgstr ""
 
-#: portal/templates/redesign/connect.html:17
+#: portal/templates/redesign/connect.html:24
 msgid "Join our email and text lists."
-msgstr ""
-
-#: portal/templates/redesign/connect.html:37
-msgid "Text Me! Here's my cell phone number."
 msgstr ""
 
 #: portal/templates/redesign/family-resource-centers.html:8
@@ -2959,51 +2949,63 @@ msgstr ""
 msgid "Duration"
 msgstr ""
 
-#: portal/templates/redesign/search.html:128
+#: portal/templates/redesign/search.html:114
 msgid "Program Features"
 msgstr ""
 
-#: portal/templates/redesign/search.html:134
+#: portal/templates/redesign/search.html:120
 msgid "CPS-based"
 msgstr ""
 
-#: portal/templates/redesign/search.html:136
+#: portal/templates/redesign/search.html:122
 msgid "CPS"
 msgstr ""
 
-#: portal/templates/redesign/search.html:141
-msgid "Community-Based"
+#: portal/templates/redesign/search.html:127
+msgid "Community-based"
 msgstr ""
 
-#: portal/templates/redesign/search.html:185
+#: portal/templates/redesign/search.html:155
+msgid "accept CCAP"
+msgstr ""
+
+#: portal/templates/redesign/search.html:157
+msgid "Accept CCAP"
+msgstr ""
+
+#: portal/templates/redesign/search.html:167
+msgid "Loading..."
+msgstr ""
+
+#: portal/templates/redesign/search.html:171
 msgid "Enter your child's birthdate to find the right program."
 msgstr ""
 
-#: portal/templates/redesign/search.html:196
+#: portal/templates/redesign/search.html:182
 msgid "Add Another Child"
 msgstr ""
 
-#: portal/templates/redesign/search.html:199
+#: portal/templates/redesign/search.html:185
 msgid "Find Programs"
 msgstr ""
 
-#: portal/templates/redesign/search.html:202
+#: portal/templates/redesign/search.html:188
 msgid "Skip Age Calculator"
 msgstr ""
 
-#: portal/templates/redesign/search.html:210
+#: portal/templates/redesign/search.html:196
 msgid "Refine Search"
 msgstr ""
 
-#: portal/templates/redesign/search.html:213
+#: portal/templates/redesign/search.html:199
 msgid "Reset Filters"
 msgstr ""
 
-#: portal/templates/redesign/search.html:221
+#: portal/templates/redesign/search.html:207
 msgid "See More Locations"
 msgstr ""
 
-#: portal/templates/redesign/search.html:231
+#: portal/templates/redesign/search.html:217
 msgid "Please enter your address in the search bar above to begin."
 msgstr ""
 

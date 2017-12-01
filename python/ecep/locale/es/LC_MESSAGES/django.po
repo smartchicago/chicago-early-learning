@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-19 12:53-0600\n"
+"POT-Creation-Date: 2017-12-01 14:38-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,36 +98,34 @@ msgstr "Día completo"
 #: portal/templates/location.html:165 portal/templates/location.html.py:169
 #: portal/templates/redesign/search.html:75
 #: portal/templates/redesign/search.html:77
-msgid "Part Day"
-msgstr "Parte del día"
+#, fuzzy
+#| msgid "Full Day"
+msgid "Half Day"
+msgstr "Día completo"
 
 #: portal/models.py:101 portal/models.py:287
 #: portal/templates/location.html:173 portal/templates/location.html.py:177
-#: portal/templates/redesign/search.html:115
-#: portal/templates/redesign/search.html:117
+#: portal/templates/redesign/search.html:101
+#: portal/templates/redesign/search.html:103
 msgid "School Year"
 msgstr "Año Escolar"
 
 #: portal/models.py:102 portal/models.py:286
 #: portal/templates/location.html:173 portal/templates/location.html.py:175
-#: portal/templates/redesign/search.html:108
-#: portal/templates/redesign/search.html:110
-msgid "Full Year"
-msgstr "Año completo"
+#: portal/templates/redesign/search.html:94
+#: portal/templates/redesign/search.html:96
+msgid "Year-round"
+msgstr ""
 
 #: portal/models.py:103 portal/templates/location.html:79 portal/views.py:576
 msgid "Ages Served"
 msgstr "Edades para las que se presta servicio"
 
 #: portal/models.py:104 portal/models.py:284
-#: portal/templates/redesign/search.html:94
-#: portal/templates/redesign/search.html:96
 msgid "Full Week"
 msgstr "Semana completa"
 
 #: portal/models.py:105 portal/models.py:285
-#: portal/templates/redesign/search.html:101
-#: portal/templates/redesign/search.html:103
 msgid "Part Week"
 msgstr "Semana parcial"
 
@@ -146,22 +144,20 @@ msgid "Offers Home Visiting"
 msgstr "Ofrece Visitas Domiciliarias"
 
 #: portal/models.py:112 portal/models.py:291
-#: portal/templates/redesign/search.html:155
-#: portal/templates/redesign/search.html:157
 msgid "Accepts CCAP"
 msgstr "Acepta CCAP"
 
 #: portal/models.py:113 portal/models.py:292
 #: portal/templates/location.html:190
-#: portal/templates/redesign/search.html:162
-#: portal/templates/redesign/search.html:164
+#: portal/templates/redesign/search.html:134
+#: portal/templates/redesign/search.html:136
 msgid "Head Start"
 msgstr "Head Start"
 
 #: portal/models.py:114 portal/models.py:293
 #: portal/templates/location.html:191
-#: portal/templates/redesign/search.html:169
-#: portal/templates/redesign/search.html:171
+#: portal/templates/redesign/search.html:141
+#: portal/templates/redesign/search.html:143
 msgid "Early Head Start"
 msgstr "Early Head Start"
 
@@ -508,7 +504,7 @@ msgstr "Refine su búsqueda"
 msgid "Click to view your list"
 msgstr "Haga clic para ver su lista"
 
-#: portal/templates/browse.html:68 portal/templates/redesign/search.html:143
+#: portal/templates/browse.html:68 portal/templates/redesign/search.html:129
 msgid "Community"
 msgstr "Organizaciones comunitarias"
 
@@ -1023,19 +1019,15 @@ msgstr ""
 "la ciudad colecciones conservadas de juguetes y actividades STEM para el "
 "aprendizaje temprano."
 
-#: portal/templates/redesign/connect.html:16
+#: portal/templates/redesign/connect.html:23
 #: portal/templates/redesign/index.html:232
 #, fuzzy
 #| msgid "to help make the Chicago Early Learning Portal better."
 msgid "Stay up to date on Chicago Early Learning!"
 msgstr "el portal del Chicago Educacíon Temprana."
 
-#: portal/templates/redesign/connect.html:17
+#: portal/templates/redesign/connect.html:24
 msgid "Join our email and text lists."
-msgstr ""
-
-#: portal/templates/redesign/connect.html:37
-msgid "Text Me! Here's my cell phone number."
 msgstr ""
 
 #: portal/templates/redesign/family-resource-centers.html:8
@@ -3519,63 +3511,79 @@ msgstr "Horas"
 msgid "Duration"
 msgstr "Duración"
 
-#: portal/templates/redesign/search.html:128
+#: portal/templates/redesign/search.html:114
 #, fuzzy
 #| msgid "Program Hours"
 msgid "Program Features"
 msgstr "Horario del Programa"
 
-#: portal/templates/redesign/search.html:134
+#: portal/templates/redesign/search.html:120
 #, fuzzy
 #| msgid "CPS based"
 msgid "CPS-based"
 msgstr "Escuelas Públicas de Chicago"
 
-#: portal/templates/redesign/search.html:136
+#: portal/templates/redesign/search.html:122
 msgid "CPS"
 msgstr ""
 
-#: portal/templates/redesign/search.html:141
+#: portal/templates/redesign/search.html:127
 #, fuzzy
 #| msgid "Community Based"
-msgid "Community-Based"
+msgid "Community-based"
 msgstr "Organizaciones comunitarias"
 
-#: portal/templates/redesign/search.html:185
+#: portal/templates/redesign/search.html:155
+#, fuzzy
+#| msgid "Accepts CCAP"
+msgid "accept CCAP"
+msgstr "Acepta CCAP"
+
+#: portal/templates/redesign/search.html:157
+#, fuzzy
+#| msgid "Accepts CCAP"
+msgid "Accept CCAP"
+msgstr "Acepta CCAP"
+
+#: portal/templates/redesign/search.html:167
+msgid "Loading..."
+msgstr ""
+
+#: portal/templates/redesign/search.html:171
 msgid "Enter your child's birthdate to find the right program."
 msgstr ""
 "Ingrese la fecha de nacimiento de su niño para encontrar el programa "
 "apropiado."
 
-#: portal/templates/redesign/search.html:196
+#: portal/templates/redesign/search.html:182
 msgid "Add Another Child"
 msgstr ""
 
-#: portal/templates/redesign/search.html:199
+#: portal/templates/redesign/search.html:185
 #, fuzzy
 #| msgid "Chicago Early Learning Portal"
 msgid "Find Programs"
 msgstr "Chicago Early Learning Portal (Portal de Aprendizaje Temprano)"
 
-#: portal/templates/redesign/search.html:202
+#: portal/templates/redesign/search.html:188
 msgid "Skip Age Calculator"
 msgstr ""
 
-#: portal/templates/redesign/search.html:210
+#: portal/templates/redesign/search.html:196
 #, fuzzy
 #| msgid "Refine Your Search"
 msgid "Refine Search"
 msgstr "Refine su búsqueda"
 
-#: portal/templates/redesign/search.html:213
+#: portal/templates/redesign/search.html:199
 msgid "Reset Filters"
 msgstr "Borre Filtros"
 
-#: portal/templates/redesign/search.html:221
+#: portal/templates/redesign/search.html:207
 msgid "See More Locations"
 msgstr "Vea más sitios"
 
-#: portal/templates/redesign/search.html:231
+#: portal/templates/redesign/search.html:217
 msgid "Please enter your address in the search bar above to begin."
 msgstr ""
 "Por favor ponga su dirección en la barra de búsqueda de arriba para comenzar."
@@ -3835,6 +3843,12 @@ msgstr ""
 #: templates/admin/portal/location/delete_confirmation.html:30
 msgid "Yes, I'm sure"
 msgstr ""
+
+#~ msgid "Part Day"
+#~ msgstr "Parte del día"
+
+#~ msgid "Full Year"
+#~ msgstr "Año completo"
 
 #~ msgid "Clear"
 #~ msgstr "Borrar"

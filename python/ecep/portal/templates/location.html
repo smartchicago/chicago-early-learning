@@ -162,17 +162,17 @@
           <div class="location-content">
 
             {% if location.is_full_day and location.is_part_day %}
-              <p>{% trans 'Full Day' %}, {% trans 'Part Day'%}</p>
+              <p>{% trans 'Full Day' %}, {% trans 'Half Day'%}</p>
             {% elif location.is_full_day %}
               <p>{% trans 'Full Day'%}</p>
             {% elif location.is_part_day %}
-              <p>{% trans 'Part Day' %}</p>
+              <p>{% trans 'Half Day' %}</p>
             {% endif %}
 
             {% if location.is_full_year and location.is_school_year %}
-              <p>{% trans 'Full Year' %}, {% trans 'School Year' %}</p>
+              <p>{% trans 'Year-round' %}, {% trans 'School Year' %}</p>
             {% elif location.is_full_year %}
-              <p>{% trans 'Full Year' %}</p>
+              <p>{% trans 'Year-round' %}</p>
             {% elif location.is_school_year %}
               <p>{% trans 'School Year' %}</p>
             {% endif %}
