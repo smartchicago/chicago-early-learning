@@ -97,9 +97,9 @@ class Location(models.Model):
     is_age_lt_3 = models.NullBooleanField(ugettext_lazy('Ages 0 - 3'))
     is_age_gt_3 = models.NullBooleanField(ugettext_lazy('Ages 3 - 5'))
     is_full_day = models.NullBooleanField(ugettext_lazy('Full Day'))
-    is_part_day = models.NullBooleanField(ugettext_lazy('Part Day'))
+    is_part_day = models.NullBooleanField(ugettext_lazy('Half Day'))
     is_school_year = models.NullBooleanField(ugettext_lazy('School Year'))
-    is_full_year = models.NullBooleanField(ugettext_lazy('Full Year'))
+    is_full_year = models.NullBooleanField(ugettext_lazy('Year-round'))
     ages = models.CharField(ugettext_lazy('Ages Served'), max_length=50, blank=True)
     is_full_week = models.NullBooleanField(ugettext_lazy('Full Week'))
     is_part_week = models.NullBooleanField(ugettext_lazy('Part Week'))
@@ -280,10 +280,10 @@ class Location(models.Model):
     def get_location_display(self):
         display = {
             'full_day': _('Full Day'),
-            'part_day': _('Part Day'),
+            'part_day': _('Half Day'),
             'full_week': _('Full Week'),
             'part_week': _('Part Week'),
-            'full_year': _('Full Year'),
+            'full_year': _('Year-round'),
             'school_year': _('School Year'),
             'cps': _('CPS Based'),
             'community': _('Community Based'),
@@ -449,7 +449,7 @@ class Location(models.Model):
         trans_dict = {'more': _('More'), 'website': _('Website'), 'directions': _('Directions'),
                       'share': _('Share'), 'qrisrating': _('QRIS Rating'), 'contact': _('Compare and Apply'),
                       'more_info': _('More Info'), 'serves03': _('Serves ages 0 - 3'), 'serves35': _('Serves ages 3 - 5'),
-                      'serves05': _('Serves ages 0 - 3, 3 - 5'), 'full_day': _('Full Day'), 'part_day': _('Part Day')}
+                      'serves05': _('Serves ages 0 - 3, 3 - 5'), 'full_day': _('Full Day'), 'part_day': _('Half Day')}
 
         # More information for tooltip icon
         accreditation = ['Accredited'] if self.accred != 'None' else []
