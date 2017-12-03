@@ -1,0 +1,169 @@
+<!DOCTYPE html>{% load i18n staticfiles static svg sass_tags compress %}
+<html>
+<head>
+    <title>
+    {% block title %}
+
+    {% endblock %}
+    </title>
+    <meta charset="utf-8">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Boostrap 4, JQuery --> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href='{% static "css/lib/jquery-ui-1.10.3.autocomplete.min.css" %}' rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/e3d88004fc.css">
+    <link href='{% static "css/lib/hint.min.css" %}' rel="stylesheet">
+    <link href='{% static "css/lib/leaflet.css" %}' rel="stylesheet">
+    <link href='{% static "css/lib/fontello.css" %}' rel="stylesheet">
+
+    <!-- Mailchimp CSS -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+      /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+         We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style> 
+
+    <!-- Outdated Browser Check -->
+    <link href='{% static "css/lib/outdatedbrowser.min.css" %}' rel="stylesheet" type="text/css">
+      
+    {% block pagestyle %}
+    {% endblock %}
+
+    <!-- Defined CSS -->
+    <link href='{% sass_src "scss/application.scss" %}' rel="stylesheet">
+    <link href='{% static "css/lib/responsive.css" %}?v=2015041401' rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'img/favicons/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="384x384" href="{% static 'img/favicons/android-chrome-384x384.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicons/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicons/favicon-32x32.png' %}">
+    <link rel="mask-icon" href="{% static 'img/favicons/safari-pinned-tab.svg' %}">
+    <meta name="msapplication-config" content="{% static 'img/favicons/browserconfig.xml' %}">
+    <meta name="msapplication-TileColor" content="#1dc1ea">
+    <meta name="msapplication-TileImage" content="{% static 'img/favicons/mstile-150x150.png' %}">
+    
+</head>
+<body>
+    {% svg 'cel-svgs' %}
+    {% block base %}{% endblock %}
+
+    <!-- Outdated Browser -->
+    <div id="outdated"></div>
+    <script src='{% static "js/lib/outdatedbrowser.min.js" %}'></script>
+    <script>
+        //event listener form DOM ready
+        function addLoadEvent(func) {
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function() {
+                    if (oldonload) {
+                        oldonload();
+                    }
+                    func();
+                }
+            }
+        }
+        //call function after DOM ready
+        addLoadEvent(function(){
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'transform',
+                languagePath: '{% static "files/en.html" %}'
+            })
+        });
+    </script>
+
+</body>
+<footer>
+  <!-- Bootstrap JS --> 
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <!-- Set Active state in nav -->
+  <script type="text/javascript">
+      $(document).ready(function() {
+        // TODO: Add some cleaner logic around this:
+        $('a[href="' + this.location.pathname + '"]').addClass('nav-active');
+      });
+  </script>
+
+  <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-34476553-1', 'auto');
+    ga('send', 'pageview');
+
+
+  </script>
+
+  {% compress js %}
+  <script src='{% static "js/require.js" %}?version=1'></script>
+  <script src='{% static "js/require-config.js" %}?version=1'></script>
+  {% endcompress %}
+  <script>
+      var inDevelopment = {{ settings.DEBUG|yesno:"true,false" }},
+          version = 10;
+
+      requirejs.config({
+          //By default load any module IDs from js/lib
+          // TODO: enable build in release mode once we start actually doing it
+          //baseUrl: ('{{ settings.DEBUG }}' === 'True' ?
+              //'{% static "js/cel" %}' : '{% static "js/cel-build" %}')
+          baseUrl: '{% static "js/cel" %}',
+          urlArgs: "v=" + ((inDevelopment) ? (new Date()).getTime() : version)
+      });
+
+      // Cheat to win, make a global object
+      // We need this because:
+      //   a) We can only render this in a django template
+      //   b) We need access to the GOOGLE_MAPS_KEY to load google maps using require.
+      //      If we put it in an AMD module, we have to first load the module, then
+      //      have a nested require statement to load google maps, which is a PITA.
+      //
+      // So, if you need to require google maps, do something like
+      // define([CEL.serverVars.gmapRequire], function() { ... })
+      CEL = {
+          serverVars: {
+              latSettings: '{{ settings.LATITUDE|stringformat:'f' }}',
+              lngSettings: '{{ settings.LONGITUDE|stringformat:'f' }}',
+              zoomSettings: '{{ settings.ZOOM_THRESHOLD }}',
+              gmapKey: '{{ settings.GOOGLE_MAPS_KEY }}',
+              gmapRequire: 'async!https://maps.googleapis.com/maps/api/js?key=' +
+                  '{{ settings.GOOGLE_MAPS_KEY }}' + '&libraries=places',
+              autocomplete: {
+                  swlat: {{ settings.AUTOCOMPLETE.SW_LAT|stringformat:'f' }},
+                  swlng: {{ settings.AUTOCOMPLETE.SW_LNG|stringformat:'f' }},
+                  nelat: {{ settings.AUTOCOMPLETE.NE_LAT|stringformat:'f' }},
+                  nelng: {{ settings.AUTOCOMPLETE.NE_LNG|stringformat:'f' }}
+              },
+              staticRoot: '{% static "" %}',
+              language: '{{ LANGUAGE_CODE }}',
+              // settings.LANGUAGE_CODE instead of LANGUAGE_CODE because we want default, not
+              //      what is currently set
+              default_language: '{{ settings.LANGUAGE_CODE }}'
+          }
+      };
+      // This forces loading of minified common libs rather than loading them separately
+      require(['common'], function() { });
+   </script>
+  <!-- Add'l Headers --> 
+  {% block scripts %}{% endblock %}
+  {% block template_headers %}{% endblock %}
+</footer>
+</html>

@@ -20,36 +20,37 @@ sitemaps = {'location': LocationSiteMap, 'static': StaticViewSitemap}
 urlpatterns = patterns(
     '',
     # Index page is in the 'portal' app
-    url(r'^$', Index.as_view(), name='index'),
-    url(r'^about$', About.as_view(), name='about'),
-    url(r'^updates$', Updates.as_view(), name='updates'),
-    url(r'^city-resources$', CityResources.as_view(), name='city-resources'),
-    url(r'^how-to-apply$', HowToApply.as_view(), name='how-to-apply'),
-    url(r'^connect$', Connect.as_view(), name='connect'),
-    url(r'^announcements$', Announcements.as_view(), name='announcements'),
-    url(r'^outreach$', OutreachRedesign.as_view(), name='outreach'),
+    #url(r'^$', Index.as_view(), name='index'),
+    #url(r'^about$', About.as_view(), name='about'),
+    #url(r'^updates$', Updates.as_view(), name='updates'),
+    #url(r'^city-resources$', CityResources.as_view(), name='city-resources'),
+    #url(r'^how-to-apply$', HowToApply.as_view(), name='how-to-apply'),
+    #url(r'^connect$', Connect.as_view(), name='connect'),
+    #url(r'^announcements$', Announcements.as_view(), name='announcements'),
+    #url(r'^outreach$', OutreachRedesign.as_view(), name='outreach'),
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type="text/plain")),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/img/favicons/favicon.ico')),
 
     # Redesign testing ground
-    url(r'^family-resource-centers',  FamilyResourceCenters.as_view(), name='family-resource-centers'),
-    url(r'^faq$', FAQ.as_view(), name='faq'),
-    url(r'^families$', Programs.as_view(), name='families'),
-    url(r'^programs$', Programs.as_view(), name='programs'),
-    url(r'^resources$', Resources.as_view(), name='resources'),
+    #url(r'^family-resource-centers',  FamilyResourceCenters.as_view(), name='family-resource-centers'),
+    #url(r'^faq$', FAQ.as_view(), name='faq'),
+    #url(r'^families$', Programs.as_view(), name='families'),
+    #url(r'^programs$', Programs.as_view(), name='programs'),
+    #url(r'^resources$', Resources.as_view(), name='resources'),
 
     # Search
+    url(r'test/', Test.as_view(), name="test"),
     url(r'search/', Search.as_view(), name="search"),
 
     # Blog
-    url(r'^blog/$', Blog.as_view(), name="blog"),
-    url(r'^blog/hughes-library$', Blog.as_view(), name="blog-hughes"),
+    #url(r'^blog/$', Blog.as_view(), name="blog"),
+    #url(r'^blog/hughes-library$', Blog.as_view(), name="blog-hughes"),
 
     # portal autocomplete api
     url(r'^api/autocomplete/$', 'portal.views.portal_autocomplete'),
 
     # Enroll
-    url(r'enroll/?$', HowToApply.as_view(), name='enroll-faq'),
+    #url(r'enroll/?$', HowToApply.as_view(), name='enroll-faq'),
 
     # Location Views
     # Need to pass id to view for sitemap, but don't need to do anything with it since this is handled with javascript

@@ -1,4 +1,4 @@
-{% extends "redesign/base.html" %}
+{% extends "iframe/base.html" %}
 
 {% load i18n %}
 {% load staticfiles %}
@@ -10,10 +10,10 @@
 {% block otherhead %}
 {% endblock %}
 
-{% block body %}
+{% block base %}
 <div id="location-container" class="container container-top-2 container-bottom-4">
   <div class="location-map hidden-md-down">
-    <div id="location-map" data-lat="{{ loc.position.lat|stringformat:"f" }}" data-lng="{{ loc.position.lng|stringformat:"f" }}" class="single-location-map"></div>
+    <div id="location-map" data-lat="{{ loc.position.lat|stringformat:'f' }}" data-lng="{{ loc.position.lng|stringformat:'f' }}" class="single-location-map"></div>
     <div class="location-divider"></div>
   </div>
   <div class="location-block">

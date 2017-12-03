@@ -1,23 +1,13 @@
-{% extends "base.html" %}
+{% extends 'iframe/base.html' %}
 
 {% load i18n %}
 {% load staticfiles %}
-{% load portal_extras %}
+{% load svg %}
 
-{% block otherhead %}
-    <link href="{% static 'css/homepage.css' %}?v=2015030401" rel="stylesheet">
-    <script type="text/javascript">
-
-    </script>
+{% block title %}
+{% trans "Chicago Early Learning" %} - {% trans "Search" %}
 {% endblock %}
 
-{% block content %}
-	<div class="masthead">
-		<div class="container-custom">
-			<input class="homepage-search test" type="text" placeholder="{% blocktrans %}Enter a school name{% endblocktrans %}">
-		</div>
-	</div>
-{% endblock %}
-
-{% block scripts %}
+{% block base %}
+<h1>Test</h1>
 {% endblock %}

@@ -675,12 +675,6 @@ footer {
     left: 0;
     bottom: 0;
     height: 100%; } }
-@media (min-width: 576px) {
-  #search .search-view {
-    padding-top: 110px; } }
-@media (min-width: 992px) {
-  #search .search-view {
-    padding-top: 115px; } }
 #search .search-view #search-results {
   height: 100%; }
   #search .search-view #search-results .form-group {

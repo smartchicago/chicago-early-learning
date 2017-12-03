@@ -23,64 +23,65 @@ from operator import attrgetter
 logger = logging.getLogger(__name__)
 
 
-class SMSInfo(TemplateView):
-    template_name = "smsinfo.html"
-
-class Updates(TemplateView):
-    template_name = "updates.html"
-
-class CityResources(TemplateView):
-    template_name = "city-resources.html"
-
-class HowToApplyRedesign(TemplateView):
-    template_name = "how-to-apply.html"
-
-class Announcements(TemplateView):
-    template_name = "announcements.html"
-
-class Starred(TemplateView):
-    template_name = 'starred.html'
-
-
+#class SMSInfo(TemplateView):
+#    template_name = "smsinfo.html"
+#
+#class Updates(TemplateView):
+#    template_name = "updates.html"
+#
+#class CityResources(TemplateView):
+#    template_name = "city-resources.html"
+#
+#class HowToApplyRedesign(TemplateView):
+#    template_name = "how-to-apply.html"
+#
+#class Announcements(TemplateView):
+#    template_name = "announcements.html"
+#
 # Redesign Template Views:
-class About(TemplateView):
-    template_name = "redesign/about.html"
+#class About(TemplateView):
+#    template_name = "redesign/about.html"
+#
+#class Blog(TemplateView):
+#    template_name = "redesign/blog.html"
+#
+#class Connect(TemplateView):
+#    template_name = "redesign/connect.html"
+#
+#class FamilyResourceCenters(TemplateView):
+#    template_name = "redesign/family-resource-centers.html"
+#
+#class FAQ(TemplateView):
+#    template_name = "redesign/faq.html"
+#
+#class HowToApply(TemplateView):
+#    template_name = "redesign/how-to-apply.html"
+#
+#class Index(TemplateView):
+#    template_name = "redesign/index.html"
+#
+#class OutreachRedesign(TemplateView):
+#    template_name = "redesign/outreach.html"
+#
+#class Programs(TemplateView):
+#    template_name = "redesign/programs.html"
+#
+#class Resources(TemplateView):
+#    template_name = "redesign/resources.html"
 
-class Blog(TemplateView):
-    template_name = "redesign/blog.html"
+class Test(TemplateView):
+    template_name = "test.html"
 
-class Connect(TemplateView):
-    template_name = "redesign/connect.html"
-
-class FamilyResourceCenters(TemplateView):
-    template_name = "redesign/family-resource-centers.html"       
-
-class FAQ(TemplateView):
-    template_name = "redesign/faq.html"
-
-class HowToApply(TemplateView):
-    template_name = "redesign/how-to-apply.html"
-
-class Index(TemplateView):
-    template_name = "redesign/index.html"
-
-class OutreachRedesign(TemplateView):
-    template_name = "redesign/outreach.html"
-
-class Programs(TemplateView):
-    template_name = "redesign/programs.html"
-
-class Resources(TemplateView):
-    template_name = "redesign/resources.html"
-
+# Shutting down everything for the iframe, except for:
 
 class Search(View):
-    template_name = "redesign/search.html"
+    template_name = "iframe/search.html"
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
-
+class Starred(TemplateView):
+    template_name = 'iframe/starred.html'
 
 def browse(request):
     # If a search query was passed in, see if we can find a matching location
@@ -362,7 +363,7 @@ def location(request, location_id=None, slug=None):
     else:
         no_es_description = False
 
-    return render(request, 'location.html', {
+    return render(request, 'iframe/location.html', {
         'loc': loc,
         'loc_description': location.q_stmt,
         'loc_neighborhood': location.neighborhood,
@@ -381,7 +382,7 @@ def location_map(request, location_id=None):
     else:
         no_es_description = False
 
-    return render(request, 'location-map.html', {
+    return render(request, 'iframe/location-map.html', {
         'loc': loc,
         'loc_description': location.q_stmt,
         'loc_neighborhood': location.neighborhood,

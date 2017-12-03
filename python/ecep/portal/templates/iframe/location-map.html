@@ -1,0 +1,98 @@
+d{% extends "iframe/base.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load portal_extras %}
+{% load svg %}
+
+{% block title %}{{ loc.item.site_name }} - {{ loc_neighborhood }} - {% trans "Chicago Early Learning" %}{% endblock %}
+
+{% block otherhead %}
+{% endblock %}
+
+{% block base %}
+<div id="location-container" class="container container-bottom-4">
+  <div class="location-top-headers">
+    <div class="location-name">
+      <h1 class="black">{{ location.site_name }}</h1>
+    </div>
+    <div class="location-address">
+      <h2 class="gray">{{ location.address }}</h2>
+    </div>
+    <div><p class="gray"><i>{% trans 'Use two fingers to navigate the map.' %}</i></p></div>
+  </div>
+  <div class="location-map">
+    <div id="location-map" 
+      data-lat="{{ loc.position.lat|stringformat:"f" }}"
+      data-lng="{{ loc.position.lng|stringformat:"f" }}" 
+      {% if request.GET.lat and request.GET.lng %}
+      data-address-latitude="{{ request.GET.lat }}"
+      data-address-longitude="{{ request.GET.lng }}"
+      {% endif %}
+      class="single-location-map"></div>
+  </div>
+  <div class="row py-3">
+    <div class="col-sm-12">
+      <div class="location-action-button">
+        <a href="{% url 'location-view' location_id=location.id %}" class="btn btn-orange btn-block">{% trans 'More Info' %}</a>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="location-action-button">
+        <a href="https://maps.google.com/maps?saddr=current+location&daddr={{location.address}}+{{location.city}}+{{location.state}}+{{location.zip}}" class="btn btn-gray btn-block">{% trans 'Get Directions' %}</a>
+      </div>
+    </div>
+    {% if location.copa_key > 0 %}
+    <div class="col-sm-12">
+      <div class="location-action-button">
+        <a href="{{ location.get_copa_url }}?site1={{ location.copa_key }}" class="btn btn-blue btn-block">{% trans 'Apply Today!' %}</a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  <!--
+  <div class="location-block">
+    <div class="location-top row">
+      <div class="location-top-headers col-md-8">
+        <div class="location-name">
+          <h1 class="black">{{ location.site_name }}</h1>
+        </div>
+        <div class="location-address">
+          <h2 class="dark-gray">{{ location.address }}</h2>
+        </div>
+        {% if location.phone %}
+        <div class="location-phone">
+          <a class="a-orange" href="tel:{{location.phone}}">{{ location.phone }}</a>
+        </div>
+        {% endif %}
+        {% if location.url %}
+        <div class="location-url">
+          <a class="a-orange" href="{{location.url}}">{% trans "Location Website" %}</a>
+        </div>
+        {% endif %}
+      </div>
+      <div class="location-top-actions col-md-4">
+        {% if location.copa_key > 0 %}
+        <div class="location-action-button">
+          <a href="{{ location.get_copa_url }}?site1={{ location.copa_key }}" class="btn btn-orange btn-block">{% trans 'Apply Today!' %}</a>
+        </div>
+        {% endif %}
+        <div class="location-action-button">
+          <a data-redirect="/favorites/" data-location="{{ location.id }}" class="btn btn-gray btn-block compare-btn">{% trans 'Compare Location' %}</a>
+        </div>
+        <div class="location-action-button">
+          <a href="https://maps.google.com/maps?saddr=current+location&daddr={{location.address}}+{{location.city}}+{{location.state}}+{{location.zip}}" class="btn btn-gray btn-block">{% trans 'Get Directions' %}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+require(['location-marker'], function() { });
+</script>
+{% endblock %}
+
