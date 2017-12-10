@@ -78,6 +78,7 @@ class Location(models.Model):
         (MEDIUM, ugettext_lazy('Limited Availability')),
     )
 
+    active = models.BooleanField('Active', default=0, blank=True)
     copa_key = models.IntegerField('COPA Key', default=0, blank=True)
     ecm_key = models.IntegerField('ECM Key', default=0, blank=True)
     site_name = models.CharField('Site Name', max_length=100)
@@ -119,9 +120,16 @@ class Location(models.Model):
     # Keeps track of whether or not new locations have been approved by the admin
     accepted = models.BooleanField(ugettext_lazy('Approved'), default=False)
 
-    # ECM alottment status, classroom availability
+    # COPA alottment status, classroom availability
     availability = models.CharField(ugettext_lazy('Availability'), choices=AVAILABILITY_CHOICES, max_length=25, blank=True)
 
+    # Misc future fields, mirroring COPA system columns:
+    universal_application = models.BooleanField('COPA Univeral Application', default=False, blank=True)
+    preschool_application = models.BooleanField('COPA Preschool Application', default=False, blank=True)
+    copa_neighborhood = models.CharField('Neighborhood Name (COPA)', max_length=50, blank=True)
+    copa_neighborhood_id = models.IntegerField('Neighborhood Name ID', default=0, blank=True)
+    site_name_alternate = models.CharField('Alternate Site Name', max_length=100, blank=True)
+    last_modified_on = models.CharField('Last Modified On', max_length=50, blank=True)
 
     # To get these placeholder fields to show up in the UI, replace
     # 'Placeholder 1' and 'Placeholder 2' in the lines below with
