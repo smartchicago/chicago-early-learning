@@ -151,8 +151,6 @@ class Command(NoArgsCommand):
         sftp.close()
         transport.close()
 
-        return latest_export
-
     def parse_bool(self, value):
 
         if value == "1":
