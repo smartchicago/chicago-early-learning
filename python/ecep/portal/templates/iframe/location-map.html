@@ -1,4 +1,4 @@
-d{% extends "iframe/base.html" %}
+{% extends "iframe/base.html" %}
 
 {% load i18n %}
 {% load staticfiles %}
@@ -42,7 +42,7 @@ d{% extends "iframe/base.html" %}
         <a href="https://maps.google.com/maps?saddr=current+location&daddr={{location.address}}+{{location.city}}+{{location.state}}+{{location.zip}}" class="btn btn-gray btn-block">{% trans 'Get Directions' %}</a>
       </div>
     </div>
-    {% if location.copa_key > 0 %}
+    {% if location.universal_application %}
     <div class="col-sm-12">
       <div class="location-action-button">
         <a href="{{ location.get_copa_url }}?site1={{ location.copa_key }}" class="btn btn-blue btn-block">{% trans 'Apply Today!' %}</a>
@@ -50,43 +50,6 @@ d{% extends "iframe/base.html" %}
     </div>
     {% endif %}
   </div>
-  <!--
-  <div class="location-block">
-    <div class="location-top row">
-      <div class="location-top-headers col-md-8">
-        <div class="location-name">
-          <h1 class="black">{{ location.site_name }}</h1>
-        </div>
-        <div class="location-address">
-          <h2 class="dark-gray">{{ location.address }}</h2>
-        </div>
-        {% if location.phone %}
-        <div class="location-phone">
-          <a class="a-orange" href="tel:{{location.phone}}">{{ location.phone }}</a>
-        </div>
-        {% endif %}
-        {% if location.url %}
-        <div class="location-url">
-          <a class="a-orange" href="{{location.url}}">{% trans "Location Website" %}</a>
-        </div>
-        {% endif %}
-      </div>
-      <div class="location-top-actions col-md-4">
-        {% if location.copa_key > 0 %}
-        <div class="location-action-button">
-          <a href="{{ location.get_copa_url }}?site1={{ location.copa_key }}" class="btn btn-orange btn-block">{% trans 'Apply Today!' %}</a>
-        </div>
-        {% endif %}
-        <div class="location-action-button">
-          <a data-redirect="/favorites/" data-location="{{ location.id }}" class="btn btn-gray btn-block compare-btn">{% trans 'Compare Location' %}</a>
-        </div>
-        <div class="location-action-button">
-          <a href="https://maps.google.com/maps?saddr=current+location&daddr={{location.address}}+{{location.city}}+{{location.state}}+{{location.zip}}" class="btn btn-gray btn-block">{% trans 'Get Directions' %}</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  -->
 </div>
 {% endblock %}
 

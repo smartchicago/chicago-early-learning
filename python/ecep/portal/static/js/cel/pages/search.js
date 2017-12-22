@@ -437,7 +437,7 @@ define(['jquery', 'Leaflet', 'Handlebars', 'text!templates/redesign/search-resul
                     map.setZoom(location_zoom);
                 }
             }
-            var popupContent = '<b>' + name + '</b><br>' + gettext('Number of Locations') + ': ' + numSchools + '<br><a class="neighborhood-popup" href="#">' + gettext('Explore') + '</a>',
+            var popupContent = '<b>' + name + '</b><br>' + 'Number of Locations' + ': ' + numSchools + '<br><a class="neighborhood-popup" href="#">' + 'Explore' + '</a>',
                 popup = L.popup().setLatLng([lat, lng]).setContent(popupContent).addTo(popupLayer);
 
             $('.neighborhood-popup').on('click', function(e) {

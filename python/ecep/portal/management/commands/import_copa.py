@@ -20,7 +20,7 @@ class Command(NoArgsCommand):
       - Transfer latest report from SFTP
     """
 
-    REMOTE_PATH = 'reports/CEL-new.txt'
+    REMOTE_PATH = 'reports/CEL-New.txt'
     LOCAL_EXPORT = '/cel/app/python/ecep/portal/management/exports/export.txt'
     LOGFILE = ''
 
@@ -37,7 +37,6 @@ class Command(NoArgsCommand):
             for row in reader:
                 total += 1
                 try:
-                    copa_id = row['Site ID']
                     copa_id = row['Site ID']
                     l = Location.objects.get(copa_key=copa_id)
                     if not l:
@@ -102,6 +101,7 @@ class Command(NoArgsCommand):
 
                     l.last_modified_on = row['Last Update Date']
                     l.active = self.parse_bool(row['Active'])
+                    l.display = self.parse_display(row['Display On CEL'])
 
                     # Save changes:
                     l.save()
@@ -147,12 +147,7 @@ class Command(NoArgsCommand):
         transport.connect(username=username, pkey=key)
 
         sftp = paramiko.SFTPClient.from_transport(transport)
-
-        uploads = sftp.listdir('reports/')
-        latest_export = uploads[-1]
-        latest_export_path = self.REMOTE_PATH + latest_export
-        sftp.get(remotepath=latest_export_path, localpath=self.LOCAL_EXPORT)
-
+        sftp.get(remotepath=self.REMOTE_PATH, localpath=self.LOCAL_EXPORT)
         sftp.close()
         transport.close()
 
@@ -164,6 +159,14 @@ class Command(NoArgsCommand):
             return True
         else:
             return False
+
+    def parse_display(self, value):
+    # We're working with incomplete data, so this just sets blank display
+    # values to True until COPA adds display values to their exports
+        if value == "":
+            return True
+        else:
+            return self.parse_bool(value)
 
     def diff(self, old, new):
         my_model_fields = Location._meta.get_all_field_names()

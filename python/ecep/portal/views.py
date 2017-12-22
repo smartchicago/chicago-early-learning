@@ -69,9 +69,6 @@ logger = logging.getLogger(__name__)
 #class Resources(TemplateView):
 #    template_name = "redesign/resources.html"
 
-class Test(TemplateView):
-    template_name = "test.html"
-
 # Shutting down everything for the iframe, except for:
 
 class Search(View):
@@ -89,7 +86,9 @@ def browse(request):
     if query:
         locations = Location.objects.filter(
             site_name__icontains=query,
-            accepted=True
+            accepted=True,
+            active=True,
+            display=True
         ).values(
             'id',
             'site_name',
@@ -145,6 +144,8 @@ def portal_autocomplete(request):
     locations = Location.objects.filter(
         site_name__icontains=query,
         accepted=True,
+        active=True,
+        display=True
     ).values(
         'id',
         'site_name',
@@ -311,7 +312,8 @@ def location_details(location_id):
 
     This is called by the detail page and the comparison page.
     """
-    item = get_object_or_404(Location, id=location_id)
+    location_queryset = Location.objects.filter(active=True, display=True)
+    item = get_object_or_404(location_queryset, id=location_id)
     return item.get_context_dict()
 
 
@@ -347,14 +349,15 @@ def location_api(request, location_ids=None):
     bool_filter, etag_hash = _make_location_filter(request.GET, etag_hash)
     item_filter &= bool_filter
 
-    location_contexts = [l.get_context_dict() for l in Location.objects.filter(item_filter, accepted=True)]
+    location_contexts = [l.get_context_dict() for l in Location.objects.filter(item_filter, accepted=True, active=True, display=True)]
     logger.debug('Retrieved %d location_contexts.' % len(location_contexts))
     context = {'locations': location_contexts}
     return _make_response(context, etag_hash)
 
 
 def location(request, location_id=None, slug=None):
-    location = get_object_or_404(Location, id=location_id)
+    location_queryset = Location.objects.filter(active=True, display=True)
+    location = get_object_or_404(location_queryset, id=location_id)
     loc = location_details(location_id)
     fields = clean_context_dict(loc)
 
@@ -373,7 +376,8 @@ def location(request, location_id=None, slug=None):
     })
 
 def location_map(request, location_id=None):
-    location = get_object_or_404(Location, id=location_id)
+    location_queryset = Location.objects.filter(active=True, display=True)
+    location = get_object_or_404(location_queryset, id=location_id)
     loc = location_details(location_id)
     fields = clean_context_dict(loc)
 
@@ -411,7 +415,7 @@ def location_json_api(request):
     API Endpoint for returning a full JSON list of names and IDs of schools and locations
     for use in the homepage search bar autocomplete dropdown.
     """
-    locs = Location.objects.all().values('site_name', 'id').order_by('site_name')
+    locs = Location.objects.filter(active=True, display=True).values('site_name', 'id').order_by('site_name')
     loc_list = list(locs)
 
     for location in loc_list:
@@ -427,7 +431,7 @@ def api_map_json(request):
     """
     API endpoint for returning full JSON location data for search map.
     """
-    locations = Location.objects.all()
+    locations = Location.objects.filter(active=True, display=True)
     location_list = [l.get_map_location_data() for l in locations]
     location_description = Location.get_location_display()
 
@@ -439,7 +443,8 @@ def location_position(request, location_id):
     """
     Render a json response with the longitude and latitude of a single location.
     """
-    loc = get_object_or_404(Location, id=location_id)
+    location_queryset = Location.objects.filter(active=True, display=True)
+    loc = get_object_or_404(location_queryset, id=location_id)
     results = [{'pk': location_id, 'lng': loc.geom[0], 'lat': loc.geom[1]}]
     return HttpResponse(json.dumps(results), content_type="application/json")
 
@@ -467,7 +472,7 @@ def neighborhood_api(request):
     etag_hash = 'empty'
     nb_name = Neighborhood.__name__.lower()
     location_filter, etag_hash = _make_location_filter(request.GET, etag_hash)
-    locations = Location.objects.filter(location_filter, accepted=True)
+    locations = Location.objects.filter(location_filter, accepted=True, active=True)
 
     # List of dicts with keys nb_name and 'nbc_count'
     # The order_by() is important, as it prevents django from adding extra fields to the

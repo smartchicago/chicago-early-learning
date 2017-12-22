@@ -39,7 +39,6 @@ urlpatterns = patterns(
     #url(r'^resources$', Resources.as_view(), name='resources'),
 
     # Search
-    url(r'test/', Test.as_view(), name="test"),
     url(r'search/', Search.as_view(), name="search"),
 
     # Blog

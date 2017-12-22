@@ -46,7 +46,7 @@
         <div class="location-action-button">
           <a data-redirect="/favorites/" data-location="{{ location.id }}" class="btn btn-lg btn-gray btn-block compare-btn">{% trans 'Compare Location' %}</a>
         </div>
-        {% if location.copa_key > 0 %}
+        {% if location.universal_application %}
         <div class="location-action-button">
           <a href="{{ location.get_copa_url }}?site1={{ location.copa_key }}" class="btn btn-lg btn-orange btn-block">{% trans 'Apply Today!' %}</a>
         </div>
@@ -109,7 +109,7 @@
               <p><em>{% blocktrans %}<b>Ages 0 - 3:</b> If your child will be younger than 3 years old prior to September 1, 2017, there are infant/toddler programs available. Please contact the site directly for enrollment information for these programs.{% endblocktrans %}</em></p>
             {% endif %}
 
-            {% if location.is_age_gt_3 and location.copa_key == 0 %}
+            {% if location.is_age_gt_3 and not location.universal_application %}
               <p><em>{% blocktrans %}<b>Ages 3 - 5:</b> If your child is 3 or 4 years old prior to September 1, 2017, your child will be eligible for preschool programs.{% endblocktrans %}</em></p>
             {% endif %}
             </div>
