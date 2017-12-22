@@ -79,6 +79,7 @@ class Location(models.Model):
     )
 
     active = models.BooleanField('Active', default=0, blank=True)
+    display = models.BooleanField('Display', default=0, blank=True)
     copa_key = models.IntegerField('COPA Key', default=0, blank=True)
     ecm_key = models.IntegerField('ECM Key', default=0, blank=True)
     site_name = models.CharField('Site Name', max_length=100)
@@ -249,6 +250,7 @@ class Location(models.Model):
         location = {
             'id': self.id,
             'copa_key': self.copa_key,
+            'universal_application': self.universal_application,
             'name': self.site_name,
             'address': self.address,
             'longitude': self.geom[0],
